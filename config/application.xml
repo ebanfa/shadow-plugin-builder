@@ -19,7 +19,7 @@
 			<targetTemplate>html/wordpress/page/dashboard-page-php.ftl</targetTemplate>
 			<target>/page?type=page&amp;artifact=dashboard</target>
 		</menuGroup>
-		<menuGroup>
+		<!-- <menuGroup>
 			<name>properties</name>
 			<displayName>Properties</displayName>
 			<description>Properties</description>
@@ -39,12 +39,12 @@
 			<targetType>page</targetType>
 			<targetTemplate>html/wordpress/page/customer-page-php.ftl</targetTemplate>
 			<target>/page?type=page&amp;artifact=customer</target>
-		</menuGroup>
+		</menuGroup> -->
 
 		<menuGroup>
-			<name>businessinformation</name>
-			<displayName>Business Information</displayName>
-			<description>Business Information</description>
+			<name>leasemanagement</name>
+			<displayName>Lease Management</displayName>
+			<description>Lease Management</description>
 			<type>group</type>
 			<cssClass>md-account-circle</cssClass>
 			<menu>
@@ -92,6 +92,74 @@
 				<cssClass>md-notifications</cssClass>
 				<targetType>entity</targetType>
 				<target>/page?type=entity&amp;page_action=list&amp;artifact=dispute</target>
+			</menu>
+		</menuGroup>
+
+		<menuGroup>
+			<name>customermanagement</name>
+			<displayName>Customer Management</displayName>
+			<description>Customer Management</description>
+			<type>group</type>
+			<cssClass>md-account-circle</cssClass>
+			<menu>
+				<name>party</name>
+				<displayName>Party</displayName>
+				<description>Party</description>
+				<active>N</active>
+				<cssClass>md-mail</cssClass>
+				<targetType>entity</targetType>
+				<target>/page?type=entity&amp;page_action=list&amp;artifact=party</target>
+			</menu>
+		</menuGroup>
+
+		<menuGroup>
+			<name>properties</name>
+			<displayName>Property Management</displayName>
+			<description>Property Management</description>
+			<type>group</type>
+			<cssClass>md-account-circle</cssClass>
+			<menu>
+				<name>property</name>
+				<displayName>Property</displayName>
+				<description>Property</description>
+				<active>N</active>
+				<cssClass>md-mail</cssClass>
+				<targetType>entity</targetType>
+				<target>/page?type=entity&amp;page_action=list&amp;artifact=property</target>
+			</menu>
+		</menuGroup>
+
+		<menuGroup>
+			<name>accounting</name>
+			<displayName>Accounting</displayName>
+			<description>Accounting</description>
+			<type>group</type>
+			<cssClass>md-account-circle</cssClass>
+			<menu>
+				<name>property</name>
+				<displayName>Property</displayName>
+				<description>Property</description>
+				<active>N</active>
+				<cssClass>md-mail</cssClass>
+				<targetType>entity</targetType>
+				<target>/page?type=entity&amp;page_action=list&amp;artifact=property</target>
+			</menu>
+		</menuGroup>
+
+		<menuGroup>
+			<name>businessinformation</name>
+			<displayName>Business Information</displayName>
+			<description>Business Information</description>
+			<type>group</type>
+			<cssClass>md-account-circle</cssClass>
+			<menu>
+				<name>property</name>
+				<displayName>Property</displayName>
+				<description>Property</description>
+				<active>N</active>
+				<cssClass>md-mail</cssClass>
+				<targetType>entity</targetType>
+				<target>/page?type=entity&amp;page_action=list&amp;artifact=property</target>
 			</menu>
 		</menuGroup>
 
