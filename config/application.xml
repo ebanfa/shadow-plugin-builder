@@ -2743,6 +2743,7 @@
 			<field>
 				<name>name</name>
 				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
 				<required>Y</required>
 				<createField>Y</createField>
 				<editField>Y</editField>
