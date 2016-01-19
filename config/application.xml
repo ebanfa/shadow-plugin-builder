@@ -97,8 +97,8 @@
 
 		<menuGroup>
 			<name>financial</name>
-			<displayName>Financial</displayName>
-			<description>Financial</description>
+			<displayName>Financials</displayName>
+			<description>Financials</description>
 			<type>group</type>
 			<cssClass>md-account-circle</cssClass>
 			<menu>
