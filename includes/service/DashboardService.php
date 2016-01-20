@@ -64,7 +64,7 @@ class DashboardService {
             $entity = $itemQuery->post; 
             $total_rent_value = $total_rent_value + get_post_meta($entity->ID, 'amount', true);
         endwhile;
-        return $account_balance;
+        return $total_rent_value;
     }
 }
 ?>
