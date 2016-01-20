@@ -2437,9 +2437,9 @@
 		</entity>
 
 		<entity>
-			<name>Maintenance</name>
-			<postName>sb_maintenance</postName>
-			<description>Maintenance</description>
+			<name>Inspection</name>
+			<postName>sb_inspection</postName>
+			<description>Inspection</description>
 			<global>N</global>
 			<field>
 				<name>entity_code</name>
