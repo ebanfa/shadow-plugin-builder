@@ -36,12 +36,14 @@ class DashboardService {
 
     public static function get_tenants_count(){
         $tenant_role = PartyRoleTypeAPI::get_by_code('TENANT');
+        $tenants_count = 0;
         if(isset($tenant_role['id'])) {
             $itemQueryArgs = array('numberposts' => -1, 'post_status' => 'publish', 'post_type' => 'sb_partyrole',
     	    'meta_query' => array(array('key' => 'type', 'value' => $tenant_role['id'] )));
             $itemQuery = new WP_Query($itemQueryArgs);
-            return $itemQuery->found_posts;
+            $tenants_count =  $itemQuery->found_posts;
         }
+        return $tenants_count;
     }
 
     public static function get_lease_agreements_value(){
