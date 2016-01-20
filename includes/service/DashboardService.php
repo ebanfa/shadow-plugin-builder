@@ -40,8 +40,8 @@ class DashboardService {
             $itemQueryArgs = array('numberposts' => -1, 'post_status' => 'publish', 'post_type' => 'sb_partyrole',
     	    'meta_query' => array(array('key' => 'type', 'value' => $tenant_role['id'] )));
             $itemQuery = new WP_Query($itemQueryArgs);
+            return $itemQuery->found_posts;
         }
-	    return $itemQuery->found_posts;
     }
 
     public static function get_lease_agreements_value(){
