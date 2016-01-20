@@ -3250,22 +3250,6 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
-				<name>amount</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>numeric</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Amount</description>
-				<displayName>Amount</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
 				<name>description</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
@@ -3334,22 +3318,6 @@
 				<dataColumn>true</dataColumn>
 				<description>Name</description>
 				<displayName>name</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>value</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>numeric</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Value</description>
-				<displayName>Value</displayName>
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
@@ -3607,6 +3575,22 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
+				<name>amount</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>numeric</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Amount</description>
+				<displayName>Amount</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
 				<name>description</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
@@ -3691,6 +3675,22 @@
 				<dataColumn>true</dataColumn>
 				<description>Name</description>
 				<displayName>name</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>value</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>numeric</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Value</description>
+				<displayName>Value</displayName>
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
