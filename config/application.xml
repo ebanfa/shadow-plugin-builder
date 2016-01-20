@@ -224,13 +224,124 @@
 			<type>group</type>
 			<cssClass>md-work</cssClass>
 			<menu>
-				<name>property</name>
-				<displayName>Chart Of Accounts</displayName>
-				<description>Chart Of Accounts</description>
+				<name>balancesheet</name>
+				<displayName>Balance Sheet</displayName>
+				<description>Balance Sheet</description>
 				<active>N</active>
-				<cssClass>md-mail</cssClass>
-				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;page_action=list&amp;artifact=property</target>
+				<cssClass>md-business</cssClass>
+				<targetType>page</targetType>
+				<targetTemplate>html/wordpress/page/financialreports-page-php.ftl</targetTemplate>
+				<target>/page?type=page&amp;artifact=financialreports</target>
+			</menu>
+			<menu>
+				<name>balancesheetconsolidated</name>
+				<displayName>Balance Sheet Consolidated</displayName>
+				<description>Balance Sheet Consolidated</description>
+				<active>N</active>
+				<cssClass>md-business</cssClass>
+				<targetType>page</targetType>
+				<targetTemplate>html/wordpress/page/financialreports-page-php.ftl</targetTemplate>
+				<target>/page?type=page&amp;artifact=financialreports</target>
+			</menu>
+			<menu>
+				<name>generalledger</name>
+				<displayName>General Ledger</displayName>
+				<description>General Ledger</description>
+				<active>N</active>
+				<cssClass>md-business</cssClass>
+				<targetType>page</targetType>
+				<targetTemplate>html/wordpress/page/financialreports-page-php.ftl</targetTemplate>
+				<target>/page?type=page&amp;artifact=financialreports</target>
+			</menu>
+			<menu>
+				<name>generalledgerconsolidated</name>
+				<displayName>General Ledger Consolidated</displayName>
+				<description>General Ledger Consolidated</description>
+				<active>N</active>
+				<cssClass>md-business</cssClass>
+				<targetType>page</targetType>
+				<targetTemplate>html/wordpress/page/financialreports-page-php.ftl</targetTemplate>
+				<target>/page?type=page&amp;artifact=financialreports</target>
+			</menu>
+			<menu>
+				<name>incomestatement</name>
+				<displayName>Income Statement</displayName>
+				<description>Income Statement</description>
+				<active>N</active>
+				<cssClass>md-business</cssClass>
+				<targetType>page</targetType>
+				<targetTemplate>html/wordpress/page/financialreports-page-php.ftl</targetTemplate>
+				<target>/page?type=page&amp;artifact=financialreports</target>
+			</menu>
+			<menu>
+				<name>incomestatementconsolidated</name>
+				<displayName>Income Statement Consolidated</displayName>
+				<description>Income Statement Consolidated</description>
+				<active>N</active>
+				<cssClass>md-business</cssClass>
+				<targetType>page</targetType>
+				<targetTemplate>html/wordpress/page/financialreports-page-php.ftl</targetTemplate>
+				<target>/page?type=page&amp;artifact=financialreports</target>
+			</menu>
+			<menu>
+				<name>incomestatementdetailed</name>
+				<displayName>Income Statement Detailed</displayName>
+				<description>Income Statement Detailed</description>
+				<active>N</active>
+				<cssClass>md-business</cssClass>
+				<targetType>page</targetType>
+				<targetTemplate>html/wordpress/page/financialreports-page-php.ftl</targetTemplate>
+				<target>/page?type=page&amp;artifact=financialreports</target>
+			</menu>
+			<menu>
+				<name>rentalownerendingbalance</name>
+				<displayName>Rental Owner Ending Balance</displayName>
+				<description>Rental Owner Ending Balance</description>
+				<active>N</active>
+				<cssClass>md-business</cssClass>
+				<targetType>page</targetType>
+				<targetTemplate>html/wordpress/page/financialreports-page-php.ftl</targetTemplate>
+				<target>/page?type=page&amp;artifact=financialreports</target>
+			</menu>
+			<menu>
+				<name>rentalownerstatement</name>
+				<displayName>Rental Owner Statement</displayName>
+				<description>Rental Owner Statement</description>
+				<active>N</active>
+				<cssClass>md-business</cssClass>
+				<targetType>page</targetType>
+				<targetTemplate>html/wordpress/page/financialreports-page-php.ftl</targetTemplate>
+				<target>/page?type=page&amp;artifact=financialreports</target>
+			</menu>
+			<menu>
+				<name>propertystatement</name>
+				<displayName>Property Statement</displayName>
+				<description>Property Statement</description>
+				<active>N</active>
+				<cssClass>md-business</cssClass>
+				<targetType>page</targetType>
+				<targetTemplate>html/wordpress/page/financialreports-page-php.ftl</targetTemplate>
+				<target>/page?type=page&amp;artifact=financialreports</target>
+			</menu>
+			<menu>
+				<name>trialbalance</name>
+				<displayName>Trial Balance</displayName>
+				<description>Trial Balance</description>
+				<active>N</active>
+				<cssClass>md-business</cssClass>
+				<targetType>page</targetType>
+				<targetTemplate>html/wordpress/page/financialreports-page-php.ftl</targetTemplate>
+				<target>/page?type=page&amp;artifact=financialreports</target>
+			</menu>
+			<menu>
+				<name>trialbalanceconsolidated</name>
+				<displayName>Trial Balance Consolidated</displayName>
+				<description>Trial Balance Consolidated</description>
+				<active>N</active>
+				<cssClass>md-business</cssClass>
+				<targetType>page</targetType>
+				<targetTemplate>html/wordpress/page/financialreports-page-php.ftl</targetTemplate>
+				<target>/page?type=page&amp;artifact=financialreports</target>
 			</menu>
 		</menuGroup>
 
