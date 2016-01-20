@@ -36,9 +36,11 @@ class DashboardService {
 
     public static function get_tenants_count(){
         $tenant_role = PartyRoleTypeAPI::get_by_code('TENANT');
-        $itemQueryArgs = array('numberposts' => -1, 'post_status' => 'publish', 'post_type' => 'sb_partyrole',
-	    'meta_query' => array(array('key' => 'type', 'value' => $tenant_role->ID )));
-        $itemQuery = new WP_Query($itemQueryArgs);
+        if(isset($tenant_role['id'])) {
+            $itemQueryArgs = array('numberposts' => -1, 'post_status' => 'publish', 'post_type' => 'sb_partyrole',
+    	    'meta_query' => array(array('key' => 'type', 'value' => $tenant_role->ID )));
+            $itemQuery = new WP_Query($itemQueryArgs);
+        }
 	    return $itemQuery->found_posts;
     }
 
@@ -57,13 +59,15 @@ class DashboardService {
     public static function get_current_monthly_rent_income(){
         $total_rent_value = 0;
         $status = RentStatusAPI::get_by_code('DUE');
-        $itemQueryArgs = array('numberposts' => -1, 'post_status' => 'publish', 'post_type' => 'sb_rent',
-        'meta_query' => array(array('key' => 'status', 'value' => $status->ID )));
-        $itemQuery = new WP_Query($itemQueryArgs);
-        while ($itemQuery->have_posts()) : $itemQuery->the_post();
-            $entity = $itemQuery->post; 
-            $total_rent_value = $total_rent_value + get_post_meta($entity->ID, 'amount', true);
-        endwhile;
+        if(isset($status['id'])) { 
+            $itemQueryArgs = array('numberposts' => -1, 'post_status' => 'publish', 'post_type' => 'sb_rent',
+            'meta_query' => array(array('key' => 'status', 'value' => $status['id'])));
+            $itemQuery = new WP_Query($itemQueryArgs);
+            while ($itemQuery->have_posts()) : $itemQuery->the_post();
+                $entity = $itemQuery->post; 
+                $total_rent_value = $total_rent_value + get_post_meta($entity->ID, 'amount', true);
+            endwhile;
+        }
         return $total_rent_value;
     }
 }
