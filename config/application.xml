@@ -355,7 +355,7 @@
 		</menuGroup>
 
 		<menuGroup>
-			<name>rentreports</name>
+			<name>rentalreports</name>
 			<displayName>Rent Reports</displayName>
 			<description>Rent Reports</description>
 			<type>group</type>
@@ -368,7 +368,7 @@
 				<cssClass>md-business</cssClass>
 				<targetType>page</targetType>
 				<targetTemplate>html/wordpress/page/rentreports-page-php.ftl</targetTemplate>
-				<target>/page?type=page&amp;artifact=rentreports</target>
+				<target>/page?type=page&amp;artifact=currenttenants</target>
 			</menu>
 			<menu>
 				<name>delinquenttenants</name>
@@ -378,7 +378,7 @@
 				<cssClass>md-business</cssClass>
 				<targetType>page</targetType>
 				<targetTemplate>html/wordpress/page/rentreports-page-php.ftl</targetTemplate>
-				<target>/page?type=page&amp;artifact=rentreports</target>
+				<target>/page?type=page&amp;artifact=delinquenttenants</target>
 			</menu>
 			<menu>
 				<name>rentexpiration</name>
@@ -388,7 +388,7 @@
 				<cssClass>md-business</cssClass>
 				<targetType>page</targetType>
 				<targetTemplate>html/wordpress/page/rentreports-page-php.ftl</targetTemplate>
-				<target>/page?type=page&amp;artifact=rentreports</target>
+				<target>/page?type=page&amp;artifact=rentexpiration</target>
 			</menu>
 			<menu>
 				<name>rentpaid</name>
@@ -398,7 +398,7 @@
 				<cssClass>md-business</cssClass>
 				<targetType>page</targetType>
 				<targetTemplate>html/wordpress/page/rentreports-page-php.ftl</targetTemplate>
-				<target>/page?type=page&amp;artifact=rentreports</target>
+				<target>/page?type=page&amp;artifact=rentpaid</target>
 			</menu>
 			<menu>
 				<name>tenantstatement</name>
@@ -418,7 +418,7 @@
 				<cssClass>md-business</cssClass>
 				<targetType>page</targetType>
 				<targetTemplate>html/wordpress/page/rentreports-page-php.ftl</targetTemplate>
-				<target>/page?type=page&amp;artifact=rentreports</target>
+				<target>/page?type=page&amp;artifact=unitlisting</target>
 			</menu>
 			<menu>
 				<name>occupiedunits</name>
@@ -428,7 +428,7 @@
 				<cssClass>md-business</cssClass>
 				<targetType>page</targetType>
 				<targetTemplate>html/wordpress/page/rentreports-page-php.ftl</targetTemplate>
-				<target>/page?type=page&amp;artifact=rentreports</target>
+				<target>/page?type=page&amp;artifact=occupiedunits</target>
 			</menu>
 			<menu>
 				<name>vacantunits</name>
@@ -438,7 +438,7 @@
 				<cssClass>md-business</cssClass>
 				<targetType>page</targetType>
 				<targetTemplate>html/wordpress/page/rentreports-page-php.ftl</targetTemplate>
-				<target>/page?type=page&amp;artifact=rentreports</target>
+				<target>/page?type=page&amp;artifact=vacantunits</target>
 			</menu>
 
 		</menuGroup>
@@ -984,6 +984,22 @@
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
+				<name>party_role</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_partyrole</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Role</description>
+				<displayName>Role</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
 				<name>name</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
@@ -1015,7 +1031,7 @@
 				<description>User Name</description>
 				<displayName>User Name</displayName>
 				<relationshipField>N</relationshipField>
-			</field>
+			</field><!-- 
 			<field>
 				<name>password</name>
 				<isVisible>Y</isVisible>
@@ -1031,7 +1047,7 @@
 				<description>Password</description>
 				<displayName>Password</displayName>
 				<relationshipField>N</relationshipField>
-			</field>
+			</field> -->
 			<field>
 				<name>description</name>
 				<isVisible>Y</isVisible>

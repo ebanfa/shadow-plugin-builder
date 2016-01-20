@@ -69,7 +69,7 @@ if (!defined('ABSPATH')) {
 
 <div class="card">
                         <div class="card-header">
-                            <h2>Account Performance Statistics <small>Vestibulum purus quam scelerisque, mollis nonummy metus</small></h2>
+                            <h2>Property Performance Statistics </h2>
                             
                             <ul class="actions">
                                 <li>
