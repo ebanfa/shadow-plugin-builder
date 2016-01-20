@@ -2,7 +2,7 @@
 
 git add .
 
-get status
+git status
 
 git commit -m "Shadow origin"
 
