@@ -109,6 +109,15 @@
 				<targetType>entity</targetType>
 				<target>/page?type=entity&amp;page_action=list&amp;artifact=party</target>
 			</menu>
+			<menu>
+				<name>serviceproviders</name>
+				<displayName>Service Providers</displayName>
+				<description>Service Providers</description>
+				<active>N</active>
+				<cssClass>md-mail</cssClass>
+				<targetType>entity</targetType>
+				<target>/page?type=entity&amp;page_action=list&amp;artifact=party</target>
+			</menu>
 		</menuGroup>
 
 		<menuGroup>
@@ -137,8 +146,8 @@
 			</menu>
 			<menu>
 				<name>allocationunits</name>
-				<displayName>Allocation Units</displayName>
-				<description>Allocation Units</description>
+				<displayName>Unit Types</displayName>
+				<description>Unit Types</description>
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
