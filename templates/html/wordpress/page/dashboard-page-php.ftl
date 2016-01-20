@@ -15,15 +15,15 @@ if (!defined('ABSPATH')) {
 <?php 
     do_action('shadowbanker_before_main_content');
 ?>
-<div class="mini-charts">
+                    <div class="mini-charts">
                         <div class="row">
                             <div class="col-sm-6 col-md-3">
                                 <div class="mini-charts-item bgm-cyan">
                                     <div class="clearfix">
                                         <div class="chart stats-bar"></div>
                                         <div class="count">
-                                            <small>Account Balance</small>
-                                            <h2><?php echo get_option('cp_currency_symbol');?>  <?php echo $dashboard_stats['account_balance'];?></h2>
+                                            <small>Number Of Properties</small>
+                                            <h2><?php echo $dashboard_stats['property_count'];?></h2>
                                         </div>
                                     </div>
                                 </div>
@@ -34,8 +34,8 @@ if (!defined('ABSPATH')) {
                                     <div class="clearfix">
                                         <div class="chart stats-bar-2"></div>
                                         <div class="count">
-                                            <small>Number Of Loans</small>
-                                            <h2><?php echo $dashboard_stats['loan_count'];?></h2>
+                                            <small>Number Of Tenants</small>
+                                            <h2><?php echo $dashboard_stats['tenants_count'];?></h2>
                                         </div>
                                     </div>
                                 </div>
@@ -46,8 +46,8 @@ if (!defined('ABSPATH')) {
                                     <div class="clearfix">
                                         <div class="chart stats-line"></div>
                                         <div class="count">
-                                            <small>Credit Applications</small>
-                                            <h2><?php echo $dashboard_stats['application_count'];?></h2>
+                                            <small>Lease Agreements Value</small>
+                                            <h2><?php echo get_option('cp_currency_symbol');?>  <?php echo $dashboard_stats['lease_agreements_value'];?></h2>
                                         </div>
                                     </div>
                                 </div>
@@ -58,8 +58,8 @@ if (!defined('ABSPATH')) {
                                     <div class="clearfix">
                                         <div class="chart stats-line-2"></div>
                                         <div class="count">
-                                            <small>My Bids Count</small>
-                                            <h2><?php echo $dashboard_stats['bid_count'];?></h2>
+                                            <small>Monthly Rent Income</small>
+                                            <h2><?php echo $dashboard_stats['current_monthly_rent_income'];?></h2>
                                         </div>
                                     </div>
                                 </div>
