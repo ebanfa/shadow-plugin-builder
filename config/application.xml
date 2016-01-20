@@ -218,9 +218,9 @@
 		</menuGroup>
 
 		<menuGroup>
-			<name>financials</name>
-			<displayName>Financials</displayName>
-			<description>Financials</description>
+			<name>financialreports</name>
+			<displayName>Financial Reports</displayName>
+			<description>Financial Reports</description>
 			<type>group</type>
 			<cssClass>md-work</cssClass>
 			<menu>
@@ -235,61 +235,92 @@
 		</menuGroup>
 
 		<menuGroup>
-			<name>reports</name>
-			<displayName>Reports</displayName>
-			<description>Reports</description>
+			<name>rentreports</name>
+			<displayName>Rent Reports</displayName>
+			<description>Rent Reports</description>
 			<type>group</type>
 			<cssClass>md-trending-up</cssClass>
 			<menu>
-				<name>financialsummary</name>
-				<displayName>Financial Summary</displayName>
-				<description>Financial Summary</description>
+				<name>currenttenants</name>
+				<displayName>Current Tenants</displayName>
+				<description>Current Tenants</description>
 				<active>N</active>
 				<cssClass>md-business</cssClass>
 				<targetType>page</targetType>
-				<targetTemplate>html/wordpress/page/financialsummary-page-php.ftl</targetTemplate>
-				<target>/page?type=page&amp;artifact=financialsummary</target>
+				<targetTemplate>html/wordpress/page/rentreports-page-php.ftl</targetTemplate>
+				<target>/page?type=page&amp;artifact=rentreports</target>
 			</menu>
 			<menu>
-				<name>accountstatement</name>
-				<displayName>Account Statement</displayName>
-				<description>Account Statement</description>
+				<name>delinquenttenants</name>
+				<displayName>Delinquent Tenants</displayName>
+				<description>Delinquent Tenants</description>
 				<active>N</active>
 				<cssClass>md-business</cssClass>
 				<targetType>page</targetType>
-				<targetTemplate>html/wordpress/page/accountstatement-page-php.ftl</targetTemplate>
-				<target>/page?type=page&amp;artifact=accountstatement</target>
+				<targetTemplate>html/wordpress/page/rentreports-page-php.ftl</targetTemplate>
+				<target>/page?type=page&amp;artifact=rentreports</target>
 			</menu>
 			<menu>
-				<name>loanstatement</name>
-				<displayName>Loan Statement</displayName>
-				<description>Loan Statement</description>
+				<name>rentexpiration</name>
+				<displayName>Rent Expiration</displayName>
+				<description>Rent Expiration</description>
 				<active>N</active>
 				<cssClass>md-business</cssClass>
 				<targetType>page</targetType>
-				<targetTemplate>html/wordpress/page/loanstatement-page-php.ftl</targetTemplate>
-				<target>/page?type=page&amp;artifact=loanstatement</target>
+				<targetTemplate>html/wordpress/page/rentreports-page-php.ftl</targetTemplate>
+				<target>/page?type=page&amp;artifact=rentreports</target>
 			</menu>
 			<menu>
-				<name>intereststatement</name>
-				<displayName>Interest Statement</displayName>
-				<description>Interest Statement</description>
+				<name>rentpaid</name>
+				<displayName>Rent Paid</displayName>
+				<description>Rent Paid</description>
 				<active>N</active>
 				<cssClass>md-business</cssClass>
 				<targetType>page</targetType>
-				<targetTemplate>html/wordpress/page/intereststatement-page-php.ftl</targetTemplate>
-				<target>/page?type=page&amp;artifact=intereststatement</target>
+				<targetTemplate>html/wordpress/page/rentreports-page-php.ftl</targetTemplate>
+				<target>/page?type=page&amp;artifact=rentreports</target>
 			</menu>
 			<menu>
-				<name>collateralsummary</name>
-				<displayName>Collateral Summary</displayName>
-				<description>Collateral Summary</description>
+				<name>tenantstatement</name>
+				<displayName>Tenant Statement</displayName>
+				<description>Tenant Statement</description>
 				<active>N</active>
 				<cssClass>md-business</cssClass>
 				<targetType>page</targetType>
-				<targetTemplate>html/wordpress/page/collateralsummary-page-php.ftl</targetTemplate>
-				<target>/page?type=page&amp;artifact=collateralsummary</target>
+				<targetTemplate>html/wordpress/page/rentreports-page-php.ftl</targetTemplate>
+				<target>/page?type=page&amp;artifact=rentreports</target>
 			</menu>
+			<menu>
+				<name>unitlisting</name>
+				<displayName>Unit Listing</displayName>
+				<description>Unit Listing</description>
+				<active>N</active>
+				<cssClass>md-business</cssClass>
+				<targetType>page</targetType>
+				<targetTemplate>html/wordpress/page/rentreports-page-php.ftl</targetTemplate>
+				<target>/page?type=page&amp;artifact=rentreports</target>
+			</menu>
+			<menu>
+				<name>occupiedunits</name>
+				<displayName>Occupied Units</displayName>
+				<description>Occupied Units</description>
+				<active>N</active>
+				<cssClass>md-business</cssClass>
+				<targetType>page</targetType>
+				<targetTemplate>html/wordpress/page/rentreports-page-php.ftl</targetTemplate>
+				<target>/page?type=page&amp;artifact=rentreports</target>
+			</menu>
+			<menu>
+				<name>vacantunits</name>
+				<displayName>Vacant Units</displayName>
+				<description>Vacant Units</description>
+				<active>N</active>
+				<cssClass>md-business</cssClass>
+				<targetType>page</targetType>
+				<targetTemplate>html/wordpress/page/rentreports-page-php.ftl</targetTemplate>
+				<target>/page?type=page&amp;artifact=rentreports</target>
+			</menu>
+
 		</menuGroup>
 
 		<menuGroup>
