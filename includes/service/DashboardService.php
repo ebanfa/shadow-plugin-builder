@@ -35,7 +35,7 @@ class DashboardService {
 
 
     public static function get_tenants_count(){
-        $tenant_role = PartyRoleType::get_by_code('TENANT');
+        $tenant_role = PartyRoleTypeAPI::get_by_code('TENANT');
         $itemQueryArgs = array('numberposts' => -1, 'post_status' => 'publish', 'post_type' => 'sb_partyrole',
 	    'meta_query' => array(array('key' => 'type', 'value' => $tenant_role->ID )));
         $itemQuery = new WP_Query($itemQueryArgs);
@@ -56,7 +56,7 @@ class DashboardService {
 
     public static function get_current_monthly_rent_income(){
         $total_rent_value = 0;
-        $status = RentStatus::get_by_code('DUE');
+        $status = RentStatusAPI::get_by_code('DUE');
         $itemQueryArgs = array('numberposts' => -1, 'post_status' => 'publish', 'post_type' => 'sb_rent',
         'meta_query' => array(array('key' => 'status', 'value' => $status->ID )));
         $itemQuery = new WP_Query($itemQueryArgs);
