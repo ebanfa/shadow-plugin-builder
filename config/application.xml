@@ -56,16 +56,6 @@
 				<targetType>entity</targetType>
 				<target>/page?type=entity&amp;page_action=list&amp;artifact=lease</target>
 			</menu>
-			<menu>
-				<name>charges</name>
-				<displayName>Charges</displayName>
-				<description>Charges</description>
-				<active>N</active>
-				<cssClass>md-mail</cssClass>
-				<targetType>entity</targetType>
-
-				<target>/page?type=entity&amp;page_action=list&amp;artifact=charge</target>
-			</menu>
 		</menuGroup>
 
 		<menuGroup>
@@ -128,6 +118,15 @@
 				<target>/page?type=entity&amp;page_action=list&amp;artifact=building</target>
 			</menu>
 			<menu>
+				<name>allocationunits</name>
+				<displayName>Allocation Units</displayName>
+				<description>Allocation Units</description>
+				<active>N</active>
+				<cssClass>md-mail</cssClass>
+				<targetType>entity</targetType>
+				<target>/page?type=entity&amp;page_action=list&amp;artifact=allocatiounit</target>
+			</menu>
+			<menu>
 				<name>inspections</name>
 				<displayName>Inspections</displayName>
 				<description>Inspections</description>
@@ -152,24 +151,16 @@
 			<displayName>Accounting</displayName>
 			<description>Accounting</description>
 			<type>group</type>
-			<cssClass>md-work</cssClass>
+			<cssClass>md-account-balance</cssClass>
 			<menu>
-				<name>property</name>
-				<displayName>Property</displayName>
-				<description>Property</description>
+				<name>transactions</name>
+				<displayName>Transactions</displayName>
+				<description>Transactions</description>
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;page_action=list&amp;artifact=property</target>
+				<target>/page?type=entity&amp;page_action=list&amp;artifact=transaction</target>
 			</menu>
-		</menuGroup>
-
-		<menuGroup>
-			<name>financial</name>
-			<displayName>Financials</displayName>
-			<description>Financials</description>
-			<type>group</type>
-			<cssClass>md-account-balance</cssClass>
 			<menu>
 				<name>invoices</name>
 				<displayName>Invoices</displayName>
@@ -180,13 +171,13 @@
 				<target>/page?type=entity&amp;page_action=list&amp;artifact=invoice</target>
 			</menu>
 			<menu>
-				<name>transactions</name>
-				<displayName>Transactions</displayName>
-				<description>Transactions</description>
+				<name>receipts</name>
+				<displayName>Receipts</displayName>
+				<description>Receipts</description>
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;page_action=list&amp;artifact=transaction</target>
+				<target>/page?type=entity&amp;page_action=list&amp;artifact=receipts</target>
 			</menu>
 			<menu>
 				<name>payments</name>
@@ -198,15 +189,6 @@
 				<target>/page?type=entity&amp;page_action=list&amp;artifact=payment</target>
 			</menu>
 			<menu>
-				<name>charges</name>
-				<displayName>Charge</displayName>
-				<description>Charge</description>
-				<active>N</active>
-				<cssClass>md-mail</cssClass>
-				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;page_action=list&amp;artifact=charge</target>
-			</menu>
-			<menu>
 				<name>expenses</name>
 				<displayName>Expenses</displayName>
 				<description>Expenses</description>
@@ -214,6 +196,23 @@
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
 				<target>/page?type=entity&amp;page_action=list&amp;artifact=expense</target>
+			</menu>
+		</menuGroup>
+
+		<menuGroup>
+			<name>financials</name>
+			<displayName>Financials</displayName>
+			<description>Financials</description>
+			<type>group</type>
+			<cssClass>md-work</cssClass>
+			<menu>
+				<name>property</name>
+				<displayName>Chart Of Accounts</displayName>
+				<description>Chart Of Accounts</description>
+				<active>N</active>
+				<cssClass>md-mail</cssClass>
+				<targetType>entity</targetType>
+				<target>/page?type=entity&amp;page_action=list&amp;artifact=property</target>
 			</menu>
 		</menuGroup>
 
