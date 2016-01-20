@@ -57,15 +57,6 @@
 				<target>/page?type=entity&amp;page_action=list&amp;artifact=lease</target>
 			</menu>
 			<menu>
-				<name>agreementtype</name>
-				<displayName>Agreement Types</displayName>
-				<description>Agreement Types</description>
-				<active>N</active>
-				<cssClass>md-mail</cssClass>
-				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;page_action=list&amp;artifact=agreenenttype</target>
-			</menu>
-			<menu>
 				<name>charges</name>
 				<displayName>Charges</displayName>
 				<description>Charges</description>
@@ -85,8 +76,8 @@
 			<cssClass>md-account-circle</cssClass>
 			<menu>
 				<name>customers</name>
-				<displayName>Party</displayName>
-				<description>Party</description>
+				<displayName>Customers</displayName>
+				<description>Customers</description>
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
@@ -120,17 +111,26 @@
 			<cssClass>md-account-circle</cssClass>
 			<menu>
 				<name>property</name>
-				<displayName>Property</displayName>
-				<description>Property</description>
+				<displayName>Properties</displayName>
+				<description>Properties</description>
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
 				<target>/page?type=entity&amp;page_action=list&amp;artifact=property</target>
 			</menu>
 			<menu>
-				<name>inspection</name>
-				<displayName>Inspection</displayName>
-				<description>Inspection</description>
+				<name>buildings</name>
+				<displayName>Buildings</displayName>
+				<description>Buildings</description>
+				<active>N</active>
+				<cssClass>md-mail</cssClass>
+				<targetType>entity</targetType>
+				<target>/page?type=entity&amp;page_action=list&amp;artifact=building</target>
+			</menu>
+			<menu>
+				<name>inspections</name>
+				<displayName>Inspections</displayName>
+				<description>Inspections</description>
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
@@ -161,41 +161,6 @@
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
 				<target>/page?type=entity&amp;page_action=list&amp;artifact=property</target>
-			</menu>
-		</menuGroup>
-
-		<menuGroup>
-			<name>businessinformation</name>
-			<displayName>Business Information</displayName>
-			<description>Business Information</description>
-			<type>group</type>
-			<cssClass>md-home</cssClass>
-			<menu>
-				<name>locations</name>
-				<displayName>Locations</displayName>
-				<description>Locations</description>
-				<active>N</active>
-				<cssClass>md-mail</cssClass>
-				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;page_action=list&amp;artifact=location</target>
-			</menu>
-			<menu>
-				<name>departments</name>
-				<displayName>Departments</displayName>
-				<description>Departments</description>
-				<active>N</active>
-				<cssClass>md-mail</cssClass>
-				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;page_action=list&amp;artifact=department</target>
-			</menu>
-			<menu>
-				<name>branches</name>
-				<displayName>Branches</displayName>
-				<description>Branches</description>
-				<active>N</active>
-				<cssClass>md-mail</cssClass>
-				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;page_action=list&amp;artifact=branche</target>
 			</menu>
 		</menuGroup>
 
@@ -307,6 +272,41 @@
 				<targetType>page</targetType>
 				<targetTemplate>html/wordpress/page/collateralsummary-page-php.ftl</targetTemplate>
 				<target>/page?type=page&amp;artifact=collateralsummary</target>
+			</menu>
+		</menuGroup>
+
+		<menuGroup>
+			<name>businessinformation</name>
+			<displayName>Business Information</displayName>
+			<description>Business Information</description>
+			<type>group</type>
+			<cssClass>md-home</cssClass>
+			<menu>
+				<name>locations</name>
+				<displayName>Locations</displayName>
+				<description>Locations</description>
+				<active>N</active>
+				<cssClass>md-mail</cssClass>
+				<targetType>entity</targetType>
+				<target>/page?type=entity&amp;page_action=list&amp;artifact=location</target>
+			</menu>
+			<menu>
+				<name>departments</name>
+				<displayName>Departments</displayName>
+				<description>Departments</description>
+				<active>N</active>
+				<cssClass>md-mail</cssClass>
+				<targetType>entity</targetType>
+				<target>/page?type=entity&amp;page_action=list&amp;artifact=department</target>
+			</menu>
+			<menu>
+				<name>branches</name>
+				<displayName>Branches</displayName>
+				<description>Branches</description>
+				<active>N</active>
+				<cssClass>md-mail</cssClass>
+				<targetType>entity</targetType>
+				<target>/page?type=entity&amp;page_action=list&amp;artifact=branche</target>
 			</menu>
 		</menuGroup>
 
