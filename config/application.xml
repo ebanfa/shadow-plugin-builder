@@ -54,7 +54,7 @@
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;page_action=list&amp;artifact=lease</target>
+				<target>/page?type=entity&amp;page_action=list&amp;artifact=agreement</target>
 			</menu>
 		</menuGroup>
 
