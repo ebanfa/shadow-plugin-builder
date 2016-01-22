@@ -4558,9 +4558,9 @@
 		</entity>
 
 		<entity>
-			<name>LeaseTerms</name>
-			<postName>sb_leaseterms</postName>
-			<description>Lease Terms</description>
+			<name>AgreementTerms</name>
+			<postName>sb_agreeterms</postName>
+			<description>Agreement Terms</description>
 			<global>Y</global>
 			<field>
 				<name>entity_code</name>
@@ -5150,8 +5150,6 @@
 			</field>
 		</entity>
 
-
-
 		<entity>
 			<name>AccountStructureType</name>
 			<postName>sb_acctstructtype</postName>
@@ -5650,6 +5648,61 @@
 		</entity>
 
 		<entity>
+			<name>AccountStatus</name>
+			<postName>sb_acctstatus</postName>
+			<description>Account Status</description>
+			<global>Y</global>
+			<field>
+				<name>entity_code</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Code</description>
+				<displayName>Code</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>name</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Name</description>
+				<displayName>name</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>description</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text-lg</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Description</description>
+				<displayName>Description</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+		</entity>
+
+		<entity>
 			<name>Account</name>
 			<postName>sb_account</postName>
 			<description>Account</description>
@@ -5687,6 +5740,22 @@
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
+				<name>status</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_acctstatus</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Status</description>
+				<displayName>Status</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
 				<name>name</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
@@ -5698,8 +5767,8 @@
 				<dataType>text</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
-				<description>Status</description>
-				<displayName>Status</displayName>
+				<description>Name</description>
+				<displayName>Name</displayName>
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
@@ -5751,22 +5820,6 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
-				<name>status</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>sb_acctstatus</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Status</description>
-				<displayName>Status</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
 				<name>date_created</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
@@ -5782,8 +5835,15 @@
 				<displayName>Date Created</displayName>
 				<relationshipField>N</relationshipField>
 			</field>
+		</entity>
+
+		<entity>
+			<name>TransactionClass</name>
+			<postName>sb_txnclass</postName>
+			<description>Transaction Class</description>
+			<global>Y</global>
 			<field>
-				<name>date_posted</name>
+				<name>entity_code</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
@@ -5791,15 +5851,117 @@
 				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
-				<dataType>date</dataType>
+				<dataType>text</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
-				<description>Date Posted</description>
-				<displayName>Date Posted</displayName>
+				<description>Code</description>
+				<displayName>Code</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>name</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Name</description>
+				<displayName>name</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>description</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text-lg</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Description</description>
+				<displayName>Description</displayName>
 				<relationshipField>N</relationshipField>
 			</field>
 		</entity>
 
+		<entity>
+			<name>TransactionClassUpdateRule</name>
+			<postName>sb_txnclasserule</postName>
+			<description>Transaction Class Update Rule</description>
+			<global>Y</global>
+			<field>
+				<name>entity_code</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Code</description>
+				<displayName>Code</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>class</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_txnclass</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Class</description>
+				<displayName>Class</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>name</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Name</description>
+				<displayName>name</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>description</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text-lg</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Description</description>
+				<displayName>Description</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+		</entity>
 
 		<entity>
 			<name>TransactionType</name>
@@ -5821,6 +5983,93 @@
 				<description>Code</description>
 				<displayName>Code</displayName>
 				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>txn_class</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_txnclass</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Class</description>
+				<displayName>Class</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>name</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Name</description>
+				<displayName>name</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>description</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text-lg</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Description</description>
+				<displayName>Description</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+		</entity>
+
+		<entity>
+			<name>TransactionTypeUpdateRule</name>
+			<postName>sb_txntyperule</postName>
+			<description>Transaction Type Update Rule</description>
+			<global>Y</global>
+			<field>
+				<name>entity_code</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Code</description>
+				<displayName>Code</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>type</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_txntype</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Type</description>
+				<displayName>Type</displayName>
+				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
 				<name>name</name>
@@ -6058,6 +6307,180 @@
 				<dataColumn>true</dataColumn>
 				<description>Date Posted</description>
 				<displayName>Date Posted</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+		</entity>
+
+		<entity>
+			<name>TransactionAccount</name>
+			<postName>sb_txnaccount</postName>
+			<description>Transaction Account</description>
+			<global>Y</global>
+			<field>
+				<name>entity_code</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Code</description>
+				<displayName>Code</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>transaction</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_transaction</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Transaction</description>
+				<displayName>Transaction</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>account</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_account</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Account</description>
+				<displayName>Account</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>name</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Name</description>
+				<displayName>name</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>description</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text-lg</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Description</description>
+				<displayName>Description</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+		</entity>
+
+		<entity>
+			<name>TransactionParty</name>
+			<postName>sb_txnparty</postName>
+			<description>Transaction Party</description>
+			<global>Y</global>
+			<field>
+				<name>entity_code</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Code</description>
+				<displayName>Code</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>transaction</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_transaction</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Transaction</description>
+				<displayName>Transaction</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>party</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_party</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Party</description>
+				<displayName>Party</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>name</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Name</description>
+				<displayName>name</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>description</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text-lg</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Description</description>
+				<displayName>Description</displayName>
 				<relationshipField>N</relationshipField>
 			</field>
 		</entity>
