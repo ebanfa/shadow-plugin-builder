@@ -28,6 +28,7 @@ done
 
 build_plugin_directory () {
     echo "Building plugin directory structure"
+    mkdir $TARGET
     mkdir $TARGET/$PLUGIN_NAME
     mkdir $TARGET/$PLUGIN_NAME/js
     mkdir $TARGET/$PLUGIN_NAME/js/vendors
