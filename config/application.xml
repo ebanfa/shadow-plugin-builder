@@ -621,12 +621,6 @@
 			<postName>sb_loctype</postName>
 			<description>Location Type</description>
 			<global>Y</global>
-			<!-- <createPageTemplate>html/wordpress/entity/locationtype/locationtype-create-form.ftl</createPageTemplate>
-			<editPageTemplate>html/wordpress/entity/locationtype/locationtype-edit-form.ftl</editPageTemplate>
-			<listPageTemplate>html/wordpress/entity/locationtype/locationtype-archive.ftl</listPageTemplate>
-			<viewPageTemplate>html/wordpress/entity/locationtype/single-locationtype.ftl</viewPageTemplate>
-			<jsPageTemplate>html/wordpress/js/entity/locationtype-form.ftl</jsPageTemplate>
-			<apiTemplate>html/wordpress/services/entity/locationtype-service-api.ftl</apiTemplate> -->
 			<field>
 				<name>entity_code</name>
 				<isVisible>Y</isVisible>
