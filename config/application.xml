@@ -3688,7 +3688,23 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
-				<name>units</name>
+				<name>floor_number</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>num</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Status</description>
+				<displayName>Status</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>unit_count</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
@@ -3699,8 +3715,8 @@
 				<dataType>numeric</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
-				<description>Units</description>
-				<displayName>Units</displayName>
+				<description>Unit Count</description>
+				<displayName>Unit Count</displayName>
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
@@ -4700,22 +4716,6 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
-				<name>amount</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>numeric</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Amount</description>
-				<displayName>Amount</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
 				<name>description</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
@@ -4734,9 +4734,9 @@
 		</entity>
 
 		<entity>
-			<name>AgreementTerms</name>
-			<postName>sb_agreeterms</postName>
-			<description>Agreement Terms</description>
+			<name>AgreementTerm</name>
+			<postName>sb_agreeterm</postName>
+			<description>Agreement Term</description>
 			<global>Y</global>
 			<field>
 				<name>entity_code</name>
@@ -5135,6 +5135,22 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
+				<name>inspection_result</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text-lg</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Inspection Result</description>
+				<displayName>Inspection Result</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
 				<name>building</name>
 				<isVisible>N</isVisible>
 				<isFormField>N</isFormField>
@@ -5230,8 +5246,8 @@
 			<global>N</global>
 			<field>
 				<name>entity_code</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
 				<createField>N</createField>
 				<editField>N</editField>
@@ -5333,13 +5349,13 @@
 			<global>Y</global>
 			<field>
 				<name>entity_code</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
 				<dataType>text</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
@@ -5388,13 +5404,13 @@
 			<global>Y</global>
 			<field>
 				<name>entity_code</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
 				<dataType>text</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
@@ -5459,13 +5475,13 @@
 			<global>Y</global>
 			<field>
 				<name>entity_code</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
 				<dataType>text</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
@@ -5530,13 +5546,13 @@
 			<global>Y</global>
 			<field>
 				<name>entity_code</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
 				<dataType>text</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
@@ -5617,13 +5633,13 @@
 			<global>Y</global>
 			<field>
 				<name>entity_code</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
 				<dataType>text</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
@@ -5704,13 +5720,13 @@
 			<global>Y</global>
 			<field>
 				<name>entity_code</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
 				<dataType>text</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
@@ -5759,13 +5775,13 @@
 			<global>Y</global>
 			<field>
 				<name>entity_code</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
 				<dataType>text</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
@@ -5830,13 +5846,13 @@
 			<global>Y</global>
 			<field>
 				<name>entity_code</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
 				<dataType>text</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
@@ -5885,8 +5901,8 @@
 			<global>N</global>
 			<field>
 				<name>entity_code</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
 				<createField>N</createField>
 				<editField>N</editField>
@@ -5972,7 +5988,7 @@
 				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
-				<dataType>numeric</dataType>
+				<dataType>text</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
 				<description>Account Number</description>
@@ -6020,13 +6036,13 @@
 			<global>Y</global>
 			<field>
 				<name>entity_code</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
 				<dataType>text</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
@@ -6075,13 +6091,13 @@
 			<global>Y</global>
 			<field>
 				<name>entity_code</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
 				<dataType>text</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
@@ -6146,13 +6162,13 @@
 			<global>Y</global>
 			<field>
 				<name>entity_code</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
 				<dataType>text</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
@@ -6217,13 +6233,13 @@
 			<global>Y</global>
 			<field>
 				<name>entity_code</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
 				<dataType>text</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
@@ -6288,13 +6304,13 @@
 			<global>Y</global>
 			<field>
 				<name>entity_code</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
 				<dataType>text</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
@@ -6343,8 +6359,8 @@
 			<global>N</global>
 			<field>
 				<name>entity_code</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
 				<createField>N</createField>
 				<editField>N</editField>
@@ -6494,13 +6510,13 @@
 			<global>Y</global>
 			<field>
 				<name>entity_code</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
 				<dataType>text</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
@@ -6581,13 +6597,13 @@
 			<global>Y</global>
 			<field>
 				<name>entity_code</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
 				<dataType>text</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
@@ -6668,13 +6684,13 @@
 			<global>Y</global>
 			<field>
 				<name>entity_code</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
 				<dataType>text</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
@@ -6771,13 +6787,13 @@
 			<global>Y</global>
 			<field>
 				<name>entity_code</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
 				<dataType>text</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
@@ -6826,13 +6842,13 @@
 			<global>Y</global>
 			<field>
 				<name>entity_code</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
 				<dataType>text</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
@@ -6929,13 +6945,13 @@
 			<global>Y</global>
 			<field>
 				<name>entity_code</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
 				<dataType>text</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
@@ -7032,13 +7048,13 @@
 			<global>Y</global>
 			<field>
 				<name>entity_code</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
 				<dataType>text</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
@@ -7087,13 +7103,13 @@
 			<global>Y</global>
 			<field>
 				<name>entity_code</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
 				<dataType>text</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
@@ -7190,13 +7206,13 @@
 			<global>Y</global>
 			<field>
 				<name>entity_code</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
 				<dataType>text</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
@@ -7293,13 +7309,13 @@
 			<global>Y</global>
 			<field>
 				<name>entity_code</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
 				<dataType>text</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
@@ -7348,13 +7364,13 @@
 			<global>Y</global>
 			<field>
 				<name>entity_code</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
 				<dataType>text</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
@@ -7419,13 +7435,13 @@
 			<global>Y</global>
 			<field>
 				<name>entity_code</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
 				<dataType>text</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
@@ -7474,13 +7490,13 @@
 			<global>Y</global>
 			<field>
 				<name>entity_code</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
 				<dataType>text</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
@@ -7545,13 +7561,13 @@
 			<global>Y</global>
 			<field>
 				<name>entity_code</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
 				<dataType>text</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
@@ -7600,7 +7616,7 @@
 			<global>Y</global>
 			<field>
 				<name>entity_code</name>
-				<isVisible>Y</isVisible>
+				<isVisible>N</isVisible>
 				<isFormField>N</isFormField>
 				<required>Y</required>
 				<createField>N</createField>
@@ -7767,13 +7783,13 @@
 			<global>Y</global>
 			<field>
 				<name>entity_code</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
 				<dataType>text</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
@@ -7822,13 +7838,13 @@
 			<global>Y</global>
 			<field>
 				<name>entity_code</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
 				<dataType>text</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
@@ -7875,8 +7891,8 @@
 			<postName>sb_dispute</postName>
 			<description>Dispute</description>
 			<global>Y</global>
-                        <createPageTemplate>html/wordpress/entity/dispute/dispute-create-form.ftl</createPageTemplate>
-                        <viewPageTemplate>html/wordpress/entity/dispute/single-dispute.ftl</viewPageTemplate>
+            <createPageTemplate>html/wordpress/entity/dispute/dispute-create-form.ftl</createPageTemplate>
+            <viewPageTemplate>html/wordpress/entity/dispute/single-dispute.ftl</viewPageTemplate>
 			<apiTemplate>services/wordpress/dispute/dispute-service-api.ftl</apiTemplate>
 			<field>
 				<name>entity_code</name>
@@ -7997,8 +8013,8 @@
 			<postName>sb_disputeitem</postName>
 			<description>Dispute Item</description>
 			<global>Y</global>
-                        <createPageTemplate>html/wordpress/entity/disputeitem/disputeitem-create-form.ftl</createPageTemplate>
-                        <viewPageTemplate>html/wordpress/entity/disputeitem/single-disputeitem.ftl</viewPageTemplate>
+            <createPageTemplate>html/wordpress/entity/disputeitem/disputeitem-create-form.ftl</createPageTemplate>
+            <viewPageTemplate>html/wordpress/entity/disputeitem/single-disputeitem.ftl</viewPageTemplate>
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
@@ -8086,7 +8102,7 @@
 			<postName>sb_conversation</postName>
 			<description>Conversation</description>
 			<global>Y</global>
-                   	<listPageTemplate>html/wordpress/entity/conversation/conversation-archive.ftl</listPageTemplate>
+            <listPageTemplate>html/wordpress/entity/conversation/conversation-archive.ftl</listPageTemplate>
 			<apiTemplate>services/wordpress/conversation/conversation-service-api.ftl</apiTemplate>
 			<field>
 				<name>entity_code</name>
@@ -8177,13 +8193,13 @@
 			<apiTemplate>services/wordpress/message/message-service-api.ftl</apiTemplate>
 			<field>
 				<name>entity_code</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
 				<dataType>text</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
@@ -8596,7 +8612,7 @@
 			<postName>sb_notification</postName>
 			<description>Notification</description>
 			<global>N</global>
-                        <viewPageTemplate>html/wordpress/entity/notification/single-notification.ftl</viewPageTemplate>
+            <viewPageTemplate>html/wordpress/entity/notification/single-notification.ftl</viewPageTemplate>
 			<apiTemplate>services/wordpress/notification/notification-service-api.ftl</apiTemplate>
 			<field>
 				<name>entity_code</name>
@@ -8719,13 +8735,13 @@
 			<global>Y</global>
 			<field>
 				<name>entity_code</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
 				<dataType>text</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
@@ -8774,13 +8790,13 @@
 			<global>Y</global>
 			<field>
 				<name>entity_code</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
 				<dataType>text</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
@@ -8821,12 +8837,5 @@
 				<relationshipField>N</relationshipField>
 			</field>
 		</entity>
-
-		
-
-
-
-
 	</module>
-	
 </application>
