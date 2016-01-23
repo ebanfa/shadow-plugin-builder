@@ -2745,6 +2745,70 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
+				<name>construction_date</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>date</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Construction Date</description>
+				<displayName>Construction Date</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>property_code</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Property Code</description>
+				<displayName>Property Code</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>title_number</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Title Number</description>
+				<displayName>Title Number</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>land_size</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>numeric</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Land Size</description>
+				<displayName>Land Size</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
 				<name>description</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
@@ -2845,6 +2909,22 @@
 				<dataColumn>true</dataColumn>
 				<description>Description</description>
 				<displayName>Description</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>date_incurred</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>date</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Date Incurred</description>
+				<displayName>Date Incurred</displayName>
 				<relationshipField>N</relationshipField>
 			</field>
 		</entity>
@@ -3125,6 +3205,22 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
+				<name>number_of_floors</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>numeric</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>No Of Floors</description>
+				<displayName>No Of Floors</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
 				<name>description</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
@@ -3225,6 +3321,22 @@
 				<dataColumn>true</dataColumn>
 				<description>Description</description>
 				<displayName>Description</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>date_incurred</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>date</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Date Incurred</description>
+				<displayName>Date Incurred</displayName>
 				<relationshipField>N</relationshipField>
 			</field>
 		</entity>
