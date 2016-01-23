@@ -474,10 +474,10 @@
 			<cssClass>md-person</cssClass>
 			<menu>
 				<name>profile</name>
-				<displayName>Inbox</displayName>
-				<description>Inbox</description>
+				<displayName>Profile</displayName>
+				<description>Profile</description>
 				<active>N</active>
-				<cssClass>md-mail</cssClass>
+				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
 				<target>/page?type=entity&amp;page_action=list&amp;artifact=userprofile</target>
 			</menu>
@@ -1330,6 +1330,22 @@
 				<displayName>Date Of Birth</displayName>
 				<relationshipField>N</relationshipField>
 			</field>
+			<field>
+				<name>id_number</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>ID Number</description>
+				<displayName>ID Number</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
 		</entity>
 
 		<entity>
@@ -1457,22 +1473,6 @@
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
-				<name>location</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>sb_location</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Location</description>
-				<displayName>Location</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
 				<name>name</name>
 				<isVisible>N</isVisible>
 				<isFormField>N</isFormField>
@@ -1519,6 +1519,22 @@
 				<description>Line 2</description>
 				<displayName>Line 2</displayName>
 				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>location</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_location</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Location</description>
+				<displayName>Location</displayName>
+				<relationshipField>Y</relationshipField>
 			</field>
 		</entity>
 
@@ -1695,22 +1711,6 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
-				<name>location</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>sb_location</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Location</description>
-				<displayName>Location</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
 				<name>owner</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
@@ -1773,6 +1773,22 @@
 				<description>Address Line 2</description>
 				<displayName>Address Line 2</displayName>
 				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>location</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_location</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Location</description>
+				<displayName>Location</displayName>
+				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
 				<name>description</name>
@@ -2074,6 +2090,22 @@
 				<displayName>Description</displayName>
 				<relationshipField>N</relationshipField>
 			</field>
+			<field>
+				<name>date_created</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>Y</listField>
+				<dataType>date</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Date Created</description>
+				<displayName>Date Created</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
 		</entity>
 
 		<entity>
@@ -2356,6 +2388,22 @@
 				<dataColumn>true</dataColumn>
 				<description>Description</description>
 				<displayName>Description</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>date_created</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>date</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Date Created</description>
+				<displayName>Date Created</displayName>
 				<relationshipField>N</relationshipField>
 			</field>
 		</entity>
