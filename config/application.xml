@@ -21,41 +21,6 @@
 		</menuGroup>
 
 		<menuGroup>
-			<name>leasemanagement</name>
-			<displayName>Lease Management</displayName>
-			<description>Lease Management</description>
-			<type>group</type>
-			<cssClass>md-description</cssClass>
-			<menu>
-				<name>leaseagreements</name>
-				<displayName>Lease Agreements</displayName>
-				<description>Lease Agreements</description>
-				<active>N</active>
-				<cssClass>md-mail</cssClass>
-				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;page_action=list&amp;artifact=agreement</target>
-			</menu>
-			<menu>
-				<name>charges</name>
-				<displayName>Charges</displayName>
-				<description>Charges</description>
-				<active>N</active>
-				<cssClass>md-mail</cssClass>
-				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;page_action=list&amp;artifact=charge</target>
-			</menu>
-			<menu>
-				<name>terms</name>
-				<displayName>Terms</displayName>
-				<description>Terms</description>
-				<active>N</active>
-				<cssClass>md-mail</cssClass>
-				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;page_action=list&amp;artifact=term</target>
-			</menu>
-		</menuGroup>
-
-		<menuGroup>
 			<name>partymanagement</name>
 			<displayName>Party Management</displayName>
 			<description>Party Management</description>
@@ -149,6 +114,41 @@
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
 				<target>/page?type=entity&amp;page_action=list&amp;artifact=maintenance</target>
+			</menu>
+		</menuGroup>
+
+		<menuGroup>
+			<name>leasemanagement</name>
+			<displayName>Lease Management</displayName>
+			<description>Lease Management</description>
+			<type>group</type>
+			<cssClass>md-description</cssClass>
+			<menu>
+				<name>leaseagreements</name>
+				<displayName>Lease Agreements</displayName>
+				<description>Lease Agreements</description>
+				<active>N</active>
+				<cssClass>md-mail</cssClass>
+				<targetType>entity</targetType>
+				<target>/page?type=entity&amp;page_action=list&amp;artifact=agreement</target>
+			</menu>
+			<menu>
+				<name>charges</name>
+				<displayName>Charges</displayName>
+				<description>Charges</description>
+				<active>N</active>
+				<cssClass>md-mail</cssClass>
+				<targetType>entity</targetType>
+				<target>/page?type=entity&amp;page_action=list&amp;artifact=charge</target>
+			</menu>
+			<menu>
+				<name>terms</name>
+				<displayName>Terms</displayName>
+				<description>Terms</description>
+				<active>N</active>
+				<cssClass>md-mail</cssClass>
+				<targetType>entity</targetType>
+				<target>/page?type=entity&amp;page_action=list&amp;artifact=term</target>
 			</menu>
 		</menuGroup>
 
@@ -5435,7 +5435,7 @@
 		</entity>
 
 		<entity>
-			<name>Account Segment</name>
+			<name>AccountSegment</name>
 			<postName>sb_acctsegment</postName>
 			<description>Account Segment</description>
 			<global>Y</global>
