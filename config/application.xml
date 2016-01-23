@@ -27,27 +27,27 @@
 			<type>group</type>
 			<cssClass>md-account-circle</cssClass>
 			<menu>
-				<name>customers</name>
-				<displayName>Customers</displayName>
-				<description>Customers</description>
+				<name>clients</name>
+				<displayName>Clients</displayName>
+				<description>Clients</description>
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
 				<target>/page?type=entity&amp;page_action=list&amp;artifact=party</target>
 			</menu>
 			<menu>
-				<name>propects</name>
-				<displayName>Prospective Customers</displayName>
-				<description>Prospective Customers</description>
+				<name>tenants</name>
+				<displayName>Tenants</displayName>
+				<description>Tenants</description>
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
 				<target>/page?type=entity&amp;page_action=list&amp;artifact=party</target>
 			</menu>
 			<menu>
-				<name>landlords</name>
-				<displayName>Landloards</displayName>
-				<description>Landlords</description>
+				<name>prospectivetenants</name>
+				<displayName>Prospective Tenants</displayName>
+				<description>Prospective Tenants</description>
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
