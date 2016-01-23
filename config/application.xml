@@ -89,15 +89,6 @@
 				<target>/page?type=entity&amp;page_action=list&amp;artifact=building</target>
 			</menu>
 			<menu>
-				<name>allocationunits</name>
-				<displayName>Unit Types</displayName>
-				<description>Unit Types</description>
-				<active>N</active>
-				<cssClass>md-mail</cssClass>
-				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;page_action=list&amp;artifact=allocatiounit</target>
-			</menu>
-			<menu>
 				<name>inspections</name>
 				<displayName>Inspections</displayName>
 				<description>Inspections</description>
@@ -158,6 +149,24 @@
 			<description>Accounting</description>
 			<type>group</type>
 			<cssClass>md-account-balance</cssClass>
+			<menu>
+				<name>chartofaccounts</name>
+				<displayName>Chart Of Accounts</displayName>
+				<description>Chart Of Accounts</description>
+				<active>N</active>
+				<cssClass>md-mail</cssClass>
+				<targetType>entity</targetType>
+				<target>/page?type=entity&amp;page_action=list&amp;artifact=transaction</target>
+			</menu>
+			<menu>
+				<name>generalledger</name>
+				<displayName>General Ledger</displayName>
+				<description>General Ledger</description>
+				<active>N</active>
+				<cssClass>md-mail</cssClass>
+				<targetType>entity</targetType>
+				<target>/page?type=entity&amp;page_action=list&amp;artifact=transaction</target>
+			</menu>
 			<menu>
 				<name>transactions</name>
 				<displayName>Transactions</displayName>
@@ -458,11 +467,20 @@
 		</menuGroup>
 
 		<menuGroup>
-			<name>profile</name>
-			<displayName>Profile</displayName>
-			<description>Profile</description>
+			<name>settings</name>
+			<displayName>Settings</displayName>
+			<description>Settings</description>
 			<type>group</type>
 			<cssClass>md-person</cssClass>
+			<menu>
+				<name>profile</name>
+				<displayName>Inbox</displayName>
+				<description>Inbox</description>
+				<active>N</active>
+				<cssClass>md-mail</cssClass>
+				<targetType>entity</targetType>
+				<target>/page?type=entity&amp;page_action=list&amp;artifact=userprofile</target>
+			</menu>
 			<menu>
 				<name>inbox</name>
 				<displayName>Inbox</displayName>
@@ -481,18 +499,16 @@
 				<targetType>entity</targetType>
 				<target>/page?type=entity&amp;page_action=list&amp;artifact=notification</target>
 			</menu>
-		</menuGroup>
-
-		<menuGroup>
-			<name>signout</name>
-			<displayName>Sign Out</displayName>
-			<description>Sign Out</description>
-			<active>N</active>
-			<type>menu</type>
-			<cssClass>md-input</cssClass>
-			<targetType>page</targetType>
-			<targetTemplate>html/wordpress/page/signout-page-php.ftl</targetTemplate>
-			<target>&lt;?php echo wp_logout_url(home_url()); ?&gt;</target>
+			<menu>
+				<name>signout</name>
+				<displayName>Sign Out</displayName>
+				<description>Sign Out</description>
+				<active>N</active>
+				<cssClass>md-input</cssClass>
+				<targetType>page</targetType>
+				<targetTemplate>html/wordpress/page/signout-page-php.ftl</targetTemplate>
+				<target>&lt;?php echo wp_logout_url(home_url()); ?&gt;</target>
+			</menu>
 		</menuGroup>
 	</menuBar>
 
