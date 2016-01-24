@@ -208,7 +208,7 @@ class ${application.name} {
         wp_register_script('entity_datasource_js', plugins_url('/js/entity-datatables.js', __FILE__), array('jquery'), true);
         wp_register_script('datetimepicker_js', plugins_url('/js/vendors/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js', __FILE__), array('jquery'), true);
 
-        wp_register_script('input_mask_js', plugins_url('/js/vendors/input-mask/input-mask.min.js', __FILE__), array('jquery'), true);
+        wp_register_script('input_mask_js', plugins_url('/js/jquery.mask.min.js', __FILE__), array('jquery'), true);
         wp_register_script('conversations_js', plugins_url('/js/conversation-messages.js', __FILE__), array('jquery'), true);
 
         wp_enqueue_script('jquery_form_js');
