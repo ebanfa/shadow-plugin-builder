@@ -143,8 +143,8 @@
                         </#if>
                             <div class="form-group">
                                 <div class="fg-line">
-                                    <input type="text" class="form-control input-mask" 
-                                        data-mask="000.000.000.000.000,00" 
+                                    <input type="text" class="form-control" 
+                                        data-mask="0000" data-mask-reverse="true" 
                                         id="${field.name}" name="${field.name}" 
                                         placeholder="${field.displayName?lower_case}" 
                                         data-bv-message="The ${field.displayName?lower_case} is not valid" 
