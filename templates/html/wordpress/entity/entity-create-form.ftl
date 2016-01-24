@@ -27,6 +27,14 @@
     do_action('shadowbanker_entity_form_start');
 ?>
 
+<script type="text/javascript">
+    
+    $(document).ready(function(){
+        $('.money').mask('000.000.000.000.000,00', {reverse: true});
+    });
+
+</script>
+
 <#list entity.fields as field>
     
     <#if field.isFormField == "Y" && field.createField == "Y">
@@ -143,8 +151,7 @@
                         </#if>
                             <div class="form-group">
                                 <div class="fg-line">
-                                    <input type="text" class="form-control" 
-                                        data-mask="0000" data-mask-reverse="true" 
+                                    <input type="text" class="form-control money" 
                                         id="${field.name}" name="${field.name}" 
                                         placeholder="${field.displayName?lower_case}" 
                                         data-bv-message="The ${field.displayName?lower_case} is not valid" 
