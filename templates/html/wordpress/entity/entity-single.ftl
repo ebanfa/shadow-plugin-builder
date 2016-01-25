@@ -60,7 +60,7 @@
                                     </table>
                                 </div>
                                 <div class="btn-demo m-t-10">
-                                    <a href="<?php echo get_site_url() . '/page?type=entity&artifact=' . $entity_name . '&id=' . $entity_data['id']; ?>&page_action=edit" 
+                                    <a href="<?php echo get_site_url() . '/page?type=entity&artifact=${entity.name?lower_case}&id=' . $entity_data['id']; ?>&page_action=edit" 
                                        class="btn btn-primary waves-effect">
                                        <?php _e('Edit', 'framework') ?>
                                     </a>
@@ -69,7 +69,7 @@
                                         <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
                                         <input type="hidden" name="submitted" id="submitted" value="true" />
                                     </form>
-                                    <a id="delete-entity-btn" href="<?php echo get_site_url() . '/page?type=entity&artifact=' . $entity_name . '&id=' . $entity_data['id']; ?>&page_action=delete" class="btn btn-warning waves-effect">
+                                    <a id="delete-entity-btn" href="<?php echo get_site_url() . '/page?type=entity&artifact=${entity.name?lower_case}&id=' . $entity_data['id']; ?>&page_action=delete" class="btn btn-warning waves-effect">
                                        <?php _e('Delete', 'framework') ?>
                                     </a>
                                 </div>
@@ -83,6 +83,7 @@
                                 <form id="${child.postName}-list-form">
                                     <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
                                     <input type="hidden" name="submitted" id="submitted" value="true" /> 
+                                    <input type="hidden" name="${entity.name?lower_case}" value="<?php echo $entity_data['id']; ?>"/>
                                 </form>
                                 <div class="table-responsive">
                                     <table id="${child.postName}-table" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
