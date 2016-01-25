@@ -12,6 +12,10 @@
     
     do_action('shadowbanker_before_list_entity');
 ?>
+
+<#list entity.relatedChildEntities as child>
+        <h5 class="no-margin-bottom">${child.name}</h5>
+</#list>
         <form id="${entity.postName}-list-form">
             <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
             <input type="hidden" name="submitted" id="submitted" value="true" /> 

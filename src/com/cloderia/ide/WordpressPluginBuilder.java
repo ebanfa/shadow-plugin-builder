@@ -189,11 +189,11 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 			for(Field field : fieldsInEntity){
 				// Only process relationship fields
 				if(field.getRelationshipField().equals("Y")){
-					System.out.println("Found a relationship field: " + field.getName() + " of type: " + field.getDataType());
+					//System.out.println("Found a relationship field: " + field.getName() + " of type: " + field.getDataType());
 					String targetEntityPostName = field.getDataType();
 					for(Entity item: cloneOfEntitiesInModule){
 						if(item.getPostName().equals(targetEntityPostName)) {
-							System.out.println("Adding child: " + entity.getName() + " to parent: " + item.getName());
+							//System.out.println("Adding child: " + entity.getName() + " to parent: " + item.getName());
 							item.getRelatedChildEntities().add(entity);
 						}
 
