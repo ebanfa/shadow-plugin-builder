@@ -163,7 +163,8 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 	 */
 	public void buildModules(Application application) {
 		for (Module module : application.getModules()) {
-			System.out.println(module);
+			//System.out.println(module);
+			processRelatedChildEntities(module);
 			doComponents(module);
 			doEnities(module);
 			doServices(module);
@@ -173,6 +174,16 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 			doJSFiles(module);
 		}
 		
+	}
+
+	private void processRelatedChildEntities(Module module) {
+		List<Entity> entitiesInModule = module.getEntities();
+		List<Entity> cloneOfEntitiesInModule = new ArrayList(entitiesInModule);
+		for(Entity entity : module.getEntities()){
+			/*if(entity.getJsPageTemplate() != null){
+				this.generateArtifact(module, entity, entity.getJsPageTemplate() , this.pluginDir + "js/" + entity.getName().toLowerCase() + "-form.js");
+			} */
+		}
 	}
 
 	private void doMenuHTML(Application application) {
