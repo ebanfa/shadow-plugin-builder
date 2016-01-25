@@ -16,19 +16,34 @@
     
     do_action('shadowbanker_before_single_entity');
 ?>
-                        <div class="row mg-btm-30">
-                            <div class="col-sm-12">
-                                <div class="body-section">
-                                    <div id="success"></div>
-                                    <div class="table-responsive">
-                                        <table class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
-                                            <tbody>
+
+                        <ul class="tab-nav tn-justified tn-icon" role="tablist">
+                            <li role="presentation" class="active">
+                                <a class="col-sx-4" href="widgets.html#tab-1" aria-controls="tab-1" role="tab" data-toggle="tab">
+                                    ${entity.description}
+                                </a>
+                            </li>
+                            <#list entity.relatedChildEntities as child>
+                            <li role="presentation">
+                                <a class="col-xs-4" href="widgets.html#tab-2" aria-controls="tab-2" role="tab" data-toggle="tab">
+                                    ${child.description}
+                                </a>
+                            </li>
+                            </#list>
+                        </ul>
+
+                        <div class="tab-content p-20">
+                            <div role="tabpanel" class="tab-pane animated fadeIn in active" id="tab-1">
+                                <div id="success"></div>
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
+                                        <tbody>
     <#list entity.fields as field>
         <#if field.listField == "Y">
-                                                <th><h5 class="no-margin-bottom">${field.description}</h5></th>
+                                            <th><h5 class="no-margin-bottom">${field.description}</h5></th>
         </#if>
     </#list>
-                                                <tr>
+                                            <tr>
     <#list entity.fields as field>
         <#if field.listField == "Y">
             <#if field.relationshipField == "N">
@@ -40,10 +55,9 @@
             </#if>
         </#if>
     </#list>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
