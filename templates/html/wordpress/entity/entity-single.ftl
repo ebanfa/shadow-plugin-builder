@@ -25,7 +25,7 @@
                             </li>
                             <#list entity.relatedChildEntities as child>
                             <li role="presentation">
-                                <a class="col-xs-4" href="#tab-${child?counter}" aria-controls="tab-${child?counter}" role="tab" data-toggle="tab">
+                                <a class="col-xs-4" href="#tab-${child_index}" aria-controls="tab-${child_index}" role="tab" data-toggle="tab">
                                     ${child.description}
                                 </a>
                             </li>
@@ -62,7 +62,7 @@
                             </div>
 
                             <#list entity.relatedChildEntities as child>
-                            <div role="tabpanel" class="tab-pane animated fadeIn in active" id="tab-${child?counter}">
+                            <div role="tabpanel" class="tab-pane animated fadeIn in active" id="tab-${child_index}">
                                 <div id="success"></div>
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
