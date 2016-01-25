@@ -104,7 +104,7 @@
                                     </table>
                                 </div>
                                 <div class="btn-demo m-t-10">
-                                    <a id="create-collateral-btn" href="<?php echo get_site_url();?>/page?type=entity&artifact=collateral&page_action=create&application_id=<?php echo $entity_data['id']; ?>" class="btn btn-success waves-effect">
+                                    <a id="create-${child.name?lower_case}-btn" href="<?php echo get_site_url();?>/page?type=entity&artifact=${child.name?lower_case}&page_action=create&${entity.name}_id=<?php echo $entity_data['id']; ?>" class="btn btn-success waves-effect">
                                        <?php _e('Add ${child.description}', 'framework') ?>
                                     </a>
                                 </div>
