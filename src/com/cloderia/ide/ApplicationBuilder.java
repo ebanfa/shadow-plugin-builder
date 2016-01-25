@@ -62,16 +62,18 @@ public abstract class ApplicationBuilder implements Builder {
 		// if the directory does not exist, create it
 		if (!theDir.exists()) {
 			try {
-				if (theDir.mkdirs())
-					System.out.println("Created directory:" + directoryName);
-				else
-					System.out.println("Could not create directory:" + directoryName);
+				if (theDir.mkdirs()){
+					//System.out.println("Created directory:" + directoryName);
+				}
+				else{
+					//System.out.println("Could not create directory:" + directoryName);
+				}
 					
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		} else {
-			System.out.println(String.format("The directory %s already exits", directoryName));
+			//System.out.println(String.format("The directory %s already exits", directoryName));
 		}
 		return theDir;
 	}
