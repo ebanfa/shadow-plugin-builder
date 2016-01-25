@@ -19,6 +19,7 @@ import javax.xml.bind.Unmarshaller;
 
 import com.cloderia.ide.app.Application;
 import com.cloderia.ide.app.Entity;
+import com.cloderia.ide.app.Field;
 import com.cloderia.ide.app.Page;
 import com.cloderia.ide.app.Module;
 import com.cloderia.ide.app.MenuBar;
@@ -181,7 +182,15 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 	private void processRelatedChildEntities(Module module) {
 		List<Entity> entitiesInModule = module.getEntities();
 		List<Entity> cloneOfEntitiesInModule = new ArrayList(entitiesInModule);
+		// Loop through all the entities in the module
 		for(Entity entity : module.getEntities()){
+			List<Field> fieldsInEntity = entity.getFields();
+			// Process the fields in the entity
+			for(Field field : fieldsInEntity){
+				// Only process relationship fields
+				if(field.getRelationshipField().equals("Y")){System.out.println("Found a relationship field: " + field.getName());}
+
+			}
 			/*if(entity.getJsPageTemplate() != null){
 				this.generateArtifact(module, entity, entity.getJsPageTemplate() , this.pluginDir + "js/" + entity.getName().toLowerCase() + "-form.js");
 			} */
@@ -192,7 +201,7 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 		MenuBar menuBar = application.getMenuBar();
 
 		for(MenuGroup group: menuBar.getMenuGroups()) {
-			System.out.println("Processing group:" + group.getName() );
+			//System.out.println("Processing group:" + group.getName() );
 			if(group.getType().equals("menu")){
 				if(group.getTargetType().equals("page")){
 					String groupName = group.getName();
@@ -267,7 +276,7 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 		String includeUtilOutputDir = this.pluginDir + "includes/utils/";
 
 		for(Entity entity: module.getEntities()) {
-			System.out.println("Processing entity service: " + entity.getName());
+			//System.out.println("Processing entity service: " + entity.getName());
 			String entityName = entity.getName();
 			if(entity.getApiTemplate() != null){
 				this.generateArtifact(module, entity, entity.getApiTemplate() , includeApiOutputDir + entityName + "API.php");
@@ -381,7 +390,7 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 	private void generateArtifact(Module module, Entity entity, String tmplFile,
 			String outFile) {
 		try {
-                        System.out.println("Generating artifact for entity" + " using template file:" + tmplFile);
+                        //System.out.println("Generating artifact for entity" + " using template file:" + tmplFile);
 			Template template = configuration.getTemplate(tmplFile);
 			FileOutputStream fos = new FileOutputStream(outFile);
 			Writer out = new OutputStreamWriter(fos);
