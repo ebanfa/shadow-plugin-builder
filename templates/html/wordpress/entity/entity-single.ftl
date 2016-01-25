@@ -62,7 +62,7 @@
                             </div>
 
                             <#list entity.relatedChildEntities as child>
-                            <div role="tabpanel" class="tab-pane animated fadeIn in active" id="tab-${child_index}">
+                            <div role="tabpanel" class="tab-pane animated fadeIn" id="tab-${child_index}">
                                 <div id="success"></div>
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
