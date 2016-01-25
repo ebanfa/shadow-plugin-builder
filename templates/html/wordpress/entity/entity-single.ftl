@@ -79,27 +79,30 @@
                             <#list entity.relatedChildEntities as child>
                             <div role="tabpanel" class="tab-pane animated fadeIn" id="tab-${child_index + 1}">
                                 <div id="success"></div>
-                                <div class="table-responsive">
-                                    <table class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
-                                        <tbody>
-                                        <#list child.fields as field>
-                                            <#if field.listField == "Y">
-                                            <th><h5 class="no-margin-bottom">${field.description}</h5></th>
-                                            </#if>
-                                        </#list>
-                                            <tr>
-                                        <#list child.fields as field>
-                                            <#if field.listField == "Y">
-                                                <#if field.relationshipField == "N">
-                                                    <td><?php echo $entity_data['${field.name}']; ?></td>
-                                                </#if>
 
-                                                <#if field.relationshipField == "Y">
-                                                    <td><?php echo $entity_data['${field.name}_txt']; ?></td>
-                                                </#if>
-                                            </#if>
-                                        </#list>
+                                <form id="${child.postName}-list-form">
+                                    <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
+                                    <input type="hidden" name="submitted" id="submitted" value="true" /> 
+                                </form>
+                                <div class="table-responsive">
+                                    <table id="${child.postName}-table" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <#list child.fields as field>
+                                                    <#if field.listField == "Y">
+                                                        <#if field.relationshipField == "N">
+                                                            <th>${field.description}</th>
+                                                        </#if>
+
+                                                        <#if field.relationshipField == "Y">
+                                                            <th>${field.description}</th>
+                                                        </#if>
+                                                    </#if>
+                                                </#list>
                                             </tr>
+                                        </thead>
+                                        <tbody>
                                         </tbody>
                                     </table>
                                 </div>

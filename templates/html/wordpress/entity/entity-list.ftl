@@ -36,16 +36,6 @@
 </#list>
                     </tr>
                 </thead>
-               <!--  <tfoot>
-                    <tr>
-                        <th>Invoice</th>
-                        <th>Topic</th>
-                        <th>Pages</th>
-                        <th>Cost</th>
-                        <th>Date</th>
-                        <th>Status</th>
-                    </tr>
-                </tfoot> -->
                 <tbody>
                 </tbody>
             </table>
