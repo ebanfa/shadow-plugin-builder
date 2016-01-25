@@ -108,7 +108,7 @@
                                     </table>
                                 </div>
                                 <div class="btn-demo m-t-10">
-                                    <a id="create-${child.name?lower_case}-btn" href="<?php echo get_site_url();?>/page?type=entity&artifact=${child.name?lower_case}&page_action=create&parent_id=<?php echo $entity_data['id']; ?>&parent_artifact=${entity.name}" class="btn btn-success waves-effect">
+                                    <a id="create-${child.name?lower_case}-btn" href="<?php echo get_site_url();?>/page?type=entity&artifact=${child.name?lower_case}&page_action=create&parent_id=<?php echo $entity_data['id']; ?>&parent_artifact=${entity.name?lower_case}" class="btn btn-success waves-effect">
                                        <?php _e('Add ${child.description}', 'framework') ?>
                                     </a>
                                 </div>

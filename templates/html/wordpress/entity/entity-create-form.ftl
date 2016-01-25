@@ -17,6 +17,13 @@
     }
     // Add the action
     add_action('wp_footer', 'do_page_footer');
+
+    // Process the parent id, if any
+    if(isset($_REQUEST['parent_id']) && isset($_REQUEST['parent_artifact'])) {
+
+        $parent_id = sanitize_text_field($_REQUEST['parent_id']);
+        $parent_artifact = sanitize_text_field($_REQUEST['parent_artifact']);
+    }
 ?>
 
 <?php 
@@ -240,7 +247,12 @@
                 </#if>
             </#if>
             <#if field.relationshipField == "Y">
+                <?php // If the parent field is set we dont display the field 
+                    if(isset($parent_artifact) && $parent_artifact === "${field.name}") { ?>
+                <?php } else { ?>
                 <?php do_action('shadowbanker_before_entity_form_field'); ?>
+                
+                
                         <#if field.size == "small">
                         <div class="col-xs-4">
                         </#if>
@@ -268,6 +280,7 @@
                             </div>
                         </div>
                 <?php do_action('shadowbanker_after_entity_form_field');?>
+                <?php }  ?>
             </#if>
 
 
