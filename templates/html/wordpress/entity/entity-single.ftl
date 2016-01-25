@@ -19,13 +19,13 @@
 
                         <ul class="tab-nav tn-justified tn-icon" role="tablist">
                             <li role="presentation" class="active">
-                                <a class="col-sx-4" href="widgets.html#tab-1" aria-controls="tab-1" role="tab" data-toggle="tab">
+                                <a class="col-sx-4" href="widgets.html#tab-1" aria-controls="tab-0" role="tab" data-toggle="tab">
                                     ${entity.description}
                                 </a>
                             </li>
                             <#list entity.relatedChildEntities as child>
                             <li role="presentation">
-                                <a class="col-xs-4" href="widgets.html#tab-2" aria-controls="tab-2" role="tab" data-toggle="tab">
+                                <a class="col-xs-4" href="#tab-${child?counter}" aria-controls="tab-${child?counter}" role="tab" data-toggle="tab">
                                     ${child.description}
                                 </a>
                             </li>
@@ -60,6 +60,39 @@
                                     </table>
                                 </div>
                             </div>
+
+                            <#list entity.relatedChildEntities as child>
+                            <div role="tabpanel" class="tab-pane animated fadeIn in active" id="tab-${child?counter}">
+                                <div id="success"></div>
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
+                                        <tbody>
+    <#list child.fields as field>
+        <#if field.listField == "Y">
+                                            <th><h5 class="no-margin-bottom">${field.description}</h5></th>
+        </#if>
+    </#list>
+                                            <tr>
+    <#list child.fields as field>
+        <#if field.listField == "Y">
+            <#if field.relationshipField == "N">
+                <td><?php echo $entity_data['${field.name}']; ?></td>
+            </#if>
+
+            <#if field.relationshipField == "Y">
+                <td><?php echo $entity_data['${field.name}_txt']; ?></td>
+            </#if>
+        </#if>
+    </#list>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            </#list>
+
+
+
                         </div>
 
 <?php 
