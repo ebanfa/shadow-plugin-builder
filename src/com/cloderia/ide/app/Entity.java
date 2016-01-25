@@ -26,6 +26,7 @@ public class Entity {
 	private String jsPageTemplate;
 	private String apiTemplate;
 	private List<Field> fields = new ArrayList<Field>();
+	private List<Entity> relatedChildEntities = new ArrayList<Entity>();
 
 	/**
 	 * 
