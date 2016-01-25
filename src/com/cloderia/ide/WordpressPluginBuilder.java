@@ -188,7 +188,17 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 			// Process the fields in the entity
 			for(Field field : fieldsInEntity){
 				// Only process relationship fields
-				if(field.getRelationshipField().equals("Y")){System.out.println("Found a relationship field: " + field.getName());}
+				if(field.getRelationshipField().equals("Y")){
+					System.out.println("Found a relationship field: " + field.getName() + " of type: " + field.getDataType());
+					String targetEntityPostName = field.getDataType();
+					for(Entity item: cloneOfEntitiesInModule){
+						if(item.getPostName().equals(targetEntityPostName)) {
+							System.out.println("Adding child: " + item.getName() + " to parent: " + entity.getName());
+							//entity.add(item);
+						}
+
+					}
+				}
 
 			}
 			/*if(entity.getJsPageTemplate() != null){
