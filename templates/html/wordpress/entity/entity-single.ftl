@@ -82,29 +82,29 @@
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
                                         <tbody>
-    <#list child.fields as field>
-        <#if field.listField == "Y">
+                                        <#list child.fields as field>
+                                            <#if field.listField == "Y">
                                             <th><h5 class="no-margin-bottom">${field.description}</h5></th>
-        </#if>
-    </#list>
+                                            </#if>
+                                        </#list>
                                             <tr>
-    <#list child.fields as field>
-        <#if field.listField == "Y">
-            <#if field.relationshipField == "N">
-                <td><?php echo $entity_data['${field.name}']; ?></td>
-            </#if>
+                                        <#list child.fields as field>
+                                            <#if field.listField == "Y">
+                                                <#if field.relationshipField == "N">
+                                                    <td><?php echo $entity_data['${field.name}']; ?></td>
+                                                </#if>
 
-            <#if field.relationshipField == "Y">
-                <td><?php echo $entity_data['${field.name}_txt']; ?></td>
-            </#if>
-        </#if>
-    </#list>
+                                                <#if field.relationshipField == "Y">
+                                                    <td><?php echo $entity_data['${field.name}_txt']; ?></td>
+                                                </#if>
+                                            </#if>
+                                        </#list>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
                                 <div class="btn-demo m-t-10">
-                                    <a id="create-${child.name?lower_case}-btn" href="<?php echo get_site_url();?>/page?type=entity&artifact=${child.name?lower_case}&page_action=create&${entity.name}_id=<?php echo $entity_data['id']; ?>" class="btn btn-success waves-effect">
+                                    <a id="create-${child.name?lower_case}-btn" href="<?php echo get_site_url();?>/page?type=entity&artifact=${child.name?lower_case}&page_action=create&${entity.name?lower_case}_id=<?php echo $entity_data['id']; ?>" class="btn btn-success waves-effect">
                                        <?php _e('Add ${child.description}', 'framework') ?>
                                     </a>
                                 </div>
