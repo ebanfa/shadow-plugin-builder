@@ -59,6 +59,21 @@
                                         </tbody>
                                     </table>
                                 </div>
+                                <div class="btn-demo m-t-10">
+                                    <a href="<?php echo get_site_url() . '/page?type=entity&artifact=' . $entity_name . '&id=' . $entity_data['id']; ?>&page_action=edit" 
+                                       class="btn btn-primary waves-effect">
+                                       <?php _e('Edit', 'framework') ?>
+                                    </a>
+                                    <form id="delete-entity-form" style="display:none" action=""  method="POST">
+                                        <input type="hidden" name="id" value="<?php echo $entity_data['id']; ?>">
+                                        <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
+                                        <input type="hidden" name="submitted" id="submitted" value="true" />
+                                    </form>
+                                    <a id="delete-entity-btn" href="<?php echo get_site_url() . '/page?type=entity&artifact=' . $entity_name . '&id=' . $entity_data['id']; ?>&page_action=delete" class="btn btn-warning waves-effect">
+                                       <?php _e('Delete', 'framework') ?>
+                                    </a>
+                                </div>
+
                             </div>
 
                             <#list entity.relatedChildEntities as child>
@@ -88,6 +103,11 @@
                                         </tbody>
                                     </table>
                                 </div>
+                                <div class="btn-demo m-t-10">
+                                    <a id="create-collateral-btn" href="<?php echo get_site_url();?>/page?type=entity&artifact=collateral&page_action=create&application_id=<?php echo $entity_data['id']; ?>" class="btn btn-success waves-effect">
+                                       <?php _e('Add ${child.description}', 'framework') ?>
+                                    </a>
+                                </div>
                             </div>
                             </#list>
 
@@ -96,7 +116,7 @@
                         </div>
 
 <?php 
-    do_action('shadowbanker_after_single_entity'); 
+    //do_action('shadowbanker_after_single_entity'); 
     
     do_action('shadowbanker_after_main_content');
 ?>
