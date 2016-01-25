@@ -201,7 +201,7 @@ public class Entity {
 	}
 
 	/**
-	 * @return the fields
+	 * @return the relatedChildEntities
 	 */
 	public List<Field> getFields() {
 		return fields;
@@ -213,6 +213,20 @@ public class Entity {
 	@XmlElement(name="field")
 	public void setFields(List<Field> fields) {
 		this.fields = fields;
+	}
+
+	/**
+	 * @return the relatedChildEntities
+	 */
+	public List<Entity> getRelatedChildEntities() {
+		return relatedChildEntities;
+	}
+
+	/**
+	 * @param relatedChildEntities the relatedChildEntities to set
+	 */
+	public void setRelatedChildEntities(List<Entity> relatedChildEntities) {
+		this.relatedChildEntities = relatedChildEntities;
 	}
 
 }
