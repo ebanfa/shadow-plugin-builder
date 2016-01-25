@@ -194,17 +194,15 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 					for(Entity item: cloneOfEntitiesInModule){
 						if(item.getPostName().equals(targetEntityPostName)) {
 							System.out.println("Adding child: " + entity.getName() + " to parent: " + item.getName());
-							//entity.add(item);
+							item.getRelatedChildEntities().add(entity);
 						}
 
 					}
 				}
 
 			}
-			/*if(entity.getJsPageTemplate() != null){
-				this.generateArtifact(module, entity, entity.getJsPageTemplate() , this.pluginDir + "js/" + entity.getName().toLowerCase() + "-form.js");
-			} */
 		}
+		module.setEntities(cloneOfEntitiesInModule);
 	}
 
 	private void doMenuHTML(Application application) {
