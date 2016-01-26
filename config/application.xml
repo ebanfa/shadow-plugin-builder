@@ -6,7 +6,6 @@
 	<templatesDir>/var/lib/openshift/568431577628e1f9cf0000f1/app-root/data/shadow-plugin-builder/templates/</templatesDir>
 	<generateSourcesDir>/var/lib/openshift/568431577628e1f9cf0000f1/app-root/data/shadow-plugin-builder/target/</generateSourcesDir>
 
-
 	<menuBar>
 		<menuGroup>
 			<name>dashboard</name>
