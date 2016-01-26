@@ -8,7 +8,7 @@
 
 	<menuBar>
 		<menuGroup>
-			<name>dashboard</name>
+			<name>deshboard</name>
 			<displayName>Dashboard</displayName>
 			<description>Dashboard</description>
 			<type>menu</type>
