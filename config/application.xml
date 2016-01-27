@@ -1242,13 +1242,13 @@
 			</field>
 			<field>
 				<name>party</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
 				<dataType>sb_party</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
