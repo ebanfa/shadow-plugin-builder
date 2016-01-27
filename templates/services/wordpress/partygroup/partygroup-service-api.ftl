@@ -242,7 +242,7 @@ class ${entity.name}API {
         $party_role_data['description'] = $entity_data['description'];
         $party_role_data['party'] = $entity_data['party'];
         // Get the role type
-        $role_type = RoleTypeAPI::get_by_code($party_role);
+        $role_type = RoleTypeAPI::get_by_code(strtoupper($party_role));
         $party_role_data['role'] = $role_type['id'];
 
         return PartyRoleAPI::do_create_entity($party_role_data);
