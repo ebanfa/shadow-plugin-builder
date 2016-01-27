@@ -26,7 +26,7 @@
     }
     
     if(isset($_REQUEST['party_role'])) { 
-        $party_role = sanitize_tezt_field($_REQUEST['party_role']);
+        $party_role = sanitize_text_field($_REQUEST['party_role']);
     }
 ?>
 

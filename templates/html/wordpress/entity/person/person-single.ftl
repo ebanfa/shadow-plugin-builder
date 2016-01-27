@@ -11,7 +11,7 @@
 
     $party_role_query_parm = '';
     if(isset($_REQUEST['party_role'])) { 
-        $party_role_query_parm  = '&party_role=' . sanitize_tezt_field($_REQUEST['party_role']);
+        $party_role_query_parm  = '&party_role=' . sanitize_text_field($_REQUEST['party_role']);
     }
 
 ?>
