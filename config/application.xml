@@ -1120,13 +1120,13 @@
 			<apiTemplate>services/wordpress/partygroup/partygroup-service-api.ftl</apiTemplate>
 			<field>
 				<name>entity_code</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
 				<dataType>text</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
@@ -1136,13 +1136,13 @@
 			</field>
 			<field>
 				<name>party</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
 				<dataType>sb_party</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
@@ -1226,13 +1226,13 @@
 			<apiTemplate>services/wordpress/person/person-service-api.ftl</apiTemplate>
 			<field>
 				<name>entity_code</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
 				<dataType>text</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
@@ -1361,13 +1361,13 @@
 			<global>Y</global>
 			<field>
 				<name>entity_code</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
 				<dataType>text</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
