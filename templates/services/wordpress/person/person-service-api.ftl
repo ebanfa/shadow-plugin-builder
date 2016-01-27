@@ -75,7 +75,7 @@ class ${entity.name}API {
             if ($entity_data['requires_redirect']) {
                 $redirect_url = $entity_data['redirect_url'];
             } else {
-                $redirect_url = get_site_url() . '/page?type=entity&artifact=${entity.name?lower_case}&id=' . $entity_data['id'] . '&page_action=view';
+                $redirect_url = get_site_url() . '/page?type=entity&artifact=party&id=' . $entity_data['party'] . '&page_action=view';
             }
             wp_send_json_success(array('message' => "<script type='text/javascript'>window.location='" . $redirect_url . "'</script>"));
         } else {
