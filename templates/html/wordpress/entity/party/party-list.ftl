@@ -8,6 +8,23 @@
         $party_role = sanitize_text_field($_REQUEST['party_role']);
     }
 
+    $page_info = $_REQUEST['page_info'];
+    $page_action = $page_info['page_action'];
+    $artifact_name = sanitize_text_field($page_info['name']);
+    $page_name = sanitize_text_field($page_info['display_name']);
+    $page_action_description = sanitize_text_field($page_info['page_action_description']);
+    // Temporary hold to ensure we dont deal with null values
+    $page_action_txt = sanitize_text_field($page_info['page_action']);
+
+    if($page_action == 'create')
+        $page_action_txt = 'Create a new '. strtolower($page_name ) . ' by filling in the form below';
+    if($page_action == 'edit')
+        $page_action_txt = 'Edit the '. strtolower($page_name ) . ' by updating the form below';
+    if($page_action == 'view')
+        $page_action_txt = 'To update or delete the ' . strtolower($page_name ) . ', click on the control buttons below.';
+    if($page_action == 'list')
+        $page_action_txt = 'The '. strtolower($page_name ) . ' list. To view a single record, click on the highlighted column.';
+
    
 
 ?>
