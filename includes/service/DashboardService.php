@@ -23,7 +23,7 @@ class DashboardService {
 	$party_dashboard_stats['property_count'] =  208; //$property_count;
 	$party_dashboard_stats['tenants_count'] =  4000; //$tenants_count;
 	$party_dashboard_stats['lease_agreements_value'] = 4000;//$lease_agreements_value;
-	$party_dashboard_stats['current_monthly_rent_income'] = 57,000,000.00; //$current_monthly_rent_income;
+	$party_dashboard_stats['current_monthly_rent_income'] = 57000000; //$current_monthly_rent_income;
 	return $party_dashboard_stats;
     }
 
