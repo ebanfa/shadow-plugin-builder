@@ -238,7 +238,7 @@ class ${entity.name}API {
     public static function create_party_role($party_role, $entity_data){
         $party_role_data = array();
         $party_role_data['edit_mode'] = true;
-        $party_role_data['name'] = $entity_data['name'] 
+        $party_role_data['name'] = $entity_data['name'] ;
         $party_role_data['description'] = $entity_data['description'];
         $party_role_data['party'] = $entity_data['party'];
         // Get the role type
