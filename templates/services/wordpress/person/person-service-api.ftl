@@ -56,8 +56,17 @@ class ${entity.name}API {
             // Form did not validate
             wp_send_json_error(array('message' => $entity_data['error_message']));
         }
-        // Form has validated so we create the order
+
+        // First create the party 
+        $party_data = ${entity.name}API::create_party($entity_data);
+        // Then the party group
+        $entity_data['party'] = $party_data['id']; 
         $entity_data = ${entity.name}API::do_create_entity($entity_data);
+        // If the party role has been set then we create the party role
+        if(isset($_POST['party_role'])) {
+            ${entity.name}API::create_party_role(sanitize_text_field($_POST['party_role']), $entity_data);
+        }
+
         // Process the results of the order creation
         if(!$entity_data['has_errors']) {
             // If the user is not logged in we
@@ -163,7 +172,7 @@ class ${entity.name}API {
 <#if entity.global == "N"> 
         $current_user = wp_get_current_user();
         $user_party = PartyAPI::get_user_party($current_user->ID);
-        $entity_data['owner'] = $user_party->ID;
+        $entity_data['owner'] = $user_party['id'];
 </#if>
         $entity_data['has_errors'] = false;
         if ($entity_data['edit_mode']) {
@@ -208,6 +217,36 @@ class ${entity.name}API {
         return $entity_data;
     }
 
+    /**
+     *
+     */
+    public static function create_party($entity_data){
+        $party_data = array();
+        $party_data['edit_mode'] = true;
+        $party_data['name'] = $entity_data['first_name'] . ' ' . $entity_data['last_name'];
+        $party_data['description'] = $entity_data['description'];
+        // Get the party type
+        $party_type = PartyTypeAPI::get_by_code('INDIVIDUAL');
+        $party_data['type'] = $party_type['id'];
+
+        return PartyAPI::do_create_entity($party_data);
+    }
+
+    /**
+     *
+     */
+    public static function create_party_role($party_role, $entity_data){
+        $party_role_data = array();
+        $party_role_data['edit_mode'] = true;
+        $party_role_data['name'] = $entity_data['first_name'] . ' ' . $entity_data['last_name'];
+        $party_role_data['description'] = $entity_data['description'];
+        $party_role_data['party'] = $entity_data['party'];
+        // Get the role type
+        $role_type = RoleTypeAPI::get_by_code($party_role);
+        $party_role_data['role'] = $role_type['id'];
+        
+        return PartyRoleAPI::do_create_entity($party_role_data);
+    }
 
 
     /**
@@ -221,87 +260,39 @@ class ${entity.name}API {
             // Nounce field did not validate
             wp_send_json_error(array('message' => "<span class='error'>Invalid form operation!</span>"));
         }
-        $searchResults = array();
-        // If the party role is specified, we will first have to
-        // find all PartyRoles associated with the given role ,
-        // then we find and return all partys referenced in the above
-        // mentioned associations
-        if(isset($_POST['party_role']))
-        {
-            $party_role = sanitize_text_field($_POST['party_role']);
-            $searchResults = ${entity.name}API::get_by_party_role($party_role);
-        } 
-        // Else we use the regular party search funtionality
-        else {
-
-            $meta_array = array();
-            $form_data = $_POST['form'];
-            foreach($form_data as $field){
-              $name = sanitize_text_field($field['name']);
-              if(in_array($name, ${entity.name}API::$entity_fields)){
-                  $value = sanitize_text_field($field['value']);
-                  $field_array = array();
-                  $field_array['key'] = $name;
-                  $field_array['value'] = $value;
-                  array_push($meta_array, $field_array);
-              }
-            }
-
-            $queryArgs = array('numberposts' => -1, 'posts_per_page' => -1,
-            'post_status' => 'any', 'post_type' => '${entity.postName}', 'meta_query' => $meta_array);
-    <#if entity.global == "N">
-            if (!current_user_can('administrator')) {
-                // Filter the results for non admin users
-                $user_query_param = array('key' => 'owner', 'value' => $user_party['id']);
-                array_push($queryArgs['meta_query'], $user_query_param);
-            }
-    </#if>
-            $count = 0;
-            $entityQuery = new WP_Query($queryArgs);
-
-            while ($entityQuery->have_posts()) : $entityQuery->the_post();
-                $entity = $entityQuery->post;
-                array_push($searchResults, ${entity.name}API::entity_to_data($entity, false));
-                $count++;
-            endwhile;
-            wp_reset_postdata();
+        $meta_array = array();
+        $form_data = $_POST['form'];
+        foreach($form_data as $field){
+          $name = sanitize_text_field($field['name']);
+          if(in_array($name, ${entity.name}API::$entity_fields)){
+              $value = sanitize_text_field($field['value']);
+              $field_array = array();
+              $field_array['key'] = $name;
+              $field_array['value'] = $value;
+              array_push($meta_array, $field_array);
+          }
         }
-        
-        wp_send_json_success($searchResults);
-    }
-
-    /**
-     *
-     */
-    public static function get_by_party_role($party_role) {
-        $role_type = RoleTypeAPI::get_by_code($party_role);
-        // Search for all the party role type associations with the given role
         $queryArgs = array('numberposts' => -1, 'posts_per_page' => -1,
-        'post_status' => 'any', 'post_type' => 'sb_party_role', 
-        'meta_query' => array(array('key' => 'role', 'value' => $role_type['id'])));
-
-        $party_ids = array();
+            'post_status' => 'any', 'post_type' => '${entity.postName}', 'meta_query' => $meta_array);
+<#if entity.global == "N">
+        if (!current_user_can('administrator')) {
+            // Filter the results for non admin users
+            $user_query_param = array('key' => 'owner', 'value' => $user_party['id']);
+            array_push($queryArgs['meta_query'], $user_query_param);
+        }
+</#if>
+        $count = 0;
+        $searchResults = array();
         $entityQuery = new WP_Query($queryArgs);
+
         while ($entityQuery->have_posts()) : $entityQuery->the_post();
             $entity = $entityQuery->post;
-            array_push($party_ids, get_post_meta($entity->ID, 'party', true));
+            array_push($searchResults, ${entity.name}API::entity_to_data($entity, false));
+            $count++;
         endwhile;
         wp_reset_postdata();
 
-        return ${entity.name}API::get_by_ids($party_ids);
-    }
-
-    /**
-     *
-     */
-    public static function get_by_ids($party_ids) {
-        $searchResults = array();
-        // Load all the partys with ID from above
-        foreach($party_ids as $party_id){
-            $party = $(entity.name)API::get_by_id($party_id);
-            array_push($searchResults, ${entity.name}API::entity_to_data($party, false));
-        }
-        return $searchResults;
+        wp_send_json_success($searchResults);
     }
 
     /**
@@ -409,46 +400,6 @@ class ${entity.name}API {
         foreach ($entity_data as $field_name => $field_value) {
             $_POST[$field_name] = $field_value;
         }
-    }
-
-    /**
-     *
-     */
-    public static function get_party_user($party_id){
-	$user_data = array();
-        $party_data = ${entity.name}API::get_by_id($party_id); 
-      
-        if(isset($party_data['id'])){	    
-            $user = get_user_by('login', $party_data['user_name']); 
-            if($user){
-                $user_data['id'] = $user->ID;
-                $user_data['user_name'] = $user->user_login;
-            }
-        }
-	return $user_data;
-    }
-
-    /**
-     *
-     */
-    public static function get_user_party($user_id){
-	$user_party = array();
-        $user = get_user_by('id', $user_id);
-        $count = 0;
-        if($user){ 
-            $entityQueryArgs = array('numberposts' => -1, 'post_status' => 'any', 'post_type' => '${entity.postName}',
-                'meta_query' => array(array('key' => 'user_name', 'value' => $user->user_login)));
-            $entityQuery = new WP_Query($entityQueryArgs);
-            while ($entityQuery->have_posts()) : $entityQuery->the_post();
-                $entity = $entityQuery->post;
-                if($count == 0){
-                    $user_party = ${entity.name}API::entity_to_data($entity, false);
-                }
-                $count++;
-            endwhile;
-        }
-	return $user_party;
-
     }
 
 }

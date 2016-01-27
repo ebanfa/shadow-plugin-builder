@@ -30,36 +30,36 @@
 				<displayName>Clients</displayName>
 				<description>Clients</description>
 				<active>N</active>
-				<cssClass>md-mail</cssClass>
+				<cssClass>md-mail add-client-btn</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;page_action=list&amp;artifact=party</target>
+				<target>/page?type=entity&amp;artifact=party&amp;page_action=list&amp;party_role=client</target>
 			</menu>
 			<menu>
 				<name>tenants</name>
 				<displayName>Tenants</displayName>
 				<description>Tenants</description>
 				<active>N</active>
-				<cssClass>md-mail</cssClass>
+				<cssClass>md-mail add-tenant-btn</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;page_action=list&amp;artifact=party</target>
+				<target>/page?type=entity&amp;artifact=party&amp;page_action=list&amp;party_role=tenant</target>
 			</menu>
 			<menu>
 				<name>prospectivetenants</name>
 				<displayName>Prospective Tenants</displayName>
 				<description>Prospective Tenants</description>
 				<active>N</active>
-				<cssClass>md-mail</cssClass>
+				<cssClass>md-mail add-prospect-btn</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;page_action=list&amp;artifact=party</target>
+				<target>/page?type=entity&amp;artifact=party&amp;page_action=list&amp;party_role=prosective_tenant</target>
 			</menu>
 			<menu>
 				<name>serviceproviders</name>
 				<displayName>Service Providers</displayName>
 				<description>Service Providers</description>
 				<active>N</active>
-				<cssClass>md-mail</cssClass>
+				<cssClass>md-mail add-serviceprovider-btn</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;page_action=list&amp;artifact=party</target>
+				<target>/page?type=entity&amp;artifact=party&amp;page_action=list&amp;party_role=service_provider</target>
 			</menu>
 		</menuGroup>
 
@@ -938,6 +938,7 @@
 			<postName>sb_party</postName>
 			<description>Party</description>
 			<global>Y</global>
+			<listPageTemplate>html/wordpress/entity/party/party-list.ftl</listPageTemplate>
 			<apiTemplate>services/wordpress/party/party-service-api.ftl</apiTemplate>
 			<field>
 				<name>entity_code</name>
@@ -996,7 +997,7 @@
 				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
-				<dataType>text</dataType>
+				<dataType>email</dataType>
 				<size>medium</size>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
@@ -1114,6 +1115,9 @@
 			<postName>sb_partygroup</postName>
 			<description>Party Group</description>
 			<global>Y</global>
+			<createPageTemplate>html/wordpress/entity/partygroup/partygroup-create-form.ftl</createPageTemplate>
+			<viewPageTemplate>html/wordpress/entity/partygroup/partygroup-single.ftl</viewPageTemplate>
+			<apiTemplate>services/wordpress/partygroup/partygroup-service-api.ftl</apiTemplate>
 			<field>
 				<name>entity_code</name>
 				<isVisible>Y</isVisible>
@@ -1217,6 +1221,9 @@
 			<postName>sb_persom</postName>
 			<description>Person</description>
 			<global>Y</global>
+			<createPageTemplate>html/wordpress/entity/person/person-create-form.ftl</createPageTemplate>
+			<viewPageTemplate>html/wordpress/entity/person/person-single.ftl</viewPageTemplate>
+			<apiTemplate>services/wordpress/person/person-service-api.ftl</apiTemplate>
 			<field>
 				<name>entity_code</name>
 				<isVisible>Y</isVisible>

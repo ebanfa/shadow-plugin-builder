@@ -8,6 +8,13 @@
 	global $sb_post_type;
 ?>
 
+<script type="text/javascript">
+    
+    $(document).ready(function(){
+        $('.money').mask('000,000,000,000,000.00', {reverse: true});
+    });
+
+</script>
 
 <form role="form" name="<?php echo $sb_post_type;?>_form" 
       id="<?php echo $sb_post_type;?>_form" action="" 
