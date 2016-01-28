@@ -292,6 +292,8 @@ class ${entity.name}API {
             $entityQuery = new WP_Query($queryArgs);
             while ($entityQuery->have_posts()) : $entityQuery->the_post();
                 $entity = $entityQuery->post;
+
+                echo('Found party role:' . get_post_meta($entity->ID, 'party', true));
                 array_push($party_ids, get_post_meta($entity->ID, 'party', true));
             endwhile;
             wp_reset_postdata();
