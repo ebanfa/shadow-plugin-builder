@@ -80,7 +80,7 @@
                                     <a id="delete-entity-btn" href="<?php echo get_site_url() . '/page?type=entity&artifact=${entity.name?lower_case}&id=' . $entity_data['id']; ?>&page_action=delete" class="btn btn-warning waves-effect">
                                        <?php _e('Delete', 'framework') ?>
                                     </a>
-                                    <?php if(isset($parent_artifact)) ?>
+                                    <?php if(isset($parent_artifact)) { ?>
                                     <a href="<?php echo get_site_url() . '/page?type=entity&artifact=' . $parent_artifact . '&id=' . $parent_id; ?>&page_action=view" 
                                        class="btn btn-primary waves-effect">
                                        <?php _e('Done', 'framework') ?>
