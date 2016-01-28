@@ -226,7 +226,7 @@ class ${entity.name}API {
         // find all PartyRoles associated with the given role ,
         // then we find and return all partys referenced in the above
         // mentioned associations
-        if(isset($_POST['form'][2]))
+        if(isset($_POST['form'][2]) && $_POST['form'][2]['name'] === 'party_role')
         {
             $party_role = sanitize_text_field($_POST['form'][2]['value']);
             $searchResults = ${entity.name}API::get_by_party_role($party_role);
