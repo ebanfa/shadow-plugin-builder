@@ -22,13 +22,69 @@
                                     ${entity.description}
                                 </a>
                             </li>
-                            <#list entity.relatedChildEntities as child>
-                            <li role="presentation">
-                                <a class="col-xs-4" href="#tab-${child_index + 1}" aria-controls="tab-${child_index + 1}" role="tab" data-toggle="tab">
-                                    ${child.description}
+                             <li role="presentation">
+                                <a class="col-xs-4" href="#tab-5" aria-controls="tab-5" role="tab" data-toggle="tab">
+                                    Address
                                 </a>
                             </li>
-                            </#list>
+                            <li role="presentation">
+                                <a class="col-xs-4" href="#tab-6" aria-controls="tab-6" role="tab" data-toggle="tab">
+                                    Files
+                                </a>
+                            </li>
+                            <?php if($entity_data['party_type_code'] === 'ORGANIZATION') { ?>
+                            <li role="presentation">
+                                <a class="col-xs-4" href="#tab-7" aria-controls="tab-7" role="tab" data-toggle="tab">
+                                    Business Unit
+                                </a>
+                            </li>
+                            <?php } ?>
+                            <?php 
+                                foreach ($entity_data['roles'] as $role) {
+                                    if($entity_data['entity_code'] === 'CLIENT') {
+                            ?>
+                            <li role="presentation">
+                                <a class="col-xs-4" href="#tab-8" aria-controls="tab-8" role="tab" data-toggle="tab">
+                                    Property
+                                </a>
+                            </li>
+                            <?php  } else if($entity_data['entity_code'] === 'TENANT') { ?>
+
+                            <li role="presentation">
+                                <a class="col-xs-4" href="#tab-10" aria-controls="tab-10" role="tab" data-toggle="tab">
+                                    Agreement
+                                </a>
+                            </li>
+
+                            <li role="presentation">
+                                <a class="col-xs-4" href="#tab-11" aria-controls="tab-11" role="tab" data-toggle="tab">
+                                    Rent
+                                </a>
+                            </li>
+
+                            <?php  } else if($entity_data['entity_code'] === 'SERVICE_PROVIDER') { ?>
+                            <li role="presentation">
+                                <a class="col-xs-4" href="#tab-12" aria-controls="tab-12" role="tab" data-toggle="tab">
+                                    Inspection
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a class="col-xs-4" href="#tab-13" aria-controls="tab-13" role="tab" data-toggle="tab">
+                                    Maintenance
+                                </a>
+                            </li>
+                            <?php  } } ?>
+                            <li role="presentation">
+                                <a class="col-xs-4" href="#tab-16" aria-controls="tab-16" role="tab" data-toggle="tab">
+                                    Payments
+                                </a>
+                            </li>
+                            <li role="presentation">
+                                <a class="col-xs-4" href="#tab-17" aria-controls="tab-17" role="tab" data-toggle="tab">
+                                    Disputes
+                                </a>
+                            </li>
+                            
                         </ul>
 
                         <div class="tab-content p-20">
@@ -75,44 +131,7 @@
 
                             </div>
 
-                            <#list entity.relatedChildEntities as child>
-                            <div role="tabpanel" class="tab-pane animated fadeIn" id="tab-${child_index + 1}">
-                                <div id="success"></div>
-
-                                <form id="${child.postName}-list-form">
-                                    <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
-                                    <input type="hidden" name="submitted" id="submitted" value="true" /> 
-                                    <input type="hidden" name="${entity.name?lower_case}" value="<?php echo $entity_data['id']; ?>"/>
-                                </form>
-                                <div class="table-responsive">
-                                    <table id="${child.postName}-table" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                                <th>ID</th>
-                                                <#list child.fields as field>
-                                                    <#if field.listField == "Y">
-                                                        <#if field.relationshipField == "N">
-                                                            <th>${field.description}</th>
-                                                        </#if>
-
-                                                        <#if field.relationshipField == "Y">
-                                                            <th>${field.description}</th>
-                                                        </#if>
-                                                    </#if>
-                                                </#list>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="btn-demo m-t-10">
-                                    <a id="create-${child.name?lower_case}-btn" href="<?php echo get_site_url();?>/page?type=entity&artifact=${child.name?lower_case}&page_action=create&parent_id=<?php echo $entity_data['id']; ?>&parent_artifact=${entity.name?lower_case}" class="btn btn-success waves-effect">
-                                       <?php _e('Add ${child.description}', 'framework') ?>
-                                    </a>
-                                </div>
-                            </div>
-                            </#list>
+                            
 
 
 
