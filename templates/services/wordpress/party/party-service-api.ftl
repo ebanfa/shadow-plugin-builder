@@ -313,6 +313,31 @@ class ${entity.name}API {
     /**
      *
      */
+    public static function get_party_roles($party_id) {
+        $queryArgs = array('numberposts' => -1, 'posts_per_page' => -1,
+        'post_status' => 'any', 'post_type' => 'sb_partyrole', 
+        'meta_query' => array(array('key' => 'party', 'value' => $party_id)));
+
+        $role_ids = array();
+        $entityQuery = new WP_Query($queryArgs);
+        while ($entityQuery->have_posts()) : $entityQuery->the_post();
+            $entity = $entityQuery->post;
+            array_push($role_ids, get_post_meta($entity->ID, 'role', true));
+        endwhile;
+        wp_reset_postdata();
+
+        $roles =array();// Load all the partys with ID from above
+        foreach($role_ids as $role_id){
+            $role = RoleTypeAPI::get_by_id(intval($role_id));
+            array_push($searchResults, $role);
+        }
+        return $searchResults;
+
+    }
+
+    /**
+     *
+     */
     public static function delete_${entity.postName}_ajax() {
         // Ensure we have a valid form
         if (!isset($_POST['submitted']) && !isset($_POST['post_nonce_field']) && !wp_verify_nonce($_POST['post_nonce_field'], 'post_nonce')) {
@@ -401,6 +426,7 @@ class ${entity.name}API {
         $entity_data['${field.name}_txt'] = get_post_meta($related_entity->ID, 'name', true);
         $entity_data['${field.name}_code'] = get_post_meta($related_entity->ID, 'entity_code', true);
     </#if>
+        $entity_data['roles'] = get_party_roles($entity_data['id']);
 </#list>
         return $entity_data;
         
