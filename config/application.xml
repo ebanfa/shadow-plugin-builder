@@ -2611,13 +2611,13 @@
 			</field>
 			<field>
 				<name>owner</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
 				<required>N</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
 				<dataType>sb_party</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
