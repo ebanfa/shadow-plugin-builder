@@ -331,7 +331,7 @@ class ${entity.name}API {
             $role = RoleTypeAPI::get_by_id(intval($role_id));
             array_push($roles, $role);
         }
-        return $searchResults;
+        return $roles;
 
     }
 
