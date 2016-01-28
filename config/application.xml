@@ -7940,9 +7940,9 @@
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
 				<listField>Y</listField>
 				<dataType>sb_agreement</dataType>
 				<size>large</size>
@@ -7956,8 +7956,8 @@
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
-				<createField>N</createField>
-				<editField>N</editField>
+				<createField>Y</createField>
+				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
 				<dataType>sb_disputestatus</dataType>
