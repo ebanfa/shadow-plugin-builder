@@ -426,7 +426,7 @@ class ${entity.name}API {
         $entity_data['${field.name}_txt'] = get_post_meta($related_entity->ID, 'name', true);
         $entity_data['${field.name}_code'] = get_post_meta($related_entity->ID, 'entity_code', true);
     </#if>
-        $entity_data['roles'] = get_party_roles($entity_data['id']);
+        $entity_data['roles'] = ${entity.name}API::get_party_roles($entity_data['id']);
 </#list>
         return $entity_data;
         
