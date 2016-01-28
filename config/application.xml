@@ -1483,22 +1483,6 @@
 			</field>
 			<field>
 				<name>name</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
-				<required>N</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>text</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Name</description>
-				<displayName>name</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>address_1</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
