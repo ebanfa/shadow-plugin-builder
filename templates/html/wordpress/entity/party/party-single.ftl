@@ -6,7 +6,22 @@
     }
     global $entity_data;
     if (isset($_REQUEST['id'])) {
+        $is_organization = false;
         $entity_data = ${entity.name}API::get_by_id(sanitize_text_field($_REQUEST['id']));
+        if(isset($entity_data['id'])) {
+            if($entity_data['party_type_code'] === 'ORGANIZATION') { 
+                $is_organization = true;
+                $group_data = PartyGroupAPI::get_by_party_id($entity_data['id']);
+                $artifact = 'partygroup';
+                $entity_id = $group_data['id'];
+
+            } 
+            else {
+                $person_data = PersonAPI::get_by_party_id($entity_data['id']);
+                $artifact = 'person';
+                $entity_id = $person_data['id'];
+            }
+        }
     }
 ?>
 
@@ -32,7 +47,7 @@
                                     Files
                                 </a>
                             </li>
-                            <?php if($entity_data['party_type_code'] === 'ORGANIZATION') { ?>
+                            <?php if($is_organization) { ?>
                             <li role="presentation">
                                 <a class="col-xs-4" href="#tab-7" aria-controls="tab-7" role="tab" data-toggle="tab">
                                     Business Unit
@@ -115,7 +130,7 @@
                                     </table>
                                 </div>
                                 <div class="btn-demo m-t-10">
-                                    <a href="<?php echo get_site_url() . '/page?type=entity&artifact=${entity.name?lower_case}&id=' . $entity_data['id']; ?>&page_action=edit" 
+                                    <a href="<?php echo get_site_url() . '/page?type=entity&artifact=' . $artifact . '&id=' . $entity_id; ?>&page_action=edit" 
                                        class="btn btn-primary waves-effect">
                                        <?php _e('Edit', 'framework') ?>
                                     </a>

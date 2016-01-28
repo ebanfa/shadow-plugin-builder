@@ -363,6 +363,21 @@ class ${entity.name}API {
     /**
      *
      */
+    public static function get_by_party_id($party_id){
+        $entity_data = array();
+        $entityQueryArgs = array('numberposts' => -1, 'post_status' => 'any', 'post_type' => '${entity.postName}',
+            'meta_query' => array(array('key' => 'party', 'value' => $party_id)));
+        $entityQuery = new WP_Query($entityQueryArgs);
+        while ($entityQuery->have_posts()) : $entityQuery->the_post();
+            $entity = $entityQuery->post;
+            $entity_data = ${entity.name}API::entity_to_data($entity, false);
+        endwhile;
+        return $entity_data;
+    }
+
+    /**
+     *
+     */
     public static function get_by_id($id){
         $entity_data = array();
         $post_obj = get_post($id);
