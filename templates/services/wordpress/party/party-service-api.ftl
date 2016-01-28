@@ -228,7 +228,7 @@ class ${entity.name}API {
         // mentioned associations
         if(isset($_POST['form'][2]))
         {
-            $party_role = sanitize_text_field($_POST['form'][0]['value']);
+            $party_role = sanitize_text_field($_POST['form'][2]['value']);
             $searchResults = ${entity.name}API::get_by_party_role($party_role);
         } 
         // Else we use the regular party search funtionality
