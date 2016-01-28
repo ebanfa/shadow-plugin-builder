@@ -227,7 +227,7 @@ class ${entity.name}API {
         $party_data['description'] = $entity_data['description'];
         // Get the party type
         $party_type = PartyTypeAPI::get_by_code('ORGANIZATION');
-        $party_data['type'] = $party_type['id'];
+        $party_data['party_type'] = $party_type['id'];
 
         return PartyAPI::do_create_entity($party_data);
     }
