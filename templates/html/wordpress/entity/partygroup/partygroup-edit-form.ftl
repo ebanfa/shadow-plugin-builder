@@ -298,9 +298,28 @@
     
 </#list>
 
+
+
+    <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
+    <input type="hidden" name="submitted" id="submitted" value="true" />     
+    <input type="hidden" name="edit_mode" value="edit" />  
+    <input type="hidden" name="id" value="<?php echo $entity_data['id'];?>" />  
+    <div class="btn-demo m-t-10">
+        <button id="<?php echo $entity_name; ?>-form-btn" type="submit" class="btn btn-primary waves-effect">
+            <?php _e('Update', 'framework') ?>
+        </button>
+        
+        <a href="<?php echo get_site_url() . '/page?type=entity&artifact=party&id=' . $entity_data['party']; ?>&page_action=view" 
+           class="btn bgm-indigo waves-effect"><?php _e('Back', 'framework') ?>
+        </a>
+    </div>
+    
+</form>
+
+
     
 <?php 
-    do_action('shadowbanker_entity_form_end'); 
+    //do_action('shadowbanker_entity_form_end'); 
     
     do_action('shadowbanker_after_entity_form');
     

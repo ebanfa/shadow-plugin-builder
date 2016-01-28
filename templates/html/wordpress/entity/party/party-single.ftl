@@ -158,12 +158,9 @@
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                            <th>Line 1</th>
-
-                                                            <th>Line 2</th>
-
-
-                                                            <th>Location</th>
+                                                <th>Line 1</th>
+                                                <th>Line 2</th>
+                                                <th>Location</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -171,7 +168,7 @@
                                     </table>
                                 </div>
                                 <div class="btn-demo m-t-10">
-                                    <a id="create-partyaddress-btn" href="<?php echo get_site_url();?>/page?type=entity&artifact=partyaddress&page_action=create&parent_id=<?php echo $entity_data['id']; ?>&parent_artifact=party" class="btn btn-success waves-effect">
+                                    <a id="create-partyaddress-btn" href="<?php echo get_site_url();?>/page?type=entity&artifact=partyaddress&page_action=create&parent_id=<?php echo $entity_data['id']; ?>&parent_artifact=party&parent_field=party" class="btn btn-success waves-effect">
                                        <?php _e('Add Party Address', 'framework') ?>
                                     </a>
                                 </div>
@@ -189,20 +186,13 @@
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                            <th>Name</th>
-
-                                                            <th>Description</th>
-
-                                                            <th>File Type</th>
-
-                                                            <th>URL</th>
-
-                                                            <th>Size</th>
-
-                                                            <th>Mime Type</th>
-
-                                                            <th>Date</th>
-
+                                                <th>Name</th>
+                                                <th>Description</th>
+                                                <th>File Type</th>
+                                                <th>URL</th>
+                                                <th>Size</th>
+                                                <th>Mime Type</th>
+                                                <th>Date</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -210,7 +200,7 @@
                                     </table>
                                 </div>
                                 <div class="btn-demo m-t-10">
-                                    <a id="create-partyfiles-btn" href="<?php echo get_site_url();?>/page?type=entity&artifact=partyfiles&page_action=create&parent_id=<?php echo $entity_data['id']; ?>&parent_artifact=party" class="btn btn-success waves-effect">
+                                    <a id="create-partyfiles-btn" href="<?php echo get_site_url();?>/page?type=entity&artifact=partyfiles&page_action=create&parent_id=<?php echo $entity_data['id']; ?>&parent_artifact=party&parent_field=party" class="btn btn-success waves-effect">
                                        <?php _e('Add Party Files', 'framework') ?>
                                     </a>
                                 </div>
@@ -228,18 +218,12 @@
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-
-                                                            <th>Party</th>
-                                                            <th>Name</th>
-
-                                                            <th>Address Line 1</th>
-
-                                                            <th>Address Line 2</th>
-
-
-                                                            <th>Location</th>
-                                                            <th>Description</th>
-
+                                                <th>Party</th>
+                                                <th>Name</th>
+                                                <th>Address Line 1</th>
+                                                <th>Address Line 2</th>
+                                                <th>Location</th>
+                                                <th>Description</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -247,7 +231,7 @@
                                     </table>
                                 </div>
                                 <div class="btn-demo m-t-10">
-                                    <a id="create-businessunit-btn" href="<?php echo get_site_url();?>/page?type=entity&artifact=businessunit&page_action=create&parent_id=<?php echo $entity_data['id']; ?>&parent_artifact=party" class="btn btn-success waves-effect">
+                                    <a id="create-businessunit-btn" href="<?php echo get_site_url();?>/page?type=entity&artifact=businessunit&page_action=create&parent_id=<?php echo $entity_data['id']; ?>&parent_artifact=party&parent_field=party" class="btn btn-success waves-effect">
                                        <?php _e('Add Business Unit', 'framework') ?>
                                     </a>
                                 </div>
@@ -265,30 +249,18 @@
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-
-                                                            <th>Type</th>
-
-                                                            <th>Status</th>
-                                                            <th>Name</th>
-
-                                                            <th>Line 1</th>
-
-                                                            <th>Line 2</th>
-
-
-                                                            <th>Location</th>
-                                                            <th>Date Acquired</th>
-
-                                                            <th>Construction Date</th>
-
-                                                            <th>Property Code</th>
-
-                                                            <th>Title Number</th>
-
-                                                            <th>Land Size</th>
-
-                                                            <th>Description</th>
-
+                                                <th>Type</th>
+                                                <th>Status</th>
+                                                <th>Name</th>
+                                                <th>Line 1</th>
+                                                <th>Line 2</th>
+                                                <th>Location</th>
+                                                <th>Date Acquired</th>
+                                                <th>Construction Date</th>
+                                                <th>Property Code</th>
+                                                <th>Title Number</th>
+                                                <th>Land Size</th>
+                                                <th>Description</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -296,7 +268,7 @@
                                     </table>
                                 </div>
                                 <div class="btn-demo m-t-10">
-                                    <a id="create-property-btn" href="<?php echo get_site_url();?>/page?type=entity&artifact=property&page_action=create&parent_id=<?php echo $entity_data['id']; ?>&parent_artifact=party" class="btn btn-success waves-effect">
+                                    <a id="create-property-btn" href="<?php echo get_site_url();?>/page?type=entity&artifact=property&page_action=create&parent_id=<?php echo $entity_data['id']; ?>&parent_artifact=party&parent_field=party" class="btn btn-success waves-effect">
                                        <?php _e('Add Property', 'framework') ?>
                                     </a>
                                 </div>
@@ -314,24 +286,15 @@
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                            <th>Code</th>
-
-
-                                                            <th>Tenant</th>
-
-                                                            <th>Floor</th>
-                                                            <th>Name</th>
-
-                                                            <th>Units</th>
-
-                                                            <th>Amount</th>
-
-                                                            <th>Description</th>
-
-                                                            <th>Start Date</th>
-
-                                                            <th>Date Created</th>
-
+                                                <th>Code</th>
+                                                <th>Tenant</th>
+                                                <th>Floor</th>
+                                                <th>Name</th>
+                                                <th>Units</th>
+                                                <th>Amount</th>
+                                                <th>Description</th>
+                                                <th>Start Date</th>
+                                                <th>Date Created</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -339,7 +302,7 @@
                                     </table>
                                 </div>
                                 <div class="btn-demo m-t-10">
-                                    <a id="create-agreement-btn" href="<?php echo get_site_url();?>/page?type=entity&artifact=agreement&page_action=create&parent_id=<?php echo $entity_data['id']; ?>&parent_artifact=party" class="btn btn-success waves-effect">
+                                    <a id="create-agreement-btn" href="<?php echo get_site_url();?>/page?type=entity&artifact=agreement&page_action=create&parent_id=<?php echo $entity_data['id']; ?>&parent_artifact=party&parent_field=party" class="btn btn-success waves-effect">
                                        <?php _e('Add Agreement', 'framework') ?>
                                     </a>
                                 </div>
@@ -357,16 +320,11 @@
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                            <th>Code</th>
-
-                                                            <th>Name</th>
-
-                                                            <th>Amount</th>
-
-                                                            <th>Date Due</th>
-
-                                                            <th>Description</th>
-
+                                                <th>Code</th>
+                                                <th>Name</th>
+                                                <th>Amount</th>
+                                                <th>Date Due</th>
+                                                <th>Description</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -374,7 +332,7 @@
                                     </table>
                                 </div>
                                 <div class="btn-demo m-t-10">
-                                    <a id="create-rent-btn" href="<?php echo get_site_url();?>/page?type=entity&artifact=rent&page_action=create&parent_id=<?php echo $entity_data['id']; ?>&parent_artifact=party" class="btn btn-success waves-effect">
+                                    <a id="create-rent-btn" href="<?php echo get_site_url();?>/page?type=entity&artifact=rent&page_action=create&parent_id=<?php echo $entity_data['id']; ?>&parent_artifact=party&parent_field=party" class="btn btn-success waves-effect">
                                        <?php _e('Add Rent', 'framework') ?>
                                     </a>
                                 </div>
@@ -392,16 +350,11 @@
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-
-                                                            <th>Type</th>
-                                                            <th>Status</th>
-
-                                                            <th>Description</th>
-
-                                                            <th>Inspection Result</th>
-
-                                                            <th>Date Created</th>
-
+                                                <th>Type</th>
+                                                <th>Status</th>
+                                                <th>Description</th>
+                                                <th>Inspection Result</th>
+                                                <th>Date Created</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -409,7 +362,7 @@
                                     </table>
                                 </div>
                                 <div class="btn-demo m-t-10">
-                                    <a id="create-inspection-btn" href="<?php echo get_site_url();?>/page?type=entity&artifact=inspection&page_action=create&parent_id=<?php echo $entity_data['id']; ?>&parent_artifact=party" class="btn btn-success waves-effect">
+                                    <a id="create-inspection-btn" href="<?php echo get_site_url();?>/page?type=entity&artifact=inspection&page_action=create&parent_id=<?php echo $entity_data['id']; ?>&parent_artifact=party&parent_field=party" class="btn btn-success waves-effect">
                                        <?php _e('Add Inspection', 'framework') ?>
                                     </a>
                                 </div>
@@ -427,14 +380,10 @@
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-
-                                                            <th>Type</th>
-                                                            <th>Status</th>
-
-                                                            <th>Description</th>
-
-                                                            <th>Date Created</th>
-
+                                                <th>Type</th>
+                                                <th>Status</th>
+                                                <th>Description</th>
+                                                <th>Date Created</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -442,7 +391,7 @@
                                     </table>
                                 </div>
                                 <div class="btn-demo m-t-10">
-                                    <a id="create-maintenance-btn" href="<?php echo get_site_url();?>/page?type=entity&artifact=maintenance&page_action=create&parent_id=<?php echo $entity_data['id']; ?>&parent_artifact=party" class="btn btn-success waves-effect">
+                                    <a id="create-maintenance-btn" href="<?php echo get_site_url();?>/page?type=entity&artifact=maintenance&page_action=create&parent_id=<?php echo $entity_data['id']; ?>&parent_artifact=party&parent_field=party" class="btn btn-success waves-effect">
                                        <?php _e('Add Maintenance', 'framework') ?>
                                     </a>
                                 </div>
@@ -460,18 +409,12 @@
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-
-                                                            <th>Method</th>
-
-                                                            <th>Type</th>
-                                                            <th>Amount</th>
-
-                                                            <th>Date</th>
-
-
-                                                            <th>Status</th>
-                                                            <th>Description</th>
-
+                                                <th>Method</th>
+                                                <th>Type</th>
+                                                <th>Amount</th>
+                                                <th>Date</th>
+                                                <th>Status</th>
+                                                <th>Description</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -479,7 +422,7 @@
                                     </table>
                                 </div>
                                 <div class="btn-demo m-t-10">
-                                    <a id="create-payment-btn" href="<?php echo get_site_url();?>/page?type=entity&artifact=payment&page_action=create&parent_id=<?php echo $entity_data['id']; ?>&parent_artifact=party" class="btn btn-success waves-effect">
+                                    <a id="create-payment-btn" href="<?php echo get_site_url();?>/page?type=entity&artifact=payment&page_action=create&parent_id=<?php echo $entity_data['id']; ?>&parent_artifact=party&parent_field=party" class="btn btn-success waves-effect">
                                        <?php _e('Add Payment', 'framework') ?>
                                     </a>
                                 </div>
@@ -497,18 +440,12 @@
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-
-                                                            <th>Type</th>
-
-                                                            <th>Owner</th>
-
-                                                            <th>Agreement</th>
-
-                                                            <th>Status</th>
-                                                            <th>Name</th>
-
-                                                            <th>Description</th>
-
+                                                <th>Type</th>
+                                                <th>Owner</th>
+                                                <th>Agreement</th>
+                                                <th>Status</th>
+                                                <th>Name</th>
+                                                <th>Description</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -516,7 +453,7 @@
                                     </table>
                                 </div>
                                 <div class="btn-demo m-t-10">
-                                    <a id="create-dispute-btn" href="<?php echo get_site_url();?>/page?type=entity&artifact=dispute&page_action=create&parent_id=<?php echo $entity_data['id']; ?>&parent_artifact=party" class="btn btn-success waves-effect">
+                                    <a id="create-dispute-btn" href="<?php echo get_site_url();?>/page?type=entity&artifact=dispute&page_action=create&parent_id=<?php echo $entity_data['id']; ?>&parent_artifact=party&parent_field=party" class="btn btn-success waves-effect">
                                        <?php _e('Add Dispute', 'framework') ?>
                                     </a>
                                 </div>
