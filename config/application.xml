@@ -1117,6 +1117,7 @@
 			<description>Party Group</description>
 			<global>Y</global>
 			<createPageTemplate>html/wordpress/entity/partygroup/partygroup-create-form.ftl</createPageTemplate>
+			<editPageTemplate>html/wordpress/entity/partygroup/partygroup-edit-form.ftl</editPageTemplate>
 			<viewPageTemplate>html/wordpress/entity/partygroup/partygroup-single.ftl</viewPageTemplate>
 			<apiTemplate>services/wordpress/partygroup/partygroup-service-api.ftl</apiTemplate>
 			<field>
@@ -1223,6 +1224,7 @@
 			<description>Person</description>
 			<global>Y</global>
 			<createPageTemplate>html/wordpress/entity/person/person-create-form.ftl</createPageTemplate>
+			<editPageTemplate>html/wordpress/entity/person/person-edit-form.ftl</editPageTemplate>
 			<viewPageTemplate>html/wordpress/entity/person/person-single.ftl</viewPageTemplate>
 			<apiTemplate>services/wordpress/person/person-service-api.ftl</apiTemplate>
 			<field>
