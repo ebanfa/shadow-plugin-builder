@@ -224,8 +224,8 @@ class ${entity.name}API {
             $entity_data['error_message'] = $post_id->get_error_message();
         }
         $persisted_entity_data = ${entity.name}API::get_by_id($entity_data['id']);
-        $entity_data = array_merge($entity_data, $persisted_entity_data);
-        return array_unique($entity_data);
+        $entity_data['party'] = $persisted_entity_data['party'];
+        return $entity_data;
     }
 
     /**
