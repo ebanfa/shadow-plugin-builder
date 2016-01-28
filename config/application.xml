@@ -995,8 +995,8 @@
 				<required>Y</required>
 				<createField>Y</createField>
 				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<viewField>N</viewField>
+				<listField>N</listField>
 				<dataType>email</dataType>
 				<size>medium</size>
 				<size>medium</size>
