@@ -57,14 +57,21 @@ class ${entity.name}API {
             wp_send_json_error(array('message' => $entity_data['error_message']));
         }
 
-        // First create the party 
-        $party_data = ${entity.name}API::create_party($entity_data);
-        // Then the party group
-        $entity_data['party'] = $party_data['id']; 
-        $entity_data = ${entity.name}API::do_create_entity($entity_data);
-        // If the party role has been set then we create the party role
-        if(isset($_POST['party_role'])) {
-            ${entity.name}API::create_party_role(sanitize_text_field($_POST['party_role']), $entity_data);
+        // Only create the party and roles in create mode
+        if($entity_data['edit_mode']){
+            // First create the party 
+            $party_data = ${entity.name}API::create_party($entity_data);
+            // Then the party group
+            $entity_data['party'] = $party_data['id']; 
+        
+            $entity_data = ${entity.name}API::do_create_entity($entity_data);
+            // If the party role has been set then we create the party role
+            if(isset($_POST['party_role'])) {
+                ${entity.name}API::create_party_role(sanitize_text_field($_POST['party_role']), $entity_data);
+            }
+        }
+        else {
+            $entity_data = ${entity.name}API::do_create_entity($entity_data);
         }
 
         // Process the results of the order creation
