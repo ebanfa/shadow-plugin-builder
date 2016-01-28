@@ -48,7 +48,7 @@
                                     Properties
                                 </a>
                             </li>
-                            <?php  } else if($entity_data['entity_code'] === 'TENANT') { ?>
+                            <?php  } if($role['entity_code'] === 'TENANT') { ?>
 
                             <li role="presentation">
                                 <a class="col-xs-4" href="#tab-10" aria-controls="tab-10" role="tab" data-toggle="tab">
@@ -62,7 +62,7 @@
                                 </a>
                             </li>
 
-                            <?php  } else if($entity_data['entity_code'] === 'SERVICE_PROVIDER') { ?>
+                            <?php  } if($role['entity_code'] === 'SERVICE_PROVIDER') { ?>
                             <li role="presentation">
                                 <a class="col-xs-4" href="#tab-12" aria-controls="tab-12" role="tab" data-toggle="tab">
                                     Inspection
