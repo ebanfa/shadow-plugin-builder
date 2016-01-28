@@ -7644,10 +7644,10 @@
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
 				<dataType>sb_party</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
@@ -7924,8 +7924,8 @@
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
-				<createField>N</createField>
-				<editField>N</editField>
+				<createField>Y</createField>
+				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
 				<dataType>sb_party</dataType>
