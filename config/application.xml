@@ -7884,9 +7884,9 @@
 			<postName>sb_dispute</postName>
 			<description>Dispute</description>
 			<global>Y</global>
-            <createPageTemplate>html/wordpress/entity/dispute/dispute-create-form.ftl</createPageTemplate>
+            <!-- <createPageTemplate>html/wordpress/entity/dispute/dispute-create-form.ftl</createPageTemplate>
             <viewPageTemplate>html/wordpress/entity/dispute/single-dispute.ftl</viewPageTemplate>
-			<apiTemplate>services/wordpress/dispute/dispute-service-api.ftl</apiTemplate>
+			<apiTemplate>services/wordpress/dispute/dispute-service-api.ftl</apiTemplate> -->
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
@@ -8006,8 +8006,8 @@
 			<postName>sb_disputeitem</postName>
 			<description>Dispute Item</description>
 			<global>Y</global>
-            <createPageTemplate>html/wordpress/entity/disputeitem/disputeitem-create-form.ftl</createPageTemplate>
-            <viewPageTemplate>html/wordpress/entity/disputeitem/single-disputeitem.ftl</viewPageTemplate>
+            <!-- <createPageTemplate>html/wordpress/entity/disputeitem/disputeitem-create-form.ftl</createPageTemplate>
+            <viewPageTemplate>html/wordpress/entity/disputeitem/single-disputeitem.ftl</viewPageTemplate> -->
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
@@ -8029,8 +8029,8 @@
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
-				<createField>N</createField>
-				<editField>N</editField>
+				<createField>Y</createField>
+				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
 				<dataType>sb_dispute</dataType>
@@ -8043,10 +8043,10 @@
 			<field>
 				<name>owner</name>
 				<isVisible>Y</isVisible>
-				<isFormField>N</isFormField>
+				<isFormField>Y</isFormField>
 				<required>Y</required>
-				<createField>N</createField>
-				<editField>N</editField>
+				<createField>Y</createField>
+				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
 				<dataType>sb_party</dataType>
