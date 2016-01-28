@@ -281,6 +281,8 @@ class ${entity.name}API {
         echo('This is the role:' . $party_role);
 
         if(isset($role_type['id'])) {
+
+            echo('Found role:' . $role_type['id']);
             // Search for all the party role type associations with the given role
             $queryArgs = array('numberposts' => -1, 'posts_per_page' => -1,
             'post_status' => 'any', 'post_type' => 'sb_party_role', 
