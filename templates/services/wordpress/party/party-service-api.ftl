@@ -278,6 +278,8 @@ class ${entity.name}API {
         $searchResults = array();
         $role_type = RoleTypeAPI::get_by_code($party_role);
 
+        echo('This is the role:' . $party_role);
+
         if(isset($role_type['id'])) {
             // Search for all the party role type associations with the given role
             $queryArgs = array('numberposts' => -1, 'posts_per_page' => -1,
