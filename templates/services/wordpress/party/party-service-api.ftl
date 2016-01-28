@@ -305,8 +305,8 @@ class ${entity.name}API {
         $searchResults = array();
         // Load all the partys with ID from above
         foreach($party_ids as $party_id){
-            echo "Finding party:" . $party_id;
-            $party = ${entity.name}API::get_by_id($party_id);
+
+            $party = ${entity.name}API::get_by_id(intval($party_id));
             array_push($searchResults, ${entity.name}API::entity_to_data($party, false));
         }
         return $searchResults;
