@@ -125,6 +125,7 @@ class ${entity.name}API {
         </#if>
     </#list>
         }
+        $entity_data['name'] = $entity_data['first_name'] . ' ' . $entity_data['last_name'];
         return $entity_data;
     }
 
@@ -224,7 +225,7 @@ class ${entity.name}API {
         $party_data = array();
         $party_data['edit_mode'] = true;
         $party_data['name'] = $entity_data['first_name'] . ' ' . $entity_data['last_name'];
-        $party_data['description'] = $entity_data['description'];
+        $party_data['description'] = $party_data['name'];
         // Get the party type
         $party_type = PartyTypeAPI::get_by_code('INDIVIDUAL');
         $party_data['type'] = $party_type['id'];
