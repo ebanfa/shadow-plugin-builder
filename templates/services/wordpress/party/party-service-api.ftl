@@ -307,7 +307,7 @@ class ${entity.name}API {
         foreach($party_ids as $party_id){
 
             $party = ${entity.name}API::get_by_id(intval($party_id));
-            array_push($searchResults, ${entity.name}API::entity_to_data($party, false));
+            array_push($searchResults, $party);
         }
         return $searchResults;
     }
