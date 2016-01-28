@@ -45,7 +45,7 @@
                             ?>
                             <li role="presentation">
                                 <a class="col-xs-4" href="#tab-8" aria-controls="tab-8" role="tab" data-toggle="tab">
-                                    Property
+                                    Properties
                                 </a>
                             </li>
                             <?php  } else if($entity_data['entity_code'] === 'TENANT') { ?>
