@@ -249,6 +249,7 @@
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
+                                                <th>Owner</th>
                                                 <th>Type</th>
                                                 <th>Status</th>
                                                 <th>Name</th>
