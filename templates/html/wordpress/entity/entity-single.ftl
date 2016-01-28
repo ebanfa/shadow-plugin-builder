@@ -9,6 +9,14 @@
         $entity_data = ${entity.name}API::get_by_id(sanitize_text_field($_REQUEST['id']));
     }
 
+    // Process the parent id, if any
+    if(isset($_REQUEST['parent_id']) && isset($_REQUEST['parent_artifact']) && isset($_REQUEST['parent_field'])) {
+
+        $parent_id = sanitize_text_field($_REQUEST['parent_id']);
+        $parent_artifact = sanitize_text_field($_REQUEST['parent_artifact']);
+        $parent_field = sanitize_text_field($_REQUEST['parent_field']);
+    }
+
 ?>
 
 <?php 
@@ -72,6 +80,12 @@
                                     <a id="delete-entity-btn" href="<?php echo get_site_url() . '/page?type=entity&artifact=${entity.name?lower_case}&id=' . $entity_data['id']; ?>&page_action=delete" class="btn btn-warning waves-effect">
                                        <?php _e('Delete', 'framework') ?>
                                     </a>
+                                    <?php if(isset($parent_artifact)) ?>
+                                    <a href="<?php echo get_site_url() . '/page?type=entity&artifact=' . $parent_artifact . '&id=' . $parent_id; ?>&page_action=view" 
+                                       class="btn btn-primary waves-effect">
+                                       <?php _e('Done', 'framework') ?>
+                                    </a>
+                                    <?php } ?>
                                 </div>
 
                             </div>

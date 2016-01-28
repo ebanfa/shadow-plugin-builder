@@ -7656,7 +7656,7 @@
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
-				<name>tenant</name>
+				<name>party</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
