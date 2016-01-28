@@ -1467,11 +1467,11 @@
 			</field>
 			<field>
 				<name>owner</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
 				<required>N</required>
-				<createField>N</createField>
-				<editField>N</editField>
+				<createField>Y</createField>
+				<editField>Y</editField>
 				<viewField>N</viewField>
 				<listField>N</listField>
 				<dataType>sb_party</dataType>
