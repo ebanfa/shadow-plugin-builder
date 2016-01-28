@@ -221,7 +221,7 @@ class ${entity.name}API {
             $entity_data['has_errors'] = true;
             $entity_data['error_message'] = $post_id->get_error_message();
         }
-        return $entity_data;
+        return ${entity.name}API::get_by_id($entity_data['id']);
     }
 
     /**
