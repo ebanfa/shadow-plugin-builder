@@ -6,6 +6,7 @@
     }
     if(isset($_REQUEST['party_role'])) { 
         $party_role = sanitize_text_field($_REQUEST['party_role']);
+        $party_role = strtoupper($party_role);
     }
 
     $page_info = $_REQUEST['page_info'];
