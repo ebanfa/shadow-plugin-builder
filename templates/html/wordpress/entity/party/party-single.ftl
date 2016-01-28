@@ -41,7 +41,7 @@
                             <?php } ?>
                             <?php 
                                 foreach ($entity_data['roles'] as $role) {
-                                    if($entity_data['entity_code'] === 'CLIENT') {
+                                    if($role['entity_code'] === 'CLIENT') {
                             ?>
                             <li role="presentation">
                                 <a class="col-xs-4" href="#tab-8" aria-controls="tab-8" role="tab" data-toggle="tab">
