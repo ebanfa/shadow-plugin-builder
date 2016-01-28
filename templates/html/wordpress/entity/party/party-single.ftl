@@ -252,14 +252,8 @@
                                                 <th>Type</th>
                                                 <th>Status</th>
                                                 <th>Name</th>
-                                                <th>Line 1</th>
-                                                <th>Line 2</th>
                                                 <th>Location</th>
-                                                <th>Date Acquired</th>
-                                                <th>Construction Date</th>
-                                                <th>Property Code</th>
                                                 <th>Title Number</th>
-                                                <th>Land Size</th>
                                                 <th>Description</th>
                                             </tr>
                                         </thead>
