@@ -329,7 +329,7 @@ class ${entity.name}API {
         $roles =array();// Load all the partys with ID from above
         foreach($role_ids as $role_id){
             $role = RoleTypeAPI::get_by_id(intval($role_id));
-            array_push($searchResults, $role);
+            array_push($roles, $role);
         }
         return $searchResults;
 
