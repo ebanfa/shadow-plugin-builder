@@ -57,7 +57,7 @@
                             </li>
                             <#list entity.relatedChildEntities?keys as key>
                             <li role="presentation">
-                                <a class="col-xs-4" href="#tab-0" aria-controls="tab-0" role="tab" data-toggle="tab">
+                                <a class="col-xs-4" href="#tab-${key_index}" aria-controls="tab-${key_index}" role="tab" data-toggle="tab">
                                     ${entity.relatedChildEntities[key].description}
                                 </a>
                             </li>
@@ -109,7 +109,7 @@
                             </div>
 
                             <#list entity.relatedChildEntities?keys as key>
-                            <div role="tabpanel" class="tab-pane animated fadeIn" id="tab-0">
+                            <div role="tabpanel" class="tab-pane animated fadeIn" id="tab-${key_index}">
                                 <div id="success"></div>
 
                                 <form id="${entity.relatedChildEntities[key].postName}-list-form">
