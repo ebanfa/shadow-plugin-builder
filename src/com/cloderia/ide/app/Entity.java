@@ -235,7 +235,7 @@ public class Entity {
 	/**
 	 * @return the relatedChildEntities
 	 */
-	public List<Entity> getRelatedChildEntities() {
+	public Map<String, Entity> getRelatedChildEntities() {
 		return relatedChildEntities;
 	}
 
