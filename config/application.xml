@@ -226,7 +226,7 @@
 				<active>N</active>
 				<cssClass>md-business</cssClass>
 				<targetType>page</targetType>
-				<targetTemplate>html/wordpress/page/financialreports-page-php.ftl</targetTemplate>
+				<targetTemplate>html/wordpress/page/reports/financialreports-page-php.ftl</targetTemplate>
 				<target>/page?type=page&amp;artifact=balancesheet</target>
 			</menu>
 			<menu>
@@ -236,7 +236,7 @@
 				<active>N</active>
 				<cssClass>md-business</cssClass>
 				<targetType>page</targetType>
-				<targetTemplate>html/wordpress/page/financialreports-page-php.ftl</targetTemplate>
+				<targetTemplate>html/wordpress/page/reports/financialreports-page-php.ftl</targetTemplate>
 				<target>/page?type=page&amp;artifact=balancesheetconsolidated</target>
 			</menu>
 			<menu>
@@ -246,7 +246,7 @@
 				<active>N</active>
 				<cssClass>md-business</cssClass>
 				<targetType>page</targetType>
-				<targetTemplate>html/wordpress/page/financialreports-page-php.ftl</targetTemplate>
+				<targetTemplate>html/wordpress/page/reports/financialreports-page-php.ftl</targetTemplate>
 				<target>/page?type=page&amp;artifact=generalledger</target>
 			</menu>
 			<menu>
@@ -256,7 +256,7 @@
 				<active>N</active>
 				<cssClass>md-business</cssClass>
 				<targetType>page</targetType>
-				<targetTemplate>html/wordpress/page/financialreports-page-php.ftl</targetTemplate>
+				<targetTemplate>html/wordpress/page/reports/financialreports-page-php.ftl</targetTemplate>
 				<target>/page?type=page&amp;artifact=generalledgerconsolidated</target>
 			</menu>
 			<menu>
@@ -266,7 +266,7 @@
 				<active>N</active>
 				<cssClass>md-business</cssClass>
 				<targetType>page</targetType>
-				<targetTemplate>html/wordpress/page/financialreports-page-php.ftl</targetTemplate>
+				<targetTemplate>html/wordpress/page/reports/financialreports-page-php.ftl</targetTemplate>
 				<target>/page?type=page&amp;artifact=incomestatement</target>
 			</menu>
 			<menu>
@@ -276,7 +276,7 @@
 				<active>N</active>
 				<cssClass>md-business</cssClass>
 				<targetType>page</targetType>
-				<targetTemplate>html/wordpress/page/financialreports-page-php.ftl</targetTemplate>
+				<targetTemplate>html/wordpress/page/reports/financialreports-page-php.ftl</targetTemplate>
 				<target>/page?type=page&amp;artifact=incomestatementconsolidated</target>
 			</menu>
 			<menu>
@@ -286,7 +286,7 @@
 				<active>N</active>
 				<cssClass>md-business</cssClass>
 				<targetType>page</targetType>
-				<targetTemplate>html/wordpress/page/financialreports-page-php.ftl</targetTemplate>
+				<targetTemplate>html/wordpress/page/reports/financialreports-page-php.ftl</targetTemplate>
 				<target>/page?type=page&amp;artifact=incomestatementdetailed</target>
 			</menu>
 			<menu>
@@ -296,7 +296,7 @@
 				<active>N</active>
 				<cssClass>md-business</cssClass>
 				<targetType>page</targetType>
-				<targetTemplate>html/wordpress/page/financialreports-page-php.ftl</targetTemplate>
+				<targetTemplate>html/wordpress/page/reports/financialreports-page-php.ftl</targetTemplate>
 				<target>/page?type=page&amp;artifact=rentalownerendingbalance</target>
 			</menu>
 			<menu>
@@ -306,7 +306,7 @@
 				<active>N</active>
 				<cssClass>md-business</cssClass>
 				<targetType>page</targetType>
-				<targetTemplate>html/wordpress/page/financialreports-page-php.ftl</targetTemplate>
+				<targetTemplate>html/wordpress/page/reports/financialreports-page-php.ftl</targetTemplate>
 				<target>/page?type=page&amp;artifact=rentalownerstatement</target>
 			</menu>
 			<menu>
@@ -316,7 +316,7 @@
 				<active>N</active>
 				<cssClass>md-business</cssClass>
 				<targetType>page</targetType>
-				<targetTemplate>html/wordpress/page/financialreports-page-php.ftl</targetTemplate>
+				<targetTemplate>html/wordpress/page/reports/financialreports-page-php.ftl</targetTemplate>
 				<target>/page?type=page&amp;artifact=propertystatement</target>
 			</menu>
 			<menu>
@@ -326,7 +326,7 @@
 				<active>N</active>
 				<cssClass>md-business</cssClass>
 				<targetType>page</targetType>
-				<targetTemplate>html/wordpress/page/financialreports-page-php.ftl</targetTemplate>
+				<targetTemplate>html/wordpress/page/reports/financialreports-page-php.ftl</targetTemplate>
 				<target>/page?type=page&amp;artifact=trialbalance</target>
 			</menu>
 			<menu>
@@ -336,7 +336,7 @@
 				<active>N</active>
 				<cssClass>md-business</cssClass>
 				<targetType>page</targetType>
-				<targetTemplate>html/wordpress/page/financialreports-page-php.ftl</targetTemplate>
+				<targetTemplate>html/wordpress/page/reports/financialreports-page-php.ftl</targetTemplate>
 				<target>/page?type=page&amp;artifact=trialbalanceconsolidated</target>
 			</menu>
 		</menuGroup>
