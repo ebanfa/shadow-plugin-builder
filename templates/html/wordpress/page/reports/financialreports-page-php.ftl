@@ -12,6 +12,9 @@ if (!defined('ABSPATH')) {
 
 <?php 
     do_action('shadowbanker_before_main_content');
+    
+    do_action('shadowbanker_before_entity_form');
+
 ?>
 	<div class="card">
         <div class="card-header">
@@ -71,13 +74,17 @@ if (!defined('ABSPATH')) {
                     </div>
                 </div>
 		    </form>
+
+		    
         </div>
     </div>
                     
                     
                    
     
-<?php 
+<?php  
+    
+    do_action('shadowbanker_after_entity_form');
     
     do_action('shadowbanker_after_main_content');
 ?>
