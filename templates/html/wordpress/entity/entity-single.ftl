@@ -92,7 +92,7 @@
                             </div>
 
                             <#list entity.relatedChildEntities?keys as key>
-                            <div role="tabpanel" class="tab-pane animated fadeIn" id="tab-${child_index + 1}">
+                            <div role="tabpanel" class="tab-pane animated fadeIn" id="tab-0">
                                 <div id="success"></div>
 
                                 <form id="${child.postName}-list-form">
