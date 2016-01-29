@@ -37,6 +37,7 @@ build_plugin_directory () {
     mkdir $TARGET/$PLUGIN_NAME/images
     mkdir $TARGET/$PLUGIN_NAME/includes
     mkdir $TARGET/$PLUGIN_NAME/includes/api
+    mkdir $TARGET/$PLUGIN_NAME/includes/font
     mkdir $TARGET/$PLUGIN_NAME/includes/utils
     mkdir $TARGET/$PLUGIN_NAME/includes/admin
     mkdir $TARGET/$PLUGIN_NAME/includes/abstracts
@@ -51,8 +52,10 @@ copy_resources(){
     echo "Copying resources"
     cp includes/api/* $TARGET/$PLUGIN_NAME/includes/api
     cp includes/utils/* $TARGET/$PLUGIN_NAME/includes/utils
+    cp includes/font/* $TARGET/$PLUGIN_NAME/includes/font
     cp includes/service/* $TARGET/$PLUGIN_NAME/includes/service
     cp templates/emails/* $TARGET/$PLUGIN_NAME/email_templates
+    cp includes/fpdf.php $TARGET/$PLUGIN_NAME/includes
     cp -r js/* $TARGET/$PLUGIN_NAME/js
 }
 
