@@ -63,10 +63,10 @@ if (!defined('ABSPATH')) {
                     <div class="form-group">
                         <div class="fg-line">
                             <input type="text" class="form-control name" 
-                                id="${field.name}" name="${field.name}" 
-                                placeholder="${field.displayName?lower_case}" 
-                                data-bv-message="The ${field.displayName?lower_case} is not valid" 
-                                data-bv-notempty-message="The ${field.displayName?lower_case} is required and cannot be empty" required>
+                                id="" name="" 
+                                placeholder="" 
+                                data-bv-message="The  is not valid" 
+                                data-bv-notempty-message="The  is required and cannot be empty" required>
                         </div>
                     </div>
                 </div>
