@@ -35,6 +35,22 @@
 <script type="text/javascript">
     
     $(document).ready(function(){
+        $('.name').mask('S', {reverse: true});
+
+        $('.email').mask('A', { translation: {'A': { pattern: /[\w@\-.+]/, recursive: true } } });
+
+        $('.phone').mask('(000) 000-0000');
+
+        $('.text').mask('A', {reverse: true});
+
+        $('.text-lg').mask('A', {reverse: true});
+
+        $('.alphanumeric').mask('A', {reverse: true});
+
+        $('.number').mask('N', { translation: {'N': { pattern: /[0-9]/, recursive: true } } });
+
+        $('.double').mask('000,000,000,000,000.00', {reverse: true});
+
         $('.money').mask('000,000,000,000,000.00', {reverse: true});
     });
 
@@ -46,6 +62,30 @@
         <#if field.isVisible == "Y">
 
             <#if field.relationshipField == "N">
+                <#if field.dataType == "name">
+                    <?php do_action('shadowbanker_before_entity_form_field'); ?>
+                        <#if field.size == "small">
+                        <div class="col-xs-4">
+                        </#if>
+                        <#if field.size == "medium">
+                        <div class="col-xs-6">
+                        </#if>
+                        <#if field.size == "large">
+                        <div class="col-xs-12">
+                        </#if>
+                            <div class="form-group">
+                                <div class="fg-line">
+                                    <input type="text" class="form-control name" 
+                                        id="${field.name}" name="${field.name}" 
+                                        placeholder="${field.displayName?lower_case}" 
+                                        data-bv-message="The ${field.displayName?lower_case} is not valid" 
+                                        data-bv-notempty-message="The ${field.displayName?lower_case} is required and cannot be empty" required>
+                                </div>
+                            </div>
+                        </div>
+                    <?php do_action('shadowbanker_after_entity_form_field');?>
+                </#if>
+
                 <#if field.dataType == "text">
                     <?php do_action('shadowbanker_before_entity_form_field'); ?>
                         <#if field.size == "small">
@@ -59,7 +99,7 @@
                         </#if>
                             <div class="form-group">
                                 <div class="fg-line">
-                                    <input type="text" class="form-control" 
+                                    <input type="text" class="form-control text" 
                                         id="${field.name}" name="${field.name}" 
                                         placeholder="${field.displayName?lower_case}" 
                                         data-bv-message="The ${field.displayName?lower_case} is not valid" 
@@ -69,6 +109,7 @@
                         </div>
                     <?php do_action('shadowbanker_after_entity_form_field');?>
                 </#if>
+
                 <#if field.dataType == "email">
                     <?php do_action('shadowbanker_before_entity_form_field'); ?>
                         <#if field.size == "small">
@@ -82,7 +123,7 @@
                         </#if>
                             <div class="form-group">
                                 <div class="fg-line">
-                                    <input type="email" class="form-control" 
+                                    <input type="email" class="form-control email" 
                                         id="${field.name}" name="${field.name}" 
                                         placeholder="${field.displayName?lower_case}" 
                                         data-bv-message="The ${field.displayName?lower_case} is not valid" 
@@ -107,8 +148,7 @@
                             <div class="form-group">
                                 <div class="fg-line">
                                     <input type="text" 
-                                        class="form-control input-mask" 
-                                        data-mask="000-00-0000000" 
+                                        class="form-control phone" 
                                         id="${field.name}" name="${field.name}" 
                                         placeholder="${field.displayName?lower_case}" 
                                         data-bv-message="The ${field.displayName?lower_case} is not valid" 
@@ -141,7 +181,7 @@
                         </div>
                     <?php do_action('shadowbanker_after_entity_form_field');?>
                 </#if>
-                <#if field.dataType == "numeric">
+                <#if field.dataType == "alphanumeric">
                     <?php do_action('shadowbanker_before_entity_form_field'); ?>
                         <#if field.size == "small">
                         <div class="col-xs-4">
@@ -154,7 +194,7 @@
                         </#if>
                             <div class="form-group">
                                 <div class="fg-line">
-                                    <input type="text" class="form-control money" 
+                                    <input type="text" class="form-control alphanumeric" 
                                         id="${field.name}" name="${field.name}" 
                                         placeholder="${field.displayName?lower_case}" 
                                         data-bv-message="The ${field.displayName?lower_case} is not valid" 
@@ -165,7 +205,7 @@
                         </div>
                     <?php do_action('shadowbanker_after_entity_form_field');?>
                 </#if>
-                <#if field.dataType == "integer">
+                <#if field.dataType == "number">
                     <?php do_action('shadowbanker_before_entity_form_field'); ?>
                         <#if field.size == "small">
                         <div class="col-xs-4">
@@ -178,7 +218,31 @@
                         </#if>
                             <div class="form-group">
                                 <div class="fg-line">
-                                    <input type="text" class="form-control" 
+                                    <input type="text" class="form-control number" 
+                                        id="${field.name}" name="${field.name}" 
+                                        placeholder="${field.displayName?lower_case}" 
+                                        data-bv-message="The ${field.displayName?lower_case} is not valid" 
+                                        data-bv-numeric-message="Only numbers permitted here" 
+                                        data-bv-notempty-message="The ${field.displayName?lower_case} is required and cannot be empty" required>
+                                </div>
+                            </div>
+                        </div>
+                    <?php do_action('shadowbanker_after_entity_form_field');?>
+                </#if>
+                <#if field.dataType == "double">
+                    <?php do_action('shadowbanker_before_entity_form_field'); ?>
+                        <#if field.size == "small">
+                        <div class="col-xs-4">
+                        </#if>
+                        <#if field.size == "medium">
+                        <div class="col-xs-6">
+                        </#if>
+                        <#if field.size == "large">
+                        <div class="col-xs-12">
+                        </#if>
+                            <div class="form-group">
+                                <div class="fg-line">
+                                    <input type="text" class="form-control double" 
                                         id="${field.name}" name="${field.name}" 
                                         placeholder="${field.displayName?lower_case}" 
                                         data-bv-message="The ${field.displayName?lower_case} is not valid" 
