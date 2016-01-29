@@ -351,6 +351,13 @@ class ${entity.name}API {
         }
         $id = sanitize_text_field($_POST['id']);
         $post_obj = wp_delete_post($id);
+
+        <#list entity.relatedChildEntities as child>
+        ${child.name?lower_case}_data = ${}API::get_by_meta();
+        if(isset(${child.name?lower_case}['id'])){
+            $post_obj = wp_delete_post(${child.name?lower_case}['id']);
+        }
+        </#list>
        
         // Process the results of the order creation
         if ($post_obj) {
@@ -390,6 +397,22 @@ class ${entity.name}API {
         $entity_data = array();
         $entityQueryArgs = array('numberposts' => -1, 'post_status' => 'any', 'post_type' => '${entity.postName}',
             'meta_query' => array(array('key' => 'entity_code', 'value' => $entity_code)));
+        $entityQuery = new WP_Query($entityQueryArgs);
+        while ($entityQuery->have_posts()) : $entityQuery->the_post();
+            $entity = $entityQuery->post;
+            $entity_data = ${entity.name}API::entity_to_data($entity, false);
+        endwhile;
+        return $entity_data;
+    }
+
+    /**
+     *
+     */
+    public static function get_by_meta($meta_key, $meta_value){
+        // Load the entity
+        $entity_data = array();
+        $entityQueryArgs = array('numberposts' => -1, 'post_status' => 'any', 'post_type' => '${entity.postName}',
+            'meta_query' => array(array('key' => $meta_key, 'value' => $meta_value)));
         $entityQuery = new WP_Query($entityQueryArgs);
         while ($entityQuery->have_posts()) : $entityQuery->the_post();
             $entity = $entityQuery->post;
