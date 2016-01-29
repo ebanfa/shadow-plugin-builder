@@ -56,20 +56,24 @@ if (!defined('ABSPATH')) {
 
 			    	<div class="col-xs-12">
 	                    <div class="form-group">
-	                        <div class="fg-line">
-	                            <input type="text" class="form-control name" 
-	                                id="" name="" 
-	                                placeholder="" 
-	                                data-bv-message="The  is not valid" 
-	                                data-bv-notempty-message="The  is required and cannot be empty" required>
-	                        </div>
-	                    </div>
+                            <div class="fg-line">
+                                <span class="input-group-addon"><i class="md md-event"></i></span>
+                                <div class="dtp-container dropdown fg-line">
+                                    <input type='text' 
+                                        id="" name=""
+                                        class="form-control date-picker" 
+                                        data-toggle="dropdown" placeholder="Select a start date" 
+                                        data-bv-message="The start date is not valid" 
+                                        data-bv-notempty-message="The start date is required and cannot be empty">
+                                </div>
+                            </div>
+                        </div>
 	                </div>
 			    </form>
 				<div class="btn-demo m-t-10">
 	                <a href="" 
 	                   class="btn btn-primary waves-effect">
-	                   <?php _e('Edit', 'framework') ?>
+	                   <?php _e('Print', 'framework') ?>
 	                </a>
 	            </div>
     
