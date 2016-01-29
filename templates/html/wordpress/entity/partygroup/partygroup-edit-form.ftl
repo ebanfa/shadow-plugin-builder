@@ -9,12 +9,9 @@
     
     function do_page_footer() {
         wp_register_script('cp_entity_form', plugins_url('/js/entity-form.js', dirname(dirname(dirname(__FILE__)))), array('jquery'),'', true);
-        wp_register_script('cp_date_picker', plugins_url('/js/vendors/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js', dirname(dirname(dirname(__FILE__)))), array('jquery'),'', true);
-        wp_register_script('cp_input_mask', plugins_url('/js/vendors/input-mask/input-mask.min.js', dirname(dirname(dirname(__FILE__)))), array('jquery'),'', true);
-        
+        wp_register_script('cp_entity_mask', plugins_url('/js/entity-input-mask.js', dirname(dirname(dirname(__FILE__)))), array('jquery'),'', true);
         wp_enqueue_script('cp_entity_form');
-        wp_enqueue_script('cp_date_picker');
-        wp_enqueue_script('cp_entity_form');
+        wp_enqueue_script('cp_entity_mask');
     }
     // Add the action
     add_action('wp_footer', 'do_page_footer');
@@ -41,6 +38,32 @@
         <#if field.isVisible == "Y">
 
             <#if field.relationshipField == "N">
+                <#if field.dataType == "name">
+                    <?php do_action('shadowbanker_before_entity_form_field'); ?>
+                        <#if field.size == "small">
+                        <div class="col-xs-4">
+                        </#if>
+                        <#if field.size == "medium">
+                        <div class="col-xs-6">
+                        </#if>
+                        <#if field.size == "large">
+                        <div class="col-xs-12">
+                        </#if>
+                            <div class="form-group">
+                                <div class="fg-line">
+                                    <input type="text" class="form-control name" 
+                                        id="${field.name}" name="${field.name}" 
+                                        value="<?php echo $entity_data['${field.name}']; ?>"  
+                                        placeholder="Enter ${field.description}" 
+                                        data-bv-message="The ${field.description} is not valid" 
+                                        data-bv-notempty-message="The ${field.description} is required and cannot be empty" required>
+                                </div>
+                            </div>
+                        </div>
+                    <?php do_action('shadowbanker_after_entity_form_field');?>
+
+                </#if>
+
                 <#if field.dataType == "text">
                     <?php do_action('shadowbanker_before_entity_form_field'); ?>
                         <#if field.size == "small">
@@ -54,7 +77,7 @@
                         </#if>
                             <div class="form-group">
                                 <div class="fg-line">
-                                    <input type="text" class="form-control" 
+                                    <input type="text" class="form-control text" 
                                         id="${field.name}" name="${field.name}" 
                                         value="<?php echo $entity_data['${field.name}']; ?>"  
                                         placeholder="Enter ${field.description}" 
@@ -64,7 +87,6 @@
                             </div>
                         </div>
                     <?php do_action('shadowbanker_after_entity_form_field');?>
-
                 </#if>
 
                 <#if field.dataType == "email">
@@ -80,7 +102,7 @@
                         </#if>
                             <div class="form-group">
                                 <div class="fg-line">
-                                    <input type="email" class="form-control" 
+                                    <input type="email" class="form-control email" 
                                         id="${field.name}" name="${field.name}" 
                                         value="<?php echo $entity_data['${field.name}']; ?>" 
                                         placeholder="Enter ${field.description}" 
@@ -108,8 +130,7 @@
                             <div class="form-group">
                                 <div class="fg-line">
                                     <input type="text" 
-                                        class="form-control input-mask" 
-                                        data-mask="000-00-0000000" 
+                                        class="form-control phone" 
                                         id="${field.name}" name="${field.name}" 
                                         value="<?php echo $entity_data['${field.name}']; ?>" 
                                         placeholder="Enter ${field.description}" 
@@ -136,7 +157,7 @@
                                 <div class="fg-line">
                                     <textarea placeholder="${field.description}" 
                                         name="${field.name}" rows="7" cols="100" 
-                                        class="form-control" id="${field.name}">
+                                        class="form-control text-lg" id="${field.name}">
                                         <?php echo $entity_data['${field.name}']; ?>
                                     </textarea>
                                 </div>
@@ -146,7 +167,7 @@
 
                 </#if>
 
-                <#if field.dataType == "numeric">
+                <#if field.dataType == "alphanumeric">
                     <?php do_action('shadowbanker_before_entity_form_field'); ?>
                         <#if field.size == "small">
                         <div class="col-xs-4">
@@ -159,7 +180,7 @@
                         </#if>
                             <div class="form-group">
                                 <div class="fg-line">
-                                    <input type="text" class="form-control" 
+                                    <input type="text" class="form-control alphanumeric" 
                                         id="${field.name}" name="${field.name}" 
                                         value="<?php echo $entity_data['${field.name}']; ?>" 
                                         placeholder="Enter ${field.description}" 
@@ -172,7 +193,7 @@
                     <?php do_action('shadowbanker_after_entity_form_field');?>
 
                 </#if>
-                <#if field.dataType == "integer">
+                <#if field.dataType == "number">
                     <?php do_action('shadowbanker_before_entity_form_field'); ?>
                         <#if field.size == "small">
                         <div class="col-xs-4">
@@ -185,7 +206,59 @@
                         </#if>
                             <div class="form-group">
                                 <div class="fg-line">
-                                    <input type="text" class="form-control" 
+                                    <input type="text" class="form-control number" 
+                                        id="${field.name}" name="${field.name}"
+                                        value="<?php echo $entity_data['${field.name}']; ?>"  
+                                        placeholder="Enter ${field.description}" 
+                                        data-bv-message="The ${field.description} is not valid" 
+                                        data-bv-numeric-message="Only numbers permitted here" 
+                                        data-bv-notempty-message="The ${field.description} is required and cannot be empty" required>
+                                </div>
+                            </div>
+                        </div>
+                    <?php do_action('shadowbanker_after_entity_form_field');?>
+                </#if>
+
+                <#if field.dataType == "double">
+                    <?php do_action('shadowbanker_before_entity_form_field'); ?>
+                        <#if field.size == "small">
+                        <div class="col-xs-4">
+                        </#if>
+                        <#if field.size == "medium">
+                        <div class="col-xs-6">
+                        </#if>
+                        <#if field.size == "large">
+                        <div class="col-xs-12">
+                        </#if>
+                            <div class="form-group">
+                                <div class="fg-line">
+                                    <input type="text" class="form-control double" 
+                                        id="${field.name}" name="${field.name}"
+                                        value="<?php echo $entity_data['${field.name}']; ?>"  
+                                        placeholder="Enter ${field.description}" 
+                                        data-bv-message="The ${field.description} is not valid" 
+                                        data-bv-numeric-message="Only numbers permitted here" 
+                                        data-bv-notempty-message="The ${field.description} is required and cannot be empty" required>
+                                </div>
+                            </div>
+                        </div>
+                    <?php do_action('shadowbanker_after_entity_form_field');?>
+                </#if>
+
+                <#if field.dataType == "money">
+                    <?php do_action('shadowbanker_before_entity_form_field'); ?>
+                        <#if field.size == "small">
+                        <div class="col-xs-4">
+                        </#if>
+                        <#if field.size == "medium">
+                        <div class="col-xs-6">
+                        </#if>
+                        <#if field.size == "large">
+                        <div class="col-xs-12">
+                        </#if>
+                            <div class="form-group">
+                                <div class="fg-line">
+                                    <input type="text" class="form-control money" 
                                         id="${field.name}" name="${field.name}"
                                         value="<?php echo $entity_data['${field.name}']; ?>"  
                                         placeholder="Enter ${field.description}" 
