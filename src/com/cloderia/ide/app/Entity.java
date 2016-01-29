@@ -5,6 +5,8 @@ package com.cloderia.ide.app;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 
 import javax.xml.bind.annotation.XmlElement;
 
@@ -27,7 +29,7 @@ public class Entity {
 	private String apiTemplate;
 	private String relatedEntityFieldName;
 	private List<Field> fields = new ArrayList<Field>();
-	private List<Entity> relatedChildEntities = new ArrayList<Entity>();
+	private Map<String, Entity> relatedChildEntities = new HashMap<String, Entity>();
 
 	/**
 	 * 
