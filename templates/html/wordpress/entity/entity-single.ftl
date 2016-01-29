@@ -95,7 +95,7 @@
                             <div role="tabpanel" class="tab-pane animated fadeIn" id="tab-0">
                                 <div id="success"></div>
 
-                                <form id="${child.postName}-list-form">
+                                <form id="${entity.relatedChildEntities[key].postName}-list-form">
                                     <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
                                     <input type="hidden" name="submitted" id="submitted" value="true" /> 
                                     <input type="hidden" name="${entity.name?lower_case}" value="<?php echo $entity_data['id']; ?>"/>
