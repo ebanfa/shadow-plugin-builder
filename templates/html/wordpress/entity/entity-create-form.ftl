@@ -35,7 +35,7 @@
 <script type="text/javascript">
     
     $(document).ready(function(){
-        $('.name').mask('N', { translation: {'N': { pattern: /[A-Za-z]\s[A-Za-z]/, recursive: true } } });
+        $('.name').mask('N', { translation: {'N': { pattern: /[A-Za-z\s]/, recursive: true } } });
 
         $('.email').mask('E', { translation: {'E': { pattern: /[\w@\-.+]/, recursive: true } } });
 
