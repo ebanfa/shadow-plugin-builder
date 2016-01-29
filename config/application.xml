@@ -2044,7 +2044,7 @@
 				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
-				<dataType>text</dataType>
+				<dataType>name</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
 				<description>Name</description>
