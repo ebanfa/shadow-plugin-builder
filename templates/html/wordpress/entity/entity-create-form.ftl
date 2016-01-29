@@ -10,7 +10,9 @@
     
     function do_page_footer() {
         wp_register_script('cp_entity_form', plugins_url('/js/entity-form.js', dirname(dirname(dirname(__FILE__)))), array('jquery'),'', true);
+        wp_register_script('cp_entity_mask', plugins_url('/js/entity-input-mask.js', dirname(dirname(dirname(__FILE__)))), array('jquery'),'', true);
         wp_enqueue_script('cp_entity_form');
+        wp_enqueue_script('cp_entity_mask');
     }
     // Add the action
     add_action('wp_footer', 'do_page_footer');
@@ -32,29 +34,6 @@
     do_action('shadowbanker_entity_form_start');
 ?>
 
-<script type="text/javascript">
-    
-    $(document).ready(function(){
-        $('.name').mask('N', { translation: {'N': { pattern: /[A-Za-z\s]/, recursive: true } } });
-
-        $('.email').mask('E', { translation: {'E': { pattern: /[\w@\-.+]/, recursive: true } } });
-
-        $('.phone').mask('(000) 000-0000');
-
-        $('.text').mask('A', {reverse: true});
-
-        $('.text-lg').mask('A', {reverse: true});
-
-        $('.alphanumeric').mask('A', {reverse: true});
-
-        $('.number').mask('I', { translation: {'I': { pattern: /[0-9]/, recursive: true } } });
-
-        $('.double').mask('000,000,000,000,000.00', {reverse: true});
-
-        $('.money').mask('000,000,000,000,000.00', {reverse: true});
-    });
-
-</script>
 
 <#list entity.fields as field>
     
@@ -173,7 +152,7 @@
                                 <div class="fg-line">
                                     <textarea placeholder="${field.displayName?lower_case}" 
                                         name="${field.name}" rows="7" cols="100" 
-                                        class="form-control" id="${field.name}">
+                                        class="form-control text-lg" id="${field.name}">
                                         <?php echo '' ?>
                                     </textarea>
                                 </div>
@@ -253,6 +232,32 @@
                         </div>
                     <?php do_action('shadowbanker_after_entity_form_field');?>
                 </#if>
+
+                <#if field.dataType == "money">
+                    <?php do_action('shadowbanker_before_entity_form_field'); ?>
+                        <#if field.size == "small">
+                        <div class="col-xs-4">
+                        </#if>
+                        <#if field.size == "medium">
+                        <div class="col-xs-6">
+                        </#if>
+                        <#if field.size == "large">
+                        <div class="col-xs-12">
+                        </#if>
+                            <div class="form-group">
+                                <div class="fg-line">
+                                    <input type="text" class="form-control money" 
+                                        id="${field.name}" name="${field.name}" 
+                                        placeholder="${field.displayName?lower_case}" 
+                                        data-bv-message="The ${field.displayName?lower_case} is not valid" 
+                                        data-bv-numeric-message="Only numbers permitted here" 
+                                        data-bv-notempty-message="The ${field.displayName?lower_case} is required and cannot be empty" required>
+                                </div>
+                            </div>
+                        </div>
+                    <?php do_action('shadowbanker_after_entity_form_field');?>
+                </#if>
+
                 <#if field.dataType == "date">
                     <?php do_action('shadowbanker_before_entity_form_field'); ?>
                         <#if field.size == "small">
