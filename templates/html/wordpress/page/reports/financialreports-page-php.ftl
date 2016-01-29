@@ -54,7 +54,7 @@ if (!defined('ABSPATH')) {
 			      data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
 			      data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
 
-			    	<div class="col-xs-12">
+			    	<div class="col-xs-12 col-md-12">
 	                    <div class="form-group">
                             <div class="fg-line">
                                 <span class="input-group-addon"><i class="md md-event"></i></span>
