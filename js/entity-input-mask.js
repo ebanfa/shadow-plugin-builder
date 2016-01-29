@@ -9,7 +9,7 @@ $(document).ready(function(){
 
     $('.text-lg').mask('N', { translation: {'N': { pattern: /[A-Za-z\s]/, recursive: true } } });
 
-    $('.alphanumeric').mask('A', {reverse: true});
+    $('.alphanumeric').mask('A', { translation: {'A': { pattern: /[A-Za-z0-9]/, recursive: true } } });
 
     $('.number').mask('I', { translation: {'I': { pattern: /[0-9]/, recursive: true } } });
 
