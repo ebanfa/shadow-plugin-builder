@@ -98,6 +98,10 @@ class ${application.name} {
         include_once('includes/utils/CloderiaMenuUtils.php');
         include_once('includes/utils/CloderiaDateUtils.php');
         include_once('includes/utils/CloderiaTemplateFunctions.php');
+        include_once('includes/fpdf.php');
+        include_once('includes/font/courier.php');
+        include_once('includes/font/courierb.php');
+
     }
     
     /**
