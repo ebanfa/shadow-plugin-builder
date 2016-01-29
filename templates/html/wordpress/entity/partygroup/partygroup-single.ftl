@@ -55,10 +55,10 @@
                                     ${entity.description}
                                 </a>
                             </li>
-                            <#list entity.relatedChildEntities as child>
+                            <#list entity.relatedChildEntities?keys as key>
                             <li role="presentation">
-                                <a class="col-xs-4" href="#tab-${child_index + 1}" aria-controls="tab-${child_index + 1}" role="tab" data-toggle="tab">
-                                    ${child.description}
+                                <a class="col-xs-4" href="#tab-0" aria-controls="tab-0" role="tab" data-toggle="tab">
+                                    ${entity.relatedChildEntities[key].description}
                                 </a>
                             </li>
                             </#list>
@@ -108,21 +108,21 @@
 
                             </div>
 
-                            <#list entity.relatedChildEntities as child>
-                            <div role="tabpanel" class="tab-pane animated fadeIn" id="tab-${child_index + 1}">
+                            <#list entity.relatedChildEntities?keys as key>
+                            <div role="tabpanel" class="tab-pane animated fadeIn" id="tab-0">
                                 <div id="success"></div>
 
-                                <form id="${child.postName}-list-form">
+                                <form id="${entity.relatedChildEntities[key].postName}-list-form">
                                     <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
                                     <input type="hidden" name="submitted" id="submitted" value="true" /> 
                                     <input type="hidden" name="${entity.name?lower_case}" value="<?php echo $entity_data['id']; ?>"/>
                                 </form>
                                 <div class="table-responsive">
-                                    <table id="${child.postName}-table" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
+                                    <table id="${entity.relatedChildEntities[key].postName}-table" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <#list child.fields as field>
+                                                <#list entity.relatedChildEntities[key].fields as field>
                                                     <#if field.listField == "Y">
                                                         <#if field.relationshipField == "N">
                                                             <th>${field.description}</th>
@@ -140,13 +140,12 @@
                                     </table>
                                 </div>
                                 <div class="btn-demo m-t-10">
-                                    <a id="create-${child.name?lower_case}-btn" href="<?php echo get_site_url();?>/page?type=entity&artifact=${child.name?lower_case}&page_action=create&parent_id=<?php echo $entity_data['id']; ?>&parent_artifact=${entity.name?lower_case}" class="btn btn-success waves-effect">
-                                       <?php _e('Add ${child.description}', 'framework') ?>
+                                    <a id="create-${entity.relatedChildEntities[key].name?lower_case}-btn" href="<?php echo get_site_url();?>/page?type=entity&artifact=${entity.relatedChildEntities[key].name?lower_case}&page_action=create&parent_id=<?php echo $entity_data['id']; ?>&parent_artifact=${entity.name?lower_case}" class="btn btn-success waves-effect">
+                                       <?php _e('Add ${entity.relatedChildEntities[key].description}', 'framework') ?>
                                     </a>
                                 </div>
                             </div>
                             </#list>
-
 
 
                         </div>
