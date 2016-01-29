@@ -35,9 +35,9 @@
 <script type="text/javascript">
     
     $(document).ready(function(){
-        $('.name').mask('S', {reverse: true});
+        $('.name').mask('N', { translation: {'N': { pattern: /[A-Za-z]*/, recursive: true } } });
 
-        $('.email').mask('A', { translation: {'A': { pattern: /[\w@\-.+]/, recursive: true } } });
+        $('.email').mask('E', { translation: {'E': { pattern: /[\w@\-.+]/, recursive: true } } });
 
         $('.phone').mask('(000) 000-0000');
 
@@ -47,7 +47,7 @@
 
         $('.alphanumeric').mask('A', {reverse: true});
 
-        $('.number').mask('N', { translation: {'N': { pattern: /[0-9]/, recursive: true } } });
+        $('.number').mask('I', { translation: {'I': { pattern: /[0-9]/, recursive: true } } });
 
         $('.double').mask('000,000,000,000,000.00', {reverse: true});
 
