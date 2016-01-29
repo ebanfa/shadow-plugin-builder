@@ -8,6 +8,9 @@ if (!defined('ABSPATH')) {
 }
     $current_user = wp_get_current_user();
     $current_user_party = PartyAPI::get_user_party($current_user->ID);
+    if(isset($_REQUEST['artifact'])) {
+    	$report_name = sanitize_text_field($_REQUEST['artifact']);
+    }
 ?>
 
 <?php 
@@ -45,8 +48,8 @@ if (!defined('ABSPATH')) {
 			<div class="card-body card-padding">
         
 
-		    	<form role="form" name="<?php echo $sb_post_type;?>_form" 
-			      id="<?php echo $sb_post_type;?>_form" action="" 
+		    	<form role="form" name="<?php echo $report_name;?>_report_form" 
+			      id="<?php echo $report_name;?>_report_form" action="<?php echo get_site_url();?>/content-report" 
 			      method="POST" enctype="multipart/form-data" 
 			      data-bv-framework="bootstrap"
 			      data-bv-message="This value is not valid"
@@ -60,7 +63,7 @@ if (!defined('ABSPATH')) {
                                 <span class="input-group-addon"><i class="md md-event"></i></span>
                                 <div class="dtp-container dropdown fg-line">
                                     <input type='text' 
-                                        id="" name=""
+                                        id="start-date" name="start_date"
                                         class="form-control date-picker" 
                                         data-toggle="dropdown" placeholder="Select a start date" 
                                         data-bv-message="The start date is not valid" 
@@ -82,7 +85,7 @@ if (!defined('ABSPATH')) {
 	</div>
 </div>
 
-                    
+          
                    
     
 <?php  
