@@ -354,7 +354,7 @@ class ${entity.name}API {
 
         <#list entity.relatedChildEntities as child>
         $${child.name?lower_case}_data = ${child.name}API::get_by_meta('party', $id);
-        if(isset(${child.name?lower_case}['id'])){
+        if(isset($${child.name?lower_case}['id'])){
             $post_obj = wp_delete_post(${child.name?lower_case}['id']);
         }
         </#list>
