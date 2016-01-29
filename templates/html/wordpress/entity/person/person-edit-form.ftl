@@ -167,6 +167,31 @@
 
                 </#if>
 
+                <#if field.dataType == "flag">
+                    <?php do_action('shadowbanker_before_entity_form_field'); ?>
+                        <#if field.size == "small">
+                        <div class="col-xs-4">
+                        </#if>
+                        <#if field.size == "medium">
+                        <div class="col-xs-6">
+                        </#if>
+                        <#if field.size == "large">
+                        <div class="col-xs-12">
+                        </#if>
+                            <div class="form-group">
+                                <div class="fg-line">
+                                    <input type="text" class="form-control flag" 
+                                        id="${field.name}" name="${field.name}" 
+                                        value="<?php echo $entity_data['${field.name}']; ?>"  
+                                        placeholder="Enter ${field.description}" 
+                                        data-bv-message="The ${field.description} is not valid" 
+                                        data-bv-notempty-message="The ${field.description} is required and cannot be empty" required>
+                                </div>
+                            </div>
+                        </div>
+                    <?php do_action('shadowbanker_after_entity_form_field');?>
+                </#if>
+
                 <#if field.dataType == "alphanumeric">
                     <?php do_action('shadowbanker_before_entity_form_field'); ?>
                         <#if field.size == "small">
