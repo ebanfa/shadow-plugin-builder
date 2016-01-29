@@ -353,8 +353,7 @@ class ${entity.name}API {
         $post_obj = wp_delete_post($id);
 
         <#list entity.relatedChildEntities?keys as key> 
-        ${key} = ${entity.relatedChildEntities[key]} 
-        $${entity.relatedChildEntities[key].name?lower_case}_data = ${entity.relatedChildEntities[key].name}API::get_by_meta(${key}, $id);
+        $${entity.relatedChildEntities[key].name?lower_case}_data = ${entity.relatedChildEntities[key].name}API::get_by_meta('${key}', $id);
         if(isset($${entity.relatedChildEntities[key].name?lower_case}['id'])){
             $post_obj = wp_delete_post($${entity.relatedChildEntities[key].name?lower_case}['id']);
         }
