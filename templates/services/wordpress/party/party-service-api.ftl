@@ -352,13 +352,14 @@ class ${entity.name}API {
         $id = sanitize_text_field($_POST['id']);
         $post_obj = wp_delete_post($id);
 
-        <#list entity.relatedChildEntities as child>
-        /*$${child.name?lower_case}_data = ${child.name}API::get_by_meta('party', $id);
-        if(isset($${child.name?lower_case}['id'])){
-            $post_obj = wp_delete_post($${child.name?lower_case}['id']);
-        }*/
+        <#list entity.relatedChildEntities?keys as key> 
+        ${key} = ${entity.relatedChildEntities[key]} 
+        $${entity.relatedChildEntities[key].name?lower_case}_data = ${entity.relatedChildEntities[key].name}API::get_by_meta(${key}, $id);
+        if(isset($${entity.relatedChildEntities[key].name?lower_case}['id'])){
+            $post_obj = wp_delete_post($${entity.relatedChildEntities[key].name?lower_case}['id']);
+        }
         </#list>
-       
+
         // Process the results of the order creation
         if ($post_obj) {
             $redirect_url = get_site_url() . '/page?type=entity&artifact=${entity.name?lower_case}&page_action=list';
