@@ -242,7 +242,7 @@ public class Entity {
 	/**
 	 * @param relatedChildEntities the relatedChildEntities to set
 	 */
-	public void setRelatedChildEntities(List<Entity> relatedChildEntities) {
+	public void setRelatedChildEntities(Map<String, Entity> relatedChildEntities) {
 		this.relatedChildEntities = relatedChildEntities;
 	}
 
