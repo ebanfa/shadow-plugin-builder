@@ -74,10 +74,9 @@ if (!defined('ABSPATH')) {
 	                </div>
 			    </form>
 				<div class="btn-demo m-t-10">
-	                <a href="" 
-	                   class="btn btn-primary waves-effect">
-	                   <?php _e('Print', 'framework') ?>
-	                </a>
+	                <button id="<?php echo $report_name; ?>-form-btn" type="submit" class="btn btn-primary waves-effect">
+			            <?php _e('Print', 'framework') ?>
+			        </button>
 	            </div>
     
 			</div>
