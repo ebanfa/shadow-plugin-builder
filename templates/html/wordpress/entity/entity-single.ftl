@@ -31,10 +31,10 @@
                                     ${entity.description}
                                 </a>
                             </li>
-                            
+
                             <#list entity.relatedChildEntities?keys as key>
                             <li role="presentation">
-                                <a class="col-xs-4" href="#tab-${child_index + 1}" aria-controls="tab-${child_index + 1}" role="tab" data-toggle="tab">
+                                <a class="col-xs-4" href="#tab-0" aria-controls="tab-0" role="tab" data-toggle="tab">
                                     ${entity.relatedChildEntities[key].description}
                                 </a>
                             </li>
