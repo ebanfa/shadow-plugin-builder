@@ -72,12 +72,12 @@ if (!defined('ABSPATH')) {
                             </div>
                         </div>
 	                </div>
+					<div class="btn-demo m-t-10">
+		                <button id="<?php echo $report_name; ?>-form-btn" type="submit" class="btn btn-primary waves-effect">
+				            <?php _e('Print', 'framework') ?>
+				        </button>
+		            </div>
 			    </form>
-				<div class="btn-demo m-t-10">
-	                <button id="<?php echo $report_name; ?>-form-btn" type="submit" class="btn btn-primary waves-effect">
-			            <?php _e('Print', 'framework') ?>
-			        </button>
-	            </div>
     
 			</div>
 		</div>
