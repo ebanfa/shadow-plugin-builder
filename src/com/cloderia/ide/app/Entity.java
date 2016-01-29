@@ -25,6 +25,7 @@ public class Entity {
 	private String viewPageTemplate;
 	private String jsPageTemplate;
 	private String apiTemplate;
+	private String relatedEntityFieldName;
 	private List<Field> fields = new ArrayList<Field>();
 	private List<Entity> relatedChildEntities = new ArrayList<Entity>();
 
@@ -198,6 +199,20 @@ public class Entity {
 	@XmlElement
 	public void setPostName(String postName) {
 		this.postName = postName;
+	}
+
+	/**
+	 * @return the relatedEntityFieldName
+	 */
+	public String getRelatedEntityFieldName() {
+		return relatedEntityFieldName;
+	}
+
+	/**
+	 * @param relatedEntityFieldName the relatedEntityFieldName to set
+	 */
+	public void setRelatedEntityFieldName(String relatedEntityFieldName) {
+		this.relatedEntityFieldName = relatedEntityFieldName;
 	}
 
 	/**
