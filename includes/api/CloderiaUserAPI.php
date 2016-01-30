@@ -111,7 +111,9 @@ class CloderiaUserAPI {
     }
 
     /**
-     * 
+     * Upon signup, a business unit is created for the new party. Since this
+     * is the business unit of the new user, we create a new party role of role
+     * type 'BUSINESS_OWNER' for the new user.
      */
     public static function create_default_party_role($businessunit_data) {
         $entity_data = array();
@@ -130,10 +132,29 @@ class CloderiaUserAPI {
     }
 
     /**
-     * 
+     * Create the chart of accounts for a specific party role. Each role type has a mapping to
+     * account structure which is used to specify the structure of the chart of account for 
+     * the said role type.
      */
-    public static function create_default_party_chartofaccounts($partyrole_data) {
-        
+    public static function create_default_party_chartofaccounts($party_data, $partyrole_data) {
+        $entity_data = array();
+        if(isset($partyrole_data['id']) && isset($party_data['id'])) {
+            // 1. Use the mapping of party role to account structure to
+            // the appropriate account structure to use for the COA we care creating
+            $role_type_data = RoleTypeAPI::get_by_code($partyrole_data['role']);
+            if(isset($role_type_data['id'])) {
+                $role_mapping_data = RoleTypeAccountStructureAPI::get_by_meta('role');
+                if(isset($role_mapping_data['id'])) {
+                    $entity_data['edit_mode'] = true;
+                    $entity_data['role'] = $partyrole_data['id'];
+                    $entity_data['structure'] = $role_mapping_data['id'];
+                    $entity_data['name'] = $party_data['name'] . ':' . $partyrole_data['name'];
+                    $entity_data['description'] = 'Chart of accounts for ' . $coa_name
+                    $entity_data = ChartOfAccountAPI::do_create_entity($entity_data);
+                }
+            }
+        }
+        return $entity_data;
     }
 
 

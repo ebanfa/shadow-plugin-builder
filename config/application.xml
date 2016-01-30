@@ -5366,7 +5366,7 @@
 				<editField>N</editField>
 				<viewField>N</viewField>
 				<listField>N</listField>
-				<dataType>text</dataType>
+				<dataType>alphanumeric</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
 				<description>Code</description>
@@ -5382,7 +5382,7 @@
 				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
-				<dataType>text</dataType>
+				<dataType>name</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
 				<description>Name</description>
@@ -5421,7 +5421,7 @@
 				<editField>N</editField>
 				<viewField>N</viewField>
 				<listField>N</listField>
-				<dataType>text</dataType>
+				<dataType>alphanumeric</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
 				<description>Code</description>
@@ -5453,7 +5453,94 @@
 				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
-				<dataType>text</dataType>
+				<dataType>name</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Name</description>
+				<displayName>name</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>description</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text-lg</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Description</description>
+				<displayName>Description</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+		</entity>
+
+		<entity>
+			<name>RoleTypeAccountStructure</name>
+			<postName>sb_roletyacctstruct</postName>
+			<description>Role Type Account Structure</description>
+			<global>Y</global>
+			<field>
+				<name>entity_code</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>alphanumeric</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Code</description>
+				<displayName>Code</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>structure</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_acctstructure</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Account Structure</description>
+				<displayName>Account Structure</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>role</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_roletype</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Role</description>
+				<displayName>Role</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>name</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>name</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
 				<description>Name</description>
@@ -5492,7 +5579,7 @@
 				<editField>N</editField>
 				<viewField>N</viewField>
 				<listField>N</listField>
-				<dataType>text</dataType>
+				<dataType>alphanumeric</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
 				<description>Code</description>
@@ -5508,7 +5595,7 @@
 				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
-				<dataType>text</dataType>
+				<dataType>name</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
 				<description>Name</description>
@@ -5563,7 +5650,7 @@
 				<editField>N</editField>
 				<viewField>N</viewField>
 				<listField>N</listField>
-				<dataType>text</dataType>
+				<dataType>alphanumeric</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
 				<description>Code</description>
@@ -5595,7 +5682,7 @@
 				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
-				<dataType>text</dataType>
+				<dataType>name</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
 				<description>Name</description>
@@ -5603,7 +5690,7 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
-				<name>mask</name>
+				<name>value</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
@@ -5614,8 +5701,8 @@
 				<dataType>text</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
-				<description>Mask</description>
-				<displayName>Mask</displayName>
+				<description>Value</description>
+				<displayName>Value</displayName>
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
@@ -5650,7 +5737,7 @@
 				<editField>N</editField>
 				<viewField>N</viewField>
 				<listField>N</listField>
-				<dataType>text</dataType>
+				<dataType>alphanumeric</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
 				<description>Code</description>
@@ -5698,7 +5785,7 @@
 				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
-				<dataType>text</dataType>
+				<dataType>name</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
 				<description>Name</description>
@@ -5737,7 +5824,7 @@
 				<editField>N</editField>
 				<viewField>N</viewField>
 				<listField>N</listField>
-				<dataType>text</dataType>
+				<dataType>alphanumeric</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
 				<description>Code</description>
@@ -5753,7 +5840,7 @@
 				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
-				<dataType>text</dataType>
+				<dataType>name</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
 				<description>Name</description>
@@ -5792,7 +5879,7 @@
 				<editField>N</editField>
 				<viewField>N</viewField>
 				<listField>N</listField>
-				<dataType>text</dataType>
+				<dataType>alphanumeric</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
 				<description>Code</description>
@@ -5840,7 +5927,7 @@
 				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
-				<dataType>text</dataType>
+				<dataType>name</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
 				<description>Name</description>
@@ -5881,7 +5968,7 @@
 				<editField>N</editField>
 				<viewField>N</viewField>
 				<listField>N</listField>
-				<dataType>text</dataType>
+				<dataType>alphanumeric</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
 				<description>Code</description>
@@ -5897,7 +5984,7 @@
 				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
-				<dataType>text</dataType>
+				<dataType>name</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
 				<description>Name</description>
@@ -5936,7 +6023,7 @@
 				<editField>N</editField>
 				<viewField>N</viewField>
 				<listField>N</listField>
-				<dataType>text</dataType>
+				<dataType>alphanumeric</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
 				<description>Code</description>
@@ -5968,7 +6055,7 @@
 				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
-				<dataType>text</dataType>
+				<dataType>name</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
 				<description>Name</description>
@@ -6007,7 +6094,7 @@
 				<editField>N</editField>
 				<viewField>N</viewField>
 				<listField>N</listField>
-				<dataType>text</dataType>
+				<dataType>alphanumeric</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
 				<description>Code</description>
@@ -6023,7 +6110,7 @@
 				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
-				<dataType>text</dataType>
+				<dataType>name</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
 				<description>Name</description>
@@ -6062,7 +6149,7 @@
 				<editField>N</editField>
 				<viewField>N</viewField>
 				<listField>N</listField>
-				<dataType>text</dataType>
+				<dataType>alphanumeric</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
 				<description>Code</description>
@@ -6126,7 +6213,7 @@
 				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
-				<dataType>text</dataType>
+				<dataType>name</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
 				<description>Name</description>
@@ -6142,7 +6229,7 @@
 				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
-				<dataType>numeric</dataType>
+				<dataType>money</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
 				<description>Amount</description>
@@ -6158,7 +6245,7 @@
 				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
-				<dataType>text</dataType>
+				<dataType>alphanumeric</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
 				<description>Account Number</description>
