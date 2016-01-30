@@ -43,7 +43,7 @@ class CloderiaUserAPI {
 
         if(isset($party_type['id'])) {
             $entity_data['edit_mode'] = true;
-            $entity_data['party_type'] = $party_type->ID;
+            $entity_data['party_type'] = $party_type['id'];
             $entity_data['user_name'] = $user_data['user_login'];
             $entity_data['password'] = $user_data['user_pass'];
             $entity_data['description'] = $user_data['description'];
