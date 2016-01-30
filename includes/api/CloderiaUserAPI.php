@@ -149,7 +149,7 @@ class CloderiaUserAPI {
                     $entity_data['role'] = $partyrole_data['id'];
                     $entity_data['structure'] = $role_mapping_data['id'];
                     $entity_data['name'] = $party_data['name'] . ':' . $partyrole_data['name'];
-                    $entity_data['description'] = 'Chart of accounts for ' . $coa_name
+                    $entity_data['description'] = 'Chart of accounts for ' . $coa_name;
                     $entity_data = ChartOfAccountAPI::do_create_entity($entity_data);
                 }
             }
