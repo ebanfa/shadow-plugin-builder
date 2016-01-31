@@ -443,16 +443,7 @@
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;artifact=party&amp;page_action=list&amp;party_role=organization</target>
-			</menu>
-			<menu>
-				<name>businessunits</name>
-				<displayName>Business Units</displayName>
-				<description>Business Units</description>
-				<active>N</active>
-				<cssClass>md-mail</cssClass>
-				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;page_action=list&amp;artifact=businessunit</target>
+				<target>/page?type=entity&amp;artifact=party&amp;page_action=list&amp;party_role=user_organization</target>
 			</menu>
 			<menu>
 				<name>profile</name>
@@ -1220,6 +1211,22 @@
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
+				<name>parent_unit</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Parent Business Unit</description>
+				<displayName>Parent Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
 				<name>business_unit</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
@@ -1519,7 +1526,7 @@
 			<name>PartyProfile</name>
 			<postName>sb_partyprofile</postName>
 			<description>Party Profile</description>
-			<global>Y</global>
+			<global>N</global>
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
@@ -1550,6 +1557,38 @@
 				<dataColumn>true</dataColumn>
 				<description>Party</description>
 				<displayName>Party</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>default_unit</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Default Business Unit</description>
+				<displayName>Default Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>

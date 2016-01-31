@@ -15,20 +15,20 @@ class CloderiaUserAPI {
     public static function create_shadow_user($user_data) {
         // Validate the passed in data
         if(CloderiaUserAPI::validate_user_data($user_data)) {
-            // create the party record 
             // 1. Create the party
             $party_data = CloderiaUserAPI::create_party($user_data);
             if(!$party_data['has_errors']) {
-                // 2. Create the profile for the user
-                // 4. Create the default buisness unit for the party
-                // 3. Create the default party role
-                // 5. Send the user successully created email
-                $person_data = CloderiaUserAPI::create_party_person($user_data, $party_data);
-                $partyprofile_data = CloderiaUserAPI::create_party_profile($user_data, $party_data);
+                // 2. Create the default buisness unit for the party
                 $businessunit_data = CloderiaUserAPI::create_default_party_businessunit($party_data);
-                $partyrole_data = CloderiaUserAPI::create_default_party_role($businessunit_data);
-                $chartofaccounts_data = CloderiaUserAPI::create_default_party_chartofaccounts($party_data, $partyrole_data);
-
+                // 3. Create the person entity for the party
+                $person_data = CloderiaUserAPI::create_party_person($businessunit_data, $party_data);
+                // 4. Create the default party role
+                $partyprofile_data = CloderiaUserAPI::create_party_profile($businessunit_data, $party_data);
+                // 5. Create the profile for the user
+                $partyrole_data = CloderiaUserAPI::create_default_party_role($businessunit_data, $party_data);
+                // 6. Create the chart of accounts entity
+                $chartofaccounts_data = CloderiaUserAPI::create_default_party_chartofaccounts($businessunit_data, $partyrole_data);
+                // 7. Send the user successully created email
                 CloderiaUserAPI::send_user_created_email($user_data, $party_data);
             }
         }
@@ -39,6 +39,7 @@ class CloderiaUserAPI {
      */
     public static function create_party($user_data) {
         $entity_data = array();
+        // Get the default party type (INDIVIDUAL)
         $party_type = PartyTypeAPI::get_by_code(get_option('cp_default_partytype'));
 
         if(isset($party_type['id'])) {
@@ -48,46 +49,13 @@ class CloderiaUserAPI {
             $entity_data['password'] = $user_data['user_pass'];
             $entity_data['description'] = $user_data['description'];
             $entity_data['name'] = $user_data['first_name'] . ' ' . $user_data['last_name'];
-            // Create the party and return the results of the process
-            $entity_data = PartyAPI::do_create_entity($entity_data);
-        }
-        return $entity_data;
-    }
-
-    /**
-     * Only a person can sign up within the system. This creates the person
-     * entity for the party
-     */
-    public static function create_party_person($user_data, $party_data) {
-        $entity_data = array();
-        if(isset($party_data['id'])) {
-            $entity_data['edit_mode'] = true;
-            $entity_data['party'] = $party_data['id'];
-            $entity_data['name'] = $party_data['name'];
+            // These two fields are not persistent fields, we just use the to hold the
+            // data for first and last name
             $entity_data['first_name'] = $user_data['first_name'];
             $entity_data['last_name'] = $user_data['last_name'];
-            $entity_data['gender'] = 'X';
-            $entity_data['id_number'] = '0000000000';
-            $entity_data['date_of_birth'] = date("Y-m-d H:i:s");
+            // Create the party and return the results of the process
+            $entity_data = PartyAPI::do_create_entity($entity_data);
 
-            $entity_data = PersonAPI::do_create_entity($entity_data);
-        }
-        return $entity_data;
-    }
-
-    /**
-     * Each party has a party profile that holds profile related information 
-     * for the user. This is stuff like profile picture, display name, status etc.
-     */
-    public static function create_party_profile($user_data, $party_data) {
-        $entity_data = array();
-        if(isset($party_data['id'])) {
-            $entity_data['edit_mode'] = true;
-            $entity_data['party'] = $party_data['id'];
-            $entity_data['name'] = $user_data['display_name'];
-            $entity_data['display_name'] = $user_data['display_name']; 
-            $entity_data['date_created'] = date("Y-m-d H:i:s");
-            $entity_data = PartyProfileAPI::do_create_entity($entity_data);
         }
         return $entity_data;
     }
@@ -108,9 +76,12 @@ class CloderiaUserAPI {
             $entity_data = BusinessUnitAPI::do_create_entity($entity_data);
             // We have to update the business unit of the 
             // business unit and of the party because both
-            // business unit and party are not global entities
+            // business unit and party are not global entities 
+            // hence both require their respective business unit
+            // properties to be set
             if(isset($entity_data['id'])) {
                 $entity_data['edit_mode'] = false;
+                $entity_data['parent_unit'] = $entity_data['id'];
                 $entity_data['business_unit'] = $entity_data['id'];
                 $entity_data = BusinessUnitAPI::do_create_entity($party_data);
 
@@ -123,20 +94,64 @@ class CloderiaUserAPI {
     }
 
     /**
+     * Only a person can sign up within the system. This creates the person
+     * entity for the party
+     */
+    public static function create_party_person($businessunit_data, $party_data) {
+        $entity_data = array();
+        if(isset($party_data['id']) && isset($businessunit_data['id'])) {
+            $entity_data['edit_mode'] = true;
+            $entity_data['party'] = $party_data['id'];
+            $entity_data['name'] = $party_data['name'];
+            $entity_data['first_name'] = $party_data['first_name'];
+            $entity_data['last_name'] = $party_data['last_name'];
+            $entity_data['gender'] = 'X';
+            $entity_data['id_number'] = '0000000000';
+            $entity_data['date_of_birth'] = date("Y-m-d H:i:s");
+            $entity_data['business_unit'] = $businessunit_data['id'];
+            $entity_data = PersonAPI::do_create_entity($entity_data);
+        }
+        return $entity_data;
+    }
+
+    /**
+     * Each party has a party profile that holds profile related information 
+     * for the user. This is stuff like profile picture, display name, status etc.
+     * Each profile has a default business unit which dictates the data that the
+     * current user is allowed to access. The second business unit parameter is
+     * business unit in which this profile is defined
+     */
+    public static function create_party_profile($businessunit_data, $party_data) {
+        $entity_data = array();
+        if(isset($party_data['id']) && isset($businessunit_data['id'])) {
+            $entity_data['edit_mode'] = true;
+            $entity_data['party'] = $party_data['id'];
+            $entity_data['name'] = $party_data['name'];
+            $entity_data['display_name'] = $party_data['name']; 
+            $entity_data['date_created'] = date("Y-m-d H:i:s");
+            $entity_data['default_unit'] = $businessunit_data['id'];
+            $entity_data['business_unit'] = $businessunit_data['id'];
+            $entity_data = PartyProfileAPI::do_create_entity($entity_data);
+        }
+        return $entity_data;
+    }
+
+    /**
      * Upon signup, a business unit is created for the new party. Since this
      * is the business unit of the new user, we create a new party role of role
      * type 'BUSINESS_OWNER' for the new user.
      */
-    public static function create_default_party_role($businessunit_data) {
+    public static function create_default_party_role($businessunit_data, $party_data) {
         $entity_data = array();
         $owner_role_data = RoleTypeAPI::get_by_code('BUSINESS_OWNER');
-        if(isset($businessunit_data['id']) && isset($owner_role_data['id'])) {
+        if(isset($businessunit_data['id']) && isset($owner_role_data['id']) && isset($party_data['id'])) {
             $entity_data['edit_mode'] = true;
-            $entity_data['party'] = $businessunit_data['party'];
+            $entity_data['name'] = $party_data['name'];
             $entity_data['role'] = $owner_role_data['id'];
+            $entity_data['party'] = $party_data['id'];
+            $entity_data['parent_unit'] = $businessunit_data['id'];
             $entity_data['business_unit'] = $businessunit_data['id'];
-            $entity_data['name'] = $owner_role_data['name'];
-            $entity_data['description'] = $owner_role_data['description'];
+            $entity_data['description'] = 'Default role ' $owner_role_data['name'] . 'for party ' . $party_data['name'];
             $entity_data = PartyRoleAPI::do_create_entity($entity_data);
         }
         return $entity_data;
@@ -148,9 +163,9 @@ class CloderiaUserAPI {
      * account structure which is used to specify the structure of the chart of account for 
      * the said role type.
      */
-    public static function create_default_party_chartofaccounts($party_data, $partyrole_data) {
+    public static function create_default_party_chartofaccounts($businessunit_data, $partyrole_data) {
         $entity_data = array();
-        if(isset($partyrole_data['id']) && isset($party_data['id'])) {
+        if(isset($partyrole_data['id']) && isset($businessunit_data['id'])) {
             // 1. Use the mapping of party role to account structure to
             // the appropriate account structure to use for the COA we care creating
             $role_type_data = RoleTypeAPI::get_by_code($partyrole_data['role']);
@@ -159,8 +174,9 @@ class CloderiaUserAPI {
                 if(isset($role_mapping_data['id'])) {
                     $entity_data['edit_mode'] = true;
                     $entity_data['role'] = $partyrole_data['id'];
+                    $entity_data['name'] = $partyrole_data['name'];
                     $entity_data['structure'] = $role_mapping_data['id'];
-                    $entity_data['name'] = $party_data['name'] . ':' . $partyrole_data['name'];
+                    $entity_data['business_unit'] = $businessunit_data['id'];
                     $entity_data['description'] = 'Chart of accounts for ' . $coa_name;
                     $entity_data = ChartOfAccountAPI::do_create_entity($entity_data);
                 }

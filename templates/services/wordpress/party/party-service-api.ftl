@@ -278,21 +278,25 @@ class ${entity.name}API {
         $searchResults = array();
         $role_type = RoleTypeAPI::get_by_code($party_role);
 
-        if(isset($role_type['id'])) {
+        if(isset($role_type['id']) && isset($role_type['code'])) {
 
-            // Search for all the party role type associations with the given role
-            $queryArgs = array('numberposts' => -1, 'posts_per_page' => -1,
-            'post_status' => 'any', 'post_type' => 'sb_partyrole', 
-            'meta_query' => array(array('key' => 'role', 'value' => $role_type['id'])));
+            if($role_type['code'] === 'USER_ORGANIZATION') {
+                $searchResults = ${entity.name}API::get_user_organizations($party_role);
+            } else {
+                // Search for all the party role type associations with the given role
+                $queryArgs = array('numberposts' => -1, 'posts_per_page' => -1,
+                'post_status' => 'any', 'post_type' => 'sb_partyrole', 
+                'meta_query' => array(array('key' => 'role', 'value' => $role_type['id'])));
 
-            $party_ids = array();
-            $entityQuery = new WP_Query($queryArgs);
-            while ($entityQuery->have_posts()) : $entityQuery->the_post();
-                $entity = $entityQuery->post;
-                array_push($party_ids, get_post_meta($entity->ID, 'party', true));
-            endwhile;
-            wp_reset_postdata();
-            return ${entity.name}API::get_by_ids($party_ids);
+                $party_ids = array();
+                $entityQuery = new WP_Query($queryArgs);
+                while ($entityQuery->have_posts()) : $entityQuery->the_post();
+                    $entity = $entityQuery->post;
+                    array_push($party_ids, get_post_meta($entity->ID, 'party', true));
+                endwhile;
+                wp_reset_postdata();
+                $searchResults = ${entity.name}API::get_by_ids($party_ids);
+            }
         }
             return $searchResults;
     }
