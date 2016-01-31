@@ -24,10 +24,10 @@ class CloderiaUserAPI {
                 // 3. Create the default party role
                 // 5. Send the user successully created email
                 $person_data = CloderiaUserAPI::create_party_person($user_data, $party_data);
-                $partyprofile_data = CloderiaUserAPI::create_party_profile($party_data);
+                $partyprofile_data = CloderiaUserAPI::create_party_profile($user_data, $party_data);
                 $businessunit_data = CloderiaUserAPI::create_default_party_businessunit($party_data);
                 $partyrole_data = CloderiaUserAPI::create_default_party_role($businessunit_data);
-                $chartofaccounts_data = CloderiaUserAPI::create_default_party_chartofaccounts($partyrole_data);
+                $chartofaccounts_data = CloderiaUserAPI::create_default_party_chartofaccounts($party_data, $partyrole_data);
 
                 CloderiaUserAPI::send_user_created_email($user_data, $entity_data);
             }
@@ -79,7 +79,7 @@ class CloderiaUserAPI {
      * Each party has a party profile that holds profile related information 
      * for the user. This is stuff like profile picture, display name, status etc.
      */
-    public static function create_party_profile($party_data) {
+    public static function create_party_profile($user_data['display_name'], $party_data) {
         $entity_data = array();
         if(isset($party_data['id'])) {
             $entity_data['edit_mode'] = true;
