@@ -151,7 +151,7 @@ class CloderiaUserAPI {
             $entity_data['party'] = $party_data['id'];
             $entity_data['parent_unit'] = $businessunit_data['id'];
             $entity_data['business_unit'] = $businessunit_data['id'];
-            $entity_data['description'] = 'Default role ' $owner_role_data['name'] . 'for party ' . $party_data['name'];
+            $entity_data['description'] = 'Default role ' . $owner_role_data['name'] . ' for party ' . $party_data['name'];
             $entity_data = PartyRoleAPI::do_create_entity($entity_data);
         }
         return $entity_data;
