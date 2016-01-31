@@ -29,7 +29,7 @@ class CloderiaUserAPI {
                 $partyrole_data = CloderiaUserAPI::create_default_party_role($businessunit_data);
                 $chartofaccounts_data = CloderiaUserAPI::create_default_party_chartofaccounts($party_data, $partyrole_data);
 
-                //CloderiaUserAPI::send_user_created_email($user_data, $party_data);
+                CloderiaUserAPI::send_user_created_email($user_data, $party_data);
             }
         }
     }
@@ -176,10 +176,10 @@ class CloderiaUserAPI {
     /**
      * 
      */
-    public static function send_user_created_email($user_name) 
+    public static function send_user_created_email($user_data) 
     {   
         // Find the user
-        $user = get_user_by('login', $user_name );
+        $user = get_user_by('login', $user_data['user_login'] );
         if($user) {
             // Get the user data context {username, password etc}
             $data_context = CloderiaUserAPI::get_user_data_context($user);
