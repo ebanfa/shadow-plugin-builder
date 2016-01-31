@@ -431,6 +431,32 @@
 		</menuGroup>
 
 		<menuGroup>
+			<name>businessinformation</name>
+			<displayName>Business Information</displayName>
+			<description>Business Information</description>
+			<type>group</type>
+			<cssClass>md-person</cssClass>
+			<menu>
+				<name>organizations</name>
+				<displayName>Organizations</displayName>
+				<description>Organizations</description>
+				<active>N</active>
+				<cssClass>md-mail</cssClass>
+				<targetType>entity</targetType>
+				<target>/page?type=entity&amp;artifact=party&amp;page_action=list&amp;role=user_organization</target>
+			</menu>
+			<menu>
+				<name>staff</name>
+				<displayName>Staff</displayName>
+				<description>Staff</description>
+				<active>N</active>
+				<cssClass>md-person</cssClass>
+				<targetType>entity</targetType>
+				<target>/page?type=entity&amp;artifact=party&amp;page_action=list&amp;role=staff</target>
+			</menu>
+		</menuGroup>
+
+		<menuGroup>
 			<name>settings</name>
 			<displayName>Settings</displayName>
 			<description>Settings</description>
