@@ -83,7 +83,7 @@ class CloderiaUserAPI {
                 $entity_data['edit_mode'] = false;
                 $entity_data['parent_unit'] = $entity_data['id'];
                 $entity_data['business_unit'] = $entity_data['id'];
-                $entity_data = BusinessUnitAPI::do_create_entity($party_data);
+                $entity_data = BusinessUnitAPI::do_create_entity($entity_data);
 
                 $party_data['edit_mode'] = false;
                 $party_data['business_unit'] = $entity_data['id'];
