@@ -259,7 +259,7 @@ class ${entity.name}API {
           }
         }
         // Push the business unit into the query
-        array_push($meta_array, $array('key' => 'business_unit', 'value' => $business_unit['id'] ););
+        array_push($meta_array, array('key' => 'business_unit', 'value' => $business_unit['id']));
 
         $count = 0;
         $queryArgs = array('numberposts' => -1, 'posts_per_page' => -1,
