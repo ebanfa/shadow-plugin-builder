@@ -4,9 +4,9 @@
     if (!defined('ABSPATH')) {
         exit; // Exit if accessed directly
     }
-    if(isset($_REQUEST['party_role'])) { 
-        $party_role = sanitize_text_field($_REQUEST['party_role']);
-        $party_role = strtoupper($party_role);
+    if(isset($_REQUEST['role'])) { 
+        $role = sanitize_text_field($_REQUEST['role']);
+        $role = strtoupper($role);
     }
 
     $page_info = $_REQUEST['page_info'];
@@ -52,12 +52,12 @@
                         
                         <ul class="dropdown-menu dropdown-menu-right">
                             <li>
-        <a href="/page?type=entity&page_action=create&artifact=person<?php if(isset($party_role)){ echo '&party_role='. $party_role; } ?>">
+        <a href="/page?type=entity&page_action=create&artifact=person<?php if(isset($role)){ echo '&role='. $role; } ?>">
                                     Add person
                                 </a>
                             </li>
                             <li>
-                                <a href="/page?type=entity&page_action=create&artifact=partygroup<?php if(isset($party_role)){ echo '&party_role='. $party_role; } ?>">Add organization</a>
+                                <a href="/page?type=entity&page_action=create&artifact=partygroup<?php if(isset($role)){ echo '&role='. $role; } ?>">Add organization</a>
                             </li>
                         </ul>
                     </li>
@@ -71,7 +71,7 @@
                     <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
 
                     <?php  if(isset($party_role)){ ?>
-                        <input type="hidden" name="party_role" id="party_role" value="<?php  echo $party_role; ?>" /> 
+                        <input type="hidden" name="party_role" id="role" value="<?php  echo $role; ?>" /> 
                     <?php  } ?>
                     <input type="hidden" name="submitted" id="submitted" value="true" /> 
                 </form>

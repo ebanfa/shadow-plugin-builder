@@ -32,7 +32,7 @@
 				<active>N</active>
 				<cssClass>md-mail add-client-btn</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;artifact=party&amp;page_action=list&amp;party_role=client</target>
+				<target>/page?type=entity&amp;artifact=party&amp;page_action=list&amp;role=client</target>
 			</menu>
 			<menu>
 				<name>tenants</name>
@@ -41,7 +41,7 @@
 				<active>N</active>
 				<cssClass>md-mail add-tenant-btn</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;artifact=party&amp;page_action=list&amp;party_role=tenant</target>
+				<target>/page?type=entity&amp;artifact=party&amp;page_action=list&amp;role=tenant</target>
 			</menu>
 			<menu>
 				<name>prospectivetenants</name>
@@ -50,7 +50,7 @@
 				<active>N</active>
 				<cssClass>md-mail add-prospect-btn</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;artifact=party&amp;page_action=list&amp;party_role=prosective_tenant</target>
+				<target>/page?type=entity&amp;artifact=party&amp;page_action=list&amp;role=prosective_tenant</target>
 			</menu>
 			<menu>
 				<name>serviceproviders</name>
@@ -59,7 +59,7 @@
 				<active>N</active>
 				<cssClass>md-mail add-serviceprovider-btn</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;artifact=party&amp;page_action=list&amp;party_role=service_provider</target>
+				<target>/page?type=entity&amp;artifact=party&amp;page_action=list&amp;role=service_provider</target>
 			</menu>
 		</menuGroup>
 
@@ -443,7 +443,7 @@
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;artifact=party&amp;page_action=list&amp;party_role=user_organization</target>
+				<target>/page?type=entity&amp;artifact=party&amp;page_action=list&amp;role=user_organization</target>
 			</menu>
 			<menu>
 				<name>profile</name>
