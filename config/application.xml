@@ -942,8 +942,8 @@
 				<name>business_unit</name>
 				<isVisible>N</isVisible>
 				<isFormField>N</isFormField>
-				<required>N</required>
-				<createField>N</createField>
+				<required>Y</required>
+				<createField>Y</createField>
 				<editField>N</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>

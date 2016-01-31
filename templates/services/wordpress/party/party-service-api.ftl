@@ -143,6 +143,7 @@ class ${entity.name}API {
             if(isset($entity_data['has_errors'])){
                 $entity_data['error_message'] = 'The following fields are required: '.implode(', ', $entity_data['error_fields']);
             }
+            
         }
         else { 
 
@@ -473,7 +474,7 @@ class ${entity.name}API {
      * Get the party of the user with the provided id
      */
     public static function get_user_party($user_id){
-	$user_party = array();
+	    $user_party = array();
         $user = get_user_by('id', $user_id);
         $count = 0;
         if($user){ 
@@ -498,18 +499,8 @@ class ${entity.name}API {
     public static function get_current_user_party(){
         $user_party = array();
         $current_user = wp_get_current_user();
-        $count = 0;
-        if($user){ 
-            $entityQueryArgs = array('numberposts' => -1, 'post_status' => 'any', 'post_type' => '${entity.postName}',
-                'meta_query' => array(array('key' => 'user_name', 'value' => $current_user->user_login)));
-            $entityQuery = new WP_Query($entityQueryArgs);
-            while ($entityQuery->have_posts()) : $entityQuery->the_post();
-                $entity = $entityQuery->post;
-                if($count == 0){
-                    $user_party = ${entity.name}API::entity_to_data($entity, false);
-                }
-                $count++;
-            endwhile;
+        if ($current_user) {
+           $user_party = ${entity.name}API::get_user_party($current_user->ID);
         }
         return $user_party;
     }
@@ -520,7 +511,7 @@ class ${entity.name}API {
     public static function get_current_user_business_unit(){
         $business_unit = array();
         // Get the party of the current user
-        $current_user_party = get_current_user_party();
+        $current_user_party = ${entity.name}API::get_current_user_party();
         if(isset($current_user_party['id'])){ 
             // Get the party profile of the current user
             $current_user_party_role = PartyProfileAPI::get_by_meta('party', $current_user_party['id']);
@@ -531,7 +522,7 @@ class ${entity.name}API {
                 $business_unit = BusinessUnitAPI::entity_to_data($entity);
             }
         }
-        return $user_party;
+        return $business_unit;
     }
 
 }
