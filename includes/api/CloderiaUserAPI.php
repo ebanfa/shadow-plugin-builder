@@ -106,6 +106,12 @@ class CloderiaUserAPI {
             $entity_data['address_1'] = '0000000000'; 
             $entity_data['description'] = $party_data['name'];
             $entity_data = BusinessUnitAPI::do_create_entity($entity_data);
+            // We have to update the business unit of the party
+            if(isset($entity_data['id'])) {
+                $party_data['edit_mode'] = false;
+                $party_data['business_unit'] = $entity_data['id'];
+                PartyAPI::do_create_entity($party_data);
+            }
         }
         return $entity_data;
     }

@@ -431,46 +431,29 @@
 		</menuGroup>
 
 		<menuGroup>
-			<name>businessinformation</name>
-			<displayName>Business Information</displayName>
-			<description>Business Information</description>
-			<type>group</type>
-			<cssClass>md-business</cssClass>
-			<menu>
-				<name>locations</name>
-				<displayName>Locations</displayName>
-				<description>Locations</description>
-				<active>N</active>
-				<cssClass>md-mail</cssClass>
-				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;page_action=list&amp;artifact=location</target>
-			</menu>
-			<menu>
-				<name>departments</name>
-				<displayName>Departments</displayName>
-				<description>Departments</description>
-				<active>N</active>
-				<cssClass>md-mail</cssClass>
-				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;page_action=list&amp;artifact=department</target>
-			</menu>
-			<menu>
-				<name>branches</name>
-				<displayName>Branches</displayName>
-				<description>Branches</description>
-				<active>N</active>
-				<cssClass>md-mail</cssClass>
-				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;page_action=list&amp;artifact=branche</target>
-			</menu>
-		</menuGroup>
-
-		<menuGroup>
 			<name>settings</name>
 			<displayName>Settings</displayName>
 			<description>Settings</description>
 			<type>group</type>
 			<cssClass>md-person</cssClass>
+			<menu>
+				<name>organizations</name>
+				<displayName>Organizations</displayName>
+				<description>Business Units</description>
+				<active>N</active>
+				<cssClass>md-mail</cssClass>
+				<targetType>entity</targetType>
+				<target>/page?type=entity&amp;artifact=party&amp;page_action=list&amp;party_role=organization</target>
+			</menu>
+			<menu>
+				<name>businessunits</name>
+				<displayName>Business Units</displayName>
+				<description>Business Units</description>
+				<active>N</active>
+				<cssClass>md-mail</cssClass>
+				<targetType>entity</targetType>
+				<target>/page?type=entity&amp;page_action=list&amp;artifact=businessunit</target>
+			</menu>
 			<menu>
 				<name>profile</name>
 				<displayName>Profile</displayName>
@@ -488,15 +471,6 @@
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
 				<target>/page?type=entity&amp;page_action=list&amp;artifact=conversation</target>
-			</menu>
-			<menu>
-				<name>notifications</name>
-				<displayName>Notifications</displayName>
-				<description>Notifications</description>
-				<active>N</active>
-				<cssClass>md-notifications</cssClass>
-				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;page_action=list&amp;artifact=notification</target>
 			</menu>
 			<menu>
 				<name>signout</name>
@@ -937,7 +911,7 @@
 			<name>Party</name>
 			<postName>sb_party</postName>
 			<description>Party</description>
-			<global>Y</global>
+			<global>N</global>
 			<viewPageTemplate>html/wordpress/entity/party/party-single.ftl</viewPageTemplate>
 			<listPageTemplate>html/wordpress/entity/party/party-list.ftl</listPageTemplate>
 			<apiTemplate>services/wordpress/party/party-service-api.ftl</apiTemplate>
@@ -971,6 +945,22 @@
 				<dataColumn>true</dataColumn>
 				<description>Type</description>
 				<displayName>Type</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>N</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
