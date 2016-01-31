@@ -79,7 +79,7 @@ class CloderiaUserAPI {
      * Each party has a party profile that holds profile related information 
      * for the user. This is stuff like profile picture, display name, status etc.
      */
-    public static function create_party_profile($user_data['display_name'], $party_data) {
+    public static function create_party_profile($user_data, $party_data) {
         $entity_data = array();
         if(isset($party_data['id'])) {
             $entity_data['edit_mode'] = true;
