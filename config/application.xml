@@ -5540,6 +5540,93 @@
 		</entity>
 
 		<entity>
+			<name>ChartOfAccounts</name>
+			<postName>sb_chartofaccounts</postName>
+			<description>Chart Of Accounts</description>
+			<global>Y</global>
+			<field>
+				<name>entity_code</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>alphanumeric</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Code</description>
+				<displayName>Code</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>structure</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_acctstructure</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Account Structure</description>
+				<displayName>Account Structure</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>party_role</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_partyrole</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Party Role</description>
+				<displayName>Party Role</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>name</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>name</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Name</description>
+				<displayName>name</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>description</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text-lg</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Description</description>
+				<displayName>Description</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+		</entity>
+
+		<entity>
 			<name>RoleTypeAccountStructure</name>
 			<postName>sb_roletyacctstruct</postName>
 			<description>Role Type Account Structure</description>
