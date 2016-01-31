@@ -518,8 +518,7 @@ class ${entity.name}API {
             // The current business is gotten from the business unit set as default business unit
             // for the party profile of the current user
             if(isset($current_user_party_role['id']) && isset($current_user_party_role['default_unit'])) {
-                $entity = BusinessUnitAPI::get_by_id($current_user_party_role['default_unit']);
-                $business_unit = BusinessUnitAPI::entity_to_data($entity, false);
+                $business_unit = BusinessUnitAPI::get_by_id($current_user_party_role['default_unit']);
             }
         }
         return $business_unit;
