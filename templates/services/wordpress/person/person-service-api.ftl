@@ -59,9 +59,13 @@ class ${entity.name}API {
 
         // Only create the party and roles in create mode
         if($entity_data['edit_mode']){
+            // Get business unit of the current user
+            $business_unit = PartyAPI::get_current_user_business_unit();
+            if (isset($business_unit['id'])) {
+                $entity_data['business_unit'] = $business_unit['id'];
+            }
             // First create the party 
             $party_data = ${entity.name}API::create_party($entity_data);
-            // Then the party group
             $entity_data['party'] = $party_data['id']; 
         
             $entity_data = ${entity.name}API::do_create_entity($entity_data);
