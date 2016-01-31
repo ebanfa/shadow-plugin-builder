@@ -1018,7 +1018,7 @@
 			<name>BusinessUnit</name>
 			<postName>sb_businessunit</postName>
 			<description>Business Unit</description>
-			<global>Y</global>
+			<global>N</global>
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
@@ -1049,6 +1049,38 @@
 				<dataColumn>true</dataColumn>
 				<description>Party</description>
 				<displayName>Party</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>parent_unit</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Parent Business Unit</description>
+				<displayName>Parent Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
@@ -1138,7 +1170,7 @@
 			<name>PartyRole</name>
 			<postName>sb_partyrole</postName>
 			<description>Party Role</description>
-			<global>Y</global>
+			<global>N</global>
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
@@ -1241,7 +1273,7 @@
 			<name>PartyGroup</name>
 			<postName>sb_partygroup</postName>
 			<description>Party Group</description>
-			<global>Y</global>
+			<global>N</global>
 			<createPageTemplate>html/wordpress/entity/partygroup/partygroup-create-form.ftl</createPageTemplate>
 			<editPageTemplate>html/wordpress/entity/partygroup/partygroup-edit-form.ftl</editPageTemplate>
 			<viewPageTemplate>html/wordpress/entity/partygroup/partygroup-single.ftl</viewPageTemplate>
@@ -1348,7 +1380,7 @@
 			<name>Person</name>
 			<postName>sb_persom</postName>
 			<description>Person</description>
-			<global>Y</global>
+			<global>N</global>
 			<createPageTemplate>html/wordpress/entity/person/person-create-form.ftl</createPageTemplate>
 			<editPageTemplate>html/wordpress/entity/person/person-edit-form.ftl</editPageTemplate>
 			<viewPageTemplate>html/wordpress/entity/person/person-single.ftl</viewPageTemplate>
