@@ -60,7 +60,7 @@ class CloderiaUserAPI {
      */
     public static function create_party_person($user_data, $party_data) {
         $entity_data = array();
-        if(isset($party_type['id'])) {
+        if(isset($party_data['id'])) {
             $entity_data['edit_mode'] = true;
             $entity_data['party'] = $party_data['id'];
             $entity_data['name'] = $party_data['name'];
