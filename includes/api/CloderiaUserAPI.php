@@ -29,7 +29,7 @@ class CloderiaUserAPI {
                 $partyrole_data = CloderiaUserAPI::create_default_party_role($businessunit_data);
                 $chartofaccounts_data = CloderiaUserAPI::create_default_party_chartofaccounts($party_data, $partyrole_data);
 
-                CloderiaUserAPI::send_user_created_email($user_data, $entity_data);
+                CloderiaUserAPI::send_user_created_email($user_data, $party_data);
             }
         }
     }
