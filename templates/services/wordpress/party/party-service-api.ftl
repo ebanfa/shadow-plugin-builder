@@ -272,7 +272,7 @@ class ${entity.name}API {
             $count++;
         endwhile;
         wp_reset_postdata();
-        return $search_results
+        return $search_results;
     }
 
 
@@ -305,7 +305,7 @@ class ${entity.name}API {
                 $search_results = ${entity.name}API::get_by_ids($party_ids);
             }
         }
-            return $search_results;
+        return $search_results;
     }
 
     /**
