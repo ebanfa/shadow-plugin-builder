@@ -1060,8 +1060,8 @@
 			</field>
 			<field>
 				<name>business_unit</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
 				<createField>Y</createField>
 				<editField>Y</editField>
@@ -1228,11 +1228,11 @@
 			</field>
 			<field>
 				<name>business_unit</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
 				<createField>Y</createField>
-				<editField>Y</editField>
+				<editField>N</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
 				<dataType>sb_businessunit</dataType>
@@ -1315,6 +1315,22 @@
 				<dataColumn>true</dataColumn>
 				<description>Party</description>
 				<displayName>Party</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
@@ -1422,6 +1438,22 @@
 				<dataColumn>true</dataColumn>
 				<description>Party</description>
 				<displayName>Party</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
@@ -1577,11 +1609,11 @@
 			</field>
 			<field>
 				<name>business_unit</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
 				<createField>Y</createField>
-				<editField>Y</editField>
+				<editField>N</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
 				<dataType>sb_businessunit</dataType>
@@ -1655,7 +1687,7 @@
 				<editField>N</editField>
 				<viewField>N</viewField>
 				<listField>N</listField>
-				<dataType>text</dataType>
+				<dataType>alphanumeric</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
 				<description>Code</description>
@@ -1663,7 +1695,7 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
-				<name>owner</name>
+				<name>party</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
@@ -1674,8 +1706,24 @@
 				<dataType>sb_party</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
-				<description>Owner</description>
-				<displayName>Owner</displayName>
+				<description>Party</description>
+				<displayName>Party</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>

@@ -121,6 +121,11 @@ class ${entity.name}API {
             </#if>
         </#if>
     </#list>
+            // Get business unit of the current user
+            $business_unit = PartyAPI::get_current_user_business_unit();
+            if (isset($business_unit['id'])) {
+                $entity_data['business_unit'] = $business_unit['id'];
+            }
         }
         else {
             if (isset($_POST['id']))
