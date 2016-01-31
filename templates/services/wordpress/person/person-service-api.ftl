@@ -239,6 +239,7 @@ class ${entity.name}API {
         // Get the party type
         $party_type = PartyTypeAPI::get_by_code('INDIVIDUAL');
         $party_data['party_type'] = $party_type['id'];
+        $party_data['business_unit'] = $entity_data['business_unit'];
 
         return PartyAPI::do_create_entity($party_data);
     }
