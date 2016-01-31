@@ -143,7 +143,7 @@ class ${entity.name}API {
             if(isset($entity_data['has_errors'])){
                 $entity_data['error_message'] = 'The following fields are required: '.implode(', ', $entity_data['error_fields']);
             }
-            
+
         }
         else { 
 
@@ -519,7 +519,7 @@ class ${entity.name}API {
             // for the party profile of the current user
             if(isset($current_user_party_role['id']) && isset($current_user_party_role['default_unit'])) {
                 $entity = BusinessUnitAPI::get_by_id($current_user_party_role['default_unit']);
-                $business_unit = BusinessUnitAPI::entity_to_data($entity);
+                $business_unit = BusinessUnitAPI::entity_to_data($entity, false);
             }
         }
         return $business_unit;
