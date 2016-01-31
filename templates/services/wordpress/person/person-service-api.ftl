@@ -66,8 +66,8 @@ class ${entity.name}API {
         
             $entity_data = ${entity.name}API::do_create_entity($entity_data);
             // If the party role has been set then we create the party role
-            if(isset($_POST['party_role'])) {
-                ${entity.name}API::create_party_role(sanitize_text_field($_POST['party_role']), $entity_data);
+            if(isset($_POST['role'])) {
+                ${entity.name}API::create_party_role(sanitize_text_field($_POST['role']), $entity_data);
             }
         }
         else {
