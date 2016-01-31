@@ -66,8 +66,8 @@ class ${entity.name}API {
         
             $entity_data = ${entity.name}API::do_create_entity($entity_data);
             // If the party role has been set then we create the party role
-            if(isset($_POST['party_role'])) {
-                ${entity.name}API::create_party_role(sanitize_text_field($_POST['party_role']), $entity_data);
+            if(isset($_POST['role'])) {
+                ${entity.name}API::create_party_role(sanitize_text_field($_POST['role']), $entity_data);
             }
         }
         else {
@@ -121,6 +121,11 @@ class ${entity.name}API {
             </#if>
         </#if>
     </#list>
+            // Get business unit of the current user
+            $business_unit = PartyAPI::get_current_user_business_unit();
+            if (isset($business_unit['id'])) {
+                $entity_data['business_unit'] = $business_unit['id'];
+            }
         }
         else {
             if (isset($_POST['id']))
@@ -245,6 +250,8 @@ class ${entity.name}API {
         $party_role_data['name'] = $entity_data['name'] ;
         $party_role_data['description'] = $entity_data['description'];
         $party_role_data['party'] = $entity_data['party'];
+        $party_data['parent_unit'] = $entity_data['business_unit'];
+        $party_data['business_unit'] = $entity_data['business_unit'];
         // Get the role type
         $role_type = RoleTypeAPI::get_by_code(strtoupper($party_role));
         $party_role_data['role'] = $role_type['id'];

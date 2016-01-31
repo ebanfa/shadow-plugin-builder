@@ -24,8 +24,8 @@
         $parent_artifact = sanitize_text_field($_REQUEST['parent_artifact']);
     }
 
-    if(isset($_REQUEST['party_role'])) { 
-        $party_role = sanitize_text_field($_REQUEST['party_role']);
+    if(isset($_REQUEST['role'])) { 
+        $role = sanitize_text_field($_REQUEST['role']);
     }
 ?>
 
@@ -385,8 +385,8 @@
     
     
 </#list>
-                    <?php  if(isset($party_role)){ ?>
-                        <input type="hidden" name="party_role" id="party_role" value="<?php  echo $party_role; ?>" /> 
+                    <?php  if(isset($role)){ ?>
+                        <input type="hidden" name="role" id="role" value="<?php  echo $role; ?>" /> 
                     <?php  } ?>
     
 <?php 

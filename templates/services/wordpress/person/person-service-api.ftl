@@ -86,7 +86,7 @@ class ${entity.name}API {
             }
             wp_send_json_success(array('message' => "<script type='text/javascript'>window.location='" . $redirect_url . "'</script>"));
         } else {
-            wp_send_json_error(array('message' => '<span>' . $entity_data['message'] . '</span>'));
+            wp_send_json_error(array('message' => $entity_data['message']));
         }
     }
 
