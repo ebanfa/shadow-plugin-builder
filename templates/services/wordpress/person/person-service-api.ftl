@@ -178,11 +178,6 @@ class ${entity.name}API {
      *
      */
     public static function do_create_entity($entity_data){
-<#if entity.global == "N"> 
-        $current_user = wp_get_current_user();
-        $user_party = PartyAPI::get_user_party($current_user->ID);
-        $entity_data['owner'] = $user_party['id'];
-</#if>
         $entity_data['has_errors'] = false;
         if ($entity_data['edit_mode']) {
             // Create the order
