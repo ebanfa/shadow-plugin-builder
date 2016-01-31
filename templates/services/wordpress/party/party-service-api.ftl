@@ -41,11 +41,11 @@ class ${entity.name}API {
         // Ensure we have a valid form
         if(!isset($_POST['submitted']) && !isset($_POST['post_nonce_field']) && !wp_verify_nonce($_POST['post_nonce_field'], 'post_nonce')) {
             // Nounce field did not validate
-            wp_send_json_error(array('message' => "<span class='error'>Invalid form operation!</span>"));
+            wp_send_json_error(array('message' => "Invalid form operation!"));
         }
         // Ensure the edit mode has also bee set before we proceed
         if(!isset($_POST['edit_mode'])) {
-           wp_send_json_error(array('message' => "<span class='error'>Invalid artifact operation!</span>"));
+           wp_send_json_error(array('message' => "Invalid artifact operation!"));
         }
         // Build the entity data form $_POST
         $entity_data = ${entity.name}API::build_entity_data_from_post();
@@ -70,7 +70,7 @@ class ${entity.name}API {
             }
             wp_send_json_success(array('message' => "<script type='text/javascript'>window.location='" . $redirect_url . "'</script>"));
         } else {
-            wp_send_json_error(array('message' => '<span>' . $entity_data['message'] . '</span>'));
+            wp_send_json_error(array('message' => $entity_data['message']));
         }
     }
 
@@ -105,6 +105,11 @@ class ${entity.name}API {
             </#if>
         </#if>
     </#list>
+            // Get business unit of the current user
+            $business_unit = ${entity.name}API::get_current_user_business_unit();
+            if (isset($business_unit['id'])) {
+                $entity_data['business_unit'] = $business_unit['id'];
+            }
         }
         else {
             if (isset($_POST['id']))
@@ -124,9 +129,9 @@ class ${entity.name}API {
      *
      */
     public static function validate_entity_data($entity_data) {
-       	   $entity_data['error_fields'] = array();
-           $entity_data['has_errors'] = false;
-           if($entity_data['edit_mode']) {
+        $entity_data['has_errors'] = false;
+        $entity_data['error_fields'] = array();
+        if($entity_data['edit_mode']) {
 	    <#list entity.fields  as field>
             <#if field.required == "Y" && field.createField == "Y">
             if(empty($entity_data['${field.name}'])){
@@ -164,15 +169,16 @@ class ${entity.name}API {
         if ($entity_data['edit_mode']) {
             // Create the order
             if(isset($entity_data['entity_code'])){
-            if(CloderiaServiceUtils::is_invalid_string($entity_data['entity_code'])) {
-                $entity_data['entity_code'] = ContentSecurityAPI::get_token(8);
-            }}
+                if(CloderiaServiceUtils::is_invalid_string($entity_data['entity_code'])) {
+                    $entity_data['entity_code'] = ContentSecurityAPI::get_token(8);
+                }
+            }
             <#list entity.fields as field>
                 <#if field.name == "status">
             if(!isset($entity_data['status'])) {
-		$status = ${entity.name}API::get_status_by_code('PENDING');
+                $status = ${entity.name}API::get_status_by_code('PENDING');
             	$entity_data['status'] = $status['id'];
-	    }
+	        }
                 </#if>
             </#list>
             
@@ -214,7 +220,7 @@ class ${entity.name}API {
 
         if(!isset($_POST['form'][2]) && !isset($_POST['form'][0]) && !wp_verify_nonce($_POST['form'][0]['name'], 'post_nonce')) {
             // Nounce field did not validate
-            wp_send_json_error(array('message' => "<span class='error'>Invalid form operation!</span>"));
+            wp_send_json_error(array('message' => "Invalid form operation!"));
         }
         $searchResults = array();
         // If the party role is specified, we will first have to
@@ -266,7 +272,7 @@ class ${entity.name}API {
     }
 
     /**
-     *
+     * Get all parties with a given roles
      */
     public static function get_by_party_role($party_role) {
 
@@ -297,7 +303,7 @@ class ${entity.name}API {
     }
 
     /**
-     *
+     * Get all parts with id's in the list provided
      */
     public static function get_by_ids($party_ids) {
         $searchResults = array();
@@ -310,7 +316,7 @@ class ${entity.name}API {
     }
 
     /**
-     *
+     * Get all the role types that a party has
      */
     public static function get_party_roles($party_id) {
         $queryArgs = array('numberposts' => -1, 'posts_per_page' => -1,
@@ -335,7 +341,7 @@ class ${entity.name}API {
     }
 
     /**
-     *
+     * Delete a single party record. This will also delete all child entity instances
      */
     public static function delete_${entity.postName}_ajax() {
         // Ensure we have a valid form
@@ -368,30 +374,9 @@ class ${entity.name}API {
             wp_send_json_error(array('message' => '<span>Error deleting entity</span>'));
         }
     }
-    <#list entity.fields as field>
-        <#if field.name == "status">
-    /**
-     *
-     */
-    public static function get_status_by_code($status_code){
-        // Load the status
-        $status_data = array();
-        $statusQueryArgs = array('numberposts' => -1, 'post_status' => 'any', 'post_type' => '${field.dataType}',
-            'meta_query' => array(array('key' => 'entity_code', 'value' => $status_code)));
-        $statusQuery = new WP_Query($statusQueryArgs);
-        while ($statusQuery->have_posts()) : $statusQuery->the_post();
-            $status = $statusQuery->post;
-            $status_data['id'] = $status->ID;
-            $status_data['entity_code'] = get_post_meta($status->ID, 'entity_code', true);
-            $status_data['name'] = get_post_meta($status->ID, 'name', true);
-        endwhile;
-        return $status_data;
-    }
-        </#if>
-    </#list>
 
     /**
-     *
+     * Get a single party with the given code
      */
     public static function get_by_code($entity_code){
         // Load the entity
@@ -407,7 +392,7 @@ class ${entity.name}API {
     }
 
     /**
-     *
+     * Get a single party by the value of one of its meta keys
      */
     public static function get_by_meta($meta_key, $meta_value){
         // Load the entity
@@ -423,7 +408,7 @@ class ${entity.name}API {
     }
 
     /**
-     *
+     * Find the party by id
      */
     public static function get_by_id($id){
         $entity_data = array();
@@ -432,7 +417,7 @@ class ${entity.name}API {
     }
 
     /**
-     *
+     * Convert the wordpress post in to an array object
      */
     public static function entity_to_data($entity, $load_deps) {
         $entity_data = array();
@@ -468,10 +453,10 @@ class ${entity.name}API {
     }
 
     /**
-     *
+     * Get the WP_User object of the party witht the provided id
      */
     public static function get_party_user($party_id){
-	$user_data = array();
+        $user_data = array();
         $party_data = ${entity.name}API::get_by_id($party_id); 
       
         if(isset($party_data['id'])){	    
@@ -481,11 +466,11 @@ class ${entity.name}API {
                 $user_data['user_name'] = $user->user_login;
             }
         }
-	return $user_data;
+	   return $user_data;
     }
 
     /**
-     *
+     * Get the party of the user with the provided id
      */
     public static function get_user_party($user_id){
 	$user_party = array();
@@ -505,6 +490,48 @@ class ${entity.name}API {
         }
 	return $user_party;
 
+    }
+
+    /**
+     * Get the party of the currently logged in user
+     */
+    public static function get_current_user_party(){
+        $user_party = array();
+        $current_user = wp_get_current_user();
+        $count = 0;
+        if($user){ 
+            $entityQueryArgs = array('numberposts' => -1, 'post_status' => 'any', 'post_type' => '${entity.postName}',
+                'meta_query' => array(array('key' => 'user_name', 'value' => $current_user->user_login)));
+            $entityQuery = new WP_Query($entityQueryArgs);
+            while ($entityQuery->have_posts()) : $entityQuery->the_post();
+                $entity = $entityQuery->post;
+                if($count == 0){
+                    $user_party = ${entity.name}API::entity_to_data($entity, false);
+                }
+                $count++;
+            endwhile;
+        }
+        return $user_party;
+    }
+
+    /**
+     * Get current user business role
+     */
+    public static function get_current_user_business_unit(){
+        $business_unit = array();
+        // Get the party of the current user
+        $current_user_party = get_current_user_party();
+        if(isset($current_user_party['id'])){ 
+            // Get the party profile of the current user
+            $current_user_party_role = PartyProfileAPI::get_by_meta('party', $current_user_party['id']);
+            // The current business is gotten from the business unit set as default business unit
+            // for the party profile of the current user
+            if(isset($current_user_party_role['id']) && isset($current_user_party_role['default_unit'])) {
+                $entity = BusinessUnitAPI::get_by_id($current_user_party_role['default_unit']);
+                $business_unit = BusinessUnitAPI::entity_to_data($entity);
+            }
+        }
+        return $user_party;
     }
 
 }
