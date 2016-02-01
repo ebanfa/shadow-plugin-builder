@@ -4,8 +4,12 @@
     if (!defined('ABSPATH')) {
         exit; // Exit if accessed directly
     }
+    $is_org = false;
     if(isset($_REQUEST['role'])) { 
         $role = sanitize_text_field($_REQUEST['role']);
+        if($role === 'user_organization'){
+            $is_org = true;
+        }
         //$role = strtoupper($role);
     }
 
@@ -51,11 +55,13 @@
                         </a>
                         
                         <ul class="dropdown-menu dropdown-menu-right">
+                            <?php if(!$is_org) {?>
                             <li>
         <a href="/page?type=entity&page_action=create&artifact=person<?php if(isset($role)){ echo '&role='. $role; } ?>">
                                     Add person
                                 </a>
                             </li>
+                            <?php } ?>
                             <li>
                                 <a href="/page?type=entity&page_action=create&artifact=partygroup<?php if(isset($role)){ echo '&role='. $role; } ?>">Add organization</a>
                             </li>
