@@ -82,7 +82,12 @@ class ${entity.name}API {
             if ($entity_data['requires_redirect']) {
                 $redirect_url = $entity_data['redirect_url'];
             } else {
-                $redirect_url = get_site_url() . '/page?type=entity&artifact=party&id=' . $entity_data['party'] . '&page_action=view';
+                // Process any role we are to view the new party as
+                $role_param = '';
+                if(isset($_POST['role'])) {
+                    $role_param = '&role=' . sanitize_text_field($_POST['role']);;
+                }
+                $redirect_url = get_site_url() . '/page?type=entity&artifact=party&id=' . $entity_data['party'] . '&page_action=view'. $role_param;
             }
             wp_send_json_success(array('message' => "<script type='text/javascript'>window.location='" . $redirect_url . "'</script>"));
         } else {
@@ -237,6 +242,7 @@ class ${entity.name}API {
         // Get the party type
         $party_type = PartyTypeAPI::get_by_code('ORGANIZATION');
         $party_data['party_type'] = $party_type['id'];
+        $party_data['business_unit'] = $entity_data['business_unit'];
 
         return PartyAPI::do_create_entity($party_data);
     }

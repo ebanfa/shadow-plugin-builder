@@ -22,6 +22,7 @@
                 $entity_id = $person_data['id'];
             }
         }
+        $party_role = '';
         if(isset($_REQUEST['role'])) { 
             $party_role = sanitize_text_field($_REQUEST['role']);
         }
