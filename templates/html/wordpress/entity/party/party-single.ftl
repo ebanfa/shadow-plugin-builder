@@ -22,6 +22,9 @@
                 $entity_id = $person_data['id'];
             }
         }
+        if(isset($_REQUEST['role'])) { 
+            $role = sanitize_text_field($_REQUEST['role']);
+        }
     }
 ?>
 
@@ -140,6 +143,9 @@
                                         <input type="hidden" name="submitted" id="submitted" value="true" />
                                     </form>
                                     <a id="delete-entity-btn" href="<?php echo get_site_url() . '/page?type=entity&artifact=${entity.name?lower_case}&id=' . $entity_data['id']; ?>&page_action=delete" class="btn btn-warning waves-effect">
+                                       <?php _e('Delete', 'framework') ?>
+                                    </a>
+                                    <a id="done-entity-btn" href="<?php echo get_site_url() . '/page?type=entity&artifact=${entity.name?lower_case}&role=' . $role; ?>&page_action=list" class="btn btn-warning waves-effect">
                                        <?php _e('Delete', 'framework') ?>
                                     </a>
                                 </div>
