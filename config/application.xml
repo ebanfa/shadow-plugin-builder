@@ -446,9 +446,9 @@
 				<target>/page?type=entity&amp;artifact=party&amp;page_action=list&amp;role=user_organization</target>
 			</menu>
 			<menu>
-				<name>staff</name>
-				<displayName>Staff</displayName>
-				<description>Staff</description>
+				<name>employees</name>
+				<displayName>Employees</displayName>
+				<description>Employees</description>
 				<active>N</active>
 				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
@@ -461,7 +461,7 @@
 				<active>N</active>
 				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;artifact=party&amp;page_action=list&amp;role=staff</target>
+				<target>/page?type=entity&amp;artifact=party&amp;page_action=list&amp;role=job</target>
 			</menu>
 			<menu>
 				<name>reviews</name>
@@ -470,7 +470,7 @@
 				<active>N</active>
 				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;artifact=party&amp;page_action=list&amp;role=staff</target>
+				<target>/page?type=entity&amp;artifact=party&amp;page_action=list&amp;role=performancefreview</target>
 			</menu>
 			<menu>
 				<name>payroll</name>
@@ -479,7 +479,7 @@
 				<active>N</active>
 				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;artifact=party&amp;page_action=list&amp;role=staff</target>
+				<target>/page?type=entity&amp;artifact=party&amp;page_action=list&amp;role=payroll</target>
 			</menu>
 		</menuGroup>
 
