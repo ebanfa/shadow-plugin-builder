@@ -146,7 +146,7 @@
                                        <?php _e('Delete', 'framework') ?>
                                     </a>
                                     <a id="done-entity-btn" href="<?php echo get_site_url() . '/page?type=entity&artifact=${entity.name?lower_case}&role=' . $role; ?>&page_action=list" class="btn btn-warning waves-effect">
-                                       <?php _e('Delete', 'framework') ?>
+                                       <?php _e('Done', 'framework') ?>
                                     </a>
                                 </div>
 
