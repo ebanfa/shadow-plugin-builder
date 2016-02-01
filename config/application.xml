@@ -461,7 +461,7 @@
 				<active>N</active>
 				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;artifact=job&amp;page_action=list&amp;</target>
+				<target>/page?type=entity&amp;artifact=job&amp;page_action=list</target>
 			</menu>
 			<menu>
 				<name>reviews</name>
@@ -470,7 +470,7 @@
 				<active>N</active>
 				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;artifact=performancereview&amp;page_action=list&amp;</target>
+				<target>/page?type=entity&amp;artifact=performancereview&amp;page_action=list;</target>
 			</menu>
 			<menu>
 				<name>payroll</name>
@@ -479,7 +479,7 @@
 				<active>N</active>
 				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;artifact=payroll&amp;page_action=list&amp;</target>
+				<target>/page?type=entity&amp;artifact=payroll&amp;page_action=list</target>
 			</menu>
 		</menuGroup>
 
