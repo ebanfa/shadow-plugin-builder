@@ -431,9 +431,9 @@
 		</menuGroup>
 
 		<menuGroup>
-			<name>businessinformation</name>
-			<displayName>Business Information</displayName>
-			<description>Business Information</description>
+			<name>hrm</name>
+			<displayName>HRM</displayName>
+			<description>HRM</description>
 			<type>group</type>
 			<cssClass>md-person</cssClass>
 			<menu>
@@ -1833,7 +1833,7 @@
 			<name>PartyFiles</name>
 			<postName>sb_partyfiles</postName>
 			<description>Party Files</description>
-            <global>Y</global>
+            <global>N</global>
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
@@ -1843,7 +1843,7 @@
 				<editField>N</editField>
 				<viewField>N</viewField>
 				<listField>N</listField>
-				<dataType>text</dataType>
+				<dataType>alphanumeric</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
 				<description>Code</description>
@@ -1851,7 +1851,7 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
-				<name>owner</name>
+				<name>party</name>
 				<isVisible>Y</isVisible>
 			    <isFormField>Y</isFormField>
 				<required>Y</required>
@@ -1862,8 +1862,8 @@
 				<dataType>sb_party</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
-				<description>Owner</description>
-				<displayName>Owner</displayName>
+				<description>Party</description>
+				<displayName>Party</displayName>
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
@@ -1875,7 +1875,7 @@
 				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
-				<dataType>text</dataType>
+				<dataType>name</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
 				<description>Name</description>
@@ -1907,7 +1907,7 @@
 				<editField>N</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
-				<dataType>text</dataType>
+				<dataType>name</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
 				<description>File Type</description>
@@ -1939,7 +1939,7 @@
 				<editField>N</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
-				<dataType>text</dataType>
+				<dataType>number</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
 				<description>Size</description>
@@ -1955,7 +1955,7 @@
 				<editField>N</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
-				<dataType>text</dataType>
+				<dataType>name</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
 				<description>Mime Type</description>
@@ -1976,6 +1976,847 @@
 				<dataColumn>true</dataColumn>
 				<description>Date</description>
 				<displayName>Date</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+		</entity>
+
+		<entity>
+			<name>JobType</name>
+			<postName>sb_jobtype</postName>
+			<description>Job Type</description>
+			<global>Y</global>
+			<field>
+				<name>entity_code</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>N</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>alphanumeric</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Code</description>
+				<displayName>Code</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>name</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>name</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Name</description>
+				<displayName>name</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>description</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text-lg</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Description</description>
+				<displayName>Description</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+		</entity>
+
+		<entity>
+			<name>Job</name>
+			<postName>sb_job</postName>
+			<description>Job</description>
+			<global>N</global>
+			<field>
+				<name>entity_code</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>N</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>alphanumeric</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Code</description>
+				<displayName>Code</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>type</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_jobtype</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Job Type</description>
+				<displayName>Job Type</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>name</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>name</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Name</description>
+				<displayName>name</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>description</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text-lg</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Description</description>
+				<displayName>Description</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>salary_min</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>Y</listField>
+				<dataType>money</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Minimum Salary</description>
+				<displayName>Minimum Salary</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>salary_max</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>Y</listField>
+				<dataType>money</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Maximum Salary</description>
+				<displayName>Maximum Salary</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+		</entity>
+
+
+		<entity>
+			<name>JobAssignment</name>
+			<postName>sb_jobassgn</postName>
+			<description>Job Assignment</description>
+			<global>N</global>
+			<field>
+				<name>entity_code</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>N</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>alphanumeric</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Code</description>
+				<displayName>Code</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>job</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_job</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Job</description>
+				<displayName>Job</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>party</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_party</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Employee</description>
+				<displayName>Employee</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>supervisor</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_party</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Supervisor</description>
+				<displayName>Supervisor</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>job_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Job Business Unit</description>
+				<displayName>Job Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>name</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>name</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Name</description>
+				<displayName>name</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>description</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text-lg</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Description</description>
+				<displayName>Description</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>start_date</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>Y</listField>
+				<dataType>date</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Start Date</description>
+				<displayName>Start Date</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>end_date</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>Y</listField>
+				<dataType>date</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>End Date</description>
+				<displayName>End Date</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+		</entity>
+
+		<entity>
+			<name>SkillType</name>
+			<postName>sb_skilltype</postName>
+			<description>Skill Type</description>
+			<global>Y</global>
+			<field>
+				<name>entity_code</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>N</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>alphanumeric</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Code</description>
+				<displayName>Code</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>name</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>name</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Name</description>
+				<displayName>name</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>description</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text-lg</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Description</description>
+				<displayName>Description</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+		</entity>
+
+		<entity>
+			<name>SkillLevel</name>
+			<postName>sb_skilllevel</postName>
+			<description>Skill Level</description>
+			<global>Y</global>
+			<field>
+				<name>entity_code</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>N</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>alphanumeric</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Code</description>
+				<displayName>Code</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>name</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>name</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Name</description>
+				<displayName>name</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>description</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text-lg</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Description</description>
+				<displayName>Description</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+		</entity>
+
+		<entity>
+			<name>EmployeeSkill</name>
+			<postName>sb_empskill</postName>
+			<description>Employee Skills</description>
+			<global>N</global>
+			<field>
+				<name>entity_code</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>N</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>alphanumeric</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Code</description>
+				<displayName>Code</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>skill_type</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_skilltype</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Skill Type</description>
+				<displayName>Skill Type</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>skill_level</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_skilllevel</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Skill Level</description>
+				<displayName>Skill Level</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>party</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_party</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Employee</description>
+				<displayName>Employee</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>name</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>name</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Name</description>
+				<displayName>name</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>description</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text-lg</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Description</description>
+				<displayName>Description</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>data_acquired</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>Y</listField>
+				<dataType>date</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Date Acquired</description>
+				<displayName>Date Acquired</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+		</entity>
+
+		<entity>
+			<name>PerformanceReview</name>
+			<postName>sb_perfreview</postName>
+			<description>Performance Review</description>
+			<global>N</global>
+			<field>
+				<name>entity_code</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>N</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>alphanumeric</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Code</description>
+				<displayName>Code</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>party</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_party</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Employee</description>
+				<displayName>Employee</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>supervisor</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_party</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Supervisor</description>
+				<displayName>Supervisor</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>name</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>name</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Name</description>
+				<displayName>name</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>score</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>number</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Score</description>
+				<displayName>Score</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>description</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text-lg</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Description</description>
+				<displayName>Description</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>review_date</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>Y</listField>
+				<dataType>date</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Review Date</description>
+				<displayName>Review Date</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+		</entity>
+
+		<entity>
+			<name>PayRoll</name>
+			<postName>sb_payroll</postName>
+			<description>Payroll</description>
+			<global>N</global>
+			<field>
+				<name>entity_code</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>N</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>alphanumeric</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Code</description>
+				<displayName>Code</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>jos_assignment</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_jobassgn</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Job</description>
+				<displayName>Job</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>name</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>name</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Name</description>
+				<displayName>name</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>amount_paid</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>money</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Score</description>
+				<displayName>Score</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>description</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text-lg</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Description</description>
+				<displayName>Description</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>payment_date</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>Y</listField>
+				<dataType>date</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Payment Date</description>
+				<displayName>Payment Date</displayName>
 				<relationshipField>N</relationshipField>
 			</field>
 		</entity>
