@@ -284,9 +284,9 @@ class ${entity.name}API {
         $search_results = array();
         $role_type = RoleTypeAPI::get_by_code($role);
 
-        if(isset($role_type['id']) && isset($role_type['code'])) {
+        if(isset($role_type['id']) && isset($role_type['entity_code'])) {
 
-            if($role_type['code'] === 'USER_ORGANIZATION') {
+            if($role_type['entity_code'] === 'USER_ORGANIZATION') {
                 $search_results = ${entity.name}API::get_user_organizations($role);
             } else {
                 // Search for all the party role type associations with the given role
