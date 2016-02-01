@@ -227,10 +227,12 @@ class ${entity.name}API {
         // find all PartyRoles associated with the given role ,
         // then we find and return all partys referenced in the above
         // mentioned associations
-        if(isset($_POST['form'][2]) && $_POST['form'][2]['name'] === 'role')
+        if(isset($_POST['form'][2]) )
         {
-            $role = sanitize_text_field($_POST['form'][2]['value']);
-            $search_results = ${entity.name}API::get_by_role($business_unit, $role);
+            if(isset($_POST['form'][2]['value']) && isset($_POST['form'][2]['name'])) {
+                $role = sanitize_text_field($_POST['form'][2]['value']);
+                $search_results = ${entity.name}API::get_by_role($business_unit, $role);
+            }
         } 
         // Else we use the regular party search funtionality
         else {
@@ -282,7 +284,7 @@ class ${entity.name}API {
     public static function get_by_role($business_unit, $role) {
 
         $search_results = array();
-        $role_type = RoleTypeAPI::get_by_code($role);
+        $role_type = RoleTypeAPI::get_by_code(strtoupper($role));
 
         if(isset($role_type['id']) && isset($role_type['entity_code'])) {
 
