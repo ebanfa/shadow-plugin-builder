@@ -454,6 +454,33 @@
 				<targetType>entity</targetType>
 				<target>/page?type=entity&amp;artifact=party&amp;page_action=list&amp;role=staff</target>
 			</menu>
+			<menu>
+				<name>jobs</name>
+				<displayName>Jobs</displayName>
+				<description>JObs</description>
+				<active>N</active>
+				<cssClass>md-person</cssClass>
+				<targetType>entity</targetType>
+				<target>/page?type=entity&amp;artifact=party&amp;page_action=list&amp;role=staff</target>
+			</menu>
+			<menu>
+				<name>reviews</name>
+				<displayName>Performance Reviews</displayName>
+				<description>Performance Reviews</description>
+				<active>N</active>
+				<cssClass>md-person</cssClass>
+				<targetType>entity</targetType>
+				<target>/page?type=entity&amp;artifact=party&amp;page_action=list&amp;role=staff</target>
+			</menu>
+			<menu>
+				<name>payroll</name>
+				<displayName>Payroll</displayName>
+				<description>Payroll</description>
+				<active>N</active>
+				<cssClass>md-person</cssClass>
+				<targetType>entity</targetType>
+				<target>/page?type=entity&amp;artifact=party&amp;page_action=list&amp;role=staff</target>
+			</menu>
 		</menuGroup>
 
 		<menuGroup>
