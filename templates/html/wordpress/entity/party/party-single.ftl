@@ -224,7 +224,7 @@
                                     </table>
                                 </div>
                                 <div class="btn-demo m-t-10">
-                                    <a id="create-partyaddress-btn" href="<?php echo get_site_url();?>/page?type=entity&artifact=partyaddress&page_action=create&parent_id=<?php echo $entity_data['id']; ?>&parent_artifact=party&parent_field=owner" class="btn btn-success waves-effect">
+                                    <a id="create-partyaddress-btn" href="<?php echo get_site_url();?>/page?type=entity&artifact=partyaddress&page_action=create&parent_id=<?php echo $entity_data['id']; ?>&parent_artifact=party&parent_field=party" class="btn btn-success waves-effect">
                                        <?php _e('Add Party Address', 'framework') ?>
                                     </a>
                                 </div>
@@ -256,7 +256,7 @@
                                     </table>
                                 </div>
                                 <div class="btn-demo m-t-10">
-                                    <a id="create-partyfiles-btn" href="<?php echo get_site_url();?>/page?type=entity&artifact=partyfiles&page_action=create&parent_id=<?php echo $entity_data['id']; ?>&parent_artifact=party&parent_field=owner" class="btn btn-success waves-effect">
+                                    <a id="create-partyfiles-btn" href="<?php echo get_site_url();?>/page?type=entity&artifact=partyfiles&page_action=create&parent_id=<?php echo $entity_data['id']; ?>&parent_artifact=party&parent_field=party" class="btn btn-success waves-effect">
                                        <?php _e('Add Party Files', 'framework') ?>
                                     </a>
                                 </div>
@@ -286,7 +286,7 @@
                                     </table>
                                 </div>
                                 <div class="btn-demo m-t-10">
-                                    <a id="create-businessunit-btn" href="<?php echo get_site_url();?>/page?type=entity&artifact=businessunit&page_action=create&parent_id=<?php echo $entity_data['id']; ?>&parent_artifact=party&parent_field=owner" class="btn btn-success waves-effect">
+                                    <a id="create-businessunit-btn" href="<?php echo get_site_url();?>/page?type=entity&artifact=businessunit&page_action=create&parent_id=<?php echo $entity_data['id']; ?>&parent_artifact=party&parent_field=party" class="btn btn-success waves-effect">
                                        <?php _e('Add Business Unit', 'framework') ?>
                                     </a>
                                 </div>
@@ -318,7 +318,7 @@
                                     </table>
                                 </div>
                                 <div class="btn-demo m-t-10">
-                                    <a id="create-property-btn" href="<?php echo get_site_url();?>/page?type=entity&artifact=property&page_action=create&parent_id=<?php echo $entity_data['id']; ?>&parent_artifact=party&parent_field=owner" class="btn btn-success waves-effect">
+                                    <a id="create-property-btn" href="<?php echo get_site_url();?>/page?type=entity&artifact=property&page_action=create&parent_id=<?php echo $entity_data['id']; ?>&parent_artifact=party&parent_field=party" class="btn btn-success waves-effect">
                                        <?php _e('Add Property', 'framework') ?>
                                     </a>
                                 </div>

@@ -3621,7 +3621,7 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
-				<name>owner</name>
+				<name>party</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>N</required>
@@ -9265,7 +9265,7 @@
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
-				<name>owner</name>
+				<name>party</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
