@@ -436,9 +436,9 @@
     
     
 </#list>
-                    <?php  if(isset($role)){ ?>
-                        <input type="hidden" name="role" id="role" value="<?php  echo $role; ?>" /> 
-                    <?php  } ?>
+<?php  if(isset($role)){ ?>
+    <input type="hidden" name="role" id="role" value="<?php  echo $role; ?>" /> 
+<?php  } ?>
     
 <?php 
     do_action('shadowbanker_entity_form_end'); 

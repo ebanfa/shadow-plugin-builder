@@ -22,15 +22,69 @@
     if (isset($_REQUEST['id'])) {
         $entity_data = ${entity.name}API::get_by_id(sanitize_text_field($_REQUEST['id']));
     }
+  if(isset($_REQUEST['role'])) { 
+        $role = sanitize_text_field($_REQUEST['role']);
+    }
 ?>
 
-<?php 
-    do_action('shadowbanker_before_main_content');
+<?php do_action('shadowbanker_before_main_content'); ?>
     
-    do_action('shadowbanker_before_entity_form');
+<?php
 
-    do_action('shadowbanker_entity_form_start');
+    $page_info = $_REQUEST['page_info'];
+    $page_action = $page_info['page_action'];
+    $artifact_name = sanitize_text_field($page_info['name']);
+    $page_name = sanitize_text_field($page_info['display_name']);
+    $page_action_description = sanitize_text_field($page_info['page_action_description']);
+    // Temporary hold to ensure we dont deal with null values
+    $page_action_txt = sanitize_text_field($page_info['page_action']);
+
+    if($page_action == 'create')
+        $page_action_txt = 'Create a new '. strtolower($page_name ) . ' by filling in the form below';
+    if($page_action == 'edit')
+        $page_action_txt = 'Edit the '. strtolower($page_name ) . ' by updating the form below';
+    if($page_action == 'view')
+        $page_action_txt = 'To update or delete the ' . strtolower($page_name ) . ', click on the control buttons below.';
+    if($page_action == 'list')
+        $page_action_txt = 'The '. strtolower($page_name ) . ' list. To view a single record, click on the highlighted column.';
 ?>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header bgm-lightgreen">
+                <h2>
+                    <?php echo $page_action_description; ?> 
+                    <small><?php echo $page_action_txt; ?></small>
+                </h2>
+                <ul class="actions actions-alt">
+                    <li class="dropdown">
+                        <a href="widget-templates.html" data-toggle="dropdown" aria-expanded="false">
+                            <i class="md md-more-vert"></i>
+                        </a>
+                        
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <?php if($page_action == 'edit') { ?>
+                            <li>
+                                <a href="/page?type=entity&page_action=create&artifact=<?php echo $artifact_name . '&role=' . $role; ?>">Add a new record</a>
+                            </li>
+                            <?php } ?>
+                            <li>
+                                <a href="/page?type=entity&page_action=list&artifact=party<?php echo '&role=' . $role; ?>">View All</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card-body card-padding">
+                <div class="row mg-btm-30">
+                    <div class="col-sm-12">
+                        <div class="body-section">
+                            <div id="success"></div>
+
+<?php do_action('shadowbanker_entity_form_start');  ?>
+
 
 <#list entity.fields as field>
     
@@ -397,6 +451,9 @@
 </#list>
 
 
+<?php  if(isset($role)){ ?>
+    <input type="hidden" name="role" id="role" value="<?php  echo $role; ?>" /> 
+<?php  } ?>
 
     <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
     <input type="hidden" name="submitted" id="submitted" value="true" />     
