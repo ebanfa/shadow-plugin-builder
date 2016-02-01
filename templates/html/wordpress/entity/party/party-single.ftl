@@ -24,7 +24,7 @@
         }
         $party_role = '';
         if(isset($_REQUEST['role'])) { 
-            $party_role = sanitize_text_field($_REQUEST['role']);
+            $party_role = '&role=' . sanitize_text_field($_REQUEST['role']);
         }
     }
 ?>
@@ -69,10 +69,10 @@
                         
                         <ul class="dropdown-menu dropdown-menu-right">
                             <li>
-                                <a href="/page?type=entity&page_action=create&artifact=<?php echo $artifact_name; ?>">Add a new record</a>
+                                <a href="/page?type=entity&page_action=create&artifact=<?php echo $artifact_name . $party_role; ?>">Add a new record</a>
                             </li>
                             <li>
-                                <a href="/page?type=entity&page_action=list&artifact=<?php echo $artifact_name; ?>">View All</a>
+                                <a href="/page?type=entity&page_action=list&artifact=<?php echo $artifact_name . $party_role; ?>">View All</a>
                             </li>
                         </ul>
                     </li>
@@ -192,7 +192,7 @@
                                     <a id="delete-entity-btn" href="<?php echo get_site_url() . '/page?type=entity&artifact=${entity.name?lower_case}&id=' . $entity_data['id']; ?>&page_action=delete" class="btn btn-warning waves-effect">
                                        <?php _e('Delete', 'framework') ?>
                                     </a>
-                                    <a id="done-entity-btn" href="<?php echo get_site_url() . '/page?type=entity&artifact=${entity.name?lower_case}&role=' . $party_role; ?>&page_action=list" class="btn btn-warning waves-effect">
+                                    <a id="done-entity-btn" href="<?php echo get_site_url() . '/page?type=entity&artifact=${entity.name?lower_case}' . $party_role; ?>&page_action=list" class="btn btn-warning waves-effect">
                                        <?php _e('Done', 'framework') ?>
                                     </a>
                                 </div>
