@@ -274,7 +274,6 @@
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Party</th>
                                                 <th>Name</th>
                                                 <th>Address Line 1</th>
                                                 <th>Address Line 2</th>
