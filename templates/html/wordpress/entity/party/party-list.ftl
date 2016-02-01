@@ -71,7 +71,7 @@
                     <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
 
                     <?php  if(isset($role)){ ?>
-                        <input type="hidden" name="party_role" id="role" value="<?php  echo $role; ?>" /> 
+                        <input type="hidden" name="role" id="role" value="<?php  echo $role; ?>" /> 
                     <?php  } ?>
                     <input type="hidden" name="submitted" id="submitted" value="true" /> 
                 </form>
