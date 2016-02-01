@@ -52,6 +52,9 @@
     if($page_action == 'list')
         $page_action_txt = 'The '. strtolower($page_name ) . ' list. To view a single record, click on the highlighted column.';
 
+    $artifact_link = 'person&role=' . $party_role;
+    if($is_organization){$artifact_link = 'partygroup&role=' . $party_role;}
+
 ?>
 <div class="row">
     <div class="col-sm-12">
@@ -69,10 +72,10 @@
                         
                         <ul class="dropdown-menu dropdown-menu-right">
                             <li>
-                                <a href="/page?type=entity&page_action=create&artifact=<?php echo $artifact_name . $party_role; ?>">Add a new record</a>
+                                <a href="/page?type=entity&page_action=create&artifact=<?php echo $artifact_link; ?>">Add a new record</a>
                             </li>
                             <li>
-                                <a href="/page?type=entity&page_action=list&artifact=<?php echo $artifact_name . $party_role; ?>">View All</a>
+                                <a href="/page?type=entity&page_action=list&artifact=party">View All</a>
                             </li>
                         </ul>
                     </li>

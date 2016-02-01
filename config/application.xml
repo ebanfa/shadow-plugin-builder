@@ -490,15 +490,6 @@
 			<type>group</type>
 			<cssClass>md-person</cssClass>
 			<menu>
-				<name>organizations</name>
-				<displayName>Organizations</displayName>
-				<description>Business Units</description>
-				<active>N</active>
-				<cssClass>md-mail</cssClass>
-				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;artifact=party&amp;page_action=list&amp;role=user_organization</target>
-			</menu>
-			<menu>
 				<name>profile</name>
 				<displayName>Profile</displayName>
 				<description>Profile</description>
