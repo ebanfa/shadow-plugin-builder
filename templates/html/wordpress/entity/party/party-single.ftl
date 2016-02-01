@@ -183,7 +183,7 @@
                                     </table>
                                 </div>
                                 <div class="btn-demo m-t-10">
-                                    <a href="<?php echo get_site_url() . '/page?type=entity&artifact=' . $artifact . '&id=' . $entity_id; ?>&page_action=edit" 
+                                    <a href="<?php echo get_site_url() . '/page?type=entity&artifact=' . $artifact . '&id=' . $entity_id  . $party_role; ?>&page_action=edit" 
                                        class="btn btn-primary waves-effect">
                                        <?php _e('Edit', 'framework') ?>
                                     </a>
