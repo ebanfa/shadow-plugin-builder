@@ -47,6 +47,11 @@ class ${entity.name}API {
         if(!isset($_POST['edit_mode'])) {
            wp_send_json_error(array('message' => "<span class='error'>Invalid artifact operation!</span>"));
         }
+        // Process any role we are to view the new party as
+        $role_param = '';
+        if(isset($_POST['role'])) {
+            $role_param = '&role=' . sanitize_text_field($_POST['role']);;
+        }
         // Build the entity data form $_POST
         $entity_data = ${entity.name}API::build_entity_data_from_post();
         // Validate the posted data
@@ -82,11 +87,6 @@ class ${entity.name}API {
             if ($entity_data['requires_redirect']) {
                 $redirect_url = $entity_data['redirect_url'];
             } else {
-                // Process any role we are to view the new party as
-                $role_param = '';
-                if(isset($_POST['role'])) {
-                    $role_param = '&role=' . sanitize_text_field($_POST['role']);;
-                }
                 $redirect_url = get_site_url() . '/page?type=entity&artifact=party&id=' . $entity_data['party'] . '&page_action=view'. $role_param;
             }
             wp_send_json_success(array('message' => "<script type='text/javascript'>window.location='" . $redirect_url . "'</script>"));
