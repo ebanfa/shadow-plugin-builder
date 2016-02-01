@@ -231,7 +231,7 @@ class ${entity.name}API {
         {
             if(isset($_POST['form'][2]['value']) && isset($_POST['form'][2]['name'])) {
                 $role = sanitize_text_field($_POST['form'][2]['value']);
-                $search_results = ${entity.name}API::get_by_role($business_unit, $role);
+                $search_results = ${entity.name}API::find_by_role($business_unit, $role);
             }
         } 
         // Else we use the regular party search funtionality
@@ -281,7 +281,7 @@ class ${entity.name}API {
     /**
      * Get all parties with a given roles
      */
-    public static function get_by_role($business_unit, $role) {
+    public static function find_by_role($business_unit, $role) {
 
         $search_results = array();
         $role_type = RoleTypeAPI::get_by_code(strtoupper($role));
@@ -304,7 +304,7 @@ class ${entity.name}API {
                     array_push($party_ids, get_post_meta($entity->ID, 'party', true));
                 endwhile;
                 wp_reset_postdata();
-                $search_results = ${entity.name}API::get_by_ids($party_ids);
+                $search_results = ${entity.name}API::find_by_ids($party_ids);
             }
         }
         return $search_results;
@@ -313,7 +313,7 @@ class ${entity.name}API {
     /**
      * Get all parts with id's in the list provided
      */
-    public static function get_by_ids($party_ids) {
+    public static function find_by_ids($party_ids) {
         $search_results = array();
         // Load all the partys with ID from above
         foreach($party_ids as $party_id){
@@ -326,7 +326,7 @@ class ${entity.name}API {
     /**
      * Get all the role types that a party has
      */
-    public static function get_party_roles($party_id) {
+    public static function find_party_roles($party_id) {
         $queryArgs = array('numberposts' => -1, 'posts_per_page' => -1,
         'post_status' => 'any', 'post_type' => 'sb_partyrole', 
         'meta_query' => array(array('key' => 'party', 'value' => $party_id)));
@@ -425,42 +425,6 @@ class ${entity.name}API {
     }
 
     /**
-     * Convert the wordpress post in to an array object
-     */
-    public static function entity_to_data($entity, $load_deps) {
-        $entity_data = array();
-        $entity_data['id'] = $entity->ID;
-<#list entity.fields as field>
-    <#if field.relationshipField == "N">
-        $entity_data['${field.name}'] = get_post_meta($entity->ID, '${field.name}', true);
-    </#if>
-
-    <#if field.relationshipField == "Y">
-        $related_entity_id = get_post_meta($entity->ID, '${field.name}', true);
-        $entity_data['${field.name}'] = $related_entity_id;
-        // Get the related post
-        $related_entity = get_post($related_entity_id);
-        $entity_data['${field.name}_txt'] = get_post_meta($related_entity->ID, 'name', true);
-        $entity_data['${field.name}_code'] = get_post_meta($related_entity->ID, 'entity_code', true);
-    </#if>
-        $entity_data['roles'] = ${entity.name}API::get_party_roles($entity_data['id']);
-</#list>
-        return $entity_data;
-        
-    }
-
-    /**
-     *
-     */
-    public static function copy_fields_to_post($entity_data){
-        // Add each array element into the POST array
-        // This is required the custom post type persistence manager
-        foreach ($entity_data as $field_name => $field_value) {
-            $_POST[$field_name] = $field_value;
-        }
-    }
-
-    /**
      * Get the WP_User object of the party witht the provided id
      */
     public static function get_party_user($party_id){
@@ -530,6 +494,43 @@ class ${entity.name}API {
             }
         }
         return $business_unit;
+    }
+
+
+    /**
+     * Convert the wordpress post in to an array object
+     */
+    public static function entity_to_data($entity, $load_deps) {
+        $entity_data = array();
+        $entity_data['id'] = $entity->ID;
+<#list entity.fields as field>
+    <#if field.relationshipField == "N">
+        $entity_data['${field.name}'] = get_post_meta($entity->ID, '${field.name}', true);
+    </#if>
+
+    <#if field.relationshipField == "Y">
+        $related_entity_id = get_post_meta($entity->ID, '${field.name}', true);
+        $entity_data['${field.name}'] = $related_entity_id;
+        // Get the related post
+        $related_entity = get_post($related_entity_id);
+        $entity_data['${field.name}_txt'] = get_post_meta($related_entity->ID, 'name', true);
+        $entity_data['${field.name}_code'] = get_post_meta($related_entity->ID, 'entity_code', true);
+    </#if>
+        $entity_data['roles'] = ${entity.name}API::find_party_roles($entity_data['id']);
+</#list>
+        return $entity_data;
+        
+    }
+
+    /**
+     *
+     */
+    public static function copy_fields_to_post($entity_data){
+        // Add each array element into the POST array
+        // This is required the custom post type persistence manager
+        foreach ($entity_data as $field_name => $field_value) {
+            $_POST[$field_name] = $field_value;
+        }
     }
 
 }
