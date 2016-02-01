@@ -457,7 +457,7 @@
 			<menu>
 				<name>jobs</name>
 				<displayName>Jobs</displayName>
-				<description>JObs</description>
+				<description>Jobs</description>
 				<active>N</active>
 				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
