@@ -261,7 +261,37 @@
                                     </a>
                                 </div>
                             </div>
-                            
+                            <div role="tabpanel" class="tab-pane animated fadeIn" id="tab-7">
+                                <div id="success"></div>
+
+                                <form id="sb_businessunit-list-form">
+                                    <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
+                                    <input type="hidden" name="submitted" id="submitted" value="true" /> 
+                                    <input type="hidden" name="party" value="<?php echo $entity_data['id']; ?>"/>
+                                </form>
+                                <div class="table-responsive">
+                                    <table id="sb_businessunit-table" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Party</th>
+                                                <th>Name</th>
+                                                <th>Address Line 1</th>
+                                                <th>Address Line 2</th>
+                                                <th>Location</th>
+                                                <th>Description</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="btn-demo m-t-10">
+                                    <a id="create-businessunit-btn" href="<?php echo get_site_url();?>/page?type=entity&artifact=businessunit&page_action=create&parent_id=<?php echo $entity_data['id']; ?>&parent_artifact=party&parent_field=owner" class="btn btn-success waves-effect">
+                                       <?php _e('Add Business Unit', 'framework') ?>
+                                    </a>
+                                </div>
+                            </div>
                             <div role="tabpanel" class="tab-pane animated fadeIn" id="tab-8">
                                 <div id="success"></div>
 

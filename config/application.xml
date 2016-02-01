@@ -1078,7 +1078,7 @@
 				<createField>Y</createField>
 				<editField>Y</editField>
 				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<listField>N</listField>
 				<dataType>sb_party</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
@@ -1094,7 +1094,7 @@
 				<createField>Y</createField>
 				<editField>Y</editField>
 				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<listField>N</listField>
 				<dataType>sb_businessunit</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
@@ -1110,7 +1110,7 @@
 				<createField>Y</createField>
 				<editField>Y</editField>
 				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<listField>N</listField>
 				<dataType>sb_businessunit</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
