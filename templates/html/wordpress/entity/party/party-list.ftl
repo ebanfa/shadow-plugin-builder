@@ -6,7 +6,7 @@
     }
     if(isset($_REQUEST['role'])) { 
         $role = sanitize_text_field($_REQUEST['role']);
-        $role = strtoupper($role);
+        //$role = strtoupper($role);
     }
 
     $page_info = $_REQUEST['page_info'];
