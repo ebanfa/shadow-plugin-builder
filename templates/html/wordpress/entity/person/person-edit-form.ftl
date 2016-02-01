@@ -465,7 +465,7 @@
             <?php _e('Update', 'framework') ?>
         </button>
         
-        <a href="<?php echo get_site_url() . '/page?type=entity&artifact=party&id=' . $entity_data['party']; ?>&page_action=view" 
+        <a href="<?php echo get_site_url() . '/page?type=entity&artifact=party&id=' . $entity_data['party'] . '&role=' . $role; ?>&page_action=view" 
            class="btn bgm-indigo waves-effect"><?php _e('Back', 'framework') ?>
         </a>
     </div>
