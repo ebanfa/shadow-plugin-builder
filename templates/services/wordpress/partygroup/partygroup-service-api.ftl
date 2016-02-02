@@ -66,10 +66,14 @@ class ${entity.name}API {
         if($entity_data['edit_mode']){
             // First create the party 
             $party_data = ${entity.name}API::create_party($entity_data);
+            
             // Then the party group
             $entity_data['party'] = $party_data['id']; 
-        
             $entity_data = ${entity.name}API::do_create_entity($entity_data);
+
+            // Create a default business unit for this
+            CloderiaUserAPI::create_default_party_businessunit($party_data);
+
             // If the party role has been set then we create the party role
             if(isset($_POST['role'])) {
                 ${entity.name}API::create_party_role(sanitize_text_field($_POST['role']), $entity_data);

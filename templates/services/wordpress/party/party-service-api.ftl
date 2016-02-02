@@ -326,22 +326,11 @@ class ${entity.name}API {
     /**
      * Get all the role types that a party has
      */
-    public static function find_party_roles($party_id) {
-        $queryArgs = array('numberposts' => -1, 'posts_per_page' => -1,
-        'post_status' => 'any', 'post_type' => 'sb_partyrole', 
-        'meta_query' => array(array('key' => 'party', 'value' => $party_id)));
-
-        $role_ids = array();
-        $entityQuery = new WP_Query($queryArgs);
-        while ($entityQuery->have_posts()) : $entityQuery->the_post();
-            $entity = $entityQuery->post;
-            array_push($role_ids, get_post_meta($entity->ID, 'role', true));
-        endwhile;
-        wp_reset_postdata();
-
-        $roles =array();// Load all the partys with ID from above
-        foreach($role_ids as $role_id){
-            $role = RoleTypeAPI::get_by_id(intval($role_id));
+    public static function find_roles_types($party_id) {
+        $party_roles = ${entity.name}API::find_party_roles($party_id);
+        $roles = array();
+        foreach($party_roles as $party_role){
+            $role = RoleTypeAPI::get_by_id(intval($party_role['role']));
             array_push($roles, $role);
         }
         return $roles;
@@ -349,10 +338,49 @@ class ${entity.name}API {
     }
 
     /**
+     * Get all the party roles that a party has
+     */
+    public static function find_party_roles($party_id) {
+        $search_results = array();
+
+        $queryArgs = array('numberposts' => -1, 'posts_per_page' => -1,
+        'post_status' => 'any', 'post_type' => 'sb_partyrole', 
+        'meta_query' => array(array('key' => 'party', 'value' => $party_id)));
+
+        $entityQuery = new WP_Query($queryArgs);
+        while ($entityQuery->have_posts()) : $entityQuery->the_post();
+            $entity = $entityQuery->post;
+            array_push($search_results, PartyRoleAPI::entity_to_data($entity));
+        endwhile;
+        wp_reset_postdata();
+        return $search_results;
+
+    }
+
+    /**
      * Get all the role types that a party has
      */
-    public static function find_user_organizations($role) {
+    public static function find_user_organizations($party_id) {
         $search_results = array();
+        // Fist find all the party roles of the party
+        // Get all the parent business units
+        // FOr each business unit get it parent party
+        // add the party of the party is 
+        // find all busine
+        return $search_results;
+
+    }
+
+    /**
+     * Get all the role types that a party has
+     */
+    public static function find_user_business_units($party_id) {
+        $search_results = array();
+        // Fist find all the party roles of the party
+        // Get all the parent business units
+        // FOr each business unit get it parent party
+        // add the party of the party is 
+        // find all busine
         return $search_results;
 
     }
@@ -525,7 +553,7 @@ class ${entity.name}API {
         $entity_data['${field.name}_txt'] = get_post_meta($related_entity->ID, 'name', true);
         $entity_data['${field.name}_code'] = get_post_meta($related_entity->ID, 'entity_code', true);
     </#if>
-        $entity_data['roles'] = ${entity.name}API::find_party_roles($entity_data['id']);
+        $entity_data['roles'] = ${entity.name}API::find_roles_types($entity_data['id']);
 </#list>
         return $entity_data;
         
