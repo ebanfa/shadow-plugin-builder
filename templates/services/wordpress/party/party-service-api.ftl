@@ -361,7 +361,7 @@ class ${entity.name}API {
      * Get all the role types that a party has
      */
     public static function find_user_organizations($party_id) {
-        $search_results = array();3
+        $search_results = array();
         // Fist find all the party roles of the party
         // Get all the parent business units
         // FOr each business unit get it parent party
