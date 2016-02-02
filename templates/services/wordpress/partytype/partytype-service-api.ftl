@@ -39,7 +39,7 @@ class ${entity.name}API {
      */
     public static function create_${entity.postName}_ajax() {
         // Check the ajax request
-        CloderiaAPIUtils::do_before_ajax_edit() 
+        CloderiaAPIUtils::do_before_ajax_edit();
 
         $entity_data = ${entity.name}API::build_entity_data_from_post();
         $entity_data = ${entity.name}API::validate_entity_data($entity_data);
