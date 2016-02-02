@@ -289,7 +289,7 @@ class ${entity.name}API {
         if(isset($role_type['id']) && isset($role_type['entity_code'])) {
 
             if($role_type['entity_code'] === 'USER_ORGANIZATION') {
-                $search_results = ${entity.name}API::get_user_organizations($role);
+                $search_results = ${entity.name}API::find_user_organizations($role);
             } else {
                 // Search for all the party role type associations with the given role
                 $queryArgs = array('numberposts' => -1, 'posts_per_page' => -1,
@@ -345,6 +345,15 @@ class ${entity.name}API {
             array_push($roles, $role);
         }
         return $roles;
+
+    }
+
+    /**
+     * Get all the role types that a party has
+     */
+    public static function find_user_organizations($role) {
+        $search_results = array();
+        return $search_results;
 
     }
 
