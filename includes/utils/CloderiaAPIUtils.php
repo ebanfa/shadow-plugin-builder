@@ -35,7 +35,7 @@ class CloderiaAPIUtils {
     /**
      *
      */
-    public static function do_create_entity($entity_data){
+    public static function do_create_entity($entity_name, $entity_data){
         $entity_data['has_errors'] = false;
         if ($entity_data['edit_mode']) {
             // Create the order
@@ -47,7 +47,7 @@ class CloderiaAPIUtils {
             CloderiaAPIUtils::copy_fields_to_post($entity_data);
             // Post information
             $post_information = array('post_title' => $entity_data['name'], 'post_content' => esc_attr($entity_data['name']), 
-                'post_type' => '${entity.postName}', 'post_status' => 'publish');
+                'post_type' => $entity_name, 'post_status' => 'publish');
             // Insert the entity into the database
             $entity_data['id'] = wp_insert_post($post_information, true);
         } else {
@@ -55,7 +55,7 @@ class CloderiaAPIUtils {
             // Edit mode dont need redirect...for now
             $entity_data['requires_redirect'] = false;
             $post_information = array('ID' => $entity_data['id'], 'post_title' => $entity_data['name'],
-                'post_content' => esc_attr($entity_data['name']), 'post_type' => '${entity.postName}', 'post_status' => 'publish');
+                'post_content' => esc_attr($entity_data['name']), 'post_type' => $entity_name, 'post_status' => 'publish');
             // Update the entity
             $entity_data['id'] = wp_update_post($post_information, true);
         }
@@ -116,7 +116,7 @@ class CloderiaAPIUtils {
         }
 
         $queryArgs = array('numberposts' => -1, 'posts_per_page' => -1,
-            'post_status' => 'any', 'post_type' => '${entity.postName}', 'meta_query' => $meta_array);
+            'post_status' => 'any', 'post_type' => $entity_name, 'meta_query' => $meta_array);
 
         if ($is_global && !current_user_can('administrator')) {
             // Filter the results for non admin users

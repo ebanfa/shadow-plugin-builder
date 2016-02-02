@@ -45,7 +45,7 @@ class ${entity.name}API {
         $entity_data = ${entity.name}API::validate_entity_data($entity_data);
         // Create the entity of we have no errors
         if(!$entity_data['has_errors']) {
-            $entity_data = CloderiaAPIUtils::do_create_entity($entity_data);
+            $entity_data = CloderiaAPIUtils::do_create_entity('${entity.postName}', $entity_data);
         }
         // Run post edit hooks
         CloderiaAPIUtils::do_after_ajax_edit($entity_data);
