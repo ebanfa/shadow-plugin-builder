@@ -168,7 +168,7 @@ class CloderiaAPIUtils {
     public static function get_by_id($id){
         $entity_data = array();
         $post_obj = get_post($id);
-        return ${entity.name}API::entity_to_data($post_obj, false);
+        return $post_obj;
     }
 
     /**
