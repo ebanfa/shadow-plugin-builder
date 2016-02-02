@@ -7,7 +7,7 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
-class CloderiaAPIUtils.php {
+class CloderiaAPIUtils {
 
     /**
      *
@@ -161,7 +161,7 @@ class CloderiaAPIUtils.php {
         }
     }
 
-    
+
     /**
      *
      */
