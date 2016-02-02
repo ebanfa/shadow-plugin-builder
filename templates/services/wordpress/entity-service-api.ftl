@@ -245,11 +245,11 @@ class ${entity.name}API {
         $queryArgs = array('numberposts' => -1, 'posts_per_page' => -1,
             'post_status' => 'any', 'post_type' => '${entity.postName}', 'meta_query' => $meta_array);
 <#if entity.global == "N">
-        if (!current_user_can('administrator')) {
+        /*if (!current_user_can('administrator')) {
             // Filter the results for non admin users
             $user_query_param = array('key' => 'owner', 'value' => $user_party['id']);
             array_push($queryArgs['meta_query'], $user_query_param);
-        }
+        }*/
 </#if>
         $count = 0;
         $searchResults = array();
