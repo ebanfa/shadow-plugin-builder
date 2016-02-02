@@ -350,7 +350,7 @@ class ${entity.name}API {
         $entityQuery = new WP_Query($queryArgs);
         while ($entityQuery->have_posts()) : $entityQuery->the_post();
             $entity = $entityQuery->post;
-            array_push($search_results, PartyRoleAPI::entity_to_data($entity));
+            array_push($search_results, PartyRoleAPI::entity_to_data($entity, false));
         endwhile;
         wp_reset_postdata();
         return $search_results;
@@ -361,7 +361,7 @@ class ${entity.name}API {
      * Get all the role types that a party has
      */
     public static function find_user_organizations($party_id) {
-        $search_results = array();
+        $search_results = array();3
         // Fist find all the party roles of the party
         // Get all the parent business units
         // FOr each business unit get it parent party
