@@ -821,7 +821,7 @@
 			<postName>sb_partytype</postName>
 			<description>Party Type</description>
 			<global>Y</global>
-			<apiTemplate>services/wordpress/party/partytype-service-api.ftl</apiTemplate>
+			<apiTemplate>services/wordpress/partytype/partytype-service-api.ftl</apiTemplate>
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
