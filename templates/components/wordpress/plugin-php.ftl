@@ -91,6 +91,7 @@ class ${application.name} {
         include_once('includes/service/LoanApplicationService.php');
         // Utility Classes
         //include_once('includes/utils/Utils.php');
+        include_once('includes/utils/CloderiaAPIUtils.php');
         include_once('includes/utils/CloderiaUserUtils.php');
         include_once('includes/utils/CloderiaServiceUtils.php');
         include_once('includes/utils/CloderiaCustomFieldsUtils.php');

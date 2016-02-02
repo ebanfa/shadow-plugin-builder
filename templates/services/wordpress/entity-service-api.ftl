@@ -218,7 +218,6 @@ class ${entity.name}API {
     }
 
 
-
     /**
      *
      */
