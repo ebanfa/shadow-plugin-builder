@@ -307,7 +307,7 @@ class CloderiaAPIUtils {
      */
     public static function do_after_ajax_delete($entity_data) {
         if (!$entity_data['has_errors']) {
-            $redirect_url = get_site_url() . '/page?type=entity&artifact=${entity.name?lower_case}&page_action=list';
+            $redirect_url = get_site_url() . '/page?type=entity&artifact='. $entity_data['entity_artifact_name'] .'&page_action=list';
             wp_send_json_success(array('message' => "<script type='text/javascript'>window.location='" . $redirect_url . "'</script>"));
         } else {
             wp_send_json_error(array('message' => 'Error deleting entity'));
