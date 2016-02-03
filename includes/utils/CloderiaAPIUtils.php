@@ -68,6 +68,10 @@ class CloderiaAPIUtils {
         		}
         	}
         }
+        foreach ($entity_data as $key => $value) {
+            # code...
+            echo "The fieldder of data is:" . $key;
+        }
         return $entity_data;
     }
     /**
