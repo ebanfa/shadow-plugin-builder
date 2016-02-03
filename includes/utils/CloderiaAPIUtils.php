@@ -206,7 +206,7 @@ class CloderiaAPIUtils {
     public static function do_before_ajax_find($entity_data) {
         if(!isset($_POST['form'][2]) && !isset($_POST['form'][0]) && !wp_verify_nonce($_POST['form'][0]['name'], 'post_nonce')) {
             // Nounce field did not validate
-            wp_send_json_error(array('message' => "<span class='error'>Invalid form operation!</span>"));
+            wp_send_json_error(array('message' => "Invalid form operation!"));
         }
     }
 
@@ -216,7 +216,7 @@ class CloderiaAPIUtils {
     public static function do_find_entity($entity_data) {
         
         $search_results = array();
-        $query_args = CloderiaAPIUtils::build_entity_query($entity_data);
+        $query_args = CloderiaAPIUtils::build_query_from_form_data($entity_data);
         $entity_query = new WP_Query($query_args);
 
         while ($entity_query->have_posts()) : $entity_query->the_post();
@@ -238,16 +238,29 @@ class CloderiaAPIUtils {
     /**
      *
      */
-    public static function build_entity_query($entity_data) {
-        $meta_array = array();
+    public static function build_query_from_form_data($entity_data) {
+        $criteria_data = array();
         $form_data = $_POST['form'];
         foreach($form_data as $field){
           $name = sanitize_text_field($field['name']);
           if(in_array($name, $entity_data['entity_fields'])){
               $value = sanitize_text_field($field['value']);
+              $criteria_data[$name] = $value;
+          }
+        }
+        return CloderiaAPIUtils::build_query_from_criteria($entity_data, $criteria_data);
+    }
+
+    /**
+     *
+     */
+    public static function build_query_from_criteria($entity_data, $criteria_data) {
+        $meta_array = array();
+        foreach($criteria_data as $field_name => $field_value){
+          if(in_array($field_name, $entity_data['entity_fields'])){
               $field_array = array();
-              $field_array['key'] = $name;
-              $field_array['value'] = $value;
+              $field_array['key'] = $field_name;
+              $field_array['value'] = $field_value;
               array_push($meta_array, $field_array);
           }
         }
