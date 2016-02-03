@@ -14,7 +14,7 @@ class ${entity.name}API {
         '${field.name}' => array('name' => '${field.name}',
             'name' => '${field.name}',
             'data_type' => '${field.dataType}',
-            'is_required' => '${field.isRequired}',
+            'is_required' => '${field.required}',
             'is_create_field' => '${field.createField}',
             'is_edit_field' => '${field.editField}',
             'is_form_field' => '${field.isFormField}',
