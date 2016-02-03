@@ -79,8 +79,8 @@ class CloderiaAPIUtils {
                 $entity_data[$field_data['name']] = date("Y-m-d H:i:s");
             }
             else{
-               	if (isset($_POST[$field_data['name']))
-    				$entity_data[$field_data['name']] = sanitize_text_field($_POST[$field_data['name']]);;
+               	if (isset($_POST[$field_data['name']]))
+    				$entity_data[$field_data['name']] = sanitize_text_field($_POST[$field_data['name']]);
             }
 		}
 		// Process non date fields
