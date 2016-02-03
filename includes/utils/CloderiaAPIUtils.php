@@ -49,7 +49,7 @@ class CloderiaAPIUtils {
         		}
         	}
         	// Process non global entity data
-        	if($entity_data['is_global_entity'] === 'Y'){
+        	if($entity_data['is_global_entity'] === 'N'){
 	            $business_unit = BusinessUnitAPI::get_current_user_business_unit();
 	            if (isset($business_unit['id'])) {
 	                $entity_data['business_unit'] = $business_unit['id'];
