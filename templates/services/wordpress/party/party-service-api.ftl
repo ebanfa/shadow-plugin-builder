@@ -76,7 +76,7 @@ class ${entity.name}API {
         else {
             $search_results = CloderiaAPIUtils::do_find_entity($entity_data);
         }
-        
+
         CloderiaAPIUtils::do_after_ajax_find($entity_data, $search_results);
     }
 
@@ -130,7 +130,7 @@ class ${entity.name}API {
      */
     public static function find_by_criteria($entity_data, $criteria_data) {
         $entity_data = ${entity.name}API::init_entity_data();
-        return CloderiaAPIUtils::find_by_criteria($entity_data, $criteria_data)
+        return CloderiaAPIUtils::find_by_criteria($entity_data, $criteria_data);
     }
 
     /**
