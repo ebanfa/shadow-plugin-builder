@@ -61,7 +61,10 @@ class CloderiaAPIUtils {
             if (isset($_POST['id']))
                 $entity_data['id'] = sanitize_text_field($_POST['id']);
             //Process entity create form fields
-        	foreach ($entity_data['entity_fields'] as $field_data) {
+        	foreach ($entity_data['entity_fields'] as $field_name => $field_data) {
+
+        		echo 'Building edit field ' . $field_name . ' ' .$field_data['is_form_field']. ' '. $field_data['is_edit_field']  ;
+
         		if($field_data['is_form_field'] === 'Y' && $field_data['is_edit_field'] === 'Y') {
         			CloderiaAPIUtils::build_entity_field_from_post($field_data, $entity_data);
         		}
