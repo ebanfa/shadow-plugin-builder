@@ -309,14 +309,14 @@ class CloderiaAPIUtils {
     /**
      *
      */
-    public static function get_by_id($entity_data, $id){
+    public static function get_entity_by_id($entity_data, $id){
         return CloderiaAPIUtils::entity_to_data($entity_data, get_post($id), false);
     }
 
     /**
      *
      */
-    public static function get_by_code($entity_data, $entity_code){
+    public static function get_entity_by_code($entity_data, $entity_code){
         return CloderiaAPIUtils::get_entity_by_meta($entity_data, 'entity_code', $entity_code);
     }
 
