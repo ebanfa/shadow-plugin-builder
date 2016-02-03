@@ -27,7 +27,7 @@
 
                         <ul class="tab-nav tn-justified tn-icon" role="tablist">
                             <li role="presentation" class="active">
-                                <a class="col-sx-4" href="#tab-0" aria-controls="tab-0" role="tab" data-toggle="tab">
+                                <a class="col-sx-4" href="#tab-a" aria-controls="tab-a" role="tab" data-toggle="tab">
                                     ${entity.description}
                                 </a>
                             </li>
@@ -42,7 +42,7 @@
                         </ul>
 
                         <div class="tab-content p-20">
-                            <div role="tabpanel" class="tab-pane animated fadeIn in active" id="tab-0">
+                            <div role="tabpanel" class="tab-pane animated fadeIn in active" id="tab-a">
                                 <div id="success"></div>
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
