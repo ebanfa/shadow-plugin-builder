@@ -100,20 +100,24 @@ class ${entity.name}API {
     }
 
     /**
-     * Get all parts with id's in the list provided
+     * Get current user business role
      */
-    public static function find_by_ids($party_ids) {
-        return CloderiaAPIUtils::find_by_ids(${entity.name}API::init_entity_data(), $entity_code);
-    }
+    public static function get_current_user_business_unit(){
+        $business_unit = array();
+        // Get the party of the current user
+        $current_user_party = PartyAPI::get_current_user_party();
+        if(isset($current_user_party['id'])){ 
 
-    /**
-     * 
-     */
-    public static function find_by_criteria($entity_data, $criteria_data) {
-        $entity_data = ${entity.name}API::init_entity_data();
-        return CloderiaAPIUtils::find_by_criteria($entity_data, $criteria_data)
+            // Get the party profile of the current user
+            $current_user_party_role = PartyProfileAPI::get_by_field('party', $current_user_party['id']);
+            // The current business is gotten from the business unit set as default business unit
+            // for the party profile of the current user
+            if(isset($current_user_party_role['id']) && isset($current_user_party_role['default_unit'])) {
+                $business_unit = BusinessUnitAPI::get_by_id($current_user_party_role['default_unit']);
+            }
+        }
+        return $business_unit;
     }
-
     /**
      *
      */

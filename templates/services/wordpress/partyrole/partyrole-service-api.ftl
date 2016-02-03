@@ -95,23 +95,9 @@ class ${entity.name}API {
     /**
      *
      */
-    public static function get_by_field($field_name, $field_value){
-        return CloderiaAPIUtils::get_entity_by_meta(${entity.name}API::init_entity_data(), $field_name, $field_value);
-    }
-
-    /**
-     * Get all parts with id's in the list provided
-     */
-    public static function find_by_ids($party_ids) {
-        return CloderiaAPIUtils::find_by_ids(${entity.name}API::init_entity_data(), $entity_code);
-    }
-
-    /**
-     * 
-     */
-    public static function find_by_criteria($entity_data, $criteria_data) {
+    public static function find_by_party_id($party_id){
         $entity_data = ${entity.name}API::init_entity_data();
-        return CloderiaAPIUtils::find_by_criteria($entity_data, $criteria_data)
+        return CloderiaAPIUtils::find_by_criteria($entity_data, array('party' => $party_id));
     }
 
     /**

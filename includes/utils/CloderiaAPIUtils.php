@@ -254,6 +254,21 @@ class CloderiaAPIUtils {
     /**
      *
      */
+    public static function get_query_form_field($field_name) {
+        $form_data = $_POST['form'];
+        foreach($form_data as $field){
+          $name = sanitize_text_field($field['name']);
+          if($name === $field_name){
+              return sanitize_text_field($field['value']);
+              $criteria_data[$name] = $value;
+          }
+        }
+        return false;
+    }
+
+    /**
+     *
+     */
     public static function build_query_from_criteria($entity_data, $criteria_data) {
         $meta_array = array();
         foreach($criteria_data as $field_name => $field_value){
@@ -373,6 +388,40 @@ class CloderiaAPIUtils {
             $status_data['name'] = get_post_meta($status->ID, 'name', true);
         endwhile;
         return $status_data;
+    }
+
+    /**
+     * Get all parts with id's in the list provided
+     */
+    public static function find_by_ids($entity_data, $party_ids) {
+        $search_results = array();
+        $query_args = array('post_type' => $entity_data['entity_post_name'], 'post__in' => $party_ids);
+        $entity_query = new WP_Query($query_args);
+        
+        while ($entity_query->have_posts()) : $entity_query->the_post();
+            $entity = $entity_query->post;
+            array_push($search_results, CloderiaAPIUtils::entity_to_data($entity_data, $entity, false));
+        endwhile;
+        wp_reset_postdata();
+        
+        return $search_results;
+    }
+
+    /**
+     * 
+     */
+    public static function find_by_criteria($entity_data, $criteria_data) {
+        $search_results = array();
+        $query_args = CloderiaAPIUtils::build_query_from_criteria($entity_data, $criteria_data)
+        $entity_query = new WP_Query($query_args);
+        
+        while ($entity_query->have_posts()) : $entity_query->the_post();
+            $entity = $entity_query->post;
+            array_push($search_results, CloderiaAPIUtils::entity_to_data($entity_data, $entity, false));
+        endwhile;
+        wp_reset_postdata();
+        
+        return $search_results;
     }
 
     /**

@@ -893,6 +893,7 @@
 			<postName>sb_roletype</postName>
 			<description>Role Type</description>
 			<global>Y</global>
+			<apiTemplate>services/wordpress/roletype/roletype-service-api.ftl</apiTemplate>
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
@@ -1055,6 +1056,7 @@
 			<postName>sb_businessunit</postName>
 			<description>Business Unit</description>
 			<global>N</global>
+			<apiTemplate>services/wordpress/businessunit/businessunit-service-api.ftl</apiTemplate>
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
@@ -1207,6 +1209,7 @@
 			<postName>sb_partyrole</postName>
 			<description>Party Role</description>
 			<global>N</global>
+			<apiTemplate>services/wordpress/partyrole/partyrole-service-api.ftl</apiTemplate>
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
