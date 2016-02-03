@@ -73,7 +73,7 @@ class CloderiaAPIUtils {
      *
      */
     public static function build_entity_field_from_post($field_data, $entity_data){
-    	echo "Building field: " . $field_data['name'];
+    	echo 'Building field: '.implode(', ', $field_data['error_fields']) . '::::';
     	//Process date field
 		if($field_data['data_type'] === 'date' ) {
 			if(CloderiaAPIUtils::is_invalid_string($_POST['${field.name}'])) {
@@ -121,6 +121,9 @@ class CloderiaAPIUtils {
         			CloderiaAPIUtils::validate_entity_field($field_data, $entity_data);
         		}
         	}
+        }
+        if(isset($entity_data['has_errors'])){
+            $entity_data['error_message'] = 'The following fields are required: '.implode(', ', $entity_data['error_fields']);
         }
         return $entity_data;
     }
