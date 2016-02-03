@@ -25,12 +25,116 @@ class CloderiaAPIUtils {
     /**
      *
      */
-    public static function do_before_ajax_edit() {
+    public static function do_before_ajax_edit($entity_data) {
         // Ensure we have a valid form
         if(!CloderiaAPIUtils::is_valid_form() || !isset($_POST['edit_mode'])) {
             wp_send_json_error(array('message' => "Invalid artifact operation!"));
         }
     }
+
+    /**
+     *
+     */
+    public static function build_entity_data_from_post($entity_data){
+        // Extract the edit mode
+        $entity_data['edit_mode'] = true;
+        if (sanitize_text_field($_POST['edit_mode']) == 'edit') {
+            $entity_data['edit_mode'] = false;
+        }
+        if($entity_data['edit_mode']) {
+        	//Process entity create form fields
+        	foreach ($entity_data['entity_fields'] as $field_data) {
+        		if($field_data['is_form_field'] === 'Y' && $field_data['is_create_field'] === 'Y') {
+        			CloderiaAPIUtils::build_entity_field_from_post($field_data, $entity_data);
+        		}
+        	}
+        	// Process non global entity data
+        	if($entity_data['is_global_entity'] === 'Y'){
+	            $business_unit = BusinessUnitAPI::get_current_user_business_unit();
+	            if (isset($business_unit['id'])) {
+	                $entity_data['business_unit'] = $business_unit['id'];
+	            }
+        	}
+        }
+        else {
+        	// Get the id
+            if (isset($_POST['id']))
+                $entity_data['id'] = sanitize_text_field($_POST['id']);
+            //Process entity create form fields
+        	foreach ($entity_data['entity_fields'] as $field_data) {
+        		if($field_data['is_form_field'] === 'Y' && $field_data['is_edit_field'] === 'Y') {
+        			CloderiaAPIUtils::build_entity_field_from_post($field_data, $entity_data);
+        		}
+        	}
+        }
+        return $entity_data;
+    }
+    /**
+     *
+     */
+    public static function build_entity_field_from_post($field_data, $entity_data){
+    	//Process date field
+		if($field_data['data_type'] === 'date' ) {
+			if(CloderiaAPIUtils::is_invalid_string($_POST['${field.name}'])) {
+                $entity_data[$field_data['name']] = date("Y-m-d H:i:s");
+            }
+            else{
+               	if (isset($_POST[$field_data['name']))
+    				$entity_data[$field_data['name']] = sanitize_text_field($_POST[$field_data['name']]);;
+            }
+		}
+		// Process non date fields
+		else {
+			// Process status field
+			if( $field_data['name'] === 'status'){
+	            if(!isset($entity_data['status'])) {
+	                $status = CloderiaAPIUtils::get_status_by_code($field_data['data_type'], 'PENDING');
+	                $entity_data['status'] = $status['id'];
+	            }
+			}
+			else {
+               	if (isset($_POST[$field_data['name']]))
+    				$entity_data[$field_data['name']] = sanitize_text_field($_POST[$field_data['name']]);;
+			}
+		}
+    }
+
+    /**
+     *
+     */
+    public static function validate_entity_data($entity_data) {
+   	   $entity_data['error_fields'] = array();
+       $entity_data['has_errors'] = false;
+       if($entity_data['edit_mode']) {
+        	//Process entity create form fields
+        	foreach ($entity_data['entity_fields'] as $field_data) {
+        		if($field_data['is_required'] === 'Y' && $field_data['is_create_field'] === 'Y') {
+        			CloderiaAPIUtils::validate_entity_field($field_data, $entity_data);
+        		}
+        	}
+        }
+        else { 
+	    	//Process entity edit form fields
+        	foreach ($entity_data['entity_fields'] as $field_data) {
+        		if($field_data['is_required'] === 'Y' && $field_data['is_edit_field'] === 'Y') {
+        			CloderiaAPIUtils::validate_entity_field($field_data, $entity_data);
+        		}
+        	}
+        }
+        return $entity_data;
+    }
+
+    /**
+     *
+     */
+    public static function validate_entity_field($field_data, $entity_data) {
+    	// If the field is not present we flag an error
+		if(empty($entity_data[$field_data['name']])){
+        	$entity_data['has_errors'] = true; 
+            array_push($entity_data['error_fields'], $field_data['name']);
+        }
+    }
+
 
     /**
      *
@@ -91,7 +195,7 @@ class CloderiaAPIUtils {
     /**
      *
      */
-    public static function do_before_ajax_find() {
+    public static function do_before_ajax_find($entity_data) {
         if(!isset($_POST['form'][2]) && !isset($_POST['form'][0]) && !wp_verify_nonce($_POST['form'][0]['name'], 'post_nonce')) {
             // Nounce field did not validate
             wp_send_json_error(array('message' => "<span class='error'>Invalid form operation!</span>"));
@@ -101,12 +205,37 @@ class CloderiaAPIUtils {
     /**
      *
      */
-    public static function build_entity_query($entity_post_name, $entity_fields, $is_global) {
+    public static function do_find_entity($entity_data) {
+        
+        $search_results = array();
+        $query_args = CloderiaAPIUtils::build_entity_query($entity_data);
+        $entity_query = new WP_Query($query_args);
+
+        while ($entity_query->have_posts()) : $entity_query->the_post();
+            $entity = $entity_query->post;
+            array_push($search_results, CloderiaAPIUtils::entity_to_data($entity_data, $entity, false));
+        endwhile;
+        wp_reset_postdata();
+
+        return $search_results;
+    }
+
+    /**
+     *
+     */
+    public static function do_after_ajax_find($entity_data, $search_results) {
+        wp_send_json_success($search_results);
+    }
+
+    /**
+     *
+     */
+    public static function build_entity_query($entity_data) {
         $meta_array = array();
         $form_data = $_POST['form'];
         foreach($form_data as $field){
           $name = sanitize_text_field($field['name']);
-          if(in_array($name, $entity_fields)){
+          if(in_array($name, $entity_data['entity_fields'])){
               $value = sanitize_text_field($field['value']);
               $field_array = array();
               $field_array['key'] = $name;
@@ -116,9 +245,9 @@ class CloderiaAPIUtils {
         }
 
         $queryArgs = array('numberposts' => -1, 'posts_per_page' => -1,
-            'post_status' => 'any', 'post_type' => $entity_post_name, 'meta_query' => $meta_array);
+            'post_status' => 'any', 'post_type' => $entity_data['entity_post_name'], 'meta_query' => $meta_array);
 
-        if ($is_global && !current_user_can('administrator')) {
+        if ($entity_data['is_global_entity'] === 'N' && !current_user_can('administrator')) {
             // Filter the results for non admin users
             $business_unit = BusinessUnit::get_current_user_business_unit();
             if(isset($business_unit['id'])) {
@@ -133,7 +262,7 @@ class CloderiaAPIUtils {
     /**
      *
      */
-    public static function do_before_ajax_delete() {
+    public static function do_before_ajax_delete($entity_data) {
         // Ensure we have a valid form
         if (!isset($_POST['submitted']) && !isset($_POST['post_nonce_field']) && !wp_verify_nonce($_POST['post_nonce_field'], 'post_nonce')) {
             // Nounce field did not validate
@@ -149,8 +278,27 @@ class CloderiaAPIUtils {
     /**
      *
      */
-    public static function do_after_ajax_delete($post_obj) {
+    public static function do_delete_entity($entity_data) {
+        // Ensure we have a valid ID
+        if (!isset($_POST['id']) ) {
+            // Nounce field did not validate
+            wp_send_json_error(array('message' => "Entity identifier missing"));
+        }
+        $id = sanitize_text_field($_POST['id']);
+        $post_obj = wp_delete_post($id);
         if ($post_obj) {
+           $entity_data['has_errors'] = false;
+        } else {
+            $entity_data['has_errors'] = true;
+        }
+        return $entity_data;
+    }
+
+    /**
+     *
+     */
+    public static function do_after_ajax_delete($entity_data) {
+        if (!$entity_data['has_errors']) {
             $redirect_url = get_site_url() . '/page?type=entity&artifact=${entity.name?lower_case}&page_action=list';
             wp_send_json_success(array('message' => "<script type='text/javascript'>window.location='" . $redirect_url . "'</script>"));
         } else {
@@ -158,14 +306,34 @@ class CloderiaAPIUtils {
         }
     }
 
+    /**
+     *
+     */
+    public static function get_by_id($entity_data, $id){
+        return CloderiaAPIUtils::entity_to_data($entity_data, get_post($id), false);
+    }
 
     /**
      *
      */
-    public static function get_by_id($id){
+    public static function get_by_code($entity_data, $entity_code){
+        return CloderiaAPIUtils::get_entity_by_meta($entity_data, 'entity_code', $entity_code);
+    }
+
+    /**
+     *
+     */
+    public static function get_entity_by_meta($entity_data, $meta_key, $meta_value){
+        // Load the entity
         $entity_data = array();
-        $post_obj = get_post($id);
-        return $post_obj;
+        $entityQueryArgs = array('numberposts' => -1, 'post_status' => 'any', 'post_type' => $entity_data['entity_post_name'],
+            'meta_query' => array(array('key' => $meta_key, 'value' => $meta_value)));
+        $entityQuery = new WP_Query($entityQueryArgs);
+        while ($entityQuery->have_posts()) : $entityQuery->the_post();
+            $entity = $entityQuery->post;
+            $entity_data = CloderiaAPIUtils::entity_to_data($entity_data, $entity, false);
+        endwhile;
+        return $entity_data;
     }
 
     /**
@@ -186,22 +354,6 @@ class CloderiaAPIUtils {
         return $status_data;
     }
 
-     /**
-     *
-     */
-    public static function get_entity_by_meta($entity_post_name, $meta_key, $meta_value){
-        // Load the entity
-        $entity_data = array();
-        $entityQueryArgs = array('numberposts' => -1, 'post_status' => 'any', 'post_type' => $entity_post_name,
-            'meta_query' => array(array('key' => $meta_key, 'value' => $meta_value)));
-        $entityQuery = new WP_Query($entityQueryArgs);
-        while ($entityQuery->have_posts()) : $entityQuery->the_post();
-            $entity = $entityQuery->post;
-            $entity_data = $entity;
-        endwhile;
-        return $entity_data;
-    }
-
     /**
      *
      */
@@ -211,6 +363,28 @@ class CloderiaAPIUtils {
         foreach ($entity_data as $field_name => $field_value) {
             $_POST[$field_name] = $field_value;
         }
+    }
+
+    /**
+     *
+     */
+    public static function entity_to_data($entity_data, $entity, $load_deps) {
+        $entity_data['id'] = $entity->ID;
+        //Process entity create form fields
+    	foreach ($entity_data['entity_fields'] as $field_data) {
+    		if($field_data['is_relationship_field'] === 'N') {
+    			$entity_data[$field_data['name']] = get_post_meta($entity->ID, $field_data['name'], true);
+    		}
+    		if($field_data['is_relationship_field'] === 'Y') {
+    			$related_entity_id = get_post_meta($entity->ID, $field_data['name'], true);
+		        $entity_data[$field_data['name']] = $related_entity_id;
+		        // Get the related post
+		        $related_entity = get_post($related_entity_id);
+		        $entity_data[$field_data['name'] . '_txt'] = get_post_meta($related_entity->ID, 'name', true);
+		        $entity_data[$field_data['name'] . '_code'] = get_post_meta($related_entity->ID, 'entity_code', true);
+    		}
+    	}
+        return $entity_data;
     }
 
 }
