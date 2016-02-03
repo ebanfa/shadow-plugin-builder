@@ -50,6 +50,10 @@ class ${entity.name}API {
         CloderiaAPIUtils::do_before_ajax_edit($entity_data);
         $entity_data = CloderiaAPIUtils::build_entity_data_from_post($entity_data);
         $entity_data = CloderiaAPIUtils::validate_entity_data($entity_data);
+        foreach ($entity_data as $key => $value) {
+            # code...
+            echo "The field of data is:" . $key;
+        }
 
         // Create the entity of we have no errors
         if(!$entity_data['has_errors']) {
