@@ -64,7 +64,6 @@ class CloderiaAPIUtils {
         	foreach ($entity_data['entity_fields'] as $field_name => $field_data) {
 
         		if($field_data['is_form_field'] === 'Y' && $field_data['is_edit_field'] === 'Y') {
-        			echo "Building field " . $field_data['name'];
         			CloderiaAPIUtils::build_entity_field_from_post($field_data, $entity_data);
         		}
         	}
@@ -103,6 +102,10 @@ class CloderiaAPIUtils {
     				echo 'Built edit field ' . $entity_data[$field_data['name']]  ;
                	}
 			}
+		}
+		foreach ($entity_data as $key => $value) {
+			# code...
+			echo " ##########" . $key . '  ';
 		}
 		return $entity_data;
     }
