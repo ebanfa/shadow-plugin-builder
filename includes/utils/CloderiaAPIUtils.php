@@ -63,8 +63,6 @@ class CloderiaAPIUtils {
             //Process entity create form fields
         	foreach ($entity_data['entity_fields'] as $field_name => $field_data) {
 
-        		echo 'Building edit field ' . $field_name . ' ' .$field_data['is_form_field']. ' '. $field_data['is_edit_field']  ;
-
         		if($field_data['is_form_field'] === 'Y' && $field_data['is_edit_field'] === 'Y') {
         			CloderiaAPIUtils::build_entity_field_from_post($field_data, $entity_data);
         		}
@@ -78,7 +76,7 @@ class CloderiaAPIUtils {
     public static function build_entity_field_from_post($field_data, $entity_data){
     	//Process date field
 		if($field_data['data_type'] === 'date' ) {
-			if(CloderiaAPIUtils::is_invalid_string($_POST['${field.name}'])) {
+			if(CloderiaAPIUtils::is_invalid_string($_POST[$field_data['name']])) {
                 $entity_data[$field_data['name']] = date("Y-m-d H:i:s");
             }
             else{
@@ -96,8 +94,13 @@ class CloderiaAPIUtils {
 	            }
 			}
 			else {
-               	if (isset($_POST[$field_data['name']]))
-    				$entity_data[$field_data['name']] = sanitize_text_field($_POST[$field_data['name']]);;
+
+        		echo 'Building edit field ' . $field_data['name']  ;
+
+               	if (isset($_POST[$field_data['name']])){
+    				$entity_data[$field_data['name']] = sanitize_text_field($_POST[$field_data['name']]);
+    				echo 'Built edit field ' . $entity_data[$field_data['name']]  ;
+               	}
 			}
 		}
 		return $entity_data;

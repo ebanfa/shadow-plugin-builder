@@ -49,6 +49,10 @@ class ${entity.name}API {
         $entity_data = ${entity.name}API::init_entity_data();
         CloderiaAPIUtils::do_before_ajax_edit($entity_data);
         $entity_data = CloderiaAPIUtils::build_entity_data_from_post($entity_data);
+        foreach ($entity_data as $key => $value) {
+            # code...
+            echo "The fieldder of data is:" . $key;
+        }
         $entity_data = CloderiaAPIUtils::validate_entity_data($entity_data);
         foreach ($entity_data as $key => $value) {
             # code...
