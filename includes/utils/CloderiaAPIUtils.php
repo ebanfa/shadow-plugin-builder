@@ -96,10 +96,8 @@ class CloderiaAPIUtils {
 			}
 			else {
 
-        		echo 'Building edit field ' . $field_data['name']  ;
                	if (isset($_POST[$field_data['name']])){
     				$entity_data[$field_data['name']] = sanitize_text_field($_POST[$field_data['name']]);
-    				echo 'Built edit field ' . $entity_data[$field_data['name']]  ;
                	}
 			}
 		}
