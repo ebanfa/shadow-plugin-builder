@@ -83,14 +83,14 @@ class ${entity.name}API {
      *
      */
     public static function get_by_code($entity_code){
-        return CloderiaAPIUtils::get_entity_by_code(init_entity_data(), $entity_code);
+        return CloderiaAPIUtils::get_entity_by_code(${entity.name}API::init_entity_data(), $entity_code);
     }
 
     /**
      *
      */
     public static function get_by_id($id){
-        return CloderiaAPIUtils::get_entity_by_id(init_entity_data(), $id);
+        return CloderiaAPIUtils::get_entity_by_id(${entity.name}API::init_entity_data(), $id);
     }
 
     /**
