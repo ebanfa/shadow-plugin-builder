@@ -103,7 +103,7 @@ class ${entity.name}API {
         $entity_data['entity_artifact_name'] = '${entity.name?lower_case}';
         $entity_data['entity_fields'] = ${entity.name}API::$entity_fields;
         $entity_data['is_global_entity'] = '${entity.global}';
-        return $entity_data
+        return $entity_data;
     }
 
 }
