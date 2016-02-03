@@ -45,7 +45,7 @@ class ${entity.name}API {
         $entity_data = ${entity.name}API::validate_entity_data($entity_data);
         // Create the entity of we have no errors
         if(!$entity_data['has_errors']) {
-            $entity_data = CloderiaAPIUtils::do_create_entity('${entity.postName}', $entity_data);
+            $entity_data = CloderiaAPIUtils::do_create_entity($entity_data);
         }
         // Run post edit hooks
         CloderiaAPIUtils::do_after_ajax_edit($entity_data);
@@ -56,6 +56,8 @@ class ${entity.name}API {
      */
     public static function build_entity_data_from_post(){
         $entity_data = array();
+        $entity_data['entity_post_name'] = '${entity.postName}';
+        $entity_data['entity_artifact_name'] = '${entity.name?lower_case}';
         // Extract the edit mode
         $entity_data['edit_mode'] = true;
         if (sanitize_text_field($_POST['edit_mode']) == 'edit') {
@@ -154,8 +156,8 @@ class ${entity.name}API {
         $is_global_entity = false;
         </#if>
 
-        $query_args = CloderiaAPIUtils::build_entity_query(
-            '${entity.postName}', ${entity.name}API::$entity_fields, $is_global_entity);
+        $entity_fields = ${entity.name}API::$entity_fields;
+        $query_args = CloderiaAPIUtils::build_entity_query('${entity.postName}', $entity_fields, $is_global_entity);
 
         $searchResults = array();
         $entityQuery = new WP_Query($query_args);

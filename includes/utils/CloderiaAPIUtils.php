@@ -35,7 +35,7 @@ class CloderiaAPIUtils {
     /**
      *
      */
-    public static function do_create_entity($entity_name, $entity_data){
+    public static function do_create_entity($entity_data){
         $entity_data['has_errors'] = false;
         if ($entity_data['edit_mode']) {
             // Create the order
@@ -47,7 +47,7 @@ class CloderiaAPIUtils {
             CloderiaAPIUtils::copy_fields_to_post($entity_data);
             // Post information
             $post_information = array('post_title' => $entity_data['name'], 'post_content' => esc_attr($entity_data['name']), 
-                'post_type' => $entity_name, 'post_status' => 'publish');
+                'post_type' => $entity_data['entity_post_name'], 'post_status' => 'publish');
             // Insert the entity into the database
             $entity_data['id'] = wp_insert_post($post_information, true);
         } else {
@@ -55,7 +55,7 @@ class CloderiaAPIUtils {
             // Edit mode dont need redirect...for now
             $entity_data['requires_redirect'] = false;
             $post_information = array('ID' => $entity_data['id'], 'post_title' => $entity_data['name'],
-                'post_content' => esc_attr($entity_data['name']), 'post_type' => $entity_name, 'post_status' => 'publish');
+                'post_content' => esc_attr($entity_data['name']), 'post_type' => $entity_data['entity_post_name'], 'post_status' => 'publish');
             // Update the entity
             $entity_data['id'] = wp_update_post($post_information, true);
         }
@@ -74,7 +74,7 @@ class CloderiaAPIUtils {
     	// Process the results of the order creation
         if(!$entity_data['has_errors']) {
 
-            $redirect_url = get_site_url() . '/page?type=entity&artifact=${entity.name?lower_case}&id=' . $entity_data['id'] . '&page_action=view';
+            $redirect_url = get_site_url() . '/page?type=entity&artifact='. $entity_data['entity_artifact_name'] . '&id=' . $entity_data['id'] . '&page_action=view';
             // Process the parent id, if any
             if(isset($_REQUEST['parent_id']) && isset($_REQUEST['parent_artifact']) && isset($_REQUEST['parent_field'])) 
             {
@@ -101,7 +101,7 @@ class CloderiaAPIUtils {
     /**
      *
      */
-    public static function build_entity_query($entity_name, $entity_fields, $is_global) {
+    public static function build_entity_query($entity_post_name, $entity_fields, $is_global) {
         $meta_array = array();
         $form_data = $_POST['form'];
         foreach($form_data as $field){
@@ -116,7 +116,7 @@ class CloderiaAPIUtils {
         }
 
         $queryArgs = array('numberposts' => -1, 'posts_per_page' => -1,
-            'post_status' => 'any', 'post_type' => $entity_name, 'meta_query' => $meta_array);
+            'post_status' => 'any', 'post_type' => $entity_post_name, 'meta_query' => $meta_array);
 
         if ($is_global && !current_user_can('administrator')) {
             // Filter the results for non admin users
@@ -189,10 +189,10 @@ class CloderiaAPIUtils {
      /**
      *
      */
-    public static function get_entity_by_meta($entity_name, $meta_key, $meta_value){
+    public static function get_entity_by_meta($entity_post_name, $meta_key, $meta_value){
         // Load the entity
         $entity_data = array();
-        $entityQueryArgs = array('numberposts' => -1, 'post_status' => 'any', 'post_type' => $entity_name,
+        $entityQueryArgs = array('numberposts' => -1, 'post_status' => 'any', 'post_type' => $entity_post_name,
             'meta_query' => array(array('key' => $meta_key, 'value' => $meta_value)));
         $entityQuery = new WP_Query($entityQueryArgs);
         while ($entityQuery->have_posts()) : $entityQuery->the_post();
