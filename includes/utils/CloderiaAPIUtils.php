@@ -67,7 +67,6 @@ class CloderiaAPIUtils {
         		}
         	}
         }
-        echo 'Built fields: '.implode(', ', $entity_data['entity_fields']) . '::::';
         return $entity_data;
     }
     /**
@@ -98,6 +97,7 @@ class CloderiaAPIUtils {
     				$entity_data[$field_data['name']] = sanitize_text_field($_POST[$field_data['name']]);;
 			}
 		}
+		return $entity_data;
     }
 
     /**
