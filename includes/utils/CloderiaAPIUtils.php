@@ -412,7 +412,7 @@ class CloderiaAPIUtils {
      */
     public static function find_by_criteria($entity_data, $criteria_data) {
         $search_results = array();
-        $query_args = CloderiaAPIUtils::build_query_from_criteria($entity_data, $criteria_data)
+        $query_args = CloderiaAPIUtils::build_query_from_criteria($entity_data, $criteria_data);
         $entity_query = new WP_Query($query_args);
         
         while ($entity_query->have_posts()) : $entity_query->the_post();
