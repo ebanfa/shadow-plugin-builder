@@ -67,13 +67,13 @@ class CloderiaAPIUtils {
         		}
         	}
         }
+        echo 'Built fields: '.implode(', ', $entity_data['entity_fields']) . '::::';
         return $entity_data;
     }
     /**
      *
      */
     public static function build_entity_field_from_post($field_data, $entity_data){
-    	echo 'Building field: '.implode(', ', $field_data) . '::::';
     	//Process date field
 		if($field_data['data_type'] === 'date' ) {
 			if(CloderiaAPIUtils::is_invalid_string($_POST['${field.name}'])) {
