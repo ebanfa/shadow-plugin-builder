@@ -36,8 +36,9 @@ class DashboardService {
 
 
     public static function get_tenants_count(){
-        $tenant_role = RoleTypeAPI::get_by_code('TENANT');
         $tenants_count = 0;
+        $tenant_role = RoleTypeAPI::get_by_code('TENANT');
+        
         if(isset($tenant_role['id'])) {
             $search_results = PartyRoleAPI::find_by_criteria(array('role' => $tenant_role['type']));
             $tenants_count =  count($search_results);
