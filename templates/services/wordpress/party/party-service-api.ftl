@@ -73,7 +73,7 @@ class ${entity.name}API {
         if($role_type) { $search_results = self::find_by_role($role_type); } 
         else { $search_results = CloderiaAPIUtils::do_find_entity($entity_data); }
 */
-        CloderiaAPIUtils::do_after_ajax_find($entity_data, $search_results);
+        //CloderiaAPIUtils::do_after_ajax_find($entity_data, $search_results);
     }
 
     /**
