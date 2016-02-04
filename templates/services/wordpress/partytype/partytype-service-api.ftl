@@ -65,7 +65,7 @@ class ${entity.name}API {
      */
     public static function find_${entity.postName}_ajax() {
         $entity_data = ${entity.name}API::init_entity_data();
-        CloderiaAPIUtils::do_before_ajax_find($entity_data);
+        $entity_data = CloderiaAPIUtils::do_before_ajax_find($entity_data);
         $search_results = CloderiaAPIUtils::do_find_entity($entity_data);
         CloderiaAPIUtils::do_after_ajax_find($entity_data, $search_results);
     }
@@ -75,7 +75,7 @@ class ${entity.name}API {
      */
     public static function delete_${entity.postName}_ajax() {
         $entity_data = ${entity.name}API::init_entity_data();
-        CloderiaAPIUtils::do_before_ajax_delete($entity_data);
+        $entity_data = CloderiaAPIUtils::do_before_ajax_delete($entity_data);
         $entity_data = CloderiaAPIUtils::do_delete_entity($entity_data);
         CloderiaAPIUtils::do_after_ajax_delete($entity_data);
     }

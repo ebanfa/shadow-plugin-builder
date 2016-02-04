@@ -65,19 +65,13 @@ class ${entity.name}API {
      *
      */
     public static function find_${entity.postName}_ajax() {
-
-        $entity_data = ${entity.name}API::init_entity_data();
-        CloderiaAPIUtils::do_before_ajax_find($entity_data);
-
         $search_results = array();
+        $entity_data = ${entity.name}API::init_entity_data();
+        $entity_data = CloderiaAPIUtils::do_before_ajax_find($entity_data);
         $role_type = CloderiaAPIUtils::get_query_form_field('role');
 
-        if($role_type) {
-            $search_results = ${entity.name}API::find_by_role($role_type);
-        } 
-        else {
-            $search_results = CloderiaAPIUtils::do_find_entity($entity_data);
-        }
+        if($role_type) { $search_results = ${entity.name}API::find_by_role($role_type); } 
+        else { $search_results = CloderiaAPIUtils::do_find_entity($entity_data); }
 
         CloderiaAPIUtils::do_after_ajax_find($entity_data, $search_results);
     }
@@ -87,7 +81,7 @@ class ${entity.name}API {
      */
     public static function delete_${entity.postName}_ajax() {
         $entity_data = ${entity.name}API::init_entity_data();
-        CloderiaAPIUtils::do_before_ajax_delete($entity_data);
+        $entity_data = CloderiaAPIUtils::do_before_ajax_delete($entity_data);
         $entity_data = CloderiaAPIUtils::do_delete_entity($entity_data);
         CloderiaAPIUtils::do_after_ajax_delete($entity_data);
         <#list entity.relatedChildEntities?keys as key> 
