@@ -31,16 +31,16 @@ class DashboardService {
     public static function get_property_count(){
         $itemQueryArgs = array('numberposts' => -1, 'post_status' => 'publish', 'post_type' => 'sb_property');
         $itemQuery = new WP_Query($itemQueryArgs);
-	return $itemQuery->found_posts;
+	    return $itemQuery->found_posts;
     }
 
 
     public static function get_tenants_count(){
         $tenants_count = 0;
         $tenant_role = RoleTypeAPI::get_by_code('TENANT');
-        
+
         if(isset($tenant_role['id'])) {
-            $search_results = PartyRoleAPI::find_by_criteria(array('role' => $tenant_role['type']));
+            $search_results = PartyRoleAPI::find_by_criteria(array('role' => $tenant_role['id']));
             $tenants_count =  count($search_results);
         }
         return $tenants_count;
