@@ -248,7 +248,7 @@ class CloderiaAPIUtils {
         $form_data = $_POST['form'];
         foreach($form_data as $field){
           $name = sanitize_text_field($field['name']);
-          if(in_array($name, $entity_data['entity_fields'])){
+          if(array_key_exists($name, $entity_data['entity_fields'])){
               $value = sanitize_text_field($field['value']);
               $criteria_data[$name] = $value;
           }
@@ -284,8 +284,6 @@ class CloderiaAPIUtils {
               array_push($meta_array, $field_array);
           }
         }
-        print_r($meta_array);
-
         $queryArgs = array('numberposts' => -1, 'posts_per_page' => -1,
             'post_status' => 'any', 'post_type' => $entity_data['entity_post_name'], 'meta_query' => $meta_array);
 

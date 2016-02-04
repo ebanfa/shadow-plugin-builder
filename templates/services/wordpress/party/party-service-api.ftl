@@ -162,7 +162,6 @@ class ${entity.name}API {
                 $party_ids = array();
                 // Search for all the party role type associations with the given role
                 $party_roles = PartyRoleAPI::find_by_criteria(array('role' => $role_type['id']));
-                echo 'Found '. count($party_roles) . 'party roles';
                 // Loop throug all the return party roles 
                 // and push the party id into list of parties
                 foreach ($party_roles as $party_role) {
