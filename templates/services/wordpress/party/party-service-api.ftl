@@ -28,20 +28,20 @@ class ${entity.name}API {
      *
      */
     public static function init_ajax_hooks() {
-        add_action('wp_ajax_create_${entity.postName}_ajax', '${entity.name}API::create_${entity.postName}_ajax');
-        add_action('wp_ajax_nopriv_create_${entity.postName}_ajax', '${entity.name}API::create_${entity.postName}_ajax');
+        add_action('wp_ajax_create_${entity.postName}_ajax', 'self::create_${entity.postName}_ajax');
+        add_action('wp_ajax_nopriv_create_${entity.postName}_ajax', 'self::create_${entity.postName}_ajax');
 
-        add_action('wp_ajax_edit_${entity.postName}_ajax', '${entity.name}API::edit_${entity.postName}_ajax');
-        add_action('wp_ajax_nopriv_edit_${entity.postName}_ajax', '${entity.name}API::edit_${entity.postName}_ajax');
+        add_action('wp_ajax_edit_${entity.postName}_ajax', 'self::edit_${entity.postName}_ajax');
+        add_action('wp_ajax_nopriv_edit_${entity.postName}_ajax', 'self::edit_${entity.postName}_ajax');
 
-        add_action('wp_ajax_view_${entity.postName}_ajax', '${entity.name}API::view_${entity.postName}_ajax');
-        add_action('wp_ajax_nopriv_view_${entity.postName}_ajax', '${entity.name}API::view_${entity.postName}_ajax');
+        add_action('wp_ajax_view_${entity.postName}_ajax', 'self::view_${entity.postName}_ajax');
+        add_action('wp_ajax_nopriv_view_${entity.postName}_ajax', 'self::view_${entity.postName}_ajax');
 
-        add_action('wp_ajax_find_${entity.postName}_ajax', '${entity.name}API::find_${entity.postName}_ajax');
-        add_action('wp_ajax_nopriv_find_${entity.postName}_ajax', '${entity.name}API::find_${entity.postName}_ajax');
+        add_action('wp_ajax_find_${entity.postName}_ajax', 'self::find_${entity.postName}_ajax');
+        add_action('wp_ajax_nopriv_find_${entity.postName}_ajax', 'self::find_${entity.postName}_ajax');
 
-        add_action('wp_ajax_delete_${entity.postName}_ajax', '${entity.name}API::delete_${entity.postName}_ajax');
-        add_action('wp_ajax_nopriv_delete_${entity.postName}_ajax', '${entity.name}API::delete_${entity.postName}_ajax');
+        add_action('wp_ajax_delete_${entity.postName}_ajax', 'self::delete_${entity.postName}_ajax');
+        add_action('wp_ajax_nopriv_delete_${entity.postName}_ajax', 'self::delete_${entity.postName}_ajax');
     }
     
     /**
@@ -49,7 +49,7 @@ class ${entity.name}API {
      */
     public static function create_${entity.postName}_ajax() {
         // Check the ajax request
-        $entity_data = ${entity.name}API::init_entity_data();
+        $entity_data = self::init_entity_data();
         $entity_data = CloderiaAPIUtils::do_before_ajax_edit($entity_data);
         $entity_data = CloderiaAPIUtils::build_entity_data_from_post($entity_data);
         $entity_data = CloderiaAPIUtils::validate_entity_data($entity_data);
@@ -66,11 +66,11 @@ class ${entity.name}API {
      */
     public static function find_${entity.postName}_ajax() {
         $search_results = array();
-        $entity_data = ${entity.name}API::init_entity_data();
+        $entity_data = self::init_entity_data();
         $entity_data = CloderiaAPIUtils::do_before_ajax_find($entity_data);
         $role_type = CloderiaAPIUtils::get_query_form_field('role');
 
-        if($role_type) { $search_results = ${entity.name}API::find_by_role($role_type); } 
+        if($role_type) { $search_results = self::find_by_role($role_type); } 
         else { $search_results = CloderiaAPIUtils::do_find_entity($entity_data); }
 
         CloderiaAPIUtils::do_after_ajax_find($entity_data, $search_results);
@@ -80,7 +80,7 @@ class ${entity.name}API {
      * Delete a single party record. This will also delete all child entity instances
      */
     public static function delete_${entity.postName}_ajax() {
-        $entity_data = ${entity.name}API::init_entity_data();
+        $entity_data = self::init_entity_data();
         $entity_data = CloderiaAPIUtils::do_before_ajax_delete($entity_data);
         $entity_data = CloderiaAPIUtils::do_delete_entity($entity_data);
         CloderiaAPIUtils::do_after_ajax_delete($entity_data);
@@ -97,35 +97,35 @@ class ${entity.name}API {
      *
      */
     public static function get_by_id($id){
-        return CloderiaAPIUtils::get_entity_by_id(${entity.name}API::init_entity_data(), $id);
+        return CloderiaAPIUtils::get_entity_by_id(self::init_entity_data(), $id);
     }
 
     /**
      *
      */
     public static function get_by_code($entity_code){
-        return CloderiaAPIUtils::get_entity_by_code(${entity.name}API::init_entity_data(), $entity_code);
+        return CloderiaAPIUtils::get_entity_by_code(self::init_entity_data(), $entity_code);
     }
 
     /**
      *
      */
     public static function get_by_field($field_name, $field_value){
-        return CloderiaAPIUtils::get_entity_by_meta(${entity.name}API::init_entity_data(), $field_name, $field_value);
+        return CloderiaAPIUtils::get_entity_by_meta(self::init_entity_data(), $field_name, $field_value);
     }
 
     /**
      * Get all parts with id's in the list provided
      */
     public static function find_by_ids($party_ids) {
-        return CloderiaAPIUtils::find_by_ids(${entity.name}API::init_entity_data(), $entity_code);
+        return CloderiaAPIUtils::find_by_ids(self::init_entity_data(), $entity_code);
     }
 
     /**
      * 
      */
     public static function find_by_criteria($entity_data, $criteria_data) {
-        $entity_data = ${entity.name}API::init_entity_data();
+        $entity_data = self::init_entity_data();
         return CloderiaAPIUtils::find_by_criteria($entity_data, $criteria_data);
     }
 
@@ -137,7 +137,7 @@ class ${entity.name}API {
         $entity_data = array();
         $entity_data['entity_post_name'] = '${entity.postName}';
         $entity_data['entity_artifact_name'] = '${entity.name?lower_case}';
-        $entity_data['entity_fields'] = ${entity.name}API::$entity_fields;
+        $entity_data['entity_fields'] = self::$entity_fields;
         $entity_data['is_global_entity'] = '${entity.global}';
         return $entity_data;
     }
@@ -154,7 +154,7 @@ class ${entity.name}API {
         if(isset($role_type['id']) && isset($role_type['entity_code'])) {
             // Special treatment is required if the role type is 'user_organization'
             if($role === 'user_organization') {
-                $search_results = ${entity.name}API::find_user_organizations($role);
+                $search_results = self::find_user_organizations($role);
             } else {
                 $party_ids = array();
                 // Search for all the party role type associations with the given role
@@ -164,7 +164,7 @@ class ${entity.name}API {
                 foreach ($party_roles as $party_role) {
                     array_push($party_ids, $party_role['party']);
                 }
-                $search_results = ${entity.name}API::find_by_ids($party_ids);
+                $search_results = self::find_by_ids($party_ids);
             }
         }
         return $search_results;
@@ -206,7 +206,7 @@ class ${entity.name}API {
      */
     public static function get_party_user($party_id){
         $user_data = array();
-        $party_data = ${entity.name}API::get_by_id($party_id); 
+        $party_data = self::get_by_id($party_id); 
       
         if(isset($party_data['id'])){	    
             $user = get_user_by('login', $party_data['user_name']); 
@@ -232,7 +232,7 @@ class ${entity.name}API {
             while ($entityQuery->have_posts()) : $entityQuery->the_post();
                 $entity = $entityQuery->post;
                 if($count == 0){
-                    $user_party = ${entity.name}API::entity_to_data($entity, false);
+                    $user_party = self::entity_to_data($entity, false);
                 }
                 $count++;
             endwhile;
@@ -248,7 +248,7 @@ class ${entity.name}API {
         $user_party = array();
         $current_user = wp_get_current_user();
         if ($current_user) {
-           $user_party = ${entity.name}API::get_user_party($current_user->ID);
+           $user_party = self::get_user_party($current_user->ID);
         }
         return $user_party;
     }
