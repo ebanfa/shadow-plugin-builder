@@ -28,20 +28,20 @@ class ${entity.name}API {
      *
      */
     public static function init_ajax_hooks() {
-        add_action('wp_ajax_create_${entity.postName}_ajax', 'self::create_${entity.postName}_ajax');
-        add_action('wp_ajax_nopriv_create_${entity.postName}_ajax', 'self::create_${entity.postName}_ajax');
+        add_action('wp_ajax_create_${entity.postName}_ajax', '${entity.name}API::create_${entity.postName}_ajax');
+        add_action('wp_ajax_nopriv_create_${entity.postName}_ajax', '${entity.name}API::create_${entity.postName}_ajax');
 
-        add_action('wp_ajax_edit_${entity.postName}_ajax', 'self::edit_${entity.postName}_ajax');
-        add_action('wp_ajax_nopriv_edit_${entity.postName}_ajax', 'self::edit_${entity.postName}_ajax');
+        add_action('wp_ajax_edit_${entity.postName}_ajax', '${entity.name}API::edit_${entity.postName}_ajax');
+        add_action('wp_ajax_nopriv_edit_${entity.postName}_ajax', '${entity.name}API::edit_${entity.postName}_ajax');
 
-        add_action('wp_ajax_view_${entity.postName}_ajax', 'self::view_${entity.postName}_ajax');
-        add_action('wp_ajax_nopriv_view_${entity.postName}_ajax', 'self::view_${entity.postName}_ajax');
+        add_action('wp_ajax_view_${entity.postName}_ajax', '${entity.name}API::view_${entity.postName}_ajax');
+        add_action('wp_ajax_nopriv_view_${entity.postName}_ajax', '${entity.name}API::view_${entity.postName}_ajax');
 
-        add_action('wp_ajax_find_${entity.postName}_ajax', 'self::find_${entity.postName}_ajax');
-        add_action('wp_ajax_nopriv_find_${entity.postName}_ajax', 'self::find_${entity.postName}_ajax');
+        add_action('wp_ajax_find_${entity.postName}_ajax', '${entity.name}API::find_${entity.postName}_ajax');
+        add_action('wp_ajax_nopriv_find_${entity.postName}_ajax', '${entity.name}API::find_${entity.postName}_ajax');
 
-        add_action('wp_ajax_delete_${entity.postName}_ajax', 'self::delete_${entity.postName}_ajax');
-        add_action('wp_ajax_nopriv_delete_${entity.postName}_ajax', 'self::delete_${entity.postName}_ajax');
+        add_action('wp_ajax_delete_${entity.postName}_ajax', '${entity.name}API::delete_${entity.postName}_ajax');
+        add_action('wp_ajax_nopriv_delete_${entity.postName}_ajax', '${entity.name}API::delete_${entity.postName}_ajax');
     }
     
     /**
@@ -66,14 +66,14 @@ class ${entity.name}API {
      */
     public static function find_${entity.postName}_ajax() {
         $search_results = array();
-        //$entity_data = self::init_entity_data();
-        //$entity_data = CloderiaAPIUtils::do_before_ajax_find($entity_data);
-        /*$role_type = CloderiaAPIUtils::get_query_form_field('role');
+        $entity_data = self::init_entity_data();
+        $entity_data = CloderiaAPIUtils::do_before_ajax_find($entity_data);
+        $role_type = CloderiaAPIUtils::get_query_form_field('role');
 
         if($role_type) { $search_results = self::find_by_role($role_type); } 
         else { $search_results = CloderiaAPIUtils::do_find_entity($entity_data); }
-*/
-        //CloderiaAPIUtils::do_after_ajax_find($entity_data, $search_results);
+
+        CloderiaAPIUtils::do_after_ajax_find($entity_data, $search_results);
     }
 
     /**
