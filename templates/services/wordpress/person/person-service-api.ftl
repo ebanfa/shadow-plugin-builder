@@ -23,7 +23,7 @@ class ${entity.name}API {
         'is_relationship_field' => '${field.relationshipField}',),
 </#list> 
         // Doing to enable this field be included when processing request parameters
-        '${field.name}' => array('name' => 'role',
+        'role' => array('name' => 'role',
         'data_type' => 'name',
         'is_required' => 'Y',
         'is_visible' => 'N',
