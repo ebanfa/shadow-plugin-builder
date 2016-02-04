@@ -71,7 +71,7 @@ class ${entity.name}API {
         $role_type = CloderiaAPIUtils::get_query_form_field('role');
         echo 'The loaded role is::' . $role_type;
 
-        if($role_type) { $search_results = self::find_by_role($role_type); } 
+        if($role_type) { echo 'Thats one'; $search_results = self::find_by_role($role_type); } 
         else { $search_results = CloderiaAPIUtils::do_find_entity($entity_data); }
 
         CloderiaAPIUtils::do_after_ajax_find($entity_data, $search_results);
