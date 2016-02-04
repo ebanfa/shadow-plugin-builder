@@ -290,7 +290,7 @@ class CloderiaAPIUtils {
 
         if ($entity_data['is_global_entity'] === 'N' && !current_user_can('administrator')) {
             // Filter the results for non admin users
-            $business_unit = BusinessUnit::get_current_user_business_unit();
+            $business_unit = BusinessUnitAPI::get_current_user_business_unit();
             if(isset($business_unit['id'])) {
                 $user_query_param = array('key' => 'business_unit', 'value' => $business_unit['id']);
                 array_push($queryArgs['meta_query'], $user_query_param); 
