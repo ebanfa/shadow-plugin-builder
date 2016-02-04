@@ -101,7 +101,9 @@ class ${entity.name}API {
      *
      */
     public static function get_by_id($id){
-        return CloderiaAPIUtils::get_entity_by_id(self::init_entity_data(), $id);
+        $entity_data = CloderiaAPIUtils::get_entity_by_id(self::init_entity_data(), $id);
+        if(isset($entity_data['id'])) $entity_data['roles'] = RoleType::find_by_party_id($entity_data['id']);
+        return $entity_data;
     }
 
     /**
