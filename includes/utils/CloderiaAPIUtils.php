@@ -284,6 +284,7 @@ class CloderiaAPIUtils {
               array_push($meta_array, $field_array);
           }
         }
+        print_r($meta_array);
 
         $queryArgs = array('numberposts' => -1, 'posts_per_page' => -1,
             'post_status' => 'any', 'post_type' => $entity_data['entity_post_name'], 'meta_query' => $meta_array);
