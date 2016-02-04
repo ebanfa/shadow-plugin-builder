@@ -134,6 +134,41 @@ class ${entity.name}API {
         $entity_data['is_global_entity'] = '${entity.global}';
         return $entity_data;
     }
+    
+    /**
+     *
+     */
+    public static function create_party($entity_data){
+        $party_data = array();
+        $party_data['edit_mode'] = true;
+        $party_data['name'] = $entity_data['first_name'] . ' ' . $entity_data['last_name'];
+        $party_data['description'] = $entity_data['description'];;
+        // Get the party type
+        $party_type = PartyTypeAPI::get_by_code('INDIVIDUAL');
+        $party_data['party_type'] = $party_type['id'];
+        $party_data['business_unit'] = $entity_data['business_unit'];
+
+        return PartyAPI::do_create_entity($party_data);
+    }
+
+    /**
+     *
+     */
+    public static function create_party_role($party_role, $entity_data){
+        $party_role_data = array();
+        $party_role_data['edit_mode'] = true;
+        $party_role_data['name'] = $entity_data['first_name'] . ' ' . $entity_data['last_name'];
+        $party_role_data['description'] = $entity_data['description'];
+        $party_role_data['party'] = $entity_data['party'];
+        $party_data['parent_unit'] = $entity_data['business_unit'];
+        $party_data['business_unit'] = $entity_data['business_unit'];
+        // Get the role type
+        $role_type = RoleTypeAPI::get_by_code(strtoupper($party_role));
+        $party_role_data['role'] = $role_type['id'];
+        
+        return PartyRoleAPI::do_create_entity($party_role_data);
+    }
+
 
 
 

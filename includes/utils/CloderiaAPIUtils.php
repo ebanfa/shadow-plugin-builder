@@ -186,7 +186,11 @@ class CloderiaAPIUtils {
     	// Process the results of the order creation
         if(!$entity_data['has_errors']) {
 
-            $redirect_url = get_site_url() . '/page?type=entity&artifact='. $entity_data['entity_artifact_name'] . '&id=' . $entity_data['id'] . '&page_action=view';
+        	if(isset($entity_data['redirect_url'])) {
+        		$redirect_url = $entity_data['redirect_url'];
+        	} else {
+            	$redirect_url = get_site_url() . '/page?type=entity&artifact='. $entity_data['entity_artifact_name'] . '&id=' . $entity_data['id'] . '&page_action=view';
+        	}
             // Process the parent id, if any
             if(isset($_REQUEST['parent_id']) && isset($_REQUEST['parent_artifact']) && isset($_REQUEST['parent_field'])) 
             {
