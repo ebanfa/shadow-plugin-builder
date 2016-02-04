@@ -16,7 +16,7 @@ class DashboardService {
         $party_data = PartyAPI::get_by_id($party_id);
 
     	$property_count = DashboardService::get_property_count();
-    	$tenants_count =  0; //DashboardService::get_tenants_count($party_data['id']);
+    	$tenants_count =  DashboardService::get_tenants_count();
     	/*$lease_agreements_value = DashboardService::get_lease_agreements_value($party_data['id']);
     	$current_monthly_rent_income = DashboardService::get_current_monthly_rent_income($party_data['id']);
     	;*/
