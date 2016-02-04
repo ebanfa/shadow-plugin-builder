@@ -69,10 +69,13 @@ class ${entity.name}API {
         $entity_data = self::init_entity_data();
         $entity_data = CloderiaAPIUtils::do_before_ajax_find($entity_data);
         $role_type = CloderiaAPIUtils::get_query_form_field('role');
-        echo 'The loaded role is::' . $role_type;
 
-        if($role_type) { echo 'Thats one'; $search_results = self::find_by_role($role_type); } 
-        else { $search_results = CloderiaAPIUtils::do_find_entity($entity_data); }
+        if($role_type) { 
+            $search_results = self::find_by_role($role_type); 
+        } 
+        else { 
+            $search_results = CloderiaAPIUtils::do_find_entity($entity_data); 
+        }
 
         CloderiaAPIUtils::do_after_ajax_find($entity_data, $search_results);
     }
@@ -159,6 +162,7 @@ class ${entity.name}API {
                 $party_ids = array();
                 // Search for all the party role type associations with the given role
                 $party_roles = PartyRoleAPI::find_by_criteria(array('role' => $role_type['id']));
+                echo 'Found '. count($party_roles) . 'party roles';
                 // Loop throug all the return party roles 
                 // and push the party id into list of parties
                 foreach ($party_roles as $party_role) {
