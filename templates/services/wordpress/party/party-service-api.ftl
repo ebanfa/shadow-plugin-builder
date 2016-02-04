@@ -232,7 +232,7 @@ class ${entity.name}API {
             while ($entityQuery->have_posts()) : $entityQuery->the_post();
                 $entity = $entityQuery->post;
                 if($count == 0){
-                    $user_party = self::entity_to_data($entity, false);
+                    $user_party = CloderiaAPIUtils::entity_to_data(self::init_entity_data(), $entity, false);
                 }
                 $count++;
             endwhile;
