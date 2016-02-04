@@ -24,7 +24,7 @@ class DashboardService {
     	$party_dashboard_stats['property_count'] =  $property_count;
     	$party_dashboard_stats['tenants_count'] =  $tenants_count;
     	$party_dashboard_stats['lease_agreements_value'] = $lease_agreements_value;
-    	$party_dashboard_stats['current_monthly_rent_income'] = //$current_monthly_rent_income;
+    	$party_dashboard_stats['current_monthly_rent_income'] = $current_monthly_rent_income;
     	return $party_dashboard_stats;
     }
 
@@ -49,7 +49,7 @@ class DashboardService {
     public static function get_lease_agreements_value(){
 	    $total_agreements_value = 0;
         $agreements_list = AgreementAPI::find_by_criteria(array());
-        
+
         foreach ($agreements_list as $agreement) {
             $total_agreements_value = $total_agreements_value + $agreement['amount'];
         }
