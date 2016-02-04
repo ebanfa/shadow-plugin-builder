@@ -127,5 +127,22 @@ class ${entity.name}API {
         $entity_data['is_global_entity'] = '${entity.global}';
         return $entity_data;
     }
+    
+    /**
+     * Get all the role types that a party has
+     */
+    public static function find_by_party_id($party_id) {
+        // First we load up all the party roles of the specified
+        // party.
+        $roles = array();
+        $party_roles = PartyRoleAPI::find_by_party_id($party_id);
+        foreach($party_roles as $party_role){
+            if(isset($party_role['id']) && isset($party_role['role'])) {
+                $role = RoleTypeAPI::get_by_id(intval($party_role['role']));
+                array_push($roles, $role);
+            }
+        }
+        return $roles;
+    }
 
 }

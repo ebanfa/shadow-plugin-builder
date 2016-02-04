@@ -128,4 +128,12 @@ class ${entity.name}API {
         return $entity_data;
     }
 
+    /**
+     *
+     */
+    public static function find_by_party_id($party_id){
+        $entity_data = ${entity.name}API::init_entity_data();
+        return CloderiaAPIUtils::find_by_criteria($entity_data, array('party' => $party_id));
+    }
+
 }
