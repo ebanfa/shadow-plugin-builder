@@ -91,9 +91,7 @@ class ${entity.name}API {
      *
      */
     public static function get_by_code($entity_code){
-        $entity_data = ${entity.name}API::init_entity_data();
-        print_r($entity_data);
-        return CloderiaAPIUtils::get_entity_by_code($entity_data, $entity_code);
+        return CloderiaAPIUtils::get_entity_by_code(${entity.name}API::init_entity_data(), $entity_code);
     }
 
     /**

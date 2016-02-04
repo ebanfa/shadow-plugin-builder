@@ -366,7 +366,6 @@ class CloderiaAPIUtils {
      */
     public static function get_entity_by_meta($entity_data, $meta_key, $meta_value){
         // Load the entity
-        $entity_data = array();
         $entityQueryArgs = array('numberposts' => -1, 'post_status' => 'any', 'post_type' => $entity_data['entity_post_name'],
             'meta_query' => array(array('key' => $meta_key, 'value' => $meta_value)));
         $entityQuery = new WP_Query($entityQueryArgs);
