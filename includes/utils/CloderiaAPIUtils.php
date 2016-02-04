@@ -277,7 +277,7 @@ class CloderiaAPIUtils {
     public static function build_query_from_criteria($entity_data, $criteria_data) {
         $meta_array = array();
         foreach($criteria_data as $field_name => $field_value){
-          if(in_array($field_name, $entity_data['entity_fields'])){
+          if(array_key_exists($field_name, $entity_data['entity_fields'])){
               $field_array = array();
               $field_array['key'] = $field_name;
               $field_array['value'] = $field_value;
