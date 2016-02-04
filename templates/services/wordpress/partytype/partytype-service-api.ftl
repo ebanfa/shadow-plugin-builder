@@ -12,12 +12,15 @@ class ${entity.name}API {
     public static $entity_fields = array(
 <#list entity.fields as field>
         '${field.name}' => array('name' => '${field.name}',
-            'data_type' => '${field.dataType}',
-            'is_required' => '${field.required}',
-            'is_create_field' => '${field.createField}',
-            'is_edit_field' => '${field.editField}',
-            'is_form_field' => '${field.isFormField}',
-            'is_relationship_field' => '${field.relationshipField}',),
+        'data_type' => '${field.dataType}',
+        'is_required' => '${field.required}',
+        'is_visible' => '${field.isVisible}',
+        'is_create_field' => '${field.createField}',
+        'is_edit_field' => '${field.editField}',
+        'is_view_field' => '${field.viewField}',
+        'is_list_field' => '${field.listField}',
+        'is_form_field' => '${field.isFormField}',
+        'is_relationship_field' => '${field.relationshipField}',),
 </#list>   
    );
     /**
