@@ -111,7 +111,7 @@ class ${entity.name}API {
     /**
      * 
      */
-    public static function find_by_criteria($entity_data, $criteria_data) {
+    public static function find_by_criteria($criteria_data) {
         $entity_data = ${entity.name}API::init_entity_data();
         return CloderiaAPIUtils::find_by_criteria($entity_data, $criteria_data);
     }
