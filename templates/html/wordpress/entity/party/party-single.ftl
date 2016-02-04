@@ -11,13 +11,13 @@
         if(isset($entity_data['id'])) {
             if($entity_data['party_type_code'] === 'ORGANIZATION') { 
                 $is_organization = true;
-                $group_data = PartyGroupAPI::get_by_party_id($entity_data['id']);
+                $group_data = PartyGroupAPI::get_by_field('party', $entity_data['id']);
                 $artifact = 'partygroup';
                 $entity_id = $group_data['id'];
 
             } 
             else {
-                $person_data = PersonAPI::get_by_party_id($entity_data['id']);
+                $person_data = PersonAPI::get_by_field('party', $entity_data['id']);
                 $artifact = 'person';
                 $entity_id = $person_data['id'];
             }
