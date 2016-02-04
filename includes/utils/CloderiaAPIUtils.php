@@ -69,7 +69,6 @@ class CloderiaAPIUtils {
         		}
         	}
         }
-
         return $entity_data;
     }
     /**
@@ -213,6 +212,7 @@ class CloderiaAPIUtils {
             // Nounce field did not validate
             wp_send_json_error(array('message' => "Invalid form operation!"));
         }
+        return $entity_data;
     }
 
     /**
@@ -313,6 +313,7 @@ class CloderiaAPIUtils {
             // Nounce field did not validate
             wp_send_json_error(array('message' => "Entity identifier missing"));
         }
+        return $entity_data;
     }
 
     /**
