@@ -12,12 +12,15 @@ class ${entity.name}API {
     public static $entity_fields = array(
 <#list entity.fields as field>
         '${field.name}' => array('name' => '${field.name}',
-            'data_type' => '${field.dataType}',
-            'is_required' => '${field.required}',
-            'is_create_field' => '${field.createField}',
-            'is_edit_field' => '${field.editField}',
-            'is_form_field' => '${field.isFormField}',
-            'is_relationship_field' => '${field.relationshipField}',),
+        'data_type' => '${field.dataType}',
+        'is_required' => '${field.required}',
+        'is_visible' => '${field.isVisible}',
+        'is_create_field' => '${field.createField}',
+        'is_edit_field' => '${field.editField}',
+        'is_view_field' => '${field.viewField}',
+        'is_list_field' => '${field.listField}',
+        'is_form_field' => '${field.isFormField}',
+        'is_relationship_field' => '${field.relationshipField}',),
 </#list>   
    );
     /**
@@ -46,10 +49,9 @@ class ${entity.name}API {
     public static function create_${entity.postName}_ajax() {
         // Check the ajax request
         $entity_data = ${entity.name}API::init_entity_data();
-        CloderiaAPIUtils::do_before_ajax_edit($entity_data);
+        $entity_data = CloderiaAPIUtils::do_before_ajax_edit($entity_data);
         $entity_data = CloderiaAPIUtils::build_entity_data_from_post($entity_data);
         $entity_data = CloderiaAPIUtils::validate_entity_data($entity_data);
-
         // Create the entity of we have no errors
         if(!$entity_data['has_errors']) {
             $entity_data = CloderiaAPIUtils::do_create_entity($entity_data);
@@ -63,7 +65,7 @@ class ${entity.name}API {
      */
     public static function find_${entity.postName}_ajax() {
         $entity_data = ${entity.name}API::init_entity_data();
-        CloderiaAPIUtils::do_before_ajax_find($entity_data);
+        $entity_data = CloderiaAPIUtils::do_before_ajax_find($entity_data);
         $search_results = CloderiaAPIUtils::do_find_entity($entity_data);
         CloderiaAPIUtils::do_after_ajax_find($entity_data, $search_results);
     }
@@ -73,7 +75,7 @@ class ${entity.name}API {
      */
     public static function delete_${entity.postName}_ajax() {
         $entity_data = ${entity.name}API::init_entity_data();
-        CloderiaAPIUtils::do_before_ajax_delete($entity_data);
+        $entity_data = CloderiaAPIUtils::do_before_ajax_delete($entity_data);
         $entity_data = CloderiaAPIUtils::do_delete_entity($entity_data);
         CloderiaAPIUtils::do_after_ajax_delete($entity_data);
     }
@@ -93,20 +95,25 @@ class ${entity.name}API {
     }
 
     /**
-     * Get all the role types that a party has
+     *
      */
-    public static function find_by_party_id($party_id) {
-        // First we load up all the party roles of the specified
-        // party.
-        $party_roles = PartyRoleAPI::find_by_party_id($party_id);
-        $roles = array();
-        foreach($party_roles as $party_role){
-            if(isset($party_role['id']) && isset($party_role['role'])) {
-                $role = RoleTypeAPI::get_by_id(intval($party_role['role']));
-                array_push($roles, $role);
-            }
-        }
-        return $roles;
+    public static function get_by_field($field_name, $field_value){
+        return CloderiaAPIUtils::get_entity_by_meta(${entity.name}API::init_entity_data(), $field_name, $field_value);
+    }
+
+    /**
+     * Get all parts with id's in the list provided
+     */
+    public static function find_by_ids($party_ids) {
+        return CloderiaAPIUtils::find_by_ids(${entity.name}API::init_entity_data(), $entity_code);
+    }
+
+    /**
+     * 
+     */
+    public static function find_by_criteria($entity_data, $criteria_data) {
+        $entity_data = ${entity.name}API::init_entity_data();
+        return CloderiaAPIUtils::find_by_criteria($entity_data, $criteria_data);
     }
 
     /**
