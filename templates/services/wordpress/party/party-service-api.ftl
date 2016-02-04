@@ -134,10 +134,10 @@ class ${entity.name}API {
     public static function init_entity_data() {
         // Check the ajax request
         $entity_data = array();
-        $entity_data['entity_post_name'] = '${entity.postName}';
-        $entity_data['entity_artifact_name'] = '${entity.name?lower_case}';
         $entity_data['entity_fields'] = self::$entity_fields;
         $entity_data['is_global_entity'] = '${entity.global}';
+        $entity_data['entity_post_name'] = '${entity.postName}';
+        $entity_data['entity_artifact_name'] = '${entity.name?lower_case}';
         return $entity_data;
     }
 
