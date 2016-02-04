@@ -38,7 +38,7 @@ class CloderiaUserAPI {
      * This creates the party for the current user
      */
     public static function create_party($user_data) {
-        $entity_data = array();
+        $entity_data = PartyAPI::init_data();
         // Get the default party type (INDIVIDUAL)
         $party_type = PartyTypeAPI::get_by_code(get_option('cp_default_partytype'));
 
@@ -65,7 +65,8 @@ class CloderiaUserAPI {
      * 
      */
     public static function create_default_party_businessunit($party_data) {
-        $entity_data = array();
+        $entity_data = BusinessUnitAPI::init_data();
+
         if(isset($party_data['id'])) {
             $entity_data['edit_mode'] = true;
             $entity_data['party'] = $party_data['id'];
@@ -98,7 +99,8 @@ class CloderiaUserAPI {
      * entity for the party
      */
     public static function create_party_person($businessunit_data, $party_data) {
-        $entity_data = array();
+        $entity_data = PersonAPI::init_data();
+
         if(isset($party_data['id']) && isset($businessunit_data['id'])) {
             $entity_data['edit_mode'] = true;
             $entity_data['party'] = $party_data['id'];
@@ -122,7 +124,8 @@ class CloderiaUserAPI {
      * business unit in which this profile is defined
      */
     public static function create_party_profile($businessunit_data, $party_data) {
-        $entity_data = array();
+        $entity_data = PartyProfileAPI::init_data();
+
         if(isset($party_data['id']) && isset($businessunit_data['id'])) {
             $entity_data['edit_mode'] = true;
             $entity_data['party'] = $party_data['id'];
@@ -142,8 +145,9 @@ class CloderiaUserAPI {
      * type 'BUSINESS_OWNER' for the new user.
      */
     public static function create_default_party_role($businessunit_data, $party_data) {
-        $entity_data = array();
+        $entity_data = PartyRoleAPI::init_data();
         $owner_role_data = RoleTypeAPI::get_by_code('BUSINESS_OWNER');
+        
         if(isset($businessunit_data['id']) && isset($owner_role_data['id']) && isset($party_data['id'])) {
             $entity_data['edit_mode'] = true;
             $entity_data['name'] = $party_data['name'];
@@ -164,7 +168,7 @@ class CloderiaUserAPI {
      * the said role type.
      */
     public static function create_default_party_chartofaccounts($businessunit_data, $partyrole_data) {
-        $entity_data = array();
+        /*$entity_data = array();
         if(isset($partyrole_data['id']) && isset($businessunit_data['id'])) {
             // 1. Use the mapping of party role to account structure to
             // the appropriate account structure to use for the COA we care creating
@@ -182,7 +186,7 @@ class CloderiaUserAPI {
                 }
             }
         }
-        return $entity_data;
+        return $entity_data;*/
     }
 
     /**

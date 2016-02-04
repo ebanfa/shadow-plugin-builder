@@ -294,7 +294,6 @@ class CloderiaAPIUtils {
         return $queryArgs;
     }
 
-
     /**
      *
      */
