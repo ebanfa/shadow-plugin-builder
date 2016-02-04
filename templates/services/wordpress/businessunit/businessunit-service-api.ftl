@@ -9,7 +9,7 @@ if (!defined('ABSPATH')) {
 
 class ${entity.name}API {
     
-    public static $entity_fields = array(
+       public static $entity_fields = array(
 <#list entity.fields as field>
         '${field.name}' => array('name' => '${field.name}',
             'data_type' => '${field.dataType}',
@@ -100,6 +100,33 @@ class ${entity.name}API {
     }
 
     /**
+     * Get all parts with id's in the list provided
+     */
+    public static function find_by_ids($party_ids) {
+        return CloderiaAPIUtils::find_by_ids(${entity.name}API::init_entity_data(), $entity_code);
+    }
+
+    /**
+     * 
+     */
+    public static function find_by_criteria($entity_data, $criteria_data) {
+        $entity_data = ${entity.name}API::init_entity_data();
+        return CloderiaAPIUtils::find_by_criteria($entity_data, $criteria_data);
+    }
+
+    /**
+     *
+     */
+    public static function init_entity_data() {
+        // Check the ajax request
+        $entity_data = array();
+        $entity_data['entity_post_name'] = '${entity.postName}';
+        $entity_data['entity_artifact_name'] = '${entity.name?lower_case}';
+        $entity_data['entity_fields'] = ${entity.name}API::$entity_fields;
+        $entity_data['is_global_entity'] = '${entity.global}';
+        return $entity_data;
+    }
+    /**
      * Get current user business role
      */
     public static function get_current_user_business_unit(){
@@ -117,18 +144,6 @@ class ${entity.name}API {
             }
         }
         return $business_unit;
-    }
-    /**
-     *
-     */
-    public static function init_entity_data() {
-        // Check the ajax request
-        $entity_data = array();
-        $entity_data['entity_post_name'] = '${entity.postName}';
-        $entity_data['entity_artifact_name'] = '${entity.name?lower_case}';
-        $entity_data['entity_fields'] = ${entity.name}API::$entity_fields;
-        $entity_data['is_global_entity'] = '${entity.global}';
-        return $entity_data;
     }
 
 }

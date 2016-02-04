@@ -1607,6 +1607,7 @@
 			<postName>sb_partyprofile</postName>
 			<description>Party Profile</description>
 			<global>N</global>
+			<apiTemplate>services/wordpress/partyprofile/partyprofile-service-api.ftl</apiTemplate>
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>

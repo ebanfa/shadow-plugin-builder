@@ -27,7 +27,7 @@ class CloderiaUserAPI {
                 // 5. Create the profile for the user
                 $partyrole_data = CloderiaUserAPI::create_default_party_role($businessunit_data, $party_data);
                 // 6. Create the chart of accounts entity
-                $chartofaccounts_data = CloderiaUserAPI::create_default_party_chartofaccounts($businessunit_data, $partyrole_data);
+                //$chartofaccounts_data = CloderiaUserAPI::create_default_party_chartofaccounts($businessunit_data, $partyrole_data);
                 // 7. Send the user successully created email
                 CloderiaUserAPI::send_user_created_email($user_data, $party_data);
             }
@@ -147,7 +147,7 @@ class CloderiaUserAPI {
     public static function create_default_party_role($businessunit_data, $party_data) {
         $entity_data = PartyRoleAPI::init_data();
         $owner_role_data = RoleTypeAPI::get_by_code('BUSINESS_OWNER');
-        
+
         if(isset($businessunit_data['id']) && isset($owner_role_data['id']) && isset($party_data['id'])) {
             $entity_data['edit_mode'] = true;
             $entity_data['name'] = $party_data['name'];
