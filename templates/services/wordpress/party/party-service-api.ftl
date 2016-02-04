@@ -66,14 +66,14 @@ class ${entity.name}API {
      */
     public static function find_${entity.postName}_ajax() {
         $search_results = array();
-        $entity_data = self::init_entity_data();
-        $entity_data = CloderiaAPIUtils::do_before_ajax_find($entity_data);
+        //$entity_data = self::init_entity_data();
+        //$entity_data = CloderiaAPIUtils::do_before_ajax_find($entity_data);
         /*$role_type = CloderiaAPIUtils::get_query_form_field('role');
 
         if($role_type) { $search_results = self::find_by_role($role_type); } 
         else { $search_results = CloderiaAPIUtils::do_find_entity($entity_data); }
 */
-        CloderiaAPIUtils::do_after_ajax_find($entity_data, array()/*$search_results*/);
+        CloderiaAPIUtils::do_after_ajax_find($entity_data, $search_results);
     }
 
     /**
