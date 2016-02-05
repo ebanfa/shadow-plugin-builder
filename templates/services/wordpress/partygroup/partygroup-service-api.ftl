@@ -56,12 +56,12 @@ class ${entity.name}API {
         if(!$entity_data['has_errors']) {
             // Create/edit the associated party record
             $entity_data = self::create_party($entity_data);
-            $entity_data = self::create_party_role($entity_data);
-            $entity_data = CloderiaAPIUtils::do_create_entity($entity_data);
+            /*$entity_data = self::create_party_role($entity_data);
+            $entity_data = CloderiaAPIUtils::do_create_entity($entity_data);*/
         }
-        $entity_data['redirect_url'] = get_site_url() . '/page?type=entity&artifact=party&id=' . $entity_data['party'] . '&page_action=view';
+        /*$entity_data['redirect_url'] = get_site_url() . '/page?type=entity&artifact=party&id=' . $entity_data['party'] . '&page_action=view';
         // Run post edit hooks
-        CloderiaAPIUtils::do_after_ajax_edit($entity_data);
+        CloderiaAPIUtils::do_after_ajax_edit($entity_data);*/
     }
 
     /**
@@ -138,9 +138,9 @@ class ${entity.name}API {
      */
     public static function create_party($entity_data) {
         
-        $party_data = PartyAPI::init_entity_data();
 
         if($entity_data['edit_mode']) {
+            $party_data = PartyAPI::init_entity_data();
             $party_data['edit_mode'] = true;
             $party_type = PartyTypeAPI::get_by_code('ORGANIZATION');
             $party_data['party_type'] = $party_type['id'];
@@ -151,11 +151,12 @@ class ${entity.name}API {
             // So we can retrieve the id of the parent party
             if(isset($entity_data['id'])) {
                 $entity_data = ${entity.name}API::get_by_id($entity_data['id']);
+                echo 'Got party id:'. $entity_data['party'] . ' for group with id ' . $entity_data['id'] . ' ';
                 $party_data = PartyAPI::get_by_id($entity_data['party']);
                 $party_data['edit_mode'] = false;
             }
         }
-        $party_data['name'] = $entity_data['name'];
+        /*$party_data['name'] = $entity_data['name'];
         $party_data['description'] = $entity_data['description'];
 
         $party_data = CloderiaAPIUtils::validate_entity_data($party_data);
@@ -163,7 +164,7 @@ class ${entity.name}API {
 
         if(isset($party_data['id'])){ 
             $entity_data['party'] = $party_data['id']; 
-        }
+        }*/
         return $entity_data;
     }
 
