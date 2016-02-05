@@ -50,7 +50,7 @@
 				<active>N</active>
 				<cssClass>md-mail add-prospect-btn</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;artifact=party&amp;page_action=list&amp;role=prosective_tenant</target>
+				<target>/page?type=entity&amp;artifact=party&amp;page_action=list&amp;role=prospective_tenant</target>
 			</menu>
 			<menu>
 				<name>serviceproviders</name>
