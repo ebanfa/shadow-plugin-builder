@@ -158,7 +158,7 @@ class ${entity.name}API {
         }
         else {
             if(isset($entity_data['id'])) {
-                $entity_data['party'] = ${entity.name}API::get_by_id($entity_data['id']);
+                $entity_data = ${entity.name}API::get_by_id($entity_data['id']);
                 $party_data = PartyAPI::get_by_id($entity_data['party']);
                 $party_data['edit_mode'] = false;
             }
