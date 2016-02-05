@@ -178,7 +178,7 @@ class ${entity.name}API {
         if($entity_data['edit_mode']) {
             $party_role_data = PartyRoleAPI::init_entity_data();
             $role_type = RoleTypeAPI::get_by_code(strtoupper($entity_data['role']));
-
+            print_r($role_type);
             $party_role_data['edit_mode'] = true;
             $party_role_data['role'] = $role_type['id'];
             $party_role_data['party'] = $entity_data['party'];
