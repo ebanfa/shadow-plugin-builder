@@ -151,6 +151,7 @@ class ${entity.name}API {
             // So we can retrieve the id of the parent part
             if(isset($entity_data['id'])) {
                 $entity_data['party'] = ${entity.name}API::get_by_id($entity_data['id']);
+                echo 'Getting party with id '. $entity_data['party'] . ' for group with id ' .$entity_data['id'];
                 //$party_data = PartyAPI::get_by_id($entity_data['party']);
                 //$party_data['edit_mode'] = false;
             }
