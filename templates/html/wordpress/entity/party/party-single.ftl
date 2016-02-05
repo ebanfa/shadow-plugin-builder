@@ -26,6 +26,7 @@
         if(isset($_REQUEST['role'])) { 
             $party_role_param = '&role=' . sanitize_text_field($_REQUEST['role']);
         }
+        $artifact_link = $artifact . $party_role_param;
     }
 ?>
 
@@ -52,8 +53,7 @@
     if($page_action == 'list')
         $page_action_txt = 'The '. strtolower($page_name ) . ' list. To view a single record, click on the highlighted column.';
 
-    $artifact_link = 'person&role=' . $party_role;
-    if($is_organization){$artifact_link = 'partygroup&role=' . $party_role;}
+    $artifact_link = $artifact . $party_role_param;
 
 ?>
 <div class="row">
