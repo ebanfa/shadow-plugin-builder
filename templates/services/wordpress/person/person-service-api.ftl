@@ -169,8 +169,8 @@ class ${entity.name}API {
                 $party_data = array_merge($parent_party_data, $party_data);
             }
         }
-        $party_data['name'] = $entity_data['name'];
-        $party_data['description'] = $entity_data['description'];
+        $party_data['name'] = $entity_data['first_name'] . ' ' . $entity_data['last_name'];
+        $party_data['description'] = $entity_data['first_name'] . ' ' . $entity_data['last_name'];
         $party_data = CloderiaAPIUtils::validate_entity_data($party_data);
         $party_data = CloderiaAPIUtils::do_create_entity($party_data);
 
