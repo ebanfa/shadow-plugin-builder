@@ -153,8 +153,8 @@ class ${entity.name}API {
                 $entity_data = ${entity.name}API::get_by_id($entity_data['id']);
                 print_r($entity_data);
                 echo '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>';
-                echo 'Got party id:'. $entity_data['party'] . ' for group with id ' . $entity_data['id'] . ' ';
                 $party_data = PartyAPI::get_by_id($entity_data['party']);
+                print_r($party_data);
                 $party_data['edit_mode'] = false;
             }
         }
