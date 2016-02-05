@@ -151,15 +151,15 @@ class ${entity.name}API {
             // So we can retrieve the id of the parent part
             if(isset($entity_data['id'])) {
                 $entity_data['party'] = ${entity.name}API::get_by_id($entity_data['id']);
-                $party_data = PartyAPI::get_by_id($entity_data['party']);
-                $party_data['edit_mode'] = false;
+                //$party_data = PartyAPI::get_by_id($entity_data['party']);
+                //$party_data['edit_mode'] = false;
             }
         }
-        $party_data['name'] = $entity_data['name'];
+        /*$party_data['name'] = $entity_data['name'];
         $party_data['description'] = $entity_data['description'];
 
         $party_data = CloderiaAPIUtils::validate_entity_data($party_data);
-        $party_data = CloderiaAPIUtils::do_create_entity($party_data);
+        $party_data = CloderiaAPIUtils::do_create_entity($party_data);*/
 
         if(isset($party_data['id'])){ 
             $entity_data['party'] = $party_data['id']; 
