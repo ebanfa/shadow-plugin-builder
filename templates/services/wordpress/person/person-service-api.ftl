@@ -147,7 +147,7 @@ class ${entity.name}API {
      *
      */
     public static function create_party($entity_data) {
-        
+
         $party_data = PartyAPI::init_entity_data();
 
         if($entity_data['edit_mode']) {
@@ -157,8 +157,11 @@ class ${entity.name}API {
             $party_data['business_unit'] = $entity_data['business_unit'];
         }
         else {
-            $party_data = PartyAPI::get_by_id($entity_data['party']);
-            $party_data['edit_mode'] = false;
+            if(isset($entity_data['id'])) {
+                $entity_data['party'] = ${entity.name}API::get_by_id($entity_data['id']);
+                $party_data = PartyAPI::get_by_id($entity_data['party']);
+                $party_data['edit_mode'] = false;
+            }
         }
         $party_data['description'] = $entity_data['description'];
         $party_data['name'] = $entity_data['first_name'] . ' ' . $entity_data['last_name'];

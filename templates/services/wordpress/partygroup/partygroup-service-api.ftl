@@ -147,10 +147,14 @@ class ${entity.name}API {
             $party_data['business_unit'] = $entity_data['business_unit'];
         }
         else {
-            $party_data = PartyAPI::get_by_id($entity_data['party']);
-            $party_data['edit_mode'] = false;
+            // First we need to load the entity from the db
+            // So we can retrieve the id of the parent part
+            if(isset($entity_data['id'])) {
+                $entity_data['party'] = ${entity.name}API::get_by_id($entity_data['id']);
+                $party_data = PartyAPI::get_by_id($entity_data['party']);
+                $party_data['edit_mode'] = false;
+            }
         }
-
         $party_data['name'] = $entity_data['name'];
         $party_data['description'] = $entity_data['description'];
 
