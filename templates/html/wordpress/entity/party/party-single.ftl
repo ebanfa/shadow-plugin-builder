@@ -22,9 +22,9 @@
                 $entity_id = $person_data['id'];
             }
         }
-        $party_role = '';
+        $party_role_param = '';
         if(isset($_REQUEST['role'])) { 
-            $party_role = '&role=' . sanitize_text_field($_REQUEST['role']);
+            $party_role_param = '&role=' . sanitize_text_field($_REQUEST['role']);
         }
     }
 ?>
@@ -183,7 +183,7 @@
                                     </table>
                                 </div>
                                 <div class="btn-demo m-t-10">
-                                    <a href="<?php echo get_site_url() . '/page?type=entity&artifact=' . $artifact . '&id=' . $entity_id  . $party_role; ?>&page_action=edit" 
+                                    <a href="<?php echo get_site_url() . '/page?type=entity&artifact=' . $artifact . '&id=' . $entity_id  . $party_role_param; ?>&page_action=edit" 
                                        class="btn btn-primary waves-effect">
                                        <?php _e('Edit', 'framework') ?>
                                     </a>
@@ -195,7 +195,7 @@
                                     <a id="delete-entity-btn" href="<?php echo get_site_url() . '/page?type=entity&artifact=${entity.name?lower_case}&id=' . $entity_data['id']; ?>&page_action=delete" class="btn btn-warning waves-effect">
                                        <?php _e('Delete', 'framework') ?>
                                     </a>
-                                    <a id="done-entity-btn" href="<?php echo get_site_url() . '/page?type=entity&artifact=${entity.name?lower_case}' . $party_role; ?>&page_action=list" class="btn btn-warning waves-effect">
+                                    <a id="done-entity-btn" href="<?php echo get_site_url() . '/page?type=entity&artifact=${entity.name?lower_case}' . $party_role_param; ?>&page_action=list" class="btn btn-warning waves-effect">
                                        <?php _e('Done', 'framework') ?>
                                     </a>
                                 </div>
