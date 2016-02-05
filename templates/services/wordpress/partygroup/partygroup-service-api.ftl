@@ -56,8 +56,8 @@ class ${entity.name}API {
         if(!$entity_data['has_errors']) {
             // Create/edit the associated party record
             $entity_data = self::create_party($entity_data);
-            /*$entity_data = self::create_party_role($entity_data);
-            $entity_data = CloderiaAPIUtils::do_create_entity($entity_data);*/
+            $entity_data = self::create_party_role($entity_data);
+            $entity_data = CloderiaAPIUtils::do_create_entity($entity_data);
         }
         /*$entity_data['redirect_url'] = get_site_url() . '/page?type=entity&artifact=party&id=' . $entity_data['party'] . '&page_action=view';
         // Run post edit hooks
@@ -152,19 +152,14 @@ class ${entity.name}API {
             if(isset($entity_data['id'])) {
                 $entity_data = ${entity.name}API::get_by_id($entity_data['id']);
                 $parent_party_data = PartyAPI::get_by_id($entity_data['party']);
-                print_r($parent_party_data);
                 $parent_party_data['edit_mode'] = false;
-                echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>.";
                 $party_data = array_merge($parent_party_data, $party_data);
-                print_r($party_data);
             }
         }
         $party_data['name'] = $entity_data['name'];
         $party_data['description'] = $entity_data['description'];
-        print_r($party_data);
-
-        //$party_data = CloderiaAPIUtils::validate_entity_data($party_data);
-        //$party_data = CloderiaAPIUtils::do_create_entity($party_data);
+        $party_data = CloderiaAPIUtils::validate_entity_data($party_data);
+        $party_data = CloderiaAPIUtils::do_create_entity($party_data);
 
         if(isset($party_data['id'])){ 
             $entity_data['party'] = $party_data['id']; 
