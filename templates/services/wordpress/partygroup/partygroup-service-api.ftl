@@ -150,8 +150,8 @@ class ${entity.name}API {
             // First we need to load the entity from the db
             // So we can retrieve the id of the parent party
             if(isset($entity_data['id'])) {
-                $entity_data = ${entity.name}API::get_by_id($entity_data['id']);
-                $parent_party_data = PartyAPI::get_by_id($entity_data['party']);
+                $saved_entity_data = ${entity.name}API::get_by_id($entity_data['id']);
+                $parent_party_data = PartyAPI::get_by_id($saved_entity_data['party']);
                 $parent_party_data['edit_mode'] = false;
                 $party_data = array_merge($parent_party_data, $party_data);
             }
