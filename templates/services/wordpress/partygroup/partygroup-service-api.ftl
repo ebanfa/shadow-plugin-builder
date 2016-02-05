@@ -56,6 +56,7 @@ class ${entity.name}API {
         if(!$entity_data['has_errors']) {
             $entity_data = CloderiaAPIUtils::do_create_entity($entity_data);
         }
+        $entity_data['redirect_url'] = get_site_url() . '/page?type=entity&artifact=party&id=' . $entity_data['party'] . '&page_action=view';
         // Run post edit hooks
         CloderiaAPIUtils::do_after_ajax_edit($entity_data);
     }
