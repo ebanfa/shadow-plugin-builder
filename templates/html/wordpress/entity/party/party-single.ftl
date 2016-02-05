@@ -75,7 +75,7 @@
                                 <a href="/page?type=entity&page_action=create&artifact=<?php echo $artifact_link; ?>">Add a new record</a>
                             </li>
                             <li>
-                                <a href="/page?type=entity&page_action=list&artifact=party">View All</a>
+                                <a href="/page?type=entity&page_action=list&artifact=party<?php echo $party_role_param; ?>">View All</a>
                             </li>
                         </ul>
                     </li>
