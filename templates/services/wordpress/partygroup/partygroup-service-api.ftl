@@ -161,9 +161,10 @@ class ${entity.name}API {
         }
         $party_data['name'] = $entity_data['name'];
         $party_data['description'] = $entity_data['description'];
+        print_r($party_data);
 
-        $party_data = CloderiaAPIUtils::validate_entity_data($party_data);
-        $party_data = CloderiaAPIUtils::do_create_entity($party_data);
+        //$party_data = CloderiaAPIUtils::validate_entity_data($party_data);
+        //$party_data = CloderiaAPIUtils::do_create_entity($party_data);
 
         if(isset($party_data['id'])){ 
             $entity_data['party'] = $party_data['id']; 
