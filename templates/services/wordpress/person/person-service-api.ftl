@@ -59,7 +59,7 @@ class ${entity.name}API {
      */
     public static function create_${entity.postName}_ajax() {
         // Check the ajax request
-        $entity_data = self::init_entity_data();
+        $entity_data = ${entity.name}API::init_entity_data();
         $entity_data = CloderiaAPIUtils::do_before_ajax_edit($entity_data);
         $entity_data = CloderiaAPIUtils::build_entity_data_from_post($entity_data);
         $entity_data = CloderiaAPIUtils::validate_entity_data($entity_data);
@@ -70,7 +70,10 @@ class ${entity.name}API {
             $entity_data = self::create_party_role($entity_data);
             $entity_data = CloderiaAPIUtils::do_create_entity($entity_data);
         }
-        $entity_data['redirect_url'] = get_site_url() . '/page?type=entity&artifact=party&id=' . $entity_data['party'] . '&page_action=view';
+        // Modify the redirect page
+        $redirect_url = get_site_url() . '/page?type=entity&artifact=party&id=' . $entity_data['party'] . '&page_action=view';
+        $role_param = CloderiaAPIUtils::get_query_string_field('role');
+        if($role_param) $entity_data['redirect_url'] = $redirect_url . '&role='.$role_param;
         // Run post edit hooks
         CloderiaAPIUtils::do_after_ajax_edit($entity_data);
     }
@@ -157,15 +160,17 @@ class ${entity.name}API {
             $party_data['business_unit'] = $entity_data['business_unit'];
         }
         else {
+            // First we need to load the entity from the db
+            // So we can retrieve the id of the parent party
             if(isset($entity_data['id'])) {
-                $entity_data = ${entity.name}API::get_by_id($entity_data['id']);
-                $party_data = PartyAPI::get_by_id($entity_data['party']);
-                $party_data['edit_mode'] = false;
+                $saved_entity_data = ${entity.name}API::get_by_id($entity_data['id']);
+                $parent_party_data = PartyAPI::get_by_id($saved_entity_data['party']);
+                $parent_party_data['edit_mode'] = false;
+                $party_data = array_merge($parent_party_data, $party_data);
             }
         }
+        $party_data['name'] = $entity_data['name'];
         $party_data['description'] = $entity_data['description'];
-        $party_data['name'] = $entity_data['first_name'] . ' ' . $entity_data['last_name'];
-
         $party_data = CloderiaAPIUtils::validate_entity_data($party_data);
         $party_data = CloderiaAPIUtils::do_create_entity($party_data);
 
@@ -179,20 +184,22 @@ class ${entity.name}API {
      *
      */
     public static function create_party_role($entity_data) {
-        $party_role_data = PartyRoleAPI::init_entity_data();
-        $role_type = RoleTypeAPI::get_by_code(strtoupper($entity_data['role']));
 
-        $party_role_data['edit_mode'] = true;
-        $party_role_data['role'] = $role_type['id'];
-        $party_role_data['party'] = $entity_data['party'];
-        $party_role_data['description'] = $entity_data['description'];
-        $party_role_data['parent_unit'] = $entity_data['business_unit'];
-        $party_role_data['business_unit'] = $entity_data['business_unit'];
-        $party_role_data['name'] = $entity_data['first_name'] . ' ' . $entity_data['last_name'];
+        if($entity_data['edit_mode']) {
+            $party_role_data = PartyRoleAPI::init_entity_data();
+            $role_type = RoleTypeAPI::get_by_code(strtoupper($entity_data['role']));
 
-        $party_role_data = CloderiaAPIUtils::validate_entity_data($party_role_data);
-        $party_role_data = CloderiaAPIUtils::do_create_entity($party_role_data);
+            $party_role_data['edit_mode'] = true;
+            $party_role_data['role'] = $role_type['id'];
+            $party_role_data['party'] = $entity_data['party'];
+            $party_role_data['description'] = $entity_data['description'];
+            $party_role_data['parent_unit'] = $entity_data['business_unit'];
+            $party_role_data['business_unit'] = $entity_data['business_unit'];
+            $party_role_data['name'] = $entity_data['first_name'] . ' ' . $entity_data['last_name'];
 
+            $party_role_data = CloderiaAPIUtils::validate_entity_data($party_role_data);
+            $party_role_data = CloderiaAPIUtils::do_create_entity($party_role_data);
+        }
         return $entity_data;
     }
 
