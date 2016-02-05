@@ -169,8 +169,12 @@ class ${entity.name}API {
                 $party_data = array_merge($parent_party_data, $party_data);
             }
         }
-        $party_data['name'] = $entity_data['first_name'] . ' ' . $entity_data['last_name'];
-        $party_data['description'] = $entity_data['first_name'] . ' ' . $entity_data['last_name'];
+        // Set the name on the part and on the entity
+        $party_name = $entity_data['first_name'] . ' ' . $entity_data['last_name'];
+        $party_data['name'] = $party_name
+        $entity_data['name'] = $party_name
+        $party_data['description'] = $party_name;
+
         $party_data = CloderiaAPIUtils::validate_entity_data($party_data);
         $party_data = CloderiaAPIUtils::do_create_entity($party_data);
 
@@ -192,10 +196,10 @@ class ${entity.name}API {
             $party_role_data['edit_mode'] = true;
             $party_role_data['role'] = $role_type['id'];
             $party_role_data['party'] = $entity_data['party'];
-            $party_role_data['description'] = $entity_data['description'];
             $party_role_data['parent_unit'] = $entity_data['business_unit'];
             $party_role_data['business_unit'] = $entity_data['business_unit'];
-            $party_role_data['name'] = $entity_data['first_name'] . ' ' . $entity_data['last_name'];
+            $party_role_data['name'] = $entity_data['name'];
+            $party_role_data['description'] = $entity_data['name'];
 
             $party_role_data = CloderiaAPIUtils::validate_entity_data($party_role_data);
             $party_role_data = CloderiaAPIUtils::do_create_entity($party_role_data);
