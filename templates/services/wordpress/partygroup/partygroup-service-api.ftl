@@ -137,10 +137,10 @@ class ${entity.name}API {
      *
      */
     public static function create_party($entity_data) {
-        
+
+        $party_data = PartyAPI::init_entity_data();
 
         if($entity_data['edit_mode']) {
-            $party_data = PartyAPI::init_entity_data();
             $party_data['edit_mode'] = true;
             $party_type = PartyTypeAPI::get_by_code('ORGANIZATION');
             $party_data['party_type'] = $party_type['id'];
@@ -151,14 +151,15 @@ class ${entity.name}API {
             // So we can retrieve the id of the parent party
             if(isset($entity_data['id'])) {
                 $entity_data = ${entity.name}API::get_by_id($entity_data['id']);
-                print_r($entity_data);
-                echo '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>';
-                $party_data = PartyAPI::get_by_id($entity_data['party']);
+                $parent_party_data = PartyAPI::get_by_id($entity_data['party']);
+                print_r($parent_party_data);
+                $parent_party_data['edit_mode'] = false;
+                echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>.";
+                $party_data = array_merge($parent_party_data, $party_data);
                 print_r($party_data);
-                $party_data['edit_mode'] = false;
             }
         }
-        /*$party_data['name'] = $entity_data['name'];
+        $party_data['name'] = $entity_data['name'];
         $party_data['description'] = $entity_data['description'];
 
         $party_data = CloderiaAPIUtils::validate_entity_data($party_data);
@@ -166,7 +167,7 @@ class ${entity.name}API {
 
         if(isset($party_data['id'])){ 
             $entity_data['party'] = $party_data['id']; 
-        }*/
+        }
         return $entity_data;
     }
 
