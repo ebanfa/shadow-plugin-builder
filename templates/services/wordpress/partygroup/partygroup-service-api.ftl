@@ -180,11 +180,11 @@ class ${entity.name}API {
             $role_type = RoleTypeAPI::get_by_code(strtoupper($entity_data['role']));
             $party_role_data['edit_mode'] = true;
             $party_role_data['role'] = $role_type['id'];
+            $party_role_data['name'] = $entity_data['name'];
             $party_role_data['party'] = $entity_data['party'];
             $party_role_data['description'] = $entity_data['description'];
             $party_role_data['parent_unit'] = $entity_data['business_unit'];
             $party_role_data['business_unit'] = $entity_data['business_unit'];
-            $party_role_data['name'] = $entity_data['first_name'] . ' ' . $entity_data['last_name'];
 
             $party_role_data = CloderiaAPIUtils::validate_entity_data($party_role_data);
             $party_role_data = CloderiaAPIUtils::do_create_entity($party_role_data);
