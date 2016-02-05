@@ -21,10 +21,8 @@
     global $entity_data;
     if (isset($_REQUEST['id'])) {
         $entity_data = ${entity.name}API::get_by_id(sanitize_text_field($_REQUEST['id']));
-
-        print_r($entity_data);
     }
-  if(isset($_REQUEST['role'])) { 
+    if(isset($_REQUEST['role'])) { 
         $role = sanitize_text_field($_REQUEST['role']);
     }
 ?>
