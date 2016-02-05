@@ -65,13 +65,12 @@ class ${entity.name}API {
         $entity_data = CloderiaAPIUtils::validate_entity_data($entity_data);
         // Create the entity of we have no errors
         if(!$entity_data['has_errors']) {
-            // First create the party 
-            if($entity_data['edit_mode']) {
-                $entity_data = self::create_party($entity_data);
-                $entity_data = self::create_party_role($entity_data);
-            }
+            // Create/edit the associated party record
+            $entity_data = self::create_party($entity_data);
+            $entity_data = self::create_party_role($entity_data);
             $entity_data = CloderiaAPIUtils::do_create_entity($entity_data);
         }
+        $entity_data['redirect_url'] = get_site_url() . '/page?type=entity&artifact=party&id=' . $entity_data['party'] . '&page_action=view';
         // Run post edit hooks
         CloderiaAPIUtils::do_after_ajax_edit($entity_data);
     }
@@ -148,13 +147,20 @@ class ${entity.name}API {
      *
      */
     public static function create_party($entity_data) {
+        
         $party_data = PartyAPI::init_entity_data();
-        $party_type = PartyTypeAPI::get_by_code('INDIVIDUAL');
 
-        $party_data['edit_mode'] = true;
-        $party_data['party_type'] = $party_type['id'];
+        if($entity_data['edit_mode']) {
+            $party_data['edit_mode'] = true;
+            $party_type = PartyTypeAPI::get_by_code('INDIVIDUAL');
+            $party_data['party_type'] = $party_type['id'];
+            $party_data['business_unit'] = $entity_data['business_unit'];
+        }
+        else {
+            $party_data = PartyAPI::get_by_id($entity_data['party']);
+            $party_data['edit_mode'] = false;
+        }
         $party_data['description'] = $entity_data['description'];
-        $party_data['business_unit'] = $entity_data['business_unit'];
         $party_data['name'] = $entity_data['first_name'] . ' ' . $entity_data['last_name'];
 
         $party_data = CloderiaAPIUtils::validate_entity_data($party_data);
