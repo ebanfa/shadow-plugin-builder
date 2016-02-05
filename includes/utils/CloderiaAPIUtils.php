@@ -274,6 +274,16 @@ class CloderiaAPIUtils {
     /**
      *
      */
+    public static function get_query_string_field($field_name) {
+    	if(isset($_REQUEST[$field_name])) {
+    		return sanitize_text_field($_REQUEST[$field_name]);
+    	}
+        return false;
+    }
+
+    /**
+     *
+     */
     public static function build_query_from_criteria($entity_data, $criteria_data) {
         $meta_array = array();
         foreach($criteria_data as $field_name => $field_value){
