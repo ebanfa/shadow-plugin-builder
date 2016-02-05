@@ -171,8 +171,8 @@ class ${entity.name}API {
         }
         // Set the name on the part and on the entity
         $party_name = $entity_data['first_name'] . ' ' . $entity_data['last_name'];
-        $party_data['name'] = $party_name
-        $entity_data['name'] = $party_name
+        $party_data['name'] = $party_name;
+        $entity_data['name'] = $party_name;
         $party_data['description'] = $party_name;
 
         $party_data = CloderiaAPIUtils::validate_entity_data($party_data);
