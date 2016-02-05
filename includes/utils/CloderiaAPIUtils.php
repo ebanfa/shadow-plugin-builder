@@ -452,10 +452,12 @@ class CloderiaAPIUtils {
     			$related_entity_id = get_post_meta($entity->ID, $field_data['name'], true);
 		        $entity_data[$field_data['name']] = $related_entity_id;
 		        // Get the related post
-		        echo 'Get related field: '. $field_data['name'] . ' for entity: ' . $entity_data['entity_artifact_name'];
+		        //echo 'Get related field: '. $field_data['name'] . ' for entity: ' . $entity_data['entity_artifact_name']. ' ';
 		        $related_entity = get_post($related_entity_id);
-		        $entity_data[$field_data['name'] . '_txt'] = get_post_meta($related_entity->ID, 'name', true);
-		        $entity_data[$field_data['name'] . '_code'] = get_post_meta($related_entity->ID, 'entity_code', true);
+		        if($related_entity) {
+			        $entity_data[$field_data['name'] . '_txt'] = get_post_meta($related_entity->ID, 'name', true);
+			        $entity_data[$field_data['name'] . '_code'] = get_post_meta($related_entity->ID, 'entity_code', true);
+		        }
     		}
     	}
         return $entity_data;
