@@ -72,7 +72,6 @@ class ${entity.name}API {
         echo 'the role is: ' . $role_type;
 
         if($role_type) { 
-            echo 'Another role is role is: ' . $role_type;
 
             $search_results = self::find_by_role($role_type); 
         } 
@@ -158,6 +157,7 @@ class ${entity.name}API {
         $search_results = array();
         // Get the role 
         $role_type = RoleTypeAPI::get_by_code(strtoupper($role));
+        print_r($role_type);
         // Process only if we got a valid response from the call above
         if(isset($role_type['id']) && isset($role_type['entity_code'])) {
             // Special treatment is required if the role type is 'user_organization'
@@ -165,13 +165,17 @@ class ${entity.name}API {
                 $search_results = self::find_user_organizations($role);
             } else {
                 $party_ids = array();
+                echo 'Echo this party roles';
                 // Search for all the party role type associations with the given role
                 $party_roles = PartyRoleAPI::find_by_criteria(array('role' => $role_type['id']));
+                print_r($party_roles);
                 // Loop throug all the return party roles 
                 // and push the party id into list of parties
                 foreach ($party_roles as $party_role) {
+                    echo 'Echo this party roles'.$party_role['party'];
                     array_push($party_ids, $party_role['party']);
                 }
+                print_r($party_ids);
                 $search_results = self::find_by_ids($party_ids);
             }
         }
