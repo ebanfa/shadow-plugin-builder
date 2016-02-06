@@ -8,7 +8,7 @@
     $role_description = '';
     if(isset($_REQUEST['role'])) { 
         $role = sanitize_text_field($_REQUEST['role']);
-        $role_data = RoleType::get_by_code(strtoupper($role));
+        $role_data = RoleTypeAPI::get_by_code(strtoupper($role));
         if(isset($role_data)) $role_description = $role_data['name'];
 
         if($role === 'user_organization'){
