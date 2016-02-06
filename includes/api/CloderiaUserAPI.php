@@ -38,7 +38,7 @@ class CloderiaUserAPI {
      * This creates the party for the current user
      */
     public static function create_party($user_data) {
-        $entity_data = PartyAPI::init_data();
+        $entity_data = PartyAPI::init_entity_data();
         // Get the default party type (INDIVIDUAL)
         $party_type = PartyTypeAPI::get_by_code(get_option('cp_default_partytype'));
 
@@ -65,7 +65,7 @@ class CloderiaUserAPI {
      * 
      */
     public static function create_default_party_businessunit($party_data) {
-        $entity_data = BusinessUnitAPI::init_data();
+        $entity_data = BusinessUnitAPI::init_entity_data();
 
         if(isset($party_data['id'])) {
             $entity_data['edit_mode'] = true;
@@ -99,7 +99,7 @@ class CloderiaUserAPI {
      * entity for the party
      */
     public static function create_party_person($businessunit_data, $party_data) {
-        $entity_data = PersonAPI::init_data();
+        $entity_data = PersonAPI::init_entity_data();
 
         if(isset($party_data['id']) && isset($businessunit_data['id'])) {
             $entity_data['edit_mode'] = true;
@@ -124,7 +124,7 @@ class CloderiaUserAPI {
      * business unit in which this profile is defined
      */
     public static function create_party_profile($businessunit_data, $party_data) {
-        $entity_data = PartyProfileAPI::init_data();
+        $entity_data = PartyProfileAPI::init_entity_data();
 
         if(isset($party_data['id']) && isset($businessunit_data['id'])) {
             $entity_data['edit_mode'] = true;
@@ -145,7 +145,7 @@ class CloderiaUserAPI {
      * type 'BUSINESS_OWNER' for the new user.
      */
     public static function create_default_party_role($businessunit_data, $party_data) {
-        $entity_data = PartyRoleAPI::init_data();
+        $entity_data = PartyRoleAPI::init_entity_data();
         $owner_role_data = RoleTypeAPI::get_by_code('BUSINESS_OWNER');
 
         if(isset($businessunit_data['id']) && isset($owner_role_data['id']) && isset($party_data['id'])) {
