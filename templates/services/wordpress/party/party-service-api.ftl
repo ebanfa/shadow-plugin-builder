@@ -72,6 +72,8 @@ class ${entity.name}API {
         echo 'the role is: ' . $role_type;
 
         if($role_type) { 
+            echo 'Another role is role is: ' . $role_type;
+
             $search_results = self::find_by_role($role_type); 
         } 
         else { 
