@@ -65,7 +65,7 @@
 
 		<menuGroup>
 			<name>properties</name>
-			<displayName>Property Management</displayName>
+			<displayName>Property Information</displayName>
 			<description>Property Management</description>
 			<type>group</type>
 			<cssClass>md-location-city</cssClass>
