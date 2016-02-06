@@ -7,7 +7,7 @@
     global $sb_post_type;
     $sb_post_type = '${entity.postName}';
 
-    
+    echo '>>>>>>>>>>>>>>>>>>>>>>>>>.' . $_REQUEST['parent_param'];
     function do_page_footer() {
         wp_register_script('cp_entity_form', plugins_url('/js/entity-form.js', dirname(dirname(dirname(__FILE__)))), array('jquery'),'', true);
         wp_register_script('cp_entity_mask', plugins_url('/js/entity-input-mask.js', dirname(dirname(dirname(__FILE__)))), array('jquery'),'', true);
