@@ -7,9 +7,8 @@
     global $sb_post_type;
     $sb_post_type = '${entity.postName}';
 
-    echo '>>>>>>>>>>>>>>>>>>>>>>>>>.' . $_REQUEST['parent_param'];
-    $parent_param = urldecode($_REQUEST['parent_param']);
-    echo '>>>>>>>>>>>>>>>>>>>>>>>>>.' . $parent_param;
+    if($isset($_REQUEST['parent_param']))
+        $parent_param = urldecode($_REQUEST['parent_param']);
     function do_page_footer() {
         wp_register_script('cp_entity_form', plugins_url('/js/entity-form.js', dirname(dirname(dirname(__FILE__)))), array('jquery'),'', true);
         wp_register_script('cp_entity_mask', plugins_url('/js/entity-input-mask.js', dirname(dirname(dirname(__FILE__)))), array('jquery'),'', true);
@@ -346,6 +345,9 @@
                         <input type="hidden" name="parent_id" value="<?php echo $parent_id; ?>">
                         <input type="hidden" name="parent_artifact" value="<?php echo $parent_artifact; ?>">
                         <input type="hidden" name="parent_field" value="<?php echo $parent_field; ?>">
+                        <?php if($isset($_REQUEST['parent_param'])) {?>
+                        <input type="hidden" name="parent_param" value="<?php echo urlencode($parent_param); ?>">
+                        <?php } ?>
                 <?php } else { ?>
                 <?php do_action('shadowbanker_before_entity_form_field'); ?>
                 
