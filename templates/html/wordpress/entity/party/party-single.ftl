@@ -256,7 +256,7 @@
                                     </table>
                                 </div>
                                 <div class="btn-demo m-t-10">
-                                    <a id="create-partyfiles-btn" href="<?php echo get_site_url();?>/page?type=entity&artifact=partyfiles&page_action=create&parent_id=<?php echo $entity_data['id']; ?>&parent_artifact=party&parent_field=party<?php echo '&parent_param='. urlencode('&role='.sanitize_text_field($_REQUEST['role']));?>" class="btn btn-success waves-effect">
+                                    <a id="create-partyfiles-btn" href="<?php echo get_site_url();?>/page?type=entity&artifact=partyfiles&page_action=create&parent_id=<?php echo $entity_data['id']; ?>&parent_artifact=party&parent_field=party<?php echo '&parent_param='. urlencode('role='.sanitize_text_field($_REQUEST['role']));?>" class="btn btn-success waves-effect">
                                        <?php _e('Add Party Files', 'framework') ?>
                                     </a>
                                 </div>
