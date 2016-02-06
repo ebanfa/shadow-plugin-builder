@@ -5,8 +5,12 @@
         exit; // Exit if accessed directly
     }
     $is_org = false;
+    $role_description = '';
     if(isset($_REQUEST['role'])) { 
         $role = sanitize_text_field($_REQUEST['role']);
+        $role_data = RoleType::get_by_code(strtoupper($role));
+        if(isset($role_data)) $role_description = $role_data['name'];
+
         if($role === 'user_organization'){
             $is_org = true;
         }
@@ -45,7 +49,7 @@
         <div class="card">
             <div class="card-header bgm-lightgreen">
                 <h2>
-                    <?php echo $page_action_description; ?> 
+                    <?php echo $role_description .' ' .$page_action_description; ?> 
                     <small><?php echo $page_action_txt; ?></small>
                 </h2>
                 <ul class="actions actions-alt">
