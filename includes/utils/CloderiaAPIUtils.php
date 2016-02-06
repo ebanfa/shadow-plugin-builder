@@ -408,14 +408,16 @@ class CloderiaAPIUtils {
      */
     public static function find_by_ids($entity_data, $party_ids) {
         $search_results = array();
-        $query_args = array('post_type' => $entity_data['entity_post_name'], 'post__in' => $party_ids);
-        $entity_query = new WP_Query($query_args);
-        
-        while ($entity_query->have_posts()) : $entity_query->the_post();
-            $entity = $entity_query->post;
-            array_push($search_results, CloderiaAPIUtils::entity_to_data($entity_data, $entity, false));
-        endwhile;
-        wp_reset_postdata();
+        if($party_ids){
+            $query_args = array('post_type' => $entity_data['entity_post_name'], 'post__in' => $party_ids);
+            $entity_query = new WP_Query($query_args);
+            
+            while ($entity_query->have_posts()) : $entity_query->the_post();
+                $entity = $entity_query->post;
+                array_push($search_results, CloderiaAPIUtils::entity_to_data($entity_data, $entity, false));
+            endwhile;
+            wp_reset_postdata();
+        }
         
         return $search_results;
     }
