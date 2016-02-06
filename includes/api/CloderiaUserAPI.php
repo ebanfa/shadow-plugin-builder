@@ -54,7 +54,7 @@ class CloderiaUserAPI {
             $entity_data['first_name'] = $user_data['first_name'];
             $entity_data['last_name'] = $user_data['last_name'];
             // Create the party and return the results of the process
-            $entity_data = PartyAPI::do_create_entity($entity_data);
+            $entity_data = CloderiaAPIUtils::do_create_entity($entity_data);
 
         }
         return $entity_data;
@@ -74,7 +74,7 @@ class CloderiaUserAPI {
             $entity_data['address_1'] = '0000000000'; 
             $entity_data['address_2'] = '0000000000'; 
             $entity_data['description'] = $party_data['name'];
-            $entity_data = BusinessUnitAPI::do_create_entity($entity_data);
+            $entity_data = CloderiaAPIUtils::do_create_entity($entity_data);
             // We have to update the business unit of the 
             // business unit and of the party because both
             // business unit and party are not global entities 
@@ -84,11 +84,11 @@ class CloderiaUserAPI {
                 $entity_data['edit_mode'] = false;
                 $entity_data['parent_unit'] = $entity_data['id'];
                 $entity_data['business_unit'] = $entity_data['id'];
-                $entity_data = BusinessUnitAPI::do_create_entity($entity_data);
+                $entity_data = CloderiaAPIUtils::do_create_entity($entity_data);
 
                 $party_data['edit_mode'] = false;
                 $party_data['business_unit'] = $entity_data['id'];
-                $party_data = PartyAPI::do_create_entity($party_data);
+                $party_data = CloderiaAPIUtils::do_create_entity($party_data);
             }
         }
         return $entity_data;
@@ -111,7 +111,7 @@ class CloderiaUserAPI {
             $entity_data['id_number'] = '0000000000';
             $entity_data['date_of_birth'] = date("Y-m-d H:i:s");
             $entity_data['business_unit'] = $businessunit_data['id'];
-            $entity_data = PersonAPI::do_create_entity($entity_data);
+            $entity_data = CloderiaAPIUtils::do_create_entity($entity_data);
         }
         return $entity_data;
     }
@@ -134,7 +134,7 @@ class CloderiaUserAPI {
             $entity_data['date_created'] = date("Y-m-d H:i:s");
             $entity_data['default_unit'] = $businessunit_data['id'];
             $entity_data['business_unit'] = $businessunit_data['id'];
-            $entity_data = PartyProfileAPI::do_create_entity($entity_data);
+            $entity_data = CloderiaAPIUtils::do_create_entity($entity_data);
         }
         return $entity_data;
     }
@@ -156,7 +156,7 @@ class CloderiaUserAPI {
             $entity_data['parent_unit'] = $businessunit_data['id'];
             $entity_data['business_unit'] = $businessunit_data['id'];
             $entity_data['description'] = 'Default role ' . $owner_role_data['name'] . ' for party ' . $party_data['name'];
-            $entity_data = PartyRoleAPI::do_create_entity($entity_data);
+            $entity_data = CloderiaAPIUtils::do_create_entity($entity_data);
         }
         return $entity_data;
 
@@ -182,7 +182,7 @@ class CloderiaUserAPI {
                     $entity_data['structure'] = $role_mapping_data['id'];
                     $entity_data['business_unit'] = $businessunit_data['id'];
                     $entity_data['description'] = 'Chart of accounts for ' . $coa_name;
-                    $entity_data = ChartOfAccountAPI::do_create_entity($entity_data);
+                    $entity_data = CloderiaAPIUtils::do_create_entity($entity_data);
                 }
             }
         }
