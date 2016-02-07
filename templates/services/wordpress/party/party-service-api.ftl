@@ -185,18 +185,9 @@ class ${entity.name}API {
         $current_user_party = ${entity.name}API::get_current_user_party();
 
         if(isset($current_user_party['id'])) {
-            // Fins all the party roles of the current user party
-            $party_roles = PartyRoleAPI::find_by_criteria(array('party' => $current_user_party['id']));
-            // Get the ids of all the business units of the party roles
-            $business_unit_ids = array();
-            foreach ($party_roles as $party_role) {
-                array_push($business_unit_ids, $party_role['business_unit']);
-            }
-            // Get the business units 
-            $business_unit_ids = array_unique($business_unit_ids);
-            $business_units = BusinessUnitAPI::find_by_ids($business_unit_ids);
-            // Get the parent party of the each of the business units
             $organization_ids = array();
+            // Get the business units of the user party
+            $business_units = ${entity.name}API::find_user_business_units($current_user_party['id']);
             foreach ($business_units as $business_unit) {
                 array_push($business_unit_ids, $business_unit['party']);
             }
@@ -212,11 +203,18 @@ class ${entity.name}API {
      */
     public static function find_user_business_units($party_id) {
         $search_results = array();
-        // Fist find all the party roles of the party
-        // Get all the parent business units
-        // FOr each business unit get it parent party
-        // add the party of the party is 
-        // find all busine
+        if($party_id) {
+            // Fins all the party roles of the current user party
+            $party_roles = PartyRoleAPI::find_by_criteria(array('party' => $party_id));
+            // Get the ids of all the business units of the party roles
+            $business_unit_ids = array();
+            foreach ($party_roles as $party_role) {
+                array_push($business_unit_ids, $party_role['business_unit']);
+            }
+            // Get the business units 
+            $business_unit_ids = array_unique($business_unit_ids);
+            return BusinessUnitAPI::find_by_ids($business_unit_ids);
+        }
         return $search_results;
 
     }
