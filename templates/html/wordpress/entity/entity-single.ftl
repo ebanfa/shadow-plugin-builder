@@ -15,6 +15,8 @@
         $parent_id = sanitize_text_field($_REQUEST['parent_id']);
         $parent_artifact = sanitize_text_field($_REQUEST['parent_artifact']);
         $parent_field = sanitize_text_field($_REQUEST['parent_field']);
+        $parent_param = '';
+        if(isset($_REQUEST['parent_param'])) $parent_param = urldecode($_REQUEST['parent_param']);
     }
 
 ?>
@@ -82,7 +84,7 @@
                                        <?php _e('Delete', 'framework') ?>
                                     </a>
                                     <?php if(isset($parent_artifact)) { ?>
-                                    <a href="<?php echo get_site_url() . '/page?type=entity&artifact=' . $parent_artifact . '&id=' . $parent_id; ?>&page_action=view" 
+                                    <a href="<?php echo get_site_url() . '/page?type=entity&artifact=' . $parent_artifact . '&id=' . $parent_id.$parent_param; ?>&page_action=view" 
                                        class="btn btn-primary waves-effect">
                                        <?php _e('Done', 'framework') ?>
                                     </a>
