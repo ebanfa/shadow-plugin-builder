@@ -7,7 +7,7 @@
     global $sb_post_type;
     $sb_post_type = '${entity.postName}';
 
-    if($isset($_REQUEST['parent_param']))
+    if(isset($_REQUEST['parent_param']))
         $parent_param = urldecode($_REQUEST['parent_param']);
     function do_page_footer() {
         wp_register_script('cp_entity_form', plugins_url('/js/entity-form.js', dirname(dirname(dirname(__FILE__)))), array('jquery'),'', true);
