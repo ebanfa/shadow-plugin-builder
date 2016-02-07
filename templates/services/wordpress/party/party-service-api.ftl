@@ -193,7 +193,7 @@ class ${entity.name}API {
             // Find all the roles of the parent party
             // and find those that are of role type user_organization
             foreach ($organization_ids as $organization_id) {
-                $user_organization_role = RoleTypeAPI::find_by_code('USER_ORGANIZATION');
+                $user_organization_role = RoleTypeAPI::get_by_code('USER_ORGANIZATION');
                 if(isset($user_organization_role['id'])) {
                     $party_role = PartyRoleAPI::find_by_criteria(array('party' => $organization_id, 'role' => $user_organization_role['id']));
                     if(isset($party_role['id'])) {
