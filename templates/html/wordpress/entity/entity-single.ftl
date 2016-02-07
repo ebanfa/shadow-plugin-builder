@@ -10,12 +10,14 @@
     }
 
     // Process the parent id, if any
+    $parent_url = '';
     if(isset($_REQUEST['parent_id']) && isset($_REQUEST['parent_artifact']) && isset($_REQUEST['parent_field'])) {
 
         $parent_id = sanitize_text_field($_REQUEST['parent_id']);
         $parent_artifact = sanitize_text_field($_REQUEST['parent_artifact']);
         $parent_field = sanitize_text_field($_REQUEST['parent_field']);
         $parent_param = '';
+        $parent_url = '&parent_id=' . $parent_id . '&parent_artifact=' . $parent_artifact . '&parent_field=' . $parent_field;
         if(isset($_REQUEST['parent_param'])) $parent_param = urldecode($_REQUEST['parent_param']);
     }
 
@@ -71,7 +73,7 @@
                                     </table>
                                 </div>
                                 <div class="btn-demo m-t-10">
-                                    <a href="<?php echo get_site_url() . '/page?type=entity&artifact=${entity.name?lower_case}&id=' . $entity_data['id']; ?>&page_action=edit" 
+                                    <a href="<?php echo get_site_url() . '/page?type=entity&artifact=${entity.name?lower_case}&id=' . $entity_data['id'] . $parent_url; ?>&page_action=edit" 
                                        class="btn btn-primary waves-effect">
                                        <?php _e('Edit', 'framework') ?>
                                     </a>
@@ -80,7 +82,7 @@
                                         <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
                                         <input type="hidden" name="submitted" id="submitted" value="true" />
                                     </form>
-                                    <a id="delete-entity-btn" href="<?php echo get_site_url() . '/page?type=entity&artifact=${entity.name?lower_case}&id=' . $entity_data['id']; ?>&page_action=delete" class="btn btn-warning waves-effect">
+                                    <a id="delete-entity-btn" href="<?php echo get_site_url() . '/page?type=entity&artifact=${entity.name?lower_case}&id=' . $entity_data['id']. $parent_url; ?>&page_action=delete" class="btn btn-warning waves-effect">
                                        <?php _e('Delete', 'framework') ?>
                                     </a>
                                     <?php if(isset($parent_artifact)) { ?>
