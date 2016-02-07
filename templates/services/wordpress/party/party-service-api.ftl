@@ -159,7 +159,7 @@ class ${entity.name}API {
         if(isset($role_type['id']) && isset($role_type['entity_code'])) {
             // Special treatment is required if the role type is 'user_organization'
             if($role === 'user_organization') {
-                $search_results = PartyGroupAPI::find_user_organizations();
+                $search_results = ${entity.name}API::find_user_organizations();
             } else {
                 $party_ids = array();
                 // Search for all the party role type associations with the given role
