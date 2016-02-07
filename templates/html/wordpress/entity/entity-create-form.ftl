@@ -342,12 +342,6 @@
                 <?php // If the parent field is set we dont display the field 
                     if(isset($parent_field) && $parent_field === "${field.name}") { ?>
                         <input type="hidden" name="${field.name}" value="<?php echo $parent_id; ?>">
-                        <input type="hidden" name="parent_id" value="<?php echo $parent_id; ?>">
-                        <input type="hidden" name="parent_artifact" value="<?php echo $parent_artifact; ?>">
-                        <input type="hidden" name="parent_field" value="<?php echo $parent_field; ?>">
-                        <?php if(isset($_REQUEST['parent_param'])) {?>
-                        <input type="hidden" name="parent_param" value="<?php echo urlencode($parent_param); ?>">
-                        <?php } ?>
                 <?php } else { ?>
                 <?php do_action('shadowbanker_before_entity_form_field'); ?>
                 
@@ -390,6 +384,16 @@
     
     
 </#list>
+
+<?php // If the parent field is set we dont display the field 
+    if(isset($parent_field) && $parent_field === "${field.name}") { ?>
+        <input type="hidden" name="parent_id" value="<?php echo $parent_id; ?>">
+        <input type="hidden" name="parent_artifact" value="<?php echo $parent_artifact; ?>">
+        <input type="hidden" name="parent_field" value="<?php echo $parent_field; ?>">
+        <?php if(isset($_REQUEST['parent_param'])) {?>
+        <input type="hidden" name="parent_param" value="<?php echo urlencode($parent_param); ?>">
+        <?php } ?>
+<?php } ?>
     
 <?php 
     do_action('shadowbanker_entity_form_end'); 
