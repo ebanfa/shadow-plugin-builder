@@ -195,7 +195,7 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 						if(item.getPostName().equals(targetEntityPostName)) {
 							//System.out.println("Adding child: " + entity.getName() + " to parent: " + item.getName());
 							if(item.getName().equals("Property")) {
-								System.out.println("Adding child: " + entity.getName() + " to parent: " + item.getName());
+								System.out.println("Adding child: " + entity.getName() + " of field " + field.getName() + " to parent: " + item.getName());
 							}
 							item.getRelatedChildEntities().put(field.getName(), entity);
 						}
