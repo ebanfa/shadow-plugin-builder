@@ -1863,6 +1863,22 @@
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>N</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
 				<name>name</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
