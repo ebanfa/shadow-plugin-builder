@@ -189,7 +189,7 @@ class ${entity.name}API {
             // Get the business units of the user party
             $business_units = ${entity.name}API::find_user_business_units($current_user_party['id']);
             foreach ($business_units as $business_unit) {
-                array_push($business_unit_ids, $business_unit['party']);
+                array_push($organization_ids, $business_unit['party']);
             }
             $organization_ids = array_unique($organization_ids);
             return $organizations = ${entity.name}API::find_by_ids($organization_ids);
