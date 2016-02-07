@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -186,16 +187,14 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 		for(Entity entity : module.getEntities()){
 			List<Field> fieldsInEntity = entity.getFields();
 			// Process the fields in the entity
-			int index = 1;
 			for(Field field : fieldsInEntity){
-				index = index + 1;
 				// Only process relationship fields
 				if(field.getRelationshipField().equals("Y")){
 					//System.out.println("Found a relationship field: " + field.getName() + " of type: " + field.getDataType());
 					String targetEntityPostName = field.getDataType();
 					for(Entity item: cloneOfEntitiesInModule){
 						if(item.getPostName().equals(targetEntityPostName)) {
-							String fieldName = field.getName() + index;
+							String fieldName = field.getName() + UUID.randomUUID().toString();
 							//System.out.println("Adding child: " + entity.getName() + " to parent: " + item.getName());
 							if(item.getName().equals("Property")) {
 								System.out.println("Adding child: " + entity.getName() + " of field " + fieldName + " to parent: " + item.getName());
