@@ -193,7 +193,7 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 					int index = 0;
 					String targetEntityPostName = field.getDataType();
 					for(Entity item: cloneOfEntitiesInModule){
-						index++;
+						index = index + 1;
 						if(item.getPostName().equals(targetEntityPostName)) {
 							String fieldName = field.getName() + index;
 							//System.out.println("Adding child: " + entity.getName() + " to parent: " + item.getName());
