@@ -345,7 +345,7 @@
                         <input type="hidden" name="parent_id" value="<?php echo $parent_id; ?>">
                         <input type="hidden" name="parent_artifact" value="<?php echo $parent_artifact; ?>">
                         <input type="hidden" name="parent_field" value="<?php echo $parent_field; ?>">
-                        <?php if($isset($_REQUEST['parent_param'])) {?>
+                        <?php if(isset($_REQUEST['parent_param'])) {?>
                         <input type="hidden" name="parent_param" value="<?php echo urlencode($parent_param); ?>">
                         <?php } ?>
                 <?php } else { ?>
