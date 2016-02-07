@@ -92,7 +92,6 @@
                                 </div>
 
                             </div>
-                            <?php echo '>>>>>>>>>>>>>>>>>>> ${entity.relatedChildEntities?size}'; ?>
                             <#list entity.relatedChildEntities?keys as key>
                             <div role="tabpanel" class="tab-pane animated fadeIn" id="tab-${key_index}">
                                 <div id="success"></div>
