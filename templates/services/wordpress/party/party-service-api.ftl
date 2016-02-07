@@ -175,8 +175,6 @@ class ${entity.name}API {
         return $search_results;
     }
 
-
-    
     /**
      * Get all the role types that a party has
      */
@@ -192,10 +190,20 @@ class ${entity.name}API {
                 array_push($organization_ids, $business_unit['party']);
             }
             $organization_ids = array_unique($organization_ids);
-            return $organizations = ${entity.name}API::find_by_ids($organization_ids);
+            // Find all the roles of the parent party
+            // and find those that are of role type user_organization
+            foreach ($organization_ids as $organization_id) {
+                $user_organization_role = RoleTypeAPI::find_by_code('USER_ORGANIZATION');
+                if(isset($user_organization_role['id'])) {
+                    $party_role = PartyRoleAPI::find_by_criteria(array('party' => $organization_id, 'role' => $user_organization_role['id']));
+                    if(isset($party_role['id'])) {
+                        array_push($search_results, $organization_id);
+                    }
+                }
+            }
+            return ${entity.name}API::find_by_ids($search_results);
         }
         return $search_results;
-
     }
 
     /**
@@ -216,9 +224,7 @@ class ${entity.name}API {
             return BusinessUnitAPI::find_by_ids($business_unit_ids);
         }
         return $search_results;
-
     }
-
 
     /**
      * Get the WP_User object of the party witht the provided id
