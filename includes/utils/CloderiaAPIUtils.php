@@ -197,7 +197,7 @@ class CloderiaAPIUtils {
                 $redirect_url = $redirect_url . '&parent_id=' . sanitize_text_field($_REQUEST['parent_id']);
                 $redirect_url = $redirect_url . '&parent_artifact=' . sanitize_text_field($_REQUEST['parent_artifact']);
                 $redirect_url = $redirect_url . '&parent_field=' . sanitize_text_field($_REQUEST['parent_field']);
-                if(isset($_REQUEST['parent_param'])) $redirect_url = $redirect_url . '&parent_param=' .  sanitize_text_field($_REQUEST['parent_param']);
+                if(isset($_REQUEST['parent_param'])) $redirect_url = $redirect_url . '&parent_param=' .  $_REQUEST['parent_param'];
             }
             wp_send_json_success(array('message' => "<script type='text/javascript'>window.location='" . $redirect_url . "'</script>"));
         } else {
