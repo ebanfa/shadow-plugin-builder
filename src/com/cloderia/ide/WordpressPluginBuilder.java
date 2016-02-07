@@ -185,7 +185,6 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 		// Loop through all the entities in the module
 		for(Entity entity : module.getEntities()){
 			List<Field> fieldsInEntity = entity.getFields();
-			System.out.println("Processing entity: " + entity.getName());
 			// Process the fields in the entity
 			for(Field field : fieldsInEntity){
 				// Only process relationship fields
@@ -196,11 +195,12 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 					for(Entity item: cloneOfEntitiesInModule){
 						index++;
 						if(item.getPostName().equals(targetEntityPostName)) {
+							String fieldName = field.getName() + index;
 							//System.out.println("Adding child: " + entity.getName() + " to parent: " + item.getName());
 							if(item.getName().equals("Property")) {
-								System.out.println("Adding child: " + entity.getName() + " of field " + field.getName() + " to parent: " + item.getName());
+								System.out.println("Adding child: " + entity.getName() + " of field " + fieldName + " to parent: " + item.getName());
 							}
-							item.getRelatedChildEntities().put(field.getName() + index, entity);
+							item.getRelatedChildEntities().put(fieldName, entity);
 						}
 
 					}
