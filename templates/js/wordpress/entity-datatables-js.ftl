@@ -38,7 +38,7 @@ jQuery(document).ready(function($)
                     if($('#role').length) { role = '&role=' + $('#role').val(); }
                     var parent_params = '';
                     if($('#parent_params').length) { parent_params = $('#parent_params').val(); }
-                    return '<a href="../page/?type=entity&artifact=${entity.name?lower_case}&id=' + row.id + role + '&page_action=view' + parent_params + '">' + data +  '</a>';
+                    return '<a href="../page/?type=entity&artifact=${entity.name?lower_case}&id=' + row.id + role + '&page_action=view' + parent_params + '">' + parent_params + data +  '</a>';
                 },
                 "targets": 1
             }
