@@ -136,6 +136,7 @@
 
 
                         </div>
+                        <input type="hidden" name="parent_params" id="parent_params" value="<?php echo if(isset($_REQUEST['parent_url'])) $parent_params; ?>" /> 
 
 <?php 
     //do_action('shadowbanker_after_single_entity'); 
