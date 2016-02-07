@@ -3889,7 +3889,7 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
-				<name>property</name>
+				<name>pe_property</name>
 				<isVisible>Y</isVisible>
 			    <isFormField>N</isFormField>
 				<required>Y</required>
@@ -4024,7 +4024,7 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
-				<name>property</name>
+				<name>pf_property</name>
 				<isVisible>Y</isVisible>
 		        <isFormField>N</isFormField>
 				<required>Y</required>
@@ -4246,7 +4246,7 @@
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
-				<name>property</name>
+				<name>b_property</name>
 				<isVisible>Y</isVisible>
 			    <isFormField>N</isFormField>
 				<required>Y</required>
@@ -4349,7 +4349,7 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
-				<name>building</name>
+				<name>be_building</name>
 				<isVisible>Y</isVisible>
 			    <isFormField>N</isFormField>
 				<required>Y</required>
@@ -5118,7 +5118,7 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
-				<name>floor</name>
+				<name>u_floor</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
@@ -5134,7 +5134,7 @@
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
-				<name>building</name>
+				<name>u_building</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
@@ -5150,7 +5150,7 @@
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
-				<name>property</name>
+				<name>u_property</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
