@@ -37,7 +37,7 @@ jQuery(document).ready(function($)
                     var role = '';
                     if($('#role').length) { role = '&role=' + $('#role').val(); }
                     var parent_params = '';
-                    if($('#parent_params').length) {alert('Hello'); $('#parent_params').val(); }
+                    alert('Hello');
                     return '<a href="../page/?type=entity&artifact=${entity.name?lower_case}&id=' + row.id + role + '&page_action=view' + parent_params + '">' + parent_params + data +  '</a>';
                 },
                 "targets": 1
