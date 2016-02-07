@@ -129,6 +129,8 @@
                                     <a id="create-${entity.relatedChildEntities[key].name?lower_case}-btn" href="<?php echo get_site_url();?>/page?type=entity&artifact=${entity.relatedChildEntities[key].name?lower_case}&page_action=create&parent_id=<?php echo $entity_data['id']; ?>&parent_artifact=${entity.name?lower_case}&parent_field=${key}" class="btn btn-success waves-effect">
                                        <?php _e('Add ${entity.relatedChildEntities[key].description}', 'framework') ?>
                                     </a>
+                                    <?php $child_parent_url = '&parent_id=' . $entity_data['id'] . '&parent_artifact=' . ${entity.name?lower_case} . '&parent_field=' . ${key}; ?>
+                                    <input type="hidden" name="parent_params" id="parent_params" value="<?php echo $child_parent_url; ?>" /> 
                                 </div>
                             </div>
                             </#list>
@@ -136,7 +138,6 @@
 
 
                         </div>
-                        <input type="hidden" name="parent_params" id="parent_params" value="<?php if(isset($_REQUEST['parent_url'])) echo $parent_params; ?>" /> 
 
 <?php 
     //do_action('shadowbanker_after_single_entity'); 
