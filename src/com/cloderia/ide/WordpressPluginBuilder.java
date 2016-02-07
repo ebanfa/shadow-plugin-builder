@@ -188,6 +188,7 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 			// Process the fields in the entity
 			int index = 1;
 			for(Field field : fieldsInEntity){
+				index = index + 1;
 				// Only process relationship fields
 				if(field.getRelationshipField().equals("Y")){
 					//System.out.println("Found a relationship field: " + field.getName() + " of type: " + field.getDataType());
@@ -200,7 +201,6 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 								System.out.println("Adding child: " + entity.getName() + " of field " + fieldName + " to parent: " + item.getName());
 							}
 							item.getRelatedChildEntities().put(fieldName, entity);
-							index = index + 1;
 						}
 
 					}
