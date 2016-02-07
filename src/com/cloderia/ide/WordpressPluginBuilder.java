@@ -194,7 +194,7 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 					for(Entity item: cloneOfEntitiesInModule){
 						if(item.getPostName().equals(targetEntityPostName)) {
 							//System.out.println("Adding child: " + entity.getName() + " to parent: " + item.getName());
-							if(item.getName().equals('Property')) {
+							if(item.getName().equals("Property")) {
 								System.out.println("Adding child: " + entity.getName() + " to parent: " + item.getName());
 							}
 							item.getRelatedChildEntities().put(field.getName(), entity);
