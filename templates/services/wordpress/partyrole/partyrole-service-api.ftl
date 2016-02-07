@@ -105,7 +105,7 @@ class ${entity.name}API {
      * Get all parts with id's in the list provided
      */
     public static function find_by_ids($party_ids) {
-        return CloderiaAPIUtils::find_by_ids(${entity.name}API::init_entity_data(), $entity_code);
+        return CloderiaAPIUtils::find_by_ids(${entity.name}API::init_entity_data(), $party_ids);
     }
 
     /**
