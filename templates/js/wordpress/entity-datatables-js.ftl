@@ -36,7 +36,7 @@ jQuery(document).ready(function($)
                 "render": function ( data, type, row ) {
                     var role = '';
                     if($('#role').length) { role = '&role=' + $('#role').val(); }
-                    return '<a class="data-table-link" href="../page/?type=entity&artifact=${entity.name?lower_case}&id=' + row.id + role + '&page_action=view' + '" data-related-entity-name="${entity.name?lower_case}" data-related-entity-id="' + row.id + '">' + data +  '</a>';
+                    return '<a class="data-table-link" href="../page/?type=entity&artifact=${entity.name?lower_case}&id=' + row.id + role + '&page_action=view' + '" data-name="${entity.name?lower_case}">' + data +  '</a>';
                 },
                 "targets": 1
             }
