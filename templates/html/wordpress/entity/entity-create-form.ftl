@@ -357,7 +357,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a data-toggle="modal" data-current-relationship-field="${field.name}" class="related-entity-search-link" style="font-size:20px" href="#${field.name}_modal"><i class="md  md-trending-up"></i></a>
+                        <a data-toggle="modal" data-relationship-field-name="${field.name}" class="relationship-field-search-link" style="font-size:20px" href="#${field.name}_modal"><i class="md  md-trending-up"></i></a>
                 <?php do_action('shadowbanker_after_entity_form_field');?>
                 <?php }  ?>
             </#if>
@@ -380,6 +380,7 @@
         <input type="hidden" name="parent_param" value="<?php echo urlencode($parent_param); ?>">
         <?php } ?>
 <?php } ?>
+<input type="hidden" id="current-relationship-field" name="current-relationship-field" value="">
 
 
 
@@ -445,6 +446,7 @@
     </#if>
 </#list>
 
+
 <script type="text/javascript">
     
     jQuery(document).ready(function($)
@@ -454,8 +456,9 @@
                 console.log('>>>>>>>>>>>>>>>>>>> clicked');
             });
 
-            $('body').on('click', '.related-entity-search-link', function(e){
-                var currentRelatedEntityField = $(this).data('current-relationship-field');
+            $('body').on('click', '.relationship-field-search-link', function(e){
+                var currentRelatedEntityField = $(this).data('relationship-field-name');
+                $('#current-relationship-field').val(currentRelatedEntityField);
                 console.log('>>>>>>>>>>>>>>>>>>> related-entity-search-link:' + currentRelatedEntityField);
             });
     });
