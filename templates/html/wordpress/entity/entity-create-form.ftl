@@ -357,7 +357,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a data-toggle="modal" href="#modalDefault"><i class="md md-mail"></i></a>
+                        <a data-toggle="modal" style="font-size:20px" href="#modalDefault"><i class="md  md-trending-up"></i></a>
                 <?php do_action('shadowbanker_after_entity_form_field');?>
                 <?php }  ?>
             </#if>
