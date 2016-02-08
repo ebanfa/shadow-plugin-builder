@@ -444,3 +444,14 @@
         </#list>
     </#if>
 </#list>
+
+<script type="text/javascript">
+    
+    jQuery(document).ready(function($)
+    {
+            $('body').on('click', '.data-table-link', function(e){
+                e.preventDefault();
+                console.log('>>>>>>>>>>>>>>>>>>> clicked');
+            });
+    });
+</script>
