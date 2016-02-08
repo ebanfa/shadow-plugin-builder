@@ -145,7 +145,8 @@
     do_action('shadowbanker_after_main_content');
 ?>
 <script type="text/javascript">
-
+jQuery(document).ready(function($)
+{
         var parent_params = '';
         if($('#parent_params').length) {
             parent_params = $('#parent_params').val(); 
@@ -153,6 +154,7 @@
               console.log('>>>>>>>>>>>>>>>>>>>>>>>' + $(this).attr('href')); 
             });
         }
+});
             
         /*
          * Dialogs
