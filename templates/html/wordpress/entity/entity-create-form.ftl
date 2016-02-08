@@ -357,7 +357,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a data-toggle="modal" style="font-size:20px" href="#modalDefault"><i class="md  md-trending-up"></i></a>
+                        <a data-toggle="modal" style="font-size:20px" href="#${field.name}_modal"><i class="md  md-trending-up"></i></a>
                 <?php do_action('shadowbanker_after_entity_form_field');?>
                 <?php }  ?>
             </#if>
@@ -381,15 +381,45 @@
         <?php } ?>
 <?php } ?>
 
-    <!-- Modal Default -->  
-    <div class="modal fade" id="modalDefault" tabindex="-1" role="dialog" aria-hidden="true">
+<#list entity.fields as field>
+    <#if field.relationshipField == "Y">
+        <!-- Modal Default -->  
+    <div class="modal fade" id="${field.name}_modal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Modal title</h4>
                 </div>
                 <div class="modal-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sodales orci ante, sed ornare eros vestibulum ut. Ut accumsan vitae eros sit amet tristique. Nullam scelerisque nunc enim, non dignissim nibh faucibus ullamcorper. Fusce pulvinar libero vel ligula iaculis ullamcorper. Integer dapibus, mi ac tempor varius, purus nibh mattis erat, vitae porta nunc nisi non tellus. Vivamus mollis ante non massa egestas fringilla. Vestibulum egestas consectetur nunc at ultricies. Morbi quis consectetur nunc.</p>
+                    <form id="${field.dataType}-list-form">
+                        <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
+                        <input type="hidden" name="submitted" id="submitted" value="true" /> 
+                    </form>
+                    <div class="table-responsive">
+                        <table id="${field.dataType}-table" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+            <#list entity.fields as field>
+                <#if field.listField == "Y">
+                    <#if field.relationshipField == "N">
+                        <th>${field.description}</th>
+                    </#if>
+
+                    <#if field.relationshipField == "Y">
+                        <th>${field.description}</th>
+                    </#if>
+
+                                    
+                </#if>
+            </#list>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                        
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-link">Save changes</button>
@@ -398,6 +428,10 @@
             </div>
         </div>
     </div>
+    </#if>
+</#list>
+
+    
     
 <?php 
     do_action('shadowbanker_entity_form_end'); 
