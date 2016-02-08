@@ -357,7 +357,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a data-toggle="modal" class="related-entity-search-link" style="font-size:20px" href="#${field.name}_modal"><i class="md  md-trending-up"></i></a>
+                        <a data-toggle="modal" data-current-relationship-field="${field.name}" class="related-entity-search-link" style="font-size:20px" href="#${field.name}_modal"><i class="md  md-trending-up"></i></a>
                 <?php do_action('shadowbanker_after_entity_form_field');?>
                 <?php }  ?>
             </#if>
@@ -455,7 +455,8 @@
             });
 
             $('body').on('click', '.related-entity-search-link', function(e){
-                console.log('>>>>>>>>>>>>>>>>>>> related-entity-search-link');
+                var currentRelatedEntityField = $(this).data('current-relationship-field');
+                console.log('>>>>>>>>>>>>>>>>>>> related-entity-search-link:' + currentRelatedEntityField);
             });
     });
 </script>
