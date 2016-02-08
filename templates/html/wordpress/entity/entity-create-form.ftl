@@ -396,7 +396,15 @@
 <?php } ?>
 
  <!-- Button HTML (to Trigger Modal) -->
-    <!-- <a href="<?php echo get_site_url() . '/page?type=entity&artifact=party'; ?>&page_action=list" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#myModal">Launch Demo Modal</a> -->
+   <!--  <a href="<?php echo get_site_url() . '/page?type=entity&artifact=party'; ?>&page_action=list" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#related-entity-search-modal">Searchl</a> -->
+    <!-- Modal HTML -->
+    <div id="related-entity-search-modal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Content will be loaded here from "remote.php" file -->
+            </div>
+        </div>
+    </div>
     <a data-toggle="modal" href="components.html#modalDefault" class="btn btn-sm btn-default">Modal - Default</a>
     <!-- Modal Default -->  
     <div class="modal fade" id="modalDefault" tabindex="-1" role="dialog" aria-hidden="true">
@@ -406,7 +414,35 @@
                     <h4 class="modal-title">Modal title</h4>
                 </div>
                 <div class="modal-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sodales orci ante, sed ornare eros vestibulum ut. Ut accumsan vitae eros sit amet tristique. Nullam scelerisque nunc enim, non dignissim nibh faucibus ullamcorper. Fusce pulvinar libero vel ligula iaculis ullamcorper. Integer dapibus, mi ac tempor varius, purus nibh mattis erat, vitae porta nunc nisi non tellus. Vivamus mollis ante non massa egestas fringilla. Vestibulum egestas consectetur nunc at ultricies. Morbi quis consectetur nunc.</p>
+                    <div class="card">
+                                <div class="card-header">
+                                    <h2>Default Example <small>You can type anything here...</small></h2>
+
+                                    <ul class="actions">
+                                        <li class="dropdown">
+                                            <a href="widget-templates.html" data-toggle="dropdown" aria-expanded="false">
+                                                <i class="zmdi zmdi-more-vert"></i>
+                                            </a>
+                                            
+                                            <ul class="dropdown-menu dropdown-menu-right">
+                                                <li>
+                                                    <a href="widget-templates.html">Refresh</a>
+                                                </li>
+                                                <li>
+                                                    <a href="widget-templates.html">Manage Widgets</a>
+                                                </li>
+                                                <li>
+                                                    <a href="widget-templates.html">Widgets Settings</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="card-body card-padding">
+                                    Cras leo sem, egestas a accumsan eget, euismod at nunc. Praesent vel mi blandit, tempus ex gravida, accumsan dui. Sed sed aliquam augue. Nullam vel suscipit purus, eu facilisis ante. Mauris nec commodo felis. 
+                                </div>
+                            </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-link">Save changes</button>
