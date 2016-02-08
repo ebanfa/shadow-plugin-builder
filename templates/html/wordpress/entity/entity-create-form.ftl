@@ -340,7 +340,6 @@
             </#if>
             <#if field.relationshipField == "Y">
                 <?php // If the parent field is set we dont display the field 
-                    echo('Field name is>>>>>>>>>>>>>>>>>>${field.name}');
                     if(isset($parent_field) && $parent_field === "${field.name}") { ?>
                         <input type="hidden" name="${field.name}" value="<?php echo $parent_id; ?>">
                 <?php } else { ?>
