@@ -358,6 +358,51 @@
                             </div>
                         </div>
                         <a data-toggle="modal" style="font-size:20px" href="#${field.name}_modal"><i class="md  md-trending-up"></i></a>
+                        <!-- Modal Default -->  
+                        <div class="modal fade" id="${field.name}_modal" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Modal title</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="${field.dataType}-list-form">
+                                            <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
+                                            <input type="hidden" name="submitted" id="submitted" value="true" /> 
+                                        </form>
+                                        <div class="table-responsive">
+                                            <table id="${field.dataType}-table" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <#list entity.fields as field>
+                                                            <#if field.listField == "Y">
+                                                                <#if field.relationshipField == "N">
+                                                        <th>${field.description}</th>
+                                                                </#if>
+
+                                                                <#if field.relationshipField == "Y">
+                                                        <th>${field.description}</th>
+                                                                </#if>
+
+                                                                                
+                                                            </#if>
+                                                        </#list>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-link">Save changes</button>
+                                        <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                 <?php do_action('shadowbanker_after_entity_form_field');?>
                 <?php }  ?>
             </#if>
@@ -383,51 +428,7 @@
 
 <#list entity.fields as field>
     <#if field.relationshipField == "Y" && field.isFormField == "Y" && field.createField == "Y">
-        <!-- Modal Default -->  
-    <div class="modal fade" id="${field.name}_modal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Modal title</h4>
-                </div>
-                <div class="modal-body">
-                    <form id="${field.dataType}-list-form">
-                        <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
-                        <input type="hidden" name="submitted" id="submitted" value="true" /> 
-                    </form>
-                    <div class="table-responsive">
-                        <table id="${field.dataType}-table" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <#list entity.fields as field>
-                                        <#if field.listField == "Y">
-                                            <#if field.relationshipField == "N">
-                                    <th>${field.description}</th>
-                                            </#if>
-
-                                            <#if field.relationshipField == "Y">
-                                    <th>${field.description}</th>
-                                            </#if>
-
-                                                            
-                                        </#if>
-                                    </#list>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                        
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-link">Save changes</button>
-                    <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
+        
     </#if>
 </#list>
 
