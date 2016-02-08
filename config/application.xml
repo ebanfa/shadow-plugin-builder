@@ -4793,7 +4793,7 @@
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
-				<name>building</name>
+				<name>flr_building</name>
 				<isVisible>N</isVisible>
 				<isFormField>N</isFormField>
 				<required>Y</required>
@@ -4801,7 +4801,7 @@
 				<editField>N</editField>
 				<viewField>N</viewField>
 				<listField>N</listField>
-				<dataType>sb_party</dataType>
+				<dataType>sb_building</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
 				<description>Building</description>
