@@ -358,9 +358,6 @@
                             </div>
                         </div>
                         <a data-toggle="modal" href="#modalDefault" class="btn btn-sm btn-success">Modal - Default</a>
-                        <div class="col-xs-4">
-                            <a data-toggle="modal" href="#modalDefault" class="btn btn-sm btn-success">Modal - Default</a>
-                        </div>
                 <?php do_action('shadowbanker_after_entity_form_field');?>
                 <?php }  ?>
             </#if>
