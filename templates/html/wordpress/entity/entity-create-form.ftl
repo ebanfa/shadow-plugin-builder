@@ -348,23 +348,18 @@
                         <div class="col-xs-8">
                             <div class="form-group">
                                 <div class="fg-line">
-                                    <div class="select">
-                                        <select id="${field.name}" name="${field.name}" class="form-control">
-                                            <option>Select a ${field.displayName?lower_case}</option>
-                                            <?php
-                                                $${field.name}_list = get_posts(array('post_type' => '${field.dataType}', 'posts_per_page' => -1, 'orderby' => 'ID', 'order' => 'ASC'));
-                                                foreach ($${field.name}_list as $${field.dataType}) { ?>
-                                                <option value="<?php echo $${field.dataType}->ID; ?>">
-                                                    <?php echo get_post_meta($${field.dataType}->ID, 'name', true); ?>
-                                                </option>
-                                            <?php } ?>
-                                        </select>
-                                    </div>
+                                    <input type="text" 
+                                        class="form-control phone" 
+                                        id="${field.name}_txt" name="${field.name}_txt" 
+                                        placeholder="${field.displayName?lower_case}" 
+                                        data-bv-message="The ${field.displayName?lower_case} is not valid" 
+                                        data-bv-notempty-message="The ${field.displayName?lower_case} is required and cannot be empty" required>
                                 </div>
                             </div>
                         </div>
+                        <a data-toggle="modal" href="#modalDefault" class="btn btn-sm btn-success">Modal - Default</a>
                         <div class="col-xs-4">
-                            <a data-toggle="modal" href="#modalDefault" class="btn btn-sm btn-default">Modal - Default</a>
+                            <a data-toggle="modal" href="#modalDefault" class="btn btn-sm btn-success">Modal - Default</a>
                         </div>
                 <?php do_action('shadowbanker_after_entity_form_field');?>
                 <?php }  ?>
@@ -388,9 +383,6 @@
         <input type="hidden" name="parent_param" value="<?php echo urlencode($parent_param); ?>">
         <?php } ?>
 <?php } ?>
-
- <!-- Button HTML (to Trigger Modal) -->
-    <a href="<?php echo get_site_url() . '/page?type=entity&artifact=property'; ?>&page_action=list_modal" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#related-entity-search-modal">Searchl</a>
 
     <!-- Modal Default -->  
     <div class="modal fade" id="modalDefault" tabindex="-1" role="dialog" aria-hidden="true">
