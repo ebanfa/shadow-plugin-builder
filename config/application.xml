@@ -4246,22 +4246,6 @@
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
-				<name>b_property</name>
-				<isVisible>Y</isVisible>
-			    <isFormField>N</isFormField>
-				<required>Y</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>sb_property</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Property</description>
-				<displayName>Property</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
 				<name>name</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
@@ -4277,6 +4261,23 @@
 				<displayName>name</displayName>
 				<relationshipField>N</relationshipField>
 			</field>
+			<field>
+				<name>b_property</name>
+				<isVisible>Y</isVisible>
+			    <isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>Y</listField>
+				<dataType>sb_property</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Property</description>
+				<displayName>Property</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			
 			<field>
 				<name>number_of_floors</name>
 				<isVisible>Y</isVisible>
