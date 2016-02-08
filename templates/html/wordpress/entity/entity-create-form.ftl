@@ -355,14 +355,7 @@
                         <#if field.size == "large">
                         <div class="col-xs-12">
                         </#if>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="zmdi zmdi-arrow-missed"></i></span>
-                                <div class="fg-line">
-                                    <input type="text" class="form-control" placeholder="Internet">
-                                </div>
-                                <span class="input-group-addon last"><i class="zmdi zmdi-globe"></i></span>
-                            </div>
-                            <div class="form-group input-group">
+                            <div class="form-group">
                                 <div class="fg-line">
                                     <div class="select">
                                         <select id="${field.name}" name="${field.name}" class="form-control">
@@ -377,7 +370,12 @@
                                         </select>
                                     </div>
                                 </div>
-                                <span class="input-group-addon last"><i class="zmdi zmdi-globe"></i></span>
+                            </div>
+                            <div class="form-group">
+                                <div class="fg-line">
+                                    <input type="text" class="form-control text test_lookup_field" 
+                                        id="test_lookup" name="test_lookup" data-field-name="property" required>
+                                </div>
                             </div>
                         </div>
                 <?php do_action('shadowbanker_after_entity_form_field');?>
@@ -405,6 +403,16 @@
 
  <!-- Button HTML (to Trigger Modal) -->
     <a href="<?php echo get_site_url() . '/page?type=entity&artifact=property'; ?>&page_action=list_modal" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#related-entity-search-modal">Searchl</a>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function($)
+        {
+            $( "body" ).on( "click", ".test_lookup_field", function() {
+              console.log('>>>>>>>>>>>>>>>Hey there');
+            });
+        });
+
+    </script>
     <!-- Modal Default -->  
     <div class="modal fade" id="modalDefault" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
