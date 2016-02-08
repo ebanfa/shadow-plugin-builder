@@ -355,6 +355,13 @@
                         <#if field.size == "large">
                         <div class="col-xs-12">
                         </#if>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="zmdi zmdi-arrow-missed"></i></span>
+                                <div class="fg-line">
+                                    <input type="text" class="form-control" placeholder="Internet">
+                                </div>
+                                <span class="input-group-addon last"><i class="zmdi zmdi-globe"></i></span>
+                            </div>
                             <div class="form-group input-group">
                                 <div class="fg-line">
                                     <div class="select">
