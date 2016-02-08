@@ -4799,8 +4799,8 @@
 				<required>Y</required>
 				<createField>N</createField>
 				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
 				<dataType>sb_building</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
