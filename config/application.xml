@@ -4794,8 +4794,8 @@
 			</field>
 			<field>
 				<name>flr_building</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
 				<required>Y</required>
 				<createField>C</createField>
 				<editField>N</editField>
