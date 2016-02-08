@@ -396,7 +396,7 @@
 <?php } ?>
 
  <!-- Button HTML (to Trigger Modal) -->
-    <a href="../bootstrap/remote.php" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#myModal">Launch Demo Modal</a>
+    <a href="<?php echo get_site_url() . '/page?type=entity&artifact=party'; ?>&page_action=list" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#myModal">Launch Demo Modal</a>
     
     <!-- Modal HTML -->
     <div id="myModal" class="modal fade">
