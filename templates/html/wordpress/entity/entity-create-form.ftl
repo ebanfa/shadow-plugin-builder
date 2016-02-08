@@ -453,39 +453,26 @@
     
     jQuery(document).ready(function($)
     {
-            $('body').on('click', '.data-table-link', function(e){
-                e.preventDefault();
+        $('body').on('click', '.data-table-link', function(e){
+            e.preventDefault();
 
-                var currentRelatedFieldName = $('#current-related-field').val();
-                var currentRelatedInstanceId = $(this).data('related-instance-id');
-                var currentRelatedInstanceName = $(this).data('related-instance-name');               
-                var currentRelatedArtifactName = $(this).data('related-artifact-name');
-                // Set the value of the hidden relationship field. 
-                $('#' + currentRelatedArtifactName).val(currentRelatedInstanceId);
-                // Set the value of the text field for the relationship field.
-                $('#' + currentRelatedFieldName + '_txt').val(currentRelatedInstanceName);
+            var currentRelatedFieldName = $('#current-related-field').val();
+            var currentRelatedInstanceId = $(this).data('related-instance-id');
+            var currentRelatedInstanceName = $(this).data('related-instance-name');               
+            var currentRelatedArtifactName = $(this).data('related-artifact-name');
+            // Set the value of the hidden relationship field. 
+            $('#' + currentRelatedArtifactName).val(currentRelatedInstanceId);
+            // Set the value of the text field for the relationship field.
+            $('#' + currentRelatedFieldName + '_txt').val(currentRelatedInstanceName);
+            console.log('>>>>>Setting value ' + currentRelatedInstanceName + 'on element #' + currentRelatedFieldName + '_txt');
 
-                
-                /*$('#current-instance-id').val(currentRelatedInstanceId);
-                $('#current-instance-name').val(currentRelatedInstanceName);
-                $('#current-related-artifact').val(currentRelatedArtifactName);*/
+            $('.modal').modal('hide');
+        });
 
-                $('.modal').modal('hide');
-            });
-
-            $('body').on('click', '.related-field-search-link', function(e){
-                var currentRelatedFieldName = $(this).data('related-field-name');
-                $('#current-related-field').val(currentRelatedFieldName);
-                
-            });
-
-            /*$('.modal').on('hidden.bs.modal', function (e) {
-                var entityName = $('#current-relationship-field').val();
-                var entityInstanceId = $('#current-relationship-field-id').val();
-                var entityInstanceName = $('#current-relationship-field-name').val();
-
-                console.log('Setting artifact ' + entityName + ' with value ' + entityInstanceId + ' for field ' + entityInstanceName);
-                
-            })*/
+        $('body').on('click', '.related-field-search-link', function(e){
+            var currentRelatedFieldName = $(this).data('related-field-name');
+            $('#current-related-field').val(currentRelatedFieldName);
+            
+        });
     });
 </script>
