@@ -4230,7 +4230,7 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
-				<name>type</name>
+				<name>build_type</name>
 				<isVisible>Y</isVisible>
 			    <isFormField>Y</isFormField>
 				<required>Y</required>
