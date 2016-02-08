@@ -373,7 +373,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="fg-line">
-                                    <input type="text" class="form-control text test_lookup_field" 
+                                    <input type="text" class="form-control text related_entity_lookup_field" 
                                         id="test_lookup" name="test_lookup" data-field-name="property" required>
                                 </div>
                             </div>
@@ -408,7 +408,7 @@
         jQuery(document).ready(function($)
         {
             $( "body" ).on( "click", ".test_lookup_field", function() {
-              console.log('>>>>>>>>>>>>>>>Hey there');
+              $('#modalDefault').modal(options)
             });
         });
 
