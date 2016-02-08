@@ -4232,12 +4232,12 @@
 			<field>
 				<name>type</name>
 				<isVisible>Y</isVisible>
-			    <isFormField>N</isFormField>
+			    <isFormField>Y</isFormField>
 				<required>Y</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
+				<createField>Y</createField>
+				<editField>E</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
 				<dataType>sb_buildingtype</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
