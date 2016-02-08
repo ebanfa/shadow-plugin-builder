@@ -74,9 +74,9 @@ jQuery(document).ready(function($)
                 // The `data` parameter refers to the data for the cell (defined by the
                 // `data` option, which defaults to the column being worked with, in
                 // this case `data: 0`.
-                var parent_params = '';
-                if($('#parent_params').length) {alert('Hello' + $('#parent_params').val()); }
                 "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#parent_params').length) {alert('Hello' + $('#parent_params').val()); }
                     return '<a href="../page/?type=entity&artifact=${entity.name?lower_case}&id=' + row.id + '&page_action=view">' + data +  '</a>';
                 },
                 "targets": 1
