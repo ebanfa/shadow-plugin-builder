@@ -357,7 +357,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a data-toggle="modal" data-relationship-field-name="${field.name}" class="relationship-field-search-link" style="font-size:20px" href="#${field.name}_modal"><i class="md  md-trending-up"></i></a>
+                        <a data-toggle="modal" data-related-field-name="${field.name}" class="related-field-search-link" style="font-size:20px" href="#${field.name}_modal"><i class="md  md-trending-up"></i></a>
                 <?php do_action('shadowbanker_after_entity_form_field');?>
                 <?php }  ?>
             </#if>
@@ -380,7 +380,7 @@
         <input type="hidden" name="parent_param" value="<?php echo urlencode($parent_param); ?>">
         <?php } ?>
 <?php } ?>
-<input type="hidden" id="current-relationship-field" name="current-relationship-field" value="">
+<input type="hidden" id="current-related-field" name="current-related-field" value="">
 <input type="hidden" id="current-relationship-field-id" name="current-relationship-field-id" value="">
 <input type="hidden" id="current-relationship-field-name" name="current-relationship-field-name" value="">
 
@@ -455,26 +455,36 @@
     {
             $('body').on('click', '.data-table-link', function(e){
                 e.preventDefault();
-                var currentRelatedEntityFieldId = $(this).data('related-entity-id');
-                var currentRelatedEntityFieldName = $(this).data('related-entity-name');
-                $('#current-relationship-field-id').val(currentRelatedEntityFieldId);
-                $('#current-relationship-field-name').val(currentRelatedEntityFieldName);
+
+                var currentRelatedFieldName = $('#current-related-field').val();
+                var currentRelatedInstanceId = $(this).data('related-instance-id');
+                var currentRelatedInstanceName = $(this).data('related-instance-name');               
+                var currentRelatedArtifactName = $(this).data('related-artifact-name');
+                // Set the value of the hidden relationship field. 
+                $('#' + currentRelatedArtifactName).val(currentRelatedInstanceId);
+                $('#' + currentRelatedFieldName + '_txt').val(currentRelatedInstanceName);
+
+                
+                /*$('#current-instance-id').val(currentRelatedInstanceId);
+                $('#current-instance-name').val(currentRelatedInstanceName);
+                $('#current-related-artifact').val(currentRelatedArtifactName);*/
+
                 $('.modal').modal('hide');
             });
 
-            $('body').on('click', '.relationship-field-search-link', function(e){
-                var currentRelatedEntityField = $(this).data('relationship-field-name');
-                $('#current-relationship-field').val(currentRelatedEntityField);
-
+            $('body').on('click', '.related-field-search-link', function(e){
+                var currentRelatedFieldName = $(this).data('related-field-name');
+                $('#current-related-field').val(currentRelatedFieldName);
+                
             });
 
-            $('.modal').on('hidden.bs.modal', function (e) {
+            /*$('.modal').on('hidden.bs.modal', function (e) {
                 var entityName = $('#current-relationship-field').val();
                 var entityInstanceId = $('#current-relationship-field-id').val();
                 var entityInstanceName = $('#current-relationship-field-name').val();
 
                 console.log('Setting artifact ' + entityName + ' with value ' + entityInstanceId + ' for field ' + entityInstanceName);
                 
-            })
+            })*/
     });
 </script>
