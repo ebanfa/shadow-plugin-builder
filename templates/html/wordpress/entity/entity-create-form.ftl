@@ -456,13 +456,15 @@
                 e.preventDefault();
                 var currentRelatedEntityFieldId = $(this).data('related-entity-id');
                 $('#current-relationship-field-id').val(currentRelatedEntityFieldId);
-                console.log('>>>>>>>>>>>>>>>>>>> clicked');
             });
 
             $('body').on('click', '.relationship-field-search-link', function(e){
                 var currentRelatedEntityField = $(this).data('relationship-field-name');
                 $('#current-relationship-field').val(currentRelatedEntityField);
-                console.log('>>>>>>>>>>>>>>>>>>> related-entity-search-link:' + currentRelatedEntityField);
             });
+
+            $('.modal').on('hidden.bs.modal', function (e) {
+              console.log('>>>>>>>>>>>>>>>>>>>>Hidden');
+            })
     });
 </script>
