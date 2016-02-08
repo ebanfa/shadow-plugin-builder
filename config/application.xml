@@ -4230,22 +4230,6 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
-				<name>b_buildingtype</name>
-				<isVisible>Y</isVisible>
-			    <isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>sb_buildingtype</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Type</description>
-				<displayName>Type</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
 				<name>name</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
