@@ -459,11 +459,13 @@
                 var currentRelatedEntityFieldName = $(this).data('related-entity-name');
                 $('#current-relationship-field-id').val(currentRelatedEntityFieldId);
                 $('#current-relationship-field-name').val(currentRelatedEntityFieldName);
+                $('.modal').modal('hide');
             });
 
             $('body').on('click', '.relationship-field-search-link', function(e){
                 var currentRelatedEntityField = $(this).data('relationship-field-name');
                 $('#current-relationship-field').val(currentRelatedEntityField);
+
             });
 
             $('.modal').on('hidden.bs.modal', function (e) {
