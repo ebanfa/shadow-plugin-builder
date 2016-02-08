@@ -402,10 +402,6 @@
                     <h4 class="modal-title">Modal title</h4>
                 </div>
                 <div class="modal-body">
-                    <form id="${field.dataType}-list-form">
-                        <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
-                        <input type="hidden" name="submitted" id="submitted" value="true" /> 
-                    </form>
                     <div class="table-responsive">
                         <table id="${field.dataType}-table" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
                             <thead>
