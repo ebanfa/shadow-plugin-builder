@@ -145,6 +145,14 @@
     do_action('shadowbanker_after_main_content');
 ?>
 <script type="text/javascript">
+
+        var parent_params = '';
+        if($('#parent_params').length) {
+            parent_params = $('#parent_params').val(); 
+            $('.data-table-link').each(function (index, value) { 
+              console.log('>>>>>>>>>>>>>>>>>>>>>>>' + $(this).attr('href')); 
+            });
+        }
             
         /*
          * Dialogs
