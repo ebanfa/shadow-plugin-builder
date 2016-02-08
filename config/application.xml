@@ -4280,11 +4280,11 @@
 			<field>
 				<name>b_property</name>
 				<isVisible>Y</isVisible>
-			    <isFormField>N</isFormField>
+			    <isFormField>Y</isFormField>
 				<required>Y</required>
-				<createField>N</createField>
+				<createField>Y</createField>
 				<editField>N</editField>
-				<viewField>N</viewField>
+				<viewField>Y</viewField>
 				<listField>Y</listField>
 				<dataType>sb_property</dataType>
 				<size>large</size>
