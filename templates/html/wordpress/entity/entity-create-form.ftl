@@ -382,6 +382,7 @@
 <?php } ?>
 <input type="hidden" id="current-relationship-field" name="current-relationship-field" value="">
 <input type="hidden" id="current-relationship-field-id" name="current-relationship-field-id" value="">
+<input type="hidden" id="current-relationship-field-name" name="current-relationship-field-name" value="">
 
 
 
@@ -455,7 +456,9 @@
             $('body').on('click', '.data-table-link', function(e){
                 e.preventDefault();
                 var currentRelatedEntityFieldId = $(this).data('related-entity-id');
+                var currentRelatedEntityFieldName = $(this).data('related-entity-name');
                 $('#current-relationship-field-id').val(currentRelatedEntityFieldId);
+                $('#current-relationship-field-name').val(currentRelatedEntityFieldName);
             });
 
             $('body').on('click', '.relationship-field-search-link', function(e){
@@ -464,7 +467,12 @@
             });
 
             $('.modal').on('hidden.bs.modal', function (e) {
-              console.log('>>>>>>>>>>>>>>>>>>>>Hidden');
+                var entityName = $('#current-relationship-field').val();
+                var entityInstanceId = $('#current-relationship-field-id').val();
+                var entityInstanceName = $('#current-relationship-field-name').val();
+
+                console.log('Setting artifact ' + entityName + ' with value ' + entityInstanceId + ' for field ' + entityInstanceName);
+                
             })
     });
 </script>

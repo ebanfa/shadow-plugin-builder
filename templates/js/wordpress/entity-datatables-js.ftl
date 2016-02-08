@@ -79,7 +79,7 @@ jQuery(document).ready(function($)
                     if($('#${entity.name?lower_case}_parent_params').length) {
                         parent_params = parent_params + $('#${entity.name?lower_case}_parent_params').val(); 
                     }
-                    return '<a class="data-table-link" href="../page/?type=entity&artifact=${entity.name?lower_case}&id=' + row.id + '&page_action=view' + parent_params + '" data-related-entity-name="${entity.name?lower_case}" data-related-entity-id="' + row.id + '">' + data +  '</a>';
+                    return '<a class="data-table-link" href="../page/?type=entity&artifact=${entity.name?lower_case}&id=' + row.id + '&page_action=view' + parent_params + '" data-related-entity-name="' + row.name + '" data-related-entity-id="' + row.id + '">' + data +  '</a>';
                 },
                 "targets": 1
             }
