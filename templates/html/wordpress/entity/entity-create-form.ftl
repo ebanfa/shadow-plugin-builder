@@ -394,6 +394,18 @@
         <input type="hidden" name="parent_param" value="<?php echo urlencode($parent_param); ?>">
         <?php } ?>
 <?php } ?>
+
+ <!-- Button HTML (to Trigger Modal) -->
+    <a href="../bootstrap/remote.php" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#myModal">Launch Demo Modal</a>
+    
+    <!-- Modal HTML -->
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Content will be loaded here from "remote.php" file -->
+            </div>
+        </div>
+    </div>
     
 <?php 
     do_action('shadowbanker_entity_form_end'); 

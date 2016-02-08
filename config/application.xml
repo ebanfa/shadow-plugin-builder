@@ -4351,12 +4351,12 @@
 			<field>
 				<name>be_building</name>
 				<isVisible>Y</isVisible>
-			    <isFormField>N</isFormField>
+			    <isFormField>Y</isFormField>
 				<required>Y</required>
-				<createField>N</createField>
+				<createField>Y</createField>
 				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
 				<dataType>sb_building</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
