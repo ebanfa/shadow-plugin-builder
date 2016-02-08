@@ -353,7 +353,7 @@
                                         id="${field.name}_txt" name="${field.name}_txt" 
                                         placeholder="${field.displayName?lower_case}" 
                                         data-bv-message="The ${field.displayName?lower_case} is not valid" 
-                                        data-bv-notempty-message="The ${field.displayName?lower_case} is required and cannot be empty" readonly>
+                                        data-bv-notempty-message="The ${field.displayName?lower_case} is required and cannot be empty">
 
                                     <input type="hidden" name="${field.name}" value="<?php echo $parent_id; ?>">
                                 </div>
@@ -472,8 +472,11 @@
         });
 
         $('body').on('click', '.related-field-search-link', function(e){
+            e.preventDefault();
             var currentRelatedFieldName = $(this).data('related-field-name');
             $('#current-related-field').val(currentRelatedFieldName);
+            $('#' + currentRelatedFieldName + '_modal').modal('show');
+
             
         });
     });
