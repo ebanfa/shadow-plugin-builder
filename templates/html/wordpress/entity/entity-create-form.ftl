@@ -356,7 +356,7 @@
                                         data-bv-message="The ${field.displayName?lower_case} is not valid" 
                                         data-bv-notempty-message="The ${field.displayName?lower_case} is required and cannot be empty">
 
-                                    <input type="hidden" name="${field.name}" value="<?php echo $parent_id; ?>">
+                                    <input type="hidden" id="${field.name}" name="${field.name}" value="">
                                 </div>
                             </div>
                         </div>
