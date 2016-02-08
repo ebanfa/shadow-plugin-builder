@@ -353,7 +353,9 @@
                                         id="${field.name}_txt" name="${field.name}_txt" 
                                         placeholder="${field.displayName?lower_case}" 
                                         data-bv-message="The ${field.displayName?lower_case} is not valid" 
-                                        data-bv-notempty-message="The ${field.displayName?lower_case} is required and cannot be empty" required>
+                                        data-bv-notempty-message="The ${field.displayName?lower_case} is required and cannot be empty" readonly>
+
+                                    <input type="hidden" name="${field.name}" value="<?php echo $parent_id; ?>">
                                 </div>
                             </div>
                         </div>
