@@ -345,7 +345,7 @@
                 <?php } else { ?>
                 <?php do_action('shadowbanker_before_entity_form_field'); ?>
                 
-                        <div class="col-xs-8">
+                        <div class="col-xs-11">
                             <div class="form-group">
                                 <div class="fg-line">
                                     <input type="text" 
