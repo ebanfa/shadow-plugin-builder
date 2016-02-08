@@ -381,6 +381,7 @@
         <?php } ?>
 <?php } ?>
 <input type="hidden" id="current-relationship-field" name="current-relationship-field" value="">
+<input type="hidden" id="current-relationship-field-id" name="current-relationship-field-id" value="">
 
 
 
@@ -453,13 +454,15 @@
     {
             $('body').on('click', '.data-table-link', function(e){
                 e.preventDefault();
+                var currentRelatedEntityFieldId = $(this).data('related-entity-id');
+                $('#current-relationship-field-id').val(currentRelatedEntityFieldId);
                 console.log('>>>>>>>>>>>>>>>>>>> clicked');
             });
 
-            /*$('body').on('click', '.relationship-field-search-link', function(e){
+            $('body').on('click', '.relationship-field-search-link', function(e){
                 var currentRelatedEntityField = $(this).data('relationship-field-name');
                 $('#current-relationship-field').val(currentRelatedEntityField);
                 console.log('>>>>>>>>>>>>>>>>>>> related-entity-search-link:' + currentRelatedEntityField);
-            });*/
+            });
     });
 </script>
