@@ -130,7 +130,7 @@
                                        <?php _e('Add ${entity.relatedChildEntities[key].description}', 'framework') ?>
                                     </a>
                                     <?php $child_parent_url = '&parent_id=' . $entity_data['id'] . '&parent_artifact=${entity.name?lower_case}&parent_field=${key}'; ?>
-                                    <input type="hidden" name="parent_params" id="parent_params" value="<?php echo $child_parent_url; ?>" /> 
+                                    <input type="hidden" name="${entity.relatedChildEntities[key].name?lower_case}_parent_params" id="${entity.relatedChildEntities[key].name?lower_case}_parent_params" value="<?php echo $child_parent_url; ?>" /> 
                                 </div>
                             </div>
                             </#list>
