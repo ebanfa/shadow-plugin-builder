@@ -396,7 +396,7 @@
 
     <#if field.relationshipField == "Y" && field.isFormField == "Y" && field.createField == "Y">
         <#list module.entities as modEntity>
-            <#if field.dataType === modEntity.postName>
+            <#if field.dataType == modEntity.postName>
                 <!-- Modal Default -->  
                 <div class="modal fade" id="${field.name}_modal" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog">
