@@ -396,13 +396,22 @@
 <?php } ?>
 
  <!-- Button HTML (to Trigger Modal) -->
-    <a href="<?php echo get_site_url() . '/page?type=entity&artifact=party'; ?>&page_action=list" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#myModal">Launch Demo Modal</a>
-    
-    <!-- Modal HTML -->
-    <div id="myModal" class="modal fade">
+    <!-- <a href="<?php echo get_site_url() . '/page?type=entity&artifact=party'; ?>&page_action=list" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#myModal">Launch Demo Modal</a> -->
+    <a data-toggle="modal" href="components.html#modalDefault" class="btn btn-sm btn-default">Modal - Default</a>
+    <!-- Modal Default -->  
+    <div class="modal fade" id="modalDefault" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <!-- Content will be loaded here from "remote.php" file -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sodales orci ante, sed ornare eros vestibulum ut. Ut accumsan vitae eros sit amet tristique. Nullam scelerisque nunc enim, non dignissim nibh faucibus ullamcorper. Fusce pulvinar libero vel ligula iaculis ullamcorper. Integer dapibus, mi ac tempor varius, purus nibh mattis erat, vitae porta nunc nisi non tellus. Vivamus mollis ante non massa egestas fringilla. Vestibulum egestas consectetur nunc at ultricies. Morbi quis consectetur nunc.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-link">Save changes</button>
+                    <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
