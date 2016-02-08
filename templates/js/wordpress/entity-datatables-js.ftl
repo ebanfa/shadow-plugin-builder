@@ -36,7 +36,13 @@ jQuery(document).ready(function($)
                 "render": function ( data, type, row ) {
                     var role = '';
                     if($('#role').length) { role = '&role=' + $('#role').val(); }
-                    return '<a class="data-table-link" href="../page/?type=entity&artifact=${entity.name?lower_case}&id=' + row.id + role + '&page_action=view' + '" data-related-entity-name="${entity.name?lower_case}" data-related-entity-id="' + row.id + '">' + data +  '</a>';
+
+                    var parent_params = '';
+                    if($('#${entity.name?lower_case}_parent_params').length) {
+                        parent_params = parent_params + $('#${entity.name?lower_case}_parent_params').val(); 
+                    }
+
+                    return '<a class="data-table-link" href="../page/?type=entity&artifact=${entity.name?lower_case}&id=' + row.id + role + '&page_action=view' + '" data-related-artifact-name="${entity.name?lower_case}" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
                 },
                 "targets": 1
             }
