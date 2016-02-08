@@ -462,6 +462,7 @@
                 var currentRelatedArtifactName = $(this).data('related-artifact-name');
                 // Set the value of the hidden relationship field. 
                 $('#' + currentRelatedArtifactName).val(currentRelatedInstanceId);
+                // Set the value of the text field for the relationship field.
                 $('#' + currentRelatedFieldName + '_txt').val(currentRelatedInstanceName);
 
                 
