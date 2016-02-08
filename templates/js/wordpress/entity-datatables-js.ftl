@@ -76,8 +76,8 @@ jQuery(document).ready(function($)
                 // this case `data: 0`.
                 "render": function ( data, type, row ) {
                     var parent_params = '';
-                    if($('#parent_params').length) {alert('Hello' + $('#parent_params').val()); }
-                    return '<a href="../page/?type=entity&artifact=${entity.name?lower_case}&id=' + row.id + '&page_action=view">' + data +  '</a>';
+                    if($('#parent_params').length) {parent_params + $('#parent_params').val(); }
+                    return '<a href="../page/?type=entity&artifact=${entity.name?lower_case}&id=' + row.id + '&page_action=view' + parent_params + '">' + data +  '</a>';
                 },
                 "targets": 1
             }
