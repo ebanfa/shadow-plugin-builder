@@ -4230,12 +4230,12 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
-				<name>build_type</name>
+				<name>b_buildingtype</name>
 				<isVisible>Y</isVisible>
 			    <isFormField>Y</isFormField>
 				<required>Y</required>
 				<createField>Y</createField>
-				<editField>E</editField>
+				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
 				<dataType>sb_buildingtype</dataType>
