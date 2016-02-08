@@ -355,7 +355,7 @@
                         <#if field.size == "large">
                         <div class="col-xs-12">
                         </#if>
-                            <div class="form-group">
+                            <div class="form-group input-group">
                                 <div class="fg-line">
                                     <div class="select">
                                         <select id="${field.name}" name="${field.name}" class="form-control">
@@ -370,7 +370,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <a><span class="input-group-addon last"><i class="zmdi zmdi-globe"></i></span></a>
+                                <span class="input-group-addon last"><i class="zmdi zmdi-globe"></i></span>
                             </div>
                         </div>
                 <?php do_action('shadowbanker_after_entity_form_field');?>
