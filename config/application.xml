@@ -4797,7 +4797,7 @@
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
-				<createField>C</createField>
+				<createField>Y</createField>
 				<editField>N</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
@@ -4805,7 +4805,7 @@
 				<size>large</size>
 				<dataColumn>true</dataColumn>
 				<description>Building</description>
-				<displayName>BUilding</displayName>
+				<displayName>Building</displayName>
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
