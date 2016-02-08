@@ -456,10 +456,10 @@
                 console.log('>>>>>>>>>>>>>>>>>>> clicked');
             });
 
-            $('body').on('click', '.relationship-field-search-link', function(e){
+            /*$('body').on('click', '.relationship-field-search-link', function(e){
                 var currentRelatedEntityField = $(this).data('relationship-field-name');
                 $('#current-relationship-field').val(currentRelatedEntityField);
                 console.log('>>>>>>>>>>>>>>>>>>> related-entity-search-link:' + currentRelatedEntityField);
-            });
+            });*/
     });
 </script>
