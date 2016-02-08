@@ -4769,7 +4769,7 @@
 				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
-				<dataType>sb_floorype</dataType>
+				<dataType>sb_floortype</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
 				<description>Type</description>
@@ -4820,8 +4820,8 @@
 				<dataType>name</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
-				<description>Status</description>
-				<displayName>Status</displayName>
+				<description>Name</description>
+				<displayName>Name</displayName>
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
@@ -4836,8 +4836,8 @@
 				<dataType>number</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
-				<description>Status</description>
-				<displayName>Status</displayName>
+				<description>Floor Number</description>
+				<displayName>Floor Number</displayName>
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
