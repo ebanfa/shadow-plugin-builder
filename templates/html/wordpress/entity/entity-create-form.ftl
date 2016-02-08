@@ -382,7 +382,7 @@
 <?php } ?>
 
 <#list entity.fields as field>
-    <#if field.relationshipField == "Y">
+    <#if field.relationshipField == "Y" && field.isFormField == "Y" && field.createField == "Y">
         <!-- Modal Default -->  
     <div class="modal fade" id="${field.name}_modal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
@@ -400,19 +400,19 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-            <#list entity.fields as field>
-                <#if field.listField == "Y">
-                    <#if field.relationshipField == "N">
-                        <th>${field.description}</th>
-                    </#if>
+                                    <#list entity.fields as field>
+                                        <#if field.listField == "Y">
+                                            <#if field.relationshipField == "N">
+                                    <th>${field.description}</th>
+                                            </#if>
 
-                    <#if field.relationshipField == "Y">
-                        <th>${field.description}</th>
-                    </#if>
+                                            <#if field.relationshipField == "Y">
+                                    <th>${field.description}</th>
+                                            </#if>
 
-                                    
-                </#if>
-            </#list>
+                                                            
+                                        </#if>
+                                    </#list>
                                 </tr>
                             </thead>
                             <tbody>
