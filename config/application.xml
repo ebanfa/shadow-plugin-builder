@@ -4797,7 +4797,7 @@
 				<isVisible>N</isVisible>
 				<isFormField>N</isFormField>
 				<required>Y</required>
-				<createField>N</createField>
+				<createField>C</createField>
 				<editField>N</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
