@@ -349,7 +349,8 @@
                             <div class="form-group">
                                 <div class="fg-line">
                                     <input type="text" 
-                                        class="form-control phone" 
+                                        class="form-control phone related-field-search-link" 
+                                        data-related-field-name="${field.name}"
                                         id="${field.name}_txt" name="${field.name}_txt" 
                                         placeholder="${field.displayName?lower_case}" 
                                         data-bv-message="The ${field.displayName?lower_case} is not valid" 
@@ -359,7 +360,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a data-toggle="modal" data-related-field-name="${field.name}" class="related-field-search-link" style="font-size:20px" href="#${field.name}_modal"><i class="md  md-trending-up"></i></a>
+                        <a data-related-field-name="${field.name}" class="related-field-search-link" style="font-size:20px" href="#${field.name}_modal"><i class="md  md-trending-up"></i></a>
                 <?php do_action('shadowbanker_after_entity_form_field');?>
                 <?php }  ?>
             </#if>
