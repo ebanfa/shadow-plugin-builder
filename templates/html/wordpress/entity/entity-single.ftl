@@ -101,7 +101,7 @@
                                 <form id="${entity.relatedChildEntities[key].postName}-list-form">
                                     <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
                                     <input type="hidden" name="submitted" id="submitted" value="true" /> 
-                                    <input type="hidden" name="${entity.name?lower_case}" value="<?php echo $entity_data['id']; ?>"/>
+                                    <input type="hidden" name="${key}" value="<?php echo $entity_data['id']; ?>"/>
                                 </form>
                                 <div class="table-responsive">
                                     <table id="${entity.relatedChildEntities[key].postName}-table" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
