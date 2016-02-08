@@ -66,6 +66,10 @@ class CloderiaUIDisplayAPI {
         cp_get_template('entity/' . $post_type . '/'. $post_type. '-archive.php');
     }
 
+    public static function display_entity_modal_archive($post_type) {
+        cp_get_template('entity/' . $post_type . '/'. $post_type. '-modal-archive.php');
+    }
+
     public static function before_entity_form() {
         cp_get_template('entity/form-wrapper-start.php');
     }

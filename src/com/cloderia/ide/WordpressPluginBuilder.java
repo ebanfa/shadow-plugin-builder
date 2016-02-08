@@ -334,6 +334,7 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 			String editPageName = entityPageOutputDir + entityName.toLowerCase() + "-edit-form.php";
 			String viewPageName = entityPageOutputDir + "single-" +  entityName.toLowerCase() + ".php";
 			String listPageName = entityPageOutputDir + entityName.toLowerCase() + "-archive.php";
+			String modalListPageName = entityPageOutputDir + entityName.toLowerCase() + "-modal-archive.php";
 
 
 			this.createDirectoryIfNeeded(entityPageOutputDir);
@@ -365,6 +366,7 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 			else {
 				this.generateArtifact(module, entity, "html/wordpress/entity/entity-list.ftl" , listPageName);
 			}
+			this.generateArtifact(module, entity, "html/wordpress/entity/entity-modal-list.ftl" , modalListPageName);
 
 		}
 		

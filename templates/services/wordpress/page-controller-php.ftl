@@ -33,6 +33,7 @@ class PageControllerAPI {
         'edit' => 'Edit',
         'view' => 'View',
         'list' => 'List',
+        'list_modal' => 'List Modal',
     );
     /**
      */
@@ -103,6 +104,9 @@ class PageControllerAPI {
             }
             elseif ($page_info['page_action'] == 'list'){
                 CloderiaUIDisplayAPI::display_entity_archive($page_info['name']);
+            }
+            elseif ($page_info['page_action'] == 'list_modal'){
+                CloderiaUIDisplayAPI::display_entity_modal_archive($page_info['name']);
             }
             else {
               echo '<h1>Invalid entity page action!</h1>';
