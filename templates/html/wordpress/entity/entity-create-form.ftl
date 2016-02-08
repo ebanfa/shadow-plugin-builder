@@ -399,7 +399,7 @@
             <#if field.dataType == modEntity.postName>
                 <!-- Modal Default -->  
                 <div class="modal fade" id="${field.name}_modal" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog">
+                    <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h4 class="modal-title">Modal title</h4>
