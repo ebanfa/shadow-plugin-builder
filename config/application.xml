@@ -5917,7 +5917,7 @@
 			<postName>sb_tenantagreement</postName>
 			<description>Tenant Agreement</description>
 			<global>Y</global>
-			<isVirtual>Y</isVirtual>
+			<isVirtual>N</isVirtual>
 			<field>
 				<name>entity_code</name>
 				<isVisible>Y</isVisible>
