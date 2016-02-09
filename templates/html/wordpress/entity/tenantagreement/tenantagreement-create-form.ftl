@@ -35,7 +35,7 @@
 ?>
 
                     <div class="card">
-                        <div class="card-header">
+                        <div class="card-header bgm-lightgreen">
                             <h2>Wizard <small>This twitter bootstrap plugin builds a wizard out of a formatter tabbable structure. It allows to build a wizard functionality using buttons to go through the different wizard steps and using events allows to hook into each step individually.</small></h2>
                         </div>
                         
