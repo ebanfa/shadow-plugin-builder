@@ -133,6 +133,7 @@ class ${entity.name}API {
      *
      */
     public static function shadowbanker_modify_agreement_action_links($entity_action_links) {
+        $entity_action_links['create_entity_link'] = '/page?type=entity&page_action=create&artifact=party';
         return $entity_action_links;
     }
 
