@@ -5918,6 +5918,7 @@
 			<description>Tenant Agreement</description>
 			<global>Y</global>
 			<isVirtual>N</isVirtual>
+			<apiTemplate>services/wordpress/tenantagreement/tenantagreement-service-api.ftl</apiTemplate> 
 			<field>
 				<name>entity_code</name>
 				<isVisible>Y</isVisible>

@@ -42,7 +42,7 @@ class ${entity.name}API {
         add_action('wp_ajax_delete_${entity.postName}_ajax', '${entity.name}API::delete_${entity.postName}_ajax');
         add_action('wp_ajax_nopriv_delete_${entity.postName}_ajax', '${entity.name}API::delete_${entity.postName}_ajax');
 
-        add_filter('shadowbanker_modify_entity_action_links', '${entity.name}API::shadowbanker_modify_agreement_action_links', 10, 1);
+        add_filter('shadowbanker_modify_agreement_action_links', '${entity.name}API::shadowbanker_modify_agreement_action_links', 10, 1);
     }
     
     /**
