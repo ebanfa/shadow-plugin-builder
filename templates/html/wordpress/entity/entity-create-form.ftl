@@ -453,37 +453,35 @@
                                     </div>
 
                                     <div class="card-body card-padding">
-                                        Cras leo sem, egestas a accumsan eget, euismod at nunc. Praesent vel mi blandit, tempus ex gravida, accumsan dui. Sed sed aliquam augue. Nullam vel suscipit purus, eu facilisis ante. Mauris nec commodo felis. 
+                                    
+                                        <form id="${modEntity.postName}-list-form">
+                                            <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
+                                            <input type="hidden" name="submitted" id="submitted" value="true" /> 
+                                        </form>
+                                        <div class="table-responsive">
+                                            <table id="${modEntity.postName}-table" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <#list modEntity.fields as field>
+                                                            <#if field.listField == "Y">
+                                                                <#if field.relationshipField == "N">
+                                                        <th>${field.description}</th>
+                                                                </#if>
+
+                                                                <#if field.relationshipField == "Y">
+                                                        <th>${field.description}</th>
+                                                                </#if>
+                                                            </#if>
+                                                        </#list>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
                                     </div>
-                                </div>
-
-
-
-                                <form id="${modEntity.postName}-list-form">
-                                    <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
-                                    <input type="hidden" name="submitted" id="submitted" value="true" /> 
-                                </form>
-                                <div class="table-responsive">
-                                    <table id="${modEntity.postName}-table" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                                <th>ID</th>
-                                                <#list modEntity.fields as field>
-                                                    <#if field.listField == "Y">
-                                                        <#if field.relationshipField == "N">
-                                                <th>${field.description}</th>
-                                                        </#if>
-
-                                                        <#if field.relationshipField == "Y">
-                                                <th>${field.description}</th>
-                                                        </#if>
-                                                    </#if>
-                                                </#list>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        </tbody>
-                                    </table>
                                 </div>
                             </div>
                             <div class="modal-footer">
