@@ -42,12 +42,10 @@
                         <div class="card-body card-padding">
                             <div class="form-wizard-basic fw-container">
                                 <ul class="tab-nav text-center">
-                                    <li><a href="components.html#tab1" data-toggle="tab">First</a></li>
-                                    <li><a href="components.html#tab2" data-toggle="tab">Second</a></li>
-                                    <li><a href="components.html#tab3" data-toggle="tab">Third</a></li>
-                                    <li><a href="components.html#tab4" data-toggle="tab">Forth</a></li>
-                                    <li><a href="components.html#tab5" data-toggle="tab">Fifth</a></li>
-                                    <li><a href="components.html#tab6" data-toggle="tab">Sixth</a></li>
+                                    <li><a href="#tab1" data-toggle="tab">Agreement</a></li>
+                                    <li><a href="#tab2" data-toggle="tab">Units</a></li>
+                                    <li><a href="#tab3" data-toggle="tab">Terms</a></li>
+                                    <li><a href="#tab4" data-toggle="tab">Charges</a></li>
                                 </ul>
                                 
                                 <div class="tab-content">
@@ -65,12 +63,6 @@
                                     </div>
                                     <div class="tab-pane fade" id="tab4">
                                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus purus sapien, cursus et egestas at, volutpat sed dolor. Aliquam sollicitudin dui ac euismod hendrerit. Phasellus quis lobortis dolor. Sed massa massa, sagittis nec fermentum eu, volutpat non lectus. Nullam vitae tristique nunc. Aenean vel placerat augue. Aliquam pharetra mauris neque, sit amet egestas risus semper non. Proin egestas egestas ex sed gravida. Suspendisse commodo nisl sit amet risus volutpat volutpat. Phasellus vitae turpis a elit tincidunt ornare. Praesent non libero quis libero scelerisque eleifend. Ut eleifend laoreet vulputate.</p>
-                                    </div>
-                                    <div class="tab-pane fade" id="tab5">
-                                        <p>Cras mattis vulputate lacus sed aliquet. Pellentesque ultricies lectus ut augue tincidunt volutpat. Quisque lorem lectus, vulputate et feugiat ac, tincidunt eu neque. Suspendisse et dignissim ex. Praesent finibus vestibulum faucibus. Vestibulum scelerisque aliquam eros, id tincidunt lacus interdum eu. Praesent molestie leo sed varius tempus. Etiam quis turpis eget diam aliquet congue ut non risus. In sed sapien placerat, fermentum odio id, sagittis magna. Donec sollicitudin ipsum eget pretium tincidunt. Mauris venenatis metus a turpis eleifend, vitae tincidunt nunc tristique. Nulla facilisi. In hac habitasse platea dictumst. Curabitur auctor nibh eget mauris iaculis, id tempor ex egestas. Proin nisl diam, malesuada quis ipsum vitae, tincidunt efficitur neque. Nam suscipit magna ac nisl ornare lobortis.</p>
-                                    </div>
-                                    <div class="tab-pane fade" id="tab6">
-                                        <p>Nunc gravida hendrerit turpis a iaculis. Aenean tempus bibendum augue at tempor. Vestibulum nec ligula elementum nisi viverra mattis ac in nibh. Cras eu elementum massa. Integer cursus quam maximus, ornare ex at, bibendum dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vivamus quis eleifend turpis, eget luctus felis.</p>
                                     </div>
                                         
                                     <ul class="fw-footer pagination wizard">
