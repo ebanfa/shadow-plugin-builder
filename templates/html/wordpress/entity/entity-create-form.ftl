@@ -416,33 +416,18 @@
 
                                 <div class="card">
                                     <div class="card-header bgm-lightgreen">
-                                        <h2>Alternative Example <small>You can type anything here...</small></h2>
-
-                                        <ul class="actions">
-                                            <li>
-                                                <a href="widget-templates.html">
-                                                    <i class="zmdi zmdi-refresh-alt"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="widget-templates.html">
-                                                    <i class="zmdi zmdi-download"></i>
-                                                </a>
-                                            </li>
+                                        <h2>
+                                            Select ${modEntity.name}
+                                        </h2>
+                                        <ul class="actions actions-alt">
                                             <li class="dropdown">
-                                                <a href="widget-templates.html" data-toggle="dropdown">
-                                                    <i class="zmdi zmdi-more-vert"></i>
+                                                <a href="widget-templates.html" data-toggle="dropdown" aria-expanded="false">
+                                                    <i class="md md-more-vert"></i>
                                                 </a>
                                                 
                                                 <ul class="dropdown-menu dropdown-menu-right">
                                                     <li>
-                                                        <a href="widget-templates.html">Change Date Range</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="widget-templates.html">Change Graph Type</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="widget-templates.html">Other Settings</a>
+                                                        <a href="/page?type=entity&page_action=create&artifact=${modEntity.name?lower_case}">Add a new record</a>
                                                     </li>
                                                 </ul>
                                             </li>
