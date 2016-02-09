@@ -279,8 +279,17 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 
 	private void doEnities(Module module) {
 		for(Entity entity: module.getEntities()) {
-			this.generateArtifact(module, entity, 
-				"entities/wordpress/entity.ftl" , this.pluginDir + "includes/abstracts/" + entity.getName() + "CPT.php");
+			if (entity.getIsVirtual() != null) {
+				if (entity.getIsVirtual().equals("N")) {
+					this.generateArtifact(module, entity, 
+						"entities/wordpress/entity.ftl" , this.pluginDir + "includes/abstracts/" + entity.getName() + "CPT.php");
+					
+				}
+			}
+			else {
+				this.generateArtifact(module, entity, 
+					"entities/wordpress/entity.ftl" , this.pluginDir + "includes/abstracts/" + entity.getName() + "CPT.php");
+			}
 		}
 	}
 
