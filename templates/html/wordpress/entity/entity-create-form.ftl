@@ -409,13 +409,10 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title">Select ${field.description}</h4>
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
                             <div class="modal-body">
-
-
-
 
                                 <div class="card">
                                     <div class="card-header ch-alt">
@@ -453,7 +450,7 @@
                                     </div>
 
                                     <div class="card-body card-padding">
-                                    
+
                                         <form id="${modEntity.postName}-list-form">
                                             <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
                                             <input type="hidden" name="submitted" id="submitted" value="true" /> 
@@ -483,9 +480,6 @@
 
                                     </div>
                                 </div>
-                            </div>
-                            <div class="modal-footer">
-                                <!-- <button type="button" class="btn btn-link" data-dismiss="modal">Close</button> -->
                             </div>
                         </div>
                     </div>
