@@ -403,10 +403,10 @@
                 <div class="tab-pane fade" id="tab2">
                     <div class="col-sm-12 m-b-20 btn-demo">
                         <div class="btn-group">
-                            <button type="button" class="btn btn-primary">Unit Type</button>
+                            <button type="button" class="btn btn-primary">Select Unit Type</button>
                             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                 <span class="caret"></span>
-                                <span class="sr-only">Unit Type</span>
+                                <span class="sr-only">Select Unit Type</span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="components.html#">Property</a></li>
