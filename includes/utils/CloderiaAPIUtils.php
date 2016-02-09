@@ -30,6 +30,8 @@ class CloderiaAPIUtils {
         if(!CloderiaAPIUtils::is_valid_form() || !isset($_POST['edit_mode'])) {
             wp_send_json_error(array('message' => "Invalid artifact operation!"));
         }
+        $entity_data = CloderiaAPIUtils::build_entity_data_from_post($entity_data);
+        $entity_data = CloderiaAPIUtils::validate_entity_data($entity_data);
         return $entity_data;
     }
 
@@ -143,6 +145,12 @@ class CloderiaAPIUtils {
         }
     }
 
+    /**
+     *
+     */
+    public static function create_entity($entity_data){
+
+    }
 
     /**
      *
