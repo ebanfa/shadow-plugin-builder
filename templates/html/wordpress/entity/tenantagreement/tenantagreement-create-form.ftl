@@ -403,17 +403,17 @@
                 <div class="tab-pane fade" id="tab2">
                     <div class="col-sm-12 m-b-20 btn-demo">
                         <div class="btn-group">
-                            <button type="button" class="btn btn-primary">Primary</button>
+                            <button type="button" class="btn btn-primary">Unit Type</button>
                             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                 <span class="caret"></span>
-                                <span class="sr-only">Split button dropdowns</span>
+                                <span class="sr-only">Unit Type</span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="components.html#">Action</a></li>
-                                <li><a href="components.html#">Another action</a></li>
-                                <li><a href="components.html#">Something else here</a></li>
+                                <li><a href="components.html#">Property</a></li>
+                                <li><a href="components.html#">Building</a></li>
+                                <li><a href="components.html#">Apartment</a></li>
                                 <li class="divider"></li>
-                                <li><a href="components.html#">Separated link</a></li>
+                                <li><a href="components.html#">Space</a></li>
                             </ul>
                         </div>
                     </div>
