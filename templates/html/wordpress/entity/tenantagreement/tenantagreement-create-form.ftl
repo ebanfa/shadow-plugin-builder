@@ -401,6 +401,22 @@
                 </div>
 
                 <div class="tab-pane fade" id="tab2">
+                    <div class="col-sm-12 m-b-20 btn-demo">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary">Primary</button>
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <span class="caret"></span>
+                                <span class="sr-only">Split button dropdowns</span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="components.html#">Action</a></li>
+                                <li><a href="components.html#">Another action</a></li>
+                                <li><a href="components.html#">Something else here</a></li>
+                                <li class="divider"></li>
+                                <li><a href="components.html#">Separated link</a></li>
+                            </ul>
+                        </div>
+                    </div>
                     <div class="col-sm-12 m-b-20">
                         <p class="f-500 m-b-20 c-black">Linked Items</p>
                         
