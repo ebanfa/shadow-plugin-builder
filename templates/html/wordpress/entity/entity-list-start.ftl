@@ -25,13 +25,13 @@
     // The create entit link
     $entity_action_links['create_entity_link'] = '/page?type=entity&page_action=create&artifact=' . $artifact_name;
     // The name of the filter that modifies the create link for this artifact
-    $modify_entity_action_link_filter = 'shadowbanker_modify_' . $artifact_name. '_action_links';
+    $modify_entity_action_link_filter = 'shadowbanker_modify_entity_action_links';
 
-    echo '>>>>>>>>>>>>>>>>>>>>>>>' . $modify_entity_action_link_filter;
+    echo '>>>>>>>>>>>>>>>>>>>>>>>' . 'shadowbanker_modify_entity_action_links';
     // Call the filter to modify the create entity link
-    if(has_filter($modify_entity_action_link_filter)) {
-        echo '>>>>>>>>>>>>>>>>>>>>>>>' . $modify_entity_action_link_filter;
-        $entity_action_links = apply_filters($modify_entity_action_link_filter, $entity_action_links);
+    if(has_filter('shadowbanker_modify_entity_action_links')) {
+        echo '>>>>>>>>>>>>>>>>>>>>>>>' . 'shadowbanker_modify_entity_action_links';
+        $entity_action_links = apply_filters('shadowbanker_modify_entity_action_links', $entity_action_links);
     }
 
 ?>
