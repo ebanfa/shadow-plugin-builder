@@ -401,7 +401,7 @@
                 </div>
 
                 <div class="tab-pane fade" id="tab2">
-                    <div class="col-sm-6 m-b-20">
+                    <div class="col-sm-12 m-b-20">
                         <p class="f-500 m-b-20 c-black">Linked Items</p>
                         
                         <div class="list-group">
