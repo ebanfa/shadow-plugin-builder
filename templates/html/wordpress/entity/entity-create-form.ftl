@@ -415,7 +415,7 @@
                             <div class="modal-body">
 
                                 <div class="card">
-                                    <div class="card-header ch-alt">
+                                    <div class="card-header bgm-green">
                                         <h2>Alternative Example <small>You can type anything here...</small></h2>
 
                                         <ul class="actions">
