@@ -401,7 +401,17 @@
                 </div>
 
                 <div class="tab-pane fade" id="tab2">
-                    <p>Duis eu eros vitae risus sollicitudin blandit in non nisi. Phasellus rhoncus ullamcorper pretium. Etiam et viverra neque, aliquam imperdiet velit. Nam a scelerisque justo, id tristique diam. Aenean ut vestibulum velit, vel ornare augue. Nullam eu est malesuada, vehicula ex in, maximus massa. Sed sit amet massa venenatis, tristique orci sed, eleifend arcu.</p>
+                    <div class="col-sm-6 m-b-20">
+                        <p class="f-500 m-b-20 c-black">Linked Items</p>
+                        
+                        <div class="list-group">
+                            <a href="other-components.html#" class="list-group-item active"><span class="badge">119</span> Cras justo odio</a>
+                            <a href="other-components.html#" class="list-group-item">Dapibus ac facilisis in</a>
+                            <a href="other-components.html#" class="list-group-item">Morbi leo risus</a>
+                            <a href="other-components.html#" class="list-group-item">Porta ac consectetur ac</a>
+                            <a href="other-components.html#" class="list-group-item">Vestibulum at eros</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="tab-pane fade" id="tab3">
                     <p>Duis eu eros vitae risus sollicitudin blandit in non nisi. Phasellus rhoncus ullamcorper pretium. Etiam et viverra neque, aliquam imperdiet velit. Nam a scelerisque justo, id tristique diam. Aenean ut vestibulum velit, vel ornare augue. Nullam eu est malesuada, vehicula ex in, maximus massa. Sed sit amet massa venenatis, tristique orci sed, eleifend arcu.</p>
