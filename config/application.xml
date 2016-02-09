@@ -6004,7 +6004,7 @@
 				<name>name</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
-				<required>Y</required>
+				<required>N</required>
 				<createField>N</createField>
 				<editField>Y</editField>
 				<viewField>Y</viewField>
@@ -6020,7 +6020,7 @@
 				<name>description</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
-				<required>Y</required>
+				<required>N</required>
 				<createField>N</createField>
 				<editField>Y</editField>
 				<viewField>Y</viewField>
