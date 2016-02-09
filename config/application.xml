@@ -5765,6 +5765,7 @@
 			<postName>sb_agreement</postName>
 			<description>Agreement</description>
 			<global>N</global>
+			<isVirtual>N</isVirtual>
 			<field>
 				<name>entity_code</name>
 				<isVisible>Y</isVisible>
@@ -5915,6 +5916,7 @@
 			<name>AgreementCharge</name>
 			<postName>sb_agreecharge</postName>
 			<description>Agreement Charge</description>
+			<isVirtual>N</isVirtual>
 			<global>N</global>
 			<field>
 				<name>entity_code</name>

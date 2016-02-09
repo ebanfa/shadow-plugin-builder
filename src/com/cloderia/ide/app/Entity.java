@@ -19,6 +19,7 @@ public class Entity {
 	private String name;
 	private String global;
 	private String postName;
+	private String isVirtual;
 	private String displayName;
 	private String description;
 	private String createPageTemplate;
@@ -201,6 +202,21 @@ public class Entity {
 	@XmlElement
 	public void setPostName(String postName) {
 		this.postName = postName;
+	}
+
+	/**
+	 * @return the isVirtual
+	 */
+	public String getIsVirtual() {
+		return isVirtual;
+	}
+
+	/**
+	 * @param isVirtual the isVirtual to set
+	 */
+	@XmlElement
+	public void setIsVirtual(String isVirtual) {
+		this.isVirtual = isVirtual;
 	}
 
 	/**
