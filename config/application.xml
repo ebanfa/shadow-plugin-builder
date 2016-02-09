@@ -5102,7 +5102,7 @@
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
-				<name>space</name>
+				<name>u_count</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
@@ -5113,8 +5113,8 @@
 				<dataType>number</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
-				<description>Space</description>
-				<displayName>Space</displayName>
+				<description>Count</description>
+				<displayName>Count</displayName>
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
@@ -5933,7 +5933,7 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
-				<name>agreement</name>
+				<name>ac_agreement</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
@@ -5949,7 +5949,7 @@
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
-				<name>charge</name>
+				<name>ac_charge</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
@@ -6036,7 +6036,7 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
-				<name>agreement</name>
+				<name>at_agreement</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
@@ -6052,14 +6052,14 @@
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
-				<name>term</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
+				<name>at_term</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
 				<required>Y</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
 				<dataType>sb_term</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
@@ -6155,7 +6155,7 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
-				<name>agreement</name>
+				<name>au_agreement</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
@@ -6171,14 +6171,14 @@
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
-				<name>unit</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
+				<name>au_unit</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
 				<required>Y</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
 				<dataType>sb_unit</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
