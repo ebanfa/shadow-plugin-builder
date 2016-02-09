@@ -5925,7 +5925,7 @@
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
-				<createField>Y</createField>
+				<createField>N</createField>
 				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
@@ -5969,11 +5969,43 @@
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
-				<name>name</name>
+				<name>date_start</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
 				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>date</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Start Date</description>
+				<displayName>Start Date</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>date_end</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>date</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Date Created</description>
+				<displayName>Date Created</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>name</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>N</createField>
 				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
@@ -5989,7 +6021,7 @@
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
-				<createField>Y</createField>
+				<createField>N</createField>
 				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
