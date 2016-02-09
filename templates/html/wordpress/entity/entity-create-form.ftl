@@ -413,6 +413,52 @@
                                 <h4 class="modal-title">Select ${field.description}</h4>
                             </div>
                             <div class="modal-body">
+
+
+
+
+                                <div class="card">
+                                    <div class="card-header ch-alt">
+                                        <h2>Alternative Example <small>You can type anything here...</small></h2>
+
+                                        <ul class="actions">
+                                            <li>
+                                                <a href="widget-templates.html">
+                                                    <i class="zmdi zmdi-refresh-alt"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="widget-templates.html">
+                                                    <i class="zmdi zmdi-download"></i>
+                                                </a>
+                                            </li>
+                                            <li class="dropdown">
+                                                <a href="widget-templates.html" data-toggle="dropdown">
+                                                    <i class="zmdi zmdi-more-vert"></i>
+                                                </a>
+                                                
+                                                <ul class="dropdown-menu dropdown-menu-right">
+                                                    <li>
+                                                        <a href="widget-templates.html">Change Date Range</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="widget-templates.html">Change Graph Type</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="widget-templates.html">Other Settings</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="card-body card-padding">
+                                        Cras leo sem, egestas a accumsan eget, euismod at nunc. Praesent vel mi blandit, tempus ex gravida, accumsan dui. Sed sed aliquam augue. Nullam vel suscipit purus, eu facilisis ante. Mauris nec commodo felis. 
+                                    </div>
+                                </div>
+
+
+
                                 <form id="${modEntity.postName}-list-form">
                                     <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
                                     <input type="hidden" name="submitted" id="submitted" value="true" /> 
