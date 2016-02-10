@@ -318,6 +318,223 @@
     </div>
 </div>
 
+<!-- Modal Default -->  
+<div class="modal fade" id="ta_unit_building_modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="card">
+                    <div class="card-header bgm-lightgreen">
+                        <h2>
+                            Select Property
+                        </h2>
+                        <ul class="actions actions-alt">
+                            <li class="dropdown">
+                                <a href="widget-templates.html" data-toggle="dropdown" aria-expanded="false">
+                                    <i class="md md-more-vert"></i>
+                                </a>
+                                
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li>
+                                        <a href="/page?type=entity&page_action=create&artifact=property">Add a new record</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body card-padding">
+                        <form id="sb_building-list-form">
+                            <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
+                            <input type="hidden" name="submitted" id="submitted" value="true" /> 
+                        </form>
+                        <div class="table-responsive">
+                            <table id="sb_building-table" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Default -->  
+<div class="modal fade" id="ta_unit_floor_modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="card">
+                    <div class="card-header bgm-lightgreen">
+                        <h2>
+                            Select Property
+                        </h2>
+                        <ul class="actions actions-alt">
+                            <li class="dropdown">
+                                <a href="widget-templates.html" data-toggle="dropdown" aria-expanded="false">
+                                    <i class="md md-more-vert"></i>
+                                </a>
+                                
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li>
+                                        <a href="/page?type=entity&page_action=create&artifact=property">Add a new record</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body card-padding">
+                        <form id="sb_floor-list-form">
+                            <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
+                            <input type="hidden" name="submitted" id="submitted" value="true" /> 
+                        </form>
+                        <div class="table-responsive">
+                            <table id="sb_floor-table" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Default -->  
+<div class="modal fade" id="ta_unit_apartment_modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="card">
+                    <div class="card-header bgm-lightgreen">
+                        <h2>
+                            Select Property
+                        </h2>
+                        <ul class="actions actions-alt">
+                            <li class="dropdown">
+                                <a href="widget-templates.html" data-toggle="dropdown" aria-expanded="false">
+                                    <i class="md md-more-vert"></i>
+                                </a>
+                                
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li>
+                                        <a href="/page?type=entity&page_action=create&artifact=property">Add a new record</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body card-padding">
+                        <form id="sb_apartment-list-form">
+                            <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
+                            <input type="hidden" name="submitted" id="submitted" value="true" /> 
+                        </form>
+                        <div class="table-responsive">
+                            <table id="sb_apartment-table" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Default -->  
+<div class="modal fade" id="ta_unit_space_modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="card">
+                    <div class="card-header bgm-lightgreen">
+                        <h2>
+                            Select Property
+                        </h2>
+                        <ul class="actions actions-alt">
+                            <li class="dropdown">
+                                <a href="widget-templates.html" data-toggle="dropdown" aria-expanded="false">
+                                    <i class="md md-more-vert"></i>
+                                </a>
+                                
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li>
+                                        <a href="/page?type=entity&page_action=create&artifact=property">Add a new record</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body card-padding">
+                        <form id="sb_space-list-form">
+                            <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
+                            <input type="hidden" name="submitted" id="submitted" value="true" /> 
+                        </form>
+                        <div class="table-responsive">
+                            <table id="sb_space-table" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 <script type="text/javascript">
     
     jQuery(document).ready(function($)
