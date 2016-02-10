@@ -134,19 +134,25 @@
                             </button>
                             <ul class="dropdown-menu" role="menu">
                                 <li>
-                                    <a data-related-field-name="ta_unit_property" 
-                                        class="related-field-search-link" href="components.html#">Property</a>
+                                    <a data-dependent-field-name="ta_unit_building" 
+                                        class="dependent-field-search-link" href="components.html#">Building</a>
                                 </li>
                                 <li>
-                                    <a data-related-field-name="ta_unit_building" 
-                                        class="related-field-search-link" href="components.html#">Building</a></li>
-                                <li>
                                     <a data-related-field-name="ta_unit_apartment" 
-                                        class="related-field-search-link" href="components.html#">Apartment</a></li>
-                                <li class="divider"></li>
+                                        class="related-field-search-link" href="components.html#">Townhouse</a>
+                                </li>
                                 <li>
-                                    <a data-related-field-name="ta_unit_space" 
-                                        class="related-field-search-link" href="components.html#">Space</a>
+                                    <a data-dependent-field-name="ta_unit_apartment" 
+                                        class="dependent-field-search-link" href="components.html#">Apartment</a>
+                                </li>
+                                <!-- <li class="divider"></li> -->
+                                <li>
+                                    <a data-dependent-field-name="ta_unit_space" 
+                                        class="dependent-field-search-link" href="components.html#">Space</a>
+                                </li>
+                                <li>
+                                    <a data-dependent-field-name="ta_unit_apartment" 
+                                        class="dependent-field-search-link" href="components.html#">Parking</a>
                                 </li>
                             </ul>
                         </div>
@@ -266,141 +272,9 @@
 </#list>
 
 <#list module.entities as modEntity>
-<#if modEntity.name == "Property">
-<!-- Modal Default -->  
-<div class="modal fade" id="ta_unit_property_modal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-
-                <div class="card">
-                    <div class="card-header bgm-lightgreen">
-                        <h2>
-                            Select Property
-                        </h2>
-                        <ul class="actions actions-alt">
-                            <li class="dropdown">
-                                <a href="widget-templates.html" data-toggle="dropdown" aria-expanded="false">
-                                    <i class="md md-more-vert"></i>
-                                </a>
-                                
-                                <ul class="dropdown-menu dropdown-menu-right">
-                                    <li>
-                                        <a href="/page?type=entity&page_action=create&artifact=property">Add a new record</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="card-body card-padding">
-                        <form id="${modEntity.postName}-list-form">
-                            <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
-                            <input type="hidden" name="submitted" id="submitted" value="true" /> 
-                        </form>
-                        <div class="table-responsive">
-                            <table id="${modEntity.postName}-table" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <#list modEntity.fields as field>
-                                            <#if field.listField == "Y">
-                                                <#if field.relationshipField == "N">
-                                        <th>${field.description}</th>
-                                                </#if>
-
-                                                <#if field.relationshipField == "Y">
-                                        <th>${field.description}</th>
-                                                </#if>
-                                            </#if>
-                                        </#list>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</#if>
-<#if modEntity.name == "Building">
-<!-- Modal Default -->  
-<div class="modal fade" id="ta_unit_building_modal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-
-                <div class="card">
-                    <div class="card-header bgm-lightgreen">
-                        <h2>
-                            Select Property
-                        </h2>
-                        <ul class="actions actions-alt">
-                            <li class="dropdown">
-                                <a href="widget-templates.html" data-toggle="dropdown" aria-expanded="false">
-                                    <i class="md md-more-vert"></i>
-                                </a>
-                                
-                                <ul class="dropdown-menu dropdown-menu-right">
-                                    <li>
-                                        <a href="/page?type=entity&page_action=create&artifact=property">Add a new record</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="card-body card-padding">
-                        <form id="${modEntity.postName}-list-form">
-                            <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
-                            <input type="hidden" name="submitted" id="submitted" value="true" /> 
-                        </form>
-                        <div class="table-responsive">
-                            <table id="${modEntity.postName}-table" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <#list modEntity.fields as field>
-                                            <#if field.listField == "Y">
-                                                <#if field.relationshipField == "N">
-                                        <th>${field.description}</th>
-                                                </#if>
-
-                                                <#if field.relationshipField == "Y">
-                                        <th>${field.description}</th>
-                                                </#if>
-                                            </#if>
-                                        </#list>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</#if>
 <#if modEntity.name == "Unit">
 <!-- Modal Default -->  
-<div class="modal fade" id="ta_unit_space_modal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="ta_unit_modal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -413,7 +287,7 @@
                 <div class="card">
                     <div class="card-header bgm-lightgreen">
                         <h2>
-                            Select Property
+                            Select a ${modEntity.name}
                         </h2>
                         <ul class="actions actions-alt">
                             <li class="dropdown">
@@ -423,7 +297,7 @@
                                 
                                 <ul class="dropdown-menu dropdown-menu-right">
                                     <li>
-                                        <a href="/page?type=entity&page_action=create&artifact=property">Add a new record</a>
+                                        <a href="/page?type=entity&page_action=create&artifact=unit">Add a new record</a>
                                     </li>
                                 </ul>
                             </li>
@@ -490,6 +364,12 @@
             var currentRelatedFieldName = $(this).data('related-field-name');
             $('#current-related-field').val(currentRelatedFieldName);
             $('#' + currentRelatedFieldName + '_modal').modal('show');
+        });
+
+        $('body').on('click', '.dependent-field-search-link', function(e){
+            e.preventDefault();
+            var currentRelatedFieldName = $(this).data('dependent-field-name');
+            $('#ta_unit_modal').modal('show');
         });
     });
 </script>
