@@ -33,7 +33,7 @@
 
     do_action('shadowbanker_entity_form_start');
 
-    do_action('shadowbanker_show_entity_form', 'create', '${entity.name}');
+    //do_action('shadowbanker_show_entity_form', 'create', '${entity.name}');
 ?>
 
                 
@@ -47,360 +47,82 @@
             
             <div class="tab-content">
                 <div class="tab-pane fade" id="tab1">  
+                    <div class="row">
+                        <div class="col-xs-11">
+                            <div class="form-group">
+                                <div class="fg-line">
+                                    <input class="form-control phone related-field-search-link" data-related-field-name="ta_tenant" id="ta_tenant_txt" name="ta_tenant_txt" placeholder="tenant" data-bv-message="The tenant is not valid" data-bv-notempty-message="The tenant is required and cannot be empty" type="text">
 
-                <#list entity.fields as field>
+                                    <input id="ta_tenant" name="ta_tenant" value="" type="hidden">
+                                </div>
+                            </div>
+                        </div>
+                        <a data-related-field-name="ta_tenant" class="related-field-search-link" style="font-size:20px" href="#ta_tenant_modal"><i class="md  md-trending-up"></i></a>
+                    </div>
 
-                    <#if field.isFormField == "Y" && field.createField == "Y">
-                        <#if field.isVisible == "Y">
+                    <div class="row">
+                        <div class="col-xs-11">
+                            <div class="form-group">
+                                <div class="fg-line">
+                                    <input class="form-control phone related-field-search-link" data-related-field-name="ta_property" id="ta_property_txt" name="ta_property_txt" placeholder="property" data-bv-message="The property is not valid" data-bv-notempty-message="The property is required and cannot be empty" type="text">
 
-                            <#if field.relationshipField == "N">
-                                <#if field.dataType == "name">
-                                    <?php do_action('shadowbanker_before_entity_form_field'); ?>
-                                        <#if field.size == "small">
-                                        <div class="col-xs-4">
-                                        </#if>
-                                        <#if field.size == "medium">
-                                        <div class="col-xs-6">
-                                        </#if>
-                                        <#if field.size == "large">
-                                        <div class="col-xs-12">
-                                        </#if>
-                                            <div class="form-group">
-                                                <div class="fg-line">
-                                                    <input type="text" class="form-control name" 
-                                                        id="${field.name}" name="${field.name}" 
-                                                        placeholder="${field.displayName?lower_case}" 
-                                                        data-bv-message="The ${field.displayName?lower_case} is not valid" 
-                                                        data-bv-notempty-message="The ${field.displayName?lower_case} is required and cannot be empty" required>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    <?php do_action('shadowbanker_after_entity_form_field');?>
-                                </#if>
+                                    <input id="ta_property" name="ta_property" value="" type="hidden">
+                                </div>
+                            </div>
+                        </div>
+                        <a data-related-field-name="ta_property" class="related-field-search-link" style="font-size:20px" href="#ta_property_modal"><i class="md  md-trending-up"></i></a>
+                    </div>        
 
-                                <#if field.dataType == "text">
-                                    <?php do_action('shadowbanker_before_entity_form_field'); ?>
-                                        <#if field.size == "small">
-                                        <div class="col-xs-4">
-                                        </#if>
-                                        <#if field.size == "medium">
-                                        <div class="col-xs-6">
-                                        </#if>
-                                        <#if field.size == "large">
-                                        <div class="col-xs-12">
-                                        </#if>
-                                            <div class="form-group">
-                                                <div class="fg-line">
-                                                    <input type="text" class="form-control text" 
-                                                        id="${field.name}" name="${field.name}" 
-                                                        placeholder="${field.displayName?lower_case}" 
-                                                        data-bv-message="The ${field.displayName?lower_case} is not valid" 
-                                                        data-bv-notempty-message="The ${field.displayName?lower_case} is required and cannot be empty" required>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    <?php do_action('shadowbanker_after_entity_form_field');?>
-                                </#if>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group has-feedback">
+                                <div class="fg-line">
+                                    <input data-bv-field="name" class="form-control name" id="name" name="name" placeholder="name" data-bv-message="The name is not valid" data-bv-notempty-message="The name is required and cannot be empty" required="" type="text"><i data-bv-icon-for="name" class="form-control-feedback" style="display: none; top: 0px;"></i>
+                                </div>
+                            <small data-bv-result="NOT_VALIDATED" data-bv-for="name" data-bv-validator="notEmpty" class="help-block" style="display: none;">The name is required and cannot be empty</small></div>
+                        </div>
+                    </div>
+                                    
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="form-group">
+                                <div class="fg-line">
+                                    <span class="input-group-addon"><i class="md md-event"></i></span>
+                                    <div class="dtp-container dropdown fg-line">
+                                        <input id="date_start" name="date_start" class="form-control date-picker" data-toggle="dropdown" placeholder="Click here..." data-bv-message="The start date is not valid" data-bv-notempty-message="The start date is required and cannot be empty" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                    
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="form-group">
+                                <div class="fg-line">
+                                    <span class="input-group-addon"><i class="md md-event"></i></span>
+                                    <div class="dtp-container dropdown fg-line">
+                                        <input id="date_end" name="date_end" class="form-control date-picker" data-toggle="dropdown" placeholder="Click here..." data-bv-message="The date created is not valid" data-bv-notempty-message="The date created is required and cannot be empty" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                                <#if field.dataType == "email">
-                                    <?php do_action('shadowbanker_before_entity_form_field'); ?>
-                                        <#if field.size == "small">
-                                        <div class="col-xs-4">
-                                        </#if>
-                                        <#if field.size == "medium">
-                                        <div class="col-xs-6">
-                                        </#if>
-                                        <#if field.size == "large">
-                                        <div class="col-xs-12">
-                                        </#if>
-                                            <div class="form-group">
-                                                <div class="fg-line">
-                                                    <input type="email" class="form-control email" 
-                                                        id="${field.name}" name="${field.name}" 
-                                                        placeholder="${field.displayName?lower_case}" 
-                                                        data-bv-message="The ${field.displayName?lower_case} is not valid" 
-                                                        data-bv-emailaddress-message="The value is not a valid email address" 
-                                                        data-bv-notempty-message="The ${field.displayName?lower_case} is required and cannot be empty" required>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    <?php do_action('shadowbanker_after_entity_form_field');?>
-                                </#if>
-                                <#if field.dataType == "phone">
-                                    <?php do_action('shadowbanker_before_entity_form_field'); ?>
-                                        <#if field.size == "small">
-                                        <div class="col-xs-4">
-                                        </#if>
-                                        <#if field.size == "medium">
-                                        <div class="col-xs-6">
-                                        </#if>
-                                        <#if field.size == "large">
-                                        <div class="col-xs-12">
-                                        </#if>
-                                            <div class="form-group">
-                                                <div class="fg-line">
-                                                    <input type="text" 
-                                                        class="form-control phone" 
-                                                        id="${field.name}" name="${field.name}" 
-                                                        placeholder="${field.displayName?lower_case}" 
-                                                        data-bv-message="The ${field.displayName?lower_case} is not valid" 
-                                                        data-bv-notempty-message="The ${field.displayName?lower_case} is required and cannot be empty" required>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    <?php do_action('shadowbanker_after_entity_form_field');?>
-                                </#if>
-                                <#if field.dataType == "text-lg">
-                                    <?php do_action('shadowbanker_before_entity_form_field'); ?>
-                                        <#if field.size == "small">
-                                        <div class="col-xs-4">
-                                        </#if>
-                                        <#if field.size == "medium">
-                                        <div class="col-xs-6">
-                                        </#if>
-                                        <#if field.size == "large">
-                                        <div class="col-xs-12">
-                                        </#if>
-                                            <div class="form-group">
-                                                <div class="fg-line">
-                                                    <textarea placeholder="${field.displayName?lower_case}" 
-                                                        name="${field.name}" rows="7" cols="100" 
-                                                        class="form-control text-lg" id="${field.name}">
-                                                        <?php echo '' ?>
-                                                    </textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    <?php do_action('shadowbanker_after_entity_form_field');?>
-                                </#if>
-
-
-                                <#if field.dataType == "flag">
-                                    <?php do_action('shadowbanker_before_entity_form_field'); ?>
-                                        <#if field.size == "small">
-                                        <div class="col-xs-4">
-                                        </#if>
-                                        <#if field.size == "medium">
-                                        <div class="col-xs-6">
-                                        </#if>
-                                        <#if field.size == "large">
-                                        <div class="col-xs-12">
-                                        </#if>
-                                            <div class="form-group">
-                                                <div class="fg-line">
-                                                    <input type="text" class="form-control flag" 
-                                                        id="${field.name}" name="${field.name}" 
-                                                        placeholder="${field.displayName?lower_case}" 
-                                                        data-bv-message="The ${field.displayName?lower_case} is not valid" 
-                                                        data-bv-notempty-message="The ${field.displayName?lower_case} is required and cannot be empty" required>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    <?php do_action('shadowbanker_after_entity_form_field');?>
-                                </#if>
-                                
-                                <#if field.dataType == "alphanumeric">
-                                    <?php do_action('shadowbanker_before_entity_form_field'); ?>
-                                        <#if field.size == "small">
-                                        <div class="col-xs-4">
-                                        </#if>
-                                        <#if field.size == "medium">
-                                        <div class="col-xs-6">
-                                        </#if>
-                                        <#if field.size == "large">
-                                        <div class="col-xs-12">
-                                        </#if>
-                                            <div class="form-group">
-                                                <div class="fg-line">
-                                                    <input type="text" class="form-control alphanumeric" 
-                                                        id="${field.name}" name="${field.name}" 
-                                                        placeholder="${field.displayName?lower_case}" 
-                                                        data-bv-message="The ${field.displayName?lower_case} is not valid" 
-                                                        data-bv-numeric-message="Only numbers permitted here" 
-                                                        data-bv-notempty-message="The ${field.displayName?lower_case} is required and cannot be empty" required>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    <?php do_action('shadowbanker_after_entity_form_field');?>
-                                </#if>
-                                <#if field.dataType == "number">
-                                    <?php do_action('shadowbanker_before_entity_form_field'); ?>
-                                        <#if field.size == "small">
-                                        <div class="col-xs-4">
-                                        </#if>
-                                        <#if field.size == "medium">
-                                        <div class="col-xs-6">
-                                        </#if>
-                                        <#if field.size == "large">
-                                        <div class="col-xs-12">
-                                        </#if>
-                                            <div class="form-group">
-                                                <div class="fg-line">
-                                                    <input type="text" class="form-control number" 
-                                                        id="${field.name}" name="${field.name}" 
-                                                        placeholder="${field.displayName?lower_case}" 
-                                                        data-bv-message="The ${field.displayName?lower_case} is not valid" 
-                                                        data-bv-numeric-message="Only numbers permitted here" 
-                                                        data-bv-notempty-message="The ${field.displayName?lower_case} is required and cannot be empty" required>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    <?php do_action('shadowbanker_after_entity_form_field');?>
-                                </#if>
-                                <#if field.dataType == "double">
-                                    <?php do_action('shadowbanker_before_entity_form_field'); ?>
-                                        <#if field.size == "small">
-                                        <div class="col-xs-4">
-                                        </#if>
-                                        <#if field.size == "medium">
-                                        <div class="col-xs-6">
-                                        </#if>
-                                        <#if field.size == "large">
-                                        <div class="col-xs-12">
-                                        </#if>
-                                            <div class="form-group">
-                                                <div class="fg-line">
-                                                    <input type="text" class="form-control double" 
-                                                        id="${field.name}" name="${field.name}" 
-                                                        placeholder="${field.displayName?lower_case}" 
-                                                        data-bv-message="The ${field.displayName?lower_case} is not valid" 
-                                                        data-bv-numeric-message="Only numbers permitted here" 
-                                                        data-bv-notempty-message="The ${field.displayName?lower_case} is required and cannot be empty" required>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    <?php do_action('shadowbanker_after_entity_form_field');?>
-                                </#if>
-
-                                <#if field.dataType == "money">
-                                    <?php do_action('shadowbanker_before_entity_form_field'); ?>
-                                        <#if field.size == "small">
-                                        <div class="col-xs-4">
-                                        </#if>
-                                        <#if field.size == "medium">
-                                        <div class="col-xs-6">
-                                        </#if>
-                                        <#if field.size == "large">
-                                        <div class="col-xs-12">
-                                        </#if>
-                                            <div class="form-group">
-                                                <div class="fg-line">
-                                                    <input type="text" class="form-control money" 
-                                                        id="${field.name}" name="${field.name}" 
-                                                        placeholder="${field.displayName?lower_case}" 
-                                                        data-bv-message="The ${field.displayName?lower_case} is not valid" 
-                                                        data-bv-numeric-message="Only numbers permitted here" 
-                                                        data-bv-notempty-message="The ${field.displayName?lower_case} is required and cannot be empty" required>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    <?php do_action('shadowbanker_after_entity_form_field');?>
-                                </#if>
-
-                                <#if field.dataType == "date">
-                                    <?php do_action('shadowbanker_before_entity_form_field'); ?>
-                                        <#if field.size == "small">
-                                        <div class="col-xs-4">
-                                        </#if>
-                                        <#if field.size == "medium">
-                                        <div class="col-xs-6">
-                                        </#if>
-                                        <#if field.size == "large">
-                                        <div class="col-xs-12">
-                                        </#if>
-                                            <div class="form-group">
-                                                <div class="fg-line">
-                                                    <span class="input-group-addon"><i class="md md-event"></i></span>
-                                                    <div class="dtp-container dropdown fg-line">
-                                                        <input type='text' 
-                                                            id="${field.name}" name="${field.name}"
-                                                            class="form-control date-picker" 
-                                                            data-toggle="dropdown" placeholder="Click here..." 
-                                                            data-bv-message="The ${field.displayName?lower_case} is not valid" 
-                                                            data-bv-notempty-message="The ${field.displayName?lower_case} is required and cannot be empty">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    <?php do_action('shadowbanker_after_entity_form_field');?>
-                                </#if>
-                                <#if field.dataType == "datetime">
-                                    <?php do_action('shadowbanker_before_entity_form_field'); ?>
-                                        <#if field.size == "small">
-                                        <div class="col-xs-4">
-                                        </#if>
-                                        <#if field.size == "medium">
-                                        <div class="col-xs-6">
-                                        </#if>
-                                        <#if field.size == "large">
-                                        <div class="col-xs-12">
-                                        </#if>
-                                            <div class="form-group">
-                                                <div class="fg-line">
-                                                    <span class="input-group-addon"><i class="md md-event"></i></span>
-                                                    <div class="dtp-container dropdown fg-line">
-                                                        <input id="${field.name}" name="${field.name}" type='text' 
-                                                            class="form-control time-picker" data-toggle="dropdown" placeholder="Click here..." 
-                                                            data-bv-message="The ${field.displayName?lower_case} is not valid" 
-                                                            data-bv-notempty-message="The ${field.displayName?lower_case} is required and cannot be empty">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    <?php do_action('shadowbanker_after_entity_form_field');?>
-                                </#if>
-                            </#if>
-                            <#if field.relationshipField == "Y">
-                                <?php // If the parent field is set we dont display the field 
-                                    if(isset($parent_field) && $parent_field === "${field.name}") { ?>
-                                        <input type="hidden" name="${field.name}" value="<?php echo $parent_id; ?>">
-                                <?php } else { ?>
-                                <?php do_action('shadowbanker_before_entity_form_field'); ?>
-                                
-                                        <div class="col-xs-11">
-                                            <div class="form-group">
-                                                <div class="fg-line">
-                                                    <input type="text" 
-                                                        class="form-control phone related-field-search-link" 
-                                                        data-related-field-name="${field.name}"
-                                                        id="${field.name}_txt" name="${field.name}_txt" 
-                                                        placeholder="${field.displayName?lower_case}" 
-                                                        data-bv-message="The ${field.displayName?lower_case} is not valid" 
-                                                        data-bv-notempty-message="The ${field.displayName?lower_case} is required and cannot be empty">
-
-                                                    <input type="hidden" id="${field.name}" name="${field.name}" value="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <a data-related-field-name="${field.name}" class="related-field-search-link" style="font-size:20px" href="#${field.name}_modal"><i class="md  md-trending-up"></i></a>
-                                <?php do_action('shadowbanker_after_entity_form_field');?>
-                                <?php }  ?>
-                            </#if>
-
-
-
-
-                        </#if>
-                    </#if>
-                    
-                    
-                </#list>
-
-                <?php // If the parent field is set we dont display the field 
-                    if(isset($parent_field)) { ?>
-                        <input type="hidden" name="parent_id" value="<?php echo $parent_id; ?>">
-                        <input type="hidden" name="parent_artifact" value="<?php echo $parent_artifact; ?>">
-                        <input type="hidden" name="parent_field" value="<?php echo $parent_field; ?>">
-                        <?php if(isset($_REQUEST['parent_param'])) {?>
-                        <input type="hidden" name="parent_param" value="<?php echo urlencode($parent_param); ?>">
-                        <?php } ?>
-                <?php } ?>
-                <input type="hidden" id="current-related-field" name="current-related-field" value="">
-                <input type="hidden" id="current-relationship-field-id" name="current-relationship-field-id" value="">
-                <input type="hidden" id="current-relationship-field-name" name="current-relationship-field-name" value="">
-                  
-                    
+                    <?php // If the parent field is set we dont display the field 
+                        if(isset($parent_field)) { ?>
+                    <input type="hidden" name="parent_id" value="<?php echo $parent_id; ?>">
+                    <input type="hidden" name="parent_artifact" value="<?php echo $parent_artifact; ?>">
+                    <input type="hidden" name="parent_field" value="<?php echo $parent_field; ?>">
+                    <?php if(isset($_REQUEST['parent_param'])) {?>
+                    <input type="hidden" name="parent_param" value="<?php echo urlencode($parent_param); ?>">
+                    <?php } ?>
+                    <?php } ?>
+                    <input type="hidden" id="current-related-field" name="current-related-field" value="">
+                    <input type="hidden" id="current-relationship-field-id" name="current-relationship-field-id" value="">
+                    <input type="hidden" id="current-relationship-field-name" name="current-relationship-field-name" value="">
                 </div>
+                
 
                 <div class="tab-pane fade" id="tab2">
                     <div class="col-sm-12 m-b-20 btn-demo">
@@ -430,6 +152,8 @@
                         </div>
                     </div>
                 </div>
+
+
                 <div class="tab-pane fade" id="tab3">
                     <p>Duis eu eros vitae risus sollicitudin blandit in non nisi. Phasellus rhoncus ullamcorper pretium. Etiam et viverra neque, aliquam imperdiet velit. Nam a scelerisque justo, id tristique diam. Aenean ut vestibulum velit, vel ornare augue. Nullam eu est malesuada, vehicula ex in, maximus massa. Sed sit amet massa venenatis, tristique orci sed, eleifend arcu.</p>
                     <p>Aliquam tempus rutrum neque, a blandit dui. Proin quis elit non est scelerisque pharetra nec id libero. Quisque id tincidunt elit. Maecenas non mauris malesuada, interdum justo et, ullamcorper magna. Nulla libero risus, vestibulum pharetra eleifend in, aliquam ac odio. Sed ligula orci, rhoncus sit amet ipsum vel, vehicula interdum ligula. </p>
@@ -457,7 +181,6 @@
 ?>
 
 <#list entity.fields as field>
-
     <#if field.relationshipField == "Y" && field.isFormField == "Y" && field.createField == "Y">
         <#list module.entities as modEntity>
             <#if field.dataType == modEntity.postName>
@@ -539,7 +262,6 @@
     {
         $('body').on('click', '.data-table-link', function(e){
             e.preventDefault();
-
             var currentRelatedFieldName = $('#current-related-field').val();
             var currentRelatedInstanceId = $(this).data('related-instance-id');
             var currentRelatedInstanceName = $(this).data('related-instance-name');               
@@ -548,8 +270,6 @@
             $('#' + currentRelatedArtifactName).val(currentRelatedInstanceId);
             // Set the value of the text field for the relationship field.
             $('#' + currentRelatedFieldName + '_txt').val(currentRelatedInstanceName);
-            console.log('>>>>>Setting value ' + currentRelatedInstanceName + 'on element #' + currentRelatedFieldName + '_txt');
-
             $('.modal').modal('hide');
         });
 
@@ -558,8 +278,6 @@
             var currentRelatedFieldName = $(this).data('related-field-name');
             $('#current-related-field').val(currentRelatedFieldName);
             $('#' + currentRelatedFieldName + '_modal').modal('show');
-
-            
         });
     });
 </script>
