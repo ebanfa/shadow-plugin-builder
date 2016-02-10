@@ -122,22 +122,32 @@
                     <input type="hidden" id="current-relationship-field-id" name="current-relationship-field-id" value="">
                     <input type="hidden" id="current-relationship-field-name" name="current-relationship-field-name" value="">
                 </div>
-                
+
 
                 <div class="tab-pane fade" id="tab2">
                     <div class="col-sm-12 m-b-20 btn-demo">
                         <div class="btn-group">
-                            <button type="button" class="btn btn-primary">Select Unit Type</button>
+                            <button type="button" class="btn btn-primary">Select A Unit Type</button>
                             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                 <span class="caret"></span>
                                 <span class="sr-only">Select Unit Type</span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="components.html#">Property</a></li>
-                                <li><a href="components.html#">Building</a></li>
-                                <li><a href="components.html#">Apartment</a></li>
+                                <li>
+                                    <a data-related-field-name="ta_unit_property" 
+                                        class="related-field-search-link" href="components.html#">Property</a>
+                                </li>
+                                <li>
+                                    <a data-related-field-name="ta_unit_building" 
+                                        class="related-field-search-link" href="components.html#">Building</a></li>
+                                <li>
+                                    <a data-related-field-name="ta_unit_apartment" 
+                                        class="related-field-search-link" href="components.html#">Apartment</a></li>
                                 <li class="divider"></li>
-                                <li><a href="components.html#">Space</a></li>
+                                <li>
+                                    <a data-related-field-name="ta_unit_space" 
+                                        class="related-field-search-link" href="components.html#">Space</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -254,7 +264,59 @@
         </#list>
     </#if>
 </#list>
+<!-- Modal Default -->  
+<div class="modal fade" id="ta_unit_property_modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
 
+                <div class="card">
+                    <div class="card-header bgm-lightgreen">
+                        <h2>
+                            Select Property
+                        </h2>
+                        <ul class="actions actions-alt">
+                            <li class="dropdown">
+                                <a href="widget-templates.html" data-toggle="dropdown" aria-expanded="false">
+                                    <i class="md md-more-vert"></i>
+                                </a>
+                                
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li>
+                                        <a href="/page?type=entity&page_action=create&artifact=property">Add a new record</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body card-padding">
+                        <form id="sb_property-list-form">
+                            <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
+                            <input type="hidden" name="submitted" id="submitted" value="true" /> 
+                        </form>
+                        <div class="table-responsive">
+                            <table id="sb_property-table" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script type="text/javascript">
     
