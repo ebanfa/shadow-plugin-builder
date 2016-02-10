@@ -298,12 +298,12 @@
                         </ul>
                     </div>
                     <div class="card-body card-padding">
-                        <form id="sb_property-list-form">
+                        <form id="${modEntity.postName}-list-form">
                             <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
                             <input type="hidden" name="submitted" id="submitted" value="true" /> 
                         </form>
                         <div class="table-responsive">
-                            <table id="sb_property-table" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
+                            <table id="${modEntity.postName}-table" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
@@ -364,12 +364,12 @@
                         </ul>
                     </div>
                     <div class="card-body card-padding">
-                        <form id="sb_building-list-form">
+                        <form id="${modEntity.postName}-list-form">
                             <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
                             <input type="hidden" name="submitted" id="submitted" value="true" /> 
                         </form>
                         <div class="table-responsive">
-                            <table id="sb_building-table" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
+                            <table id="${modEntity.postName}-table" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
@@ -430,12 +430,12 @@
                         </ul>
                     </div>
                     <div class="card-body card-padding">
-                        <form id="sb_floor-list-form">
+                        <form id="${modEntity.postName}-form">
                             <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
                             <input type="hidden" name="submitted" id="submitted" value="true" /> 
                         </form>
                         <div class="table-responsive">
-                            <table id="sb_floor-table" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
+                            <table id="${modEntity.postName}-table" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
@@ -464,72 +464,7 @@
     </div>
 </div>
 </#if>
-<#if modEntity.name == "Apartment">
-<!-- Modal Default -->  
-<div class="modal fade" id="ta_unit_apartment_modal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
 
-                <div class="card">
-                    <div class="card-header bgm-lightgreen">
-                        <h2>
-                            Select Property
-                        </h2>
-                        <ul class="actions actions-alt">
-                            <li class="dropdown">
-                                <a href="widget-templates.html" data-toggle="dropdown" aria-expanded="false">
-                                    <i class="md md-more-vert"></i>
-                                </a>
-                                
-                                <ul class="dropdown-menu dropdown-menu-right">
-                                    <li>
-                                        <a href="/page?type=entity&page_action=create&artifact=property">Add a new record</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="card-body card-padding">
-                        <form id="sb_apartment-list-form">
-                            <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
-                            <input type="hidden" name="submitted" id="submitted" value="true" /> 
-                        </form>
-                        <div class="table-responsive">
-                            <table id="sb_apartment-table" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <#list modEntity.fields as field>
-                                            <#if field.listField == "Y">
-                                                <#if field.relationshipField == "N">
-                                        <th>${field.description}</th>
-                                                </#if>
-
-                                                <#if field.relationshipField == "Y">
-                                        <th>${field.description}</th>
-                                                </#if>
-                                            </#if>
-                                        </#list>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</#if>
 <#if modEntity.name == "Unit">
 <!-- Modal Default -->  
 <div class="modal fade" id="ta_unit_space_modal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -562,12 +497,12 @@
                         </ul>
                     </div>
                     <div class="card-body card-padding">
-                        <form id="sb_space-list-form">
+                        <form id="${modEntity.postName}-list-form">
                             <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
                             <input type="hidden" name="submitted" id="submitted" value="true" /> 
                         </form>
                         <div class="table-responsive">
-                            <table id="sb_space-table" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
+                            <table id="${modEntity.postName}-table" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
