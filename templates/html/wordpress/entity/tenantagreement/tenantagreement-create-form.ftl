@@ -32,6 +32,8 @@
     do_action('shadowbanker_before_entity_form');
 
     do_action('shadowbanker_entity_form_start');
+
+    do_action('shadowbanker_show_entity_form', 'create', '${entity.name}');
 ?>
 
                 
