@@ -264,6 +264,9 @@
         </#list>
     </#if>
 </#list>
+
+<#list module.entities as modEntity>
+<#if modEntity.name == "Property">
 <!-- Modal Default -->  
 <div class="modal fade" id="ta_unit_property_modal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -304,6 +307,17 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
+                                        <#list modEntity.fields as field>
+                                            <#if field.listField == "Y">
+                                                <#if field.relationshipField == "N">
+                                        <th>${field.description}</th>
+                                                </#if>
+
+                                                <#if field.relationshipField == "Y">
+                                        <th>${field.description}</th>
+                                                </#if>
+                                            </#if>
+                                        </#list>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -317,7 +331,8 @@
         </div>
     </div>
 </div>
-
+</#if>
+<#if modEntity.name == "Building">
 <!-- Modal Default -->  
 <div class="modal fade" id="ta_unit_building_modal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -358,6 +373,17 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
+                                        <#list modEntity.fields as field>
+                                            <#if field.listField == "Y">
+                                                <#if field.relationshipField == "N">
+                                        <th>${field.description}</th>
+                                                </#if>
+
+                                                <#if field.relationshipField == "Y">
+                                        <th>${field.description}</th>
+                                                </#if>
+                                            </#if>
+                                        </#list>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -371,7 +397,8 @@
         </div>
     </div>
 </div>
-
+</#if>
+<#if modEntity.name == "Floor">
 <!-- Modal Default -->  
 <div class="modal fade" id="ta_unit_floor_modal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -412,6 +439,17 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
+                                        <#list modEntity.fields as field>
+                                            <#if field.listField == "Y">
+                                                <#if field.relationshipField == "N">
+                                        <th>${field.description}</th>
+                                                </#if>
+
+                                                <#if field.relationshipField == "Y">
+                                        <th>${field.description}</th>
+                                                </#if>
+                                            </#if>
+                                        </#list>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -425,7 +463,8 @@
         </div>
     </div>
 </div>
-
+</#if>
+<#if modEntity.name == "Apartment">
 <!-- Modal Default -->  
 <div class="modal fade" id="ta_unit_apartment_modal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -466,6 +505,17 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
+                                        <#list modEntity.fields as field>
+                                            <#if field.listField == "Y">
+                                                <#if field.relationshipField == "N">
+                                        <th>${field.description}</th>
+                                                </#if>
+
+                                                <#if field.relationshipField == "Y">
+                                        <th>${field.description}</th>
+                                                </#if>
+                                            </#if>
+                                        </#list>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -479,6 +529,8 @@
         </div>
     </div>
 </div>
+</#if>
+<#if modEntity.name == "Unit">
 <!-- Modal Default -->  
 <div class="modal fade" id="ta_unit_space_modal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -519,6 +571,17 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
+                                        <#list modEntity.fields as field>
+                                            <#if field.listField == "Y">
+                                                <#if field.relationshipField == "N">
+                                        <th>${field.description}</th>
+                                                </#if>
+
+                                                <#if field.relationshipField == "Y">
+                                        <th>${field.description}</th>
+                                                </#if>
+                                            </#if>
+                                        </#list>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -532,6 +595,8 @@
         </div>
     </div>
 </div>
+</#if>
+</#list>
 
 
 
