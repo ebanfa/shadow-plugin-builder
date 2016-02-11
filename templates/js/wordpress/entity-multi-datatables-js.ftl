@@ -154,21 +154,20 @@ $(document).ready(function (){
       updateDataTableSelectAllCtrl(table);
    });
 
-   // Handle form submission event 
-   /*$('#frm-example').on('submit', function(e){
-      var form = this;
-      
+   $('body #add-selected-${modEntity.name?lower_case}-list-btn"]').on('click', function(e){
+      e.preventDefault();
+      var page_artifact_form = $('#page-artifact-name').val();
       // Iterate over all selected checkboxes
       $.each(rows_selected, function(index, rowId){
          // Create a hidden element 
-         $(form).append(
+         $('#' + page_artifact_form).append(
              $('<input>')
                 .attr('type', 'hidden')
-                .attr('name', 'id[]')
+                .attr('name', 'unit_id[]')
                 .val(rowId)
          );
       });
-   });*/
+   });
 
 
 </#if>

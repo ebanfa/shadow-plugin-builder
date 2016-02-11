@@ -121,6 +121,7 @@
                     <input type="hidden" id="current-related-field" name="current-related-field" value="">
                     <input type="hidden" id="current-relationship-field-id" name="current-relationship-field-id" value="">
                     <input type="hidden" id="current-relationship-field-name" name="current-relationship-field-name" value="">
+                    <input type="hidden" id="page-artifact-name" name="page-artifact-name" value="${entity.postName}">
                 </div>
 
 
@@ -337,7 +338,7 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary btn-link">Add to agreement</button>
+                <a id="add-selected-${modEntity.name?lower_case}-list-btn" type="button" class="btn btn-primary">Add to agreement</a>
             </div>
         </div>
     </div>
