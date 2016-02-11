@@ -32,11 +32,11 @@ function updateDataTableSelectAllCtrl(table){
 
 $(document).ready(function (){
    // Array holding selected row IDs
-   var rows_selected = [];
 <#list module.entities as modEntity>
-<#if modEntity.name == "Unit">
+<#if modEntity.name == "Unit" || modEntity.name == "Charges" || modEntity.name == "Term">
 
-   var table =  $('#${modEntity.postName}-list-table').dataTable({
+   var ${modEntity.postName}_rows_selected = [];
+   var ${modEntity.postName}Table =  $('#${modEntity.postName}-list-table').DataTable({
         "ajax": {
             'type': 'POST',
             'url': ${application.name?lower_case}_ajax_script.ajaxurl,
@@ -65,8 +65,8 @@ $(document).ready(function (){
                 'searchable': false,
                 'orderable': false,
                 'className': 'dt-body-center',
-                'render': function (data, type, full, meta){
-                 return '<input type="checkbox">';
+                'render': function (data, type, row){
+                    return '<input type="checkbox" value="' + row.id + '">';
                 },
             },
             {
@@ -89,7 +89,7 @@ $(document).ready(function (){
          var rowId = data[0];
 
          // If row ID is in the list of selected row IDs
-         if($.inArray(rowId, rows_selected) !== -1){
+         if($.inArray(rowId, ${modEntity.postName}_rows_selected) !== -1){
             $(row).find('input[type="checkbox"]').prop('checked', true);
             $(row).addClass('selected');
          }
@@ -101,27 +101,27 @@ $(document).ready(function (){
       var $row = $(this).closest('tr');
 
       // Get row data
-      var data = table.row($row).data();
+      var data = ${modEntity.postName}Table.row($row).data();
 
       // Get row ID
-      var rowId = data[0];
+      var rowId = $(this).val();
 
       // Determine whether row ID is in the list of selected row IDs 
-      var index = $.inArray(rowId, rows_selected);
+      var index = $.inArray(rowId, ${modEntity.postName}_rows_selected);
 
       // If checkbox is checked and row ID is not in list of selected row IDs
       if(this.checked && index === -1){
-         rows_selected.push(rowId);
+         ${modEntity.postName}_rows_selected.push(rowId);
 
       // Otherwise, if checkbox is not checked and row ID is in list of selected row IDs
       } else if (!this.checked && index !== -1){
-         rows_selected.splice(index, 1);
+         ${modEntity.postName}_rows_selected.splice(index, 1);
       }
 
       if(this.checked){
-         $row.addClass('selected');
+         $row.css('background-color', 'rgba(255, 152, 0, 0.5)');
       } else {
-         $row.removeClass('selected');
+         $row.css('background-color', 'rgba(255, 152, 0, 0)');
       }
 
       // Update state of "Select all" control
@@ -136,39 +136,41 @@ $(document).ready(function (){
       $(this).parent().find('input[type="checkbox"]').trigger('click');
    });
 
-
-   // Handle click on "Select all" control actions
-   $('thead input[name="select_all"]').on('click', function(e){
+   // Handle click on "Select all" control
+   $('thead input[name="select_all"]', ${modEntity.postName}Table.table().container()).on('click', function(e){
       if(this.checked){
          $('#${modEntity.postName}-list-table tbody input[type="checkbox"]:not(:checked)').trigger('click');
       } else {
          $('#${modEntity.postName}-list-table tbody input[type="checkbox"]:checked').trigger('click');
       }
-
       // Prevent click event from propagating to parent
       e.stopPropagation();
    });
 
    // Handle table draw event
-   table.on('draw', function(){
+   ${modEntity.postName}Table.on('draw', function(){
       // Update state of "Select all" control
-      updateDataTableSelectAllCtrl(table);
+      updateDataTableSelectAllCtrl(${modEntity.postName}Table);
    });
 
-   $('body').on('click', '#add-selected-${modEntity.name?lower_case}-list-btn"]', function(e){
+   $('body').on('click', '#add-selected-${modEntity.name?lower_case}-list-btn', function(e){
       e.preventDefault();
-      var page_artifact_form = $('#page-artifact-name').val();
+      var page_artifact_form = $('#page-artifact-name').val() + '_form';
       // Iterate over all selected checkboxes
-      $.each(rows_selected, function(index, rowId){
+      $.each(${modEntity.postName}_rows_selected, function(index, rowId){
          // Create a hidden element 
          $('#' + page_artifact_form).append(
              $('<input>')
                 .attr('type', 'hidden')
-                .attr('name', 'unit_id[]')
+                .attr('name', '${modEntity.name?lower_case}_id[]')
                 .val(rowId)
          );
       });
+      //var bootstrapValidator = $('#' + page_artifact_form).data('bootstrapValidator');
+      $('#' + page_artifact_form).bootstrapValidator();
+      $('#' + page_artifact_form).data('bootstrapValidator').validate();
    });
+
 
 
 </#if>
