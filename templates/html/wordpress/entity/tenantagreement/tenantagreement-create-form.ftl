@@ -379,7 +379,7 @@
 <#list module.entities as modEntity>
 <#if modEntity.name == "Unit">
 
-        $('#${entity.postName}-table').dataTable({
+        $('#${entity.postName}-multi-select-list-table').dataTable({
         "ajax": {
             'type': 'POST',
             'url': ${application.name?lower_case}_ajax_script.ajaxurl,
