@@ -403,15 +403,7 @@
 </#list>
         ],
         columnDefs: [
-            {
-                'targets': 0,
-                'searchable': false,
-                'orderable': false,
-                'className': 'dt-body-center',
-                'render': function (data, type, full, meta){
-                 return '<input type="checkbox">';
-                },
-            },
+            { "visible": false,  "targets": 0 },
             {
                 // The `data` parameter refers to the data for the cell (defined by the
                 // `data` option, which defaults to the column being worked with, in
