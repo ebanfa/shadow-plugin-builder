@@ -154,7 +154,7 @@ $(document).ready(function (){
       updateDataTableSelectAllCtrl(table);
    });
 
-   $('body #add-selected-${modEntity.name?lower_case}-list-btn"]').on('click', function(e){
+   $('body').on('click', '#add-selected-${modEntity.name?lower_case}-list-btn"]', function(e){
       e.preventDefault();
       var page_artifact_form = $('#page-artifact-name').val();
       // Iterate over all selected checkboxes
@@ -168,6 +168,7 @@ $(document).ready(function (){
          );
       });
    });
+
 
 
 </#if>
