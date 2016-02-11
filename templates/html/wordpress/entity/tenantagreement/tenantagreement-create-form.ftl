@@ -310,7 +310,7 @@
                             <input type="u_property" name="" id="u_property" value="" /> 
                         </form>
                         <div class="table-responsive">
-                            <table id="${modEntity.postName}-multi-select-list-table" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
+                            <table id="${entity.postName}-list-table'" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
                                         <th><input name="select_all" value="1" type="checkbox"></th>
@@ -379,7 +379,7 @@
 <#list module.entities as modEntity>
 <#if modEntity.name == "Unit">
 
-        $('#${entity.postName}-multi-select-list-table').dataTable({
+        $('#${entity.postName}-list-table').dataTable({
         "ajax": {
             'type': 'POST',
             'url': ${application.name?lower_case}_ajax_script.ajaxurl,
@@ -403,7 +403,15 @@
 </#list>
         ],
         columnDefs: [
-            { "visible": false,  "targets": 0 },
+            {
+                'targets': 0,
+                'searchable': false,
+                'orderable': false,
+                'className': 'dt-body-center',
+                'render': function (data, type, full, meta){
+                 return '<input type="checkbox">';
+                },
+            },
             {
                 // The `data` parameter refers to the data for the cell (defined by the
                 // `data` option, which defaults to the column being worked with, in
