@@ -160,6 +160,7 @@ $(document).ready(function (){
       // Iterate over all selected checkboxes
       $.each(rows_selected, function(index, rowId){
          // Create a hidden element 
+         console.log('adding row id:' + rowId);
          $('#' + page_artifact_form).append(
              $('<input>')
                 .attr('type', 'hidden')
