@@ -121,7 +121,7 @@ $(document).ready(function (){
          $row.css('background-color', 'rgba(255, 152, 0, 0)');
       }
       // Update state of "Select all" control
-      updateDataTableSelectAllCtrl(table);
+      updateDataTableSelectAllCtrl(${modEntity.postName}Table);
       // Prevent click event from propagating to parent
       e.stopPropagation();
    });
@@ -153,6 +153,11 @@ $(document).ready(function (){
       var page_artifact_form = $('#page-artifact-name').val() + '_form';
       // Iterate over all selected checkboxes
       $.each(${modEntity.postName}_rows_selected, function(index, rowId){
+
+        $.each($('input[name="${modEntity.name?lower_case}_id[]"]')), function(index, rowId){ 
+            console.log('Form already has>>>>>>>>>>>>>>>>>>' + $(this).val());
+
+        });
          // Create a hidden element 
          $('#' + page_artifact_form).append(
              $('<input>')
