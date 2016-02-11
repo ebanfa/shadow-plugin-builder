@@ -20,6 +20,7 @@
       id="<?php echo $sb_post_type;?>_form" action="" 
       method="POST" enctype="multipart/form-data" 
       data-bv-framework="bootstrap"
+      data-bv-excluded = "[':disabled']"
       data-bv-message="This value is not valid"
       data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
       data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
