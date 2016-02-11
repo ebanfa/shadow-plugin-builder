@@ -304,7 +304,7 @@
                         </ul>
                     </div>
                     <div class="card-body card-padding">
-                        <form id="${modEntity.postName}-multi-select-list-form">
+                        <form id="${modEntity.postName}-list-form">
                             <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
                             <input type="hidden" name="submitted" id="submitted" value="true" />
                             <input type="u_property" name="" id="u_property" value="" /> 
