@@ -156,6 +156,7 @@ $(document).ready(function (){
 
    $('body').on('click', '#add-selected-${modEntity.name?lower_case}-list-btn', function(e){
       e.preventDefault();
+      console.log('Add select units list btn click!!!!!!!!!!!');
       var page_artifact_form = $('#page-artifact-name').val();
       // Iterate over all selected checkboxes
       $.each(rows_selected, function(index, rowId){
