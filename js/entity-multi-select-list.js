@@ -136,7 +136,8 @@ $(document).ready(function (){
       $(this).parent().find('input[type="checkbox"]').trigger('click');
    });
 
-   // Handle click on "Select all" control
+
+   // Handle click on "Select all" control actions
    $('thead input[name="select_all"]').on('click', function(e){
       if(this.checked){
          $('#${modEntity.postName}-list-table tbody input[type="checkbox"]:not(:checked)').trigger('click');
