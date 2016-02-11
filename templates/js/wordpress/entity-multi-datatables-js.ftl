@@ -119,9 +119,9 @@ $(document).ready(function (){
       }
 
       if(this.checked){
-         $row.css('background-color', 'red');
+         $row.css('background-color', 'rgba(255, 152, 0, 0.5)');
       } else {
-         $row.css('background-color', 'white');
+         $row.css('background-color', 'rgba(255, 152, 0, 0)');
       }
 
       // Update state of "Select all" control

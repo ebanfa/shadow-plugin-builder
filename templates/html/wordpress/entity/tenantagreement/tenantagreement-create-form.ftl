@@ -310,7 +310,7 @@
                             <input type="u_property" name="" id="u_property" value="" /> 
                         </form>
                         <div class="table-responsive">
-                            <table id="${modEntity.postName}-list-table" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
+                            <table id="${modEntity.postName}-list-table" class="table table-striped table-bordered" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
                                         <th><input name="select_all" value="1" type="checkbox"></th>
