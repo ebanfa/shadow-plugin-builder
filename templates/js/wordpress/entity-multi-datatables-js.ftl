@@ -171,6 +171,9 @@ $(document).ready(function (){
                 .val(rowId)
          );
       });
+      //var bootstrapValidator = $('#' + page_artifact_form).data('bootstrapValidator');
+      $('#' + page_artifact_form).bootstrapValidator();
+      $('#' + page_artifact_form).data('bootstrapValidator').validate();
    });
 
 
