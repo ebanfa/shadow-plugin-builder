@@ -411,7 +411,7 @@
                 'render': function (data, type, full, meta){
                  return '<input type="checkbox">';
                 },
-            }
+            },
             {
                 // The `data` parameter refers to the data for the cell (defined by the
                 // `data` option, which defaults to the column being worked with, in
