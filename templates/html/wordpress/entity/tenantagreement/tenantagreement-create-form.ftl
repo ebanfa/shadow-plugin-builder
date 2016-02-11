@@ -337,7 +337,7 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary btn-lg">Add to agreement</button>
+                <button type="button" class="btn btn-primary btn-link">Add to agreement</button>
             </div>
         </div>
     </div>
