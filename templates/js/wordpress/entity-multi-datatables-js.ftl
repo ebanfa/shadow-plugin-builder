@@ -65,8 +65,8 @@ $(document).ready(function (){
                 'searchable': false,
                 'orderable': false,
                 'className': 'dt-body-center',
-                'render': function (data, type, full, meta){
-                 return '<input type="checkbox">';
+                'render': function (data, type, row){
+                    return '<input type="checkbox" value="' + row.id + '">';
                 },
             },
             {
@@ -104,7 +104,7 @@ $(document).ready(function (){
       var data = table.row($row).data();
 
       // Get row ID
-      var rowId = data[0];
+      var rowId = $(this).val();
       console.log('>>>>>>>>>>>>>>Clicked in row Id' + rowId);
 
       // Determine whether row ID is in the list of selected row IDs 
