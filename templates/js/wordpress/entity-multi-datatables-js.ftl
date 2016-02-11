@@ -137,7 +137,7 @@ $(document).ready(function (){
    });
 
    // Handle click on "Select all" control
-   $('thead input[name="select_all"]', table.table().container()).on('click', function(e){
+   $('thead input[name="select_all"]', table.container()).on('click', function(e){
       if(this.checked){
          $('#${modEntity.postName}-list-table tbody input[type="checkbox"]:not(:checked)').trigger('click');
       } else {
