@@ -308,7 +308,7 @@
                         <form id="${modEntity.postName}-list-form">
                             <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
                             <input type="hidden" name="submitted" id="submitted" value="true" />
-                            <input type="u_property" name="" id="u_property" value="" /> 
+                            <input type="hidden" name="u_property" id="u_property" value="" /> 
                         </form>
                         <div class="table-responsive">
                             <table id="${modEntity.postName}-list-table" class="table table-striped table-bordered" width="100%" cellspacing="0">
