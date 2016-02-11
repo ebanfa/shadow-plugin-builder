@@ -105,6 +105,7 @@ $(document).ready(function (){
 
       // Get row ID
       var rowId = data[0];
+      comsole.log('>>>>>>>>>>>>>>Clicked in row Id' + rowId);
 
       // Determine whether row ID is in the list of selected row IDs 
       var index = $.inArray(rowId, rows_selected);
