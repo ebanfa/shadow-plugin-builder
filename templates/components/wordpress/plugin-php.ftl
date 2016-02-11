@@ -211,6 +211,7 @@ class ${application.name} {
         wp_register_script('datatables_bootstrap_js', plugins_url('/js/dataTables.bootstrap.js', __FILE__), array('jquery'), true);
         wp_register_script('bootstrap_validator_js', plugins_url('/js/bootstrapValidator.min.js', __FILE__), array('jquery'), true);
         wp_register_script('entity_datasource_js', plugins_url('/js/entity-datatables.js', __FILE__), array('jquery'), true);
+        wp_register_script('entity_multi_datatables_js', plugins_url('/js/entity-multi-datatables.js', __FILE__), array('jquery'), true);
         wp_register_script('datetimepicker_js', plugins_url('/js/vendors/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js', __FILE__), array('jquery'), true);
         wp_register_script('wizard_js', plugins_url('/js/vendors/bootstrap-wizard/jquery.bootstrap.wizard.min.js', __FILE__), array('jquery'), true);
 
@@ -225,6 +226,7 @@ class ${application.name} {
         wp_enqueue_script('datatables_bootstrap_js');
         wp_enqueue_script('cp_init');
         wp_enqueue_script('entity_datasource_js');
+        wp_enqueue_script('entity_multi_datatables_js');
         wp_enqueue_script('input_mask_js');
         wp_enqueue_script('datetimepicker_js');
         wp_enqueue_script('wizard_js');

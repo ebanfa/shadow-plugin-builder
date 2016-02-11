@@ -401,6 +401,8 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 		
 		this.generateArtifact(module, null, 
 			"js/wordpress/entity-datatables-js.ftl" , this.pluginDir + "js/entity-datatables.js");
+		this.generateArtifact(module, null, 
+			"js/wordpress/entity-multi-datatables-js.ftl" , this.pluginDir + "js/entity-multi-datatables.js");
 
 		for(Entity entity : module.getEntities()){
 			if(entity.getJsPageTemplate() != null){
