@@ -99,34 +99,29 @@ $(document).ready(function (){
    // Handle click on checkbox
    $('#${modEntity.postName}-list-table tbody').on('click', 'input[type="checkbox"]', function(e){
       var $row = $(this).closest('tr');
-
       // Get row data
       var data = ${modEntity.postName}Table.row($row).data();
-
       // Get row ID
       var rowId = $(this).val();
-
       // Determine whether row ID is in the list of selected row IDs 
       var index = $.inArray(rowId, ${modEntity.postName}_rows_selected);
-
+      console.log('This is index:' + index);
       // If checkbox is checked and row ID is not in list of selected row IDs
       if(this.checked && index === -1){
+         console.log('This is checked and index:' + index);
          ${modEntity.postName}_rows_selected.push(rowId);
-
       // Otherwise, if checkbox is not checked and row ID is in list of selected row IDs
       } else if (!this.checked && index !== -1){
          ${modEntity.postName}_rows_selected.splice(index, 1);
+         console.log('This is not checked and index:' + index);
       }
-
       if(this.checked){
          $row.css('background-color', 'rgba(255, 152, 0, 0.5)');
       } else {
          $row.css('background-color', 'rgba(255, 152, 0, 0)');
       }
-
       // Update state of "Select all" control
       updateDataTableSelectAllCtrl(table);
-
       // Prevent click event from propagating to parent
       e.stopPropagation();
    });
@@ -166,12 +161,7 @@ $(document).ready(function (){
                 .val(rowId)
          );
       });
-      //var bootstrapValidator = $('#' + page_artifact_form).data('bootstrapValidator');
-      $('#' + page_artifact_form).bootstrapValidator();
-      $('#' + page_artifact_form).data('bootstrapValidator').validate();
    });
-
-
 
 </#if>
 </#list>
