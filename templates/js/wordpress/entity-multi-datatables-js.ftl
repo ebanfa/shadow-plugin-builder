@@ -154,7 +154,7 @@ $(document).ready(function (){
       // Iterate over all selected checkboxes
       $.each(${modEntity.postName}_rows_selected, function(index, rowId){
 
-        $.each($('input[name="${modEntity.name?lower_case}_id[]')), function(index, rowId){ 
+        $.each($('input[name="${modEntity.name?lower_case}_id[]'), function(indexx){ 
             console.log('Form already has>>>>>>>>>>>>>>>>>>' + $(this).val());
 
         });
