@@ -119,9 +119,9 @@ $(document).ready(function (){
       }
 
       if(this.checked){
-         $row.addClass('selected');
+         $row.css('background-color', 'red');
       } else {
-         $row.removeClass('selected');
+         $row.css('background-color', 'white');
       }
 
       // Update state of "Select all" control
