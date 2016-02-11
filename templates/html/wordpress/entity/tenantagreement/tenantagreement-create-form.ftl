@@ -297,7 +297,7 @@
                                 
                                 <ul class="dropdown-menu dropdown-menu-right">
                                     <li>
-                                        <a href="/page?type=entity&page_action=create&artifact=${modEntity.name}">Add a new record</a>
+                                        <a href="/page?type=entity&page_action=create&artifact=${modEntity.name?lower_case}">Add a new record</a>
                                     </li>
                                 </ul>
                             </li>
