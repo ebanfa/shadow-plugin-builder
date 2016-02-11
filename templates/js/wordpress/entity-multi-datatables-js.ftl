@@ -34,7 +34,7 @@ $(document).ready(function (){
    // Array holding selected row IDs
    var rows_selected = [];
 <#list module.entities as modEntity>
-<#if modEntity.name == "Unit">
+<#if modEntity.name == "Unit" || modEntity.name == "Charges" || modEntity.name == "Term">
 
    var table =  $('#${modEntity.postName}-list-table').DataTable({
         "ajax": {
@@ -105,7 +105,6 @@ $(document).ready(function (){
 
       // Get row ID
       var rowId = $(this).val();
-      console.log('>>>>>>>>>>>>>>Clicked in row Id' + rowId);
 
       // Determine whether row ID is in the list of selected row IDs 
       var index = $.inArray(rowId, rows_selected);
@@ -157,13 +156,10 @@ $(document).ready(function (){
 
    $('body').on('click', '#add-selected-${modEntity.name?lower_case}-list-btn', function(e){
       e.preventDefault();
-      console.log('Add select units list btn click!!!!!!!!!!!');
       var page_artifact_form = $('#page-artifact-name').val() + '_form';
-      console.log('Add select units list btn click!!!!!!!!!!!:' + page_artifact_form);
       // Iterate over all selected checkboxes
       $.each(rows_selected, function(index, rowId){
          // Create a hidden element 
-         console.log('adding row id:' + rowId);
          $('#' + page_artifact_form).append(
              $('<input>')
                 .attr('type', 'hidden')
