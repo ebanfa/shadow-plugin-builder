@@ -153,6 +153,11 @@ $(document).ready(function (){
       var page_artifact_form = $('#page-artifact-name').val() + '_form';
       // Iterate over all selected checkboxes
       $.each(${modEntity.postName}_rows_selected, function(index, rowId){
+
+        $.each($('input[name="${modEntity.name?lower_case}_id[]')), function(index, rowId){ 
+            console.log('Form already has>>>>>>>>>>>>>>>>>>' + $(this).val());
+
+        });
          // Create a hidden element 
          $('#' + page_artifact_form).append(
              $('<input>')
