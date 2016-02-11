@@ -36,7 +36,7 @@ $(document).ready(function (){
 <#list module.entities as modEntity>
 <#if modEntity.name == "Unit">
 
-   var table =  $('#${modEntity.postName}-list-table').dataTable({
+   var table =  $('#${modEntity.postName}-list-table').DataTable({
         "ajax": {
             'type': 'POST',
             'url': ${application.name?lower_case}_ajax_script.ajaxurl,
@@ -137,7 +137,7 @@ $(document).ready(function (){
    });
 
    // Handle click on "Select all" control
-   $('thead input[name="select_all"]').on('click', function(e){
+   $('thead input[name="select_all"]', table.table().container()).on('click', function(e){
       if(this.checked){
          $('#${modEntity.postName}-list-table tbody input[type="checkbox"]:not(:checked)').trigger('click');
       } else {
