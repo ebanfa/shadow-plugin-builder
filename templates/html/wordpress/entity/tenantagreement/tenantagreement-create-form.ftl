@@ -297,22 +297,23 @@
                                 
                                 <ul class="dropdown-menu dropdown-menu-right">
                                     <li>
-                                        <a href="/page?type=entity&page_action=create&artifact=unit">Add a new record</a>
+                                        <a href="/page?type=entity&page_action=create&artifact=${modEntity.name}">Add a new record</a>
                                     </li>
                                 </ul>
                             </li>
                         </ul>
                     </div>
                     <div class="card-body card-padding">
-                        <form id="${modEntity.postName}-list-form">
+                        <form id="${modEntity.postName}-multi-select-list-form">
                             <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
-                            <input type="hidden" name="submitted" id="submitted" value="true" /> 
+                            <input type="hidden" name="submitted" id="submitted" value="true" />
+                            <input type="u_property" name="" id="u_property" value="" /> 
                         </form>
                         <div class="table-responsive">
-                            <table id="${modEntity.postName}-table" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
+                            <table id="${modEntity.postName}-multi-select-list-table" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <th><input name="select_all" value="1" type="checkbox"></th>
                                         <#list modEntity.fields as field>
                                             <#if field.listField == "Y">
                                                 <#if field.relationshipField == "N">
@@ -362,6 +363,7 @@
         $('body').on('click', '.related-field-search-link', function(e){
             e.preventDefault();
             var currentRelatedFieldName = $(this).data('related-field-name');
+            $('#u_property').val(currentRelatedFieldName);
             $('#current-related-field').val(currentRelatedFieldName);
             $('#' + currentRelatedFieldName + '_modal').modal('show');
         });
@@ -371,5 +373,65 @@
             var currentRelatedFieldName = $(this).data('dependent-field-name');
             $('#ta_unit_modal').modal('show');
         });
+
+
+
+<#list module.entities as modEntity>
+<#if modEntity.name == "Unit">
+
+        $('#${entity.postName}-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': ${application.name?lower_case}_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_${modEntity.postName}_ajax';
+               d.form = $("#${modEntity.postName}-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+<#list modEntity.fields as field>
+    <#if field.listField == "Y">
+        <#if field.relationshipField == "N">
+            { data: "${field.name}" },
+        </#if>
+
+        <#if field.relationshipField == "Y">
+            { data: "${field.name}_txt" },
+        </#if>
+    </#if>
+</#list>
+        ],
+        columnDefs: [
+            {
+                'targets': 0,
+                'searchable': false,
+                'orderable': false,
+                'className': 'dt-body-center',
+                'render': function (data, type, full, meta){
+                 return '<input type="checkbox">';
+                },
+            }
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#${modEntity.name?lower_case}_parent_params').length) {
+                        parent_params = parent_params + $('#${modEntity.name?lower_case}_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="../page/?type=entity&artifact=${modEntity.name?lower_case}&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="${modEntity.name?lower_case}" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
     });
+
+
+</#if>
+</#list>
+
+    });
+
 </script>
