@@ -142,7 +142,7 @@
                                 $${modEntity.name?lower_case}_types = ${modEntity.name}TypeAPI::find_by_criteria(array());
                                 foreach ($${modEntity.name?lower_case}_types as $${modEntity.name?lower_case}_type) { ?>
                                 <li>
-                                    <a data-dependent-field-name="ta_unit_building" 
+                                    <a data-dependent-field-name="ta_unit" data-dependent-field-id="<?php echo $${modEntity.name?lower_case}_type['id']; ?>" 
                                         class="dependent-field-search-link" href="components.html#"><?php echo $${modEntity.name?lower_case}_type['description']; ?></a>
                                 </li>
                             <?php  }  ?>
@@ -152,8 +152,8 @@
                     <div class="divider"></div>
                     <div class="col-sm-12 m-b-20">
                         <div class="list-group">
-                            <a href="other-components.html#" class="list-group-item active"><span class="badge">119</span> Selected Units</a>
-                            <a href="other-components.html#" class="list-group-item">Dapibus ac facilisis in</a>
+                            <a href="other-components.html#" class="list-group-item active"><span id="${modEntity.name?lower_case}_count"class="badge">0</span> Selected ${modEntity.name}</a>
+                            <!-- <a href="other-components.html#" class="list-group-item">Dapibus ac facilisis in</a> -->
                         </div>
                     </div>
                 </div>
@@ -356,8 +356,8 @@
 
         $('body').on('click', '.dependent-field-search-link', function(e){
             e.preventDefault();
-            var currentRelatedFieldName = $(this).data('dependent-field-name');
-            $('#ta_unit_modal').modal('show');
+            var dependentFieldName = $(this).data('dependent-field-name');
+            $('#' + dependentFieldName + '_modal').modal('show');
         });
 
 
