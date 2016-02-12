@@ -172,7 +172,7 @@ $(document).ready(function (){
            );
            var dependentInstanceName = $('#${modEntity.name?lower_case}_' + rowId).data('dependent-instance-name');
            // Add the item to the list 
-           $('#${modEntity.name?lower_case}_dependent_list_box').append($('<div><span data-entity-name="${modEntity.name?lower_case}" data-entity-id="' + rowId + '" class="badge ${modEntity.name?lower_case}_dependent_list_item" style="cursor: pointer; cursor: hand; background-color: red">X</span>' + dependentInstanceName + '</div>')
+           $('#${modEntity.name?lower_case}_dependent_list_box').append($('<div id="${modEntity.name?lower_case}_list_item_' + rowId + '"><span data-entity-name="${modEntity.name?lower_case}" data-entity-id="' + rowId + '" class="badge ${modEntity.name?lower_case}_dependent_list_item" style="cursor: pointer; cursor: hand; background-color: red">X</span>' + dependentInstanceName + '</div>')
                   .attr('class', 'list-group-item'));
         }
       });
@@ -192,6 +192,8 @@ $(document).ready(function (){
         }
 
       });
+      // then remove the list box item
+      $('#${modEntity.name?lower_case}_dependent_list_box').find('#${modEntity.name?lower_case}_list_item_' + rowId).remove();
 
       
    });
