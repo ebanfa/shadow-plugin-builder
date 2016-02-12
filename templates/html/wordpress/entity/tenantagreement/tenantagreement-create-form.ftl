@@ -335,7 +335,7 @@
             </div>
 
             <div class="modal-footer">
-                <a id="add-selected-${modEntity.name?lower_case}-list-btn" type="button" class="btn btn-primary">Add to agreement</a>
+                <a id="add-selected-${modEntity.name?lower_case}-list-btn" type="button" data-dismiss="modal" class="btn btn-primary">Add to agreement</a>
             </div>
         </div>
     </div>
