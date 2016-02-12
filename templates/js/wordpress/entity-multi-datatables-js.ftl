@@ -193,7 +193,7 @@ $(document).ready(function (){
 
       });
       // then remove the list box item
-      $('#${modEntity.name?lower_case}_dependent_list_box').find('#${modEntity.name?lower_case}_list_item_' + rowId).remove();
+      $('#${modEntity.name?lower_case}_dependent_list_box').find('#${modEntity.name?lower_case}_list_item_' + entityId).remove();
 
       
    });
