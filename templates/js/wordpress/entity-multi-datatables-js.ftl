@@ -185,7 +185,8 @@ $(document).ready(function (){
       // first remove the hidden form field and then the list box item
       var existingIds = $('#' + page_artifact_form).find('input[name="${modEntity.name?lower_case}_id[]"]');
       $.each(existingIds, function(index, rowId){ 
-        if($(rowId).val() === entityId) {
+        console.log('hecking entityId ' + entityId +' against row value' + $(rowId).val());
+        if($(rowId).val() == entityId) {
           console.log('Calling>>>>>>>>>>>>>>>>>>Removing id :' + $(rowId).val());
           $(rowId).remove();
         }
