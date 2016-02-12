@@ -255,7 +255,7 @@
 </#list>
 
 <#list module.entities as modEntity>
-<#if modEntity.name == "Unit">
+<#if modEntity.name == "Unit" || modEntity.name == "Charge" || modEntity.name == "Term">
 <!-- Modal Default -->  
 <div class="modal fade" id="ta_${modEntity.name?lower_case}_modal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">
