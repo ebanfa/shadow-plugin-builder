@@ -143,7 +143,7 @@
                                 $${modEntity.name?lower_case}_types = ${modEntity.name}TypeAPI::find_by_criteria(array());
                                 foreach ($${modEntity.name?lower_case}_types as $${modEntity.name?lower_case}_type) { ?>
                                 <li>
-                                    <a data-dependent-field-name="ta_{modEntity.name?lower_case}" data-dependent-field-id="<?php echo $${modEntity.name?lower_case}_type['id']; ?>" 
+                                    <a data-dependent-field-name="ta_${modEntity.name?lower_case}" data-dependent-field-id="<?php echo $${modEntity.name?lower_case}_type['id']; ?>" 
                                         class="dependent-field-search-link" href="components.html#"><?php echo $${modEntity.name?lower_case}_type['description']; ?></a>
                                 </li>
                             <?php  }  ?>
@@ -257,7 +257,7 @@
 <#list module.entities as modEntity>
 <#if modEntity.name == "Unit">
 <!-- Modal Default -->  
-<div class="modal fade" id="ta_{modEntity.name?lower_case}_modal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="ta_${modEntity.name?lower_case}_modal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
