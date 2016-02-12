@@ -185,7 +185,7 @@ $(document).ready(function (){
       // first remove the hidden form field and then the list box item
 
       var existingIds = $('#' + page_artifact_form).find('input[name="${modEntity.name?lower_case}_id[]"]');
-      $.each(existingIds), function(index, rowId){ 
+      $.each(existingIds, function(index, rowId){ 
           console.log('>>>>>>>>>>>>>>>>>>Removing id :' + rowId);
 
       });
