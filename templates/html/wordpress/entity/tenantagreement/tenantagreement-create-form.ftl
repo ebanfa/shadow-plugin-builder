@@ -153,8 +153,8 @@
                     <div class="divider"></div>
                     <div class="col-sm-12 m-b-20">
                         <div id="${modEntity.name?lower_case}_dependent_list_box" class="list-group">
-                            <a href="other-components.html#" class="list-group-item active"><span id="${modEntity.name?lower_case}_count"class="badge">0</span> Selected ${modEntity.name}</a>
-                            <a href="other-components.html#" class="list-group-item"><span class="badge warning">X</span>Dapibus ac facilisis in</a>
+                            <div class="list-group-item active"><span id="${modEntity.name?lower_case}_count"class="badge">0</span> Selected ${modEntity.name}</div>
+                            <div class="list-group-item"><span class="badge warning">X</span>Dapibus ac facilisis in</div>
                         </div>
                     </div>
                 </div>
