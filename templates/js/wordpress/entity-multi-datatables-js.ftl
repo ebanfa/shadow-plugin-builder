@@ -152,20 +152,24 @@ $(document).ready(function (){
       e.preventDefault();
       var page_artifact_form = $('#page-artifact-name').val() + '_form';
       // Iterate over all selected checkboxes
+      var idExists = false;
       $.each(${modEntity.postName}_rows_selected, function(index, rowId){
 
         $.each($('input[name="${modEntity.name?lower_case}_id[]'), function(indexx){ 
             console.log('Form already has>>>>>>>>>>>>>>>>>>' + $(this).val());
+            if(val === rowId){idExists = true;}
 
         });
-         // Create a hidden element 
+      });
+      if(!idExits){
+        // Create a hidden element 
          $('#' + page_artifact_form).append(
              $('<input>')
                 .attr('type', 'hidden')
                 .attr('name', '${modEntity.name?lower_case}_id[]')
                 .val(rowId)
          );
-      });
+      }
    });
 
 </#if>
