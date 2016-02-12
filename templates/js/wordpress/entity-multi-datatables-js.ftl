@@ -156,8 +156,12 @@ $(document).ready(function (){
       $.each(${modEntity.postName}_rows_selected, function(index, rowId){
 
         $.each($('input[name="${modEntity.name?lower_case}_id[]'), function(indexx){ 
-            console.log('Form already has>>>>>>>>>>>>>>>>>>' + $(this).val());
-            if(val === rowId){idExists = true;}
+            console.log('Form has>>>>>>>>>>>>>>>>>>' + $(this).val());
+            var valueToAdd = $(this).val();
+            if(valueToAdd === rowId){
+              console.log('Form already has>>>>>>>>>>>>>>>>>>' + $(this).val());
+              idExists = true;
+            }
 
         });
         if(!idExists){
