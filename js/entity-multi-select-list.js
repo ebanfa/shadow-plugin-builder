@@ -155,7 +155,7 @@ $(document).ready(function (){
       var idExists = false;
       $.each(${modEntity.postName}_rows_selected, function(index, rowId){
 
-        $.each($('input[name="${modEntity.name?lower_case}_id[]'), function(indexx){ 
+        $.each($('input[name="${modEntity.name?lower_case}_id[]"]'), function(indexx){ 
             var valueToAdd = $(this).val();
             if(valueToAdd === rowId){
               idExists = true;
@@ -181,8 +181,16 @@ $(document).ready(function (){
    $('#${modEntity.name?lower_case}_dependent_list_box').on('click', '.${modEntity.name?lower_case}_dependent_list_item', function(e){
       var entityId = $(this).data('entity-id');
       var entityName = $(this).data('entity-name');
+      var page_artifact_form = $('#page-artifact-name').val() + '_form';
+      // first remove the hidden form field and then the list box item
 
-      console.log('>>>>>>>>>>>>>>>>>>>>>>>>Removing entity: ' + entityName + ' with id ' + entityId);
+      var existingIds = $('#' + page_artifact_form).find('input[name="${modEntity.name?lower_case}_id[]"]');
+      $.each(existingIds), function(index, rowId){ 
+          console.log('>>>>>>>>>>>>>>>>>>Removing id :' + rowId);
+
+      });
+
+      
    });
 
 </#if>
