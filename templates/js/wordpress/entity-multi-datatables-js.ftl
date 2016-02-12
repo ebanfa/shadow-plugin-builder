@@ -160,16 +160,16 @@ $(document).ready(function (){
             if(val === rowId){idExists = true;}
 
         });
+        if(!idExists){
+          // Create a hidden element 
+           $('#' + page_artifact_form).append(
+               $('<input>')
+                  .attr('type', 'hidden')
+                  .attr('name', '${modEntity.name?lower_case}_id[]')
+                  .val(rowId)
+           );
+        }
       });
-      if(!idExists){
-        // Create a hidden element 
-         $('#' + page_artifact_form).append(
-             $('<input>')
-                .attr('type', 'hidden')
-                .attr('name', '${modEntity.name?lower_case}_id[]')
-                .val(rowId)
-         );
-      }
    });
 
 </#if>
