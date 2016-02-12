@@ -161,7 +161,7 @@ $(document).ready(function (){
 
         });
       });
-      if(!idExits){
+      if(!idExists){
         // Create a hidden element 
          $('#' + page_artifact_form).append(
              $('<input>')
