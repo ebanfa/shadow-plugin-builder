@@ -54,6 +54,11 @@ class ${entity.name}API {
         $entity_data = CloderiaAPIUtils::do_before_ajax_edit($entity_data);
         // Create the entity of we have no errors
         if(!$entity_data['has_errors']) {
+            // Create the agreement 
+            // Create the agreement units
+            // Create the agreement charges
+            // Create the agreement terms
+            // Create the rent stucture
             $entity_data = CloderiaAPIUtils::do_create_entity($entity_data);
         }
         // Run post edit hooks
@@ -135,6 +140,14 @@ class ${entity.name}API {
     public static function shadowbanker_modify_agreement_action_links($entity_action_links) {
         $entity_action_links['create_entity_link'] = '/page?type=entity&page_action=create&artifact=tenantagreement';
         return $entity_action_links;
+    }
+
+    /**
+     * Get all parts with id's in the list provided
+     */
+    public static function create_agreement($entity_data) {
+        $agreement_data = AgreementAPI::init_entity_data();
+        return CloderiaAPIUtils::find_by_ids(${entity.name}API::init_entity_data(), $party_ids);
     }
 
 }
