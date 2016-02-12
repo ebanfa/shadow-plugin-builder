@@ -186,7 +186,7 @@ $(document).ready(function (){
 
       var existingIds = $('#' + page_artifact_form).find('input[name="${modEntity.name?lower_case}_id[]"]');
       $.each(existingIds, function(index, rowId){ 
-          console.log('>>>>>>>>>>>>>>>>>>Removing id :' + rowId);
+          console.log('>>>>>>>>>>>>>>>>>>Removing id :' + rowId.val());
 
       });
 
