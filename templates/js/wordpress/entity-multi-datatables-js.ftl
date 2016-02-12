@@ -172,7 +172,7 @@ $(document).ready(function (){
            );
            var dependentInstanceName = $('#${modEntity.name?lower_case}_' + rowId).data('dependent-instance-name');
            // Add the item to the list 
-           $('#${modEntity.name?lower_case}_dependent_list_box').append($('<div><span class="badge warning"><a>X</a></span>' + dependentInstanceName + '</div>')
+           $('#${modEntity.name?lower_case}_dependent_list_box').append($('<div><span class="badge warning"><a class="btn-warning">X</a></span>' + dependentInstanceName + '</div>')
                   .attr('class', 'list-group-item'));
         }
       });
