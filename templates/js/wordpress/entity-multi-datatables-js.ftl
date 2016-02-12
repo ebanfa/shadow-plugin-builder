@@ -66,7 +66,7 @@ $(document).ready(function (){
                 'orderable': false,
                 'className': 'dt-body-center',
                 'render': function (data, type, row){
-                    return '<input id="${modEntity.name?lower_case}_' + row.id + '" type="checkbox" value="' + row.id + '" data-depenedent-instance-name="' + row.name + '">';
+                    return '<input id="${modEntity.name?lower_case}_' + row.id + '" type="checkbox" value="' + row.id + '" data-dependent-instance-name="' + row.name + '">';
                 },
             },
             {
@@ -170,6 +170,11 @@ $(document).ready(function (){
                   .attr('name', '${modEntity.name?lower_case}_id[]')
                   .val(rowId)
            );
+           var dependentInstanceName = $('#${modEntity.name?lower_case}_' + rowId).data('dependent-instance-name');
+           // Add the item to the list 
+           $('#${modEntity.name?lower_case}_dependent_list_box').append($('<a>' + dependentInstanceName + '</a>')
+                  .attr('href', '#')
+                  .attr('class', 'list-group-item'));
         }
       });
    });
