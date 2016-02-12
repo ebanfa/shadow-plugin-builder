@@ -66,7 +66,7 @@ $(document).ready(function (){
                 'orderable': false,
                 'className': 'dt-body-center',
                 'render': function (data, type, row){
-                    return '<input type="checkbox" value="' + row.id + '">';
+                    return '<input id="${modEntity.name?lower_case}_' + row.id + '" type="checkbox" value="' + row.id + '" data-depenedent-instance-name="' + row.name + '">';
                 },
             },
             {
