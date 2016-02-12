@@ -172,10 +172,17 @@ $(document).ready(function (){
            );
            var dependentInstanceName = $('#${modEntity.name?lower_case}_' + rowId).data('dependent-instance-name');
            // Add the item to the list 
-           $('#${modEntity.name?lower_case}_dependent_list_box').append($('<div><span class="badge" style="cursor: pointer; cursor: hand; background-color: red">X</span>' + dependentInstanceName + '</div>')
+           $('#${modEntity.name?lower_case}_dependent_list_box').append($('<div><span data-entity-name="${modEntity.name?lower_case}" data-entity-id="' + rowId + '" class="badge ${modEntity.name?lower_case}_dependent_list_item" style="cursor: pointer; cursor: hand; background-color: red">X</span>' + dependentInstanceName + '</div>')
                   .attr('class', 'list-group-item'));
         }
       });
+   });
+    // Handle click on table cells with checkboxes
+   $('#${modEntity.name?lower_case}_dependent_list_box').on('click', '.${modEntity.name?lower_case}_dependent_list_item', function(e){
+      var entityId = $(this).data('entity-id');
+      var entityName = $(this).data('entity-name');
+
+      console.log('>>>>>>>>>>>>>>>>>>>>>>>>Removing entity: ' + entityName + ' with id ' + entityId);
    });
 
 </#if>
