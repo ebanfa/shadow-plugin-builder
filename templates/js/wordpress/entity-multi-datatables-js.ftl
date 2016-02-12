@@ -33,7 +33,7 @@ function updateDataTableSelectAllCtrl(table){
 $(document).ready(function (){
    // Array holding selected row IDs
 <#list module.entities as modEntity>
-<#if modEntity.name == "Unit" || modEntity.name == "Charges" || modEntity.name == "Term">
+<#if modEntity.name == "Unit" || modEntity.name == "Charge" || modEntity.name == "Term">
 
    var ${modEntity.postName}_rows_selected = [];
    var ${modEntity.postName}Table =  $('#${modEntity.postName}-list-table').DataTable({
@@ -156,10 +156,8 @@ $(document).ready(function (){
       $.each(${modEntity.postName}_rows_selected, function(index, rowId){
 
         $.each($('input[name="${modEntity.name?lower_case}_id[]'), function(indexx){ 
-            console.log('Form has>>>>>>>>>>>>>>>>>>' + $(this).val());
             var valueToAdd = $(this).val();
             if(valueToAdd === rowId){
-              console.log('Form already has>>>>>>>>>>>>>>>>>>' + $(this).val());
               idExists = true;
             }
 
