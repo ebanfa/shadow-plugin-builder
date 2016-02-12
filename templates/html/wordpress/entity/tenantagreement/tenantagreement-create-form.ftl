@@ -111,6 +111,7 @@
                         </div>
                     </div>
 
+
                     <?php // If the parent field is set we dont display the field 
                         if(isset($parent_field)) { ?>
                     <input type="hidden" name="parent_id" value="<?php echo $parent_id; ?>">
@@ -359,10 +360,6 @@
             var dependentFieldName = $(this).data('dependent-field-name');
             $('#' + dependentFieldName + '_modal').modal('show');
         });
-
-
-
-
 
     });
 
