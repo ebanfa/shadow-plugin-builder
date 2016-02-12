@@ -42,7 +42,7 @@
                 <li><a href="#tab0" data-toggle="tab">Agreement</a></li>
                 <#list module.entities as modEntity>
                     <#if modEntity.name == "Unit" || modEntity.name == "Charge" || modEntity.name == "Term">
-                <li><a href="#tab${modEntity_index}" data-toggle="tab">${modEntity.name}</a></li>
+                <li><a href="#tab${modEntity_index}" data-toggle="tab">${modEntity.description}</a></li>
                     </#if>
                 </#list>
             </ul>
