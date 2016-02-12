@@ -5799,7 +5799,7 @@
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
-				<name>tenant</name>
+				<name>a_tenant</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
@@ -5812,6 +5812,22 @@
 				<dataColumn>true</dataColumn>
 				<description>Tenant</description>
 				<displayName>Tenant</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>a_property</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_property</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Property</description>
+				<displayName>Property</displayName>
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>

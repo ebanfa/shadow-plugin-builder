@@ -55,10 +55,7 @@ class ${entity.name}API {
         // Create the entity of we have no errors
         if(!$entity_data['has_errors']) {
             // Create the agreement 
-            // Create the agreement units
-            // Create the agreement charges
-            // Create the agreement terms
-            // Create the rent stucture
+            $agreement_data = self::create_agreement($entity_data);
             $entity_data = CloderiaAPIUtils::do_create_entity($entity_data);
         }
         // Run post edit hooks
@@ -143,11 +140,59 @@ class ${entity.name}API {
     }
 
     /**
-     * Get all parts with id's in the list provided
+     * Create the agreement
      */
     public static function create_agreement($entity_data) {
         $agreement_data = AgreementAPI::init_entity_data();
-        return CloderiaAPIUtils::find_by_ids(${entity.name}API::init_entity_data(), $party_ids);
+
+        $rent_agreement_type = AgreementTypeAPI::get_by_code('RENT_AGREEMENT');
+
+        if(isset($rent_agreement_type['id'])) {
+            $agreement_data['type'] = $rent_agreement_type['id'];
+            $agreement_data['name'] = $entity_data['name'];
+            $agreement_data['tenant'] = $entity_data['a_tenant'];
+            $agreement_data['property'] = $entity_data['a_property'];
+            $agreement_data['end_date'] = $entity_data['date_end'];
+            $agreement_data['start_date'] = $entity_data['date_start'];
+            $agreement_data['description'] = $entity_data['description'];
+
+            $agreement_data = CloderiaAPIUtils::do_create_entity($agreement_data);
+            // Create the agreement units
+            self::create_agreement_units($agreement_data);
+            // Create the agreement charges
+            self::create_agreement_charges($agreement_data);
+            // Create the agreement terms
+            self::create_agreement_terms($agreement_data);
+            // Create the rent stucture
+        }
+        return $agreement_data;
     }
+
+    /**
+     * Create the agreement units
+     */
+    public static function create_agreement_units($agreement_data) {
+        if(!empty($_POST['unit_id'])) {
+            foreach($_POST['unit_id'] as $unit_id) {
+                $id = sanitize_text_field($unit_id);
+                $agreementunit_data = AgreementUnitAPI::init_entity_data();
+                $agreementunit_data['name'] = $agreement_data['name'];
+                $agreementunit_data['au_unit'] = $id;
+                $agreementunit_data['au_agreement'] = $agreement_data['id'];
+                $agreementunit_data['description'] = $agreement_data['description'];
+                $agreementunit_data = CloderiaAPIUtils::do_create_entity($agreementunit_data);
+            }
+        }
+    }
+
+    /**
+     * Create the agreement charges
+     */
+    public static function create_agreement_charges($agreement_data) {}
+
+    /**
+     * Create the agreement terms
+     */
+    public static function create_agreement_terms($agreement_data) {}
 
 }
