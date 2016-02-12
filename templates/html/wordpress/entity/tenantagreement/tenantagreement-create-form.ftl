@@ -39,14 +39,16 @@
                 
         <div class="form-wizard-basic fw-container">
             <ul class="tab-nav text-center">
-                <li><a href="#tab1" data-toggle="tab">Agreement</a></li>
-                <li><a href="#tab2" data-toggle="tab">Units</a></li>
-                <li><a href="#tab3" data-toggle="tab">Terms</a></li>
-                <li><a href="#tab4" data-toggle="tab">Charges</a></li>
+                <li><a href="#tab0" data-toggle="tab">Agreement</a></li>
+                <#list module.entities as modEntity>
+                    <#if modEntity.name == "Unit" || modEntity.name == "Charge" || modEntity.name == "Term">
+                <li><a href="#tab${modEntity?index}" data-toggle="tab">${entity.name}</a></li>
+                    </#if>
+                </#list>
             </ul>
             
             <div class="tab-content">
-                <div class="tab-pane fade" id="tab1">  
+                <div class="tab-pane fade" id="tab0">  
                     <div class="row">
                         <div class="col-xs-11">
                             <div class="form-group">
@@ -125,13 +127,16 @@
                 </div>
 
 
-                <div class="tab-pane fade" id="tab2">
+
+                <#list module.entities as modEntity>
+                    <#if modEntity.name == "Unit" || modEntity.name == "Charge" || modEntity.name == "Term">
+                <div class="tab-pane fade" id="tab${modEntity?index}">
                     <div class="col-sm-12 m-b-20 btn-demo">
                         <div class="btn-group">
-                            <button type="button" class="btn btn-primary">Select A Unit Type</button>
+                            <button type="button" class="btn btn-primary">Select A ${modEntity.name} Type</button>
                             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                 <span class="caret"></span>
-                                <span class="sr-only">Select Unit Type</span>
+                                <span class="sr-only">Select ${modEntity.name} Type</span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
                                 <li>
@@ -166,15 +171,8 @@
                         </div>
                     </div>
                 </div>
-
-
-                <div class="tab-pane fade" id="tab3">
-                    <p>Duis eu eros vitae risus sollicitudin blandit in non nisi. Phasellus rhoncus ullamcorper pretium. Etiam et viverra neque, aliquam imperdiet velit. Nam a scelerisque justo, id tristique diam. Aenean ut vestibulum velit, vel ornare augue. Nullam eu est malesuada, vehicula ex in, maximus massa. Sed sit amet massa venenatis, tristique orci sed, eleifend arcu.</p>
-                    <p>Aliquam tempus rutrum neque, a blandit dui. Proin quis elit non est scelerisque pharetra nec id libero. Quisque id tincidunt elit. Maecenas non mauris malesuada, interdum justo et, ullamcorper magna. Nulla libero risus, vestibulum pharetra eleifend in, aliquam ac odio. Sed ligula orci, rhoncus sit amet ipsum vel, vehicula interdum ligula. </p>
-                </div>
-                <div class="tab-pane fade" id="tab4">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus purus sapien, cursus et egestas at, volutpat sed dolor. Aliquam sollicitudin dui ac euismod hendrerit. Phasellus quis lobortis dolor. Sed massa massa, sagittis nec fermentum eu, volutpat non lectus. Nullam vitae tristique nunc. Aenean vel placerat augue. Aliquam pharetra mauris neque, sit amet egestas risus semper non. Proin egestas egestas ex sed gravida. Suspendisse commodo nisl sit amet risus volutpat volutpat. Phasellus vitae turpis a elit tincidunt ornare. Praesent non libero quis libero scelerisque eleifend. Ut eleifend laoreet vulputate.</p>
-                </div>
+                    </#if>
+                </#list>
                     
                 <ul class="fw-footer pagination wizard">
                     <li class="previous first"><a class="a-prevent" href="components.html"><i class="zmdi zmdi-more-horiz"></i></a></li>
