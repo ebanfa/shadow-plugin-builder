@@ -42,7 +42,7 @@
                 <li><a href="#tab0" data-toggle="tab">Agreement</a></li>
                 <#list module.entities as modEntity>
                     <#if modEntity.name == "Unit" || modEntity.name == "Charge" || modEntity.name == "Term">
-                <li><a href="#tab${modEntity_index}" data-toggle="tab">${entity.name}</a></li>
+                <li><a href="#tab${modEntity_index}" data-toggle="tab">${modEntity.name}</a></li>
                     </#if>
                 </#list>
             </ul>
@@ -126,8 +126,6 @@
                     <input type="hidden" id="page-artifact-name" name="page-artifact-name" value="${entity.postName}">
                 </div>
 
-
-
                 <#list module.entities as modEntity>
                     <#if modEntity.name == "Unit" || modEntity.name == "Charge" || modEntity.name == "Term">
                 <div class="tab-pane fade" id="tab${modEntity_index}">
@@ -139,27 +137,15 @@
                                 <span class="sr-only">Select ${modEntity.name} Type</span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
+
+                            <?php
+                                $${modEntity.name?lower_case}_types = ${modEntity.name}TypeAPI::find_by_criteria(array());
+                                foreach ($${modEntity.name?lower_case}_types as $${modEntity.name?lower_case}_type) { ?>
                                 <li>
                                     <a data-dependent-field-name="ta_unit_building" 
-                                        class="dependent-field-search-link" href="components.html#">Building</a>
+                                        class="dependent-field-search-link" href="components.html#"><?php echo $${modEntity.name?lower_case}_type['description']; ?></a>
                                 </li>
-                                <li>
-                                    <a data-related-field-name="ta_unit_apartment" 
-                                        class="related-field-search-link" href="components.html#">Townhouse</a>
-                                </li>
-                                <li>
-                                    <a data-dependent-field-name="ta_unit_apartment" 
-                                        class="dependent-field-search-link" href="components.html#">Apartment</a>
-                                </li>
-                                <!-- <li class="divider"></li> -->
-                                <li>
-                                    <a data-dependent-field-name="ta_unit_space" 
-                                        class="dependent-field-search-link" href="components.html#">Space</a>
-                                </li>
-                                <li>
-                                    <a data-dependent-field-name="ta_unit_apartment" 
-                                        class="dependent-field-search-link" href="components.html#">Parking</a>
-                                </li>
+                            <?php  }  ?>
                             </ul>
                         </div>
                     </div>
