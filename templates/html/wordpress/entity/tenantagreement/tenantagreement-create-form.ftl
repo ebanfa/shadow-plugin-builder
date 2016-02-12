@@ -42,7 +42,7 @@
                 <li><a href="#tab0" data-toggle="tab">Agreement</a></li>
                 <#list module.entities as modEntity>
                     <#if modEntity.name == "Unit" || modEntity.name == "Charge" || modEntity.name == "Term">
-                <li><a href="#tab${modEntity?index}" data-toggle="tab">${entity.name}</a></li>
+                <li><a href="#tab${modEntity_index}" data-toggle="tab">${entity.name}</a></li>
                     </#if>
                 </#list>
             </ul>
@@ -130,7 +130,7 @@
 
                 <#list module.entities as modEntity>
                     <#if modEntity.name == "Unit" || modEntity.name == "Charge" || modEntity.name == "Term">
-                <div class="tab-pane fade" id="tab${modEntity?index}">
+                <div class="tab-pane fade" id="tab${modEntity_index}">
                     <div class="col-sm-12 m-b-20 btn-demo">
                         <div class="btn-group">
                             <button type="button" class="btn btn-primary">Select A ${modEntity.name} Type</button>
