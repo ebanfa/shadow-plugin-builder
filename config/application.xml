@@ -5527,7 +5527,7 @@
 
 		<entity>
 			<name>UnitTypeExpense</name>
-			<postName>sb_utypecharge</postName>
+			<postName>sb_utypeexpense</postName>
 			<description>Unit Type Expense</description>
 			<global>N</global>
 			<field>
