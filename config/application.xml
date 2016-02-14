@@ -7390,6 +7390,108 @@
 			</field>
 		</entity>
 
+		<entity>
+			<name>AgreementUnit</name>
+			<postName>sb_agreeunit</postName>
+			<description>Agreement Unit</description>
+			<global>N</global>
+			<field>
+				<name>entity_code</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>N</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>alphanumeric</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Code</description>
+				<displayName>Code</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>au_agreement</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_agreement</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Agreement</description>
+				<displayName>Agreement</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>au_unit</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_unit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Unit</description>
+				<displayName>Unit</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>name</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>name</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Name</description>
+				<displayName>name</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>description</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text-lg</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Description</description>
+				<displayName>Description</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+		</entity>
 
 		<entity>
 			<name>AgreementCharge</name>
@@ -7615,9 +7717,10 @@
 		</entity>
 
 		<entity>
-			<name>AgreementUnit</name>
-			<postName>sb_agreeunit</postName>
-			<description>Agreement Unit</description>
+			<name>ChargeInAgreement</name>
+			<postName>sb_chargeinagrmt</postName>
+			<description>Charge In Agreement</description>
+			<isVirtual>N</isVirtual>
 			<global>N</global>
 			<field>
 				<name>entity_code</name>
@@ -7636,7 +7739,7 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
-				<name>au_agreement</name>
+				<name>cia_agreement</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
@@ -7652,7 +7755,7 @@
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
-				<name>au_unit</name>
+				<name>cia_charge</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
@@ -7660,11 +7763,11 @@
 				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
-				<dataType>sb_unit</dataType>
+				<dataType>sb_charge</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
-				<description>Unit</description>
-				<displayName>Unit</displayName>
+				<description>Charge</description>
+				<displayName>Charge</displayName>
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>

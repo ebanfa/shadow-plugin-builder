@@ -148,13 +148,6 @@ class CloderiaAPIUtils {
     /**
      *
      */
-    public static function create_entity($entity_data){
-
-    }
-
-    /**
-     *
-     */
     public static function do_create_entity($entity_data){
         $entity_data['has_errors'] = false;
         if ($entity_data['edit_mode']) {
