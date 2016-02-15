@@ -51,7 +51,7 @@ class ${entity.name}CPT {
      */
  public static $inferred_fields = array(
 <#list entity.relatedChildEntities?keys as key>
-        '${field.name}' => array('name' => '${key}',
+        '${key}' => array('name' => '${key}',
         'entity_name' => '${elatedChildEntities[key].name}',
         'data_type' => '${elatedChildEntities[key].postName}',
         'artifact_name' => '${elatedChildEntities[key].name?lower_case}',
