@@ -72,9 +72,10 @@ class ${application.name} {
 <#list module.entities as entity>
         include_once('includes/abstracts/${entity.name}CPT.php');
 </#list>
-        // Entity Controller
+        // Controller
         include_once('includes/api/EntityController.php');
-        // Entity Views
+        include_once('includes/api/EntityPersistenceController.php');
+        // View
         include_once('includes/service/EntityView.php');
         // API
         include_once('includes/api/CloderiaFileAPI.php');
@@ -88,8 +89,10 @@ class ${application.name} {
         // Services
         include_once('includes/service/DashboardService.php');
         // Utility Classes
+        include_once('includes/utils/EntityStringUtils.php');
+        include_once('includes/utils/EntityRequestUtils.php');
         include_once('includes/utils/EntityControllerUtils.php');
-        
+
         include_once('includes/utils/CloderiaUserUtils.php');
         include_once('includes/utils/CloderiaCustomFieldsUtils.php');
         include_once('includes/utils/CloderiaCustomPostTypesUtils.php');
