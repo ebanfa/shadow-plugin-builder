@@ -200,19 +200,34 @@ class ${entity.name}API {
      * Create the agreement rent structure
      */
     public static function create_agreement_rent_structure($agreement_data) {
-        // Get all applicable charges
+        // Get all applicable charges and expenses
         $total_charges = self::get_total_applicable_charges($agreement_data);
-        // Get all applicable expenses
+        $total_expenses = self::get_total_applicable_expenses($agreement_data);
         // Get number of months
         // Create rent entity for each month
 
     }
 
-
     /**
      * Get the total of the charges that apply to this agreement
      */
     public static function get_total_applicable_charges($agreement_data) {
+        // 1. Get all property charges for this property
+        // 2. Get all Building Charge -
+        // 2. Get all Floor Charge -
+        // 2. Get all Unit Type Charge -
+        // 2. Get all Unit Charge -
+        // 2. Get all Agreement Type Charge -
+        // 2. Get all Agreement Charge -
+        // 2. Get all Parking Facility Charge -
+        // 2. Get all Parking Slot Type Charge -
+    }
+
+    /**
+     * Get the total of the charges that apply to this agreement
+     */
+    public static function get_total_applicable_expenses($agreement_data) {
+        // Get apportionment strategy
         // 1. Get all property charges for this property
         // 2. Get all Building Charge -
         // 2. Get all Floor Charge -

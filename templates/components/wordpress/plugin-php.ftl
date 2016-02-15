@@ -68,15 +68,15 @@ class ${application.name} {
      * Include all required files
      */
     public function includes() {
-        // Primary Custom Post Types
+        // Model
 <#list module.entities as entity>
         include_once('includes/abstracts/${entity.name}CPT.php');
 </#list>
-
+        // Entity Controller
+        include_once('includes/api/EntityController.php');
+        // Entity Views
+        include_once('includes/service/EntityView.php');
         // API
-<#list module.entities as entity>
-        include_once('includes/api/${entity.name}API.php');
-</#list>
         include_once('includes/api/CloderiaFileAPI.php');
         include_once('includes/api/CloderiaUserAPI.php');
         include_once('includes/api/PageControllerAPI.php');
@@ -85,15 +85,12 @@ class ${application.name} {
         include_once('includes/api/CloderiaUserLoginAPI.php');
         include_once('includes/api/CloderiaUIDisplayAPI.php');
         include_once('includes/api/CloderiaFileUploadValidatorAPI.php');
-        //
-        include_once('includes/service/FundsService.php');
+        // Services
         include_once('includes/service/DashboardService.php');
-        include_once('includes/service/LoanApplicationService.php');
         // Utility Classes
-        //include_once('includes/utils/Utils.php');
-        include_once('includes/utils/CloderiaAPIUtils.php');
+        include_once('includes/utils/EntityControllerUtils.php');
+        
         include_once('includes/utils/CloderiaUserUtils.php');
-        //include_once('includes/utils/CloderiaServiceUtils.php');
         include_once('includes/utils/CloderiaCustomFieldsUtils.php');
         include_once('includes/utils/CloderiaCustomPostTypesUtils.php');
         include_once('includes/utils/CloderiaMenuUtils.php');

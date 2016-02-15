@@ -4,6 +4,13 @@ class ${entity.name}CPT {
 
     public static $prefix = ''; 
 
+    public static $post_name = '${entity.postName}'; 
+
+
+    /**
+     * These are the wordpress custom post type 
+     * specific fields
+     */
     public static $custom_fields =  array(
 <#list entity.fields as field>
         array('name' => '${field.name}',
@@ -14,7 +21,44 @@ class ${entity.name}CPT {
 </#list>
     );
 
+    /**
+     * These are the shadow banker framework 
+     * specific fields. These represent the actual fields
+     * defined in the entity mapping.
+     */
+ public static $entity_fields = array(
+<#list entity.fields as field>
+        '${field.name}' => array('name' => '${field.name}',
+            'data_type' => '${field.dataType}',
+            'is_required' => '${field.required}',
+            'is_visible' => '${field.isVisible}',
+            'is_create_field' => '${field.createField}',
+            'is_edit_field' => '${field.editField}',
+            'is_view_field' => '${field.viewField}',
+            'is_list_field' => '${field.listField}',
+            'is_form_field' => '${field.isFormField}',
+            'is_relationship_field' => '${field.relationshipField}',),
+</#list>   
+   );
 
+    /**
+     * These are the shadow banker framework 
+     * specific fields. Inferred fields are fields that are not
+     * directly defined in the entity mapping of a given entity, but are instead
+     * inferred from other entities. As an example a Party entity has a field that
+     * points to the PartyType of a party, ie Party points to PartyType but not vice versa.
+     * So an array of Party entities will be an inferred field on PartyType.
+     */
+ public static $inferred_fields = array(
+<#list entity.relatedChildEntities?keys as key>
+        '${field.name}' => array('name' => '${key}',
+        'entity_name' => '${elatedChildEntities[key].name}',
+        'data_type' => '${elatedChildEntities[key].postName}',
+        'artifact_name' => '${elatedChildEntities[key].name?lower_case}',
+        'is_relationship_field' => 'Y',),
+</#list>   
+   );
+ 
     /**
      * Register the custom post type so it shows up in menus
      */

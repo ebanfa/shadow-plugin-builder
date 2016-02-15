@@ -248,6 +248,9 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 			"components/wordpress/plugin-php.ftl" , this.pluginDir + this.application.getName() + ".php");
 
 		this.generateArtifact(module, null, 
+			"components/wordpress/artifact-utils-php.ftl" , this.pluginDir +"includes/utils/" + "ArtifactUtils.php");
+
+		this.generateArtifact(module, null, 
 			"components/wordpress/readme-md.ftl" , this.pluginDir + "README.md");
 	}
 
