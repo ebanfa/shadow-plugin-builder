@@ -283,7 +283,6 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 
 	private void doEnities(Module module) {
 		for(Entity entity: module.getEntities()) {
-			System.out.println("Generating entity artifact for entity " + entity.getName());
 			if (entity.getIsVirtual() != null) {
 				if (entity.getIsVirtual().equals("N")) {
 					this.generateArtifact(module, entity, 
