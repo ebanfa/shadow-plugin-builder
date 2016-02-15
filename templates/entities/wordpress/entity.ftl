@@ -52,9 +52,6 @@ class ${entity.name}CPT {
  public static $inferred_fields = array(
 <#list entity.relatedChildEntities?keys as key>
         '${key}' => array('name' => '${key}',
-        'entity_name' => '${relatedChildEntities[key].name}',
-        'data_type' => '${relatedChildEntities[key].postName}',
-        'artifact_name' => '${relatedChildEntities[key].name?lower_case}',
         'is_relationship_field' => 'Y',),
 </#list>   
    );
