@@ -301,6 +301,9 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 		String includeApiOutputDir = this.pluginDir + "includes/api/";
 		String includeUtilOutputDir = this.pluginDir + "includes/utils/";
 
+		this.generateArtifact(module, null, 
+					"services/wordpress/entity-service-api.ftl" , includeApiOutputDir +  "EntityController.php");
+
 		for(Entity entity: module.getEntities()) {
 			//System.out.println("Processing entity service: " + entity.getName());
 			String entityName = entity.getName();
