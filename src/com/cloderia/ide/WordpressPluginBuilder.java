@@ -279,7 +279,7 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 
 		this.generateArtifact(module, null, 
 			"api/wordpress/entity-api-php.ftl", includeApiOutputDir +  "EntityAPI.php");
-		this.generateArtifact(module, entity, 
+		this.generateArtifact(module, null, 
 			"api/wordpress/ui-display-php.ftl", includeApiOutputDir + "CloderiaUIDisplayAPI.php");
 		this.generateArtifact(module, null, 
 			"api/wordpress/page-controller-php.ftl", includeApiOutputDir + "PageControllerAPI.php");
