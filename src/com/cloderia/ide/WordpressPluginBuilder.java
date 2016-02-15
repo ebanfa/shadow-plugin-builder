@@ -169,13 +169,13 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 		for (Module module : application.getModules()) {
 			//System.out.println(module);
 			processRelatedChildEntities(module);
-			//doComponents(module);
+			doComponents(module);
 			doEnities(module);
-			//doServices(module);
-			//doEntityHTML(module);
-			//doPages(module);
-			//doMenuHTML(application);
-			//doJSFiles(module);
+			doServices(module);
+			doEntityHTML(module);
+			doPages(module);
+			doMenuHTML(application);
+			doJSFiles(module);
 		}
 		
 	}
@@ -197,6 +197,9 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 						if(item.getPostName().equals(targetEntityPostName)) {
 							String fieldName = field.getName(); //+ UUID.randomUUID().toString();
 							//System.out.println("Adding child: " + entity.getName() + " to parent: " + item.getName());
+							if(item.getName().equals("Property")) {
+								
+							}
 							item.getRelatedChildEntities().put(fieldName, entity);
 						}
 
@@ -280,8 +283,7 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 
 	private void doEnities(Module module) {
 		for(Entity entity: module.getEntities()) {
-			int size = entity.getRelatedChildEntities().size();
-			System.out.println("Generating entity artifact for entity " + entity.getName() + "Size of map:" + size);
+			System.out.println("Generating entity artifact for entity " + entity.getName());
 			if (entity.getIsVirtual() != null) {
 				if (entity.getIsVirtual().equals("N")) {
 					this.generateArtifact(module, entity, 
