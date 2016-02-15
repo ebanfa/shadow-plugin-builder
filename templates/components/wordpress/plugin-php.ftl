@@ -118,8 +118,6 @@ class ${application.name} {
         add_action('template_redirect', 'CloderiaAdminAPI::do_ajax_setup');
 
         EntityController::init_ajax_hooks();
-        FundsService::init_ajax_hooks();
-        LoanApplicationService::init_ajax_hooks();
         //Order related Ajax functions
         #add_action('wp_ajax_do_content_order_ajax', 'CloderiaOrdersAPI::do_content_order_ajax');
         #add_action('wp_ajax_nopriv_do_content_order_ajax', 'CloderiaOrdersAPI::do_content_order_ajax');
