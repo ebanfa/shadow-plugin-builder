@@ -188,7 +188,7 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 			List<Field> fieldsInEntity = entity.getFields();
 			// Process the fields in the entity
 			for(Field field : fieldsInEntity){
-				System.out.println("Processing: " + entity.getName() + " field " + field.getName() + "");
+				//System.out.println("Processing: " + entity.getName() + " field " + field .getName() + "");
 				// Only process relationship fields
 				if(field.getRelationshipField().equals("Y")){
 					//System.out.println("Found a relationship field: " + field.getName() + " of type: " + field.getDataType());
@@ -283,6 +283,7 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 
 	private void doEnities(Module module) {
 		for(Entity entity: module.getEntities()) {
+			System.out.println("Generating entity artifact for entity " + entity.getName());
 			if (entity.getIsVirtual() != null) {
 				if (entity.getIsVirtual().equals("N")) {
 					this.generateArtifact(module, entity, 
