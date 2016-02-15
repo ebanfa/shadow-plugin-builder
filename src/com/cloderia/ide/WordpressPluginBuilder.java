@@ -280,7 +280,7 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 
 	private void doEnities(Module module) {
 		for(Entity entity: module.getEntities()) {
-			int size = entity.getRelatedChildEntities().size()
+			int size = entity.getRelatedChildEntities().size();
 			System.out.println("Generating entity artifact for entity " + entity.getName() + "Size of map:" + size);
 			if (entity.getIsVirtual() != null) {
 				if (entity.getIsVirtual().equals("N")) {
