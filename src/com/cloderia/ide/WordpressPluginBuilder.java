@@ -171,11 +171,14 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 			processRelatedChildEntities(module);
 			doComponents(module);
 			doEnities(module);
+			doAPI(module);
 			doServices(module);
+			doControllers(module);
+			doViews(module);
 			doEntityHTML(module);
+			doEntityJSFiles(module);
 			doPages(module);
 			doMenuHTML(application);
-			doJSFiles(module);
 		}
 		
 	}
@@ -255,6 +258,142 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 			"components/wordpress/readme-md.ftl" , this.pluginDir + "README.md");
 	}
 
+	private void doEnities(Module module) {
+		for(Entity entity: module.getEntities()) {
+			if (entity.getIsVirtual() != null) {
+				if (entity.getIsVirtual().equals("N")) {
+					this.generateArtifact(module, entity, 
+						"entities/wordpress/entity.ftl" , this.pluginDir + "includes/abstracts/" + entity.getName() + "CPT.php");
+				}
+			}
+			else {
+				this.generateArtifact(module, entity, 
+					"entities/wordpress/entity.ftl" , this.pluginDir + "includes/abstracts/" + entity.getName() + "CPT.php");
+			}
+		}
+	}
+
+	private void doAPI(Module module) {
+		String includeApiOutputDir = this.pluginDir + "includes/api/";
+		String includeUtilOutputDir = this.pluginDir + "includes/utils/";
+
+		this.generateArtifact(module, null, 
+			"api/wordpress/entity-api-php.ftl", includeApiOutputDir +  "EntityAPI.php");
+		this.generateArtifact(module, entity, 
+			"api/wordpress/ui-display-php.ftl", includeApiOutputDir + "CloderiaUIDisplayAPI.php");
+		this.generateArtifact(module, null, 
+			"api/wordpress/page-controller-php.ftl", includeApiOutputDir + "PageControllerAPI.php");
+		this.generateArtifact(module, null, 
+			"api/wordpress/entity-persistence-api.ftl", includeApiOutputDir +  "EntityPersistenceAPI.php");
+
+		// Utility classes
+		this.generateArtifact(module, null, 
+			"utils/wordpress/custom-fields-php.ftl", includeUtilOutputDir + "CloderiaCustomFieldsUtils.php");
+		this.generateArtifact(module, null, 
+			"utils/wordpress/custom-post-php.ftl", includeUtilOutputDir + "CloderiaCustomPostTypesUtils.php");
+		this.generateArtifact(module, null, 
+			"utils/wordpress/menu-utils-php.ftl", includeUtilOutputDir + "CloderiaMenuUtils.php");
+		this.generateArtifact(module, null, 
+			"utils/wordpress/template-functions-php.ftl", includeUtilOutputDir + "CloderiaTemplateFunctions.php");
+	}
+
+	private void doServices(Module module) {
+		String includeServiceOutputDir = this.pluginDir + "includes/service/";
+		this.generateArtifact(module, null, 
+					"services/wordpress/dashboard-service-php.ftl" , includeServiceOutputDir +  "DashboardService.php");
+	}
+
+	private void doControllers(Module module) {
+		String includeControllerOutputDir = this.pluginDir + "includes/controller/";
+		this.generateArtifact(module, null, 
+					"controllers/wordpress/entity-controller-php.ftl" , includeControllerOutputDir +  "EntityController.php");
+	}
+
+	private void doViews(Module module) {
+		String includeViewOutputDir = this.pluginDir + "includes/view/";
+		this.generateArtifact(module, null, "views/wordpress/entity-view-php.ftl" , includeViewOutputDir +  "EntityView.php");
+	}
+
+	private void doEntityHTML(Module module) {
+		String outputDir = this.pluginDir + "templates/";
+		String entityOutputDir = outputDir + "entity/";
+
+		this.generateArtifact(module, null, "html/wordpress/wrapper-end-php.ftl" , outputDir + "wrapper-end.php");
+		this.generateArtifact(module, null, "html/wordpress/wrapper-start-php.ftl" , outputDir + "wrapper-start.php");
+
+		for(Entity entity: module.getEntities()) {
+
+			String entityName = entity.getName();
+			String createPageTemplate = entity.getCreatePageTemplate();
+			String editPageTemplate = entity.getEditPageTemplate();
+			String viewPageTemplate = entity.getViewPageTemplate();
+			String listPageTemplate = entity.getListPageTemplate();
+			String entityPageOutputDir = entityOutputDir + entityName.toLowerCase() + "/";
+
+			String createPageName = entityPageOutputDir + entityName.toLowerCase() + "-create-form.php";
+			String editPageName = entityPageOutputDir + entityName.toLowerCase() + "-edit-form.php";
+			String viewPageName = entityPageOutputDir + "single-" +  entityName.toLowerCase() + ".php";
+			String listPageName = entityPageOutputDir + entityName.toLowerCase() + "-archive.php";
+			String modalListPageName = entityPageOutputDir + entityName.toLowerCase() + "-modal-archive.php";
+
+			this.createDirectoryIfNeeded(entityPageOutputDir);
+			// Create page
+			/*if(createPageTemplate != null) {
+				this.generateArtifact(module, entity, createPageTemplate, createPageName);
+			}
+			// Edit page
+			if(editPageTemplate != null) {
+				this.generateArtifact(module, entity, editPageTemplate, editPageName);
+			}
+			// View page
+			if(viewPageTemplate != null) {
+				this.generateArtifact(module, entity, viewPageTemplate, viewPageName);
+			}
+			// List Page
+			if(listPageTemplate != null) {
+				this.generateArtifact(module, entity, listPageTemplate, listPageName);
+			}
+			this.generateArtifact(module, entity, "html/wordpress/entity/entity-modal-list.ftl" , modalListPageName);*/
+
+		}
+		
+		//this.generateArtifact(module, null, "html/wordpress/entity/entity-page.ftl" , entityOutputDir + "entity-page.php");
+		this.generateArtifact(module, null, "html/wordpress/entity/entity-create-form.ftl" , entityOutputDir + "entity-create-form.php");
+		this.generateArtifact(module, null, "html/wordpress/entity/entity-edit-form.ftl" , entityOutputDir + "entity-edit-form.php");
+		this.generateArtifact(module, null, "html/wordpress/entity/entity-list.ftl" , entityOutputDir + "entity-archive.php");
+		this.generateArtifact(module, null, "html/wordpress/entity/entity-single.ftl" , entityOutputDir + "single-entity.php");
+		this.generateArtifact(module, null, "html/wordpress/entity/entity-form-end.ftl" , entityOutputDir + "entity-form-end.php");
+		this.generateArtifact(module, null, "html/wordpress/entity/entity-form-start.ftl" , entityOutputDir + "entity-form-start.php");
+		this.generateArtifact(module, null, "html/wordpress/entity/entity-list-end.ftl" , entityOutputDir + "entity-list-end.php");
+		this.generateArtifact(module, null, "html/wordpress/entity/entity-list-start.ftl" , entityOutputDir + "entity-list-start.php");
+		this.generateArtifact(module, null, "html/wordpress/entity/entity-single-end.ftl" , entityOutputDir + "entity-single-end.php");
+		this.generateArtifact(module, null, "html/wordpress/entity/entity-single-start.ftl" , entityOutputDir + "entity-single-start.php");
+		this.generateArtifact(module, null, "html/wordpress/entity/field-wrapper-end.ftl" , entityOutputDir + "field-wrapper-end.php");
+		this.generateArtifact(module, null, "html/wordpress/entity/field-wrapper-start.ftl" , entityOutputDir + "field-wrapper-start.php");
+		this.generateArtifact(module, null, "html/wordpress/entity/form-wrapper-end.ftl" , entityOutputDir + "form-wrapper-end.php");
+		this.generateArtifact(module, null, "html/wordpress/entity/form-wrapper-start.ftl" , entityOutputDir + "form-wrapper-start.php");
+		// Menu Bar
+		this.generateArtifact(module, null, "html/wordpress/menu-php.ftl" , outputDir + "app-menu.php");
+		this.generateArtifact(module, null, "html/wordpress/menu-start-php.ftl" , outputDir + "app-menu-start.php");
+		this.generateArtifact(module, null, "html/wordpress/menu-end-php.ftl" , outputDir + "app-menu-end.php");
+	}
+
+	private void doEntityJSFiles(Module module) {
+		
+		this.generateArtifact(module, null, 
+			"js/wordpress/entity-datatables-js.ftl" , this.pluginDir + "js/entity-datatables.js");
+		this.generateArtifact(module, null, 
+			"js/wordpress/entity-multi-datatables-js.ftl" , this.pluginDir + "js/entity-multi-datatables.js");
+
+		for(Entity entity : module.getEntities()){
+			if(entity.getJsPageTemplate() != null){
+				this.generateArtifact(module, entity, entity.getJsPageTemplate() , this.pluginDir + "js/" + entity.getName().toLowerCase() + "-form.js");
+			} 
+		}
+		this.generateArtifact(module, null, 
+			"js/wordpress/entity-form-js.ftl" , this.pluginDir + "js/entity-form.js");
+	}
+
 
 	private void doPages(Module module) {
 		String outputDir = this.pluginDir + "templates/";
@@ -281,144 +420,6 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 		}
 	}
 
-	private void doEnities(Module module) {
-		for(Entity entity: module.getEntities()) {
-			if (entity.getIsVirtual() != null) {
-				if (entity.getIsVirtual().equals("N")) {
-					this.generateArtifact(module, entity, 
-						"entities/wordpress/entity.ftl" , this.pluginDir + "includes/abstracts/" + entity.getName() + "CPT.php");
-					
-				}
-			}
-			else {
-				this.generateArtifact(module, entity, 
-					"entities/wordpress/entity.ftl" , this.pluginDir + "includes/abstracts/" + entity.getName() + "CPT.php");
-			}
-		}
-	}
-
-	private void doServices(Module module) {
-		String includeApiOutputDir = this.pluginDir + "includes/api/";
-		String includeUtilOutputDir = this.pluginDir + "includes/utils/";
-
-		this.generateArtifact(module, null, 
-					"services/wordpress/entity-service-api.ftl" , includeApiOutputDir +  "EntityController.php");
-
-		for(Entity entity: module.getEntities()) {
-			//System.out.println("Processing entity service: " + entity.getName());
-			String entityName = entity.getName();
-			if(entity.getApiTemplate() != null){
-				this.generateArtifact(module, entity, entity.getApiTemplate() , includeApiOutputDir + entityName + "API.php");
-			} 
-			else {
-				this.generateArtifact(module, entity, 
-					"services/wordpress/entity-service-api.ftl" , includeApiOutputDir + entityName + "API.php");
-			}
-			this.generateArtifact(module, entity, 
-				"services/wordpress/custom-fields-php.ftl" , includeUtilOutputDir + "CloderiaCustomFieldsUtils.php");
-			this.generateArtifact(module, entity, 
-				"services/wordpress/custom-post-php.ftl" , includeUtilOutputDir + "CloderiaCustomPostTypesUtils.php");
-			this.generateArtifact(module, entity, 
-				"services/wordpress/menu-utils-php.ftl" , includeUtilOutputDir + "CloderiaMenuUtils.php");
-			this.generateArtifact(module, entity, 
-				"services/wordpress/template-functions-php.ftl" , includeUtilOutputDir + "CloderiaTemplateFunctions.php");
-
-			this.generateArtifact(module, entity, 
-				"services/wordpress/ui-display-php.ftl" , includeApiOutputDir + "CloderiaUIDisplayAPI.php");
-		}
-		this.generateArtifact(module, null, 
-			"services/wordpress/page-controller-php.ftl" , includeApiOutputDir + "PageControllerAPI.php");
-	}
-
-	private void doEntityHTML(Module module) {
-		String outputDir = this.pluginDir + "templates/";
-		String entityOutputDir = outputDir + "entity/";
-
-		this.generateArtifact(module, null, "html/wordpress/wrapper-end-php.ftl" , outputDir + "wrapper-end.php");
-		this.generateArtifact(module, null, "html/wordpress/wrapper-start-php.ftl" , outputDir + "wrapper-start.php");
-
-		for(Entity entity: module.getEntities()) {
-
-			String entityName = entity.getName();
-			String createPageTemplate = entity.getCreatePageTemplate();
-			String editPageTemplate = entity.getEditPageTemplate();
-			String viewPageTemplate = entity.getViewPageTemplate();
-			String listPageTemplate = entity.getListPageTemplate();
-			String entityPageOutputDir = entityOutputDir + entityName.toLowerCase() + "/";
-
-			String createPageName = entityPageOutputDir + entityName.toLowerCase() + "-create-form.php";
-			String editPageName = entityPageOutputDir + entityName.toLowerCase() + "-edit-form.php";
-			String viewPageName = entityPageOutputDir + "single-" +  entityName.toLowerCase() + ".php";
-			String listPageName = entityPageOutputDir + entityName.toLowerCase() + "-archive.php";
-			String modalListPageName = entityPageOutputDir + entityName.toLowerCase() + "-modal-archive.php";
-
-
-			this.createDirectoryIfNeeded(entityPageOutputDir);
-			// Create page
-			if(createPageTemplate != null) {
-				this.generateArtifact(module, entity, createPageTemplate, createPageName);
-			}
-			else {
-				this.generateArtifact(module, entity, "html/wordpress/entity/entity-create-form.ftl" , createPageName);
-			}
-			// Edit page
-			if(editPageTemplate != null) {
-				this.generateArtifact(module, entity, editPageTemplate, editPageName);
-			}
-			else {
-				this.generateArtifact(module, entity, "html/wordpress/entity/entity-edit-form.ftl" , editPageName);
-			}
-			// View page
-			if(viewPageTemplate != null) {
-				this.generateArtifact(module, entity, viewPageTemplate, viewPageName);
-			}
-			else {
-				this.generateArtifact(module, entity, "html/wordpress/entity/entity-single.ftl" , viewPageName);
-			}
-			// List Page
-			if(listPageTemplate != null) {
-				this.generateArtifact(module, entity, listPageTemplate, listPageName);
-			}
-			else {
-				this.generateArtifact(module, entity, "html/wordpress/entity/entity-list.ftl" , listPageName);
-			}
-			this.generateArtifact(module, entity, "html/wordpress/entity/entity-modal-list.ftl" , modalListPageName);
-
-		}
-		
-		//this.generateArtifact(module, null, "html/wordpress/entity/entity-page.ftl" , entityOutputDir + "entity-page.php");
-
-		this.generateArtifact(module, null, "html/wordpress/entity/entity-form-end.ftl" , entityOutputDir + "entity-form-end.php");
-		this.generateArtifact(module, null, "html/wordpress/entity/entity-form-start.ftl" , entityOutputDir + "entity-form-start.php");
-		this.generateArtifact(module, null, "html/wordpress/entity/entity-list-end.ftl" , entityOutputDir + "entity-list-end.php");
-		this.generateArtifact(module, null, "html/wordpress/entity/entity-list-start.ftl" , entityOutputDir + "entity-list-start.php");
-		this.generateArtifact(module, null, "html/wordpress/entity/entity-single-end.ftl" , entityOutputDir + "entity-single-end.php");
-		this.generateArtifact(module, null, "html/wordpress/entity/entity-single-start.ftl" , entityOutputDir + "entity-single-start.php");
-		this.generateArtifact(module, null, "html/wordpress/entity/field-wrapper-end.ftl" , entityOutputDir + "field-wrapper-end.php");
-		this.generateArtifact(module, null, "html/wordpress/entity/field-wrapper-start.ftl" , entityOutputDir + "field-wrapper-start.php");
-		this.generateArtifact(module, null, "html/wordpress/entity/form-wrapper-end.ftl" , entityOutputDir + "form-wrapper-end.php");
-		this.generateArtifact(module, null, "html/wordpress/entity/form-wrapper-start.ftl" , entityOutputDir + "form-wrapper-start.php");
-		// Menu Bar
-		this.generateArtifact(module, null, "html/wordpress/menu-php.ftl" , outputDir + "app-menu.php");
-		this.generateArtifact(module, null, "html/wordpress/menu-start-php.ftl" , outputDir + "app-menu-start.php");
-		this.generateArtifact(module, null, "html/wordpress/menu-end-php.ftl" , outputDir + "app-menu-end.php");
-	}
-
-	private void doJSFiles(Module module) {
-		
-		this.generateArtifact(module, null, 
-			"js/wordpress/entity-datatables-js.ftl" , this.pluginDir + "js/entity-datatables.js");
-		this.generateArtifact(module, null, 
-			"js/wordpress/entity-multi-datatables-js.ftl" , this.pluginDir + "js/entity-multi-datatables.js");
-
-		for(Entity entity : module.getEntities()){
-			if(entity.getJsPageTemplate() != null){
-				this.generateArtifact(module, entity, entity.getJsPageTemplate() , this.pluginDir + "js/" + entity.getName().toLowerCase() + "-form.js");
-			} 
-		}
-		this.generateArtifact(module, null, 
-			"js/wordpress/entity-form-js.ftl" , this.pluginDir + "js/entity-form.js");
-	}
 	
 	private void generateArtifact(Module module, Entity entity, String tmplFile,
 			String outFile) {

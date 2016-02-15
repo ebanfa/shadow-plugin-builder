@@ -98,7 +98,7 @@ class EntityRequestUtils {
     /**
      *
      */
-    public static function build_query_from_form_data($entity_data) {
+    public static function build_criteria_from_form_data($entity_data) {
         $criteria_data = array();
         $form_data = $_POST['form'];
         foreach($form_data as $field){
@@ -108,7 +108,7 @@ class EntityRequestUtils {
               $criteria_data[$name] = $value;
           }
         }
-        return EntityPersistenceController::build_query_from_criteria($entity_data, $criteria_data);
+        return $criteria_data;
     }
 
     /**

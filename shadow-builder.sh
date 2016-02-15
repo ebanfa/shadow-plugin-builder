@@ -36,12 +36,14 @@ build_plugin_directory () {
     mkdir $TARGET/$PLUGIN_NAME/data
     mkdir $TARGET/$PLUGIN_NAME/images
     mkdir $TARGET/$PLUGIN_NAME/includes
+    mkdir $TARGET/$PLUGIN_NAME/includes/view
+    mkdir $TARGET/$PLUGIN_NAME/includes/controller
+    mkdir $TARGET/$PLUGIN_NAME/includes/service
     mkdir $TARGET/$PLUGIN_NAME/includes/api
+    mkdir $TARGET/$PLUGIN_NAME/includes/abstracts
     mkdir $TARGET/$PLUGIN_NAME/includes/font
     mkdir $TARGET/$PLUGIN_NAME/includes/utils
     mkdir $TARGET/$PLUGIN_NAME/includes/admin
-    mkdir $TARGET/$PLUGIN_NAME/includes/abstracts
-    mkdir $TARGET/$PLUGIN_NAME/includes/service
     mkdir $TARGET/$PLUGIN_NAME/templates
     mkdir $TARGET/$PLUGIN_NAME/templates/page
     mkdir $TARGET/$PLUGIN_NAME/templates/entity

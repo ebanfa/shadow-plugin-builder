@@ -72,12 +72,14 @@ class ${application.name} {
 <#list module.entities as entity>
         include_once('includes/abstracts/${entity.name}CPT.php');
 </#list>
-        // Controller
-        include_once('includes/api/EntityController.php');
-        include_once('includes/api/EntityPersistenceController.php');
-        // View
-        include_once('includes/api/EntityView.php');
-        // API
+        // Entity API
+        include_once('includes/api/EntityAPI.php');
+        include_once('includes/api/EntityPersistenceAPI.php');
+        // Entity Controller
+        include_once('includes/controller/EntityController.php');
+        // Entity View
+        include_once('includes/view/EntityView.php');
+        // Framework API
         include_once('includes/api/CloderiaFileAPI.php');
         include_once('includes/api/CloderiaUserAPI.php');
         include_once('includes/api/PageControllerAPI.php');
@@ -91,7 +93,7 @@ class ${application.name} {
         // Utility Classes
         include_once('includes/utils/EntityStringUtils.php');
         include_once('includes/utils/EntityRequestUtils.php');
-        include_once('includes/utils/EntityControllerUtils.php');
+        include_once('includes/utils/EntityAPIUtils.php');
 
         include_once('includes/utils/CloderiaUserUtils.php');
         include_once('includes/utils/CloderiaCustomFieldsUtils.php');
@@ -117,7 +119,7 @@ class ${application.name} {
         // Setup Ajax
         add_action('template_redirect', 'CloderiaAdminAPI::do_ajax_setup');
 
-        EntityController::init_ajax_hooks();
+        EntityAPI::init_ajax_hooks();
         //Order related Ajax functions
         #add_action('wp_ajax_do_content_order_ajax', 'CloderiaOrdersAPI::do_content_order_ajax');
         #add_action('wp_ajax_nopriv_do_content_order_ajax', 'CloderiaOrdersAPI::do_content_order_ajax');
@@ -131,7 +133,6 @@ class ${application.name} {
     public function init_backend_hooks() {
         //
         add_action('cloderia_create_shadow_user', 'CloderiaUserAPI::create_shadow_user', 10, 1);
-        add_action('cloderia_create_shadow_loan', 'CloderiaLoanAPI::create_shadow_loan', 10, 1);
         add_action('shadowbanker_notify_user', 'NotificationAPI::do_notification', 10, 1);
     }
 
