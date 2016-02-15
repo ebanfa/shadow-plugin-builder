@@ -76,7 +76,7 @@ class ${application.name} {
         include_once('includes/api/EntityController.php');
         include_once('includes/api/EntityPersistenceController.php');
         // View
-        include_once('includes/service/EntityView.php');
+        include_once('includes/api/EntityView.php');
         // API
         include_once('includes/api/CloderiaFileAPI.php');
         include_once('includes/api/CloderiaUserAPI.php');
@@ -117,9 +117,7 @@ class ${application.name} {
         // Setup Ajax
         add_action('template_redirect', 'CloderiaAdminAPI::do_ajax_setup');
 
-<#list module.entities as entity>
-        ${entity.name}API::init_ajax_hooks();
-</#list>
+        EntityController::init_ajax_hooks();
         FundsService::init_ajax_hooks();
         LoanApplicationService::init_ajax_hooks();
         //Order related Ajax functions
