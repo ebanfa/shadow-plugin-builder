@@ -175,8 +175,8 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 			doServices(module);
 			doControllers(module);
 			doViews(module);
-			doEntityHTML(module);
-			doEntityJSFiles(module);
+			//doEntityHTML(module);
+			//doEntityJSFiles(module);
 			doPages(module);
 			doMenuHTML(application);
 		}
