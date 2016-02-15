@@ -188,7 +188,7 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 			List<Field> fieldsInEntity = entity.getFields();
 			// Process the fields in the entity
 			for(Field field : fieldsInEntity){
-				System.out.println("Processing: " + entity.getName() + " field " + fieldName + "");
+				System.out.println("Processing: " + entity.getName() + " field " + field.getName() + "");
 				// Only process relationship fields
 				if(field.getRelationshipField().equals("Y")){
 					//System.out.println("Found a relationship field: " + field.getName() + " of type: " + field.getDataType());
