@@ -172,6 +172,7 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 			doComponents(module);
 			doEnities(module);
 			doAPI(module);
+			doUtilities(module);
 			doServices(module);
 			doControllers(module);
 			doViews(module);
@@ -252,10 +253,13 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 			"components/wordpress/plugin-php.ftl" , this.pluginDir + this.application.getName() + ".php");
 
 		this.generateArtifact(module, null, 
-			"components/wordpress/artifact-utils-php.ftl" , this.pluginDir +"includes/utils/" + "ArtifactUtils.php");
+			"components/wordpress/readme-md.ftl" , this.pluginDir + "README.md");
+	}
+
+	private void doUtilities(Module module) {
 
 		this.generateArtifact(module, null, 
-			"components/wordpress/readme-md.ftl" , this.pluginDir + "README.md");
+			"utils/wordpress/artifact-utils-php.ftl" , this.pluginDir +"includes/utils/" + "ArtifactUtils.php");
 	}
 
 	private void doEnities(Module module) {

@@ -94,6 +94,7 @@ class ${application.name} {
         include_once('includes/utils/EntityStringUtils.php');
         include_once('includes/utils/EntityRequestUtils.php');
         include_once('includes/utils/EntityAPIUtils.php');
+        include_once('includes/utils/ArtifactUtils.php');
 
         include_once('includes/utils/CloderiaUserUtils.php');
         include_once('includes/utils/CloderiaCustomFieldsUtils.php');
