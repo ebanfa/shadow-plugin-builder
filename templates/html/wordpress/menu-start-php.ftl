@@ -20,7 +20,7 @@ if (!defined('ABSPATH')) {
                     </div>
 
                     <div class="profile-info">
-                        <?php echo $current_user_party['user_name'];?>
+                        <?php //echo $current_user_party['user_name'];?>
 
                         <i class="md md-arrow-drop-down"></i>
                     </div>
