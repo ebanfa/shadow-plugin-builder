@@ -893,7 +893,7 @@
 			<postName>sb_roletype</postName>
 			<description>Role Type</description>
 			<global>Y</global>
-			<apiTemplate>services/wordpress/roletype/roletype-service-api.ftl</apiTemplate>
+			<!-- <apiTemplate>services/wordpress/roletype/roletype-service-api.ftl</apiTemplate> -->
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
@@ -1056,7 +1056,7 @@
 			<postName>sb_businessunit</postName>
 			<description>Business Unit</description>
 			<global>N</global>
-			<apiTemplate>services/wordpress/businessunit/businessunit-service-api.ftl</apiTemplate>
+			<!-- <apiTemplate>services/wordpress/businessunit/businessunit-service-api.ftl</apiTemplate> -->
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
@@ -1209,7 +1209,7 @@
 			<postName>sb_partyrole</postName>
 			<description>Party Role</description>
 			<global>N</global>
-			<apiTemplate>services/wordpress/partyrole/partyrole-service-api.ftl</apiTemplate>
+			<!-- <apiTemplate>services/wordpress/partyrole/partyrole-service-api.ftl</apiTemplate> -->
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
@@ -1329,10 +1329,10 @@
 			<postName>sb_partygroup</postName>
 			<description>Party Group</description>
 			<global>N</global>
-			<createPageTemplate>html/wordpress/entity/partygroup/partygroup-create-form.ftl</createPageTemplate>
+			<!-- <createPageTemplate>html/wordpress/entity/partygroup/partygroup-create-form.ftl</createPageTemplate>
 			<editPageTemplate>html/wordpress/entity/partygroup/partygroup-edit-form.ftl</editPageTemplate>
 			<viewPageTemplate>html/wordpress/entity/partygroup/partygroup-single.ftl</viewPageTemplate>
-			<apiTemplate>services/wordpress/partygroup/partygroup-service-api.ftl</apiTemplate>
+			<apiTemplate>services/wordpress/partygroup/partygroup-service-api.ftl</apiTemplate> -->
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
@@ -1452,10 +1452,10 @@
 			<postName>sb_persom</postName>
 			<description>Person</description>
 			<global>N</global>
-			<createPageTemplate>html/wordpress/entity/person/person-create-form.ftl</createPageTemplate>
+			<!-- <createPageTemplate>html/wordpress/entity/person/person-create-form.ftl</createPageTemplate>
 			<editPageTemplate>html/wordpress/entity/person/person-edit-form.ftl</editPageTemplate>
 			<viewPageTemplate>html/wordpress/entity/person/person-single.ftl</viewPageTemplate>
-			<apiTemplate>services/wordpress/person/person-service-api.ftl</apiTemplate>
+			<apiTemplate>services/wordpress/person/person-service-api.ftl</apiTemplate> -->
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
@@ -1607,7 +1607,7 @@
 			<postName>sb_partyprofile</postName>
 			<description>Party Profile</description>
 			<global>N</global>
-			<apiTemplate>services/wordpress/partyprofile/partyprofile-service-api.ftl</apiTemplate>
+			<!-- <apiTemplate>services/wordpress/partyprofile/partyprofile-service-api.ftl</apiTemplate> -->
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
@@ -7274,8 +7274,8 @@
 			<description>Tenant Agreement</description>
 			<global>Y</global>
 			<isVirtual>N</isVirtual>
-            <createPageTemplate>html/wordpress/entity/tenantagreement/tenantagreement-create-form.ftl</createPageTemplate>
-			<apiTemplate>services/wordpress/tenantagreement/tenantagreement-service-api.ftl</apiTemplate> 
+            <!-- <createPageTemplate>html/wordpress/entity/tenantagreement/tenantagreement-create-form.ftl</createPageTemplate>
+			<apiTemplate>services/wordpress/tenantagreement/tenantagreement-service-api.ftl</apiTemplate>  -->
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
@@ -11468,8 +11468,8 @@
 			<postName>sb_conversation</postName>
 			<description>Conversation</description>
 			<global>Y</global>
-            <listPageTemplate>html/wordpress/entity/conversation/conversation-archive.ftl</listPageTemplate>
-			<apiTemplate>services/wordpress/conversation/conversation-service-api.ftl</apiTemplate>
+            <!-- <listPageTemplate>html/wordpress/entity/conversation/conversation-archive.ftl</listPageTemplate>
+			<apiTemplate>services/wordpress/conversation/conversation-service-api.ftl</apiTemplate> -->
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
@@ -11556,7 +11556,7 @@
 			<postName>sb_message</postName>
 			<description>Message</description>
 			<global>Y</global>
-			<apiTemplate>services/wordpress/message/message-service-api.ftl</apiTemplate>
+			<!-- <apiTemplate>services/wordpress/message/message-service-api.ftl</apiTemplate> -->
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
@@ -11978,8 +11978,8 @@
 			<postName>sb_notification</postName>
 			<description>Notification</description>
 			<global>N</global>
-            <viewPageTemplate>html/wordpress/entity/notification/single-notification.ftl</viewPageTemplate>
-			<apiTemplate>services/wordpress/notification/notification-service-api.ftl</apiTemplate>
+            <!-- <viewPageTemplate>html/wordpress/entity/notification/single-notification.ftl</viewPageTemplate>
+			<apiTemplate>services/wordpress/notification/notification-service-api.ftl</apiTemplate> -->
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
