@@ -7,7 +7,7 @@
 	    exit; // Exit if accessed directly
 	}
 	$page_info = $_REQUEST['page_info'];
-	$page_name = sanitize_text_field($page_info['display_name']);
+	$page_name = sanitize_text_field($page_info['artifact_display_name']);
 //	$page_action = sanitize_text_field($page_info['page_action']);
 ?>
 <section id="content">

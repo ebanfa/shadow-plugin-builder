@@ -27,7 +27,7 @@ class ArtifactRequestProcessor {
         $page_info['page_action_description'] = self::$page_actions[$page_info['page_action']];
         $page_info['artifact_name'] = ArtifactUtils::$artifacts[$page_info['artifact']]['name'];
         $page_info['artifact_type'] = ArtifactUtils::$artifacts[$page_info['artifact']]['artifact_type'];
-        $page_info['artifact_display_name'] = ArtifactUtils::$artifacts[$page_info['artifact']['description']];
+        $page_info['artifact_display_name'] = ArtifactUtils::$artifacts[$page_info['artifact']]['description'];
         
         $_REQUEST['page_info'] = $page_info;
         if($page_info['artifact_type'] === 'entity'){
