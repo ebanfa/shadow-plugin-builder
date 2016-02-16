@@ -362,16 +362,10 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 		this.generateArtifact(module, null, "html/wordpress/entity/entity-edit-form.ftl" , entityOutputDir + "entity-edit-form.php");
 		this.generateArtifact(module, null, "html/wordpress/entity/entity-list.ftl" , entityOutputDir + "entity-archive.php");
 		this.generateArtifact(module, null, "html/wordpress/entity/entity-single.ftl" , entityOutputDir + "single-entity.php");
-		this.generateArtifact(module, null, "html/wordpress/entity/entity-form-end.ftl" , entityOutputDir + "entity-form-end.php");
-		this.generateArtifact(module, null, "html/wordpress/entity/entity-form-start.ftl" , entityOutputDir + "entity-form-start.php");
-		this.generateArtifact(module, null, "html/wordpress/entity/entity-list-end.ftl" , entityOutputDir + "entity-list-end.php");
-		this.generateArtifact(module, null, "html/wordpress/entity/entity-list-start.ftl" , entityOutputDir + "entity-list-start.php");
-		this.generateArtifact(module, null, "html/wordpress/entity/entity-single-end.ftl" , entityOutputDir + "entity-single-end.php");
-		this.generateArtifact(module, null, "html/wordpress/entity/entity-single-start.ftl" , entityOutputDir + "entity-single-start.php");
 		this.generateArtifact(module, null, "html/wordpress/entity/field-wrapper-end.ftl" , entityOutputDir + "field-wrapper-end.php");
 		this.generateArtifact(module, null, "html/wordpress/entity/field-wrapper-start.ftl" , entityOutputDir + "field-wrapper-start.php");
-		this.generateArtifact(module, null, "html/wordpress/entity/form-wrapper-end.ftl" , entityOutputDir + "form-wrapper-end.php");
-		this.generateArtifact(module, null, "html/wordpress/entity/form-wrapper-start.ftl" , entityOutputDir + "form-wrapper-start.php");
+		this.generateArtifact(module, null, "html/wordpress/entity/artifact-wrapper-end.ftl" , entityOutputDir + "form-wrapper-end.php");
+		this.generateArtifact(module, null, "html/wordpress/entity/artifact-wrapper-start.ftl" , entityOutputDir + "form-wrapper-start.php");
 		// Menu Bar
 		this.generateArtifact(module, null, "html/wordpress/menu-php.ftl" , outputDir + "app-menu.php");
 		this.generateArtifact(module, null, "html/wordpress/menu-start-php.ftl" , outputDir + "app-menu-start.php");
