@@ -6,8 +6,8 @@
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
-//if (is_user_logged_in()) {
-   //     $current_user = wp_get_current_user();
+if (is_user_logged_in()) {
+        $current_user = wp_get_current_user();
 ?>
 
 <?php do_action('shadowbanker_before_app_menu') ?>
@@ -40,4 +40,4 @@ if (!defined('ABSPATH')) {
 
 <?php do_action('shadowbanker_after_app_menu') ?>
 
-<?php //} ?>
+<?php } ?>

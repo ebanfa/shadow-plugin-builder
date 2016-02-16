@@ -8,7 +8,7 @@ if (!defined('ABSPATH')) {
 }
 
     $current_user = wp_get_current_user();
-    //$current_user_party = PartyAPI::get_user_party($current_user->ID);
+    $current_user_party = PartyAPI::get_user_party($current_user->ID);
 ?>
 <aside id="sidebar">
     <div class="sidebar-inner">
@@ -20,7 +20,7 @@ if (!defined('ABSPATH')) {
                     </div>
 
                     <div class="profile-info">
-                        <?php //echo $current_user_party['user_name'];?>
+                        <?php echo $current_user_party['user_name'];?>
 
                         <i class="md md-arrow-drop-down"></i>
                     </div>
