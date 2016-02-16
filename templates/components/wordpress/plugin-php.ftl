@@ -79,7 +79,10 @@ class ${application.name} {
         // Entity Controller
         include_once('includes/controller/EntityActionProcessor.php');
         // Entity View
-        include_once('includes/view/EntityView.php');
+        include_once('includes/view/CreateEntityView.php');
+        include_once('includes/view/EditEntityView.php');
+        include_once('includes/view/SingleEntityView.php');
+        include_once('includes/view/ListEntityView.php');
         // Framework API
         include_once('includes/api/CloderiaFileAPI.php');
         include_once('includes/api/CloderiaUserAPI.php');

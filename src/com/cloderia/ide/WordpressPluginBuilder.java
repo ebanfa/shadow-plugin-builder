@@ -323,7 +323,10 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 
 	private void doViews(Module module) {
 		String includeViewOutputDir = this.pluginDir + "includes/view/";
-		this.generateArtifact(module, null, "views/wordpress/entity-view-php.ftl" , includeViewOutputDir +  "EntityView.php");
+		this.generateArtifact(module, null, "views/wordpress/create-entity-view-php.ftl" , includeViewOutputDir +  "CreateEntityView.php");
+		this.generateArtifact(module, null, "views/wordpress/edit-entity-view-php.ftl" , includeViewOutputDir +  "EditEntityView.php");
+		this.generateArtifact(module, null, "views/wordpress/single-entity-view-php.ftl" , includeViewOutputDir +  "SingleEntityView.php");
+		this.generateArtifact(module, null, "views/wordpress/list-entity-view-php.ftl" , includeViewOutputDir +  "ListEntityView.php");
 	}
 
 	private void doEntityHTML(Module module) {
