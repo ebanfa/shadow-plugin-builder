@@ -49,7 +49,7 @@ class EntityPersistenceAPI {
      *
      */
     public static function get_entity_by_id($entity_data, $id){
-        return EntityControllerUtils::entity_to_data($entity_data, get_post($id), false);
+        return EntityAPIUtils::entity_to_data($entity_data, get_post($id), false);
     }
 
     /**
@@ -69,7 +69,7 @@ class EntityPersistenceAPI {
         $entityQuery = new WP_Query($entityQueryArgs);
         while ($entityQuery->have_posts()) : $entityQuery->the_post();
             $entity = $entityQuery->post;
-            $entity_data = EntityControllerUtils::entity_to_data($entity_data, $entity, false);
+            $entity_data = EntityAPIUtils::entity_to_data($entity_data, $entity, false);
         endwhile;
         return $entity_data;
     }
