@@ -87,14 +87,21 @@ class EntityAPIUtils {
 
         }
         // Check if artifact to entity name mapping exists
-        if (!isset(ArtifactUtils::$entity_map[$artifact_name])) {
+        if (!isset(ArtifactUtils::$artifacts[$artifact_name])) {
             $entity_data['has_errors'] = true;
             $entity_data['error_message'] = 'Artifact not found';
             return $entity_data;
         }
+        // Check the type of the artifact
+        $artifact_type = ArtifactUtils::$artifacts[$artifact_name]['artifact_type']
+        if ($artifact_type != 'entity') {
+            $entity_data['has_errors'] = true;
+            $entity_data['error_message'] = 'Artifact is not an entity';
+            return $entity_data;
+        }
         // Use reflection to get the post name and entity fields from
         // the model class
-        $entity_name = ArtifactUtils::$entity_map[$artifact_name] . 'CPT';
+        $entity_name = ArtifactUtils::$artifacts[$artifact_name]['name'] . 'CPT';
         $entity_class = new ReflectionClass($entity_name);
         $post_name = $entity_class->getStaticPropertyValue('post_name');
         // Check the ajax request

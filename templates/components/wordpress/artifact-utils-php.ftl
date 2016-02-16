@@ -10,13 +10,26 @@ if (!defined('ABSPATH')) {
 
 class ArtifactUtils {
 
-    /**
-     *
-     */
-    $entity_map = array(
+    public static $pages = array(
+<#list menuBar.menuGroups as group>
+    <#if group.type == "menu">
+        <#if group.targetType == "page">
+       '${group.name}' => '${group.displayName}',
+        </#if>
+    </#if>
+    <#if group.type == "group">
+        <#list group.menus as menu>
+            <#if menu.targetType == "page">
+       '${menu.name}' => '${menu.displayName}',
+            </#if>
+        </#list>
+    </#if>
+</#list>
+    );
+    public static $entities = array(
 <#list module.entities as entity>
-    '${entity.name?lower_case}' => '${entity.name}',
-</#list>   
+        '${entity.name?lower_case}' => array('name' => '${entity.name}', 'description' => '${entity.description}'),
+</#list>
     );
     
 }

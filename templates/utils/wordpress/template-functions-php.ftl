@@ -62,6 +62,28 @@ function cp_get_template($template_name, $args = array(), $template_path = '', $
 }
 
 /**
+ * Get other templates (e.g. product attributes) passing attributes and including the file.
+ *
+ * @access public
+ * @param string $template_name
+ * @param array $args (default: array())
+ * @param string $template_path (default: '')
+ * @param string $default_path (default: '')
+ */
+function cp_template_exists($template_name, $args = array(), $template_path = '', $default_path = '') {
+    if ($args && is_array($args)) {
+        extract($args);
+    }
+
+    $located = cp_locate_template($template_name, $template_path, $default_path);
+
+    if (file_exists($located)) {
+        return true;
+    }
+    return false;
+}
+
+/**
  * Locate a template and return the path for inclusion.
  *
  * This is the load order:

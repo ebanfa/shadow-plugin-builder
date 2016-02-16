@@ -29,86 +29,71 @@ class CloderiaUIDisplayAPI {
     public static function after_app_menu() {
         cp_get_template('app-menu-end.php');
     }
-    
-    public static function show_notification_items() {
-        cp_get_template('page/notification-items.php');
-    }
-    
-    public static function show_user_conversations() {
-        cp_get_template('page/user-conversations.php');
-    }
 
-    public static function show_latest_user_conversation(){
-	cp_get_template('page/latest-user-conversation.php');
-    }
-
-    public static function display_page($page_name){
-        cp_get_template('page/'. $page_name .'.php');
+    public static function display_page($page_info){
+        cp_get_template('page/'. $page_info['artifact'] .'.php');
     }
 
     public static function display_entity_page(){
         cp_get_template('entity/entity-page.php');
     }
 
-    public static function display_single_entity($post_type) {
-        cp_get_template('entity/' . $post_type . '/single-'. $post_type .'.php');
+    public static function display_single_entity($page_info) {
+        $artifact = sanitize_text_field($page_info['artifact']);
+        $custom_artifact_template = 'entity/' . $artifact . '/single-'. $artifact .'.php';
+
+        if(cp_template_exists($custom_artifact_template)){
+            cp_get_template($custom_artifact_template);
+        } else {
+            cp_get_template('entity/single-entity-form.php');
+        }
     }
         
-    public static function display_entity_create_form($post_type) {
-        cp_get_template('entity/' . $post_type . '/'. $post_type. '-create-form.php');
+    public static function display_entity_create_form($page_info) {
+        $artifact = sanitize_text_field($page_info['artifact']);
+        $custom_artifact_template = 'entity/' . $artifact . '/'. $artifact. '-create-form.php';
+
+        if(cp_template_exists($custom_artifact_template)){
+            cp_get_template($custom_artifact_template);
+        } else {
+            cp_get_template('entity/entity-create-form.php');
+        }
     }
 
-    public static function display_entity_edit_form($post_type) {
-        cp_get_template('entity/' . $post_type . '/'. $post_type. '-edit-form.php');
+    public static function display_entity_edit_form($page_info) {
+        $artifact = sanitize_text_field($page_info['artifact']);
+        $custom_artifact_template = 'entity/' . $artifact . '/'. $artifact. '-edit-form.php';
+
+        if(cp_template_exists($custom_artifact_template)){
+            cp_get_template($custom_artifact_template);
+        } else {
+            cp_get_template('entity/entity-edit-form.php');
+        }
     }
 
-    public static function display_entity_archive($post_type) {
-        cp_get_template('entity/' . $post_type . '/'. $post_type. '-archive.php');
+    public static function display_entity_archive($page_info) {
+        $artifact = sanitize_text_field($page_info['artifact']);
+        $custom_artifact_template = 'entity/' . $artifact . '/'. $artifact. '-archive.php';
+
+        if(cp_template_exists($custom_artifact_template)){
+            cp_get_template($custom_artifact_template);
+        } else {
+            cp_get_template('entity/entity-archive.php');
+        }
     }
 
-    public static function display_entity_modal_archive($post_type) {
-        cp_get_template('entity/' . $post_type . '/'. $post_type. '-modal-archive.php');
-    }
-
-    public static function before_entity_form() {
-        cp_get_template('entity/form-wrapper-start.php');
+    public static function before_artifact_content() {
+        cp_get_template('entity/artifact-wrapper-start.php');
     }
     
-    public static function after_entity_form() {
-        cp_get_template('entity/form-wrapper-end.php');
+    public static function the_artifact_content($view) {
+        $view->render();
     }
     
-    public static function entity_form_start() {
-        cp_get_template('entity/entity-form-start.php');
+    public static function after_artifact_content() {
+        cp_get_template('entity/artifact-wrapper-end.php');
     }
     
-    public static function entity_form_end() {
-        cp_get_template('entity/entity-form-end.php');
-    }
-    
-    public static function before_entity_form_field() {
-        cp_get_template('entity/field-wrapper-start.php');
-    }
-    
-    public static function after_entity_form_field() {
-        cp_get_template('entity/field-wrapper-end.php');
-    }
-
-    public static function before_single_entity() {
-        cp_get_template('entity/entity-single-start.php');
-    }
-    
-    public static function after_single_entity() {
-        cp_get_template('entity/entity-single-end.php');
-    }
-
-    public static function before_list_entity() {
-        cp_get_template('entity/entity-list-start.php');
-    }
-    
-    public static function after_list_entity() {
-        cp_get_template('entity/entity-list-end.php');
-    }
     
 
 }

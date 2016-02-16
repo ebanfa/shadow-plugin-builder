@@ -147,37 +147,18 @@ class ${application.name} {
         add_action('shadowbanker_show_app_menu', 'CloderiaUIDisplayAPI::display_app_menu', 10);
         add_action('shadowbanker_before_app_menu', 'CloderiaUIDisplayAPI::before_app_menu', 10);
         add_action('shadowbanker_after_app_menu', 'CloderiaUIDisplayAPI::after_app_menu', 10);
-        add_action('shadowbanker_display_notifications_items', 'CloderiaUIDisplayAPI::show_notification_items', 10);
-        add_action('showdow_banker_display_user_conversations', 'CloderiaUIDisplayAPI::show_user_conversations', 10); 
-        add_action('showdow_banker_display_latest_user_conversation', 'CloderiaUIDisplayAPI::show_latest_user_conversation', 10);
+        //add_action('shadowbanker_display_notifications_items', 'CloderiaUIDisplayAPI::show_notification_items', 10);
+        //add_action('showdow_banker_display_user_conversations', 'CloderiaUIDisplayAPI::show_user_conversations', 10); 
+        //add_action('showdow_banker_display_latest_user_conversation', 'CloderiaUIDisplayAPI::show_latest_user_conversation', 10);
 
         // Page display functions
-        add_action('shadowbanker_process_page_request', 'PageControllerAPI::handle_page_request', 10);
-        /*add_action('shadowbanker_show_page', 'CloderiaUIDisplayAPI::display_page', 10, 1);
-        add_action('shadowbanker_show_single_entity', 'CloderiaUIDisplayAPI::display_single_entity', 10, 1);
-        add_action('shadowbanker_show_entity_create_form', 'CloderiaUIDisplayAPI::display_entity_create_form', 10, 1);
-        add_action('shadowbanker_show_entity_edit_form', 'CloderiaUIDisplayAPI::display_entity_edit_form', 10, 1);
-        add_action('shadowbanker_show_entity_archive', 'CloderiaUIDisplayAPI::display_entity_archive', 10, 1);*/
-
+        add_action('shadowbanker_process_page_request', 'PageControllerAPI::process_artifact_request', 10);
 
         // Entity page display actions
-        add_action('shadowbanker_show_entity_page', 'CloderiaUIDisplayAPI::display_entity_page', 10);
-        add_action('shadowbanker_before_entity_form', 'CloderiaUIDisplayAPI::before_entity_form', 10);
-        add_action('shadowbanker_after_entity_form', 'CloderiaUIDisplayAPI::after_entity_form', 10);
-
-        add_action('shadowbanker_entity_form_start', 'CloderiaUIDisplayAPI::entity_form_start', 10);
-        add_action('shadowbanker_entity_form_end', 'CloderiaUIDisplayAPI::entity_form_end', 10);
-
-        add_action('shadowbanker_before_entity_form_field', 'CloderiaUIDisplayAPI::before_entity_form_field', 10);
-        add_action('shadowbanker_after_entity_form_field', 'CloderiaUIDisplayAPI::after_entity_form_field', 10);
-
-        add_action('shadowbanker_before_single_entity', 'CloderiaUIDisplayAPI::before_single_entity', 10);
-        add_action('shadowbanker_after_single_entity', 'CloderiaUIDisplayAPI::after_single_entity', 10);
-
-        add_action('shadowbanker_before_list_entity', 'CloderiaUIDisplayAPI::before_list_entity', 10);
-        add_action('shadowbanker_after_list_entity', 'CloderiaUIDisplayAPI::after_list_entity', 10);
+        add_action('shadowbanker_before_artifact_content', 'CloderiaUIDisplayAPI::before_artifact_content', 10);
+        add_action('shadowbanker_the_artifact_content', 'CloderiaUIDisplayAPI::the_artifact_content', 10, 1);
+        add_action('shadowbanker_after_artifact_content', 'CloderiaUIDisplayAPI::after_artifact_content', 10);
         
-       
         // Remove admin bar for non admin users
         add_action('after_setup_theme', 'CloderiaAdminAPI::do_remove_admin_bar');
         /*add_action('wp_logout', '${application.name}::redirect_logout_url');*/

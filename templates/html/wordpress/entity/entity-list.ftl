@@ -4,47 +4,17 @@
     if (!defined('ABSPATH')) {
         exit; // Exit if accessed directly
     }
-
+    $view = new ListEntityView();
 ?>
 
-<?php 
-    do_action('shadowbanker_before_main_content');
-    
-    do_action('shadowbanker_before_list_entity');
-?>
-        <form id="${entity.postName}-list-form">
-            <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
-            <input type="hidden" name="submitted" id="submitted" value="true" /> 
-        </form>
-        <div class="table-responsive">
-            <table id="${entity.postName}-table" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-<#list entity.fields as field>
-    <#if field.listField == "Y">
-        <#if field.relationshipField == "N">
-            <th>${field.description}</th>
-        </#if>
+<?php do_action('shadowbanker_before_main_content'); ?>
 
-        <#if field.relationshipField == "Y">
-            <th>${field.description}</th>
-        </#if>
+<?php do_action('shadowbanker_before_artifact_content');?>
 
-                        
-    </#if>
-</#list>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-            
-        </div>
+<?php do_action('shadowbanker_the_artifact_content', $view);?>
 
-    
-<?php 
-    do_action('shadowbanker_after_list_entity'); 
-    
-    do_action('shadowbanker_after_main_content');
-?>
+<?php do_action('shadowbanker_after_artifact_content');?>
+
+<?php do_action('shadowbanker_after_main_content');?>
+
+

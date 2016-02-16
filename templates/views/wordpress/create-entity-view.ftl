@@ -7,7 +7,7 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
-class EntityView {
+class CreateEntityView {
 
     /**
      *
@@ -50,9 +50,7 @@ class EntityView {
             }
         }
     }
-    
-   
-    
-    
 
 }
+
+?>
