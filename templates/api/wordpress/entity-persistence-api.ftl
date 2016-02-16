@@ -103,7 +103,7 @@ class EntityPersistenceAPI {
             
             while ($entity_query->have_posts()) : $entity_query->the_post();
                 $entity = $entity_query->post;
-                array_push($search_results, EntityControllerUtils::entity_to_data($entity_data, $entity, false));
+                array_push($search_results, EntityAPIUtils::entity_to_data($entity_data, $entity, false));
             endwhile;
             wp_reset_postdata();
         }
@@ -121,7 +121,7 @@ class EntityPersistenceAPI {
         
         while ($entity_query->have_posts()) : $entity_query->the_post();
             $entity = $entity_query->post;
-            array_push($search_results, EntityControllerUtils::entity_to_data($entity_data, $entity, false));
+            array_push($search_results, EntityAPIUtils::entity_to_data($entity_data, $entity, false));
         endwhile;
         wp_reset_postdata();
         
