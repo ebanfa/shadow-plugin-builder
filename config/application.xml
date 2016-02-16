@@ -821,7 +821,7 @@
 			<postName>sb_partytype</postName>
 			<description>Party Type</description>
 			<global>Y</global>
-			<apiTemplate>services/wordpress/partytype/partytype-service-api.ftl</apiTemplate>
+			<!-- <apiTemplate>services/wordpress/partytype/partytype-service-api.ftl</apiTemplate> -->
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
@@ -949,9 +949,9 @@
 			<postName>sb_party</postName>
 			<description>Party</description>
 			<global>N</global>
-			<viewPageTemplate>html/wordpress/entity/party/party-single.ftl</viewPageTemplate>
-			<listPageTemplate>html/wordpress/entity/party/party-list.ftl</listPageTemplate>
-			<apiTemplate>services/wordpress/party/party-service-api.ftl</apiTemplate>
+			<!-- <viewPageTemplate>html/wordpress/entity/party/party-single.ftl</viewPageTemplate>
+			<listPageTemplate>html/wordpress/entity/party/party-list.ftl</listPageTemplate> -->
+			<apiTemplate>api/wordpress/party/party-service-api.ftl</apiTemplate>
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
