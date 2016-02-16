@@ -7,9 +7,9 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
     $current_user = wp_get_current_user();
-    $current_user_party = PartyAPI::get_user_party($current_user->ID);
+    //$current_user_party = PartyAPI::get_user_party($current_user->ID);
 
-    $dashboard_stats = DashboardService::get_party_dashboard_stats($current_user_party['id']);
+    //$dashboard_stats = DashboardService::get_party_dashboard_stats($current_user_party['id']);
 ?>
 
 <?php 
@@ -23,7 +23,7 @@ if (!defined('ABSPATH')) {
                                         <div class="chart stats-bar"></div>
                                         <div class="count">
                                             <small>Number Of Properties</small>
-                                            <h2><?php echo $dashboard_stats['property_count'];?></h2>
+                                            <h2><?php //echo $dashboard_stats['property_count'];?></h2>
                                         </div>
                                     </div>
                                 </div>
@@ -35,7 +35,7 @@ if (!defined('ABSPATH')) {
                                         <div class="chart stats-bar-2"></div>
                                         <div class="count">
                                             <small>Number Of Tenants</small>
-                                            <h2><?php echo $dashboard_stats['tenants_count'];?></h2>
+                                            <h2><?php //echo $dashboard_stats['tenants_count'];?></h2>
                                         </div>
                                     </div>
                                 </div>
@@ -47,7 +47,7 @@ if (!defined('ABSPATH')) {
                                         <div class="chart stats-line"></div>
                                         <div class="count">
                                             <small>Lease Agreements Value</small>
-                                            <h2><?php echo get_option('cp_currency_symbol');?>  <?php echo $dashboard_stats['lease_agreements_value'];?></h2>
+                                            <h2><?php //echo //get_option('cp_currency_symbol');?>  <?php //echo $dashboard_stats['lease_agreements_value'];?></h2>
                                         </div>
                                     </div>
                                 </div>
@@ -59,7 +59,7 @@ if (!defined('ABSPATH')) {
                                         <div class="chart stats-line-2"></div>
                                         <div class="count">
                                             <small>Monthly Rent Income</small>
-                                            <h2><?php echo $dashboard_stats['current_monthly_rent_income'];?></h2>
+                                            <h2><?php //echo $dashboard_stats['current_monthly_rent_income'];?></h2>
                                         </div>
                                     </div>
                                 </div>
