@@ -13,7 +13,7 @@ class DashboardService {
 
     public static function get_party_dashboard_stats($party_id){
         $party_dashboard_stats = array();
-        $party_data = PartyAPI::get_by_id($party_id);
+        $party_data = PartyAPI::get_by_id('party', $party_id);
 
         $property_count = DashboardService::get_property_count();
         $tenants_count =  DashboardService::get_tenants_count();
