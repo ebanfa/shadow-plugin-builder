@@ -8,7 +8,7 @@ if (!defined('ABSPATH')) {
 }
 
     $current_user = wp_get_current_user();
-    $current_user_party = PartyAPI::get_user_party($current_user->ID);
+    //$current_user_party = PartyAPI::get_user_party($current_user->ID);
 ?>
 <aside id="sidebar">
     <div class="sidebar-inner">
