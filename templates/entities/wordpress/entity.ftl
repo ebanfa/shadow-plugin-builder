@@ -5,6 +5,12 @@ class ${entity.name}CPT {
     public static $prefix = ''; 
 
     public static $post_name = '${entity.postName}'; 
+<#if entity.global == "Y">
+    public static $is_global_entity = true; 
+<#else>
+    public static $is_global_entity = false; 
+</#if>
+    
 
 
     /**
