@@ -5,7 +5,7 @@ if (!defined('ABSPATH')) {
 }
 
 
-class PageControllerAPI {
+class ArtifactRequestProcessor {
 
     static $page_actions = array(
         'create' => 'Create',

@@ -76,13 +76,13 @@ class ${application.name} {
         include_once('includes/api/EntityAPI.php');
         include_once('includes/api/EntityPersistenceAPI.php');
         // Entity Controller
-        include_once('includes/controller/EntityController.php');
+        include_once('includes/controller/EntityActionProcessor.php');
         // Entity View
         include_once('includes/view/EntityView.php');
         // Framework API
         include_once('includes/api/CloderiaFileAPI.php');
         include_once('includes/api/CloderiaUserAPI.php');
-        include_once('includes/api/PageControllerAPI.php');
+        include_once('includes/api/ArtifactRequestProcessor.php');
         include_once('includes/api/CloderiaAdminAPI.php');
         include_once('includes/api/CloderiaSecurityAPI.php');
         include_once('includes/api/CloderiaUserLoginAPI.php');
@@ -153,7 +153,7 @@ class ${application.name} {
         //add_action('showdow_banker_display_latest_user_conversation', 'CloderiaUIDisplayAPI::show_latest_user_conversation', 10);
 
         // Page display functions
-        add_action('shadowbanker_process_page_request', 'PageControllerAPI::process_artifact_request', 10);
+        add_action('shadowbanker_process_page_request', 'ArtifactRequestProcessor::process_artifact_request', 10);
 
         // Entity page display actions
         add_action('shadowbanker_before_artifact_content', 'CloderiaUIDisplayAPI::before_artifact_content', 10);

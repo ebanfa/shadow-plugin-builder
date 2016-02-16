@@ -9,55 +9,15 @@ if (!defined('ABSPATH')) {
 
 class EntityAPI {
 
-    /**
-     *
-     */
-    public static function init_ajax_hooks() {
-        add_action('wp_ajax_create_entity_ajax', 'EntityAPI::create_entity_ajax');
-        add_action('wp_ajax_nopriv_create_entity_ajax', 'EntityAPI::create_entity_ajax');
-
-        add_action('wp_ajax_edit_entity_ajax', 'EntityAPI::edit_entity_ajax');
-        add_action('wp_ajax_nopriv_edit_entity_ajax', 'EntityAPI::edit_entity_ajax');
-
-        add_action('wp_ajax_view_entity_ajax', 'EntityAPI::view_entity_ajax');
-        add_action('wp_ajax_nopriv_view_entity_ajax', 'EntityAPI::view_entity_ajax');
-
-        add_action('wp_ajax_find_entity_ajax', 'EntityAPI::find_entity_ajax');
-        add_action('wp_ajax_nopriv_find_entity_ajax', 'EntityAPI::find_entity_ajax');
-
-        add_action('wp_ajax_delete_entity_ajax', 'EntityAPI::delete_entity_ajax');
-        add_action('wp_ajax_nopriv_delete_entity_ajax', 'EntityAPI::delete_entity_ajax');
+    public static function create_entity($entity_data) {
+        $entity_name = $entity_data['entity_name'];
+        $class_name = $entity_name . 'API';
+        if (class_exists($class_name)) {
+            return call_user_func($class_name . '::create_entity', $entity_data);
+        }
+        return self::do_create_entity($entity_data);
     }
     
-    /**
-     *
-     */
-    public static function create_entity_ajax() {
-        // Check the ajax request
-        $entity_data = self::do_before_ajax_edit();
-        // Create the entity of we have no errors
-        if(!$entity_data['has_errors']) {
-            $entity_data = self::do_create_entity($entity_data);
-        }
-        // Run post edit hooks
-        self::do_after_ajax_edit($entity_data);
-    }
-
-    /**
-     *
-     */
-    public static function do_before_ajax_edit($entity_data) {
-        // Ensure we have a valid form
-        if(!EntityRequestUtils::is_valid_form() || !isset($_POST['edit_mode'])) {
-            wp_send_json_error(array('message' => "Invalid artifact operation!"));
-        }
-        $artifact_name = EntityRequestUtils::get_artifact_name();
-        $entity_data = EntityAPIUtils::init_entity_data($artifact_name);
-        $entity_data = EntityRequestUtils::build_entity_data_from_post($entity_data);
-        $entity_data = EntityRequestUtils::validate_entity_data($entity_data);
-        return $entity_data;
-    }
-
     /**
      *
      */
@@ -88,51 +48,13 @@ class EntityAPI {
     /**
      *
      */
-    public static function do_after_ajax_edit($entity_data) {
-        // Process the results of the order creation
-        if(!$entity_data['has_errors']) {
-
-            if(isset($entity_data['redirect_url'])) {
-                $redirect_url = $entity_data['redirect_url'];
-            } else {
-                $redirect_url = get_site_url() . '/page?type=entity&artifact='. $entity_data['entity_artifact_name'] . '&id=' . $entity_data['id'] . '&page_action=view';
-            }
-            // Process the parent id, if any
-            if(isset($_REQUEST['parent_id']) && isset($_REQUEST['parent_artifact']) && isset($_REQUEST['parent_field'])) 
-            {
-                $redirect_url = $redirect_url . '&parent_id=' . sanitize_text_field($_REQUEST['parent_id']);
-                $redirect_url = $redirect_url . '&parent_artifact=' . sanitize_text_field($_REQUEST['parent_artifact']);
-                $redirect_url = $redirect_url . '&parent_field=' . sanitize_text_field($_REQUEST['parent_field']);
-                if(isset($_REQUEST['parent_param'])) $redirect_url = $redirect_url . '&parent_param=' .  $_REQUEST['parent_param'];
-            }
-            wp_send_json_success(array('message' => "<script type='text/javascript'>window.location='" . $redirect_url . "'</script>"));
-        } else {
-            wp_send_json_error(array('message' => $entity_data['message']));
+    public static function find_entity($entity_data) {
+        $entity_name = $entity_data['entity_name'];
+        $class_name = $entity_name . 'API';
+        if (class_exists($class_name)) {
+            return call_user_func($class_name . '::find_entity', $entity_data);
         }
-    }
-
-    /**
-     *
-     */
-    public static function find_entity_ajax() {
-        $entity_data = self::do_before_ajax_find();
-        $search_results = self::do_find_entity($entity_data);
-        self::do_after_ajax_find($entity_data, $search_results);
-    }
-
-    /**
-     *
-     */
-    public static function do_before_ajax_find() {
-        if(!isset($_POST['form'][2]) && 
-            !isset($_POST['form'][0]) && 
-            !wp_verify_nonce($_POST['form'][0]['name'], 'post_nonce')) {
-            // Nounce field did not validate
-            wp_send_json_error(array('message' => "Invalid form operation!"));
-        }
-        $artifact_name = EntityRequestUtils::get_artifact_name();
-        $entity_data = array('entity_artifact_name' => $artifact_name);
-        return $entity_data;
+        return self::do_find_entity($entity_data);
     }
 
     /**
@@ -147,36 +69,13 @@ class EntityAPI {
     /**
      *
      */
-    public static function do_after_ajax_find($entity_data, $search_results) {
-        wp_send_json_success($search_results);
-    }
-
-    /**
-     *
-     */
-    public static function delete_entity_ajax() {
-        $entity_data = self::do_before_ajax_delete();
-        $entity_data = self::do_delete_entity($entity_data);
-        self::do_after_ajax_delete($entity_data);
-    }
-
-    /**
-     *
-     */
-    public static function do_before_ajax_delete() {
-        // Ensure we have a valid form
-        if (!isset($_POST['submitted']) && 
-            !isset($_POST['post_nonce_field']) && 
-            !wp_verify_nonce($_POST['post_nonce_field'], 'post_nonce')) {
-            // Nounce field did not validate
-            wp_send_json_error(array('message' => "Invalid form operation!"));
+    public static function delete_entity($entity_data) {
+        $entity_name = $entity_data['entity_name'];
+        $class_name = $entity_name . 'API';
+        if (class_exists($class_name)) {
+            return call_user_func($class_name . '::delete_entity', $entity_data);
         }
-        // Ensure we have a valid ID
-        if (!isset($_POST['id']) ) wp_send_json_error(array('message' => "Entity identifier missing"));
-
-        $artifact_name = EntityRequestUtils::get_artifact_name();
-        $entity_data = array('entity_artifact_name' => $artifact_name);
-        return $entity_data;
+        return self::do_delete_entity($entity_data);
     }
 
     /**
@@ -194,18 +93,6 @@ class EntityAPI {
             $entity_data['has_errors'] = true;
         }
         return $entity_data;
-    }
-
-    /**
-     *
-     */
-    public static function do_after_ajax_delete($entity_data) {
-        if (!$entity_data['has_errors']) {
-            $redirect_url = get_site_url() . '/page?type=entity&artifact='. $entity_data['entity_artifact_name'] .'&page_action=list';
-            wp_send_json_success(array('message' => "<script type='text/javascript'>window.location='" . $redirect_url . "'</script>"));
-        } else {
-            wp_send_json_error(array('message' => 'Error deleting entity'));
-        }
     }
 
     /**

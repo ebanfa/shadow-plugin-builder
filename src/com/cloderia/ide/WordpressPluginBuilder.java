@@ -281,12 +281,20 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 		String includeApiOutputDir = this.pluginDir + "includes/api/";
 		String includeUtilOutputDir = this.pluginDir + "includes/utils/";
 
+		for(Entity entity: module.getEntities()) {
+			String entityName = entity.getName();
+			if(entity.getApiTemplate() != null){
+				this.generateArtifact(module, entity, entity.getApiTemplate() , includeApiOutputDir + entityName + "API.php");
+			} 
+			
+		}
+
 		this.generateArtifact(module, null, 
 			"api/wordpress/entity-api-php.ftl", includeApiOutputDir +  "EntityAPI.php");
 		this.generateArtifact(module, null, 
 			"api/wordpress/ui-display-php.ftl", includeApiOutputDir + "CloderiaUIDisplayAPI.php");
 		this.generateArtifact(module, null, 
-			"api/wordpress/page-controller-php.ftl", includeApiOutputDir + "PageControllerAPI.php");
+			"api/wordpress/page-controller-php.ftl", includeApiOutputDir + "ArtifactRequestProcessor.php");
 		this.generateArtifact(module, null, 
 			"api/wordpress/entity-persistence-api.ftl", includeApiOutputDir +  "EntityPersistenceAPI.php");
 
@@ -310,7 +318,7 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 	private void doControllers(Module module) {
 		String includeControllerOutputDir = this.pluginDir + "includes/controller/";
 		this.generateArtifact(module, null, 
-					"controllers/wordpress/entity-controller-php.ftl" , includeControllerOutputDir +  "EntityController.php");
+					"controllers/wordpress/entity-controller-php.ftl" , includeControllerOutputDir +  "EntityActionProcessor.php");
 	}
 
 	private void doViews(Module module) {
