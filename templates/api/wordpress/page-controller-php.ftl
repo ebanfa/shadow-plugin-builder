@@ -25,8 +25,8 @@ class PageControllerAPI {
         $page_info['artifact'] = sanitize_text_field($_REQUEST['artifact']);
         $page_info['page_action'] = sanitize_text_field($_REQUEST['page_action']);
         $page_info['page_action_description'] = self::$page_actions[$page_info['page_action']];
-        $page_info['artifact_name'] = ArtifactUtils::$artifacts[$page_info['artifact']['name']];
-        $page_info['artifact_type'] = ArtifactUtils::$artifacts[$page_info['artifact']['artifact_type']];
+        $page_info['artifact_name'] = ArtifactUtils::$artifacts[$page_info['artifact']]['name'];
+        $page_info['artifact_type'] = ArtifactUtils::$artifacts[$page_info['artifact']]['artifact_type'];
         $page_info['artifact_display_name'] = ArtifactUtils::$artifacts[$page_info['artifact']['description']];
         
         $_REQUEST['page_info'] = $page_info;
