@@ -93,7 +93,7 @@ class EntityAPIUtils {
             return $entity_data;
         }
         // Check the type of the artifact
-        $artifact_type = ArtifactUtils::$artifacts[$artifact_name]['artifact_type']
+        $artifact_type = ArtifactUtils::$artifacts[$artifact_name]['artifact_type'];
         if ($artifact_type != 'entity') {
             $entity_data['has_errors'] = true;
             $entity_data['error_message'] = 'Artifact is not an entity';
