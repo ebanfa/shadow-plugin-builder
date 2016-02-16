@@ -7,9 +7,8 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
     $current_user = wp_get_current_user();
-    //$current_user_party = PartyAPI::get_user_party($current_user->ID);
-
-    //$dashboard_stats = DashboardService::get_party_dashboard_stats($current_user_party['id']);
+    $current_user_party = PartyAPI::get_user_party($current_user->ID);
+    $dashboard_stats = DashboardService::get_party_dashboard_stats($current_user_party['id']);
 ?>
 
 <?php 

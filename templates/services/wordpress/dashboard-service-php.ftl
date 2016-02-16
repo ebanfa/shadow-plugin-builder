@@ -37,10 +37,10 @@ class DashboardService {
 
     public static function get_tenants_count(){
         $tenants_count = 0;
-        $tenant_role = RoleTypeAPI::get_by_code('TENANT');
+        $tenant_role = EntityAPI::get_by_code('roletype', 'TENANT');
 
         if(isset($tenant_role['id'])) {
-            $search_results = PartyRoleAPI::find_by_criteria(array('role' => $tenant_role['id']));
+            $search_results = EntityAPI::find_by_criteria('partyrole', array('role' => $tenant_role['id']));
             $tenants_count =  count($search_results);
         }
         return $tenants_count;
@@ -48,7 +48,7 @@ class DashboardService {
 
     public static function get_lease_agreements_value(){
         $total_agreements_value = 0;
-        $agreements_list = AgreementAPI::find_by_criteria(array());
+        $agreements_list = EntityAPI::find_by_criteria('agreement', array());
 
         foreach ($agreements_list as $agreement) {
             $total_agreements_value = $total_agreements_value + $agreement['amount'];
@@ -59,10 +59,10 @@ class DashboardService {
 
     public static function get_current_monthly_rent_income(){
         $total_rent_value = 0;
-        $status = RentStatusAPI::get_by_code('DUE');
+        $status = EntityAPI::get_by_code('rentstatus', 'DUE');
 
         if(isset($status['id'])) {
-            $agreements_list = AgreementAPI::find_by_criteria(array('status' => $status['id']));
+            $agreements_list = EntityAPI::find_by_criteria('agreement', array('status' => $status['id']));
             foreach ($agreements_list as $agreement) {
                 $total_rent_value = $total_rent_value + $agreement['amount'];
             }
