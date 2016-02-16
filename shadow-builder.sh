@@ -94,6 +94,6 @@ do_erase_option() {
     do_erase_option 
     build_plugin_directory
     generate_code
-    #copy_resources
-    #create_archive
-    #deploy_archive
+    copy_resources
+    create_archive
+    deploy_archive
