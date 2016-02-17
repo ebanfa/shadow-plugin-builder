@@ -24,9 +24,9 @@ class ArtifactView {
 
         $page_info = $_REQUEST['page_info'];
         $_REQUEST['page_info']['view'] = $this;
-        $artifact = sanitize_text_field($page_info['artifact']);
-        $page_action = sanitize_text_field($page_info['page_action']);
-        $page_action_description = sanitize_text_field($page_info['page_action_description']);
+        $this->$artifact = sanitize_text_field($page_info['artifact']);
+        $this->$page_action = sanitize_text_field($page_info['page_action']);
+        $this->$page_action_description = sanitize_text_field($page_info['page_action_description']);
 
         $this->set_page_action_txt();
 
