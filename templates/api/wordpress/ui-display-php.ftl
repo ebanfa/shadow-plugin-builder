@@ -95,19 +95,19 @@ class CloderiaUIDisplayAPI {
     }
 
 
-    public static function render_entity_create_form() {
+    public static function render_create_form() {
         cp_get_template('entity/create-form.php');
     }
 
-    public static function render_entity_edit_form() {
+    public static function render_edit_form() {
         cp_get_template('entity/edit-form.php');
     }
 
-    public static function render_entity_single() {
+    public static function render_single() {
         cp_get_template('entity/single.php');
     }
 
-    public static function render_entity_list() {
+    public static function render_list() {
         cp_get_template('entity/list.php');
     }
     

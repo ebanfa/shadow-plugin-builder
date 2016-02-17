@@ -135,5 +135,12 @@ class EntityAPI {
         return EntityPersistenceAPI::find_by_criteria($entity_data, $criteria_data);
     }
 
+    /**
+     * 
+     */
+    public static function get_model($artifact_name) {
+        return EntityAPIUtils::init_entity_data($artifact_name);
+    }
+
 
 }

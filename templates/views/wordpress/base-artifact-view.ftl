@@ -16,6 +16,8 @@ class ArtifactView {
     public $page_action_txt;
     public $page_action_description;
 
+    public $model;
+
 
     /**
      *
@@ -25,7 +27,7 @@ class ArtifactView {
     }
 
     /**
-     * Register hooks
+     * Set up view
      */
     public function set_up() {
         $this->page_info = $_REQUEST['page_info'];
@@ -38,6 +40,11 @@ class ArtifactView {
         $this->page_action_description = sanitize_text_field($this->page_info['page_action_description']);
 
         $this->set_page_action_txt();
+        // Get the model
+        $artifact_data = ArtifactUtils::$artifacts[$this->artifact];
+        if($artifact_data['artifact_type'] == 'entity'){
+            $this->model = EntityAPI::get_model($this->artifact);
+        }
     }
 
     /**
@@ -103,8 +110,8 @@ class ArtifactView {
      */
     public function render() {
         if(isset($_REQUEST['page_info'])) {
-            $artifact = $_REQUEST['page_info']['artifact'];
-            $custom_render_action = 'shadowbanker_render_create_' . $artifact . '_view';
+            ;
+            $custom_render_action = 'shadowbanker_render_' . $this->page_action .'_' . $this->artifact . '_view';
 
             if(has_action($custom_render_action)) {
                 // action exists so execute it
@@ -112,7 +119,7 @@ class ArtifactView {
             } else {
                 // action has not been registered
                 // execute default render operation
-                do_action('shadowbanker_render_create_entity_view');
+                do_action('shadowbanker_render_'. $this->page_action . '_entity_view');
             }
         }
     }

@@ -378,6 +378,12 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 		this.generateArtifact(module, null, "html/wordpress/entity/entity-edit-form.ftl" , entityOutputDir + "entity-edit-form.php");
 		this.generateArtifact(module, null, "html/wordpress/entity/entity-list.ftl" , entityOutputDir + "entity-archive.php");
 		this.generateArtifact(module, null, "html/wordpress/entity/entity-single.ftl" , entityOutputDir + "single-entity.php");
+
+		this.generateArtifact(module, null, "html/wordpress/entity/create-form.ftl" , entityOutputDir + "entity-create-form.php");
+		this.generateArtifact(module, null, "html/wordpress/entity/edit-form.ftl" , entityOutputDir + "entity-edit-form.php");
+		this.generateArtifact(module, null, "html/wordpress/entity/list.ftl" , entityOutputDir + "entity-archive.php");
+		this.generateArtifact(module, null, "html/wordpress/entity/single.ftl" , entityOutputDir + "single-entity.php");
+
 		this.generateArtifact(module, null, "html/wordpress/entity/field-wrapper-end.ftl" , entityOutputDir + "field-wrapper-end.php");
 		this.generateArtifact(module, null, "html/wordpress/entity/field-wrapper-start.ftl" , entityOutputDir + "field-wrapper-start.php");
 		this.generateArtifact(module, null, "html/wordpress/entity/artifact-wrapper-end.ftl" , entityOutputDir + "artifact-wrapper-end.php");

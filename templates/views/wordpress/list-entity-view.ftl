@@ -18,22 +18,19 @@ class ListEntityView extends ArtifactView {
     }
 
     /**
-     * Render this view
+     * Set up view
      */
-    public function render() {
-        if(isset($_REQUEST['page_info'])) {
-            $artifact = $_REQUEST['page_info']['artifact'];
-            $custom_render_action = 'shadowbanker_render_list_' . $artifact . '_view';
+    public function set_up() {
+        $this->page_info = $_REQUEST['page_info'];
+        $_REQUEST['page_info']['view'] = $this;
 
-            if(has_action($custom_render_action)) {
-                // action exists so execute it
-                do_action($custom_render_action);
-            } else {
-                // action has not been registered
-                // execute default render operation
-                do_action('shadowbanker_render_list_entity_view');
-            }
-        }
+        $this->add_actions();
+        $this->artifact = sanitize_text_field($this->page_info['artifact']);
+        $this->page_name = sanitize_text_field($this->page_info['artifact_display_name']);
+        $this->page_action = sanitize_text_field($this->page_info['page_action']);
+        $this->page_action_description = sanitize_text_field($this->page_info['page_action_description']);
+
+        $this->set_page_action_txt();
     }
 
 }

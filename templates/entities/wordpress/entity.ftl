@@ -35,15 +35,16 @@ class ${entity.name}CPT {
  public static $entity_fields = array(
 <#list entity.fields as field>
         '${field.name}' => array('name' => '${field.name}',
+            'description' => '${field.description}',
             'data_type' => '${field.dataType}',
-            'is_required' => '${field.required}',
-            'is_visible' => '${field.isVisible}',
-            'is_create_field' => '${field.createField}',
-            'is_edit_field' => '${field.editField}',
-            'is_view_field' => '${field.viewField}',
-            'is_list_field' => '${field.listField}',
-            'is_form_field' => '${field.isFormField}',
-            'is_relationship_field' => '${field.relationshipField}',),
+            'is_required' => <#if field.required == "Y">true<#else>false</#if>,
+            'is_visible' => <#if field.isVisible == "Y">true<#else>false</#if>,
+            'is_create_field' => <#if field.createField == "Y">true<#else>false</#if>,
+            'is_edit_field' => <#if field.editField == "Y">true<#else>false</#if>,
+            'is_view_field' => <#if field.viewField == "Y">true<#else>false</#if>,
+            'is_list_field' => <#if field.listField == "Y">true<#else>false</#if>,
+            'is_form_field' => <#if field.isFormField == "Y">true<#else>false</#if>,
+            'is_relationship_field' => <#if field.relationshipField == "Y">true<#else>false</#if>,),
 </#list>   
    );
 
@@ -61,7 +62,7 @@ class ${entity.name}CPT {
         'entity_name' => '${entity.relatedChildEntities[key].name}',
         'data_type' => '${entity.relatedChildEntities[key].postName}',
         'artifact_name' => '${entity.relatedChildEntities[key].name?lower_case}',
-        'is_relationship_field' => 'Y',),
+        'is_relationship_field' => true,),
 </#list>   
    );
  
