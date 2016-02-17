@@ -16,7 +16,7 @@ class ArtifactView {
     public $page_action_txt;
     public $page_action_description;
 
-    public $view_model;
+    public $model;
 
 
     /**
@@ -43,7 +43,7 @@ class ArtifactView {
         // Get the model
         $artifact_data = ArtifactUtils::$artifacts[$this->artifact];
         if($artifact_data['artifact_type'] == 'entity'){
-            $this->view_model = EntityAPI::get_model($this->artifact);
+            $this->model = EntityAPI::get_model($this->artifact);
         }
     }
 
@@ -109,7 +109,7 @@ class ArtifactView {
      * 
      */
     public function get_model() {
-       return $this->view_model;
+       return $this->model;
     }
 
 

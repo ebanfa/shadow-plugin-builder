@@ -6,12 +6,8 @@
     }
 
     $view = $_REQUEST['page_info']['view'];
-    $view_model = $view->view_model;
-    $artifact_data = ArtifactUtils::$artifacts[$view->artifact];
-    if($artifact_data['artifact_type'] == 'entity'){
-            var_dump($view_model); ;
-        }   
-    //var_dump($artifact_data['artifact_type']);//
+    $model = $view->get_model();
+    var_dump($model);
 ?>
     <form id="<?php echo $model['entity_post_name']; ?>-list-form">
         <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
