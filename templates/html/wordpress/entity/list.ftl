@@ -6,10 +6,10 @@
     }
 
     $view = $_REQUEST['page_info']['view'];
-    $model = $view->get_model();
+    $view_model = $view->get_model();
     $artifact_data = ArtifactUtils::$artifacts[$view->artifact];
     if($artifact_data['artifact_type'] == 'entity'){
-            var_dump(EntityAPI::get_model($view->artifact)); ;
+            var_dump($view_model); ;
         }   
     //var_dump($artifact_data['artifact_type']);//
 ?>
