@@ -29,7 +29,7 @@ class ArtifactView {
      */
     public function set_up() {
         $this->page_info = $_REQUEST['page_info'];
-        $this->page_info['view'] = $this;
+        $_REQUEST['page_info']['view'] = $this;
 
         $this->add_actions();
         $this->artifact = sanitize_text_field($this->page_info['artifact']);
