@@ -8,12 +8,12 @@
     $view = $_REQUEST['page_info']['view'];
     $model = $view->get_model();
 ?>
-    <form id="${entity.postName}-list-form">
+    <form id="<?php echo $model['entity_post_name']; ?>-list-form">
         <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
         <input type="hidden" name="submitted" id="submitted" value="true" /> 
     </form>
     <div class="table-responsive">
-        <table id="${entity.postName}-table" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
+        <table id="<?php echo $model['entity_post_name']; ?>-table" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
             <thead>
                 <tr>
                     <th>ID</th>
