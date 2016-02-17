@@ -23,7 +23,7 @@ class ArtifactView {
         $this->add_actions();
 
         $page_info = $_REQUEST['page_info'];
-        $page_info['view'] = $this;
+        $_REQUEST['page_info']['view'] = $this;
         $artifact = sanitize_text_field($page_info['artifact']);
         $page_action = sanitize_text_field($page_info['page_action']);
         $page_action_description = sanitize_text_field($page_info['page_action_description']);
@@ -78,7 +78,7 @@ class ArtifactView {
      * Action method to enqueue the required scripts
      */
     public function set_page_action_txt() {
-        $page_action = sanitize_text_field($page_info['page_action']);
+        $page_action = sanitize_text_field($_REQUEST[$page_info]['page_action']);
 
         if($page_action == 'create')
             $this->$page_action_txt = 'Create a new '. strtolower($page_name ) . ' by filling in the form below';
