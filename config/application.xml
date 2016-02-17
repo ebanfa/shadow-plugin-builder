@@ -1056,7 +1056,7 @@
 			<postName>sb_businessunit</postName>
 			<description>Business Unit</description>
 			<global>N</global>
-			<!-- <apiTemplate>services/wordpress/businessunit/businessunit-service-api.ftl</apiTemplate> -->
+			<apiTemplate>api/wordpress/businessunit/businessunit-service-api.ftl</apiTemplate>
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
