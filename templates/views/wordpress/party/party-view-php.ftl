@@ -25,7 +25,7 @@ class PartyView extends ViewController {
     public static function filter_form_fields($form_fields) {
         $form_fields = parent::filter_form_fields($form_fields);
         $form_fields['role'] = array('name' => 'role', 'value' => 'tenant');
-        return $form_fields
+        return $form_fields;
     }
 
 }
