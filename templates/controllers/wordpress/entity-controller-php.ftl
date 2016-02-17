@@ -13,20 +13,20 @@ class EntityActionProcessor {
      *
      */
     public static function init_hooks() {
-        add_action('wp_ajax_create_entity_ajax', 'EntityController::create_entity_ajax');
-        add_action('wp_ajax_nopriv_create_entity_ajax', 'EntityController::create_entity_ajax');
+        add_action('wp_ajax_create_entity_ajax', 'EntityActionProcessor::create_entity_ajax');
+        add_action('wp_ajax_nopriv_create_entity_ajax', 'EntityActionProcessor::create_entity_ajax');
 
-        add_action('wp_ajax_edit_entity_ajax', 'EntityController::edit_entity_ajax');
-        add_action('wp_ajax_nopriv_edit_entity_ajax', 'EntityController::edit_entity_ajax');
+        add_action('wp_ajax_edit_entity_ajax', 'EntityActionProcessor::edit_entity_ajax');
+        add_action('wp_ajax_nopriv_edit_entity_ajax', 'EntityActionProcessor::edit_entity_ajax');
 
-        add_action('wp_ajax_view_entity_ajax', 'EntityController::view_entity_ajax');
-        add_action('wp_ajax_nopriv_view_entity_ajax', 'EntityController::view_entity_ajax');
+        add_action('wp_ajax_view_entity_ajax', 'EntityActionProcessor::view_entity_ajax');
+        add_action('wp_ajax_nopriv_view_entity_ajax', 'EntityActionProcessor::view_entity_ajax');
 
-        add_action('wp_ajax_find_entity_ajax', 'EntityController::find_entity_ajax');
-        add_action('wp_ajax_nopriv_find_entity_ajax', 'EntityController::find_entity_ajax');
+        add_action('wp_ajax_find_entity_ajax', 'EntityActionProcessor::find_entity_ajax');
+        add_action('wp_ajax_nopriv_find_entity_ajax', 'EntityActionProcessor::find_entity_ajax');
 
-        add_action('wp_ajax_delete_entity_ajax', 'EntityController::delete_entity_ajax');
-        add_action('wp_ajax_nopriv_delete_entity_ajax', 'EntityController::delete_entity_ajax');
+        add_action('wp_ajax_delete_entity_ajax', 'EntityActionProcessor::delete_entity_ajax');
+        add_action('wp_ajax_nopriv_delete_entity_ajax', 'EntityActionProcessor::delete_entity_ajax');
     }
     
     /**
