@@ -6,7 +6,7 @@
     }
 
     $view = $_REQUEST['page_info']['view'];
-    $view_model = $view->get_model();
+    $view_model = $view->$view_model;
     $artifact_data = ArtifactUtils::$artifacts[$view->artifact];
     if($artifact_data['artifact_type'] == 'entity'){
             var_dump($view_model); ;
