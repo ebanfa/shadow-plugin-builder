@@ -108,6 +108,14 @@ class ArtifactView {
     }
 
     /**
+     * 
+     */
+    public function get_model() {
+       return $this->model;
+    }
+
+
+    /**
      * Render this view
      */
     public function render() {
