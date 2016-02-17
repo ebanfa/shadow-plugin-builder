@@ -24,9 +24,9 @@ class ArtifactView {
 
         $page_info = $_REQUEST['page_info'];
         $_REQUEST['page_info']['view'] = $this;
-        $this->$artifact = sanitize_text_field($page_info['artifact']);
-        $this->$page_action = sanitize_text_field($page_info['page_action']);
-        $this->$page_action_description = sanitize_text_field($page_info['page_action_description']);
+        $this->artifact = sanitize_text_field($page_info['artifact']);
+        $this->page_action = sanitize_text_field($page_info['page_action']);
+        $this->page_action_description = sanitize_text_field($page_info['page_action_description']);
 
         $this->set_page_action_txt();
 
@@ -64,14 +64,14 @@ class ArtifactView {
      * Action method to enqueue the required scripts
      */
     public function get_page_action_description() {
-       return $this->$page_action_description;
+       return $this->page_action_description;
     }
 
     /**
      * Action method to enqueue the required scripts
      */
     public function get_page_action_txt() {
-       return $this->$page_action_txt;
+       return $this->page_action_txt;
     }
 
     /**
@@ -81,13 +81,13 @@ class ArtifactView {
         $page_action = sanitize_text_field($_REQUEST['$page_info']['page_action']);
 
         if($page_action == 'create')
-            $this->$page_action_txt = 'Create a new '. strtolower($page_name ) . ' by filling in the form below';
+            $this->page_action_txt = 'Create a new '. strtolower($page_name ) . ' by filling in the form below';
         if($page_action == 'edit')
-            $this->$page_action_txt = 'Edit the '. strtolower($page_name ) . ' by updating the form below';
+            $this->page_action_txt = 'Edit the '. strtolower($page_name ) . ' by updating the form below';
         if($page_action == 'view')
-            $this->$page_action_txt = 'To update or delete the ' . strtolower($page_name ) . ', click on the control buttons below.';
+            $this->page_action_txt = 'To update or delete the ' . strtolower($page_name ) . ', click on the control buttons below.';
         if($page_action == 'list')
-            $this->$page_action_txt = 'The '. strtolower($page_name ) . ' list. To view a single record, click on the highlighted column.';
+            $this->page_action_txt = 'The '. strtolower($page_name ) . ' list. To view a single record, click on the highlighted column.';
     }
 
     /**
