@@ -8,29 +8,13 @@ if (!defined('ABSPATH')) {
 }
 
 
-class ListEntityView {
+class ListEntityView extends ArtifactView {
 
     /**
      *
      */
     function __construct() {
-        // Add the action
-        add_action('wp_footer', 'enqueue_scripts');
-    }
-
-    /**
-     * Action method to enqueue the required scripts
-     */
-    function enqueue_scripts() {
-        //
-        wp_register_script('cp_entity_form', 
-            plugins_url('/js/entity-form.js', dirname(dirname(dirname(__FILE__)))), array('jquery'),'', true);
-
-        wp_register_script('cp_entity_mask',
-            plugins_url('/js/entity-input-mask.js', dirname(dirname(dirname(__FILE__)))), array('jquery'),'', true);
-
-        wp_enqueue_script('cp_entity_form');
-        wp_enqueue_script('cp_entity_mask');
+        parent::__construct();
     }
 
     /**
