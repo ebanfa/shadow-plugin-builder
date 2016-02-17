@@ -81,6 +81,8 @@ class ${application.name} {
         include_once('includes/controller/EntityActionProcessor.php');
         // Entity View
         include_once('includes/view/ArtifactView.php');
+        include_once('includes/view/ViewController.php');
+        include_once('includes/view/party/PartyView.php');
         include_once('includes/view/CreateEntityView.php');
         include_once('includes/view/EditEntityView.php');
         include_once('includes/view/SingleEntityView.php');

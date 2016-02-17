@@ -22,11 +22,7 @@ public class Entity {
 	private String isVirtual;
 	private String displayName;
 	private String description;
-	private String createPageTemplate;
-	private String editPageTemplate;
-	private String listPageTemplate;
-	private String viewPageTemplate;
-	private String jsPageTemplate;
+	private String viewTemplate;
 	private String apiTemplate;
 	private String relatedEntityFieldName;
 	private List<Field> fields = new ArrayList<Field>();
@@ -55,80 +51,21 @@ public class Entity {
 	}
 
 	/**
-	 * @return the createPageTemplate
+	 * @return the viewTemplate
 	 */
-	public String getCreatePageTemplate() {
-		return createPageTemplate;
+	public String getViewTemplate() {
+		return viewTemplate;
 	}
 
 	/**
-	 * @param createPageTemplate the createPageTemplate to set
+	 * @param viewTemplate the viewTemplate to set
 	 */
 	@XmlElement
-	public void setCreatePageTemplate(String createPageTemplate) {
-		this.createPageTemplate = createPageTemplate;
+	public void setViewTemplate(String viewTemplate) {
+		this.viewTemplate = viewTemplate;
 	}
 
-	/**
-	 * @return the editPageTemplate
-	 */
-	public String getEditPageTemplate() {
-		return editPageTemplate;
-	}
-
-	/**
-	 * @param editPageTemplate the editPageTemplate to set
-	 */
-	@XmlElement
-	public void setEditPageTemplate(String editPageTemplate) {
-		this.editPageTemplate = editPageTemplate;
-	}
-
-	/**
-	 * @return the viewPageTemplate
-	 */
-	public String getViewPageTemplate() {
-		return viewPageTemplate;
-	}
-
-	/**
-	 * @param viewPageTemplate the viewPageTemplate to set
-	 */
-	@XmlElement
-	public void setViewPageTemplate(String viewPageTemplate) {
-		this.viewPageTemplate = viewPageTemplate;
-	}
-
-	/**
-	 * @return the listPageTemplate
-	 */
-	public String getListPageTemplate() {
-		return listPageTemplate;
-	}
-
-	/**
-	 * @param listPageTemplate the listPageTemplate to set
-	 */
-	@XmlElement
-	public void setListPageTemplate(String listPageTemplate) {
-		this.listPageTemplate = listPageTemplate;
-	}
-
-	/**
-	 * @return the jsPageTemplate
-	 */
-	public String getJsPageTemplate() {
-		return jsPageTemplate;
-	}
-
-	/**
-	 * @param jsPageTemplate the jsPageTemplate to set
-	 */
-	@XmlElement
-	public void setJsPageTemplate(String jsPageTemplate) {
-		this.jsPageTemplate = jsPageTemplate;
-	}
-
+	
 	/**
 	 * @return the apiTemplate
 	 */
