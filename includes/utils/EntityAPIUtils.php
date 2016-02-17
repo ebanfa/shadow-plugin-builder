@@ -17,10 +17,10 @@ class EntityAPIUtils {
         $entity_data['id'] = $entity->ID;
         //Process entity create form fields
     	foreach ($entity_data['entity_fields'] as $field_data) {
-    		if($field_data['is_relationship_field'] === 'N') {
+    		if(!$field_data['is_relationship_field']) {
     			$entity_data[$field_data['name']] = get_post_meta($entity->ID, $field_data['name'], true);
     		}
-    		if($field_data['is_relationship_field'] === 'Y') {
+    		if($field_data['is_relationship_field']) {
     			$related_entity_id = get_post_meta($entity->ID, $field_data['name'], true);
 		        $entity_data[$field_data['name']] = $related_entity_id;
 		        // Get the related post
@@ -43,7 +43,7 @@ class EntityAPIUtils {
        if($entity_data['edit_mode']) {
             //Process entity create form fields
             foreach ($entity_data['entity_fields'] as $field_data) {
-                if($field_data['is_required'] === 'Y' && $field_data['is_create_field'] === 'Y') {
+                if($field_data['is_required'] && $field_data['is_create_field']) {
                     self::validate_entity_field($field_data, $entity_data);
                 }
             }
@@ -51,7 +51,7 @@ class EntityAPIUtils {
         else { 
             //Process entity edit form fields
             foreach ($entity_data['entity_fields'] as $field_data) {
-                if($field_data['is_required'] === 'Y' && $field_data['is_edit_field'] === 'Y') {
+                if($field_data['is_required'] && $field_data['is_edit_field']) {
                     self::validate_entity_field($field_data, $entity_data);
                 }
             }
