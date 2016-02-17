@@ -144,7 +144,7 @@ class EntityPersistenceAPI {
         $queryArgs = array('numberposts' => -1, 'posts_per_page' => -1,
             'post_status' => 'any', 'post_type' => $entity_data['entity_post_name'], 'meta_query' => $meta_array);
 
-        if ($entity_data['is_global_entity'] === 'N' && !current_user_can('administrator')) {
+        if (!$entity_data['is_global_entity'] && !current_user_can('administrator')) {
             // Filter the results for non admin users
             $business_unit = BusinessUnitAPI::get_current_user_business_unit();
             if(isset($business_unit['id'])) {

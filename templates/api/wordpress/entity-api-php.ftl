@@ -63,7 +63,7 @@ class EntityAPI {
     public static function do_find_entity($entity_data) {
         $artifact_name = $entity_data['entity_artifact_name'];
         $criteria_data = EntityRequestUtils::build_criteria_from_form_data($entity_data);
-        return EntityPersistenceAPI::find_by_criteria($artifact_name, $criteria_data);
+        return EntityPersistenceAPI::find_by_criteria($entity_data, $criteria_data);
     }
 
     /**
