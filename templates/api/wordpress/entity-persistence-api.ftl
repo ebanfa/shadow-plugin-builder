@@ -66,7 +66,7 @@ class EntityPersistenceAPI {
         // Load the entity
         $entityQueryArgs = array('numberposts' => -1, 'post_status' => 'any', 'post_type' => $entity_data['entity_post_name'],
             'meta_query' => array(array('key' => $meta_key, 'value' => $meta_value)));
-        $entityQuery = new WP_Query($entityQueryArgs);
+        $entityQuery = new WP_Query($entityQueryArgs );
         while ($entityQuery->have_posts()) : $entityQuery->the_post();
             $entity = $entityQuery->post;
             $entity_data = EntityAPIUtils::entity_to_data($entity_data, $entity, false);

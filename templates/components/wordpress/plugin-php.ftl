@@ -177,6 +177,8 @@ class ${application.name} {
         // Remove admin bar for non admin users
         add_action('after_setup_theme', 'CloderiaAdminAPI::do_remove_admin_bar');
         /*add_action('wp_logout', '${application.name}::redirect_logout_url');*/
+        PartyView::init_hooks();
+
     }
 
     public function init_admin_template_hooks(){
