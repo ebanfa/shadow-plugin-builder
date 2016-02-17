@@ -362,7 +362,7 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 			String listPageName = entityPageOutputDir + entityName.toLowerCase() + "-archive.php";
 			String modalListPageName = entityPageOutputDir + entityName.toLowerCase() + "-modal-archive.php";*/
 
-			//this.createDirectoryIfNeeded(entityPageOutputDir);
+			this.createDirectoryIfNeeded(entityPageOutputDir);
 			// Create page
 			/*if(createPageTemplate != null) {
 				this.generateArtifact(module, entity, createPageTemplate, createPageName);
@@ -412,9 +412,9 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 			"js/wordpress/entity-multi-datatables-js.ftl" , this.pluginDir + "js/entity-multi-datatables.js");
 
 		for(Entity entity : module.getEntities()){
-			if(entity.getJsPageTemplate() != null){
+			/*if(entity.getJsPageTemplate() != null){
 				this.generateArtifact(module, entity, entity.getJsPageTemplate() , this.pluginDir + "js/" + entity.getName().toLowerCase() + "-form.js");
-			} 
+			} */
 		}
 		this.generateArtifact(module, null, 
 			"js/wordpress/entity-form-js.ftl" , this.pluginDir + "js/entity-form.js");
