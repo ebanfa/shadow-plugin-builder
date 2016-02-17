@@ -328,6 +328,7 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 			String entityName = entity.getName();
 			if(entity.getViewTemplate() != null){
 				String entityViewOutputDir = includeViewOutputDir + entityName.toLowerCase() + "/";
+				this.createDirectoryIfNeeded(entityViewOutputDir);
 				this.generateArtifact(module, entity, entity.getViewTemplate() , entityViewOutputDir + entityName + "View.php");
 			} 
 			
