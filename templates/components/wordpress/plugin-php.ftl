@@ -153,6 +153,12 @@ class ${application.name} {
         add_action('shadowbanker_show_app_menu', 'CloderiaUIDisplayAPI::display_app_menu', 10);
         add_action('shadowbanker_before_app_menu', 'CloderiaUIDisplayAPI::before_app_menu', 10);
         add_action('shadowbanker_after_app_menu', 'CloderiaUIDisplayAPI::after_app_menu', 10);
+
+        add_action('shadowbanker_render_entity_create_form', 'CloderiaUIDisplayAPI::render_entity_create_form', 10);
+        add_action('shadowbanker_render_entity_edit_form', 'CloderiaUIDisplayAPI::render_entity_edit_form', 10);
+        add_action('shadowbanker_render_entity_single', 'CloderiaUIDisplayAPI::render_entity_single', 10);
+        add_action('shadowbanker_render_entity_list', 'CloderiaUIDisplayAPI::render_entity_list', 10);
+        
         //add_action('shadowbanker_display_notifications_items', 'CloderiaUIDisplayAPI::show_notification_items', 10);
         //add_action('showdow_banker_display_user_conversations', 'CloderiaUIDisplayAPI::show_user_conversations', 10); 
         //add_action('showdow_banker_display_latest_user_conversation', 'CloderiaUIDisplayAPI::show_latest_user_conversation', 10);

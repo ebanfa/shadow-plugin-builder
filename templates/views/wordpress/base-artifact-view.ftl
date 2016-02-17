@@ -9,6 +9,7 @@ if (!defined('ABSPATH')) {
 
 class ArtifactView {
 
+    public $page_info;
     public $artifact;
     public $page_name;
     public $page_action;
@@ -20,18 +21,23 @@ class ArtifactView {
      *
      */
     function __construct() {
-        // Add the action
-        $this->add_actions();
+        $this->set_up();
+    }
 
-        $page_info = $_REQUEST['page_info'];
-        $_REQUEST['page_info']['view'] = $this;
-        $this->artifact = sanitize_text_field($page_info['artifact']);
-        $this->page_name = sanitize_text_field($page_info['artifact_display_name']);
-        $this->page_action = sanitize_text_field($page_info['page_action']);
-        $this->page_action_description = sanitize_text_field($page_info['page_action_description']);
+    /**
+     * Register hooks
+     */
+    public function set_up() {
+        $this->page_info = $_REQUEST['page_info'];
+        $this->page_info['view'] = $this;
+
+        $this->add_actions();
+        $this->artifact = sanitize_text_field($this->page_info['artifact']);
+        $this->page_name = sanitize_text_field($this->page_info['artifact_display_name']);
+        $this->page_action = sanitize_text_field($this->page_info['page_action']);
+        $this->page_action_description = sanitize_text_field($this->page_info['page_action_description']);
 
         $this->set_page_action_txt();
-
     }
 
     /**

@@ -93,6 +93,23 @@ class CloderiaUIDisplayAPI {
     public static function after_artifact_content() {
         cp_get_template('entity/artifact-wrapper-end.php');
     }
+
+
+    public static function render_entity_create_form() {
+        cp_get_template('entity/create-form.php');
+    }
+
+    public static function render_entity_edit_form() {
+        cp_get_template('entity/edit-form.php');
+    }
+
+    public static function render_entity_single() {
+        cp_get_template('entity/single.php');
+    }
+
+    public static function render_entity_list() {
+        cp_get_template('entity/list.php');
+    }
     
     
 

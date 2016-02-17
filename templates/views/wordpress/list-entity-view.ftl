@@ -23,7 +23,7 @@ class ListEntityView extends ArtifactView {
     public function render() {
         if(isset($_REQUEST['page_info'])) {
             $artifact = $_REQUEST['page_info']['artifact'];
-            $custom_render_action = 'shadowbanker_render_create_' . $artifact . '_view';
+            $custom_render_action = 'shadowbanker_render_list_' . $artifact . '_view';
 
             if(has_action($custom_render_action)) {
                 // action exists so execute it
@@ -31,7 +31,7 @@ class ListEntityView extends ArtifactView {
             } else {
                 // action has not been registered
                 // execute default render operation
-                do_action('shadowbanker_render_create_entity_view');
+                do_action('shadowbanker_render_list_entity_view');
             }
         }
     }
