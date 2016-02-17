@@ -42,6 +42,7 @@ class ArtifactView {
         $this->set_page_action_txt();
         // Get the model
         $artifact_data = ArtifactUtils::$artifacts[$this->artifact];
+        print_r($artifact_data);
         if($artifact_data['artifact_type'] == 'entity'){
             echo 'Artifact tyoe is entity';
             $this->model = EntityAPI::get_model($this->artifact);
