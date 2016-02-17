@@ -105,7 +105,7 @@ class EntityActionProcessor {
             wp_send_json_error(array('message' => "Invalid form operation!"));
         }
         $artifact_name = EntityRequestUtils::get_artifact_name();
-        $entity_data = array('entity_artifact_name' => $artifact_name);
+        $entity_data = EntityAPIUtils::init_entity_data($artifact_name);
         return $entity_data;
     }
 
@@ -140,7 +140,7 @@ class EntityActionProcessor {
         if (!isset($_POST['id']) ) wp_send_json_error(array('message' => "Entity identifier missing"));
 
         $artifact_name = EntityRequestUtils::get_artifact_name();
-        $entity_data = array('entity_artifact_name' => $artifact_name);
+        $entity_data = EntityAPIUtils::init_entity_data($artifact_name);
         return $entity_data;
     }
 
