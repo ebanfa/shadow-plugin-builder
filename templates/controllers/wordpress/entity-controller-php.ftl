@@ -90,7 +90,7 @@ class EntityActionProcessor {
      */
     public static function find_entity_ajax() {
         $entity_data = self::do_before_ajax_find();
-        $search_results = EntityAPI::do_find_entity($entity_data);
+        $search_results = EntityAPI::find_entity($entity_data);
         self::do_after_ajax_find($entity_data, $search_results);
     }
 

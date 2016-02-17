@@ -9,7 +9,8 @@ jQuery(document).ready(function($)
             'type': 'POST',
             'url': ${application.name?lower_case}_ajax_script.ajaxurl,
             'data': function(d){
-               d.action = 'find_${entity.postName}_ajax';
+               d.action = 'find_entity_ajax';
+               d.artifact = '${entity.name?lower_case}';
                d.form = $("#${entity.postName}-list-form").serializeArray();
             },
         },
@@ -56,7 +57,8 @@ jQuery(document).ready(function($)
             'type': 'POST',
             'url': ${application.name?lower_case}_ajax_script.ajaxurl,
             'data': function(d){
-               d.action = 'find_${entity.postName}_ajax';
+               d.action = 'find_entity_ajax';
+               d.artifact = '${entity.name?lower_case}';
                d.form = $("#${entity.postName}-list-form").serializeArray();
             },
         },
