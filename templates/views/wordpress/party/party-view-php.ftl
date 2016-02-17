@@ -15,7 +15,7 @@ class PartyView extends ViewController {
      *
      */
     public static function init_hooks() {
-        $hook_name = 'shadowbanker_list_party_form_fields'
+        $hook_name = 'shadowbanker_list_party_form_fields';
         add_filter('shadowbanker_list_party_form_fields', array('PartyView', 'filter_form_fields'), 10, 1);
     }
 
