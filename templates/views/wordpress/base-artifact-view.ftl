@@ -52,14 +52,14 @@ class ArtifactView {
      * Action method to enqueue the required scripts
      */
     public function get_artifact_name() {
-       return $this->$artifact;
+       return $this->artifact;
     }
 
     /**
      * Action method to enqueue the required scripts
      */
     public function get_page_action() {
-       return $this->$page_action;
+       return $this->page_action;
     }
 
     /**
