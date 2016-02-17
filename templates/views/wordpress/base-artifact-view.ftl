@@ -78,7 +78,7 @@ class ArtifactView {
      * Action method to enqueue the required scripts
      */
     public function set_page_action_txt() {
-        $page_action = sanitize_text_field($_REQUEST['$page_info']['page_action']);
+        $page_action = sanitize_text_field($_REQUEST['page_info']['page_action']);
 
         if($page_action == 'create')
             $this->page_action_txt = 'Create a new '. strtolower($page_name ) . ' by filling in the form below';
