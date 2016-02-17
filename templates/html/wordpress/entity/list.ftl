@@ -7,7 +7,7 @@
 
     $view = $_REQUEST['page_info']['view'];
     $model = $view->get_model();
-    var_dump(EntityAPI::get_model($view->artifact));
+    var_dump($view->get_model());
 ?>
     <form id="<?php echo $model['entity_post_name']; ?>-list-form">
         <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
