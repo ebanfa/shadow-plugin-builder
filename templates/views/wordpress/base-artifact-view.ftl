@@ -153,7 +153,6 @@ class ArtifactView {
      */
     public function render() {
         if(isset($_REQUEST['page_info'])) {
-            ;
             $custom_render_action = 'shadowbanker_render_' . $this->page_action .'_' . $this->artifact . '_view';
 
             if(has_action($custom_render_action)) {
