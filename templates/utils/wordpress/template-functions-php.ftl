@@ -54,7 +54,7 @@ function cp_get_template($template_name, $args = array(), $template_path = '', $
         global $wp_query;
         $wp_query->set_404();
         status_header( 404 );
-        get_template_part( 404 ); exit();
+        get_template( 404 ); exit();
         //_doing_it_wrong(__FUNCTION__, sprintf('<code>%s</code> does not exist.', $located), '0.0.1');
         //return;
     }
