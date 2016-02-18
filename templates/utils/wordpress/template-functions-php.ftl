@@ -51,10 +51,14 @@ function cp_get_template($template_name, $args = array(), $template_path = '', $
     $located = cp_locate_template($template_name, $template_path, $default_path);
 
     if (!file_exists($located)) {
-        global $wp_query;
-        $wp_query->is_404 = true;
+            global $wp_query;
+          $wp_query->is_404 = true;
+          $wp_query->is_single = false;
+          $wp_query->is_page = false;
+
+          include( get_query_template( '404' ) );
+          exit();
         //_doing_it_wrong(__FUNCTION__, sprintf('<code>%s</code> does not exist.', $located), '0.0.1');
-        return;
     }
     // Allow 3rd party plugin filter template file from their plugin
     //$located = apply_filters('wc_get_template', $located, $template_name, $args, $template_path, $default_path);
