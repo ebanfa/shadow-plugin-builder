@@ -25,7 +25,7 @@
                         <ul class="dropdown-menu dropdown-menu-right">
                             <?php foreach ($view->get_action_links() as $link) { ?>
                             <li>
-                                <a href="<?php echo $link['link']; ?>"><?php echo $link['link']; ?></a>
+                                <a href="<?php echo $link['link']; ?>"><?php echo $link['name']; ?></a>
                             </li>
                             <?php } ?>
                         </ul>
