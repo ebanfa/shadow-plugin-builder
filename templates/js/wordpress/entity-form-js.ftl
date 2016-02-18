@@ -11,7 +11,7 @@ jQuery(document).ready(function ($)
             formData.append(val.name, val.value);
         });
         // As required by wordpress
-        formData.append('action', 'create_${entity.postName}_ajax');
+        formData.append('action', 'create_entity_ajax');
         // Make the Ajax call
         $.ajax({
             url: ${application.name?lower_case}_ajax_script.ajaxurl,
