@@ -19,6 +19,7 @@
                         <div class="form-group">
                             <div class="fg-line">
                                 <input type="text" class="form-control name" 
+                                    <?php if(isset($model['id'])) { echo 'value="' . $model[$field['name']]. '" '; }?>
                                     id="<?php echo $field['name'];?>" name="<?php echo $field['name']; ?>" 
                                     placeholder="<?php echo $field['description']; ?>" 
                                     data-bv-message="The <?php echo $field['description']; ?> is not valid" 
