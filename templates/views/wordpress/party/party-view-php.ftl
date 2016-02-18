@@ -57,8 +57,8 @@ class PartyView extends ViewController {
     public static function filter_view_action_links($view, $action_links) {
         $page_action = $view->get_page_action();
         $party_role_param = '';
-        if(isset($_RQUEST['role'])) {
-            $party_role_param = '&role=' . sanitize_text_field($_RQUEST['role']);
+        if(isset($_REQUEST['role'])) {
+            $party_role_param = '&role=' . sanitize_text_field($_REQUEST['role']);
         }
         //$action_links = parent::filter_view_action_links($view, $action_links);
         $action_links = array();
