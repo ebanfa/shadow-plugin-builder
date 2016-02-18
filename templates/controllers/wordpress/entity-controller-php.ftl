@@ -46,7 +46,7 @@ class EntityActionProcessor {
     /**
      *
      */
-    public static function do_before_ajax_edit($entity_data) {
+    public static function do_before_ajax_edit() {
         // Ensure we have a valid form
         if(!EntityRequestUtils::is_valid_form() || !isset($_POST['edit_mode'])) {
             wp_send_json_error(array('message' => "Invalid artifact operation!"));
