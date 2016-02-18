@@ -69,11 +69,11 @@ class PartyView extends ViewController {
         }
         if($page_action == 'list') {
             // Add Person link
-            $action_links['create_entity_link'] = array('name' => 'Add New Person', 
-                'link' => '/page?type=entity&page_action=create&artifact='. $view->get_artifact_name() . $party_role_param);
+            $action_links['create_person_link'] = array('name' => 'Add New Person', 
+                'link' => '/page?type=entity&page_action=create&artifact=person' . $party_role_param);
             // Add Organization link
             $action_links['create_organization_link'] = array('name' => 'Add New Organization', 
-                'link' => '/page?type=entity&page_action=create&artifact=' . $view->get_artifact_name() . $party_role_param);
+                'link' => '/page?type=entity&page_action=create&artifact=partygroup' . $party_role_param);
         }
         return $action_links;
     }
