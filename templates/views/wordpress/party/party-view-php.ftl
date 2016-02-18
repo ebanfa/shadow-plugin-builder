@@ -21,6 +21,8 @@ class PartyView extends ViewController {
         add_filter('shadowbanker_party_view_title', array('PartyView', 'filter_view_title'), 10, 2);
         add_filter('shadowbanker_party_form_fields', array('PartyView', 'filter_form_fields'), 10, 2);
         add_filter('shadowbanker_party_action_links', array('PartyView', 'filter_view_action_links'), 10, 2);
+        add_filter('shadowbanker_partygroup_action_links', array('PartyView', 'filter_view_action_links'), 10, 2);
+        add_filter('shadowbanker_person_action_links', array('PartyView', 'filter_view_action_links'), 10, 2);
     }
 
     /**
@@ -56,13 +58,18 @@ class PartyView extends ViewController {
         $page_action = $view->get_page_action();
         //$action_links = parent::filter_view_action_links($view, $action_links);
         $action_links = array();
+        if($page_action == 'create') {
+            // Add Person link
+            $action_links['list_entity_link'] = array('name' => 'View All', 
+                'link' => '/page?type=entity&page_action=list&artifact='. $view->get_artifact_name());
+        }
         if($page_action == 'list') {
             // Add Person link
-            $action_links['create_person_link'] = array('name' => 'Add New Person', 
-                'link' => '/page?type=entity&page_action=create&artifact=person');
+            $action_links['create_entity_link'] = array('name' => 'Add New Person', 
+                'link' => '/page?type=entity&page_action=create&artifact='. $view->get_artifact_name());
             // Add Organization link
             $action_links['create_organization_link'] = array('name' => 'Add New Organization', 
-                'link' => '/page?type=entity&page_action=create&artifact=partygroup');
+                'link' => '/page?type=entity&page_action=create&artifact=' . $view->get_artifact_name());
         }
         return $action_links;
     }

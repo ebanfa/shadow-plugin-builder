@@ -191,8 +191,8 @@ class ArtifactView {
         $model_name = $model['entity_description'];
         if($this->get_page_action() == 'create') {
             // Add Person link
-            $action_links['create_entity_link'] = array('name' => 'Add New' . $model_name, 
-                'link' => '/page?type=entity&page_action=create&artifact='. $this->artifact);
+            $action_links['list_entity_link'] = array('name' => 'View All', 
+                'link' => '/page?type=entity&page_action=list&artifact='. $this->artifact);
         }
         return $action_links;
     }
