@@ -52,11 +52,9 @@ function cp_get_template($template_name, $args = array(), $template_path = '', $
 
     if (!file_exists($located)) {
         global $wp_query;
-        $wp_query->set_404();
-        status_header( 404 );
-        get_template( 404 ); exit();
+        $wp_query->is_404 = true;
         //_doing_it_wrong(__FUNCTION__, sprintf('<code>%s</code> does not exist.', $located), '0.0.1');
-        //return;
+        return;
     }
     // Allow 3rd party plugin filter template file from their plugin
     //$located = apply_filters('wc_get_template', $located, $template_name, $args, $template_path, $default_path);
