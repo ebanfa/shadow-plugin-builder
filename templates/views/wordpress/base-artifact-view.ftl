@@ -183,7 +183,7 @@ class ArtifactView {
     /**
      *
      */
-    public static function get_view_action_links() {
+    public function get_view_action_links() {
         $page_action = $this->get_page_action();
         //$action_links = parent::filter_view_action_links($view, $action_links);
         $action_links = array();
