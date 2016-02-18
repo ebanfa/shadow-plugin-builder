@@ -225,6 +225,14 @@ class ArtifactView {
             $action_links['list_entity_link'] = array('name' => 'View All', 
                 'link' => '/page?type=entity&page_action=list&artifact='. $this->artifact);
         }
+        if($this->get_page_action() == 'view') {
+            // Add list entity link
+            $action_links['list_entity_link'] = array('name' => 'View All', 
+                'link' => '/page?type=entity&page_action=list&artifact='. $this->artifact);
+            // Add list entity link
+            $action_links['create_entity_link'] = array('name' => 'Add New', 
+                'link' => '/page?type=entity&page_action=create&artifact='. $this->artifact);
+        }
         return $action_links;
     }
 
