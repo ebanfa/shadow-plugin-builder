@@ -113,7 +113,7 @@ class ArtifactView {
         if($page_action == 'view')
             $this->page_action_txt = 'To update or delete the ' . strtolower($this->page_name ) . ', click on the control buttons below.';
         if($page_action == 'list')
-            $this->page_action_txt = 'The '. strtolower($this->page_name ) . ' list. To view a single record, click on the highlighted column.';
+            $this->page_action_txt = 'To view a single record, click on the highlighted column.';
     }
 
     /**
@@ -121,6 +121,18 @@ class ArtifactView {
      */
     public function get_model() {
        return $this->model;
+    }
+
+    /**
+     * 
+     */
+    public function get_action_links() {
+        $action_links = array();
+        $action_links_filter = 'shadowbanker_' . $this->artifact . '_action_links';
+        if (has_filter($action_links_filter)) {
+            $action_links = apply_filters($action_links_filter, $this, $action_links );
+        }
+        return $action_links; 
     }
 
     /**

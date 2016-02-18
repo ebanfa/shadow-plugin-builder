@@ -23,14 +23,11 @@
                         </a>
                         
                         <ul class="dropdown-menu dropdown-menu-right">
-                            <?php if($view->get_page_action() == 'edit') { ?>
+                            <?php foreach ($view->get_action_links() as $link) { ?>
                             <li>
-                                <a href="/page?type=entity&page_action=create&artifact=<?php echo $view->get_artifact_name(); ?>">Add a new record</a>
+                                <a href="<?php echo $link['link']; ?>"><?php echo $link['link']; ?></a>
                             </li>
                             <?php } ?>
-                            <li>
-                                <a href="/page?type=entity&page_action=list&artifact=<?php echo $view->get_artifact_name(); ?>">View All</a>
-                            </li>
                         </ul>
                     </li>
                 </ul>

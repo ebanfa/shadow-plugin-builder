@@ -45,6 +45,13 @@ class ViewController {
         return $description;
     }
 
+    /**
+     *
+     */
+    public static function filter_view_action_links($view, $action_links) {
+        return $action_links;
+    }
+
 }
 
 ?>
