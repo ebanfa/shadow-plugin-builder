@@ -42,7 +42,7 @@ class PartyView extends ViewController {
         $title = parent::filter_view_title($view, $title);
         if(isset($_REQUEST['role'])) {
             $role = sanitize_text_field($_REQUEST['role']);
-            if(isset($view_title_map[$role]))
+            if(isset(self::$view_title_map[$role]))
                 $title = sanitize_text_field($_REQUEST['role']);
         }
         return $title;
