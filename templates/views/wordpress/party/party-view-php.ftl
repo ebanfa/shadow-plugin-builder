@@ -10,7 +10,10 @@ if (!defined('ABSPATH')) {
 
 class PartyView extends ViewController {
 
-
+    public static $view_title_map = array('client' => 'Client',
+        'tenant' => 'Tenant',
+        'prospective_tenant' => 'Prospective Tenant',
+        'service_provider' => 'Service Provider',);
     /**
      *
      */
@@ -38,7 +41,9 @@ class PartyView extends ViewController {
     public static function filter_view_title($view, $title) {
         $title = parent::filter_view_title($view, $title);
         if(isset($_REQUEST['role'])) {
-            $title = strtoupper(sanitize_text_field($_REQUEST['role']));
+            $role = sanitize_text_field($_REQUEST['role']);
+            if(isset($view_title_map[$role]))
+                $title = sanitize_text_field($_REQUEST['role']);
         }
         return $title;
     }
