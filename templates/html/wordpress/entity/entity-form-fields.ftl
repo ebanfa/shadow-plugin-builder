@@ -147,7 +147,7 @@
                                     <input type='text' 
                                         id="<?php echo $field['name'];?>" name="<?php echo $field['name'];?>"
                                         class="form-control date-picker" 
-                                        data-toggle="dropdown" placeholder="Click here..." 
+                                        data-toggle="dropdown" placeholder="<?php echo $field['description']; ?>" 
                                         data-bv-message="The <?php echo $field['description']; ?> is not valid" 
                                         data-bv-notempty-message="The <?php echo $field['description']; ?> is required and cannot be empty">
                                 </div>
