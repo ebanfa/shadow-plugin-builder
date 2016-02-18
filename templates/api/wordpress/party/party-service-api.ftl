@@ -17,7 +17,7 @@ class PartyAPI extends EntityAPI {
      *
      */
     public static function find_entity($entity_data) {
-        $role_type = EntityRequestUtils::get_query_string_field('role');
+        $role_type = EntityRequestUtils::get_query_form_field('role');
         if($role_type) return self::find_by_role($role_type); 
         return self::do_find_entity($entity_data);
 
