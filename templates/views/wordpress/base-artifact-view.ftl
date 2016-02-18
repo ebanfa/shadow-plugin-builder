@@ -118,7 +118,11 @@ class ArtifactView {
     public function get_form_fields() {
         $form_fields = array();
         $fields_filter = 'shadowbanker_' . $this->page_action .'_' . $this->artifact . '_form_fields';
-        if (has_filter($fields_filter)) apply_filters($fields_filter, $form_fields );
+        echo "Looking for filter";
+        if (has_filter($fields_filter)) {
+            echo "Found filter";
+            $form_fields = apply_filters($fields_filter, $form_fields );
+        }
         return $form_fields; 
     }
 
