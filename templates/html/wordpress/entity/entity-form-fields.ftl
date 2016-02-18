@@ -36,6 +36,3 @@
             //do_action('shadowbanker_after_entity_form_field');
         } 
 ?>
-
-
-
