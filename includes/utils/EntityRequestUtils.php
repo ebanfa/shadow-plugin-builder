@@ -35,12 +35,12 @@ class EntityRequestUtils {
         if($entity_data['edit_mode']) {
             //Process entity create form fields
             foreach ($entity_data['entity_fields'] as $field_data) {
-                if($field_data['is_form_field'] === 'Y' && $field_data['is_create_field'] === 'Y') {
+                if($field_data['is_form_field'] && $field_data['is_create_field']) {
                     $entity_data = self::build_entity_field_from_post($field_data, $entity_data);
                 }
             }
             // Process non global entity data
-            if($entity_data['is_global_entity'] === 'N'){
+            if($entity_data['is_global_entity']){
                 $business_unit = BusinessUnitAPI::get_current_user_business_unit();
                 if (isset($business_unit['id'])) {
                     $entity_data['business_unit'] = $business_unit['id'];
@@ -54,7 +54,7 @@ class EntityRequestUtils {
             //Process entity create form fields
             foreach ($entity_data['entity_fields'] as $field_name => $field_data) {
 
-                if($field_data['is_form_field'] === 'Y' && $field_data['is_edit_field'] === 'Y') {
+                if($field_data['is_form_field'] && $field_data['is_edit_field']) {
                     $entity_data = self::build_entity_field_from_post($field_data, $entity_data);
                 }
             }
