@@ -34,6 +34,7 @@
                             <div class="fg-line">
                                 <input type="email" class="form-control email" 
                                     id="<?php echo $field['name'];?>" name="<?php echo $field['name'];?>" 
+                                    <?php if(isset($model['id'])) { echo 'value="' . $model[$field['name']]. '" '; }?> 
                                     placeholder="<?php echo $field['description']; ?>" 
                                     data-bv-message="The <?php echo $field['description']; ?> is not valid" 
                                     data-bv-emailaddress-message="The value is not a valid email address" 
@@ -50,7 +51,7 @@
                                 <textarea placeholder="<?php echo $field['description']; ?>" 
                                     name="<?php echo $field['name'];?>" rows="7" cols="100" 
                                     class="form-control text-lg" id="<?php echo $field['name'];?>">
-                                    <?php echo '' ?>
+                                    <?php if(isset($model['id'])) { echo $model[$field['name']]; }?>
                                 </textarea>
                             </div>
                         </div>
@@ -63,6 +64,7 @@
                             <div class="fg-line">
                                 <input type="text" class="form-control text" 
                                     id="<?php echo $field['name'];?>" name="<?php echo $field['name']; ?>" 
+                                    <?php if(isset($model['id'])) { echo 'value="' . $model[$field['name']]. '" '; }?> 
                                     placeholder="<?php echo $field['description']; ?>" 
                                     data-bv-message="The <?php echo $field['description']; ?> is not valid" 
                                     data-bv-notempty-message="The <?php echo $field['description']; ?> is required and cannot be empty" required>
@@ -77,6 +79,7 @@
                             <div class="fg-line">
                                 <input type="text" class="form-control alphanumeric" 
                                     id="<?php echo $field['name'];?>" name="<?php echo $field['name']; ?>" 
+                                    <?php if(isset($model['id'])) { echo 'value="' . $model[$field['name']]. '" '; }?> 
                                     placeholder="<?php echo $field['description']; ?>" 
                                     data-bv-message="The <?php echo $field['description']; ?> is not valid" 
                                     data-bv-notempty-message="The <?php echo $field['description']; ?> is required and cannot be empty" required>
@@ -91,6 +94,7 @@
                             <div class="fg-line">
                                 <input type="text" class="form-control phone" 
                                     id="<?php echo $field['name'];?>" name="<?php echo $field['name']; ?>" 
+                                    <?php if(isset($model['id'])) { echo 'value="' . $model[$field['name']]. '" '; }?> 
                                     placeholder="<?php echo $field['description']; ?>" 
                                     data-bv-message="The <?php echo $field['description']; ?> is not valid" 
                                     data-bv-notempty-message="The <?php echo $field['description']; ?> is required and cannot be empty" required>
@@ -104,6 +108,7 @@
                             <div class="fg-line">
                                 <input type="text" class="form-control number" 
                                     id="<?php echo $field['name'];?>" name="<?php echo $field['name']; ?>" 
+                                    <?php if(isset($model['id'])) { echo 'value="' . $model[$field['name']]. '" '; }?> 
                                     placeholder="<?php echo $field['description']; ?>" 
                                     data-bv-message="The <?php echo $field['description']; ?> is not valid" 
                                     data-bv-notempty-message="The <?php echo $field['description']; ?> is required and cannot be empty" required>
@@ -118,6 +123,7 @@
                             <div class="fg-line">
                                 <input type="text" class="form-control money" 
                                     id="<?php echo $field['name'];?>" name="<?php echo $field['name']; ?>" 
+                                    <?php if(isset($model['id'])) { echo 'value="' . $model[$field['name']]. '" '; }?> 
                                     placeholder="<?php echo $field['description']; ?>" 
                                     data-bv-message="The <?php echo $field['description']; ?> is not valid" 
                                     data-bv-notempty-message="The <?php echo $field['description']; ?> is required and cannot be empty" required>
@@ -132,6 +138,7 @@
                             <div class="fg-line">
                                 <input type="text" class="form-control flag" 
                                     id="<?php echo $field['name'];?>" name="<?php echo $field['name']; ?>" 
+                                    <?php if(isset($model['id'])) { echo 'value="' . $model[$field['name']]. '" '; }?> 
                                     placeholder="<?php echo $field['description']; ?>" 
                                     data-bv-message="The <?php echo $field['description']; ?> is not valid" 
                                     data-bv-notempty-message="The <?php echo $field['description']; ?> is required and cannot be empty" required>
@@ -146,7 +153,8 @@
                                 <span class="input-group-addon"><i class="md md-event"></i></span>
                                 <div class="dtp-container dropdown fg-line">
                                     <input type='text' 
-                                        id="<?php echo $field['name'];?>" name="<?php echo $field['name'];?>"
+                                        id="<?php echo $field['name'];?>" name="<?php echo $field['name'];?>" 
+                                        <?php if(isset($model['id'])) { echo 'value="' . $model[$field['name']]. '" '; }?> 
                                         class="form-control date-picker" 
                                         data-toggle="dropdown" placeholder="<?php echo $field['description']; ?>" 
                                         data-bv-message="The <?php echo $field['description']; ?> is not valid" 
