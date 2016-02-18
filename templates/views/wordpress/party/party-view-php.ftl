@@ -57,8 +57,12 @@ class PartyView extends ViewController {
         //$action_links = parent::filter_view_action_links($view, $action_links);
         $action_links = array();
         if($page_action == 'list') {
-            $action_links['create_link'] = array('name' => 'Add New', 
-                'link' => '/page?type=entity&page_action=create&artifact=' . $view->get_artifact_name());
+            // Add Person link
+            $action_links['create_person_link'] = array('name' => 'Add New Person', 
+                'link' => '/page?type=entity&page_action=create&artifact=person');
+            // Add Organization link
+            $action_links['create_organization_link'] = array('name' => 'Add New Organization', 
+                'link' => '/page?type=entity&page_action=create&artifact=partygroup');
         }
         return $action_links;
     }
