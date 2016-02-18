@@ -51,9 +51,9 @@
                                 foreach ($model['entity_fields'] as $field_name => $field) { 
                                     if($field['is_view_field'] && !$field['is_relationship_field']) {  ?>
                                 <td><?php echo $model[$field['name']]; ?></td>
-                            <?php   
-                                    }
-                                } ?>
+                            <?php   } if ($field['is_view_field'] && $field['is_relationship_field']) { ?>
+                                <td><?php echo $model[$field['name'] . '_txt']; ?></td>
+                            <?php   } } ?>
                             </tr>
                         </tbody>
                     </table>
