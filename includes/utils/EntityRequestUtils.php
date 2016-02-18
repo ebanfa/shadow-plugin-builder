@@ -40,7 +40,7 @@ class EntityRequestUtils {
                 }
             }
             // Process non global entity data
-            if($entity_data['is_global_entity']){
+            if(!$entity_data['is_global_entity']){
                 $business_unit = BusinessUnitAPI::get_current_user_business_unit();
                 if (isset($business_unit['id'])) {
                     $entity_data['business_unit'] = $business_unit['id'];
