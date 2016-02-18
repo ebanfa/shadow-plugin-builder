@@ -36,6 +36,7 @@ class ${entity.name}CPT {
 <#list entity.fields as field>
         '${field.name}' => array('name' => '${field.name}',
             'description' => '${field.description}',
+            'size' => '${field.size}',
             'data_type' => '${field.dataType}',
             'is_required' => <#if field.required == "Y">true<#else>false</#if>,
             'is_visible' => <#if field.isVisible == "Y">true<#else>false</#if>,

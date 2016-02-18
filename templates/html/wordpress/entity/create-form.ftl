@@ -8,21 +8,16 @@
     $view = $_REQUEST['page_info']['view'];
     $model = $view->get_model();
 ?>
-    <form id="<?php echo $model['entity_post_name']; ?>-list-form">
-        <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
-        <input type="hidden" name="submitted" id="submitted" value="true" /> 
+    <form role="form" name="<?php echo $sb_post_type;?>_form" 
+      id="<?php echo $sb_post_type;?>_form" action="" 
+      method="POST" enctype="multipart/form-data" 
+      data-bv-framework="bootstrap"
+      data-bv-excluded = ":disabled"
+      data-bv-message="This value is not valid"
+      data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
+      data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
+      data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
+
+    <?php do_action('shadowbanker_render_entity_form_fields'); ?>
+
     </form>
-    <div class="table-responsive">
-        <table id="<?php echo $model['entity_post_name']; ?>-table" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <?php foreach ($model['entity_fields'] as $field_name => $field) {  if($field['is_list_field']) { ?>
-                    <th><?php echo $field['description']; ?></th>
-                    <?php }} ?>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
-    </div>

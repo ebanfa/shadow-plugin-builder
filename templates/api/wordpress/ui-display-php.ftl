@@ -110,6 +110,10 @@ class CloderiaUIDisplayAPI {
     public static function render_list() {
         cp_get_template('entity/list.php');
     }
+
+    public static function render_entity_form_fields() {
+        cp_get_template('entity/entity-form-fields.php');
+    }
     
     
 

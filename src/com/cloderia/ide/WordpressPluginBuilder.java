@@ -339,6 +339,7 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 		this.generateArtifact(module, null, "views/wordpress/edit-entity-view.ftl" , includeViewOutputDir +  "EditEntityView.php");
 		this.generateArtifact(module, null, "views/wordpress/single-entity-view.ftl" , includeViewOutputDir +  "SingleEntityView.php");
 		this.generateArtifact(module, null, "views/wordpress/list-entity-view.ftl" , includeViewOutputDir +  "ListEntityView.php");
+		this.generateArtifact(module, null, "views/wordpress/form-field-filter.ftl" , includeViewOutputDir +  "FormFieldFilter.php");
 	}
 
 	private void doEntityHTML(Module module) {
@@ -394,6 +395,7 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 		this.generateArtifact(module, null, "html/wordpress/entity/edit-form.ftl" , entityOutputDir + "edit-form.php");
 		this.generateArtifact(module, null, "html/wordpress/entity/list.ftl" , entityOutputDir + "list.php");
 		this.generateArtifact(module, null, "html/wordpress/entity/single.ftl" , entityOutputDir + "single.php");
+		this.generateArtifact(module, null, "html/wordpress/entity/entity-form-fields.ftl" , entityOutputDir + "entity-form-fields.php");
 
 		this.generateArtifact(module, null, "html/wordpress/entity/field-wrapper-end.ftl" , entityOutputDir + "field-wrapper-end.php");
 		this.generateArtifact(module, null, "html/wordpress/entity/field-wrapper-start.ftl" , entityOutputDir + "field-wrapper-start.php");

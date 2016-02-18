@@ -142,9 +142,21 @@ class ArtifactView {
         $form_fields = array();
         $fields_filter = 'shadowbanker_' . $this->artifact . '_form_fields';
         if (has_filter($fields_filter)) {
-            $form_fields = apply_filters($fields_filter, $this, $form_fields );
+            $form_fields = apply_filters($fields_filter, $this, $form_fields);
         }
         return $form_fields; 
+    }
+
+    /**
+     * This method add additional information to a field.
+     * The added information is required to display the field.
+     */
+    public function prepare_view_form_field($field) {
+        $field_filter = 'shadowbanker_filter_form_field';
+        if (has_filter($field_filter)) {
+            $field = apply_filters($field_filter, $this, $field);
+        }
+        return $field;
     }
 
 
