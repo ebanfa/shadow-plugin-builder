@@ -22,7 +22,8 @@
 
         <div class="btn-demo m-t-10">
             <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
-            <input type="hidden" name="submitted" id="submitted" value="true" />    
+            <input type="hidden" name="artifact" id="artifact" value="<?php echo $view->get_artifact_name(); ?>" />   
+            <input type="hidden" name="submitted" id="submitted" value="true" />  
             <input type="hidden" name="edit_mode" value="create" /> 
             <button id="<?php echo $view->get_artifact_name(); ?>-form-btn" type="submit" class="btn btn-primary waves-effect">
                 <?php _e('Submit', 'framework') ?>
