@@ -10,7 +10,7 @@
 ?>
 
 <?php   foreach ($view->get_form_fields() as $field) { 
-            //do_action('shadowbanker_before_entity_form_field');
+            do_action('shadowbanker_before_entity_form_field');
             // Non relationship field 
             if(!$field['is_relationship_field']) { 
                 if($field['data_type'] == 'name') { 
@@ -72,9 +72,9 @@
                     </div>
         <?php   }  ?>
 
-<?php      } else { // Relationship field 
+<?php       } else { // Relationship field 
 
-       }
-            //do_action('shadowbanker_after_entity_form_field');
+            }
+            do_action('shadowbanker_after_entity_form_field');
         } 
 ?>
