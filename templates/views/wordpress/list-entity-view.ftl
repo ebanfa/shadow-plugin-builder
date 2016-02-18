@@ -17,6 +17,7 @@ class ListEntityView extends ArtifactView {
         parent::__construct();
     }
 
+
 }
 
 ?>
