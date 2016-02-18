@@ -18,6 +18,9 @@ class ArtifactView {
 
     public $model;
 
+    public $parent_id;
+    public $parent_artifact;
+    public $parent_field;
 
     /**
      *
@@ -44,6 +47,13 @@ class ArtifactView {
         $artifact_data = ArtifactUtils::$artifacts[$this->artifact];
         if($artifact_data['artifact_type'] == 'entity'){
             $this->model = EntityAPI::get_model($this->artifact);
+        }
+        // Process the parent id, if any
+        if(isset($_REQUEST['parent_id']) && isset($_REQUEST['parent_artifact']) && isset($_REQUEST['parent_field'])) {
+
+            $this->parent_id = sanitize_text_field($_REQUEST['parent_id']);
+            $this->parent_artifact = sanitize_text_field($_REQUEST['parent_artifact']);
+            $this->parent_field = sanitize_text_field($_REQUEST['parent_field']);
         }
     }
 
@@ -98,6 +108,27 @@ class ArtifactView {
      */
     public function get_page_action_txt() {
        return $this->page_action_txt;
+    }
+
+    /**
+     * 
+     */
+    public function get_parent_id() {
+       return $this->parent_id;
+    }
+
+    /**
+     * 
+     */
+    public function get_parent_artifact_name() {
+       return $this->parent_artifact;
+    }
+
+    /**
+     * 
+     */
+    public function get_parent_field() {
+       return $this->parent_field;
     }
 
     /**

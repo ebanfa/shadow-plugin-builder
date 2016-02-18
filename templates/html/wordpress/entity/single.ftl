@@ -30,56 +30,53 @@
         <?php } ?>
     </ul>
 
-        <div class="tab-content p-20">
-            <div role="tabpanel" class="tab-pane animated fadeIn in active" id="tab-a">
-                <div id="success"></div>
-                <div class="table-responsive">
-                    <table class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
-                        <tbody>
-                            <tr>
-                            <?php 
-                                foreach ($model['entity_fields'] as $field_name => $field) { 
-                                    if($field['is_view_field']) {  ?>
-                                <th><?php echo $field['description']; ?></th>
-                            <?php   
-                                    }
-                                } ?>
-                            </tr>
+    <div class="tab-content p-20">
+        <div role="tabpanel" class="tab-pane animated fadeIn in active" id="tab-a">
+            <div id="success"></div>
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
+                    <tbody>
+                        <tr>
+                        <?php 
+                            foreach ($model['entity_fields'] as $field_name => $field) { 
+                                if($field['is_view_field']) {  ?>
+                            <th><?php echo $field['description']; ?></th>
+                        <?php   
+                                }
+                            } ?>
+                        </tr>
 
-                            <tr>
-                            <?php 
-                                foreach ($model['entity_fields'] as $field_name => $field) { 
-                                    if($field['is_view_field'] && !$field['is_relationship_field']) {  ?>
-                                <td><?php echo $model[$field['name']]; ?></td>
-                            <?php   } if ($field['is_view_field'] && $field['is_relationship_field']) { ?>
-                                <td><?php echo $model[$field['name'] . '_txt']; ?></td>
-                            <?php   } } ?>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="btn-demo m-t-10">
-                    <a href="<?php echo get_site_url() . '/page?type=entity&artifact=' . $view->get_model() . '&id=' . $model['id'] . '$parent_url'; ?>&page_action=edit" 
-                       class="btn btn-primary waves-effect">
-                       <?php _e('Edit', 'framework') ?>
-                    </a>
-                    <form id="delete-entity-form" style="display:none" action=""  method="POST">
-                        <input type="hidden" name="id" value="<?php echo $model['id']; ?>">
-                        <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
-                        <input type="hidden" name="submitted" id="submitted" value="true" />
-                    </form>
-                    <a id="delete-entity-btn" href="<?php echo get_site_url() . '/page?type=entity&artifact=' . $view->get_model() . '&id=' . $model['id']. '$parent_url'; ?>&page_action=delete" class="btn btn-warning waves-effect">
-                       <?php _e('Delete', 'framework') ?>
-                    </a>
-                    <?php if(true) { ?>
-                    <a href="<?php echo get_site_url() . '/page?type=entity&artifact=' . '$parent_artifact' . '&id=' . '$parent_id.$parent_param'; ?>&page_action=view" 
-                       class="btn btn-primary waves-effect">
-                       <?php _e('Done', 'framework') ?>
-                    </a>
-                    <?php } ?>
-                </div>
-
+                        <tr>
+                        <?php 
+                            foreach ($model['entity_fields'] as $field_name => $field) { 
+                                if($field['is_view_field'] && !$field['is_relationship_field']) {  ?>
+                            <td><?php echo $model[$field['name']]; ?></td>
+                        <?php   } if ($field['is_view_field'] && $field['is_relationship_field']) { ?>
+                            <td><?php echo $model[$field['name'] . '_txt']; ?></td>
+                        <?php   } } ?>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            
-
+            <div class="btn-demo m-t-10">
+                <a href="<?php echo get_site_url() . '/page?type=entity&artifact=' . $view->get_artifact_name() . '&id=' . $model['id'] . '$parent_url'; ?>&page_action=edit" 
+                   class="btn btn-primary waves-effect">
+                   <?php _e('Edit', 'framework') ?>
+                </a>
+                <form id="delete-entity-form" style="display:none" action=""  method="POST">
+                    <input type="hidden" name="id" value="<?php echo $model['id']; ?>">
+                    <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
+                    <input type="hidden" name="submitted" id="submitted" value="true" />
+                </form>
+                <a id="delete-entity-btn" href="<?php echo get_site_url() . '/page?type=entity&artifact=' . $view->get_model() . '&id=' . $model['id']. '$parent_url'; ?>&page_action=delete" class="btn btn-warning waves-effect">
+                   <?php _e('Delete', 'framework') ?>
+                </a>
+                <?php if(!is_null($view->get_parent_artifact())) { ?>
+                <a href="<?php echo get_site_url() . '/page?type=entity&artifact=' . '$parent_artifact' . '&id=' . '$parent_id.$parent_param'; ?>&page_action=view" 
+                   class="btn btn-primary waves-effect">
+                   <?php _e('Done', 'framework') ?>
+                </a>
+                <?php } ?>
+            </div>
         </div>
+    </div>
