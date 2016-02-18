@@ -178,6 +178,24 @@ class ArtifactView {
         }
     }
 
+    /**
+     * Render this view
+     */
+    public function render_form_fields() {
+        if(isset($_REQUEST['page_info'])) {
+            $custom_render_action = 'shadowbanker_render_' . $this->page_action . '_' . $this->artifact . '_view';
+
+            if(has_action($custom_render_action)) {
+                // action exists so execute it
+                do_action($custom_render_action);
+            } else {
+                // action has not been registered
+                // execute default render operation
+                do_action('shadowbanker_render_' . $this->page_action . '_entity_view');
+            }
+        }
+    }
+
 }
 
 ?>
