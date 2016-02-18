@@ -71,7 +71,7 @@
                     <a id="delete-entity-btn" href="<?php echo get_site_url() . '/page?type=entity&artifact=' . $view->get_model() . '&id=' . $model['id']. '$parent_url'; ?>&page_action=delete" class="btn btn-warning waves-effect">
                        <?php _e('Delete', 'framework') ?>
                     </a>
-                    <?php if(isset(true/*'$parent_artifact'*/)) { ?>
+                    <?php if(true) { ?>
                     <a href="<?php echo get_site_url() . '/page?type=entity&artifact=' . '$parent_artifact' . '&id=' . '$parent_id.$parent_param'; ?>&page_action=view" 
                        class="btn btn-primary waves-effect">
                        <?php _e('Done', 'framework') ?>
