@@ -31,7 +31,6 @@ class EntityAPI {
                 }
             }
             EntityRequestUtils::copy_fields_to_post($entity_data);
-            var_dump($entity_data);
             $entity_data = EntityPersistenceAPI::create_entity($entity_data);
         } else {
             EntityRequestUtils::copy_fields_to_post($entity_data);
