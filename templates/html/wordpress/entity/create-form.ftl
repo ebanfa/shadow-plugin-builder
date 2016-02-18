@@ -8,8 +8,8 @@
     $view = $_REQUEST['page_info']['view'];
     $model = $view->get_model();
 ?>
-    <form role="form" name="<?php echo $sb_post_type;?>_form" 
-        id="<?php echo $sb_post_type;?>_form" action="" 
+    <form role="form" name="<?php echo $model['entity_post_name'];?>_form" 
+        id="<?php echo $model['entity_post_name'];?>_form" action="" 
         method="POST" enctype="multipart/form-data" 
         data-bv-framework="bootstrap"
         data-bv-excluded = ":disabled"

@@ -17,6 +17,20 @@ class CreateEntityView extends ArtifactView {
     }
 
     /**
+     * Action method to enqueue the required scripts
+     */
+    public function enqueue_scripts() {
+        
+        wp_register_script('cp_entity_form', 
+            plugins_url('/js/entity-form.js', dirname(dirname(dirname(__FILE__)))), array('jquery'),'', true);
+        wp_register_script('cp_entity_mask', 
+            plugins_url('/js/entity-input-mask.js', dirname(dirname(dirname(__FILE__)))), array('jquery'),'', true);
+
+        wp_enqueue_script('cp_entity_form');
+        wp_enqueue_script('cp_entity_mask');
+    }
+
+    /**
      * 
      */
     public function get_form_fields() {
