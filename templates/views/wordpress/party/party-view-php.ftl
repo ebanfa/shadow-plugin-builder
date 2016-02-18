@@ -75,6 +75,20 @@ class PartyView extends ViewController {
             $action_links['create_organization_link'] = array('name' => 'Add New Organization', 
                 'link' => '/page?type=entity&page_action=create&artifact=partygroup' . $party_role_param);
         }
+        if($page_action == 'view') {
+            // Add Person link
+            $action_links['create_person_link'] = array('name' => 'Add New Person', 
+                'link' => '/page?type=entity&page_action=create&artifact=person' . $party_role_param);
+            // Add Organization link
+            $action_links['create_organization_link'] = array('name' => 'Add New Organization', 
+                'link' => '/page?type=entity&page_action=create&artifact=partygroup' . $party_role_param);
+
+            $action_links['list_person_link'] = array('name' => 'View Persons', 
+                'link' => '/page?type=entity&page_action=list&artifact=person' . $party_role_param);
+            // Add Organization link
+            $action_links['list_organization_link'] = array('name' => 'View Organizations', 
+                'link' => '/page?type=entity&page_action=list&artifact=partygroup' . $party_role_param);
+        }
         return $action_links;
     }
 
