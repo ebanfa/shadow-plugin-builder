@@ -17,13 +17,6 @@ class ListEntityView extends ArtifactView {
         parent::__construct();
     }
 
-    /**
-     * 
-     */
-    public function get_form_fields() {
-        $form_fields = array();
-        return $form_fields; 
-    }
 }
 
 ?>
