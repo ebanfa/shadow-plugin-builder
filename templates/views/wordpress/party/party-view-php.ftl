@@ -15,16 +15,16 @@ class PartyView extends ViewController {
      *
      */
     public static function init_hooks() {
-        $hook_name = 'shadowbanker_list_party_form_fields';
-        add_filter('shadowbanker_list_party_form_fields', array('PartyView', 'filter_form_fields'), 10, 1);
+        add_filter('shadowbanker_party_form_fields', array('PartyView', 'filter_form_fields'), 10, 2);
     }
 
     /**
      *
      */
-    public static function filter_form_fields($form_fields) {
-        $form_fields = parent::filter_form_fields($form_fields);
-        if(isset($_REQUEST['role'])) {
+    public static function filter_form_fields($view, $form_fields) {
+        $page_action = $view->get_page_action();
+        $form_fields = parent::filter_form_fields($view, $form_fields);
+        if(isset($_REQUEST['role']) && $page_action == 'list') {
             $form_fields['role'] = array('name' => 'role', 'value' => sanitize_text_field($_REQUEST['role']));
         }
         

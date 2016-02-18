@@ -20,28 +20,28 @@ class ViewController {
     /**
      *
      */
-    public static function filter_form_fields($form_fields) {
+    public static function filter_form_fields($view, $form_fields) {
         return $form_fields;
     }
 
     /**
      *
      */
-    public static function filter_view_title($title) {
+    public static function filter_view_title($view, $title) {
         return $title;
     }
 
     /**
      *
      */
-    public static function filter_view_action_title($title) {
+    public static function filter_view_action_title($view, $title) {
         return $title;
     }
 
     /**
      *
      */
-    public static function filter_view_action_description($description) {
+    public static function filter_view_action_description($view, $description) {
         return $description;
     }
 
