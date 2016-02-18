@@ -54,7 +54,7 @@ class EntityActionProcessor {
         $artifact_name = EntityRequestUtils::get_artifact_name();
         $entity_data = EntityAPIUtils::init_entity_data($artifact_name);
         $entity_data = EntityRequestUtils::build_entity_data_from_post($entity_data);
-        $entity_data = EntityRequestUtils::validate_entity_data($entity_data);
+        $entity_data = EntityAPIUtils::validate_entity_data($entity_data);
         return $entity_data;
     }
 
