@@ -56,20 +56,24 @@ class PartyView extends ViewController {
      */
     public static function filter_view_action_links($view, $action_links) {
         $page_action = $view->get_page_action();
+        $party_role_param = '';
+        if(isset($_RQUEST['role'])) {
+            $party_role_param = '&role=' . sanitize_text_field($_RQUEST['role']);
+        }
         //$action_links = parent::filter_view_action_links($view, $action_links);
         $action_links = array();
         if($page_action == 'create') {
             // Add Person link
             $action_links['list_entity_link'] = array('name' => 'View All', 
-                'link' => '/page?type=entity&page_action=list&artifact='. $view->get_artifact_name());
+                'link' => '/page?type=entity&page_action=list&artifact='. $view->get_artifact_name() . $party_role_param);
         }
         if($page_action == 'list') {
             // Add Person link
             $action_links['create_entity_link'] = array('name' => 'Add New Person', 
-                'link' => '/page?type=entity&page_action=create&artifact='. $view->get_artifact_name());
+                'link' => '/page?type=entity&page_action=create&artifact='. $view->get_artifact_name() . $party_role_param);
             // Add Organization link
             $action_links['create_organization_link'] = array('name' => 'Add New Organization', 
-                'link' => '/page?type=entity&page_action=create&artifact=' . $view->get_artifact_name());
+                'link' => '/page?type=entity&page_action=create&artifact=' . $view->get_artifact_name() . $party_role_param);
         }
         return $action_links;
     }
