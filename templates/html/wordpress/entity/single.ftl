@@ -59,7 +59,7 @@
                 </table>
             </div>
             <div class="btn-demo m-t-10">
-                <a href="<?php echo get_site_url() . '/page?type=entity&artifact=' . $view->get_artifact_name() . '&id=' . $model['id'] . '$parent_url'; ?>&page_action=edit" 
+                <a href="<?php echo get_site_url() . '/page?type=entity&artifact=' . $view->get_artifact_name() . '&id=' . $model['id'] . $view->get_parent_url(); ?>&page_action=edit" 
                    class="btn btn-primary waves-effect">
                    <?php _e('Edit', 'framework') ?>
                 </a>
@@ -68,11 +68,11 @@
                     <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
                     <input type="hidden" name="submitted" id="submitted" value="true" />
                 </form>
-                <a id="delete-entity-btn" href="<?php echo get_site_url() . '/page?type=entity&artifact=' . $view->get_model() . '&id=' . $model['id']. '$parent_url'; ?>&page_action=delete" class="btn btn-warning waves-effect">
+                <a id="delete-entity-btn" href="<?php echo get_site_url() . '/page?type=entity&artifact=' . $view->get_model() . '&id=' . $model['id']. $view->get_parent_url(); ?>&page_action=delete" class="btn btn-warning waves-effect">
                    <?php _e('Delete', 'framework') ?>
                 </a>
                 <?php if(!is_null($view->get_parent_artifact_name())) { ?>
-                <a href="<?php echo get_site_url() . '/page?type=entity&artifact=' . '$parent_artifact' . '&id=' . '$parent_id.$parent_param'; ?>&page_action=view" 
+                <a href="<?php echo get_site_url() . '/page?type=entity&artifact=' . $view->get_artifact_name() . '&id=' . $view->get_parent_id() . $view->get_parent_param(); ?>&page_action=view" 
                    class="btn btn-primary waves-effect">
                    <?php _e('Done', 'framework') ?>
                 </a>

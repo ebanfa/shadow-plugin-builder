@@ -19,8 +19,10 @@ class ArtifactView {
     public $model;
 
     public $parent_id;
-    public $parent_artifact;
+    public $parent_url;
     public $parent_field;
+    public $parent_param;
+    public $parent_artifact;
 
     /**
      *
@@ -54,6 +56,8 @@ class ArtifactView {
             $this->parent_id = sanitize_text_field($_REQUEST['parent_id']);
             $this->parent_artifact = sanitize_text_field($_REQUEST['parent_artifact']);
             $this->parent_field = sanitize_text_field($_REQUEST['parent_field']);
+            $this->parent_url = '&parent_id=' . $this->parent_id . '&parent_artifact=' . $this->parent_artifact . '&parent_field=' . $this->parent_field;
+            if(isset($_REQUEST['parent_param'])) $this->$parent_param = urldecode($_REQUEST['parent_param']);
         }
     }
 
@@ -129,6 +133,20 @@ class ArtifactView {
      */
     public function get_parent_field() {
        return $this->parent_field;
+    }
+
+    /**
+     * 
+     */
+    public function get_parent_param() {
+       return $this->parent_param;
+    }
+
+    /**
+     * 
+     */
+    public function get_parent_url() {
+       return $this->parent_url;
     }
 
     /**
