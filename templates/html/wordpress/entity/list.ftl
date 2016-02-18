@@ -9,9 +9,9 @@
     $model = $view->get_model();
 ?>
     <form id="<?php echo $model['entity_post_name']; ?>-list-form">
-        <?php foreach ($view->get_form_fields() as $field) { ?>
-        <input type="hidden" name="<?php echo $field['name']; ?>" id="<?php echo $field['name']; ?>" value="<?php echo $field['value']; ?>" /> 
-        <?php } ?>
+        <?php //foreach ($view->get_form_fields() as $field) { ?>
+        <!-- <input type="hidden" name="<?php echo $field['name']; ?>" id="<?php echo $field['name']; ?>" value="<?php echo $field['value']; ?>" /> --> 
+        <?php var_dump($view->get_form_fields());//} ?>
         <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
         <input type="hidden" name="submitted" id="submitted" value="true" /> 
     </form>
