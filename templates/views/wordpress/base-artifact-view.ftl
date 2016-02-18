@@ -251,6 +251,11 @@ class ArtifactView {
             $action_links['create_entity_link'] = array('name' => 'Add New', 
                 'link' => '/page?type=entity&page_action=create&artifact='. $this->artifact);
         }
+        if($this->get_page_action() == 'list') {
+            // Add list entity link
+            $action_links['create_entity_link'] = array('name' => 'Add New', 
+                'link' => '/page?type=entity&page_action=create&artifact='. $this->artifact);
+        }
         return $action_links;
     }
 
