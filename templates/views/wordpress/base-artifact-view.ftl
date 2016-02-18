@@ -132,6 +132,9 @@ class ArtifactView {
         if (has_filter($action_links_filter)) {
             $action_links = apply_filters($action_links_filter, $this, $action_links );
         }
+        else{
+            $action_links = $this->get_view_action_links();
+        }
         return $action_links; 
     }
 
@@ -176,6 +179,22 @@ class ArtifactView {
                 do_action('shadowbanker_render_'. $this->page_action . '_entity_view');
             }
         }
+    }
+    /**
+     *
+     */
+    public static function get_view_action_links() {
+        $page_action = $this->get_page_action();
+        //$action_links = parent::filter_view_action_links($view, $action_links);
+        $action_links = array();
+        $model = $this->model;
+        $model_name = $model['entity_description']
+        if($this->get_page_action() == 'create') {
+            // Add Person link
+            $action_links['create_entity_link'] = array('name' => 'Add New' . $model_name, 
+                'link' => '/page?type=entity&page_action=create&artifact='. $this->artifact);
+        }
+        return $action_links;
     }
 
 }

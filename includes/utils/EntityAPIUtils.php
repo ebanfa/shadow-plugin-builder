@@ -108,6 +108,7 @@ class EntityAPIUtils {
         $entity_data['entity_post_name'] = $post_name;
         $entity_data['entity_artifact_name'] = $artifact_name;
         $entity_data['entity_name'] = ArtifactUtils::$artifacts[$artifact_name]['name'];
+        $entity_data['entity_description'] = ArtifactUtils::$artifacts[$artifact_name]['description'];
         $entity_data['entity_fields'] = $entity_class->getStaticPropertyValue('entity_fields');
         $entity_data['is_global_entity'] = $entity_class->getStaticPropertyValue('is_global_entity');
         return $entity_data;
