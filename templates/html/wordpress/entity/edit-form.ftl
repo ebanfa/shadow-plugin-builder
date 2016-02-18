@@ -27,11 +27,11 @@
             <input type="hidden" name="submitted" id="submitted" value="true" />  
             <input type="hidden" name="artifact" id="artifact" value="<?php echo $view->get_artifact_name(); ?>" />
 
-            <button id="<?php echo $entity_name; ?>-form-btn" type="submit" class="btn btn-primary waves-effect">
+            <button id="<?php echo $view->get_artifact_name(); ?>-form-btn" type="submit" class="btn btn-primary waves-effect">
                 <?php _e('Update', 'framework') ?>
             </button>
             
-            <a href="<?php echo get_site_url() . '/page?type=entity&artifact=' . $entity_name . '&id=' . $entity_data['id']; ?>&page_action=view" 
+            <a href="<?php echo get_site_url() . '/page?type=entity&artifact=' . $view->get_artifact_name() . '&id=' . $mode['id']; ?>&page_action=view" 
                class="btn bgm-indigo waves-effect"><?php _e('Back', 'framework') ?>
             </a>
     </div>
