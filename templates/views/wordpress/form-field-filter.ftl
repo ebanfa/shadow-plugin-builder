@@ -32,7 +32,7 @@ class FormFieldFilter extends ViewController {
         if($field['size'] == 'large') {
             $field['col_size'] = 'col-xs-12';
         }
-        return $form_fields;
+        return $field;
     }
 
 }
