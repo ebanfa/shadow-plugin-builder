@@ -79,7 +79,7 @@ class ${application.name} {
         include_once('includes/api/EntityPersistenceAPI.php');
         // Entity Controller
         include_once('includes/controller/EntityActionProcessor.php');
-        // Entity View
+        // Entity View and view controllers
         include_once('includes/view/ArtifactView.php');
         include_once('includes/view/ViewController.php');
         include_once('includes/view/party/PartyView.php');
@@ -87,6 +87,7 @@ class ${application.name} {
         include_once('includes/view/EditEntityView.php');
         include_once('includes/view/SingleEntityView.php');
         include_once('includes/view/ListEntityView.php');
+        include_once('includes/view/FormFieldFilter.php');
         // Framework API
         include_once('includes/api/CloderiaFileAPI.php');
         include_once('includes/api/CloderiaUserAPI.php');
