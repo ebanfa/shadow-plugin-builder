@@ -25,8 +25,8 @@ class CreateEntityView extends ArtifactView {
         var_dump($create_fields);
         var_dump('>>>>>>>>>>>>>>>>>>>');
         var_dump($form_fields);
-        $form_fields = array_unique(array_merge($form_fields, $create_fields));
-        return $form_fields; 
+        //$form_fields = array_unique(array_merge($form_fields, $create_fields));
+        return $create_fields; 
     }
 
     /**
