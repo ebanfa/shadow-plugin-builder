@@ -71,6 +71,17 @@ class ArtifactView {
     /**
      * Action method to enqueue the required scripts
      */
+    public function get_page_name() {
+        $page_name_filter = 'shadowbanker_' . $this->artifact . '_view_title';
+        if (has_filter($page_name_filter)) {
+            $this->page_name = apply_filters($page_name_filter, $this, $this->page_name);
+        }
+        return $this->page_name;
+    }
+
+    /**
+     * Action method to enqueue the required scripts
+     */
     public function get_page_action() {
        return $this->page_action;
     }

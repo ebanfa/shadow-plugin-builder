@@ -14,7 +14,8 @@ class PartyView extends ViewController {
     /**
      *
      */
-    public static function init_hooks() {
+    public static function init_hooks() { 
+        add_filter('shadowbanker_party_view_title', array('PartyView', 'filter_view_title'), 10, 2);
         add_filter('shadowbanker_party_form_fields', array('PartyView', 'filter_form_fields'), 10, 2);
     }
 
@@ -29,6 +30,17 @@ class PartyView extends ViewController {
         }
         
         return $form_fields;
+    }
+
+    /**
+     *
+     */
+    public static function filter_view_title($view, $title) {
+        $title = parent::filter_view_title($view, $title);
+        if(isset($_REQUEST['role'])) {
+            $title = strtoupper(sanitize_text_field($_REQUEST['role']));
+        }
+        return $title;
     }
 
 }
