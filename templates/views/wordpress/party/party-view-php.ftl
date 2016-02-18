@@ -24,7 +24,10 @@ class PartyView extends ViewController {
      */
     public static function filter_form_fields($form_fields) {
         $form_fields = parent::filter_form_fields($form_fields);
-        $form_fields['role'] = array('name' => 'role', 'value' => 'tenant');
+        if(isset($_REQUEST['role'])) {
+            $form_fields['role'] = array('name' => 'role', 'value' => sanitize_text_field($_REQUEST['role']));
+        }
+        
         return $form_fields;
     }
 
