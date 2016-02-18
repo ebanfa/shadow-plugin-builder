@@ -114,6 +114,15 @@ class CloderiaUIDisplayAPI {
     public static function render_entity_form_fields() {
         cp_get_template('entity/entity-form-fields.php');
     }
+
+    public static function before_entity_form_field() {
+        cp_get_template('entity/field-wrapper-start.php');
+    }
+    
+    public static function after_entity_form_field() {
+        cp_get_template('entity/field-wrapper-end.php');
+    }
+
     
     
 
