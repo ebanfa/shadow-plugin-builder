@@ -123,8 +123,5 @@ class CloderiaUIDisplayAPI {
         cp_get_template('entity/field-wrapper-end.php');
     }
 
-    
-    
-
 }
 

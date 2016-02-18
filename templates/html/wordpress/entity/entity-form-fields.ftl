@@ -26,6 +26,48 @@
                             </div>
                         </div>
                     </div>
+        <?php       // Email field
+                }  if($field['data_type'] == 'email') { ?>
+                    <div class="<?php echo $field['col_size']; ?>">
+                        <div class="form-group">
+                            <div class="fg-line">
+                                <input type="email" class="form-control email" 
+                                    id="<?php echo $field['name'];?>" name="<?php echo $field['name'];?>" 
+                                    placeholder="<?php echo $field['description']; ?>" 
+                                    data-bv-message="The <?php echo $field['description']; ?> is not valid" 
+                                    data-bv-emailaddress-message="The value is not a valid email address" 
+                                    data-bv-notempty-message="The <?php echo $field['description']; ?> is required and cannot be empty" required>
+                            </div>
+                        </div>
+                    </div>
+
+        <?php       // Text Large field
+                }  if($field['data_type'] == 'text-lg') { ?>
+                    <div class="<?php echo $field['col_size']; ?>">
+                        <div class="form-group">
+                            <div class="fg-line">
+                                <textarea placeholder="<?php echo $field['description']; ?>" 
+                                    name="<?php echo $field['name'];?>" rows="7" cols="100" 
+                                    class="form-control text-lg" id="<?php echo $field['name'];?>">
+                                    <?php echo '' ?>
+                                </textarea>
+                            </div>
+                        </div>
+                    </div>
+
+        <?php       // text field
+                }  if($field['data_type'] == 'text') { ?>
+                    <div class="<?php echo $field['col_size']; ?>">
+                        <div class="form-group">
+                            <div class="fg-line">
+                                <input type="text" class="form-control text" 
+                                    id="<?php echo $field['name'];?>" name="<?php echo $field['name']; ?>" 
+                                    placeholder="<?php echo $field['description']; ?>" 
+                                    data-bv-message="The <?php echo $field['description']; ?> is not valid" 
+                                    data-bv-notempty-message="The <?php echo $field['description']; ?> is required and cannot be empty" required>
+                            </div>
+                        </div>
+                    </div>
 
         <?php       // Alphanumeric field
                 }  if($field['data_type'] == 'alphanumeric') { ?>
@@ -40,12 +82,54 @@
                             </div>
                         </div>
                     </div>
+
+        <?php       // text field
+                }  if($field['data_type'] == 'phone') { ?>
+                    <div class="<?php echo $field['col_size']; ?>">
+                        <div class="form-group">
+                            <div class="fg-line">
+                                <input type="text" class="form-control phone" 
+                                    id="<?php echo $field['name'];?>" name="<?php echo $field['name']; ?>" 
+                                    placeholder="<?php echo $field['description']; ?>" 
+                                    data-bv-message="The <?php echo $field['description']; ?> is not valid" 
+                                    data-bv-notempty-message="The <?php echo $field['description']; ?> is required and cannot be empty" required>
+                            </div>
+                        </div>
+                    </div>
         <?php       // Number field
                 }   if($field['data_type'] == 'number') { ?>
                     <div class="<?php echo $field['col_size']; ?>">
                         <div class="form-group">
                             <div class="fg-line">
                                 <input type="text" class="form-control number" 
+                                    id="<?php echo $field['name'];?>" name="<?php echo $field['name']; ?>" 
+                                    placeholder="<?php echo $field['description']; ?>" 
+                                    data-bv-message="The <?php echo $field['description']; ?> is not valid" 
+                                    data-bv-notempty-message="The <?php echo $field['description']; ?> is required and cannot be empty" required>
+                            </div>
+                        </div>
+                    </div>
+
+        <?php       // Money field
+                }  if($field['data_type'] == 'money') { ?>
+                    <div class="<?php echo $field['col_size']; ?>">
+                        <div class="form-group">
+                            <div class="fg-line">
+                                <input type="text" class="form-control money" 
+                                    id="<?php echo $field['name'];?>" name="<?php echo $field['name']; ?>" 
+                                    placeholder="<?php echo $field['description']; ?>" 
+                                    data-bv-message="The <?php echo $field['description']; ?> is not valid" 
+                                    data-bv-notempty-message="The <?php echo $field['description']; ?> is required and cannot be empty" required>
+                            </div>
+                        </div>
+                    </div>
+
+        <?php       // flag field
+                }  if($field['data_type'] == 'flag') { ?>
+                    <div class="<?php echo $field['col_size']; ?>">
+                        <div class="form-group">
+                            <div class="fg-line">
+                                <input type="text" class="form-control flag" 
                                     id="<?php echo $field['name'];?>" name="<?php echo $field['name']; ?>" 
                                     placeholder="<?php echo $field['description']; ?>" 
                                     data-bv-message="The <?php echo $field['description']; ?> is not valid" 
