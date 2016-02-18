@@ -45,7 +45,7 @@ class CloderiaUIDisplayAPI {
         if(cp_template_exists($custom_artifact_template)){
             cp_get_template($custom_artifact_template);
         } else {
-            cp_get_template('entity/single-entity-form.php');
+            cp_get_template('entity/single-entity.php');
         }
     }
         

@@ -61,6 +61,7 @@ class ${entity.name}CPT {
 <#list entity.relatedChildEntities?keys as key>
         '${key}' => array('name' => '${key}',
         'entity_name' => '${entity.relatedChildEntities[key].name}',
+        'entity_description' => '${entity.relatedChildEntities[key].description}',
         'data_type' => '${entity.relatedChildEntities[key].postName}',
         'artifact_name' => '${entity.relatedChildEntities[key].name?lower_case}',
         'is_relationship_field' => true,),
