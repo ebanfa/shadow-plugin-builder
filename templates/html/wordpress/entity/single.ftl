@@ -18,13 +18,13 @@
 
         <?php 
             $count = 1;
-            foreach ($model['inferred_fields'] as $inferred_field) { ?>
+            foreach ($model['related_child_entities'] as $related_child_entities) { ?>
 
         <li role="presentation">
             <a class="col-xs-4" 
                 href="#tab-<?php echo $count; ?>" 
                 aria-controls="tab-<?php echo $count; ?>" role="tab" data-toggle="tab">
-                <?php echo $inferred_field['entity_description']; $count++; ?>
+                <?php echo $related_child_entities['entity_description']; $count++; ?>
             </a>
         </li>
         
