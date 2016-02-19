@@ -7,6 +7,10 @@
 
     $view = $_REQUEST['page_info']['view'];
     $model = $view->get_model();
+
+    echo "<<<<<<<<<<<<<<<<<<<<<<<<<";
+    var_dump($model);
+    echo "<<<<<<<<<<<<<<<<<<<<<<<<<";
 ?>
     <ul class="tab-nav tn-justified tn-icon" role="tablist">
         <li role="presentation" class="active">
