@@ -38,3 +38,34 @@
     </form>
 
     <?php do_action('shadowbanker_render_related_entity_field_modals'); ?>
+
+    <script type="text/javascript">
+    
+        jQuery(document).ready(function($)
+        {
+            $('body').on('click', '.data-table-link', function(e){
+                e.preventDefault();
+
+                var currentRelatedFieldName = $('#current-related-field').val();
+                var currentRelatedInstanceId = $(this).data('related-instance-id');
+                var currentRelatedInstanceName = $(this).data('related-instance-name');               
+                var currentRelatedArtifactName = $(this).data('related-artifact-name');
+                // Set the value of the hidden relationship field. 
+                $('#' + currentRelatedArtifactName).val(currentRelatedInstanceId);
+                // Set the value of the text field for the relationship field.
+                $('#' + currentRelatedFieldName + '_txt').val(currentRelatedInstanceName);
+                console.log('>>>>>Setting value ' + currentRelatedInstanceName + 'on element #' + currentRelatedFieldName + '_txt');
+
+                $('.modal').modal('hide');
+            });
+
+            $('body').on('click', '.related-field-search-link', function(e){
+                e.preventDefault();
+                var currentRelatedFieldName = $(this).data('related-field-name');
+                $('#current-related-field').val(currentRelatedFieldName);
+                $('#' + currentRelatedFieldName + '_modal').modal('show');
+
+                
+            });
+        });
+    </script>
