@@ -208,10 +208,10 @@ class ArtifactView {
         // The appropriate relationship fields for the current page action
         foreach ($model['entity_fields'] as $field) {
             if($this->page_action == 'create' && $field['is_relationship_field'] && $field['is_create_field']) {
-                array_push($related_form_fields, $field_data);
+                array_push($related_form_fields, $field);
             }
             if($this->page_action == 'edit' && $field['is_relationship_field'] && $field['is_edit_field']) {
-                array_push($related_form_fields, $field_data);
+                array_push($related_form_fields, $field);
             }
         }
         // We need to set 
