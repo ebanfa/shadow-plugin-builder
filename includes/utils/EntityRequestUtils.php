@@ -35,7 +35,7 @@ class EntityRequestUtils {
         if($entity_data['edit_mode']) {
             //Process entity create form fields
             foreach ($entity_data['entity_fields'] as $field_data) {
-                if($field_data['is_required'] && $field_data['is_create_field']) {
+                if($field_data['is_form_field'] && $field_data['is_create_field']) {
                     $entity_data = self::build_entity_field_from_post($field_data, $entity_data);
                 }
             }
@@ -54,7 +54,7 @@ class EntityRequestUtils {
             //Process entity create form fields
             foreach ($entity_data['entity_fields'] as $field_name => $field_data) {
 
-                if($field_data['is_required'] && $field_data['is_edit_field']) {
+                if($field_data['is_form_field'] && $field_data['is_edit_field']) {
                     $entity_data = self::build_entity_field_from_post($field_data, $entity_data);
                 }
             }
@@ -77,18 +77,8 @@ class EntityRequestUtils {
         }
         // Process non date fields
         else {
-            // Process status field
-            if( $field_data['name'] === 'status'){
-                if(!isset($entity_data['status'])) {
-                    $status = EntityPersistenceAPI::get_status_by_code($field_data['data_type'], 'PENDING');
-                    $entity_data['status'] = $status['id'];
-                }
-            }
-            else {
-
-                if (isset($_POST[$field_data['name']])){
-                    $entity_data[$field_data['name']] = sanitize_text_field($_POST[$field_data['name']]);
-                }
+            if (isset($_POST[$field_data['name']])){
+                $entity_data[$field_data['name']] = sanitize_text_field($_POST[$field_data['name']]);
             }
         }
         return $entity_data;

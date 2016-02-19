@@ -47,7 +47,7 @@ class CreateEntityView extends ArtifactView {
         $create_fields = array();
         foreach ($this->model['entity_fields'] as $field) {
 
-            if ($field['is_create_field'] && $field['is_form_field']) {
+            if ($field['is_create_field'] && $field['is_form_field'] ) {
                 array_push($create_fields, $this->prepare_view_form_field($field));
             }
         }

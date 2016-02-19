@@ -44,7 +44,14 @@ class EntityAPIUtils {
        if($entity_data['edit_mode']) {
             //Process entity create form fields
             foreach ($entity_data['entity_fields'] as $field_data) {
-                if($field_data['is_required'] && $field_data['is_create_field']) {
+                if($field_data['is_required'] && $field_data['is_create_field']) {    
+                    // Process status field
+                    if($field_data['name'] === 'status'){
+                        if(!isset($entity_data['status'])) {
+                            $status = EntityPersistenceAPI::get_status_by_code($field_data['data_type'], 'PENDING');
+                            $entity_data['status'] = $status['id'];
+                        }
+                    }
                     self::validate_entity_field($field_data, $entity_data);
                 }
             }

@@ -7,7 +7,6 @@
 
     $view = $_REQUEST['page_info']['view'];
     $model = $view->get_model();
-    var_dump($model);
 
 ?>
     <ul class="tab-nav tn-justified tn-icon" role="tablist">
