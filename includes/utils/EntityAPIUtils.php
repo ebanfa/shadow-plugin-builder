@@ -118,7 +118,7 @@ class EntityAPIUtils {
         $entity_data['entity_name'] = ArtifactUtils::$artifacts[$artifact_name]['name'];
         $entity_data['entity_description'] = ArtifactUtils::$artifacts[$artifact_name]['description'];
         $entity_data['entity_fields'] = $entity_class->getStaticPropertyValue('entity_fields');
-        $entity_data['inferred_fields'] = $entity_class->getStaticPropertyValue('inferred_fields');
+        $entity_data['inferred_fields'] = $entity_class->getStaticPropertyValue('related_child_entities');
         $entity_data['is_global_entity'] = $entity_class->getStaticPropertyValue('is_global_entity');
         return $entity_data;
     }
