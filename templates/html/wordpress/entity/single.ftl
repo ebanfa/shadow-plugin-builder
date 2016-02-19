@@ -108,6 +108,13 @@
                         </tbody>
                     </table>
                 </div>
+                <div class="btn-demo m-t-10">
+                    <a id="create-<?php echo strtolower($child_field['entity_name']); ?>-btn" href="<?php echo get_site_url();?>/page?type=entity&artifact=<?php echo strtolower($child_field['entity_name']); ?>&page_action=create&parent_id=<?php echo $model['id']; ?>&parent_artifact=<?php echo $view->get_artifact_name(); ?>&parent_field=<?php echo $related_child_entity['name']?>" class="btn btn-success waves-effect">
+                       <?php _e('Add ${entity.relatedChildEntities[key].description}', 'framework') ?>
+                    </a>
+                    <?php $child_parent_url = '&parent_id=' . $model['id'] . '&parent_artifact=<?php echo $view->get_artifact_name(); ?>&parent_field=<?php echo $related_child_entity['name']?>'; ?>
+                    <input type="hidden" name="<?php echo strtolower($child_field['entity_name']); ?>_parent_params" id="<?php echo strtolower($child_field['entity_name']); ?>_parent_params" value="<?php echo $child_parent_url; ?>" /> 
+                </div>
                 
             </div>
     
