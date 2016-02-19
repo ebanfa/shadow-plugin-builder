@@ -53,6 +53,7 @@
                 // Set the value of the hidden relationship field. 
                 $('#current-relationship-field-id').val(currentRelatedInstanceId);
                 $('#current-relationship-field-name').val(currentRelatedFieldName);
+                $('#' + currentRelatedFieldName).val(currentRelatedInstanceId);
                 $('#' + currentRelatedFieldName + '_txt').val(currentRelatedInstanceName);
                 
                 console.log('currentRelatedFieldName::' + currentRelatedFieldName );
