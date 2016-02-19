@@ -98,7 +98,10 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                
+                                <?php foreach ($related_child_entity['fields'] as $child_field) { 
+                                        if($child_field['is_list_field']) {?>
+                                <th><?php echo $field['description']; ?></th>
+                                <?php } } ?>
                             </tr>
                         </thead>
                         <tbody>
