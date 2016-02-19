@@ -54,7 +54,11 @@
                 $('#' + currentRelatedArtifactName).val(currentRelatedInstanceId);
                 // Set the value of the text field for the relationship field.
                 $('#' + currentRelatedFieldName + '_txt').val(currentRelatedInstanceName);
-                console.log('>>>>>Setting value ' + currentRelatedInstanceName + 'on element #' + currentRelatedFieldName + '_txt');
+                
+                console.log('currentRelatedFieldName::' + currentRelatedFieldName );
+                console.log('currentRelatedInstanceId::' + currentRelatedInstanceId );
+                console.log('currentRelatedInstanceName::' + currentRelatedInstanceName );
+                console.log('currentRelatedArtifactName::' + currentRelatedArtifactName );
 
                 $('.modal').modal('hide');
             });
