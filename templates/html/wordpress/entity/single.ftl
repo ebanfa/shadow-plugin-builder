@@ -96,6 +96,10 @@
                 <div class="table-responsive">
                     <table id="<?php echo $related_child_entity['data_type']?>-table" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
                         <thead>
+                            <tr>
+                                <th>ID</th>
+                                
+                            </tr>
                         </thead>
                         <tbody>
                         </tbody>
