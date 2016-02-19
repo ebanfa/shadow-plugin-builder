@@ -81,4 +81,11 @@
                 <?php } ?>
             </div>
         </div>
+
+        <?php 
+            $ifield_count = 1;
+            foreach ($model['inferred_fields'] as $inferred_field) { ?>
+    
+            
+        <?php } ?>
     </div>
