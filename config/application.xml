@@ -3675,12 +3675,12 @@
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
-				<name>p_status</name>
+				<name>status</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
+				<createField>N</createField>
+				<editField>N</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
 				<dataType>sb_propstatus</dataType>
