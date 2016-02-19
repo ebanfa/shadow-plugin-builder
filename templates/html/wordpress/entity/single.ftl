@@ -39,8 +39,7 @@
                         <tr>
                         <?php 
                             foreach ($model['entity_fields'] as $field_name => $field) { 
-                                if($field['is_view_field']) { 
-                                var_dump($field); ?>
+                                if($field['is_view_field']) {  ?>
                             <th><?php echo $field['description']; ?></th>
                         <?php   
                                 }
@@ -52,7 +51,11 @@
                             foreach ($model['entity_fields'] as $field_name => $field) { 
                                 if($field['is_view_field'] && !$field['is_relationship_field']) {  ?>
                             <td><?php echo $model[$field['name']]; ?></td>
-                        <?php   } if ($field['is_view_field'] && $field['is_relationship_field']) { ?>
+                        <?php   } if ($field['is_view_field'] && $field['is_relationship_field']) { 
+                                    echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
+                                    var_dump($field);
+                                    echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
+                        ?>
                             <td><?php echo $model[$field['name'] . '_txt']; ?></td>
                         <?php   } } ?>
                         </tr>
