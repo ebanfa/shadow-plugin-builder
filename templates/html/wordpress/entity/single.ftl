@@ -7,10 +7,8 @@
 
     $view = $_REQUEST['page_info']['view'];
     $model = $view->get_model();
-
-    echo "<<<<<<<<<<<<<<<<<<<<<<<<<";
     var_dump($model);
-    echo "<<<<<<<<<<<<<<<<<<<<<<<<<";
+
 ?>
     <ul class="tab-nav tn-justified tn-icon" role="tablist">
         <li role="presentation" class="active">
@@ -55,11 +53,7 @@
                             foreach ($model['entity_fields'] as $field_name => $field) { 
                                 if($field['is_view_field'] && !$field['is_relationship_field']) {  ?>
                             <td><?php echo $model[$field['name']]; ?></td>
-                        <?php   } if ($field['is_view_field'] && $field['is_relationship_field']) { 
-                                    echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
-                                    var_dump($field);
-                                    echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
-                        ?>
+                        <?php   } if ($field['is_view_field'] && $field['is_relationship_field']) { ?>
                             <td><?php echo $model[$field['name'] . '_txt']; ?></td>
                         <?php   } } ?>
                         </tr>
