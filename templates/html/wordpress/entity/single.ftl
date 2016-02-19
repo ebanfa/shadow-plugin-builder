@@ -91,7 +91,7 @@
                 <form id="<?php echo $related_child_entity['data_type']?>-list-form">
                     <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
                     <input type="hidden" name="submitted" id="submitted" value="true" /> 
-                    <input type="hidden" name="<?php echo $related_child_entity['name']?>" value="<?php echo $model['id']; ?>"/>
+                    <input type="hidden" name="<?php echo $related_child_entity['name'];?>" value="<?php echo $model['id']; ?>"/>
                 </form>
                 <div class="table-responsive">
                     <table id="<?php echo $related_child_entity['data_type']?>-table" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
@@ -112,7 +112,7 @@
                     <a id="create-<?php echo strtolower($child_field['entity_name']); ?>-btn" href="<?php echo get_site_url();?>/page?type=entity&artifact=<?php echo strtolower($child_field['entity_name']); ?>&page_action=create&parent_id=<?php echo $model['id']; ?>&parent_artifact=<?php echo $view->get_artifact_name(); ?>&parent_field=<?php echo $related_child_entity['name']?>" class="btn btn-success waves-effect">
                        <?php _e('Add ${entity.relatedChildEntities[key].description}', 'framework') ?>
                     </a>
-                    <?php $child_parent_url = '&parent_id=' . $model['id'] . '&parent_artifact=<?php echo $view->get_artifact_name(); ?>&parent_field=<?php echo $related_child_entity['name']?>'; ?>
+                    <?php $child_parent_url = '&parent_id=' . $model['id'] . '&parent_artifact=<?php echo $view->get_artifact_name(); ?>&parent_field='; ?>
                     <input type="hidden" name="<?php echo strtolower($child_field['entity_name']); ?>_parent_params" id="<?php echo strtolower($child_field['entity_name']); ?>_parent_params" value="<?php echo $child_parent_url; ?>" /> 
                 </div>
                 
