@@ -37,6 +37,12 @@ class ${entity.name}CPT {
         '${field.name}' => array('name' => '${field.name}',
             'description' => '${field.description}',
             'size' => '${field.size}',
+        <#list module.entities as modEntity>
+            <#if field.dataType == modEntity.postName>
+            'entity_name' => '${modEntity.name}',
+            'entity_description' => '${modEntity.description}',
+            </#if>
+        </#list>
             'data_type' => '${field.dataType}',
             'is_required' => <#if field.required == "Y">true<#else>false</#if>,
             'is_visible' => <#if field.isVisible == "Y">true<#else>false</#if>,

@@ -29,7 +29,7 @@ class ArtifactUtils {
     </#if>
 </#list>
 <#list module.entities as entity>
-        '${entity.name?lower_case}' => array('name' => '${entity.name}', 'description' => '${entity.description}', 'artifact_type' => 'entity'),
+        '${entity.name?lower_case}' => array('name' => '${entity.name}', 'description' => '${entity.description}', 'artifact_type' => 'entity', 'data_type' => '${entity.postName}'),
 </#list>
     );
     

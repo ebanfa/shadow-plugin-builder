@@ -36,3 +36,5 @@
         </div>
 
     </form>
+
+    <?php do_action('shadowbanker_render_related_entity_field_modals'); ?>

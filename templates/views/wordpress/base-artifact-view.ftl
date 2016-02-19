@@ -200,6 +200,32 @@ class ArtifactView {
     }
 
     /**
+     * 
+     */
+    public function get_related_form_fields() {
+        $model = $this->model;
+        $related_form_fields = array();
+        // The appropriate relationship fields for the current page action
+        foreach ($model['entity_fields'] as $field) {
+            if($this->page_action == 'create' && $field['is_relationship_field'] && $field['is_create_field']) {
+                array_push($related_form_fields, $field_data);
+            }
+            if($this->page_action == 'edit' && $field['is_relationship_field'] && $field['is_edit_field']) {
+                array_push($related_form_fields, $field_data);
+            }
+        }
+        // We need to set 
+        return $related_form_fields; 
+    }
+
+    /**
+     * 
+     */
+    public function get_related_form_field_model($artifact) {
+        return EntityAPI::get_model($artifact);; 
+    }
+
+    /**
      * This method add additional information to a field.
      * The added information is required to display the field.
      */

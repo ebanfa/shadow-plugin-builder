@@ -123,5 +123,9 @@ class CloderiaUIDisplayAPI {
         cp_get_template('entity/field-wrapper-end.php');
     }
 
+    public static function render_related_entity_field_modals() {
+        cp_get_template('entity/related-entity-field-modals.php');
+    }
+
 }
 
