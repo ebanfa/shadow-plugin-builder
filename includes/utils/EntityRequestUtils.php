@@ -80,7 +80,7 @@ class EntityRequestUtils {
             // Process status field
             if( $field_data['name'] === 'status'){
                 if(!isset($entity_data['status'])) {
-                    $status = CloderiaAPIUtils::get_status_by_code($field_data['data_type'], 'PENDING');
+                    $status = EntityPersistenceAPI::get_status_by_code($field_data['data_type'], 'PENDING');
                     $entity_data['status'] = $status['id'];
                 }
             }
