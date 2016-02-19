@@ -39,7 +39,8 @@
                         <tr>
                         <?php 
                             foreach ($model['entity_fields'] as $field_name => $field) { 
-                                if($field['is_view_field']) {  ?>
+                                if($field['is_view_field']) { 
+                                var_dump($field); ?>
                             <th><?php echo $field['description']; ?></th>
                         <?php   
                                 }
