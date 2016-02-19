@@ -112,5 +112,5 @@
             </div>
     
             
-        <?php } ?>
+        <?php $ifield_count++; } ?>
     </div>
