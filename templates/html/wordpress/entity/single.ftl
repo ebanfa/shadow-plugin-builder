@@ -100,7 +100,7 @@
                                 <th>ID</th>
                                 <?php foreach ($related_child_entity['fields'] as $child_field) { 
                                         if($child_field['is_list_field']) {?>
-                                <th><?php echo $field['description']; ?></th>
+                                <th><?php echo $child_field['description']; ?></th>
                                 <?php } } ?>
                             </tr>
                         </thead>
