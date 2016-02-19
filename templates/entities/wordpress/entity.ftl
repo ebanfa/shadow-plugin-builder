@@ -63,14 +63,37 @@ class ${entity.name}CPT {
      * points to the PartyType of a party, ie Party points to PartyType but not vice versa.
      * So an array of Party entities will be an inferred field on PartyType.
      */
- public static $inferred_fields = array(
+ public static $related_child_entities = array(
 <#list entity.relatedChildEntities?keys as key>
         '${key}' => array('name' => '${key}',
-        'entity_name' => '${entity.relatedChildEntities[key].name}',
-        'entity_description' => '${entity.relatedChildEntities[key].description}',
-        'data_type' => '${entity.relatedChildEntities[key].postName}',
-        'artifact_name' => '${entity.relatedChildEntities[key].name?lower_case}',
-        'is_relationship_field' => true,),
+            'entity_name' => '${entity.relatedChildEntities[key].name}',
+            'entity_description' => '${entity.relatedChildEntities[key].description}',
+            'data_type' => '${entity.relatedChildEntities[key].postName}',
+            'artifact_name' => '${entity.relatedChildEntities[key].name?lower_case}',
+            'is_relationship_field' => true,
+            'fields' => array(
+                <#list entity.relatedChildEntities[key].fields as field>
+                '${field.name}' => array('name' => '${field.name}',
+                    'description' => '${field.description}',
+                    'size' => '${field.size}',
+                <#list module.entities as modEntity>
+                    <#if field.dataType == modEntity.postName>
+                    'entity_name' => '${modEntity.name}',
+                    'entity_description' => '${modEntity.description}',
+                    </#if>
+                </#list>
+                    'data_type' => '${field.dataType}',
+                    'is_required' => <#if field.required == "Y">true<#else>false</#if>,
+                    'is_visible' => <#if field.isVisible == "Y">true<#else>false</#if>,
+                    'is_create_field' => <#if field.createField == "Y">true<#else>false</#if>,
+                    'is_edit_field' => <#if field.editField == "Y">true<#else>false</#if>,
+                    'is_view_field' => <#if field.viewField == "Y">true<#else>false</#if>,
+                    'is_list_field' => <#if field.listField == "Y">true<#else>false</#if>,
+                    'is_form_field' => <#if field.isFormField == "Y">true<#else>false</#if>,
+                    'is_relationship_field' => <#if field.relationshipField == "Y">true<#else>false</#if>,),
+                </#list>   
+            ),
+        ),
 </#list>   
    );
  

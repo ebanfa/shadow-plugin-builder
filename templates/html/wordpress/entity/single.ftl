@@ -83,7 +83,32 @@
 
         <?php 
             $ifield_count = 1;
-            foreach ($model['inferred_fields'] as $inferred_field) { ?>
+            foreach ($model['related_child_entities'] as $related_child_entity) { ?>
+
+            <div role="tabpanel" class="tab-pane animated fadeIn" id="tab-<?php echo $ifield_count; ?>">
+                <!-- <div id="success"></div> -->
+
+                <form id="<?php echo $related_child_entity['data_type']?>-list-form">
+                    <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
+                    <input type="hidden" name="submitted" id="submitted" value="true" /> 
+                    <input type="hidden" name="<?php echo $related_child_entity['name']?>" value="<?php echo $model['id']; ?>"/>
+                </form>
+                <div class="table-responsive">
+                    <table id="<?php echo $related_child_entity['data_type']?>-table" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
+                        <thead>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="btn-demo m-t-10">
+                    <a id="create-${entity.relatedChildEntities[key].name?lower_case}-btn" href="<?php echo get_site_url();?>/page?type=entity&artifact=${entity.relatedChildEntities[key].name?lower_case}&page_action=create&parent_id=<?php echo $entity_data['id']; ?>&parent_artifact=${entity.name?lower_case}&parent_field=${key}" class="btn btn-success waves-effect">
+                       <?php _e('Add ${entity.relatedChildEntities[key].description}', 'framework') ?>
+                    </a>
+                    <?php $child_parent_url = '&parent_id=' . $entity_data['id'] . '&parent_artifact=${entity.name?lower_case}&parent_field=${key}'; ?>
+                    <input type="hidden" name="${entity.relatedChildEntities[key].name?lower_case}_parent_params" id="${entity.relatedChildEntities[key].name?lower_case}_parent_params" value="<?php echo $child_parent_url; ?>" /> 
+                </div>
+            </div>
     
             
         <?php } ?>
