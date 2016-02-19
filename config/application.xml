@@ -3643,7 +3643,7 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
-				<name>party</name>
+				<name>p_party</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>N</required>
@@ -3659,7 +3659,7 @@
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
-				<name>type</name>
+				<name>p_type</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
@@ -3675,7 +3675,7 @@
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
-				<name>status</name>
+				<name>p_status</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
@@ -3739,7 +3739,7 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
-				<name>location</name>
+				<name>p_location</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
