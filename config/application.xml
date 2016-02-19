@@ -3745,7 +3745,7 @@
 				<required>Y</required>
 				<createField>Y</createField>
 				<editField>Y</editField>
-				<viewField>Y</viewField>
+				<viewField>N</viewField>
 				<listField>Y</listField>
 				<dataType>sb_location</dataType>
 				<size>large</size>
@@ -3777,7 +3777,7 @@
 				<required>Y</required>
 				<createField>Y</createField>
 				<editField>Y</editField>
-				<viewField>Y</viewField>
+				<viewField>N</viewField>
 				<listField>N</listField>
 				<dataType>date</dataType>
 				<size>medium</size>
@@ -3825,7 +3825,7 @@
 				<required>Y</required>
 				<createField>Y</createField>
 				<editField>Y</editField>
-				<viewField>Y</viewField>
+				<viewField>N</viewField>
 				<listField>N</listField>
 				<dataType>number</dataType>
 				<size>medium</size>
