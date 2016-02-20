@@ -129,7 +129,7 @@ $('#delete-entity-btn').click(function(e){
         var form = $('#delete-entity-form').ajaxSubmit(
         {/* options */
             url: ${application.name?lower_case}_ajax_script.ajaxurl,
-            data: ({action: 'delete_${entity.postName}_ajax'}),
+            data: ({action: 'delete_<?php echo $model['entity_post_name']; ?>_ajax'}),
             success: function (response)
             {
                 var success_msg = '';
