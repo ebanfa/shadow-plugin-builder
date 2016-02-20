@@ -7,7 +7,7 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
-class ListEntityView extends ArtifactView {
+class ListEntityView extends BaseEntityView {
 
     /**
      *

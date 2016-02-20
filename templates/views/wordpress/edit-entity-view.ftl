@@ -8,7 +8,7 @@ if (!defined('ABSPATH')) {
 }
 
 
-class EditEntityView extends ArtifactView { 
+class EditEntityView extends BaseEntityView { 
 
     /**
      *

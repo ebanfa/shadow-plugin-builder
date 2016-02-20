@@ -173,11 +173,14 @@
                                     class="form-control phone related-field-search-link" 
                                     data-related-field-name="<?php echo $field['name'];?>"
                                     id="<?php echo $field['name'];?>_txt" name="<?php echo $field['name'];?>_txt" 
+                                    <?php if(isset($model['id'])) { echo 'value="' . $model[$field['name']]. '_txt" '; }?>
                                     placeholder="<?php echo $field['description']; ?>" 
                                     data-bv-message="<?php echo $field['description']; ?> is not valid" 
                                     data-bv-notempty-message="<?php echo $field['description']; ?> is required and cannot be empty">
 
-                                <input type="hidden" id="<?php echo $field['name'];?>" name="<?php echo $field['name'];?>" value="">
+                                <input type="hidden" id="<?php echo $field['name'];?>" 
+                                    name="<?php echo $field['name'];?>" 
+                                    <?php if(isset($model['id'])) { echo 'value="' . $model[$field['name']]. '" '; }?>>
                             </div>
                         </div>
                     </div>

@@ -192,18 +192,13 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 			List<Field> fieldsInEntity = entity.getFields();
 			// Process the fields in the entity
 			for(Field field : fieldsInEntity){
-				//System.out.println("Processing: " + entity.getName() + " field " + field .getName() + "");
 				// Only process relationship fields
 				if(field.getRelationshipField().equals("Y")){
-					//System.out.println("Found a relationship field: " + field.getName() + " of type: " + field.getDataType());
 					String targetEntityPostName = field.getDataType();
+					
 					for(Entity item: cloneOfEntitiesInModule){
 						if(item.getPostName().equals(targetEntityPostName)) {
 							String fieldName = field.getName(); //+ UUID.randomUUID().toString();
-							//System.out.println("Adding child: " + entity.getName() + " to parent: " + item.getName());
-							if(item.getName().equals("Property")) {
-								
-							}
 							item.getRelatedChildEntities().put(fieldName, entity);
 						}
 
@@ -335,11 +330,13 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 		}
 		this.generateArtifact(module, null, "views/wordpress/view-controller-php.ftl" , includeViewOutputDir +  "ViewController.php");
 		this.generateArtifact(module, null, "views/wordpress/base-artifact-view.ftl" , includeViewOutputDir +  "ArtifactView.php");
+		this.generateArtifact(module, null, "views/wordpress/base-entity-view.ftl" , includeViewOutputDir +  "BaseEntityView.php");
 		this.generateArtifact(module, null, "views/wordpress/create-entity-view.ftl" , includeViewOutputDir +  "CreateEntityView.php");
 		this.generateArtifact(module, null, "views/wordpress/edit-entity-view.ftl" , includeViewOutputDir +  "EditEntityView.php");
 		this.generateArtifact(module, null, "views/wordpress/single-entity-view.ftl" , includeViewOutputDir +  "SingleEntityView.php");
 		this.generateArtifact(module, null, "views/wordpress/list-entity-view.ftl" , includeViewOutputDir +  "ListEntityView.php");
 		this.generateArtifact(module, null, "views/wordpress/form-field-filter.ftl" , includeViewOutputDir +  "FormFieldFilter.php");
+		this.generateArtifact(module, null, "views/wordpress/view-utils-php.ftl" , includeViewOutputDir +  "ViewUtils.php");
 	}
 
 	private void doEntityHTML(Module module) {

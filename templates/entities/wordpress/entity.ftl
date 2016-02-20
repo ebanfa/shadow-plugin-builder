@@ -64,15 +64,15 @@ class ${entity.name}CPT {
      * So an array of Party entities will be an inferred field on PartyType.
      */
  public static $related_child_entities = array(
-<#list entity.relatedChildEntities?keys as key>
-        '${key}' => array('name' => '${key}',
-            'entity_name' => '${entity.relatedChildEntities[key].name}',
-            'entity_description' => '${entity.relatedChildEntities[key].description}',
-            'data_type' => '${entity.relatedChildEntities[key].postName}',
-            'artifact_name' => '${entity.relatedChildEntities[key].name?lower_case}',
+<#list entity.relatedChildEntities?keys as child_field_name>
+        '${child_field_name}' => array('name' => '${child_field_name}',
+            'entity_name' => '${entity.relatedChildEntities[child_field_name].name}',
+            'data_type' => '${entity.relatedChildEntities[child_field_name].postName}',
+            'artifact_name' => '${entity.relatedChildEntities[child_field_name].name?lower_case}',
+            'entity_description' => '${entity.relatedChildEntities[child_field_name].description}',
             'is_relationship_field' => true,
             'fields' => array(
-                <#list entity.relatedChildEntities[key].fields as field>
+                <#list entity.relatedChildEntities[child_field_name].fields as field>
                 '${field.name}' => array('name' => '${field.name}',
                     'description' => '${field.description}',
                     'size' => '${field.size}',
