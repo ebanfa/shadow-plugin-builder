@@ -387,7 +387,7 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 			//this.generateArtifact(module, entity, "html/wordpress/entity/entity-modal-list.ftl" , modalListPageName);
 
 		}
-		
+		entityOutputDir = outputDir + "entity/";
 		//this.generateArtifact(module, null, "html/wordpress/entity/entity-page.ftl" , entityOutputDir + "entity-page.php");
 		this.generateArtifact(module, null, "html/wordpress/entity/entity-create-form.ftl" , entityOutputDir + "entity-create-form.php");
 		this.generateArtifact(module, null, "html/wordpress/entity/entity-edit-form.ftl" , entityOutputDir + "entity-edit-form.php");
