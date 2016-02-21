@@ -133,6 +133,7 @@
                                 <form id="<?php echo $tab['model']['entity_post_name'];?>-list-form">
                                     <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
                                     <input type="hidden" name="submitted" id="submitted" value="true" />
+                                    <input type="hidden" name="artifact" id="artifact" value="<?php echo $tab['artifact_name'];?>" />
                                     <!-- <input type="hidden" name="u_property" id="u_property" value="" />  -->
                                 </form>
                                 <div class="table-responsive">
