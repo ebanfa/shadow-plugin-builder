@@ -140,9 +140,9 @@
                                         <thead>
                                             <tr>
                                                 <th><input name="select_all" value="1" type="checkbox"></th>
-                                                <?php  foreach ($tab['model']['entity_fields'] as $field) {  ?>
+                            <?php  foreach ($tab['model']['entity_fields'] as $field) { if($field['is_list_field']) { ?>
                                                 <th><?php  echo $field['description']  ?></th>
-                                                <?php  }  ?>
+                            <?php  } }  ?>
                                             </tr>
                                         </thead>
                                         <tbody>
