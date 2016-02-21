@@ -127,5 +127,10 @@ class CloderiaUIDisplayAPI {
         cp_get_template('entity/related-entity-field-modals.php');
     }
 
+    public static function render_multi_entity_create_view() {
+        cp_get_template('entity/multi-entity-create_form.php');
+    }
+
+
 }
 

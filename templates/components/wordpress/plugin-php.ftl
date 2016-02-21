@@ -90,6 +90,8 @@ class ${application.name} {
         include_once('includes/view/SingleEntityView.php');
         include_once('includes/view/ListEntityView.php');
         include_once('includes/view/FormFieldFilter.php');
+        include_once('includes/view/MultiEntityCreateView.php');
+        include_once('includes/view/TenantAgreementCreateView.php');
         // Framework API
         include_once('includes/api/CloderiaFileAPI.php');
         include_once('includes/api/CloderiaUserAPI.php');
@@ -166,6 +168,7 @@ class ${application.name} {
         add_action('shadowbanker_render_list_entity_view', 'CloderiaUIDisplayAPI::render_list', 10);
         add_action('shadowbanker_render_entity_form_fields', 'CloderiaUIDisplayAPI::render_entity_form_fields', 10);
         add_action('shadowbanker_render_related_entity_field_modals', 'CloderiaUIDisplayAPI::render_related_entity_field_modals', 10);
+        add_action('shadowbanker_render_multi_entity_create_view', 'CloderiaUIDisplayAPI::render_multi_entity_create_view', 10);
 
         add_action('shadowbanker_before_entity_form_field', 'CloderiaUIDisplayAPI::before_entity_form_field', 10);
         add_action('shadowbanker_after_entity_form_field', 'CloderiaUIDisplayAPI::after_entity_form_field', 10);

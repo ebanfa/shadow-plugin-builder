@@ -522,32 +522,7 @@
 
 	<module>
 		<name>core</name>
-
-		<page>
-			<name>user-conversations</name>
-			<displayName>User Conversations</displayName>
-			<description>User Conversations</description>
-			<pageTemplate>html/wordpress/page/user-conversations.ftl</pageTemplate>
-			<!-- <jsTemplate>html/wordpress/js/page/confirmpayment-form.ftl</jsTemplate>
-			<apiTemplate>html/wordpress/services/page/confirmpayment-service-api.ftl</apiTemplate> -->
-		</page>
-		<page>
-			<name>latest-user-conversation</name>
-			<displayName>Latest User Conversation</displayName>
-			<description>Latest User Conversation</description>
-			<pageTemplate>html/wordpress/page/latest-user-conversation.ftl</pageTemplate>
-			<!-- <jsTemplate>html/wordpress/js/page/confirmpayment-form.ftl</jsTemplate>
-			<apiTemplate>html/wordpress/services/page/confirmpayment-service-api.ftl</apiTemplate> -->
-		</page>
-		<page>
-			<name>notification-items</name>
-			<displayName>Notification Items</displayName>
-			<description>Notification Items</description>
-			<pageTemplate>html/wordpress/notification-items.ftl</pageTemplate>
-			<!-- <jsTemplate>html/wordpress/js/page/confirmpayment-form.ftl</jsTemplate>
-			<apiTemplate>html/wordpress/services/page/confirmpayment-service-api.ftl</apiTemplate> -->
-		</page>
-
+		
 		<entity>
 			<name>Currency</name>
 			<postName>sb_currency</postName>

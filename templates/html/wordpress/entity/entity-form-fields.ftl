@@ -19,7 +19,7 @@
                         <div class="form-group">
                             <div class="fg-line">
                                 <input type="text" class="form-control name" 
-                                    <?php if(isset($model['id'])) { echo 'value="' . $model[$field['name']]. '" '; }?>
+                                    <?php if(isset($model['id'])) { echo 'value="' . $model[$field['name']] . '" '; }?>
                                     id="<?php echo $field['name'];?>" name="<?php echo $field['name']; ?>" 
                                     placeholder="<?php echo $field['description']; ?>" 
                                     data-bv-message="The <?php echo $field['description']; ?> is not valid" 
@@ -27,8 +27,7 @@
                             </div>
                         </div>
                     </div>
-        <?php       // Email field
-                }  if($field['data_type'] == 'email') { ?>
+        <?php   }  if($field['data_type'] == 'email') { ?>
                     <div class="<?php echo $field['col_size']; ?>">
                         <div class="form-group">
                             <div class="fg-line">
@@ -154,7 +153,7 @@
                                 <div class="dtp-container dropdown fg-line">
                                     <input type='text' 
                                         id="<?php echo $field['name'];?>" name="<?php echo $field['name'];?>" 
-                                        <?php if(isset($model['id'])) { echo 'value="' . $model[$field['name']]. '" '; }?> 
+                                        <?php if(isset($model['id'])) { echo 'value="' . $model[$field['name']] . '" '; }?> 
                                         class="form-control date-picker" 
                                         data-toggle="dropdown" placeholder="<?php echo $field['description']; ?>" 
                                         data-bv-message="The <?php echo $field['description']; ?> is not valid" 
@@ -194,11 +193,13 @@
         } 
 ?>
 
-<?php if(isset($parent_field)) { ?>
-        <input type="hidden" name="parent_id" value="<?php echo $parent_id; ?>">
-        <input type="hidden" name="parent_artifact" value="<?php echo $parent_artifact; ?>">
-        <input type="hidden" name="parent_field" value="<?php echo $parent_field; ?>">
-        <?php if(isset($_REQUEST['parent_param'])) {?>
-        <input type="hidden" name="parent_param" value="<?php echo urlencode($parent_param); ?>">
+<?php if(!is_null($view->get_parent_field())) { ?>
+        <input type="hidden" name="parent_id" value="<?php echo $view->get_parent_id(); ?>">
+        <input type="hidden" name="parent_artifact" value="<?php echo $view->get_parent_artifact_name(); ?>">
+        <input type="hidden" name="parent_field" value="<?php echo $view->get_parent_field(); ?>">
+        <?php if(is_null($view->get_parent_param()) {?>
+        <input type="hidden" name="parent_param" value="<?php echo urlencode($view->get_parent_param()); ?>">
         <?php } ?>
 <?php } ?>
+
+<?php do_action('shadowbanker_render_related_entity_field_modals'); ?>
