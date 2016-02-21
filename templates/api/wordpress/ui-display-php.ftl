@@ -128,7 +128,7 @@ class CloderiaUIDisplayAPI {
     }
 
     public static function render_multi_entity_create_view() {
-        cp_get_template('entity/multi-entity-create_form.php');
+        cp_get_template('entity/multi-entity-create-form.php');
     }
 
 
