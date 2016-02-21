@@ -98,9 +98,104 @@
             </form>
         </div>
 
+        <!-- Modals for each tab -->  
+        <?php  $count = 1; foreach ($tabs as $tab) {  ?>
+        <div class="modal fade" id="<?php echo $tab['artifact_name'];?>_modal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="card">
+                            <div class="card-header bgm-lightgreen">
+                                <h2>
+                                    Select the <?php echo $tab['model']['entity_name'];?>
+                                </h2>
+                                <ul class="actions actions-alt">
+                                    <li class="dropdown">
+                                        <a href="widget-templates.html" data-toggle="dropdown" aria-expanded="false">
+                                            <i class="md md-more-vert"></i>
+                                        </a>
+                                        
+                                        <ul class="dropdown-menu dropdown-menu-right">
+                                            <li>
+                                                <a href="/page?type=entity&page_action=create&artifact=<?php echo $tab['artifact_name'];?>">Add a new record</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-body card-padding">
+                                <form id="<?php echo $tab['model']['entity_post_name'];?>-list-form">
+                                    <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
+                                    <input type="hidden" name="submitted" id="submitted" value="true" />
+                                    <!-- <input type="hidden" name="u_property" id="u_property" value="" />  -->
+                                </form>
+                                <div class="table-responsive">
+                                    <table id="<?php echo $tab['model']['entity_post_name'];?>-list-table" class="table table-striped table-bordered" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th><input name="select_all" value="1" type="checkbox"></th>
+                                                <?php  foreach ($tab['model']['entity_fields'] as $field) {  ?>
+                                                <th><?php  echo $field['description']  ?></th>
+                                                <?php  }  ?>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <a id="add-selected-${modEntity.name?lower_case}-list-btn" type="button" data-dismiss="modal" class="btn btn-primary">Add to agreement</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <?php  $count++; } ?>
+
 
 
 <script type="text/javascript">
-  
+  jQuery(document).ready(function($)
+    {
+        $('body').on('click', '.data-table-link', function(e){
+            e.preventDefault();
+            var currentRelatedFieldName = $('#current-related-field').val();
+            var currentRelatedInstanceId = $(this).data('related-instance-id');
+            var currentRelatedInstanceName = $(this).data('related-instance-name');               
+            var currentRelatedArtifactName = $(this).data('related-artifact-name');
+            // Set the value of the hidden relationship field. 
+            $('#' + currentRelatedArtifactName).val(currentRelatedInstanceId);
+            // Set the value of the text field for the relationship field.
+            $('#' + currentRelatedFieldName + '_txt').val(currentRelatedInstanceName);
+            $('.modal').modal('hide');
+        });
+
+        $('body').on('click', '.related-field-search-link', function(e){
+            e.preventDefault();
+            var currentRelatedFieldName = $(this).data('related-field-name');
+            $('#u_property').val(currentRelatedFieldName);
+            $('#current-related-field').val(currentRelatedFieldName);
+            $('#' + currentRelatedFieldName + '_modal').modal('show');
+        });
+
+        $('body').on('click', '.dependent-field-search-link', function(e){
+            e.preventDefault();
+            var dependentFieldName = $(this).data('dependent-field-name');
+            $('#' + dependentFieldName + '_modal').modal('show');
+        });
+
+    });
+
 
 </script>
