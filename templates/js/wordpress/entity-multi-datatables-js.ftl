@@ -41,7 +41,7 @@ $(document).ready(function (){
             'type': 'POST',
             'url': ${application.name?lower_case}_ajax_script.ajaxurl,
             'data': function(d){
-               d.action = 'find_${modEntity.postName}_ajax';
+               d.action = 'find_entity_ajax';
                d.form = $("#${modEntity.postName}-list-form").serializeArray();
             },
         },
