@@ -363,7 +363,7 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 			String listPageName = entityPageOutputDir + entityName.toLowerCase() + "-archive.php";
 			String modalListPageName = entityPageOutputDir + entityName.toLowerCase() + "-modal-archive.php";
 
-			//this.createDirectoryIfNeeded(entityPageOutputDir);
+			this.createDirectoryIfNeeded(entityPageOutputDir);
 			// Create page
 			if(createPageTemplate != null) {
 				this.generateArtifact(module, entity, createPageTemplate, createPageName);
