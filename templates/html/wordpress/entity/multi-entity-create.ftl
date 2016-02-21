@@ -39,7 +39,7 @@
                     <!-- Multi entity select tabs-->
                     <?php  $count = 1; foreach ($tabs as $tab) {  ?>
 
-                    <div class="tab-pane fade" id="<?php echo $count;?>">
+                    <div class="tab-pane fade" id="tab<?php echo $count;?>">
                         <div class="col-sm-12 m-b-20 btn-demo">
                             <div class="btn-group">
                                 <button type="button" class="btn btn-primary">

@@ -123,7 +123,7 @@ class BaseEntityView extends ArtifactView {
      * 
      */
     public function get_related_form_field_model($artifact) {
-        return EntityAPI::get_model($artifact);; 
+        return EntityAPI::get_model($artifact); 
     }
 
 
