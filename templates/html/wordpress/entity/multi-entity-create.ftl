@@ -65,7 +65,7 @@
                         <div class="divider"></div>
                         <div class="col-sm-12 m-b-20">
                             <div id="<?php echo $tab['artifact_name'];?>_dependent_list_box" class="list-group">
-                                <div class="list-group-item active"><span id="<?php echo $tab['artifact_name'];?>_count"class="badge">0</span> Selected ${modEntity.name}</div>
+                                <div class="list-group-item active"><span id="<?php echo $tab['artifact_name'];?>_count"class="badge">0</span> Selected <?php echo $tab['model']['entity_name'];?></div>
                                 <!-- <div class="list-group-item"><span class="badge warning">X</span>Dapibus ac facilisis in</div> -->
                             </div>
                         </div>
