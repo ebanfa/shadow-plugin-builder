@@ -522,7 +522,7 @@
 
 	<module>
 		<name>core</name>
-		
+
 		<entity>
 			<name>Currency</name>
 			<postName>sb_currency</postName>
@@ -7250,6 +7250,7 @@
 			<description>Tenant Agreement</description>
 			<global>Y</global>
 			<isVirtual>N</isVirtual>
+			<createPageTemplate>html/wordpress/entity/tenantagreement/tenantagreement-create-form.ftl</createPageTemplate>
             <!-- <createPageTemplate>html/wordpress/entity/tenantagreement/tenantagreement-create-form.ftl</createPageTemplate>
 			<apiTemplate>services/wordpress/tenantagreement/tenantagreement-service-api.ftl</apiTemplate>  -->
 			<field>

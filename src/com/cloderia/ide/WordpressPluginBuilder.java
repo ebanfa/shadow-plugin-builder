@@ -350,7 +350,7 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 
 		for(Entity entity: module.getEntities()) {
 
-			/*String entityName = entity.getName();
+			String entityName = entity.getName();
 			String createPageTemplate = entity.getCreatePageTemplate();
 			String editPageTemplate = entity.getEditPageTemplate();
 			String viewPageTemplate = entity.getViewPageTemplate();
@@ -361,11 +361,11 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 			String editPageName = entityPageOutputDir + entityName.toLowerCase() + "-edit-form.php";
 			String viewPageName = entityPageOutputDir + "single-" +  entityName.toLowerCase() + ".php";
 			String listPageName = entityPageOutputDir + entityName.toLowerCase() + "-archive.php";
-			String modalListPageName = entityPageOutputDir + entityName.toLowerCase() + "-modal-archive.php";*/
+			String modalListPageName = entityPageOutputDir + entityName.toLowerCase() + "-modal-archive.php";
 
 			//this.createDirectoryIfNeeded(entityPageOutputDir);
 			// Create page
-			/*if(createPageTemplate != null) {
+			if(createPageTemplate != null) {
 				this.generateArtifact(module, entity, createPageTemplate, createPageName);
 			}
 			// Edit page
@@ -380,7 +380,7 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 			if(listPageTemplate != null) {
 				this.generateArtifact(module, entity, listPageTemplate, listPageName);
 			}
-			this.generateArtifact(module, entity, "html/wordpress/entity/entity-modal-list.ftl" , modalListPageName);*/
+			//this.generateArtifact(module, entity, "html/wordpress/entity/entity-modal-list.ftl" , modalListPageName);
 
 		}
 		
