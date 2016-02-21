@@ -363,21 +363,25 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 			String listPageName = entityPageOutputDir + entityName.toLowerCase() + "-archive.php";
 			String modalListPageName = entityPageOutputDir + entityName.toLowerCase() + "-modal-archive.php";
 
-			this.createDirectoryIfNeeded(entityPageOutputDir);
+			
 			// Create page
 			if(createPageTemplate != null) {
+				this.createDirectoryIfNeeded(entityPageOutputDir);
 				this.generateArtifact(module, entity, createPageTemplate, createPageName);
 			}
 			// Edit page
 			if(editPageTemplate != null) {
+				this.createDirectoryIfNeeded(entityPageOutputDir);
 				this.generateArtifact(module, entity, editPageTemplate, editPageName);
 			}
 			// View page
 			if(viewPageTemplate != null) {
+				this.createDirectoryIfNeeded(entityPageOutputDir);
 				this.generateArtifact(module, entity, viewPageTemplate, viewPageName);
 			}
 			// List Page
 			if(listPageTemplate != null) {
+				this.createDirectoryIfNeeded(entityPageOutputDir);
 				this.generateArtifact(module, entity, listPageTemplate, listPageName);
 			}
 			//this.generateArtifact(module, entity, "html/wordpress/entity/entity-modal-list.ftl" , modalListPageName);
