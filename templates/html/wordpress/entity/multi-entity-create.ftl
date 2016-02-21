@@ -18,7 +18,6 @@
                 <?php  $count++; } ?>
             </ul>
             
-            <div class="tab-content">
                 <form role="form" name="<?php echo $model['entity_post_name'];?>_form" 
                     id="<?php echo $model['entity_post_name'];?>_form" action="" 
                     method="POST" enctype="multipart/form-data" 
@@ -28,6 +27,7 @@
                     data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
                     data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
                     data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
+            <div class="tab-content">
 
 
                     <!-- Main entity tab -->
@@ -73,7 +73,16 @@
 
                     <?php  $count++; } ?>
 
+                  
                     
+                <ul class="fw-footer pagination wizard">
+                    <li class="previous first"><a class="a-prevent" href="components.html"><i class="zmdi zmdi-more-horiz"></i></a></li>
+                    <li class="previous"><a class="a-prevent" href="components.html"><i class="zmdi zmdi-chevron-left"></i></a></li>
+                    <li class="next"><a class="a-prevent" href="components.html"><i class="zmdi zmdi-chevron-right"></i></a></li>
+                    <li class="next last"><a class="a-prevent" href="components.html"><i class="zmdi zmdi-more-horiz"></i></a></li>
+                </ul>
+            </div>
+              
                     <!-- This fields are used by the relationship field selection routine -->
                     <input type="hidden" id="current-related-field" name="current-related-field" value="">
                     <input type="hidden" id="current-relationship-field-id" name="current-relationship-field-id" value="">
@@ -90,14 +99,6 @@
                     </div>
 
                 </form>
-                    
-                <ul class="fw-footer pagination wizard">
-                    <li class="previous first"><a class="a-prevent" href="components.html"><i class="zmdi zmdi-more-horiz"></i></a></li>
-                    <li class="previous"><a class="a-prevent" href="components.html"><i class="zmdi zmdi-chevron-left"></i></a></li>
-                    <li class="next"><a class="a-prevent" href="components.html"><i class="zmdi zmdi-chevron-right"></i></a></li>
-                    <li class="next last"><a class="a-prevent" href="components.html"><i class="zmdi zmdi-more-horiz"></i></a></li>
-                </ul>
-            </div>
         </div>
 
 
