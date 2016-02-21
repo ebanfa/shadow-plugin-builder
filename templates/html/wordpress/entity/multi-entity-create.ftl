@@ -163,39 +163,15 @@
 
         <?php  $count++; } ?>
 
+<#list module.entities as modEntity>
+<#if modEntity.name == "Unit" || modEntity.name == "Charge" || modEntity.name == "Term">
+
+</#if>
+</#list>
+
 
 
 <script type="text/javascript">
-  jQuery(document).ready(function($)
-    {
-        $('body').on('click', '.data-table-link', function(e){
-            e.preventDefault();
-            var currentRelatedFieldName = $('#current-related-field').val();
-            var currentRelatedInstanceId = $(this).data('related-instance-id');
-            var currentRelatedInstanceName = $(this).data('related-instance-name');               
-            var currentRelatedArtifactName = $(this).data('related-artifact-name');
-            // Set the value of the hidden relationship field. 
-            $('#' + currentRelatedArtifactName).val(currentRelatedInstanceId);
-            // Set the value of the text field for the relationship field.
-            $('#' + currentRelatedFieldName + '_txt').val(currentRelatedInstanceName);
-            $('.modal').modal('hide');
-        });
-
-        $('body').on('click', '.related-field-search-link', function(e){
-            e.preventDefault();
-            var currentRelatedFieldName = $(this).data('related-field-name');
-            $('#u_property').val(currentRelatedFieldName);
-            $('#current-related-field').val(currentRelatedFieldName);
-            $('#' + currentRelatedFieldName + '_modal').modal('show');
-        });
-
-        $('body').on('click', '.dependent-field-search-link', function(e){
-            e.preventDefault();
-            var dependentFieldName = $(this).data('dependent-field-name');
-            $('#' + dependentFieldName + '_modal').modal('show');
-        });
-
-    });
-
+  
 
 </script>
