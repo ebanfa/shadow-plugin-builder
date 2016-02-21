@@ -21,7 +21,14 @@ class TenantAgreementCreateView extends MultiEntityCreateView {
      *
      */
     function get_tabs() {
-        return array();
+        return array(
+            'units' => array(
+                'description' => 'Units',
+                'model' => EntityAPI::get_model('unit'),
+                'artifact_name' => '',
+                'type_instances' => EntityAPI::find_by_criteria('unittype', array()),
+                ) 
+            );
     }
 
 
