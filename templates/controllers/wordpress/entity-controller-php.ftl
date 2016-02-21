@@ -105,6 +105,7 @@ class EntityActionProcessor {
             wp_send_json_error(array('message' => "Invalid form operation!"));
         }
         $artifact_name = EntityRequestUtils::get_artifact_name();
+        if(!$artifact_name) $artifact_name = EntityRequestUtils::get_query_form_field('artifact');
         $entity_data = EntityAPIUtils::init_entity_data($artifact_name);
         return $entity_data;
     }
