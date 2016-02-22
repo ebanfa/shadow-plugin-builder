@@ -17,8 +17,10 @@ class CloderiaUserAPI {
         if(self::validate_user_data($user_data)) {
             // 1. Create the party
             $party_data = self::create_party($user_data);
-            /*if(!$party_data['has_errors']) {
-                // 2. Create the default buisness unit for the party
+            echo ">>>>>>>>>>>>>>!";
+            if(!$party_data['has_errors']) {
+                echo ">>>>>>>>>>>>>>2";
+                /*// 2. Create the default buisness unit for the party
                 $businessunit_data = self::create_default_party_businessunit($party_data);
                 // 3. Create the person entity for the party
                 $person_data = self::create_party_person($businessunit_data, $party_data);
@@ -29,8 +31,8 @@ class CloderiaUserAPI {
                 // 6. Create the chart of accounts entity
                 //$chartofaccounts_data = CloderiaUserAPI::create_default_party_chartofaccounts($businessunit_data, $partyrole_data);
                 // 7. Send the user successully created email
-                self::send_user_created_email($user_data, $party_data);
-            }*/
+                self::send_user_created_email($user_data, $party_data);*/
+            }
         }
     }
 
@@ -57,7 +59,7 @@ class CloderiaUserAPI {
             return $entity_data;
 
         }
-        return $entity_data;
+        return array();
     }
 
     /**
