@@ -17,7 +17,7 @@ class CloderiaUserAPI {
         if(self::validate_user_data($user_data)) {
             // 1. Create the party
             $party_data = self::create_party($user_data);
-            var_dump($party_data['has_errors']);
+            echo '>>>>>>>>>>>>>>' . $party_data['has_errors'];
             if(!$party_data['has_errors']) {
                 // 2. Create the default buisness unit for the party
                 $businessunit_data = self::create_default_party_businessunit($party_data);
