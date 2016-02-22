@@ -40,7 +40,7 @@ class CloderiaUserAPI {
     public static function create_party($user_data) {
         $entity_data = EntityAPIUtils::init_entity_data('party');
         // Get the default party type (INDIVIDUAL)
-        $party_type = EntityAPI::get_by_code('party', get_option('cp_default_partytype'));
+        $party_type = EntityAPI::get_by_code('partytype', get_option('cp_default_partytype'));
 
         if(isset($party_type['id'])) {
             $entity_data['edit_mode'] = true;
