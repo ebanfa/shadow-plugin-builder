@@ -15,7 +15,6 @@
 			<active>N</active>
 			<cssClass>md-dashboard</cssClass>
 			<targetType>page</targetType>
-			<targetTemplate>html/wordpress/page/dashboard-page-php.ftl</targetTemplate>
 			<target>/page?artifact=dashboard&amp;page_action=view</target>
 		</menuGroup>
 
@@ -525,12 +524,19 @@
 
 
 		<page>
-			<name>notification-items</name>
+			<name>Dashboard</name>
+			<displayName>Dashboard</displayName>
+			<description>Dashboard</description>
+			<pageTemplate>html/wordpress/dashboard-page-php.ftl</pageTemplate>
+			<viewTemplate>views/wordpress/dashboard-view-php.ftl</viewTemplate>
+		</page>
+
+		<page>
+			<name>NotificationItems</name>
 			<displayName>Notification Items</displayName>
 			<description>Notification Items</description>
-			<pageTemplate>html/wordpress/notification-items.ftl</pageTemplate>
-			<!-- <jsTemplate>html/wordpress/js/page/confirmpayment-form.ftl</jsTemplate>
-			<apiTemplate>html/wordpress/services/page/confirmpayment-service-api.ftl</apiTemplate> -->
+			<pageTemplate>html/wordpress/notification-items-php.ftl</pageTemplate>
+			<viewTemplate>views/wordpress/notification-items-view.ftl</viewTemplate>
 		</page>
 
 		<entity>

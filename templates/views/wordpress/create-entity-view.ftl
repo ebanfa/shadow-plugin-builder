@@ -53,6 +53,14 @@ class CreateEntityView extends BaseEntityView {
         }
         return $create_fields; 
     }
+
+    /**
+     * Render this view
+     */
+    public function render_impl() {
+        // execute default render operation
+        CloderiaUIDisplayAPI::display_entity_create_form($_REQUEST['page_info']);
+    }
 }
 
 ?>

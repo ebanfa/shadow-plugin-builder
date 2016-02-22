@@ -20,6 +20,7 @@ public class Page {
 	private String jsTemplate;
 	private String apiTemplate;
 	private String pageTemplate;
+	private String viewTemplate;
 
 	/**
 	 * 
@@ -56,6 +57,21 @@ public class Page {
 	@XmlElement
 	public void setPageTemplate(String pageTemplate) {
 		this.pageTemplate = pageTemplate;
+	}
+
+	/**
+	 * @return the viewTemplate
+	 */
+	public String getViewTemplate() {
+		return pageTemplate;
+	}
+
+	/**
+	 * @param viewTemplate the viewTemplate to set
+	 */
+	@XmlElement
+	public void setViewTemplate(String viewTemplate) {
+		this.viewTemplate = viewTemplate;
 	}
 
 	

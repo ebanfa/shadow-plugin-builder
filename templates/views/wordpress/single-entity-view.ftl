@@ -19,6 +19,13 @@ class SingleEntityView extends BaseEntityView {
     	}
     }
 
+    /**
+     * Render this view
+     */
+    public function render_impl() {
+        // execute default render operation
+        CloderiaUIDisplayAPI::display_single_entity($_REQUEST['page_info']);
+    }
 }
 
 ?>

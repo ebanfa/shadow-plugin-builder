@@ -439,21 +439,24 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 		for(Page page: module.getPages()) {
 
 			String pageName = page.getName();
+			String artifactName = page.getName().toLowerCase();
 			String jsTemplate = page.getJsTemplate();
 			String apiTemplate = page.getApiTemplate();
 			String pageTemplate = page.getPageTemplate();
-
+			String viewTemplate = page.getViewTemplate();
+			
+			if(pageTemplate != null) {
+				this.generatePageArtifact(module, page, pageTemplate , pageOutputDir + artifactName + ".php");
+			}
 			if(jsTemplate != null) {
-				this.generatePageArtifact(module, page, jsTemplate , jsOutputDir + pageName + ".js");
+				this.generatePageArtifact(module, page, jsTemplate , jsOutputDir + artifactName + ".js");
+			}
+			if(viewTemplate != null) {
+				this.generatePageArtifact(module, page, viewTemplate , pageOutputDir + pageName + "View.php");
 			}
 			if(apiTemplate != null) {
 				this.generatePageArtifact(module, page, apiTemplate , includeApiOutputDir + pageName + "API.php");
 			}
-			if(pageTemplate != null) {
-				this.generatePageArtifact(module, page, pageTemplate , pageOutputDir + pageName + ".php");
-			}
-
-			this.generateArtifact(module, null, "html/wordpress/page/dashboard-content-php.ftl" , pageOutputDir + "dashboard-content.php");
 		}
 	}
 

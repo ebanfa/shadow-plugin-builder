@@ -52,7 +52,7 @@ class CloderiaUIDisplayAPI {
         if(cp_template_exists($custom_artifact_template)){
             cp_get_template($custom_artifact_template);
         } else {
-            cp_get_template('entity/single-entity.php');
+            cp_get_template('entity/single.php');
         }
     }
         
@@ -63,7 +63,7 @@ class CloderiaUIDisplayAPI {
         if(cp_template_exists($custom_artifact_template)){
             cp_get_template($custom_artifact_template);
         } else {
-            cp_get_template('entity/entity-create-form.php');
+            cp_get_template('entity/create-form.php');
         }
     }
 
@@ -74,7 +74,7 @@ class CloderiaUIDisplayAPI {
         if(cp_template_exists($custom_artifact_template)){
             cp_get_template($custom_artifact_template);
         } else {
-            cp_get_template('entity/entity-edit-form.php');
+            cp_get_template('entity/edit-form.php');
         }
     }
 
@@ -85,7 +85,7 @@ class CloderiaUIDisplayAPI {
         if(cp_template_exists($custom_artifact_template)){
             cp_get_template($custom_artifact_template);
         } else {
-            cp_get_template('entity/entity-archive.php');
+            cp_get_template('entity/list.php');
         }
     }
 
@@ -102,7 +102,7 @@ class CloderiaUIDisplayAPI {
     }
 
 
-    public static function render_create_form() {
+    /*public static function render_create_form() {
         cp_get_template('entity/create-form.php');
     }
 
@@ -116,7 +116,7 @@ class CloderiaUIDisplayAPI {
 
     public static function render_list() {
         cp_get_template('entity/list.php');
-    }
+    }*/
 
     public static function render_entity_form_fields() {
         cp_get_template('entity/entity-form-fields.php');

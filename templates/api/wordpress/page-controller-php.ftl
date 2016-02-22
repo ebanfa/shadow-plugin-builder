@@ -28,20 +28,27 @@ class ArtifactRequestProcessor {
         $page_info['artifact_name'] = ArtifactUtils::$artifacts[$page_info['artifact']]['name'];
         $page_info['artifact_type'] = ArtifactUtils::$artifacts[$page_info['artifact']]['artifact_type'];
         $page_info['artifact_display_name'] = ArtifactUtils::$artifacts[$page_info['artifact']]['description'];
+
+        $view_class = self::get_view_class($page_info['artifact']);
+        $view_instance = new $view_class();
+        $page_info['view'] = $view_instance;
         
         $_REQUEST['page_info'] = $page_info;
+
+        $view_instance->render();
+        /*
         if($page_info['artifact_type'] === 'entity'){
             $page_info['artifact_class'] = EntityAPIUtils::init_entity_data($page_info['artifact']);
             self::display_entity($page_info);
         }
         else {
             CloderiaUIDisplayAPI::display_page($page_info);
-        }
+        }*/
     }
 
     /**
      */
-    public static function display_entity($page_info) {
+    /*public static function display_entity($page_info) {
         if($page_info['page_action'] == 'create') {
             CloderiaUIDisplayAPI::display_entity_create_form($page_info);
         }
@@ -57,6 +64,10 @@ class ArtifactRequestProcessor {
         else {
           echo '<h1>Invalid entity page action!</h1>';
         }
+    }*/
+
+    public static function get_view_class($artifact) {
+
     }
 }
 // End Class

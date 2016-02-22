@@ -58,6 +58,14 @@ class EditEntityView extends BaseEntityView {
         return $edit_fields; 
     }
 
+    /**
+     * Render this view
+     */
+    public function render_impl() {
+        // execute default render operation
+        CloderiaUIDisplayAPI::display_entity_edit_form($_REQUEST['page_info']);
+    }
+
 }
 
 ?>
