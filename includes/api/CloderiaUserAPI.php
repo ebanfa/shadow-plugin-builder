@@ -75,7 +75,7 @@ class CloderiaUserAPI {
         if(isset($party_data['id'])) {
 
                 echo ">>>>>>>>>>>>>>5";
-            $entity_data['edit_mode'] = true;
+            /*$entity_data['edit_mode'] = true;
             $entity_data['party'] = $party_data['id'];
             $entity_data['name'] = $party_data['name'];
             $entity_data['address_1'] = '0000000000'; 
@@ -96,7 +96,7 @@ class CloderiaUserAPI {
                 $party_data['edit_mode'] = false;
                 $party_data['business_unit'] = $entity_data['id'];
                 $party_data = EntityAPI::create_entity($party_data);
-            }
+            }*/
         }
         return $entity_data;
     }
