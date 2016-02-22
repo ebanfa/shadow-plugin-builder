@@ -29,7 +29,7 @@ class ArtifactRequestProcessor {
         $page_info['artifact_type'] = ArtifactUtils::$artifacts[$page_info['artifact']]['artifact_type'];
         $page_info['artifact_display_name'] = ArtifactUtils::$artifacts[$page_info['artifact']]['description'];
 
-        $view_class = self::get_view_class($page_info['artifact']);
+        $view_class = self::get_view_class($page_info);
         $view_instance = new $view_class($page_info['artifact']);
         $page_info['view'] = $view_instance;
 
@@ -67,9 +67,27 @@ class ArtifactRequestProcessor {
     }*/
 
     public static function get_view_class($artifact) {
-        $artifact_object_nm = ArtifactUtils::$artifacts[$artifact]['name'];
-        return $artifact_object_nm . 'View'
+        $page_action = $page_info['page_action'];
+        $artifact_type = $page_info['artifact_type'];
+        $artifact_object_nm = ArtifactUtils::$artifacts[$page_info['artifact']]['name'];
 
+        if($artifact_type == 'entity') {
+            if($page_action == 'create') $view_class_nm = 'Create' . $page_info['artifact_name']. 'View';
+            if($page_action == 'edit') $view_class_nm = 'Edit' . $page_info['artifact_name']. 'View';
+            if($page_action == 'view') $view_class_nm = 'Single' . $page_info['artifact_name']. 'View';
+            if($page_action == 'list') $view_class_nm = 'List' . $page_info['artifact_name']. 'View';
+
+            if (!class_exists($view_class_nm)) {
+                if($page_action == 'create') $view_class_nm = 'CreateEntityView';
+                if($page_action == 'edit') $view_class_nm = 'EditEntityView';
+                if($page_action == 'view') $view_class_nm = 'SingleEntityView';
+                if($page_action == 'list') $view_class_nm = 'ListEntityView';
+            }
+        }
+        else {
+            $view_class_nm = $artifact_object_nm . 'View'
+        }
+        return $view_class_nm;
     }
 }
 // End Class
