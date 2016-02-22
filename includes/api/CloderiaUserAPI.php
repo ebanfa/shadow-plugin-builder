@@ -20,9 +20,10 @@ class CloderiaUserAPI {
             echo ">>>>>>>>>>>>>>!";
             if(!$party_data['has_errors']) {
                 echo ">>>>>>>>>>>>>>2";
-                /*// 2. Create the default buisness unit for the party
+                // 2. Create the default buisness unit for the party
                 $businessunit_data = self::create_default_party_businessunit($party_data);
-                // 3. Create the person entity for the party
+                echo ">>>>>>>>>>>>>>2";
+                /*// 3. Create the person entity for the party
                 $person_data = self::create_party_person($businessunit_data, $party_data);
                 // 4. Create the default party role
                 $partyprofile_data = self::create_party_profile($businessunit_data, $party_data);
@@ -67,9 +68,13 @@ class CloderiaUserAPI {
      * 
      */
     public static function create_default_party_businessunit($party_data) {
+                echo ">>>>>>>>>>>>>>3";
         $entity_data = EntityAPIUtils::init_entity_data('businessunit');
 
+                echo ">>>>>>>>>>>>>>4";
         if(isset($party_data['id'])) {
+
+                echo ">>>>>>>>>>>>>>5";
             $entity_data['edit_mode'] = true;
             $entity_data['party'] = $party_data['id'];
             $entity_data['name'] = $party_data['name'];
