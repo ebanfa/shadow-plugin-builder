@@ -43,7 +43,6 @@ class CloderiaUserAPI {
         echo ">>>>>>>>>>>>>>>>>>>>>>>>>";
         // Get the default party type (INDIVIDUAL)
         $party_type = EntityAPI::get_by_code('partytype', get_option('cp_default_partytype'));
-        var_dump($party_type);
         if(isset($party_type['id'])) {
             $entity_data = EntityAPIUtils::init_entity_data('party');
             $entity_data['edit_mode'] = true;
