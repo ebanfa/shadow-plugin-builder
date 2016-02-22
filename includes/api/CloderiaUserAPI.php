@@ -38,12 +38,11 @@ class CloderiaUserAPI {
      * This creates the party for the current user
      */
     public static function create_party($user_data) {
-        $entity_data = EntityAPIUtils::init_entity_data('party');
-        var_dump($entity_data);
         // Get the default party type (INDIVIDUAL)
         $party_type = EntityAPI::get_by_code('partytype', get_option('cp_default_partytype'));
 
         if(isset($party_type['id'])) {
+            $entity_data = EntityAPIUtils::init_entity_data('party');
             $entity_data['edit_mode'] = true;
             $entity_data['party_type'] = $party_type['id'];
             $entity_data['user_name'] = $user_data['us76raher_login'];
@@ -56,9 +55,9 @@ class CloderiaUserAPI {
             $entity_data['last_name'] = $user_data['last_name'];
             // Create the party and return the results of the process
             $entity_data = EntityAPI::create_entity('party', $entity_data);
+            return $entity_data;
 
         }
-        return $entity_data;
     }
 
     /**
