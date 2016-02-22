@@ -523,7 +523,7 @@
 	<module>
 		<name>core</name>
 
-		
+
 		<page>
 			<name>notification-items</name>
 			<displayName>Notification Items</displayName>
@@ -7262,7 +7262,8 @@
 			<isVirtual>N</isVirtual>
 			<createPageTemplate>html/wordpress/entity/tenantagreement/tenantagreement-create-form.ftl</createPageTemplate>
             <!-- <createPageTemplate>html/wordpress/entity/tenantagreement/tenantagreement-create-form.ftl</createPageTemplate>
-			<apiTemplate>services/wordpress/tenantagreement/tenantagreement-service-api.ftl</apiTemplate>  -->
+			  -->
+			<apiTemplate>api/wordpress/tenantagreement/tenantagreement-service-api.ftl</apiTemplate>
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
