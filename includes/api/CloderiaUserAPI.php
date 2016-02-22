@@ -39,8 +39,6 @@ class CloderiaUserAPI {
      */
     public static function create_party($user_data) {
 
-        echo "Creating party";
-        echo ">>>>>>>>>>>>>>>>>>>>>>>>>";
         // Get the default party type (INDIVIDUAL)
         $party_type = EntityAPI::get_by_code('partytype', get_option('cp_default_partytype'));
         if(isset($party_type['id'])) {
@@ -56,11 +54,7 @@ class CloderiaUserAPI {
             $entity_data['first_name'] = $user_data['first_name'];
             $entity_data['last_name'] = $user_data['last_name'];
             // Create the party and return the results of the process
-            echo "Creating party>>>>>>>>>>>>>>>>>>";
-            var_dump($entity_data);
-            echo "Creating party>>>>>>>>>>>>>>>>>>";
-            $entity_data = EntityAPI::do_create_entity('party', $entity_data);
-            echo "Created party>>>>>>>>>>>>>>>>>>>";
+            $entity_data = EntityAPI::create_entity($entity_data);
             return $entity_data;
 
         }

@@ -23,7 +23,6 @@ class EntityAPI {
      */
     public static function do_create_entity($entity_data){
 
-        echo $entity_data . '>>>>>>>>>>>>>>>>>>>>';
         $entity_data['has_errors'] = false;
         if ($entity_data['edit_mode']) {
             // Create the order
