@@ -16,7 +16,10 @@ class CloderiaUIDisplayAPI {
     public static function after_main_content() {
         cp_get_template('wrapper-end.php');
     }
-
+    
+    public static function show_notification_items() {
+        cp_get_template('page/notification-items.php');
+    }
 
     public static function display_app_menu() {
         cp_get_template('app-menu.php');

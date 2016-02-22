@@ -523,6 +523,16 @@
 	<module>
 		<name>core</name>
 
+		
+		<page>
+			<name>notification-items</name>
+			<displayName>Notification Items</displayName>
+			<description>Notification Items</description>
+			<pageTemplate>html/wordpress/notification-items.ftl</pageTemplate>
+			<!-- <jsTemplate>html/wordpress/js/page/confirmpayment-form.ftl</jsTemplate>
+			<apiTemplate>html/wordpress/services/page/confirmpayment-service-api.ftl</apiTemplate> -->
+		</page>
+
 		<entity>
 			<name>Currency</name>
 			<postName>sb_currency</postName>
@@ -11957,6 +11967,7 @@
 			<global>N</global>
             <!-- <viewPageTemplate>html/wordpress/entity/notification/single-notification.ftl</viewPageTemplate>
 			<apiTemplate>services/wordpress/notification/notification-service-api.ftl</apiTemplate> -->
+			<apiTemplate>api/wordpress/notification/notification-service-api.ftl</apiTemplate>
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
