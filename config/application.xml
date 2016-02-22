@@ -527,7 +527,7 @@
 			<name>Dashboard</name>
 			<displayName>Dashboard</displayName>
 			<description>Dashboard</description>
-			<pageTemplate>html/wordpress/dashboard-page-php.ftl</pageTemplate>
+			<pageTemplate>html/wordpress/page/dashboard-page-php.ftl</pageTemplate>
 			<viewTemplate>views/wordpress/dashboard-view-php.ftl</viewTemplate>
 		</page>
 

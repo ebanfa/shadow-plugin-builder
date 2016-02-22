@@ -23,9 +23,12 @@ class DashboardView extends ArtifactView {
      * Render this view
      */
     public function render() {
-        if(isset($_REQUEST['page_info'])) {
-            do_action('shadowbanker_render_dashboard_view');
-        }
+            
+        do_action('shadowbanker_before_main_content');
+
+        CloderiaUIDisplayAPI::display_page($_REQUEST['page_info']);
+        
+        do_action('shadowbanker_after_main_content');
     }
 
 }
