@@ -66,7 +66,7 @@ class ArtifactRequestProcessor {
         }
     }*/
 
-    public static function get_view_class($artifact) {
+    public static function get_view_class($page_info) {
         $page_action = $page_info['page_action'];
         $artifact_type = $page_info['artifact_type'];
         $artifact_object_nm = ArtifactUtils::$artifacts[$page_info['artifact']]['name'];
