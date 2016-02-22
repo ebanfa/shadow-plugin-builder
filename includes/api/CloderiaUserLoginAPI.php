@@ -23,6 +23,7 @@ class ContentUserLoginAPI {
 	    $login_results = self::do_signin_user($username, $password);
 
 	    if ($login_results['hasErrors']) {
+	    	
 	        wp_send_json_error(array('message' => $login_results['message']));
 	    }
 	    $content_user = $login_results['content_user'];
