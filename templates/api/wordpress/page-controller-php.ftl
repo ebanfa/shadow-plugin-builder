@@ -85,7 +85,7 @@ class ArtifactRequestProcessor {
             }
         }
         else {
-            $view_class_nm = $artifact_object_nm . 'View'
+            $view_class_nm = $artifact_object_nm . 'View';
         }
         return $view_class_nm;
     }
