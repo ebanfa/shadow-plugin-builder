@@ -81,7 +81,7 @@ class CloderiaUserAPI {
             $entity_data['address_1'] = '0000000000'; 
             $entity_data['address_2'] = '0000000000'; 
             $entity_data['description'] = $party_data['name'];
-            $entity_data = EntityAPI::create_entity($entity_data);
+            //$entity_data = EntityAPI::create_entity($entity_data);
                 echo ">>>>>>>>>>>>>>6";
             // We have to update the business unit of the 
             // business unit and of the party because both
