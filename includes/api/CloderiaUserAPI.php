@@ -45,7 +45,7 @@ class CloderiaUserAPI {
             $entity_data = EntityAPIUtils::init_entity_data('party');
             $entity_data['edit_mode'] = true;
             $entity_data['party_type'] = $party_type['id'];
-            $entity_data['user_name'] = $user_data['us76raher_login'];
+            $entity_data['user_name'] = $user_data['user_login'];
             $entity_data['password'] = $user_data['user_pass'];
             $entity_data['description'] = $user_data['description'];
             $entity_data['name'] = $user_data['first_name'] . ' ' . $user_data['last_name'];
