@@ -16,7 +16,7 @@
 			<cssClass>md-dashboard</cssClass>
 			<targetType>page</targetType>
 			<targetTemplate>html/wordpress/page/dashboard-page-php.ftl</targetTemplate>
-			<target>/page?type=page&amp;artifact=dashboard&page_action=view</target>
+			<target>/page?artifact=dashboard&amp;page_action=view</target>
 		</menuGroup>
 
 		<menuGroup>
@@ -32,7 +32,7 @@
 				<active>N</active>
 				<cssClass>md-mail add-client-btn</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;artifact=party&amp;page_action=list&amp;role=client</target>
+				<target>/page?artifact=party&amp;page_action=list&amp;role=client</target>
 			</menu>
 			<menu>
 				<name>tenants</name>
@@ -41,7 +41,7 @@
 				<active>N</active>
 				<cssClass>md-mail add-tenant-btn</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;artifact=party&amp;page_action=list&amp;role=tenant</target>
+				<target>/page?artifact=party&amp;page_action=list&amp;role=tenant</target>
 			</menu>
 			<menu>
 				<name>prospectivetenants</name>
@@ -50,7 +50,7 @@
 				<active>N</active>
 				<cssClass>md-mail add-prospect-btn</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;artifact=party&amp;page_action=list&amp;role=prospective_tenant</target>
+				<target>/page?artifact=party&amp;page_action=list&amp;role=prospective_tenant</target>
 			</menu>
 			<menu>
 				<name>serviceproviders</name>
@@ -59,7 +59,7 @@
 				<active>N</active>
 				<cssClass>md-mail add-serviceprovider-btn</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;artifact=party&amp;page_action=list&amp;role=service_provider</target>
+				<target>/page?artifact=party&amp;page_action=list&amp;role=service_provider</target>
 			</menu>
 		</menuGroup>
 
@@ -76,7 +76,7 @@
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;page_action=list&amp;artifact=property</target>
+				<target>/page?page_action=list&amp;artifact=property</target>
 			</menu>
 			<menu>
 				<name>buildings</name>
@@ -85,7 +85,7 @@
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;page_action=list&amp;artifact=building</target>
+				<target>/page?page_action=list&amp;artifact=building</target>
 			</menu>
 			<menu>
 				<name>inspections</name>
@@ -94,7 +94,7 @@
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;page_action=list&amp;artifact=inspection</target>
+				<target>/page?page_action=list&amp;artifact=inspection</target>
 			</menu>
 			<menu>
 				<name>maintenance</name>
@@ -103,7 +103,7 @@
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;page_action=list&amp;artifact=maintenance</target>
+				<target>/page?page_action=list&amp;artifact=maintenance</target>
 			</menu>
 		</menuGroup>
 
@@ -120,7 +120,7 @@
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;page_action=list&amp;artifact=agreement</target>
+				<target>/page?page_action=list&amp;artifact=agreement</target>
 			</menu>
 			<menu>
 				<name>charges</name>
@@ -129,7 +129,7 @@
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;page_action=list&amp;artifact=charge</target>
+				<target>/page?page_action=list&amp;artifact=charge</target>
 			</menu>
 			<menu>
 				<name>terms</name>
@@ -138,7 +138,7 @@
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;page_action=list&amp;artifact=term</target>
+				<target>/page?page_action=list&amp;artifact=term</target>
 			</menu>
 		</menuGroup>
 
@@ -155,7 +155,7 @@
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;page_action=list&amp;artifact=transaction</target>
+				<target>/page?page_action=list&amp;artifact=transaction</target>
 			</menu>
 			<menu>
 				<name>generalledger</name>
@@ -164,7 +164,7 @@
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;page_action=list&amp;artifact=transaction</target>
+				<target>/page?page_action=list&amp;artifact=transaction</target>
 			</menu>
 			<menu>
 				<name>transactions</name>
@@ -173,7 +173,7 @@
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;page_action=list&amp;artifact=transaction</target>
+				<target>/page?page_action=list&amp;artifact=transaction</target>
 			</menu>
 			<menu>
 				<name>invoices</name>
@@ -182,7 +182,7 @@
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;page_action=list&amp;artifact=invoice</target>
+				<target>/page?page_action=list&amp;artifact=invoice</target>
 			</menu>
 			<menu>
 				<name>receipts</name>
@@ -191,7 +191,7 @@
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;page_action=list&amp;artifact=receipts</target>
+				<target>/page?page_action=list&amp;artifact=receipts</target>
 			</menu>
 			<menu>
 				<name>payments</name>
@@ -200,7 +200,7 @@
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;page_action=list&amp;artifact=payment</target>
+				<target>/page?page_action=list&amp;artifact=payment</target>
 			</menu>
 			<menu>
 				<name>expenses</name>
@@ -209,7 +209,7 @@
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;page_action=list&amp;artifact=expense</target>
+				<target>/page?page_action=list&amp;artifact=expense</target>
 			</menu>
 		</menuGroup>
 
@@ -443,7 +443,7 @@
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;artifact=party&amp;page_action=list&amp;role=user_organization</target>
+				<target>/page?artifact=party&amp;page_action=list&amp;role=user_organization</target>
 			</menu>
 			<menu>
 				<name>employees</name>
@@ -452,7 +452,7 @@
 				<active>N</active>
 				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;artifact=party&amp;page_action=list&amp;role=staff</target>
+				<target>/page?artifact=party&amp;page_action=list&amp;role=staff</target>
 			</menu>
 			<menu>
 				<name>jobs</name>
@@ -461,7 +461,7 @@
 				<active>N</active>
 				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;artifact=job&amp;page_action=list</target>
+				<target>/page?artifact=job&amp;page_action=list</target>
 			</menu>
 			<menu>
 				<name>reviews</name>
@@ -470,7 +470,7 @@
 				<active>N</active>
 				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;artifact=performancereview&amp;page_action=list;</target>
+				<target>/page?artifact=performancereview&amp;page_action=list;</target>
 			</menu>
 			<menu>
 				<name>payroll</name>
@@ -479,7 +479,7 @@
 				<active>N</active>
 				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;artifact=payroll&amp;page_action=list</target>
+				<target>/page?artifact=payroll&amp;page_action=list</target>
 			</menu>
 		</menuGroup>
 
@@ -496,7 +496,7 @@
 				<active>N</active>
 				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;page_action=list&amp;artifact=userprofile</target>
+				<target>/page?page_action=list&amp;artifact=userprofile</target>
 			</menu>
 			<menu>
 				<name>inbox</name>
@@ -505,7 +505,7 @@
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?type=entity&amp;page_action=list&amp;artifact=conversation</target>
+				<target>/page?page_action=list&amp;artifact=conversation</target>
 			</menu>
 			<menu>
 				<name>signout</name>
