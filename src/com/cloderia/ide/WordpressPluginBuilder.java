@@ -452,6 +452,8 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 			if(pageTemplate != null) {
 				this.generatePageArtifact(module, page, pageTemplate , pageOutputDir + pageName + ".php");
 			}
+
+			this.generateArtifact(module, null, "html/wordpress/entity/dashboard-content-php.ftl" , pageOutputDir + "dashboard-content.php");
 		}
 	}
 
