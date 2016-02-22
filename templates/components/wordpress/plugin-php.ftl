@@ -85,6 +85,7 @@ class ${application.name} {
         include_once('includes/view/ViewUtils.php');
         include_once('includes/view/ArtifactView.php');
         include_once('includes/view/BaseEntityView.php');
+        include_once('includes/view/DashboardView.php');
         include_once('includes/view/ViewController.php');
         include_once('includes/view/party/PartyView.php');
         include_once('includes/view/CreateEntityView.php');

@@ -16,7 +16,7 @@
 			<cssClass>md-dashboard</cssClass>
 			<targetType>page</targetType>
 			<targetTemplate>html/wordpress/page/dashboard-page-php.ftl</targetTemplate>
-			<target>/page?type=page&amp;artifact=dashboard</target>
+			<target>/page?type=page&amp;artifact=dashboard&page_action=view</target>
 		</menuGroup>
 
 		<menuGroup>
