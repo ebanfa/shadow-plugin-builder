@@ -17,7 +17,7 @@ class CloderiaUserAPI {
         if(self::validate_user_data($user_data)) {
             // 1. Create the party
             $party_data = self::create_party($user_data);
-            if(!$party_data['has_errors']) {
+            /*if(!$party_data['has_errors']) {
                 // 2. Create the default buisness unit for the party
                 $businessunit_data = self::create_default_party_businessunit($party_data);
                 // 3. Create the person entity for the party
@@ -30,7 +30,7 @@ class CloderiaUserAPI {
                 //$chartofaccounts_data = CloderiaUserAPI::create_default_party_chartofaccounts($businessunit_data, $partyrole_data);
                 // 7. Send the user successully created email
                 self::send_user_created_email($user_data, $party_data);
-            }
+            }*/
         }
     }
 
@@ -38,9 +38,12 @@ class CloderiaUserAPI {
      * This creates the party for the current user
      */
     public static function create_party($user_data) {
+
+        echo "Creating party";
+        echo ">>>>>>>>>>>>>>>>>>>>>>>>>";
         // Get the default party type (INDIVIDUAL)
         $party_type = EntityAPI::get_by_code('partytype', get_option('cp_default_partytype'));
-
+        var_dump($party_type);
         if(isset($party_type['id'])) {
             $entity_data = EntityAPIUtils::init_entity_data('party');
             $entity_data['edit_mode'] = true;
@@ -54,7 +57,9 @@ class CloderiaUserAPI {
             $entity_data['first_name'] = $user_data['first_name'];
             $entity_data['last_name'] = $user_data['last_name'];
             // Create the party and return the results of the process
+            echo "Creating party>>>>>>>>>>>>>>>>>>";
             $entity_data = EntityAPI::do_create_entity('party', $entity_data);
+            echo "Created party>>>>>>>>>>>>>>>>>>>";
             return $entity_data;
 
         }
