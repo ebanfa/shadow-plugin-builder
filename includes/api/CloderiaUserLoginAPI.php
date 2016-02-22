@@ -20,7 +20,7 @@ class ContentUserLoginAPI {
 	    $username = sanitize_text_field($_REQUEST['username']);
 	    $password = sanitize_text_field($_REQUEST['password']);
 	    // Attempt to sign the user in
-	    $login_results = ContentUserLoginAPI::do_signin_user($username, $password);
+	    $login_results = self::do_signin_user($username, $password);
 
 	    if ($login_results['hasErrors']) {
 	        wp_send_json_error(array('message' => $login_results['message']));
@@ -35,7 +35,7 @@ class ContentUserLoginAPI {
 	public static function do_signup_user_ajax() {
 	    if (isset($_POST['signup_form_submitted']) && isset($_POST['signup_form_nonce_field']) && wp_verify_nonce($_POST['signup_form_nonce_field'], 'signup_form_submitted')) {
 	        //We shall sanitize all inputs  
-	        $validation_errors = ContentUserLoginAPI::validate_signup_data();
+	        $validation_errors = self::validate_signup_data();
 	        if (!empty($upload_validation_errors)) {
 	            wp_send_json_error(array('message' => $validation_errors));
 	        }
