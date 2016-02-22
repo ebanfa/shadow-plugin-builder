@@ -54,7 +54,7 @@ class CloderiaUserAPI {
             $entity_data['first_name'] = $user_data['first_name'];
             $entity_data['last_name'] = $user_data['last_name'];
             // Create the party and return the results of the process
-            $entity_data = EntityAPI::create_entity('party', $entity_data);
+            $entity_data = EntityAPI::do_create_entity('party', $entity_data);
             return $entity_data;
 
         }
