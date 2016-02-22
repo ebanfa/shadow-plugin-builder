@@ -86,6 +86,7 @@ class EntityAPIUtils {
      */
     public static function init_entity_data($artifact_name) {
         $entity_data = array();
+        $entity_data['has_errors'] = false;
         //$artifact_name = EntityRequestUtils::get_artifact_name();
         // Get the requested artifact name
         if(EntityStringUtils::is_invalid_string($artifact_name)) {
