@@ -75,19 +75,20 @@ class CloderiaUserAPI {
         if(isset($party_data['id'])) {
 
                 echo ">>>>>>>>>>>>>>5";
-            /*$entity_data['edit_mode'] = true;
+            $entity_data['edit_mode'] = true;
             $entity_data['party'] = $party_data['id'];
             $entity_data['name'] = $party_data['name'];
             $entity_data['address_1'] = '0000000000'; 
             $entity_data['address_2'] = '0000000000'; 
             $entity_data['description'] = $party_data['name'];
             $entity_data = EntityAPI::create_entity($entity_data);
+                echo ">>>>>>>>>>>>>>6";
             // We have to update the business unit of the 
             // business unit and of the party because both
             // business unit and party are not global entities 
             // hence both require their respective business unit
             // properties to be set
-            if(isset($entity_data['id'])) {
+            /*if(isset($entity_data['id'])) {
                 $entity_data['edit_mode'] = false;
                 $entity_data['parent_unit'] = $entity_data['id'];
                 $entity_data['business_unit'] = $entity_data['id'];
