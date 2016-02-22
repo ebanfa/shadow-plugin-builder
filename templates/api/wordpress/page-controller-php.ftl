@@ -30,9 +30,9 @@ class ArtifactRequestProcessor {
         $page_info['artifact_display_name'] = ArtifactUtils::$artifacts[$page_info['artifact']]['description'];
 
         $view_class = self::get_view_class($page_info['artifact']);
-        $view_instance = new $view_class();
+        $view_instance = new $view_class($page_info['artifact']);
         $page_info['view'] = $view_instance;
-        
+
         $_REQUEST['page_info'] = $page_info;
 
         $view_instance->render();
@@ -67,6 +67,8 @@ class ArtifactRequestProcessor {
     }*/
 
     public static function get_view_class($artifact) {
+        $artifact_object_nm = ArtifactUtils::$artifacts[$artifact]['name'];
+        return $artifact_object_nm . 'View'
 
     }
 }

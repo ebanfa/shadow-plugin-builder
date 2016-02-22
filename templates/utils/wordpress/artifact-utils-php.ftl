@@ -14,19 +14,8 @@ class ArtifactUtils {
 
     );
     public static $artifacts = array(
-<#list menuBar.menuGroups as group>
-    <#if group.type == "menu">
-        <#if group.targetType == "page">
-       '${group.name}' => array('name' => '${group.name}', 'description' => '${group.displayName}', 'artifact_type' => 'page'), 
-        </#if>
-    </#if>
-    <#if group.type == "group">
-        <#list group.menus as menu>
-            <#if menu.targetType == "page">
-       '${menu.name}' => array('name' => '${menu.name}', 'description' => '${menu.displayName}', 'artifact_type' => 'page'),
-            </#if>
-        </#list>
-    </#if>
+<#list module.pages as page>
+        '${page.name?lower_case}' => array('name' => '${page.name}', 'description' => '${page.description}', 'artifact_type' => 'page'),
 </#list>
 <#list module.entities as entity>
         '${entity.name?lower_case}' => array('name' => '${entity.name}', 'description' => '${entity.description}', 'artifact_type' => 'entity', 'data_type' => '${entity.postName}'),
