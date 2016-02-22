@@ -29,11 +29,12 @@ class ArtifactRequestProcessor {
         $page_info['artifact_type'] = ArtifactUtils::$artifacts[$page_info['artifact']]['artifact_type'];
         $page_info['artifact_display_name'] = ArtifactUtils::$artifacts[$page_info['artifact']]['description'];
 
+        $_REQUEST['page_info'] = $page_info;
+
         $view_class = self::get_view_class($page_info);
-        $view_instance = new $view_class($page_info['artifact']);
+        $view_instance = new $view_class();
         $page_info['view'] = $view_instance;
 
-        $_REQUEST['page_info'] = $page_info;
 
         $view_instance->render();
         /*
