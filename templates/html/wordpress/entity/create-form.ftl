@@ -20,10 +20,6 @@
 
         <?php do_action('shadowbanker_render_entity_form_fields'); ?>
 
-        <!-- This fields are used by the relationship field selection routine -->
-        <input type="hidden" id="current-related-field" name="current-related-field" value="">
-        <input type="hidden" id="current-relationship-field-id" name="current-relationship-field-id" value="">
-        <input type="hidden" id="current-relationship-field-name" name="current-relationship-field-name" value="">
 
         <div class="btn-demo m-t-10">
             <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
@@ -36,6 +32,12 @@
         </div>
 
     </form>
+
+    
+    <!-- This fields are used by the relationship field selection routine -->
+    <input type="hidden" id="current-related-field" name="current-related-field" value="">
+    <input type="hidden" id="current-relationship-field-id" name="current-relationship-field-id" value="">
+    <input type="hidden" id="current-relationship-field-name" name="current-relationship-field-name" value="">
 
     <!-- Put this out side the form to prevent illegal nested forms -->
     <?php do_action('shadowbanker_render_related_entity_field_modals'); ?>
