@@ -52,7 +52,7 @@ class ViewUtils {
      */
     public static function get_create_entity_action_links($page_action, $artifact) {
     	$action_links = array();
-    	$action_links['list_entity_link'] = array('name' => 'View All', 'link' => $this->base_list_path . $artifact);
+    	$action_links['list_entity_link'] = array('name' => 'View All', 'link' => self::$base_list_path . $artifact);
     	return $action_links;
    	}
 
@@ -61,7 +61,7 @@ class ViewUtils {
      */
     public static function get_edit_entity_action_links($page_action, $artifact) {
     	$action_links = array();
-    	$action_links['list_entity_link'] = array('name' => 'View All', 'link' => $this->base_list_path . $artifact);
+    	$action_links['list_entity_link'] = array('name' => 'View All', 'link' => self::$base_list_path . $artifact);
     	return $action_links;
    	}
 
@@ -70,8 +70,8 @@ class ViewUtils {
      */
     public static function get_view_entity_action_links($page_action, $artifact) {
     	$action_links = array();
-    	$action_links['create_entity_link'] = array('name' => 'Add New', 'link' => $this->base_create_path. $artifact);
-    	$action_links['list_entity_link'] = array('name' => 'View All', 'link' => $this->base_list_path . $artifact);
+    	$action_links['create_entity_link'] = array('name' => 'Add New', 'link' => self::$base_create_path. $artifact);
+    	$action_links['list_entity_link'] = array('name' => 'View All', 'link' => self::$base_list_path . $artifact);
     	return $action_links;
    	}
 
@@ -80,7 +80,7 @@ class ViewUtils {
      */
     public static function get_list_entity_action_links($page_action, $artifact) {
     	$action_links = array();
-    	$action_links['create_entity_link'] = array('name' => 'Add New', 'link' => $this->base_create_path. $artifact);
+    	$action_links['create_entity_link'] = array('name' => 'Add New', 'link' => self::$base_create_path. $artifact);
     	return $action_links;
    	}
 }
