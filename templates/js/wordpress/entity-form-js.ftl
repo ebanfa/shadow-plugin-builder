@@ -23,7 +23,16 @@ jQuery(document).ready(function ($)
             type: 'POST',
             success: function(responseData) {
                 if (responseData.success) {
-                    $('#success').html(responseData.data.message);
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: true,   
+                        closeOnConfirm: true 
+                    }, function(){   
+                        $('#success').html(responseData.data.message);
+                    });
                 }
                 else {
                      $('#success').html(responseData.data.message);
