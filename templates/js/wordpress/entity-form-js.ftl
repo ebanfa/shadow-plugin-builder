@@ -12,7 +12,7 @@ jQuery(document).ready(function ($)
         });
         // As required by wordpress
         formData.append('action', 'create_entity_ajax');
-        swal(title: "Please wait!", text: "Your request is being processed", showConfirmButton: false );
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
             url: ${application.name?lower_case}_ajax_script.ajaxurl,
