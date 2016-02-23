@@ -7,6 +7,7 @@
 
     $view = $_REQUEST['page_info']['view'];
     $model = $view->get_model();
+    var_dump($model);
 ?>
 
 <?php   foreach ($view->get_form_fields() as $field) { 
@@ -172,7 +173,7 @@
                                     class="form-control phone related-field-search-link" 
                                     data-related-field-name="<?php echo $field['name'];?>"
                                     id="<?php echo $field['name'];?>_txt" name="<?php echo $field['name'];?>_txt" 
-                                    <?php if(isset($model['id'])) { echo 'value="' . $model[$field['name']]. '_txt" ';  var_dump($field);}?>
+                                    <?php if(isset($model['id'])) { echo 'value="' . $model[$field['name']]. '_txt" '; }?>
                                     placeholder="<?php echo $field['description']; ?>" 
                                     data-bv-message="<?php echo $field['description']; ?> is not valid" 
                                     data-bv-notempty-message="<?php echo $field['description']; ?> is required and cannot be empty">
