@@ -28,14 +28,20 @@ jQuery(document).ready(function ($)
                         title: "Great Job!",   
                         text: "The data operation completed successfully",   
                         type: "success",   
-                        showCancelButton: true,   
+                        showCancelButton: false,   
                         closeOnConfirm: true 
                     }, function(){   
                         $('#success').html(responseData.data.message);
                     });
                 }
                 else {
-                     $('#success').html(responseData.data.message);
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
                 }
             }
         });
