@@ -25,7 +25,7 @@
                 <div class="card">
                     <div class="card-header bgm-lightgreen">
                         <h2>
-                            Select <?php echo $field['name']; ?>
+                            Select <?php echo $field['name']; var_dump($field)?>
                         </h2>
                         <ul class="actions actions-alt">
                             <li class="dropdown">
