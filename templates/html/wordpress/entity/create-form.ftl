@@ -37,6 +37,8 @@
 
     </form>
 
+    <!-- Put this out side the form to prevent illegal nested forms -->
+    <?php do_action('shadowbanker_render_related_entity_field_modals'); ?>
 
     <script type="text/javascript">
     
