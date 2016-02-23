@@ -170,10 +170,10 @@
                         <div class="form-group">
                             <div class="fg-line">
                                 <input type="text" 
-                                    class="form-control phone related-field-search-link" 
+                                    class="form-control text related-field-search-link" 
                                     data-related-field-name="<?php echo $field['name'];?>"
                                     id="<?php echo $field['name'];?>_txt" name="<?php echo $field['name'];?>_txt" 
-                                    <?php if(isset($model['id'])) { echo 'value="' . $model[$field['name']]. '" '; }?>
+                                    <?php if(isset($model['id'])) { $value = $field['name'] . '_txt' echo 'value="' . $model[$value] . '" '; }?>
                                     placeholder="<?php echo $field['description']; ?>" 
                                     data-bv-message="<?php echo $field['description']; ?> is not valid" 
                                     data-bv-notempty-message="<?php echo $field['description']; ?> is required and cannot be empty">
