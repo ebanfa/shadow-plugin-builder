@@ -13,7 +13,7 @@ class EntityAPI {
         $entity_name = $entity_data['entity_name'];
         $class_name = $entity_name . 'API';
         if (class_exists($class_name)) {
-            return call_user_func($class_name . '::create_entity', $entity_data);
+            return call_user_func($class_name . '::do_create_entity', $entity_data);
         }
         return self::do_create_entity($entity_data);
     }
@@ -53,7 +53,7 @@ class EntityAPI {
         $entity_name = $entity_data['entity_name'];
         $class_name = $entity_name . 'API';
         if (class_exists($class_name)) {
-            return call_user_func($class_name . '::find_entity', $entity_data);
+            return call_user_func($class_name . '::do_find_entity', $entity_data);
         }
         return self::do_find_entity($entity_data);
     }
@@ -74,7 +74,7 @@ class EntityAPI {
         $entity_name = $entity_data['entity_name'];
         $class_name = $entity_name . 'API';
         if (class_exists($class_name)) {
-            return call_user_func($class_name . '::delete_entity', $entity_data);
+            return call_user_func($class_name . '::do_delete_entity', $entity_data);
         }
         return self::do_delete_entity($entity_data);
     }

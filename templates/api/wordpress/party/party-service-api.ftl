@@ -9,27 +9,6 @@ if (!defined('ABSPATH')) {
 
 class PartyAPI extends EntityAPI {
 
-    public static function create_entity($entity_data) {
-        return self::do_create_entity($entity_data);
-    }
-
-    /**
-     *
-     */
-    public static function find_entity($entity_data) {
-        $role_type = EntityRequestUtils::get_query_form_field('role');
-        if($role_type) return self::find_by_role($role_type); 
-        return self::do_find_entity($entity_data);
-
-    }
-
-    /**
-     *
-     */
-    public static function delete_entity($entity_data) {
-        return self::do_delete_entity($entity_data);
-    }
-
     /**
      * Get all parties with a given roles
      */
