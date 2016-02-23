@@ -7,7 +7,6 @@
 
     $view = $_REQUEST['page_info']['view'];
     $model = $view->get_model();
-    var_dump($model);
 ?>
 
 <?php   foreach ($view->get_form_fields() as $field) { 
