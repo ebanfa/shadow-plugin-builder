@@ -43,7 +43,7 @@ class ViewUtils {
          	return self::get_view_entity_action_links($page_action, $artifact);
         }
         if($page_action == 'list') {
-         	return self::get_create_entity_action_links($page_action, $artifact);
+         	return self::get_list_entity_action_links($page_action, $artifact);
         }
     }
 
