@@ -64,7 +64,7 @@
                <?php _e('Delete', 'framework') ?>
             </a>
             <?php if(!is_null($view->get_parent_artifact_name())) { ?>
-            <a href="<?php echo get_site_url() . '/page?type=entity&artifact=' . $view->get_artifact_name() . '&id=' . $view->get_parent_id() . $view->get_parent_param(); ?>&page_action=view" 
+            <a href="<?php echo get_site_url() . '/page?type=entity&artifact=' . $view->get_parent_artifact_name() . '&id=' . $view->get_parent_id() . $view->get_parent_param(); ?>&page_action=view" 
                class="btn btn-primary waves-effect">
                <?php _e('Done', 'framework') ?>
             </a>
