@@ -29,9 +29,10 @@ class DashboardService {
     }
 
     public static function get_property_count(){
-        $itemQueryArgs = array('numberposts' => -1, 'post_status' => 'publish', 'post_type' => 'sb_property');
-        $itemQuery = new WP_Query($itemQueryArgs);
-        return $itemQuery->found_posts;
+        //$itemQueryArgs = array('numberposts' => -1, 'post_status' => 'publish', 'post_type' => 'sb_property');
+        $properties = EntityAPI::find_by_criteria('property', array());
+        //$itemQuery = new WP_Query($itemQueryArgs);
+        return count($properties);
     }
 
 
