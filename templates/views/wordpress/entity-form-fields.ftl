@@ -9,7 +9,7 @@
 
         $view = $_REQUEST['page_info']['view'];
 
-        function do_entity_form_fields($model, $edit_mode) {
+        public function do_entity_form_fields($model, $edit_mode) {
             foreach ($this->model['entity_fields'] as $field) {
 
                 if ($edit_mode) {
