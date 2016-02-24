@@ -33,7 +33,7 @@
                 if($field['data_type'] == 'date') do_date_field($model, $field);
             }
             else {
-                do_relationship_field($field);
+                do_relationship_field($model, $field);
             }
         }
 
