@@ -113,7 +113,7 @@
                         <div class="card">
                             <div class="card-header bgm-lightgreen">
                                 <h2>
-                                    Create the <?php echo $tab['model']['entity_name'];?>
+                                    Select the <?php echo $tab['model']['entity_name'];?>
                                 </h2>
                                 <ul class="actions actions-alt">
                                     <li class="dropdown">
@@ -130,7 +130,27 @@
                                 </ul>
                             </div>
                             <div class="card-body card-padding">
-                                <?php do_entity_form_fields($tab['model'], $true) ; ?>
+                                <form id="<?php echo $tab['model']['entity_post_name'];?>-list-form">
+                                    <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
+                                    <input type="hidden" name="submitted" id="submitted" value="true" />
+                                    <input type="hidden" name="artifact" id="artifact" value="<?php echo $tab['artifact_name'];?>" />
+                                    <!-- <input type="hidden" name="u_property" id="u_property" value="" />  -->
+                                </form>
+                                <div class="table-responsive">
+                                    <table id="<?php echo $tab['model']['entity_post_name'];?>-list-table" class="table table-striped table-bordered" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th><input name="select_all" value="1" type="checkbox"></th>
+                            <?php  foreach ($tab['model']['entity_fields'] as $field) { if($field['is_list_field']) { ?>
+                                                <th><?php  echo $field['description']  ?></th>
+                            <?php  } }  ?>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+
                             </div>
                         </div>
                     </div>

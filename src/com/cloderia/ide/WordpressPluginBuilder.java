@@ -404,6 +404,7 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 		this.generateArtifact(module, null, "html/wordpress/entity/entity-form-fields.ftl" , entityOutputDir + "entity-form-fields.php");
 		this.generateArtifact(module, null, "html/wordpress/entity/related-field-modals.ftl" , entityOutputDir + "related-entity-field-modals.php");
 		this.generateArtifact(module, null, "html/wordpress/entity/multi-entity-create.ftl" , entityOutputDir + "multi-entity-create-form.php");
+		this.generateArtifact(module, null, "html/wordpress/entity/multi-entity-select.ftl" , entityOutputDir + "multi-entity-select-form.php");
 
 		this.generateArtifact(module, null, "html/wordpress/entity/field-wrapper-end.ftl" , entityOutputDir + "field-wrapper-end.php");
 		this.generateArtifact(module, null, "html/wordpress/entity/field-wrapper-start.ftl" , entityOutputDir + "field-wrapper-start.php");
