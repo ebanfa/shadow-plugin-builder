@@ -5,41 +5,43 @@
         exit; // Exit if accessed directly
     }
 
-    $view = $_REQUEST['page_info']['view'];
+    if(isset($_REQUEST['page_info'])) { 
 
-    function do_entity_form_fields($model, $edit_mode) {
-        foreach ($this->model['entity_fields'] as $field) {
+        $view = $_REQUEST['page_info']['view'];
 
-            if ($edit_mode) {
-                if ($field['is_create_field'] && $field['is_form_field']) {
-                    do_entity_form_field($field);
-                }
-                else if ($field['is_edit_field'] && $field['is_form_field']) {
-                    do_entity_form_field($field);
+        function do_entity_form_fields($model, $edit_mode) {
+            foreach ($this->model['entity_fields'] as $field) {
+
+                if ($edit_mode) {
+                    if ($field['is_create_field'] && $field['is_form_field']) {
+                        do_entity_form_field($field);
+                    }
+                    else if ($field['is_edit_field'] && $field['is_form_field']) {
+                        do_entity_form_field($field);
+                    }
                 }
             }
         }
-    }
 
-    function do_entity_form_field($model, $field) {
-        if(!$field['is_relationship_field']) { 
-            if($field['data_type'] == 'name') do_name_field($model, $field);
-            if($field['data_type'] == 'email') do_email_field($model, $field);
-            if($field['data_type'] == 'text-lg') do_textlg_field($model, $field);
-            if($field['data_type'] == 'text') do_text_field($model, $field);
-            if($field['data_type'] == 'alphanumeric') do_alphanumeric_field($model, $field);
-            if($field['data_type'] == 'phone') do_phone_field($model, $field);
-            if($field['data_type'] == 'number') do_number_field($model, $field);
-            if($field['data_type'] == 'money') do_money_field($model, $field);
-            if($field['data_type'] == 'flag') do_flag_field($model, $field);
-            if($field['data_type'] == 'date') do_date_field($model, $field);
+        function do_entity_form_field($model, $field) {
+            if(!$field['is_relationship_field']) { 
+                if($field['data_type'] == 'name') do_name_field($model, $field);
+                if($field['data_type'] == 'email') do_email_field($model, $field);
+                if($field['data_type'] == 'text-lg') do_textlg_field($model, $field);
+                if($field['data_type'] == 'text') do_text_field($model, $field);
+                if($field['data_type'] == 'alphanumeric') do_alphanumeric_field($model, $field);
+                if($field['data_type'] == 'phone') do_phone_field($model, $field);
+                if($field['data_type'] == 'number') do_number_field($model, $field);
+                if($field['data_type'] == 'money') do_money_field($model, $field);
+                if($field['data_type'] == 'flag') do_flag_field($model, $field);
+                if($field['data_type'] == 'date') do_date_field($model, $field);
+            }
+            else {
+                do_relationship_field($field);
+            }
         }
-        else {
-            do_relationship_field($field);
-        }
-    }
 
-    function do_name_field($model, $field) { ?>
+        function do_name_field($model, $field) { ?>
 
         <div class="<?php echo $field['col_size']; ?>">
             <div class="form-group">
@@ -56,7 +58,7 @@
         
 <?php  } 
 
-    function do_email_field($model, $field) { ?>
+        function do_email_field($model, $field) { ?>
 
         <div class="<?php echo $field['col_size']; ?>">
             <div class="form-group">
@@ -74,7 +76,7 @@
         
 <?php  } 
 
-    function do_textlg_field($model, $field) { ?>
+        function do_textlg_field($model, $field) { ?>
 
         <div class="<?php echo $field['col_size']; ?>">
             <div class="form-group">
@@ -89,7 +91,7 @@
         </div>
 <?php  } 
 
-    function do_text_field($model, $field) { ?>
+        function do_text_field($model, $field) { ?>
 
         <div class="<?php echo $field['col_size']; ?>">
             <div class="form-group">
@@ -105,7 +107,7 @@
         </div>
 <?php  } 
 
-    function do_alphanumeric_field($model, $field) { ?>
+        function do_alphanumeric_field($model, $field) { ?>
 
          <div class="<?php echo $field['col_size']; ?>">
             <div class="form-group">
@@ -121,7 +123,7 @@
         </div>
 <?php  } 
 
-    function do_phone_field($model, $field) { ?>
+        function do_phone_field($model, $field) { ?>
 
         <div class="<?php echo $field['col_size']; ?>">
             <div class="form-group">
@@ -137,7 +139,7 @@
         </div>
 <?php  } 
 
-    function do_number_field($model, $field) { ?>
+        function do_number_field($model, $field) { ?>
 
         <div class="<?php echo $field['col_size']; ?>">
             <div class="form-group">
@@ -153,7 +155,7 @@
         </div>
 <?php  } 
 
-    function do_money_field($model, $field) { ?>
+        function do_money_field($model, $field) { ?>
 
          <div class="<?php echo $field['col_size']; ?>">
             <div class="form-group">
@@ -169,7 +171,7 @@
         </div>
 <?php  } 
 
-    function do_flag_field($model, $field) { ?>
+        function do_flag_field($model, $field) { ?>
 
         <div class="<?php echo $field['col_size']; ?>">
             <div class="form-group">
@@ -185,7 +187,7 @@
         </div>
 <?php  } 
 
-    function do_date_field($model, $field) { ?>
+        function do_date_field($model, $field) { ?>
 
         <div class="<?php echo $field['col_size']; ?>">
             <div class="form-group">
@@ -205,7 +207,7 @@
         </div>
 <?php  } 
 
-    function do_relationship_field($model, $field) { ?>
+        function do_relationship_field($model, $field) { ?>
     
         <div class="col-xs-11">
             <div class="form-group">
@@ -234,12 +236,13 @@
 <?php  } ?>
 
 
-<?php if(!is_null($view->get_parent_field())) { ?>
+<?php   if(!is_null($view->get_parent_field())) { ?>
         <input type="hidden" name="parent_id" value="<?php echo $view->get_parent_id(); ?>">
         <input type="hidden" name="parent_artifact" value="<?php echo $view->get_parent_artifact_name(); ?>">
         <input type="hidden" name="parent_field" value="<?php echo $view->get_parent_field(); ?>">
         <?php if(is_null($view->get_parent_param())){?>
         <input type="hidden" name="parent_param" value="<?php echo urlencode($view->get_parent_param()); ?>">
         <?php } ?>
-<?php } ?>
+<?php   }
+    } ?>
 
