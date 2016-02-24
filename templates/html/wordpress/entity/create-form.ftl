@@ -18,7 +18,7 @@
         data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
         data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
 
-        <?php do_action('shadowbanker_render_entity_form_fields'); ?>
+        <?php do_entity_form_fields($model, $true) ; ?>
 
         <!-- This fields are used by the relationship field selection routine -->
         <input type="hidden" id="current-related-field" name="current-related-field" value="">

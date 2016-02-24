@@ -60,6 +60,7 @@ class CreateEntityView extends BaseEntityView {
     public function render_impl() {
         // execute default render operation
         CloderiaUIDisplayAPI::display_entity_create_form($_REQUEST['page_info']);
+        
     }
 }
 

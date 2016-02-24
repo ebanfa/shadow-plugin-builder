@@ -942,7 +942,7 @@
 			<global>N</global>
 			<!-- <viewPageTemplate>html/wordpress/entity/party/party-single.ftl</viewPageTemplate>
 			<listPageTemplate>html/wordpress/entity/party/party-list.ftl</listPageTemplate> -->
-			<viewTemplate>views/wordpress/party/party-view-php.ftl</viewTemplate>
+			<singleViewTemplate>views/wordpress/party/single-party-view.ftl</singleViewTemplate>
 			<apiTemplate>api/wordpress/party/party-service-api.ftl</apiTemplate>
 			<field>
 				<name>entity_code</name>

@@ -22,7 +22,7 @@ public class Entity {
 	private String isVirtual;
 	private String displayName;
 	private String description;
-	private String viewTemplate;
+	private String singleViewTemplate;
 	private String createPageTemplate;
 	private String editPageTemplate;
 	private String listPageTemplate;
@@ -55,18 +55,18 @@ public class Entity {
 	}
 
 	/**
-	 * @return the viewTemplate
+	 * @return the singleViewTemplate
 	 */
-	public String getViewTemplate() {
-		return viewTemplate;
+	public String getSingleViewTemplate() {
+		return singleViewTemplate;
 	}
 
 	/**
-	 * @param viewTemplate the viewTemplate to set
+	 * @param singleViewTemplate the singleViewTemplate to set
 	 */
 	@XmlElement
-	public void setViewTemplate(String viewTemplate) {
-		this.viewTemplate = viewTemplate;
+	public void setSingleViewTemplate(String singleViewTemplate) {
+		this.singleViewTemplate = singleViewTemplate;
 	}
 
 	

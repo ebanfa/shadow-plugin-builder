@@ -18,7 +18,7 @@
         data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
         data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
 
-        <?php do_action('shadowbanker_render_entity_form_fields'); ?>
+        <?php do_entity_form_fields($model, $true) ; ?>
         
         <div class="btn-demo m-t-10">   
             <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>

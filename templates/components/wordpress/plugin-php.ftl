@@ -87,7 +87,8 @@ class ${application.name} {
         include_once('includes/view/BaseEntityView.php');
         include_once('includes/view/DashboardView.php');
         include_once('includes/view/ViewController.php');
-        include_once('includes/view/party/PartyView.php');
+        include_once('includes/view/PartyView.php');
+        include_once('includes/view/party/SinglePartyView.php');
         include_once('includes/view/CreateEntityView.php');
         include_once('includes/view/EditEntityView.php');
         include_once('includes/view/SingleEntityView.php');
@@ -95,6 +96,7 @@ class ${application.name} {
         include_once('includes/view/FormFieldFilter.php');
         include_once('includes/view/MultiEntityCreateView.php');
         include_once('includes/view/TenantAgreementCreateView.php');
+        include_once('includes/view/entity-form-fields.php.php');
         // Framework API
         include_once('includes/api/CloderiaFileAPI.php');
         include_once('includes/api/CloderiaUserAPI.php');
