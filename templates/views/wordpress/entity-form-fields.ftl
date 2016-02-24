@@ -37,7 +37,7 @@
             else {
                 do_relationship_field($model, $field);
             }
-            do_action('shadowbanker_before_entity_form_field');
+            do_action('shadowbanker_after_entity_form_field');
         }
 
         function do_name_field($model, $field) { ?>
