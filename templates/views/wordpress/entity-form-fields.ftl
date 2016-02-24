@@ -6,7 +6,7 @@
     }
 
         function do_entity_form_fields($model, $edit_mode) {
-            foreach ($this->model['entity_fields'] as $field) {
+            foreach ($model['entity_fields'] as $field) {
 
                 if ($edit_mode) {
                     if ($field['is_create_field'] && $field['is_form_field']) {
