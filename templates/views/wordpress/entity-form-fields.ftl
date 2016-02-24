@@ -185,7 +185,7 @@
         </div>
 <?php  } 
 
-    function do_flag_field($model, $field) { ?>
+    function do_date_field($model, $field) { ?>
 
         <div class="<?php echo $field['col_size']; ?>">
             <div class="form-group">
