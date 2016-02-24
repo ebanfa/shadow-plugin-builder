@@ -10,10 +10,10 @@
 
                 if ($edit_mode) {
                     if ($field['is_create_field'] && $field['is_form_field']) {
-                        do_entity_form_field($field);
+                        do_entity_form_field($model, $field);
                     }
                     else if ($field['is_edit_field'] && $field['is_form_field']) {
-                        do_entity_form_field($field);
+                        do_entity_form_field($model, $field);
                     }
                 }
             }
