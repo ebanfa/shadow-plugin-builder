@@ -324,7 +324,7 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 			if(entity.getSingleViewTemplate() != null){
 				String entityViewOutputDir = includeViewOutputDir + entityName.toLowerCase() + "/";
 				this.createDirectoryIfNeeded(entityViewOutputDir);
-				this.generateArtifact(module, entity, entity.getViewTemplate() , entityViewOutputDir + 'Single' + entityName + "View.php");
+				this.generateArtifact(module, entity, entity.getViewTemplate() , entityViewOutputDir + "Single" + entityName + "View.php");
 			} 
 			
 		}
