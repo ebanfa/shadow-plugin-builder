@@ -5,11 +5,7 @@
         exit; // Exit if accessed directly
     }
 
-    if(isset($_REQUEST['page_info'])) { 
-
-        $view = $_REQUEST['page_info']['view'];
-
-        public function do_entity_form_fields($model, $edit_mode) {
+        function do_entity_form_fields($model, $edit_mode) {
             foreach ($this->model['entity_fields'] as $field) {
 
                 if ($edit_mode) {
@@ -236,7 +232,12 @@
 <?php  } ?>
 
 
-<?php   if(!is_null($view->get_parent_field())) { ?>
+<?php  
+    if(isset($_REQUEST['page_info'])) { 
+
+        $view = $_REQUEST['page_info']['view'];
+
+        if(!is_null($view->get_parent_field())) { ?>
         <input type="hidden" name="parent_id" value="<?php echo $view->get_parent_id(); ?>">
         <input type="hidden" name="parent_artifact" value="<?php echo $view->get_parent_artifact_name(); ?>">
         <input type="hidden" name="parent_field" value="<?php echo $view->get_parent_field(); ?>">
