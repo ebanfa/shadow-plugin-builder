@@ -20,7 +20,9 @@
         }
 
         function do_entity_form_field($model, $field) {
+            do_action('shadowbanker_before_entity_form_field');
             if(!$field['is_relationship_field']) { 
+
                 if($field['data_type'] == 'name') do_name_field($model, $field);
                 if($field['data_type'] == 'email') do_email_field($model, $field);
                 if($field['data_type'] == 'text-lg') do_textlg_field($model, $field);
@@ -35,6 +37,7 @@
             else {
                 do_relationship_field($model, $field);
             }
+            do_action('shadowbanker_before_entity_form_field');
         }
 
         function do_name_field($model, $field) { ?>
