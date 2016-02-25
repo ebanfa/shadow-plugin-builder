@@ -144,11 +144,7 @@ class ArtifactView {
      * The added information is required to display the field.
      */
     public function prepare_view_form_field($field) {
-        $field_filter = 'shadowbanker_filter_form_field';
-        if (has_filter($field_filter)) {
-            $field = apply_filters($field_filter, $this, $field);
-        }
-        return $field;
+        return ViewUtils::prepare_view_form_field($this, $field);
     }
 
     /**

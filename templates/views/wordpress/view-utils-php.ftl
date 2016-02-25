@@ -83,6 +83,18 @@ class ViewUtils {
     	$action_links['create_entity_link'] = array('name' => 'Add New', 'link' => self::$base_create_path. $artifact);
     	return $action_links;
    	}
+
+    /**
+     * This method add additional information to a field.
+     * The added information is required to display the field.
+     */
+    public static function prepare_view_form_field($view, $field) {
+        $field_filter = 'shadowbanker_filter_form_field';
+        if (has_filter($field_filter)) {
+            $field = apply_filters($field_filter, $view, $field);
+        }
+        return $field;
+    }
 }
 
 ?>
