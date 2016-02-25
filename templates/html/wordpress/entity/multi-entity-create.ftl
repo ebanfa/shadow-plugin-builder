@@ -319,7 +319,7 @@
 
             e.preventDefault();
             $.each(multiCreateEntities, function(index, value ){
-                $('#' + '<?php echo $view->get_artifact(); ?>' + '_form').append(
+                $('#' + '<?php echo $view->get_artifact_name(); ?>' + '_form').append(
                    $('<input>')
                       .attr('type', 'hidden')
                       .attr('name', 'some_form_id[]')
