@@ -293,7 +293,9 @@
 
                 formData.append($(this).attr('name'), $(this).val());
             });
-            console.log('>>>>>>>>>>>>>>' + JSON.stringify(formData));
+            var xhr = new XMLHttpRequest;
+            xhr.open('POST', '/', true);
+            xhr.send(formData);
 
             addMultiCreateEntity(formData);
             console.log('>>>>>>>>>>>>>>' + JSON.stringify(multiCreateEntities));
