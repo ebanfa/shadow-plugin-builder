@@ -225,19 +225,29 @@
 
 <script type="text/javascript">
 
-    <?php  $count = 1; foreach ($tabs as $tab) {  
-        $tab_model =  $tab['model'];
-    ?>
-    var <?php echo json_encode($tab_model['entity_name']); ?>  = [];
-    var <?php echo json_encode($tab_model['entity_name'] . 'Obj'); ?> = function () {
-        <?php foreach ($tab_model['entity_fields'] as $field) { ?>
-            <?php echo json_encode('this.' . $field['name'] . ' = ""'); ?> 
-        <?php } ?>
-    };
-    <?php  $count++; } ?>
+    var multiCreateEntities = new Object();
 
-  jQuery(document).ready(function($)
+    function addMultiCreateEntity(entity) {
+        var randomString = randomString(8, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
+        multiCreateEntities['randomString'] = entity;
+        return randomString;
+    }
+
+    function randomString(length, chars) {
+        var result = '';
+        for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
+        return result;
+    }
+    
+
+    jQuery(document).ready(function($)
     {
+        addMultiCreateEntity(new Object());
+        addMultiCreateEntity(new Object());
+
+        console.log('>>>>>>>>>>>>>>' + JSON.stringify(multiCreateEntities));
+
+
         $('body').on('click', '.data-table-link', function(e){
             e.preventDefault();
             var currentRelatedFieldName = $('#current-related-field').val();
