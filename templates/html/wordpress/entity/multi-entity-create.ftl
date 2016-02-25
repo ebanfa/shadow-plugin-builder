@@ -36,15 +36,14 @@
                         </div>
 
                         <!-- Multi entity select tabs-->
-                        <?php  $count = 1; foreach ($tabs as $tab) {  
-                                if($tab['tab_type'] == 'multi-create') {
+                        <?php  $count = 1; foreach ($tabs as $tab) {  if($tab['tab_type'] == 'multi-create') {
 
                         ?>
 
                         <div class="tab-pane fade" id="tab<?php echo $count;?>">
                             <div class="col-sm-12 m-b-20 btn-demo">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-primary">
+                                    <button type="button" id="multi-add-instance-btn" class="btn btn-primary">
                                         Add a new <?php echo $tab['model']['entity_name'];?> 
                                     </button>
                                 </div>
@@ -52,13 +51,13 @@
                             <div class="divider"></div>
                             <div class="col-sm-12 m-b-20">
                                 <div id="<?php echo $tab['artifact_name'];?>_dependent_list_box" class="list-group">
-                                    <div class="list-group-item active"><span id="<?php echo $tab['artifact_name'];?>_count"class="badge">0</span> Selected <?php echo $tab['model']['entity_name'];?></div>
+                                    <div class="list-group-item active"><span id="<?php echo $tab['artifact_name'];?>_count"class="badge">0</span> Records added</div>
                                     <!-- <div class="list-group-item"><span class="badge warning">X</span>Dapibus ac facilisis in</div> -->
                                 </div>
                             </div>
                         </div>
 
-                        <?php  $count++; } if($tab['tab_type'] == 'multi-select') ?>
+                        <?php  $count++; } if($tab['tab_type'] == 'multi-select') { ?>
 
                         <div class="tab-pane fade" id="tab<?php echo $count;?>">
                             <div class="col-sm-12 m-b-20 btn-demo">
@@ -92,7 +91,7 @@
                             </div>
                         </div>
 
-                        <?php } ?>
+                        <?php } } ?>
                         
                     <ul class="fw-footer pagination wizard">
                         <li class="previous first"><a class="a-prevent" href="components.html"><i class="zmdi zmdi-more-horiz"></i></a></li>
@@ -133,6 +132,7 @@
                     <div class="modal-body">
 
                         <div class="card">
+                            <?php if($tab['tab_type'] == 'multi-create') { ?>
                             <div class="card-header bgm-lightgreen">
                                 <h2>
                                     Create the <?php echo $tab['model']['entity_name'];?>
@@ -154,6 +154,52 @@
                             <div class="card-body card-padding">
                                 <?php do_entity_form_fields($tab['model'], $true) ; ?>
                             </div>
+
+                            <?php } else if($tab['tab_type'] == 'multi-select') { ?>
+
+                            <div class="card-header bgm-lightgreen">
+                                <h2>
+                                    Select the <?php echo $tab['model']['entity_name'];?>
+                                </h2>
+                                <ul class="actions actions-alt">
+                                    <li class="dropdown">
+                                        <a href="widget-templates.html" data-toggle="dropdown" aria-expanded="false">
+                                            <i class="md md-more-vert"></i>
+                                        </a>
+                                        
+                                        <ul class="dropdown-menu dropdown-menu-right">
+                                            <li>
+                                                <a href="/page?type=entity&page_action=create&artifact=<?php echo $tab['artifact_name'];?>">Add a new record</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-body card-padding">
+                                <form id="<?php echo $tab['model']['entity_post_name'];?>-list-form">
+                                    <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
+                                    <input type="hidden" name="submitted" id="submitted" value="true" />
+                                    <input type="hidden" name="artifact" id="artifact" value="<?php echo $tab['artifact_name'];?>" />
+                                    <!-- <input type="hidden" name="u_property" id="u_property" value="" />  -->
+                                </form>
+                                <div class="table-responsive">
+                                    <table id="<?php echo $tab['model']['entity_post_name'];?>-list-table" class="table table-striped table-bordered" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th><input name="select_all" value="1" type="checkbox"></th>
+                            <?php  foreach ($tab['model']['entity_fields'] as $field) { if($field['is_list_field']) { ?>
+                                                <th><?php  echo $field['description']  ?></th>
+                            <?php  } }  ?>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+
+                            <?php } ?>
                         </div>
                     </div>
 
@@ -195,6 +241,11 @@
         $('body').on('click', '.dependent-field-search-link', function(e){
             e.preventDefault();
             var dependentFieldName = $(this).data('dependent-field-name');
+            $('#' + dependentFieldName + '_modal').modal('show');
+        });
+
+         $('body').on('click', '#multi-add-instance-btn', function(e){
+            e.preventDefault();
             $('#' + dependentFieldName + '_modal').modal('show');
         });
 
