@@ -121,7 +121,7 @@
 
         <!-- Modals for each tab -->  
         <?php  $count = 1; foreach ($tabs as $tab) {  ?>
-        <div class="modal fade" id="<?php echo $tab['artifact_name'];?>_modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal fade" id="<?php echo $tab['artifact_name'];?>_multi_modal" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -247,7 +247,7 @@
          $('body').on('click', '#multi-add-instance-btn', function(e){
             e.preventDefault();
             var dependentFieldName = $(this).data('dependent-field-name');
-            $('#' + dependentFieldName + '_modal').modal('show');
+            $('#' + dependentFieldName + '_multi_modal').modal('show');
         });
 
     });
