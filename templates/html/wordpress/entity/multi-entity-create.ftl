@@ -231,7 +231,7 @@
     var <?php  echo $tab_model['entity_name'] ?>Instances = [];
     var <?php  echo $tab_model['entity_name'] ?>Obj = function () {
         <?php foreach ($tab_model['entity_fields'] as $field) { ?>
-            <?php echo 'this.' . $field['name'] . ' = "";'; ?>
+            <?php echo 'this.' . $field['name'] . ' = "";\\n'; ?>
         <?php } ?>
     };
     <?php  $count++; } ?>
