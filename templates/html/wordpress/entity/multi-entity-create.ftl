@@ -228,10 +228,10 @@
     <?php  $count = 1; foreach ($tabs as $tab) {  
         $tab_model =  $tab['model'];
     ?>
-    var <?php  echo $tab_model['entity_name'] ?>Instances = [];
-    var <?php  echo $tab_model['entity_name'] ?>Obj = function () {
+    var <?php echo json_encode($tab_model['entity_name']); ?>  = [];
+    var <?php echo json_encode($tab_model['entity_name'] . 'Obj'); ?> = function () {
         <?php foreach ($tab_model['entity_fields'] as $field) { ?>
-            <?php echo 'this.' . $field['name'] . ' = "";\\n'; ?>
+            <?php echo json_encode('this.' . $field['name'] . ' = ""'); ?> 
         <?php } ?>
     };
     <?php  $count++; } ?>
