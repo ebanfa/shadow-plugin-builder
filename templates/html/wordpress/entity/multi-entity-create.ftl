@@ -313,6 +313,13 @@
             xhr.send(data);*/
           
        });
+       /* This is called when the entity form is submitted */
+       /* This removes an artifact instance from the list of instances  to create */
+       $('body').on('click', '#<?php echo $view->get_artifact_name(); ?>-form-btn', function(e){
+
+            e.preventDefault();
+
+       });
 
 
 
