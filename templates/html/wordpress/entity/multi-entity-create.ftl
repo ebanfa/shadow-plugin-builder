@@ -286,7 +286,7 @@
             var dependentFieldName = $(this).data('dependent-field-name');
             $('#' + dependentFieldName + '_multi_modal').modal('hide');
             var formData = new FormData();
-            $('#' + dependentFieldName + '_multi_modal input[type=text],select').each( function(index) { 
+            $('#' + dependentFieldName + '_multi_modal :input, ' + '#' + dependentFieldName + '_multi_modal textarea').each( function(index) { 
                 // do something here
                 console.log('>>>>>>>>>>>>>Field ' + dependentFieldName + ':' + $(this).attr("name"));
             })
