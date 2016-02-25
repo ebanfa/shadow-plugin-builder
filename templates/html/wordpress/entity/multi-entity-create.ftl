@@ -45,23 +45,8 @@
                             <div class="col-sm-12 m-b-20 btn-demo">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-primary">
-                                        Select the <?php echo $tab['model']['entity_name'];?> Type
+                                        Add a new <?php echo $tab['model']['entity_name'];?> 
                                     </button>
-                                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                        <span class="caret"></span>
-                                        <span class="sr-only">Select the <?php echo $tab['model']['entity_name'];?> Type</span>
-                                    </button>
-                                    <ul class="dropdown-menu" role="menu">
-
-                                    <?php
-                                        $multi_entity_types = $tab['type_instances'];
-                                        foreach ($multi_entity_types as $multi_entity_type) { ?>
-                                        <li>
-                                            <a data-dependent-field-name="<?php echo $tab['artifact_name'];?>" data-dependent-field-id="<?php echo $multi_entity_type['id']; ?>" 
-                                                class="dependent-field-search-link" href="components.html#"><?php echo $multi_entity_type['description']; ?></a>
-                                        </li>
-                                    <?php  }  ?>
-                                    </ul>
                                 </div>
                             </div>
                             <div class="divider"></div>
