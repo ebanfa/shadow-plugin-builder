@@ -152,7 +152,7 @@
                                 </ul>
                             </div>
                             <div class="card-body card-padding">
-                                <?php do_entity_form_fields($tab['model'], $true) ; ?>
+                                <?php do_entity_form_fields($tab['model'], true) ; ?>
                             </div>
 
                             <?php } else if($tab['tab_type'] == 'multi-select') { ?>
