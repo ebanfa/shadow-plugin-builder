@@ -5,24 +5,24 @@
         exit; // Exit if accessed directly
     }
 
-        function do_entity_form_fields($model, $edit_mode) {
+        function do_entity_form_fields($model, $edit_mode, $show_relationship_popup) {
             foreach ($model['entity_fields'] as $field) {
 
                 if ($edit_mode) {
                     if ($field['is_create_field'] && $field['is_form_field']) {
-                        do_entity_form_field($model, $field);
+                        do_entity_form_field($model, $field, $show_relationship_popup);
                     }
                 }
                 else {
 
                     if ($field['is_edit_field'] && $field['is_form_field']) {
-                        do_entity_form_field($model, $field);
+                        do_entity_form_field($model, $field, $show_relationship_popup);
                     }
                 }
             }
         }
 
-        function do_entity_form_field($model, $field) {
+        function do_entity_form_field($model, $field, $show_relationship_popup) {
             // Typically this function is called within a view
             // but we pass null here since we are outside a view
             $field = ViewUtils::prepare_view_form_field(null, $field);
@@ -41,7 +41,7 @@
                 if($field['data_type'] == 'date') do_date_field($model, $field);
             }
             else {
-                do_relationship_field($model, $field);
+                do_relationship_field($model, $field, $show_relationship_popup);
 
             }
             do_action('shadowbanker_after_entity_form_field');
@@ -213,7 +213,9 @@
         </div>
 <?php  } 
 
-        function do_relationship_field($model, $field) { ?>
+        function do_relationship_field($model, $field, $show_relationship_popup) { 
+
+            if($show_relationship_popup) { ?>
     
         <div class="col-xs-11">
             <div class="form-group">
@@ -239,7 +241,29 @@
             <i class="md md-trending-up"></i>
         </a>
 
-<?php  } ?>
+<?php   }  else { ?>
+        <div class="<?php echo $field['col_size']; ?>">
+            <div class="form-group">
+                <div class="fg-line">
+                    <div class="select">
+                        <select id="<?php echo $field['name'];?>" name="<?php echo $field['name'];?>" class="form-control">
+                            <option>Select a <?php echo $field['name'];?></option>
+                            <?php
+                                $entity_list = get_posts(array('post_type' => $field['data_type'], 'posts_per_page' => -1, 'orderby' => 'ID', 'order' => 'ASC'));
+                                foreach ($entity_list as $entity) { ?>
+                                <option value="<?php echo $entity->ID; ?>">
+                                    <?php echo get_post_meta($entity->ID, 'name', true); ?>
+                                </option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<?php        }
+    }
+?>
 
 
 <?php  
