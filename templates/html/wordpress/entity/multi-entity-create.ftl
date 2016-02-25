@@ -236,7 +236,7 @@
     var addMultiCreateEntity = function (entity) {
         var random = randomString(8, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
         multiCreateEntities[random] = entity;
-        return randomString;
+        return random;
     }
     
 
@@ -300,7 +300,7 @@
 
         });
 
-        /* This removes an artifact instance from the list of instances to create */
+        /* This removes an artifact instance from the list of instances  to create */
        $('.list-group').on('click', '.dependent_list_item', function(e){
             // The id of the the form data in our array
             var formDataId = $(this).data('form-id');
@@ -308,6 +308,9 @@
             // then remove the list box item
             $(this).parent().remove();
 
+            /*var xhr = new XMLHttpRequest;
+            xhr.open('POST', '/', true);
+            xhr.send(data);*/
           
        });
 
