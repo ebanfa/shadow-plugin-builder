@@ -20,6 +20,9 @@
         }
 
         function do_entity_form_field($model, $field) {
+            // Typically this function is called within a view
+            // but we pass null here since we are outside a view
+            $field = ViewUtils::prepare_view_form_field(null, $field);
             do_action('shadowbanker_before_entity_form_field');
             if(!$field['is_relationship_field']) { 
 
@@ -36,7 +39,7 @@
             }
             else {
                 do_relationship_field($model, $field);
-                
+
             }
             do_action('shadowbanker_after_entity_form_field');
         }
