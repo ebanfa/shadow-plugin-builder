@@ -28,7 +28,7 @@
 </ul>
 
 <div class="tab-content p-20">
-    <div role="tabpanel" class="tab-pane animated fadeIn in active" id="tab-a">
+    <div role="tabpanel" class="tab-pane animated fadeIn in active" id="tab-0">
         <div id="success"></div>
         <div class="table-responsive">
             <table class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
