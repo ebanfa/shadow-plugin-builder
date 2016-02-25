@@ -293,6 +293,7 @@
 
                 formData.append($(this).attr('name'), $(this).val());
             });
+            console.log('>>>>>>>>>>>>>>' + JSON.stringify(formData));
 
             addMultiCreateEntity(formData);
             console.log('>>>>>>>>>>>>>>' + JSON.stringify(multiCreateEntities));
