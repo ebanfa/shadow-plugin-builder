@@ -285,6 +285,11 @@
             e.preventDefault();
             var dependentFieldName = $(this).data('dependent-field-name');
             $('#' + dependentFieldName + '_multi_modal').modal('hide');
+            var formData = new FormData();
+            $('#' + dependentFieldName + '_multi_modal :input').each( function(index) { 
+                // do something here
+                console.log('>>>>>>>>>>>>>Field');
+            })
         });
 
     });
