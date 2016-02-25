@@ -290,7 +290,7 @@
             });
             addMultiCreateEntity(formData);
             // Add the item to the list 
-           $('#' + dependentFieldName + '_dependent_list_box').append($('<div id="_list_item_' + rowId + '"><span data-entity-name=""  class="badge _dependent_list_item" style="cursor: pointer; cursor: hand; background-color: red">X</span>' + dependentInstanceName + '</div>')
+           $('#' + dependentFieldName + '_dependent_list_box').append($('<div id="_list_item_"><span data-entity-name=""  class="badge _dependent_list_item" style="cursor: pointer; cursor: hand; background-color: red">X</span>A record</div>')
                   .attr('class', 'list-group-item'));
 
         });
