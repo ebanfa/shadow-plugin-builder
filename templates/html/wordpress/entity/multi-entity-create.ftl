@@ -286,12 +286,17 @@
             var dependentFieldName = $(this).data('dependent-field-name');
             $('#' + dependentFieldName + '_multi_modal').modal('hide');
             var formData = new FormData();
+            formData.append('entity_name', dependentFieldName);
             $('#' + dependentFieldName + '_multi_modal :input[type=text], ' + 
                 '#' + dependentFieldName + '_multi_modal select, ' + 
                 '#' + dependentFieldName + '_multi_modal textarea').each( function(index) { 
-                // do something here
-                console.log('>>>>>>>>>>>>>Field ' + dependentFieldName + ':' + $(this).attr("name"));
-            })
+
+                formData.append($(this).attr('name'), $(this).val());
+            });
+
+            addMultiCreateEntity(formData);
+            console.log('>>>>>>>>>>>>>>' + JSON.stringify(multiCreateEntities));
+
         });
 
     });
