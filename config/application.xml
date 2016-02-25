@@ -3610,6 +3610,7 @@
 			<name>Property</name>
 			<postName>sb_property</postName>
 			<description>Property</description>
+			<createViewTemplate>views/wordpress/property/property-create-view.ftl</createViewTemplate>
 		     <!--   <viewPageTemplate>html/wordpress/entity/collateral/single-property.ftl</viewPageTemplate>
                         <createPageTemplate>html/wordpress/entity/property/property-create-form.ftl</createPageTemplate>
 			 <editPageTemplate>html/wordpress/entity/locationtype/locationtype-edit-form.ftl</editPageTemplate>

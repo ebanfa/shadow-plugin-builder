@@ -23,6 +23,7 @@ public class Entity {
 	private String displayName;
 	private String description;
 	private String singleViewTemplate;
+	private String createViewTemplate;
 	private String createPageTemplate;
 	private String editPageTemplate;
 	private String listPageTemplate;
@@ -67,6 +68,21 @@ public class Entity {
 	@XmlElement
 	public void setSingleViewTemplate(String singleViewTemplate) {
 		this.singleViewTemplate = singleViewTemplate;
+	}
+
+	/**
+	 * @return the createViewTemplate
+	 */
+	public String getCreateViewTemplate() {
+		return createViewTemplate;
+	}
+
+	/**
+	 * @param createViewTemplate the createViewTemplate to set
+	 */
+	@XmlElement
+	public void setCreateViewTemplate(String createViewTemplate) {
+		this.createViewTemplate = createViewTemplate;
 	}
 
 	

@@ -36,7 +36,10 @@
                         </div>
 
                         <!-- Multi entity select tabs-->
-                        <?php  $count = 1; foreach ($tabs as $tab) {  ?>
+                        <?php  $count = 1; foreach ($tabs as $tab) {  
+                                if($tab['tab_type'] == 'multi-create') {
+
+                        ?>
 
                         <div class="tab-pane fade" id="tab<?php echo $count;?>">
                             <div class="col-sm-12 m-b-20 btn-demo">
@@ -70,7 +73,41 @@
                             </div>
                         </div>
 
-                        <?php  $count++; } ?>
+                        <?php  $count++; } if($tab['tab_type'] == 'multi-select') ?>
+
+                        <div class="tab-pane fade" id="tab<?php echo $count;?>">
+                            <div class="col-sm-12 m-b-20 btn-demo">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-primary">
+                                        Select the <?php echo $tab['model']['entity_name'];?> Type
+                                    </button>
+                                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Select the <?php echo $tab['model']['entity_name'];?> Type</span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu">
+
+                                    <?php
+                                        $multi_entity_types = $tab['type_instances'];
+                                        foreach ($multi_entity_types as $multi_entity_type) { ?>
+                                        <li>
+                                            <a data-dependent-field-name="<?php echo $tab['artifact_name'];?>" data-dependent-field-id="<?php echo $multi_entity_type['id']; ?>" 
+                                                class="dependent-field-search-link" href="components.html#"><?php echo $multi_entity_type['description']; ?></a>
+                                        </li>
+                                    <?php  }  ?>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="divider"></div>
+                            <div class="col-sm-12 m-b-20">
+                                <div id="<?php echo $tab['artifact_name'];?>_dependent_list_box" class="list-group">
+                                    <div class="list-group-item active"><span id="<?php echo $tab['artifact_name'];?>_count"class="badge">0</span> Selected <?php echo $tab['model']['entity_name'];?></div>
+                                    <!-- <div class="list-group-item"><span class="badge warning">X</span>Dapibus ac facilisis in</div> -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <?php } ?>
                         
                     <ul class="fw-footer pagination wizard">
                         <li class="previous first"><a class="a-prevent" href="components.html"><i class="zmdi zmdi-more-horiz"></i></a></li>

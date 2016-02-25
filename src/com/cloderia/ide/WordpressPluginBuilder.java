@@ -321,16 +321,21 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 
 		for(Entity entity: module.getEntities()) {
 			String entityName = entity.getName();
+			if(entity.getCreateViewTemplate() != null){
+				String entityViewOutputDir = includeViewOutputDir + entityName.toLowerCase() + "/";
+				this.createDirectoryIfNeeded(entityViewOutputDir);
+				this.generateArtifact(module, entity, entity.getCreateViewTemplate() , entityViewOutputDir + "Create" + entityName + "View.php");
+			} 
+			
 			if(entity.getSingleViewTemplate() != null){
 				String entityViewOutputDir = includeViewOutputDir + entityName.toLowerCase() + "/";
 				this.createDirectoryIfNeeded(entityViewOutputDir);
 				this.generateArtifact(module, entity, entity.getSingleViewTemplate() , entityViewOutputDir + "Single" + entityName + "View.php");
 			} 
-			
 		}
 		this.generateArtifact(module, null, "views/wordpress/dashboard/dashboard-view-php.ftl" , includeViewOutputDir +  "DashboardView.php");
 		this.generateArtifact(module, null, "views/wordpress/party/party-view-php.ftl" , includeViewOutputDir +  "PartyView.php");
-		this.generateArtifact(module, null, "views/wordpress/tenantagreement/create-entity-view.ftl" , includeViewOutputDir +  "TenantAgreementCreateView.php");
+		this.generateArtifact(module, null, "views/wordpress/tenantagreement/create-entity-view.ftl" , includeViewOutputDir +  "CreateTenantAgreementView.php");
 		this.generateArtifact(module, null, "views/wordpress/create-multi-entity.ftl" , includeViewOutputDir +  "MultiEntityCreateView.php");
 		this.generateArtifact(module, null, "views/wordpress/view-controller-php.ftl" , includeViewOutputDir +  "ViewController.php");
 		this.generateArtifact(module, null, "views/wordpress/base-artifact-view.ftl" , includeViewOutputDir +  "ArtifactView.php");
