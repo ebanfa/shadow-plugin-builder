@@ -276,21 +276,26 @@
             $('#' + dependentFieldName + '_multi_modal').modal('show');
         });
 
+        /* This called to add a new artifact instance to be created when the form is submitted */
         $('body').on('click', '#add-multi-entity-btn', function(e){
             e.preventDefault();
+            // The artifact name
             var dependentFieldName = $(this).data('dependent-field-name');
             $('#' + dependentFieldName + '_multi_modal').modal('hide');
+            // The form data that will hold the data for the related instance we are adding
             var formData = new FormData();
             formData.append('entity_name', dependentFieldName);
+            // Select only th fields in the artifacts create modal
             $('#' + dependentFieldName + '_multi_modal :input[type=text], ' + 
                 '#' + dependentFieldName + '_multi_modal select, ' + 
                 '#' + dependentFieldName + '_multi_modal textarea').each( function(index) { 
-
+                // Add data
                 formData.append($(this).attr('name'), $(this).val());
             });
+            // Add to array of artifact instances
             addMultiCreateEntity(formData);
-            // Add the item to the list 
-           $('#' + dependentFieldName + '_dependent_list_box').append($('<div id="_list_item_"><span data-entity-name=""  class="badge _dependent_list_item" style="cursor: pointer; cursor: hand; background-color: red">X</span>A record</div>')
+            // Add the item to the visual list 
+           $('#' + dependentFieldName + '_dependent_list_box').append($('<div id="_list_item_"><span data-entity-name="' + dependentFieldName + '"  class="badge ' + dependentFieldName + '_dependent_list_item" style="cursor: pointer; cursor: hand; background-color: red">X</span>' + formData.get('name') + '</div>')
                   .attr('class', 'list-group-item'));
 
         });
