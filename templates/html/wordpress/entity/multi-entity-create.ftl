@@ -227,13 +227,13 @@
 
     var multiCreateEntities = new Object();
 
-    function randomString(length, chars) {
+    var randomString = function(length, chars) {
         var result = '';
         for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
         return result;
     }
 
-    function addMultiCreateEntity(entity) {
+    var addMultiCreateEntity = function (entity) {
         var randomString = randomString(8, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
         multiCreateEntities['randomString'] = entity;
         return randomString;
