@@ -293,12 +293,23 @@
                 formData.append($(this).attr('name'), $(this).val());
             });
             // Add to array of artifact instances
-            addMultiCreateEntity(formData);
+            var formDataId = addMultiCreateEntity(formData);
             // Add the item to the visual list 
-           $('#' + dependentFieldName + '_dependent_list_box').append($('<div id="_list_item_"><span data-entity-name="' + dependentFieldName + '"  class="badge ' + dependentFieldName + '_dependent_list_item" style="cursor: pointer; cursor: hand; background-color: red">X</span>' + formData.get('name') + '</div>')
+           $('#' + dependentFieldName + '_dependent_list_box').append($('<div id="'+ formDataId + '"><span data-entity-name="' + dependentFieldName + '"  class="badge ' + dependentFieldName + '_dependent_list_item" data-form-id="'+ formDataId + '" style="cursor: pointer; cursor: hand; background-color: red">X</span>' + formData.get('name') + '</div>')
                   .attr('class', 'list-group-item'));
 
         });
+
+        /* This removes an artifact instance from the list of instances to create */
+       $('#' + dependentFieldName + '_dependent_list_box').on('click', '.' + dependentFieldName + '_dependent_list_item', function(e){
+            // The id of the the form data in our array
+            var formDataId = $(this).data('form-id');
+            delete multiCreateEntities[formDataId];
+            // then remove the list box item
+            $('#' + dependentFieldName + '_dependent_list_box').find('#' + formDataId).remove();
+
+          
+       });
 
 
 
