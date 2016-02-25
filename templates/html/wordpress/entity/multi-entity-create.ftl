@@ -288,7 +288,7 @@
             var formData = new FormData();
             $('#' + dependentFieldName + '_multi_modal :input').each( function(index) { 
                 // do something here
-                console.log('>>>>>>>>>>>>>Field');
+                console.log('>>>>>>>>>>>>>Field ' + dependentFieldName + ':' + $(this)..attr("name"));
             })
         });
 
