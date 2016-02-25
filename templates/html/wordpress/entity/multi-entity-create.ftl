@@ -43,7 +43,7 @@
                         <div class="tab-pane fade" id="tab<?php echo $count;?>">
                             <div class="col-sm-12 m-b-20 btn-demo">
                                 <div class="btn-group">
-                                    <button type="button" id="multi-add-instance-btn" class="btn btn-primary">
+                                    <button type="button" id="multi-add-instance-btn" data-dependent-field-name="<?php echo $tab['artifact_name'];?>" class="btn btn-primary">
                                         Add a new <?php echo $tab['model']['entity_name'];?> 
                                     </button>
                                 </div>
@@ -246,6 +246,7 @@
 
          $('body').on('click', '#multi-add-instance-btn', function(e){
             e.preventDefault();
+            var dependentFieldName = $(this).data('dependent-field-name');
             $('#' + dependentFieldName + '_modal').modal('show');
         });
 
