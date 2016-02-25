@@ -242,11 +242,6 @@
 
     jQuery(document).ready(function($)
     {
-        addMultiCreateEntity(new Object());
-        addMultiCreateEntity(new Object());
-
-        console.log('>>>>>>>>>>>>>>' + JSON.stringify(multiCreateEntities));
-
 
         $('body').on('click', '.data-table-link', function(e){
             e.preventDefault();
@@ -293,14 +288,14 @@
 
                 formData.append($(this).attr('name'), $(this).val());
             });
-            var xhr = new XMLHttpRequest;
-            xhr.open('POST', '/', true);
-            xhr.send(formData);
-
             addMultiCreateEntity(formData);
-            console.log('>>>>>>>>>>>>>>' + JSON.stringify(multiCreateEntities));
+            // Add the item to the list 
+           $('#' + dependentFieldName + '_dependent_list_box').append($('<div id="_list_item_' + rowId + '"><span data-entity-name=""  class="badge _dependent_list_item" style="cursor: pointer; cursor: hand; background-color: red">X</span>' + dependentInstanceName + '</div>')
+                  .attr('class', 'list-group-item'));
 
         });
+
+
 
     });
 
