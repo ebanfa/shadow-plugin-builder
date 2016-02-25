@@ -228,13 +228,12 @@
     <?php  $count = 1; foreach ($tabs as $tab) {  
         $tab_model =  $tab['model'];
     ?>
+    var <?php  echo $tab_model['entity_name'] ?>Instances = [];
     var <?php  echo $tab_model['entity_name'] ?>Obj = function () {
-        <?php foreach ($tab_model['entity_fields'] as $field) {
-            echo 'this.' . $field['name'] . ' = "";';
-        }?>
+        <?php foreach ($tab_model['entity_fields'] as $field) { ?>
+            <?php echo 'this.' . $field['name'] . ' = "";'; ?>
+        <?php } ?>
     };
-
-
     <?php  $count++; } ?>
 
   jQuery(document).ready(function($)
