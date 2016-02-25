@@ -214,11 +214,25 @@
             </div>
         </div>
 
+
+        <?php  $count++; } ?>
+
+
+        <?php  $count = 1; foreach ($tabs as $tab) {  ?>
         <?php  $count++; } ?>
 
 
 
 <script type="text/javascript">
+
+    <?php  $count = 1; foreach ($tabs as $tab) {  
+        $tab_model =  $tab['model'];
+    ?>
+    var <?php  echo $tab_model['entity_name'] ?>Obj = <?php  echo $tab_model['entity_name'] ?>Class() {};
+
+
+    <?php  $count++; } ?>
+
   jQuery(document).ready(function($)
     {
         $('body').on('click', '.data-table-link', function(e){
