@@ -208,7 +208,7 @@
                     </div>
 
                     <div class="modal-footer">
-                        <a id="add-selected-<?php echo $tab['artifact_name'];?>-list-btn" type="button" data-dismiss="modal" class="btn btn-primary">Add to agreement</a>
+                        <a id="add-multi-entity-btn" data-dependent-field-name="<?php echo $tab['artifact_name'];?>" type="button" data-dismiss="modal" class="btn btn-primary">Add</a>
                     </div>
                 </div>
             </div>
@@ -279,6 +279,12 @@
             e.preventDefault();
             var dependentFieldName = $(this).data('dependent-field-name');
             $('#' + dependentFieldName + '_multi_modal').modal('show');
+        });
+
+        $('body').on('click', '#add-multi-entity-btn', function(e){
+            e.preventDefault();
+            var dependentFieldName = $(this).data('dependent-field-name');
+            $('#' + dependentFieldName + '_multi_modal').modal('hide');
         });
 
     });
