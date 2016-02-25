@@ -234,8 +234,8 @@
     }
 
     var addMultiCreateEntity = function (entity) {
-        var randomString = randomString(8, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
-        multiCreateEntities['randomString'] = entity;
+        var random = randomString(8, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
+        multiCreateEntities[random] = entity;
         return randomString;
     }
     
