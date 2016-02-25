@@ -247,7 +247,7 @@
                 <div class="fg-line">
                     <div class="select">
                         <select id="<?php echo $field['name'];?>" name="<?php echo $field['name'];?>" class="form-control">
-                            <option>Select a <?php echo $field['name'];?></option>
+                            <option>Select a <?php echo $field['description'];?></option>
                             <?php
                                 $entity_list = get_posts(array('post_type' => $field['data_type'], 'posts_per_page' => -1, 'orderby' => 'ID', 'order' => 'ASC'));
                                 foreach ($entity_list as $entity) { ?>
