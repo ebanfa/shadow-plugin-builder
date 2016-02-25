@@ -318,7 +318,13 @@
        $('body').on('click', '#<?php echo $view->get_artifact_name(); ?>-form-btn', function(e){
 
             e.preventDefault();
-            $.each(multiCreateEntities, function( index, value ){
+            $.each(multiCreateEntities, function(index, value ){
+                $('#' + '<?php echo $view->get_artifact(); ?>' + '_form').append(
+                   $('<input>')
+                      .attr('type', 'hidden')
+                      .attr('name', 'some_form_id[]')
+                      .val(JSON.stringify(multiCreateEntities[index]))
+                );
                 console.log('>>>>>>>>>>>>>' + index);
             });
 
