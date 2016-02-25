@@ -96,7 +96,7 @@ class ${application.name} {
         include_once('includes/view/FormFieldFilter.php');
         include_once('includes/view/MultiEntityCreateView.php');
         include_once('includes/view/CreateTenantAgreementView.php');
-        include_once('includes/view/CreatePropertyView.php');
+        include_once('includes/view/property/CreatePropertyView.php');
         include_once('includes/view/entity-form-fields.php');
         // Framework API
         include_once('includes/api/CloderiaFileAPI.php');
