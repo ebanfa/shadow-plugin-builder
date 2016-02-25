@@ -119,6 +119,10 @@
             </form>
         </div>
 
+        <!-- Put this out side the form to prevent illegal nested forms -->
+        <?php do_action('shadowbanker_render_related_entity_field_modals'); ?>
+
+
         <!-- Modals for each tab -->  
         <?php  $count = 1; foreach ($tabs as $tab) {  ?>
         <div class="modal fade" id="<?php echo $tab['artifact_name'];?>_multi_modal" tabindex="-1" role="dialog" aria-hidden="true">
