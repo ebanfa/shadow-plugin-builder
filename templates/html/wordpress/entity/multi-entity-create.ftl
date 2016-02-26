@@ -217,12 +217,6 @@
 
         <?php  $count++; } ?>
 
-
-        <?php  $count = 1; foreach ($tabs as $tab) {  ?>
-        <?php  $count++; } ?>
-
-
-
 <script type="text/javascript">
 
     var multiCreateEntities = new Object();
@@ -332,17 +326,9 @@
        $('body').on('click', '#<?php echo $view->get_artifact_name(); ?>-form-btn', function(e){
 
             e.preventDefault();
-            var ajaxData = {};
-            $.each(multiCreateEntities, function(index, value ){
+            var ajaxData = $('#<?php echo $model['entity_post_name']; ?>_form').serializeArray()
 
-                $('#<?php echo $model['entity_post_name']; ?>_form').append(
-                   $('<input>')
-                      .attr('type', 'hidden')
-                      .attr('name', 'some_form_id[]')
-                      .val(JSON.stringify(multiCreateEntities[index]))
-                );
-                console.log('>>>>>>>>>>>>>' + index);
-            });
+            console.log('>>>>>>>>>>>>>' + JSON.stringify(ajaxData));
 
        });
 
