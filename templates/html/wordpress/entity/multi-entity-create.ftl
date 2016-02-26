@@ -294,10 +294,17 @@
                 // Add data
                 objData[$(this).attr('name')] = $(this).val();
             });
-                console.log('>>>>>>>>>>>>>log' + JSON.stringify(objData));
+
             // Add to array of artifact instances
-            //var formDataId = addMultiCreateEntity(formData);
             var objDataId = addMultiCreateEntity(objData);
+            $('#<?php echo $model['entity_post_name']; ?>_form').append(
+               $('<input>')
+                  .attr('type', 'hidden')
+                  .attr('id', objDataId)
+                  .attr('name', objData['entity_name'] + '[]')
+                  .val(JSON.stringify(objData))
+            );
+
             // Add the item to the visual list 
            $('#' + dependentFieldName + '_dependent_list_box').append($('<div id="'+ objDataId + '"><span data-entity-name="' + dependentFieldName + '"  class="badge dependent_list_item" data-form-id="'+ objDataId + '" style="cursor: pointer; cursor: hand; background-color: red">X</span>' + objData['name'] + '</div>')
                   .attr('class', 'list-group-item'));
@@ -311,6 +318,8 @@
             delete multiCreateEntities[objDataId];
             // then remove the list box item
             $(this).parent().remove();
+            // Remove from form
+            $('#' + objDataId).remove();
 
             /*var xhr = new XMLHttpRequest;
             xhr.open('POST', '/', true);
