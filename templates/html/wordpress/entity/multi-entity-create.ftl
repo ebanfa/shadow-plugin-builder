@@ -284,18 +284,22 @@
             $('#' + dependentFieldName + '_multi_modal').modal('hide');
             // The form data that will hold the data for the related instance we are adding
             var formData = new FormData();
+            var objData = new Object();
+            objData['entity_name'] = dependentFieldName;
             formData.append('entity_name', dependentFieldName);
             // Select only th fields in the artifacts create modal
             $('#' + dependentFieldName + '_multi_modal :input[type=text], ' + 
                 '#' + dependentFieldName + '_multi_modal select, ' + 
                 '#' + dependentFieldName + '_multi_modal textarea').each( function(index) { 
                 // Add data
-                formData.append($(this).attr('name'), $(this).val());
+                objData[$(this).attr('name')] = $(this).val();
             });
+                console.log('>>>>>>>>>>>>>log' + JSON.stringify(objData));
             // Add to array of artifact instances
-            var formDataId = addMultiCreateEntity(formData);
+            //var formDataId = addMultiCreateEntity(formData);
+            var objDataId = addMultiCreateEntity(objData);
             // Add the item to the visual list 
-           $('#' + dependentFieldName + '_dependent_list_box').append($('<div id="'+ formDataId + '"><span data-entity-name="' + dependentFieldName + '"  class="badge dependent_list_item" data-form-id="'+ formDataId + '" style="cursor: pointer; cursor: hand; background-color: red">X</span>' + formData.get('name') + '</div>')
+           $('#' + dependentFieldName + '_dependent_list_box').append($('<div id="'+ objDataId + '"><span data-entity-name="' + dependentFieldName + '"  class="badge dependent_list_item" data-form-id="'+ objDataId + '" style="cursor: pointer; cursor: hand; background-color: red">X</span>' + objData['name'] + '</div>')
                   .attr('class', 'list-group-item'));
 
         });
@@ -303,8 +307,8 @@
         /* This removes an artifact instance from the list of instances  to create */
        $('.list-group').on('click', '.dependent_list_item', function(e){
             // The id of the the form data in our array
-            var formDataId = $(this).data('form-id');
-            delete multiCreateEntities[formDataId];
+            var objDataId = $(this).data('form-id');
+            delete multiCreateEntities[objDataId];
             // then remove the list box item
             $(this).parent().remove();
 
@@ -313,12 +317,15 @@
             xhr.send(data);*/
           
        });
+
        /* This is called when the entity form is submitted. */
        /* This removes an artifact instance from the list of instances  to create */
        $('body').on('click', '#<?php echo $view->get_artifact_name(); ?>-form-btn', function(e){
 
             e.preventDefault();
+            var ajaxData = {};
             $.each(multiCreateEntities, function(index, value ){
+
                 $('#<?php echo $model['entity_post_name']; ?>_form').append(
                    $('<input>')
                       .attr('type', 'hidden')
