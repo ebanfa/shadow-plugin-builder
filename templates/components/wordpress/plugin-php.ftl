@@ -98,7 +98,6 @@ class ${application.name} {
         include_once('includes/view/ListEntityView.php');
         include_once('includes/view/FormFieldFilter.php');
         include_once('includes/view/MultiEntityCreateView.php');
-        include_once('includes/view/CreateTenantAgreementView.php');
         include_once('includes/view/property/CreatePropertyView.php');
         include_once('includes/view/rentagreement/CreateRentAgreementView.php');
         include_once('includes/view/serviceagreement/CreateServiceAgreementView.php');
