@@ -321,16 +321,7 @@
           
        });
 
-       /* This is called when the entity form is submitted. */
-       /* This removes an artifact instance from the list of instances  to create */
-       $('body').on('click', '#<?php echo $view->get_artifact_name(); ?>-form-btn', function(e){
-
-            e.preventDefault();
-            var ajaxData = $('#<?php echo $model['entity_post_name']; ?>_form').serializeArray()
-
-            console.log('>>>>>>>>>>>>>' + JSON.stringify(ajaxData));
-
-       });
+       
 
 
 
