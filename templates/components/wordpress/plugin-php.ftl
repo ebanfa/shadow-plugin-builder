@@ -75,6 +75,7 @@ class ${application.name} {
         // Entity API
         include_once('includes/api/EntityAPI.php');
         include_once('includes/api/PartyAPI.php');
+        include_once('includes/api/PropertyAPI.php');
         include_once('includes/api/NotificationAPI.php');
         include_once('includes/api/TenantAgreementAPI.php');
         include_once('includes/api/BusinessUnitAPI.php');

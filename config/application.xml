@@ -3617,6 +3617,7 @@
 			<listPageTemplate>html/wordpress/entity/locationtype/locationtype-archive.ftl</listPageTemplate>
 			<jsPageTemplate>html/wordpress/js/entity/locationtype-form.ftl</jsPageTemplate> 
 			<apiTemplate>services/wordpress/collateral/collateral-service-api.ftl</apiTemplate>-->
+			<apiTemplate>api/wordpress/property/property-service-api.ftl</apiTemplate>
             <global>N</global>
 			<field>
 				<name>entity_code</name>
