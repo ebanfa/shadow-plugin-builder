@@ -22,12 +22,12 @@ class CreateServiceAgreementView extends MultiEntityCreateView {
      */
     function get_tabs() {
         return array(
-            'units' => array(
+            'properties' => array(
                 'tab_type' => 'multi-select',
-                'description' => 'Units',
-                'model' => EntityAPI::get_model('unit'),
+                'description' => 'Properties',
+                'model' => EntityAPI::get_model('property'),
                 'artifact_name' => 'unit',
-                'type_instances' => EntityAPI::find_by_criteria('unittype', array()),
+                'type_instances' => EntityAPI::find_by_criteria('propertytype', array()),
                 ) ,
             'charges' => array(
                 'tab_type' => 'multi-select',
