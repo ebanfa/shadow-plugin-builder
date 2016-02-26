@@ -26,7 +26,7 @@ class PropertyAPI extends EntityAPI {
             if(isset($_POST['building'])) {
                 $buildings = $_POST['building'];
                 foreach ($buildings as $building) {
-                    $building = json_decode(stripslashes($_POST['building']));
+                    $building = json_decode(stripslashes($building));
                     var_dump($building);
                 }
             }
