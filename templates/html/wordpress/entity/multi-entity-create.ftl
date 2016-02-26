@@ -105,6 +105,7 @@
                 <input type="hidden" id="current-related-field" name="current-related-field" value="">
                 <input type="hidden" id="current-relationship-field-id" name="current-relationship-field-id" value="">
                 <input type="hidden" id="current-relationship-field-name" name="current-relationship-field-name" value="">
+                <input type="hidden" id="main-entity-post-name" name="main-entity-post-name" value="<?php echo $model['entity_post_name'];?>_form">
 
                 <div class="btn-demo m-t-10">
                     <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>

@@ -151,7 +151,7 @@ $(document).ready(function (){
    /* Add all check rows in the data table */
    $('body').on('click', '#add-selected-${modEntity.name?lower_case}-list-btn', function(e){
       e.preventDefault();
-      var page_artifact_form = $('#page-artifact-name').val() + '_form';
+      var page_artifact_form = $('#main-entity-post-name').val() + '_form';
       // Iterate over all selected checkboxes
       var idExists = false;
       $.each(${modEntity.postName}_rows_selected, function(index, rowId){
