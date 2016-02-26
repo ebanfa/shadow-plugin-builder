@@ -22,6 +22,9 @@ class TenantAgreementAPI extends EntityAPI {
                     $entity_data['entity_code'] = EntityStringUtils::get_token(8);
                 }
             }
+
+            var_dump($_POST['unit_id']);
+            
             if(isset($_POST['unit_id'])) {
                 $unit_ids = $_POST['unit_id'];
                 var_dump($building);
