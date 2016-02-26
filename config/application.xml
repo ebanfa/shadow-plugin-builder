@@ -7302,8 +7302,8 @@
 			<description>Rent Agreement</description>
 			<global>Y</global>
 			<isVirtual>N</isVirtual>
-			<createViewTemplate>views/wordpress/rent/create-entity-view.ftl</createViewTemplate>
-			<apiTemplate>api/wordpress/rent/rent-service-api.ftl</apiTemplate>
+			<createViewTemplate>views/wordpress/rentagreement/create-entity-view.ftl</createViewTemplate>
+			<apiTemplate>api/wordpress/rentagreement/rent-service-api.ftl</apiTemplate>
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
