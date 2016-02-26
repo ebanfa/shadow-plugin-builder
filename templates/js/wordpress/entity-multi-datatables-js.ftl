@@ -188,13 +188,11 @@ $(document).ready(function (){
    $('#${modEntity.name?lower_case}_dependent_list_box').on('click', '.${modEntity.name?lower_case}_dependent_list_item', function(e){
       var entityId = $(this).data('entity-id');
       var entityName = $(this).data('entity-name');
-      var page_artifact_form = $('#page-artifact-name').val() + '_form';
+      var page_artifact_form = $('#main-entity-post-name').val();
       // first remove the hidden form field and then the list box item
       var existingIds = $('#' + page_artifact_form).find('input[name="${modEntity.name?lower_case}_id[]"]');
       $.each(existingIds, function(index, rowId){ 
-        console.log('hecking entityId ' + entityId +' against row value' + $(rowId).val());
         if($(rowId).val() == entityId) {
-          console.log('Calling>>>>>>>>>>>>>>>>>>Removing id :' + $(rowId).val());
           $(rowId).remove();
         }
 

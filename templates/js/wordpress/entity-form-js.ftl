@@ -31,7 +31,7 @@ jQuery(document).ready(function ($)
                         showCancelButton: false,   
                         closeOnConfirm: true 
                     }, function(){   
-                        //$('#success').html(responseData.data.message);
+                        $('#success').html(responseData.data.message);
                     });
                 }
                 else {
