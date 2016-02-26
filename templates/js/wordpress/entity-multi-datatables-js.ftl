@@ -33,8 +33,6 @@ function updateDataTableSelectAllCtrl(table){
 $(document).ready(function (){
    // Array holding selected row IDs
 <#list module.entities as modEntity>
-<#if modEntity.name == "Unit" || modEntity.name == "Charge" || modEntity.name == "Term">
-
    var ${modEntity.postName}_rows_selected = [];
    var ${modEntity.postName}Table =  $('#${modEntity.postName}-list-table').DataTable({
         "ajax": {
@@ -202,8 +200,6 @@ $(document).ready(function (){
 
       
    });
-
-</#if>
 </#list>
 
 });

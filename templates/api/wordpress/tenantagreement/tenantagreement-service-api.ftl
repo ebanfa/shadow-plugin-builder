@@ -25,8 +25,6 @@ class TenantAgreementAPI extends EntityAPI {
 
             if(isset($_POST['unit_id'])) {
                 $unit_ids = $_POST['unit_id'];
-                echo '>>>>>>>>>>>>>>>>>>>.';
-                var_dump($unit_ids);
                 
             }
             
