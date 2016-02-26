@@ -29,6 +29,13 @@ class CreateServiceAgreementView extends MultiEntityCreateView {
                 'artifact_name' => 'property',
                 'type_instances' => EntityAPI::find_by_criteria('propertytype', array()),
             ) ,
+            'services' => array(
+                'tab_type' => 'multi-select',
+                'description' => 'Services',
+                'model' => EntityAPI::get_model('service'),
+                'artifact_name' => 'service',
+                'type_instances' => EntityAPI::find_by_criteria('servicetype', array()),
+            ),
             'charges' => array(
                 'tab_type' => 'multi-select',
                 'description' => 'Charges',
