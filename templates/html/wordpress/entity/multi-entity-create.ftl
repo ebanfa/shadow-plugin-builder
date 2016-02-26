@@ -208,7 +208,14 @@
                     </div>
 
                     <div class="modal-footer">
-                        <a id="add-multi-entity-btn" data-dependent-field-name="<?php echo $tab['artifact_name'];?>" type="button" data-dismiss="modal" class="btn btn-primary">Add</a>
+                    <?php if($tab['tab_type'] == 'multi-create') { ?>
+                        <a id="add-multi-entity-btn" 
+                    <?php } else { ?>
+                        <a id="add-selected-<?php echo $tab['artifact_name'];?>-list-btn" 
+                    <?php } ?>
+                            data-dependent-field-name="<?php echo $tab['artifact_name'];?>" 
+                            data-dependent-tab-type="<?php echo $tab['tab_type'];?>" 
+                            type="button" data-dismiss="modal" class="btn btn-primary">Add</a>
                     </div>
                 </div>
             </div>
@@ -284,6 +291,7 @@
             objData['entity_name'] = dependentFieldName;
             formData.append('entity_name', dependentFieldName);
             // Select only th fields in the artifacts create modal
+
             $('#' + dependentFieldName + '_multi_modal :input[type=text], ' + 
                 '#' + dependentFieldName + '_multi_modal select, ' + 
                 '#' + dependentFieldName + '_multi_modal textarea').each( function(index) { 

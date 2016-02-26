@@ -148,6 +148,7 @@ $(document).ready(function (){
       updateDataTableSelectAllCtrl(${modEntity.postName}Table);
    });
 
+   /* Add all check rows in the data table */
    $('body').on('click', '#add-selected-${modEntity.name?lower_case}-list-btn', function(e){
       e.preventDefault();
       var page_artifact_form = $('#page-artifact-name').val() + '_form';
@@ -163,17 +164,23 @@ $(document).ready(function (){
 
         });
         if(!idExists){
-          // Create a hidden element 
+          // Add the id of the selected row as a hidden input in the 
+          // main form 
            $('#' + page_artifact_form).append(
                $('<input>')
                   .attr('type', 'hidden')
                   .attr('name', '${modEntity.name?lower_case}_id[]')
                   .val(rowId)
            );
+           // Get the value of the name column. Every entity data table has name and description columns
            var dependentInstanceName = $('#${modEntity.name?lower_case}_' + rowId).data('dependent-instance-name');
-           // Add the item to the list 
-           $('#${modEntity.name?lower_case}_dependent_list_box').append($('<div id="${modEntity.name?lower_case}_list_item_' + rowId + '"><span data-entity-name="${modEntity.name?lower_case}" data-entity-id="' + rowId + '" class="badge ${modEntity.name?lower_case}_dependent_list_item" style="cursor: pointer; cursor: hand; background-color: red">X</span>' + dependentInstanceName + '</div>')
-                  .attr('class', 'list-group-item'));
+           // Add an entry into the visual list of select instances
+           $('#${modEntity.name?lower_case}_dependent_list_box').append($(
+                '<div id="${modEntity.name?lower_case}_list_item_' + rowId + '">
+                    <span data-entity-name="${modEntity.name?lower_case}" 
+                        data-entity-id="' + rowId + '" class="badge ${modEntity.name?lower_case}_dependent_list_item" 
+                        style="cursor: pointer; cursor: hand; background-color: red">X</span>' + dependentInstanceName + 
+                '</div>').attr('class', 'list-group-item'));
         }
       });
    });
