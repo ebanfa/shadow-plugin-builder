@@ -259,18 +259,18 @@
         });
 
         /* This is the add list multi entity click handler. Displays the multi entity list model */
-        $('body').on('click', '.dependent-field-search-link', function(e){
+        $('body').on('click', '#multi-add-instance-btn, .dependent-field-search-link', function(e){
             e.preventDefault();
             var dependentFieldName = $(this).data('dependent-field-name');
             $('#' + dependentFieldName + '_multi_modal').modal('show');
         });
 
         /* This is the add new entity click handler. Displays the multi entity create form model */
-        $('body').on('click', '#multi-add-instance-btn', function(e){
+        /*$('body').on('click', '#multi-add-instance-btn', function(e){
             e.preventDefault();
             var dependentFieldName = $(this).data('dependent-field-name');
             $('#' + dependentFieldName + '_multi_modal').modal('show');
-        });
+        });*/
 
         /* This called to add a new artifact instance to be created when the form is submitted */
         $('body').on('click', '#add-multi-entity-btn', function(e){
