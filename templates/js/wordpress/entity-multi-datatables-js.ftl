@@ -34,13 +34,13 @@ $(document).ready(function (){
    // Array holding selected row IDs
 <#list module.entities as modEntity>
    var ${modEntity.postName}_rows_selected = [];
-   var ${modEntity.postName}Table =  $('#${modEntity.postName}-list-table').DataTable({
+   var ${modEntity.postName}Table =  $('#${modEntity.postName}-multi-list-table').DataTable({
         "ajax": {
             'type': 'POST',
             'url': ${application.name?lower_case}_ajax_script.ajaxurl,
             'data': function(d){
                d.action = 'find_entity_ajax';
-               d.form = $("#${modEntity.postName}-list-form").serializeArray();
+               d.form = $("#${modEntity.postName}-multi-list-form").serializeArray();
             },
         },
         columns: [
@@ -95,7 +95,7 @@ $(document).ready(function (){
     });
 
    // Handle click on checkbox
-   $('#${modEntity.postName}-list-table tbody').on('click', 'input[type="checkbox"]', function(e){
+   $('#${modEntity.postName}-multi-list-table tbody').on('click', 'input[type="checkbox"]', function(e){
       var $row = $(this).closest('tr');
       // Get row data
       var data = ${modEntity.postName}Table.row($row).data();
@@ -125,16 +125,16 @@ $(document).ready(function (){
    });
 
    // Handle click on table cells with checkboxes
-   $('#${modEntity.postName}-list-table').on('click', 'tbody td, thead th:first-child', function(e){
+   $('#${modEntity.postName}-multi-list-table').on('click', 'tbody td, thead th:first-child', function(e){
       $(this).parent().find('input[type="checkbox"]').trigger('click');
    });
 
    // Handle click on "Select all" control
    $('thead input[name="select_all"]', ${modEntity.postName}Table.table().container()).on('click', function(e){
       if(this.checked){
-         $('#${modEntity.postName}-list-table tbody input[type="checkbox"]:not(:checked)').trigger('click');
+         $('#${modEntity.postName}-multi-list-table tbody input[type="checkbox"]:not(:checked)').trigger('click');
       } else {
-         $('#${modEntity.postName}-list-table tbody input[type="checkbox"]:checked').trigger('click');
+         $('#${modEntity.postName}-multi-list-table tbody input[type="checkbox"]:checked').trigger('click');
       }
       // Prevent click event from propagating to parent
       e.stopPropagation();
