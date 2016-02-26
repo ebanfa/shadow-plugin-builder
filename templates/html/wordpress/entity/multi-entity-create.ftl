@@ -258,13 +258,15 @@
             $('#' + currentRelatedFieldName + '_modal').modal('show');
         });
 
+        /* This is the add list multi entity click handler. Displays the multi entity list model */
         $('body').on('click', '.dependent-field-search-link', function(e){
             e.preventDefault();
             var dependentFieldName = $(this).data('dependent-field-name');
-            $('#' + dependentFieldName + '_modal').modal('show');
+            $('#' + dependentFieldName + '_multi_modal').modal('show');
         });
 
-         $('body').on('click', '#multi-add-instance-btn', function(e){
+        /* This is the add new entity click handler. Displays the multi entity create form model */
+        $('body').on('click', '#multi-add-instance-btn', function(e){
             e.preventDefault();
             var dependentFieldName = $(this).data('dependent-field-name');
             $('#' + dependentFieldName + '_multi_modal').modal('show');
