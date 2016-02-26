@@ -77,7 +77,9 @@ class ${application.name} {
         include_once('includes/api/PartyAPI.php');
         include_once('includes/api/PropertyAPI.php');
         include_once('includes/api/NotificationAPI.php');
-        include_once('includes/api/TenantAgreementAPI.php');
+        include_once('includes/api/RentAgreementAPI.php');
+        include_once('includes/api/ServiceAgreementAPI.php');
+        include_once('includes/api/ManagementAgreementAPI.php');
         include_once('includes/api/BusinessUnitAPI.php');
         include_once('includes/api/EntityPersistenceAPI.php');
         // Entity Controller
@@ -98,6 +100,9 @@ class ${application.name} {
         include_once('includes/view/MultiEntityCreateView.php');
         include_once('includes/view/CreateTenantAgreementView.php');
         include_once('includes/view/property/CreatePropertyView.php');
+        include_once('includes/view/rentagreement/CreateRentAgreementView.php');
+        include_once('includes/view/serviceagreement/CreateServiceAgreementView.php');
+        include_once('includes/view/managementagreement/CreateManagementAgreementView.php');
         include_once('includes/view/entity-form-fields.php');
         // Framework API
         include_once('includes/api/CloderiaFileAPI.php');

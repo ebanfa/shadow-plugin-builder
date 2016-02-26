@@ -7,7 +7,7 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
-class CreateTenantAgreementView extends MultiEntityCreateView {
+class CreateRentAgreementView extends MultiEntityCreateView {
 
 
     /**

@@ -335,7 +335,6 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 		}
 		this.generateArtifact(module, null, "views/wordpress/dashboard/dashboard-view-php.ftl" , includeViewOutputDir +  "DashboardView.php");
 		this.generateArtifact(module, null, "views/wordpress/party/party-view-php.ftl" , includeViewOutputDir +  "PartyView.php");
-		this.generateArtifact(module, null, "views/wordpress/tenantagreement/create-entity-view.ftl" , includeViewOutputDir +  "CreateTenantAgreementView.php");
 		this.generateArtifact(module, null, "views/wordpress/create-multi-entity.ftl" , includeViewOutputDir +  "MultiEntityCreateView.php");
 		this.generateArtifact(module, null, "views/wordpress/view-controller-php.ftl" , includeViewOutputDir +  "ViewController.php");
 		this.generateArtifact(module, null, "views/wordpress/base-artifact-view.ftl" , includeViewOutputDir +  "ArtifactView.php");

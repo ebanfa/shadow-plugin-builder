@@ -7,7 +7,7 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
-class TenantAgreementAPI extends EntityAPI {
+class RentAgreementAPI extends EntityAPI {
 
     /**
      *
@@ -25,7 +25,7 @@ class TenantAgreementAPI extends EntityAPI {
 
             if(isset($_POST['unit_id'])) {
                 $unit_ids = $_POST['unit_id'];
-                
+
             }
             
             EntityRequestUtils::copy_fields_to_post($entity_data);
