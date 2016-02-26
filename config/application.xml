@@ -7303,7 +7303,7 @@
 			<global>Y</global>
 			<isVirtual>N</isVirtual>
 			<createViewTemplate>views/wordpress/rentagreement/create-entity-view.ftl</createViewTemplate>
-			<apiTemplate>api/wordpress/rentagreement/rent-service-api.ftl</apiTemplate>
+			<apiTemplate>api/wordpress/rentagreement/rentagreement-service-api.ftl</apiTemplate>
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
