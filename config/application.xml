@@ -6742,61 +6742,6 @@
 		</entity>
 
 		<entity>
-			<name>AgreementCategory</name>
-			<postName>sb_agreecat</postName>
-			<description>Agreement Category</description>
-			<global>Y</global>
-			<field>
-				<name>entity_code</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
-				<required>N</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>alphanumeric</dataType>
-				<size>medium</size>
-				<dataColumn>true</dataColumn>
-				<description>Code</description>
-				<displayName>Code</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>name</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>name</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Name</description>
-				<displayName>name</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>description</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>text-lg</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Description</description>
-				<displayName>Description</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-		</entity>
-
-		<entity>
 			<name>AgreementType</name>
 			<postName>sb_agreetype</postName>
 			<description>Agreement Type</description>
@@ -6816,22 +6761,6 @@
 				<description>Code</description>
 				<displayName>Code</displayName>
 				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>at_category</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>sb_agreecat</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Category</description>
-				<displayName>Category</displayName>
-				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
 				<name>name</name>
@@ -7337,19 +7266,19 @@
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
-				<name>ra_property</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<name>ra_agreement</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
 				<createField>Y</createField>
 				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
-				<dataType>sb_property</dataType>
+				<dataType>sb_agreement</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
-				<description>Property</description>
-				<displayName>Property</displayName>
+				<description>Agreement</description>
+				<displayName>Agreement</displayName>
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
@@ -7459,19 +7388,19 @@
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
-				<name>ma_property</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<name>ma_agreement</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
 				<createField>Y</createField>
 				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
-				<dataType>sb_property</dataType>
+				<dataType>sb_agreement</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
-				<description>Property</description>
-				<displayName>Property</displayName>
+				<description>Agreement</description>
+				<displayName>Agreement</displayName>
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
@@ -7581,19 +7510,19 @@
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
-				<name>sa_property</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<name>sa_agreement</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
 				<createField>Y</createField>
 				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
-				<dataType>sb_property</dataType>
+				<dataType>sb_agreement</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
-				<description>Property</description>
-				<displayName>Property</displayName>
+				<description>Agreement</description>
+				<displayName>Agreement</displayName>
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
