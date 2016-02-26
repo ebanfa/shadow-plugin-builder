@@ -22,12 +22,12 @@ class CreateManagementAgreementView extends MultiEntityCreateView {
      */
     function get_tabs() {
         return array(
-            'properties' => array(
+            'buildings' => array(
                 'tab_type' => 'multi-select',
-                'description' => 'Properties',
-                'model' => EntityAPI::get_model('property'),
-                'artifact_name' => 'property',
-                'type_instances' => EntityAPI::find_by_criteria('propertytype', array()),
+                'description' => 'Buildings',
+                'model' => EntityAPI::get_model('building'),
+                'artifact_name' => 'building',
+                'type_instances' => EntityAPI::find_by_criteria('buildingtype', array()),
                 ) ,
             'charges' => array(
                 'tab_type' => 'multi-select',
