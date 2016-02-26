@@ -23,8 +23,14 @@ class PropertyAPI extends EntityAPI {
                     $entity_data['entity_code'] = EntityStringUtils::get_token(8);
                 }
             }
-            $buildings = json_decode(stripslashes($_POST['building']));
-            var_dump($buildings);
+            if(isset($_POST['building'])) {
+                $buildings = json_decode($_POST['building']);
+                foreach ($buildings as $building) {
+                    $building = json_decode(stripslashes($_POST['building']));
+                    var_dump($building);
+                }
+            }
+            
             EntityRequestUtils::copy_fields_to_post($entity_data);
             $entity_data = EntityPersistenceAPI::create_entity($entity_data);
         } else {
