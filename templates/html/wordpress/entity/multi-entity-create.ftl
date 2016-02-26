@@ -91,7 +91,7 @@
                             </div>
                         </div>
 
-                        <?php } } ?>
+                        <?php $count++;  } } ?>
                         
                     <ul class="fw-footer pagination wizard">
                         <li class="previous first"><a class="a-prevent" href="components.html"><i class="zmdi zmdi-more-horiz"></i></a></li>
