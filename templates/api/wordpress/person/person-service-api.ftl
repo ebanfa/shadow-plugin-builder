@@ -22,7 +22,6 @@ class PersonAPI extends EntityAPI {
                     $entity_data['entity_code'] = EntityStringUtils::get_token(8);
                 }
             }
-            var_dump($entity_data);
             
             $entity_data = self::create_party($entity_data);
             $entity_data = self::create_party_role($entity_data);

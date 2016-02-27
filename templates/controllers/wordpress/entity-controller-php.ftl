@@ -35,6 +35,7 @@ class EntityActionProcessor {
     public static function create_entity_ajax() {
         // Check the ajax request
         $entity_data = self::do_before_ajax_edit();
+        var_dump($entity_data);
         // Create the entity of we have no errors
         if(!$entity_data['has_errors']) {
             $entity_data = EntityAPI::create_entity($entity_data);
