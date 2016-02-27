@@ -91,19 +91,24 @@ class PersonAPI  {
     public static function create_party_role($entity_data) {
 
         if($entity_data['edit_mode']) {
-            $party_role_data = EntityAPIUtils::init_entity_data('partyrole');
-            $role_type = EntityAPI::get_by_code('roletype', strtoupper($entity_data['role']));
+            if(isset($_POST['role'])) {
 
-            $party_role_data['edit_mode'] = true;
-            $party_role_data['role'] = $role_type['id'];
-            $party_role_data['party'] = $entity_data['party'];
-            $party_role_data['parent_unit'] = $entity_data['business_unit'];
-            $party_role_data['business_unit'] = $entity_data['business_unit'];
-            $party_role_data['name'] = $entity_data['name'];
-            $party_role_data['description'] = $entity_data['name'];
+                $entity_data['role'] = sanitize_text_field($_POST['role']);
+                $party_role_data = EntityAPIUtils::init_entity_data('partyrole');
+                $role_type = EntityAPI::get_by_code('roletype', strtoupper($entity_data['role']));
 
-            //$party_role_data = CloderiaAPIUtils::validate_entity_data($party_role_data);
-            $party_role_data = EntityAPI::do_create_entity($party_role_data);
+                $party_role_data['edit_mode'] = true;
+                $party_role_data['role'] = $role_type['id'];
+                $party_role_data['party'] = $entity_data['party'];
+                $party_role_data['parent_unit'] = $entity_data['business_unit'];
+                $party_role_data['business_unit'] = $entity_data['business_unit'];
+                $party_role_data['name'] = $entity_data['name'];
+                $party_role_data['description'] = $entity_data['name'];
+
+                //$party_role_data = CloderiaAPIUtils::validate_entity_data($party_role_data);
+                $party_role_data = EntityAPI::do_create_entity($party_role_data);
+
+            }
         }
         return $entity_data;
     }
