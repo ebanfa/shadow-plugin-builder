@@ -30,8 +30,8 @@ class SingleEntityView extends BaseEntityView {
         foreach ($this->model['related_child_entities'] as $related_child_entity) { 
             $tab = array(
                 'tab_type' => 'entity-list',
-                'name' => $related_child_entities['name'],
-                'description' => $related_child_entities['entity_description'],
+                'name' => $related_child_entity['name'],
+                'description' => $related_child_entity['entity_description'],
                 'model' => EntityAPI::get_model(strtolower($related_child_entity['entity_name'])),
                 'artifact_name' => strtolower($related_child_entity['entity_name']),
                 'type_instances' =>  array(),
