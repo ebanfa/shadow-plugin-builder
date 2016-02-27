@@ -22,7 +22,7 @@
         <a class="col-xs-4" 
             href="#tab-<?php echo $count; ?>" 
             aria-controls="tab-<?php echo $count; ?>" role="tab" data-toggle="tab">
-            <?php echo $tab['name']; ?>
+            <?php echo $tab['description']; ?>
         </a>
     </li>
     <?php  $count++; } ?>
