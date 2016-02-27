@@ -1459,7 +1459,7 @@
 
 		<entity>
 			<name>Person</name>
-			<postName>sb_persom</postName>
+			<postName>sb_person</postName>
 			<description>Person</description>
 			<global>N</global>
 			<apiTemplate>api/wordpress/person/person-service-api.ftl</apiTemplate>
