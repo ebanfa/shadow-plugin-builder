@@ -15,6 +15,8 @@ class PersonAPI extends EntityAPI {
     public static function do_create_entity($entity_data){
 
         $entity_data['has_errors'] = false;
+        echo '>>>>>>>>>>>>>>>>>><<<<<<<<<<<<' . $entity_data['last_name'];
+
         if ($entity_data['edit_mode']) {
             // Create the order
             if(isset($entity_data['entity_code'])){
@@ -22,7 +24,7 @@ class PersonAPI extends EntityAPI {
                     $entity_data['entity_code'] = EntityStringUtils::get_token(8);
                 }
             }
-            
+
             $entity_data = self::create_party($entity_data);
             $entity_data = self::create_party_role($entity_data);
             $entity_data = EntityPersistenceAPI::do_create_entity($entity_data);
