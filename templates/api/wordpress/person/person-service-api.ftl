@@ -23,9 +23,15 @@ class PersonAPI  {
                     $entity_data['entity_code'] = EntityStringUtils::get_token(8);
                 }
             }
-
-            $entity_data = self::create_party($entity_data);
+            // Create the party
+            $party_data = self::create_party($entity_data);
+            if(isset($party_data['id'])){ 
+                $entity_data['party'] = $party_data['id']; 
+                $entity_data['name'] = $party_data['name'];
+            }
+            // Create the party role
             $entity_data = self::create_party_role($entity_data);
+
             EntityRequestUtils::copy_fields_to_post($entity_data);
             $entity_data = EntityPersistenceAPI::create_entity($entity_data);
         } else {
@@ -38,7 +44,7 @@ class PersonAPI  {
             $entity_data['has_errors'] = true;
             $entity_data['error_message'] = $post_id->get_error_message();
         }
-        return $entity_data;
+        return $party_data;
     }
 
     /**
@@ -73,10 +79,8 @@ class PersonAPI  {
         //$party_data = CloderiaAPIUtils::validate_entity_data($party_data);
         $party_data = EntityAPI::do_create_entity($party_data);
 
-        if(isset($party_data['id'])){ 
-            $entity_data['party'] = $party_data['id']; 
-        }
-        return $entity_data;
+        
+        return $party_data;
     }
 
     /**
