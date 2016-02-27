@@ -19,7 +19,7 @@ class PersonAPI  {
         $entity_data['has_errors'] = false;
         echo '>>>>>>>>>>>>>>>>>><<<<<<<<<<<<' . $entity_data['first_name'];
 
-        if ($entity_data['edit_mode']) {
+        /*if ($entity_data['edit_mode']) {
             // Create the order
             if(isset($entity_data['entity_code'])){
                 if(EntityStringUtils::is_invalid_string($entity_data['entity_code'])) {
@@ -43,7 +43,7 @@ class PersonAPI  {
         if(is_wp_error($entity_data['id'])) {
             $entity_data['has_errors'] = true;
             $entity_data['error_message'] = $post_id->get_error_message();
-        }
+        }*/
         return $entity_data;
     }
 
