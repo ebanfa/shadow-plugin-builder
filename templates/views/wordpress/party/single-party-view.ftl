@@ -67,6 +67,25 @@ class SinglePartyView extends SingleEntityView {
      * 
      */
     public function process_tenant_view() {
+
+        $tabs = array();
+        $tabs_entities = array('rent', 'rentagreement', 'dispute');
+
+        foreach ($this->model['related_child_entities'] as $related_child_entity) {
+            $artifact_name = strtolower($related_child_entity['entity_name']);
+            if(in_array($artifact_name, $tabs_entities)) {
+                $tab = array(
+                    'tab_type' => 'entity-list',
+                    'name' => $related_child_entity['name'],
+                    'description' => $related_child_entity['entity_description'],
+                    'model' => EntityAPI::get_model(strtolower($related_child_entity['entity_name'])),
+                    'artifact_name' => $artifact_name,
+                    'type_instances' =>  array(),
+                );
+                array_push($tabs, $tab);
+            }
+        }
+        return $tabs;
         
     }
 
@@ -74,14 +93,31 @@ class SinglePartyView extends SingleEntityView {
      * 
      */
     public function process_prospectivetenant_view() {
-        
+        return array();
     }
 
     /**
      * 
      */
     public function process_serviceprovider_view() {
-        
+        $tabs = array();
+        $tabs_entities = array('serviceagreement', 'dispute');
+
+        foreach ($this->model['related_child_entities'] as $related_child_entity) {
+            $artifact_name = strtolower($related_child_entity['entity_name']);
+            if(in_array($artifact_name, $tabs_entities)) {
+                $tab = array(
+                    'tab_type' => 'entity-list',
+                    'name' => $related_child_entity['name'],
+                    'description' => $related_child_entity['entity_description'],
+                    'model' => EntityAPI::get_model(strtolower($related_child_entity['entity_name'])),
+                    'artifact_name' => $artifact_name,
+                    'type_instances' =>  array(),
+                );
+                array_push($tabs, $tab);
+            }
+        }
+        return $tabs;
     }
 }
 
