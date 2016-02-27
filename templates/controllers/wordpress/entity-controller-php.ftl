@@ -38,8 +38,6 @@ class EntityActionProcessor {
         // Create the entity of we have no errors
         if(!$entity_data['has_errors']) {
 
-            echo 'calling size of array' . count($entity_data);
-            var_dump($entity_data);
             $entity_data = EntityAPI::create_entity($entity_data);
         }
         // Run post edit hooks

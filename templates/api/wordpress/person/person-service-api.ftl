@@ -14,10 +14,7 @@ class PersonAPI  {
      */
     public static function do_create_entity($entity_data){
 
-        echo "callling>>>>>>>>>>>>>>>>>>>>>>>>>>>.";
-
         $entity_data['has_errors'] = false;
-        echo '>>>>>>>>>>>>>>>>>><<<<<<<<<<<<' . $entity_data['first_name'];
 
         if ($entity_data['edit_mode']) {
             // Create the order
@@ -27,7 +24,6 @@ class PersonAPI  {
                 }
             }
 
-            echo '>>>>>>>>>>>>>>>>>><<<<<<<<<<<<' . $entity_data['last_name'];
             $entity_data = self::create_party($entity_data);
             $entity_data = self::create_party_role($entity_data);
             EntityRequestUtils::copy_fields_to_post($entity_data);
