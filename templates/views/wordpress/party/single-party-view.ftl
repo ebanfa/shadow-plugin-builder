@@ -48,7 +48,6 @@ class SinglePartyView extends SingleEntityView {
 
         foreach ($this->model['related_child_entities'] as $related_child_entity) {
             $artifact_name = strtolower($related_child_entity['entity_name']);
-
             if(in_array($artifact_name, $tabs_entities)) {
                 $tab = array(
                     'tab_type' => 'entity-list',

@@ -22,7 +22,7 @@
         <a class="col-xs-4" 
             href="#tab-<?php echo $count; ?>" 
             aria-controls="tab-<?php echo $count; ?>" role="tab" data-toggle="tab">
-            <?php echo $tab['description']; ?>
+            <?php echo $tab['name']; ?>
         </a>
     </li>
     <?php  $count++; } ?>
@@ -86,7 +86,7 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                        <?php foreach ($tab['model']['fields'] as $child_field) { if($child_field['is_list_field']) {?>
+                        <?php foreach ($tab['model']['entity_fields'] as $child_field) { if($child_field['is_list_field']) {?>
                             <th><?php echo $child_field['description']; ?></th>
                         <?php } } ?>
                         </tr>
