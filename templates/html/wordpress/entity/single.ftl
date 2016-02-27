@@ -51,8 +51,7 @@
             </table>
         </div>
         <div class="btn-demo m-t-10">
-            <a href="<?php echo $view->get_edit_url(); ?>" 
-               class="btn btn-primary waves-effect">
+            <a href="<?php echo $view->get_edit_url(); ?>" class="btn btn-primary waves-effect">
                <?php _e('Edit', 'framework') ?>
             </a>
             <form id="delete-entity-form" style="display:none" action=""  method="POST">
@@ -61,7 +60,7 @@
                 <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
                 <input type="hidden" name="submitted" id="submitted" value="true" />
             </form>
-            <a id="delete-entity-btn" href="<?php echo get_site_url() . '/page?type=entity&artifact=' . $view->get_artifact_name() . '&id=' . $model['id']. $view->get_parent_url(); ?>&page_action=delete" class="btn btn-warning waves-effect">
+            <a id="delete-entity-btn" href="<?php echo $view->get_delete_url(); ?>" class="btn btn-warning waves-effect">
                <?php _e('Delete', 'framework') ?>
             </a>
             <?php if(!is_null($view->get_parent_artifact_name())) { ?>
