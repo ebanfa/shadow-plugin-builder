@@ -43,6 +43,7 @@ class SinglePartyView extends SingleEntityView {
      * 
      */
     public function process_client_view() {
+        $tabs = array();
         $tabs_entities = array('agreement');
 
         foreach ($this->model['related_child_entities'] as $related_child_entity) {
