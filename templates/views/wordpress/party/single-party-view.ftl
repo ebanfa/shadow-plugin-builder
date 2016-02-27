@@ -21,26 +21,46 @@ class SinglePartyView extends SingleEntityView {
      */
     public function process_model() {
         parent::process_model();
-        if(isset($_REQUEST['role'])) {
-            $role = sanitize_text_field($_REQUEST['role']);
-            if($role == 'client') $this->process_client_view(); 
-            if($role == 'tenant') $this->process_tenant_view(); 
-            if($role == 'prospectivetenant') $this->process_prospectivetenant_view(); 
-            if($role == 'serviceprovider') $this->process_serviceprovider_view(); 
-        }
         
+        
+    }
+
+    /**
+     *
+     */
+    function get_tabs() {
+        if(!isset($_REQUEST['role'])) {
+            return parent::get_tabs();
+        }
+        $role = sanitize_text_field($_REQUEST['role']);
+        if($role == 'client') return $this->process_client_view(); 
+        if($role == 'tenant') return $this->process_tenant_view(); 
+        if($role == 'prospectivetenant') return $this->process_prospectivetenant_view(); 
+        if($role == 'serviceprovider') return $this->process_serviceprovider_view(); 
     }
 
     /**
      * 
      */
     public function process_client_view() {
-        $client_related_entities = array();
-        $model = $this->model;
-        foreach ($client_related_entities as $value) {
-            # code...
-            // if value in array then unset the value
+        $tabs_entities = array('agreement');
+
+        foreach ($this->model['related_child_entities'] as $related_child_entity) {
+            $artifact_name = strtolower($related_child_entity['entity_name']);
+
+            if(in_array($artifact_name, $tabs_entities)) {
+                $tab = array(
+                    'tab_type' => 'entity-list',
+                    'name' => $related_child_entity['name'],
+                    'description' => $related_child_entity['entity_description'],
+                    'model' => EntityAPI::get_model(strtolower($related_child_entity['entity_name'])),
+                    'artifact_name' => $artifact_name,
+                    'type_instances' =>  array(),
+                );
+                array_push($tabs, $tab);
+            }
         }
+        return $tabs;
     }
 
     /**
