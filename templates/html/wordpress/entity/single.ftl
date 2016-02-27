@@ -7,6 +7,7 @@
 
     $view = $_REQUEST['page_info']['view'];
     $model = $view->get_model();
+    $tabs = $view->get_tabs();
 
 ?>
 <ul class="tab-nav tn-justified tn-icon" role="tablist">
@@ -16,12 +17,12 @@
         </a>
     </li>
 
-    <?php $count = 1; foreach ($model['related_child_entities'] as $related_child_entities) { ?>
+    <?php  $count = 1; foreach ($tabs as $tab) {  ?>
     <li role="presentation">
         <a class="col-xs-4" 
             href="#tab-<?php echo $count; ?>" 
             aria-controls="tab-<?php echo $count; ?>" role="tab" data-toggle="tab">
-            <?php echo $related_child_entities['entity_description']; ?>
+            <?php echo $tab['description']; ?>
         </a>
     </li>
     <?php  $count++; } ?>
@@ -72,20 +73,20 @@
         </div>
     </div>
 
-    <?php $ifield_count = 1; foreach ($model['related_child_entities'] as $related_child_entity) { ?>
+    <?php $ifield_count = 1; foreach ($tabs as $tab) { ?>
         <div role="tabpanel" class="tab-pane animated fadeIn" id="tab-<?php echo $ifield_count; ?>">
             <!-- <div id="success"></div> -->
-            <form id="<?php echo $related_child_entity['data_type']?>-list-form">
+            <form id="<?php echo $tab['model']['data_type'];?>-list-form">
                 <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
                 <input type="hidden" name="submitted" id="submitted" value="true" /> 
-                <input type="hidden" name="<?php echo $related_child_entity['name'];?>" value="<?php echo $model['id']; ?>"/>
+                <input type="hidden" name="<?php echo $tab['name'];?>" value="<?php echo $model['id']; ?>"/>
             </form>
             <div class="table-responsive">
-                <table id="<?php echo $related_child_entity['data_type']?>-table" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
+                <table id="<?php echo $tab['model']['data_type'];?>-table" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>ID</th>
-                        <?php foreach ($related_child_entity['fields'] as $child_field) { if($child_field['is_list_field']) {?>
+                        <?php foreach ($tab['model']['fields'] as $child_field) { if($child_field['is_list_field']) {?>
                             <th><?php echo $child_field['description']; ?></th>
                         <?php } } ?>
                         </tr>
@@ -95,9 +96,9 @@
                 </table>
             </div>
             <?php 
-                $child_field_name = $related_child_entity['name'];
-                $child_artifact_name = strtolower($related_child_entity['entity_name']);
-                $child_entity_description = strtolower($related_child_entity['entity_description']);
+                $child_field_name = $tab['name'];
+                $child_artifact_name = $tab['artifact_name'];
+                $child_entity_description = strtolower($tab['model']['entity_description']);
                 $child_parent_url = '&parent_id=' . $model['id'] . '&parent_artifact=' . $view->get_artifact_name() . '&parent_field=' . $child_field_name;
             ?>
             <div class="btn-demo m-t-10">

@@ -9,6 +9,9 @@ if (!defined('ABSPATH')) {
 
 class SingleEntityView extends BaseEntityView { 
 
+
+    public $tabs;
+
 	/**
      *
      */
@@ -20,12 +23,32 @@ class SingleEntityView extends BaseEntityView {
     }
 
     /**
+     *
+     */
+    function get_tabs() {
+        $tabs = array();
+        foreach ($this->model['related_child_entities'] as $related_child_entity) { 
+            $tab = array(
+                'tab_type' => 'entity-list',
+                'name' => $related_child_entities['name'],
+                'description' => $related_child_entities['entity_description'],
+                'model' => EntityAPI::get_model(strtolower($related_child_entity['entity_name'])),
+                'artifact_name' => strtolower($related_child_entity['entity_name']),
+                'type_instances' =>  array(),
+            );
+            array_push($tabs, $tab);
+         }
+         return $tabs;
+    }
+
+    /**
      * Process the load the model for this artifact
      */
     public function process_model() {
         $artifact_data = ArtifactUtils::$artifacts[$this->artifact];
         if($artifact_data['artifact_type'] == 'entity' && isset($_REQUEST['id'])) {
             $this->model = EntityAPI::get_by_id($this->get_artifact_name(), sanitize_text_field($_REQUEST['id']));
+            $tabs = $this->get_tabs();
         }
     }
 
