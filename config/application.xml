@@ -1462,6 +1462,7 @@
 			<postName>sb_persom</postName>
 			<description>Person</description>
 			<global>N</global>
+			<apiTemplate>api/wordpress/person/person-service-api.ftl</apiTemplate>
 			<!-- <createPageTemplate>html/wordpress/entity/person/person-create-form.ftl</createPageTemplate>
 			<editPageTemplate>html/wordpress/entity/person/person-edit-form.ftl</editPageTemplate>
 			<viewPageTemplate>html/wordpress/entity/person/person-single.ftl</viewPageTemplate>
