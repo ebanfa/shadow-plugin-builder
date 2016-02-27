@@ -51,7 +51,7 @@
             </table>
         </div>
         <div class="btn-demo m-t-10">
-            <a href="<?php echo get_site_url() . '/page?type=entity&artifact=' . $view->get_artifact_name() . '&id=' . $model['id'] . $view->get_parent_url(); ?>&page_action=edit" 
+            <a href="<?php echo $view->get_edit_url(); ?>" 
                class="btn btn-primary waves-effect">
                <?php _e('Edit', 'framework') ?>
             </a>

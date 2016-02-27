@@ -12,6 +12,7 @@ class SingleEntityView extends BaseEntityView {
 
     public $tabs;
 
+
 	/**
      *
      */
@@ -58,6 +59,22 @@ class SingleEntityView extends BaseEntityView {
     public function render_impl() {
         // execute default render operation
         CloderiaUIDisplayAPI::display_single_entity($_REQUEST['page_info']);
+    }
+
+    /**
+     * Render this view
+     */
+    public function get_edit_url() {
+        // execute default render operation
+        return get_site_url() . '/page?type=entity&artifact=' . $this->get_artifact_name() . '&id=' . $this->model['id'] . $view->get_parent_url() . '&page_action=edit'
+    }
+
+    /**
+     * Render this view
+     */
+    public function get_delete_url() {
+        // execute default render operation
+        return get_site_url() . '/page?type=entity&artifact=' . $view->get_artifact_name() . '&id=' . $this->model['id'] . $view->get_parent_url() . '&page_action=delete'
     }
 }
 
