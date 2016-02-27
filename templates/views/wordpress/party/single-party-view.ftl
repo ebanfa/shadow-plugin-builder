@@ -28,7 +28,7 @@ class SinglePartyView extends SingleEntityView {
     /**
      *
      */
-    function get_taabs() {
+    function get_tabs() {
         if(!isset($_REQUEST['role'])) {
             return parent::get_tabs();
         }
