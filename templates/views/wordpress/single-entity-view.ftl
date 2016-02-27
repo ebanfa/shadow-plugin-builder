@@ -74,7 +74,7 @@ class SingleEntityView extends BaseEntityView {
      */
     public function get_delete_url() {
         // execute default render operation
-        return get_site_url() . '/page?type=entity&artifact=' . $view->get_artifact_name() . '&id=' . $this->model['id'] . $this->get_parent_url() . '&page_action=delete';
+        return get_site_url() . '/page?type=entity&artifact=' . $this->get_artifact_name() . '&id=' . $this->model['id'] . $this->get_parent_url() . '&page_action=delete';
     }
 }
 
