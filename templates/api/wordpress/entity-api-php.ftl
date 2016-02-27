@@ -13,7 +13,7 @@ class EntityAPI {
         $entity_name = $entity_data['entity_name'];
         $class_name = $entity_name . 'API';
         if (class_exists($class_name)) {
-            echo 'size of array' . count($entity_data);
+            echo 'size of array::'. $class_name  . count($entity_data);
             return call_user_func($class_name . '::do_create_entity', $entity_data);
         }
         else{
