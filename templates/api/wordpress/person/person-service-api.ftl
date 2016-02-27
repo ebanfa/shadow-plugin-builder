@@ -19,7 +19,7 @@ class PersonAPI  {
         $entity_data['has_errors'] = false;
         echo '>>>>>>>>>>>>>>>>>><<<<<<<<<<<<' . $entity_data['first_name'];
 
-        /*if ($entity_data['edit_mode']) {
+        if ($entity_data['edit_mode']) {
             // Create the order
             if(isset($entity_data['entity_code'])){
                 if(EntityStringUtils::is_invalid_string($entity_data['entity_code'])) {
@@ -43,7 +43,7 @@ class PersonAPI  {
         if(is_wp_error($entity_data['id'])) {
             $entity_data['has_errors'] = true;
             $entity_data['error_message'] = $post_id->get_error_message();
-        }*/
+        }
         return $entity_data;
     }
 
@@ -56,7 +56,7 @@ class PersonAPI  {
 
         if($entity_data['edit_mode']) {
             $party_data['edit_mode'] = true;
-            $party_type = self::get_by_code('partytype', 'INDIVIDUAL');
+            $party_type = EntityAPI::get_by_code('partytype', 'INDIVIDUAL');
             $party_data['party_type'] = $party_type['id'];
             //$party_data['business_unit'] = $entity_data['business_unit'];
         }
@@ -64,8 +64,8 @@ class PersonAPI  {
             // First we need to load the entity from the db
             // So we can retrieve the id of the parent party
             if(isset($entity_data['id'])) {
-                $saved_entity_data = self::get_by_id('person', $entity_data['id']);
-                $parent_party_data = self::get_by_id('party', $saved_entity_data['party']);
+                $saved_entity_data = EntityAPI::get_by_id('person', $entity_data['id']);
+                $parent_party_data = EntityAPI::get_by_id('party', $saved_entity_data['party']);
                 $parent_party_data['edit_mode'] = false;
                 $party_data = array_merge($parent_party_data, $party_data);
             }
@@ -77,7 +77,7 @@ class PersonAPI  {
         $party_data['description'] = $party_name;
 
         //$party_data = CloderiaAPIUtils::validate_entity_data($party_data);
-        $party_data = self::do_create_entity($party_data);
+        $party_data = EntityAPI::do_create_entity($party_data);
 
         if(isset($party_data['id'])){ 
             $entity_data['party'] = $party_data['id']; 
@@ -92,7 +92,7 @@ class PersonAPI  {
 
         if($entity_data['edit_mode']) {
             $party_role_data = EntityAPIUtils::init_entity_data('partyrole');
-            $role_type = self::get_by_code('roletype', strtoupper($entity_data['role']));
+            $role_type = EntityAPI::get_by_code('roletype', strtoupper($entity_data['role']));
 
             $party_role_data['edit_mode'] = true;
             $party_role_data['role'] = $role_type['id'];
@@ -103,7 +103,7 @@ class PersonAPI  {
             $party_role_data['description'] = $entity_data['name'];
 
             //$party_role_data = CloderiaAPIUtils::validate_entity_data($party_role_data);
-            $party_role_data = self::do_create_entity($party_role_data);
+            $party_role_data = EntityAPI::do_create_entity($party_role_data);
         }
         return $entity_data;
     }
