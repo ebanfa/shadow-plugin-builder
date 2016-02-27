@@ -55,8 +55,12 @@ class EntityActionProcessor {
         }
         $artifact_name = EntityRequestUtils::get_artifact_name();
         $entity_data = EntityAPIUtils::init_entity_data($artifact_name);
+
+        echo 'calling first data size of array' . count($entity_data);
         $entity_data = EntityRequestUtils::build_entity_data_from_post($entity_data);
+        echo 'calling second data size of array' . count($entity_data);
         $entity_data = EntityAPIUtils::validate_entity_data($entity_data);
+        echo 'calling third data size of array' . count($entity_data);
         return $entity_data;
     }
 
