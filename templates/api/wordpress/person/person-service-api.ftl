@@ -30,8 +30,6 @@ class PersonAPI  {
             echo '>>>>>>>>>>>>>>>>>><<<<<<<<<<<<' . $entity_data['last_name'];
             $entity_data = self::create_party($entity_data);
             $entity_data = self::create_party_role($entity_data);
-            $entity_data = EntityPersistenceAPI::do_create_entity($entity_data);
-
             EntityRequestUtils::copy_fields_to_post($entity_data);
             $entity_data = EntityPersistenceAPI::create_entity($entity_data);
         } else {
