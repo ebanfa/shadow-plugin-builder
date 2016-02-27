@@ -14,6 +14,8 @@ class PersonAPI extends EntityAPI {
      */
     public static function do_create_entity($entity_data){
 
+        print_r($entity_data);
+
         $entity_data['has_errors'] = false;
         echo '>>>>>>>>>>>>>>>>>><<<<<<<<<<<<' . $entity_data['first_name'];
 

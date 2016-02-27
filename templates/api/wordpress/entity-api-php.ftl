@@ -15,7 +15,9 @@ class EntityAPI {
         if (class_exists($class_name)) {
             return call_user_func($class_name . '::do_create_entity', $entity_data);
         }
-        return self::do_create_entity($entity_data);
+        else{
+            return self::do_create_entity($entity_data);
+        }
     }
     
     /**
