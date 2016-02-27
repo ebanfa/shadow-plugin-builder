@@ -7,7 +7,7 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
-class SinglePartyView extends BaseEntityView { 
+class SinglePartyView extends SingleEntityView { 
 
 	/**
      *
