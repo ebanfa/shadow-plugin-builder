@@ -37,6 +37,8 @@ class EntityActionProcessor {
         $entity_data = self::do_before_ajax_edit();
         // Create the entity of we have no errors
         if(!$entity_data['has_errors']) {
+
+            echo 'calling size of array' . count($entity_data);
             $entity_data = EntityAPI::create_entity($entity_data);
         }
         // Run post edit hooks
