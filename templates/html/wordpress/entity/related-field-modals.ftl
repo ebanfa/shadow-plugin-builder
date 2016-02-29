@@ -35,7 +35,7 @@
                                 
                                 <ul class="dropdown-menu dropdown-menu-right">
                                     <li>
-                                        <a href="/page?type=entity&page_action=create&artifact=<?php echo strtolower($field['entity_name']); ?>">Add a new record</a>
+                                        <a href="<?php echo EntityActionProcessor::get_base_url() ;?>artifact=<?php echo strtolower($field['entity_name']); ?>&page_action=create">Add a new record</a>
                                     </li>
                                 </ul>
                             </li>

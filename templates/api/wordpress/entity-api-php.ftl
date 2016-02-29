@@ -33,6 +33,16 @@ class EntityAPI {
                     $entity_data['entity_code'] = EntityStringUtils::get_token(8);
                 }
             }
+            else {
+                $entity_data['entity_code'] = EntityStringUtils::get_token(8);
+            }
+            // Ensure the business unit is set
+            if(!$entity_data['is_global_entity'] && !isset($entity_data['business_unit'])){
+                $business_unit = BusinessUnitAPI::get_current_user_business_unit();
+                if (isset($business_unit['id'])) {
+                    $entity_data['business_unit'] = $business_unit['id'];
+                }
+            }
             EntityRequestUtils::copy_fields_to_post($entity_data);
             $entity_data = EntityPersistenceAPI::create_entity($entity_data);
         } else {

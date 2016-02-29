@@ -17,6 +17,7 @@ class CloderiaUserAPI {
         if(self::validate_user_data($user_data)) {
             // 1. Create the party
             $party_data = self::create_party($user_data);
+            
             if(!$party_data['has_errors']) {
                 // 2. Create the default buisness unit for the party
                 $businessunit_data = self::create_default_party_businessunit($party_data);
@@ -42,6 +43,7 @@ class CloderiaUserAPI {
         $party_type = EntityAPI::get_by_code('partytype', get_option('cp_default_partytype'));
         if(isset($party_type['id'])) {
             $entity_data = EntityAPIUtils::init_entity_data('party');
+            $entity_data['has_errors'] = false;
             $entity_data['edit_mode'] = true;
             $entity_data['party_type'] = $party_type['id'];
             $entity_data['user_name'] = $user_data['user_login'];

@@ -9,6 +9,8 @@ if (!defined('ABSPATH')) {
 
 class EntityActionProcessor {
 
+
+
     /**
      *
      */
@@ -27,6 +29,13 @@ class EntityActionProcessor {
 
         add_action('wp_ajax_delete_entity_ajax', 'EntityActionProcessor::delete_entity_ajax');
         add_action('wp_ajax_nopriv_delete_entity_ajax', 'EntityActionProcessor::delete_entity_ajax');
+    }
+
+    /**
+     *
+     */
+    public static function get_base_url() {
+        return get_site_url() . '/?page_id=2&';
     }
     
     /**
@@ -70,8 +79,15 @@ class EntityActionProcessor {
             if(isset($entity_data['redirect_url'])) {
                 $redirect_url = $entity_data['redirect_url'];
             } else {
-                $redirect_url = get_site_url() . '/page?type=entity&artifact='. $entity_data['entity_artifact_name'] . '&id=' . $entity_data['id'] . '&page_action=view';
+                $redirect_url = self::get_base_url() . 'artifact='. $entity_data['entity_artifact_name'] . '&id=' . $entity_data['id'] . '&page_action=view';
             }
+            if(isset($entity_data['extra_url_params'])) {
+                foreach ($entity_data['extra_url_params'] as $key => $value) {
+                    $redirect_url = $redirect_url . '&' . $key . '=' . $value;
+                }
+               
+            }
+
             // Process the parent id, if any
             if(isset($_REQUEST['parent_id']) && isset($_REQUEST['parent_artifact']) && isset($_REQUEST['parent_field'])) 
             {
@@ -151,7 +167,7 @@ class EntityActionProcessor {
      */
     public static function do_after_ajax_delete($entity_data) {
         if (!$entity_data['has_errors']) {
-            $redirect_url = get_site_url() . '/page?type=entity&artifact='. $entity_data['entity_artifact_name'] .'&page_action=list';
+            $redirect_url = self::get_base_url() . 'artifact='. $entity_data['entity_artifact_name'] .'&page_action=list';
             wp_send_json_success(array('message' => "<script type='text/javascript'>window.location='" . $redirect_url . "'</script>"));
         } else {
             wp_send_json_error(array('message' => 'Error deleting entity'));

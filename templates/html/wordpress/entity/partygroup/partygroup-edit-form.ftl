@@ -26,6 +26,10 @@
             <input type="hidden" name="id" value="<?php echo $model['id'];?>" /> 
             <input type="hidden" name="submitted" id="submitted" value="true" />  
             <input type="hidden" name="artifact" id="artifact" value="<?php echo $view->get_artifact_name(); ?>" />
+            
+            <?php if(isset($_REQUEST['role'])) { ?>
+            <input type="hidden" id="role" name="role" value="<?php echo sanitize_text_field($_REQUEST['role']); ?>">
+            <?php } ?>
 
             <button id="<?php echo $view->get_artifact_name(); ?>-form-btn" type="submit" class="btn btn-primary waves-effect">
                 <?php _e('Update', 'framework') ?>

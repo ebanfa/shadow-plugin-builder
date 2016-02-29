@@ -31,6 +31,9 @@ function updateDataTableSelectAllCtrl(table){
 }
 
 $(document).ready(function (){
+
+
+    var baseUrl = ${application.name?lower_case}_base_url.baseUrl;
    // Array holding selected row IDs
 <#list module.entities as modEntity>
    var ${modEntity.postName}_rows_selected = [];
@@ -76,7 +79,7 @@ $(document).ready(function (){
                     if($('#${modEntity.name?lower_case}_parent_params').length) {
                         parent_params = parent_params + $('#${modEntity.name?lower_case}_parent_params').val(); 
                     }
-                    return '<a class="data-table-link" href="../page/?type=entity&artifact=${modEntity.name?lower_case}&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="${modEntity.name?lower_case}" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                    return '<a class="data-table-link" href="' + ${application.name?lower_case}_base_url.baseUrl + 'artifact=${modEntity.name?lower_case}&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="${modEntity.name?lower_case}" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
                 },
                 "targets": 1
             }

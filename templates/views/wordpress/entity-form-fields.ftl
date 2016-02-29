@@ -266,18 +266,4 @@
 ?>
 
 
-<?php  
-    if(isset($_REQUEST['page_info'])) { 
-
-        $view = $_REQUEST['page_info']['view'];
-
-        if(!is_null($view->get_parent_field())) { ?>
-        <input type="hidden" name="parent_id" value="<?php echo $view->get_parent_id(); ?>">
-        <input type="hidden" name="parent_artifact" value="<?php echo $view->get_parent_artifact_name(); ?>">
-        <input type="hidden" name="parent_field" value="<?php echo $view->get_parent_field(); ?>">
-        <?php if(is_null($view->get_parent_param())){?>
-        <input type="hidden" name="parent_param" value="<?php echo urlencode($view->get_parent_param()); ?>">
-        <?php } ?>
-<?php   }
-    } ?>
 

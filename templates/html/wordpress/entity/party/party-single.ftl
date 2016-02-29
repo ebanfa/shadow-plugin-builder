@@ -102,11 +102,16 @@
                 $child_field_name = $tab['name'];
                 $child_artifact_name = $tab['artifact_name'];
                 $child_entity_description = strtolower($tab['model']['entity_description']);
-                $child_parent_url = '&parent_id=' . $model['id'] . '&parent_artifact=' . $view->get_artifact_name() . '&parent_field=' . $child_field_name;
+                $child_parent_url = '&parent_id=' . $model['id'] . '&parent_artifact=' . $view->get_artifact_name() . '&parent_field=' . $child_field_name ;
+                
+                $party_role_param = '';
+                if(isset($_REQUEST['role'])) { 
+                    $party_role_param = '&role=' . sanitize_text_field($_REQUEST['role']);
+                }
             ?>
             <div class="btn-demo m-t-10">
                 <a id="create-<?php echo $child_artifact_name; ?>-btn" 
-                    href="<?php echo EntityActionProcessor::get_base_url() ;?>artifact=<?php echo $child_artifact_name; ?>&page_action=create&parent_id=<?php echo $model['id']; ?>&parent_artifact=<?php echo $view->get_artifact_name(); ?>&parent_field=<?php echo $child_field_name; ?>" 
+                    href="<?php echo EntityActionProcessor::get_base_url() ;?>artifact=<?php echo $child_artifact_name; ?>&page_action=create&parent_id=<?php echo $model['id']; ?>&parent_artifact=<?php echo $view->get_artifact_name(); ?>&parent_field=<?php echo $child_field_name . '&parent_param='. urlencode($party_role_param); ?>" 
                     class="btn btn-success waves-effect">
                    <?php _e('Add ' . $child_entity_description, 'framework') ?>
                 </a>

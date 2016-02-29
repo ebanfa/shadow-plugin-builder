@@ -55,7 +55,9 @@ class BaseEntityView extends ArtifactView {
             $this->parent_artifact = sanitize_text_field($_REQUEST['parent_artifact']);
             $this->parent_url = '&parent_id=' . $this->parent_id . '&parent_artifact=' . $this->parent_artifact . '&parent_field=' . $this->parent_field;
 
-            if(isset($_REQUEST['parent_param'])) $this->parent_param = urldecode($_REQUEST['parent_param']);
+            if(isset($_REQUEST['parent_param'])) {
+                $this->parent_param = urldecode($_REQUEST['parent_param']);
+            }
         }
     }
 

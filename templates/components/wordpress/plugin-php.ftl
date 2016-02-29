@@ -76,6 +76,7 @@ class ${application.name} {
         include_once('includes/api/EntityAPI.php');
         include_once('includes/api/PartyAPI.php');
         include_once('includes/api/PersonAPI.php');
+        include_once('includes/api/PartyGroupAPI.php');
         include_once('includes/api/PropertyAPI.php');
         include_once('includes/api/NotificationAPI.php');
         include_once('includes/api/RentAgreementAPI.php');
@@ -100,6 +101,7 @@ class ${application.name} {
         include_once('includes/view/MultiEntityCreateView.php');
         include_once('includes/view/party/SinglePartyView.php');
         include_once('includes/view/property/CreatePropertyView.php');
+        include_once('includes/view/notification/SingleNotificationView.php');
         include_once('includes/view/rentagreement/CreateRentAgreementView.php');
         include_once('includes/view/serviceagreement/CreateServiceAgreementView.php');
         include_once('includes/view/managementagreement/CreateManagementAgreementView.php');
@@ -185,7 +187,7 @@ class ${application.name} {
         add_action('shadowbanker_before_entity_form_field', 'CloderiaUIDisplayAPI::before_entity_form_field', 10);
         add_action('shadowbanker_after_entity_form_field', 'CloderiaUIDisplayAPI::after_entity_form_field', 10);
         
-        //add_action('shadowbanker_display_notifications_items', 'CloderiaUIDisplayAPI::show_notification_items', 10);
+        add_action('shadowbanker_display_notifications_items', 'CloderiaUIDisplayAPI::show_notification_items', 10);
         add_action('shadowbanker_render_dashboard_view', 'CloderiaUIDisplayAPI::render_dashboard_view', 10);
         //add_action('showdow_banker_display_user_conversations', 'CloderiaUIDisplayAPI::show_user_conversations', 10); 
         //add_action('showdow_banker_display_latest_user_conversation', 'CloderiaUIDisplayAPI::show_latest_user_conversation', 10);
@@ -254,6 +256,7 @@ class ${application.name} {
         
         wp_localize_script('conversations_js', '${application.name?lower_case}_ajax_script', array('ajaxurl' => admin_url('admin-ajax.php')));
         wp_localize_script('entity_datasource_js', '${application.name?lower_case}_ajax_script', array('ajaxurl' => admin_url('admin-ajax.php')));
+         wp_localize_script('entity_datasource_js', '${application.name?lower_case}_base_url', array('baseUrl' => EntityActionProcessor::get_base_url()));
     }
 
     /**

@@ -7,7 +7,21 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
-class BusinessUnitAPI extends EntityAPI {
+class BusinessUnitAPI {
+
+    /**
+     *
+     */
+    public static function do_create_entity($entity_data){
+     return EntityAPI::do_create_entity($entity_data);
+    }
+
+    /**
+     *
+     */
+    public static function do_find_entity($entity_data) {
+        return  EntityAPI::do_find_entity($entity_data); 
+    }
 
     /**
      * Get current user business role
@@ -19,11 +33,11 @@ class BusinessUnitAPI extends EntityAPI {
         if(isset($current_user_party['id'])){ 
 
             // Get the party profile of the current user
-            $current_user_party_role = self::get_by_field('partyprofile', 'party', $current_user_party['id']);
+            $current_user_party_role = EntityAPI::get_by_field('partyprofile', 'party', $current_user_party['id']);
             // The current business is gotten from the business unit set as default business unit
             // for the party profile of the current user
             if(isset($current_user_party_role['id']) && isset($current_user_party_role['default_unit'])) {
-                $business_unit = self::get_by_id('businessunit', $current_user_party_role['default_unit']);
+                $business_unit = EntityAPI::get_by_id('businessunit', $current_user_party_role['default_unit']);
             }
         }
         return $business_unit;

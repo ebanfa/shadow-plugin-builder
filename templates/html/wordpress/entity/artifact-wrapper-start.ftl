@@ -18,7 +18,7 @@
 				</h2>
 				<ul class="actions actions-alt">
                     <li class="dropdown">
-                        <a href="widget-templates.html" data-toggle="dropdown" aria-expanded="false">
+                        <a id="action-link-viewer" href="widget-templates.html" data-toggle="dropdown" aria-expanded="false">
                             <i class="md md-more-vert"></i>
                         </a>
                         
@@ -31,6 +31,10 @@
                         </ul>
                     </li>
                 </ul>
+                <?php if($view->get_page_action() == 'list') { ?>
+                <a id="action-link-trigger" class="btn bgm-cyan btn-float waves-effect" style="border: 2px solid white;" data-toggle="dropdown" aria-expanded="false"><i class="zmdi zmdi-plus" style="line-height: 37px"></i></a>
+                <?php } ?>
+                
 			</div>
 
 			<div class="card-body card-padding">
@@ -38,3 +42,14 @@
                     <div class="col-sm-12">
                         <div class="body-section">
                             <div id="success"></div>
+<script type="text/javascript">
+    
+        jQuery(document).ready(function($)
+        {
+            $('#action-link-trigger').on('click', function (e) {
+                e.stopPropagation();
+                $(this).prev().find('[data-toggle=dropdown]').dropdown('toggle');
+            });
+        });
+    
+</script>

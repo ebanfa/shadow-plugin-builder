@@ -7,6 +7,7 @@
 
     $view = $_REQUEST['page_info']['view'];
     $model = $view->get_model();
+
 ?>
     <form role="form" name="<?php echo $model['entity_post_name'];?>_form" 
         id="<?php echo $model['entity_post_name'];?>_form" action="" 
@@ -24,21 +25,9 @@
         <input type="hidden" id="current-related-field" name="current-related-field" value="">
         <input type="hidden" id="current-relationship-field-id" name="current-relationship-field-id" value="">
         <input type="hidden" id="current-relationship-field-name" name="current-relationship-field-name" value="">
-
-        <?php  
-            if(isset($_REQUEST['page_info'])) { 
-
-                $view = $_REQUEST['page_info']['view'];
-
-                if(!is_null($view->get_parent_field())) { ?>
-                <input type="hidden" name="parent_id" value="<?php echo $view->get_parent_id(); ?>">
-                <input type="hidden" name="parent_artifact" value="<?php echo $view->get_parent_artifact_name(); ?>">
-                <input type="hidden" name="parent_field" value="<?php echo $view->get_parent_field(); ?>">
-                <?php if(!is_null($view->get_parent_param())){?>
-                <input type="hidden" name="parent_param" value="<?php echo urlencode($view->get_parent_param()); ?>">
-                <?php } ?>
-        <?php   }
-            } ?>
+        <?php if(isset($_REQUEST['role'])) { ?>
+        <input type="hidden" id="role" name="role" value="<?php echo sanitize_text_field($_REQUEST['role']); ?>">
+        <?php } ?>
 
         <div class="btn-demo m-t-10">
             <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
@@ -72,6 +61,11 @@
                 $('#' + currentRelatedFieldName).val(currentRelatedInstanceId);
                 $('#' + currentRelatedFieldName + '_txt').val(currentRelatedInstanceName);
                 
+                console.log('currentRelatedFieldName::' + currentRelatedFieldName );
+                console.log('currentRelatedInstanceId::' + currentRelatedInstanceId );
+                console.log('currentRelatedInstanceName::' + currentRelatedInstanceName );
+                console.log('currentRelatedArtifactName::' + currentRelatedArtifactName );
+
                 $('.modal').modal('hide');
             });
 

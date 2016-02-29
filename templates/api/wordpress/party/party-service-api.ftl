@@ -7,7 +7,53 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
-class PartyAPI extends EntityAPI {
+class PartyAPI {
+
+    /**
+     *
+     */
+    public static function do_create_entity($entity_data){
+        $entity_data =  EntityAPI::do_create_entity($entity_data);
+        if(!$entity_data['has_errors']) {
+            $notification_data = array();
+            $notification_data['data'] = $entity_data;
+            $notification_data['code'] = $entity_data['entity_code'];
+            $notification_data['name'] = $entity_data['name'];
+
+            $business_unit = EntityAPI::get_by_id('businessunit', $entity_data['business_unit']);
+            if(isset($business_unit['id'])) {
+                $notification_data['business_unit'] = $business_unit['name'];
+            }
+            
+
+            $notification_data['n_type'] = NotificationAPI::$party_created;
+            if(isset($_REQUEST['role'])) {
+                $role = sanitize_text_field($_REQUEST['role']);
+                $role_type = EntityAPI::get_by_code('roletype', strtoupper($role));
+                if(isset($role_type['id'])) {
+                    $notification_data['role'] = $role_type['name'];
+                }
+                
+            } 
+            // Set the creator
+            $current_user_party = self::get_current_user_party();
+            $notification_data['n_owner'] = $current_user_party['id'];
+            $notification_data['log_level'] = NotificationAPI::$info;
+
+            NotificationAPI::do_notification($notification_data);
+        }
+        return $entity_data;
+    }
+
+    /**
+     *
+     */
+    public static function do_find_entity($entity_data) {
+        $role_type = EntityRequestUtils::get_query_form_field('role');
+
+        if($role_type) return  self::find_by_role($role_type); 
+        return  EntityAPI::do_find_entity($entity_data); 
+    }
 
     /**
      * Get all parties with a given roles
@@ -16,7 +62,7 @@ class PartyAPI extends EntityAPI {
 
         $search_results = array();
         // Get the role 
-        $role_type = self::get_by_code('roletype', strtoupper($role));
+        $role_type = EntityAPI::get_by_code('roletype', strtoupper($role));
         // Process only if we got a valid response from the call above
         if(isset($role_type['id']) && isset($role_type['entity_code'])) {
             // Special treatment is required if the role type is 'user_organization'
@@ -25,13 +71,13 @@ class PartyAPI extends EntityAPI {
             } else {
                 $party_ids = array();
                 // Search for all the party role type associations with the given role
-                $party_roles = self::find_by_criteria('partyrole', array('role' => $role_type['id']));
+                $party_roles = EntityAPI::find_by_criteria('partyrole', array('role' => $role_type['id']));
                 // Loop throug all the return party roles 
                 // and push the party id into list of parties
                 foreach ($party_roles as $party_role) {
                     array_push($party_ids, $party_role['party']);
                 }
-                $search_results = self::find_by_ids('party', $party_ids);
+                $search_results = EntityAPI::find_by_ids('party', $party_ids);
             }
         }
         return $search_results;
@@ -55,15 +101,15 @@ class PartyAPI extends EntityAPI {
             // Find all the roles of the parent party
             // and find1 those that are of role type user_organization
             foreach ($organization_ids as $organization_id) {
-                $user_organization_role = self::get_by_code('roletype', 'USER_ORGANIZATION');
+                $user_organization_role = EntityAPI::get_by_code('roletype', 'USER_ORGANIZATION');
                 if(isset($user_organization_role['id'])) {
-                    $party_role = self::find_by_criteria('partyrole', array('party' => $organization_id, 'role' => $user_organization_role['id']));
+                    $party_role = EntityAPI::find_by_criteria('partyrole', array('party' => $organization_id, 'role' => $user_organization_role['id']));
                     if(isset($party_role['id'])) {
                         array_push($search_results, $organization_id);
                     }
                 }
             }
-            return self::find_by_ids('party', $search_results);
+            return EntityAPI::find_by_ids('party', $search_results);
         }
         return $search_results;
     }
@@ -75,7 +121,7 @@ class PartyAPI extends EntityAPI {
         $search_results = array();
         if($party_id) {
             // Fins all the party roles of the current user party
-            $party_roles = self::find_by_criteria('partyrole', array('party' => $party_id));
+            $party_roles = EntityAPI::find_by_criteria('partyrole', array('party' => $party_id));
             // Get the ids of all the business units of the party roles
             $business_unit_ids = array();
             foreach ($party_roles as $party_role) {
@@ -83,7 +129,7 @@ class PartyAPI extends EntityAPI {
             }
             // Get the business units 
             $business_unit_ids = array_unique($business_unit_ids);
-            return self::find_by_ids('businessunit', $business_unit_ids);
+            return EntityAPI::find_by_ids('businessunit', $business_unit_ids);
         }
         return $search_results;
     }
@@ -93,7 +139,7 @@ class PartyAPI extends EntityAPI {
      */
     public static function get_party_user($party_id){
         $user_data = array();
-        $party_data = self::get_by_id('party', $party_id); 
+        $party_data = EntityAPI::get_by_id('party', $party_id); 
       
         if(isset($party_data['id'])){       
             $user = get_user_by('login', $party_data['user_name']); 
@@ -110,7 +156,7 @@ class PartyAPI extends EntityAPI {
      */
     public static function get_user_party($user_id){
         $user = get_user_by('id', $user_id);
-        return self::get_by_field('party', 'user_name', $user->user_login);
+        return EntityAPI::get_by_field('party', 'user_name', $user->user_login);
     }
 
     /**

@@ -7,7 +7,7 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
-class PersonAPI  {
+class PartyGroupAPI  {
 
     /**
      *
@@ -28,7 +28,6 @@ class PersonAPI  {
             if (isset($business_unit['id'])) {
                 $entity_data['business_unit'] = $business_unit['id'];
             }
-
             // Create the party
             $party_data = self::create_party($entity_data);
             if(isset($party_data['id'])){ 
@@ -54,7 +53,7 @@ class PersonAPI  {
             $entity_data['requires_redirect'] = false;
             $entity_data = EntityPersistenceAPI::update_entity($entity_data);
         }
-
+        
         if(is_wp_error($entity_data['id'])) {
             $entity_data['has_errors'] = true;
             $entity_data['error_message'] = $post_id->get_error_message();
@@ -77,7 +76,7 @@ class PersonAPI  {
 
         if($entity_data['edit_mode']) {
             $party_data['edit_mode'] = true;
-            $party_type = EntityAPI::get_by_code('partytype', 'INDIVIDUAL');
+            $party_type = EntityAPI::get_by_code('partytype', 'ORGANIZATION');
             $party_data['party_type'] = $party_type['id'];
             //$party_data['business_unit'] = $entity_data['business_unit'];
         }
@@ -85,19 +84,18 @@ class PersonAPI  {
             // First we need to load the entity from the db
             // So we can retrieve the id of the parent party
             if(isset($entity_data['id'])) {
-                $saved_entity_data = EntityAPI::get_by_id('person', $entity_data['id']);
-                $parent_party_data = EntityAPI::get_by_id('party', $saved_entity_data['party_type']);
+                $saved_entity_data = EntityAPI::get_by_id('partygroup', $entity_data['id']);
+                $parent_party_data = EntityAPI::get_by_id('party', $saved_entity_data['party']);
                 $parent_party_data['edit_mode'] = false;
                 $party_data = array_merge($parent_party_data, $party_data);
                 $entity_data['business_unit'] = $saved_entity_data['business_unit'];
             }
         }
         // Set the name on the part and on the entity
-        $party_name = $entity_data['first_name'] . ' ' . $entity_data['last_name'];
-        $party_data['name'] = $party_name;
-        $entity_data['name'] = $party_name;
-        $party_data['description'] = $party_name;
+        $party_data['name'] = $entity_data['name'];
+        $party_data['description'] = $entity_data['description'];
         $party_data['business_unit'] = $entity_data['business_unit'];
+
         //$party_data = CloderiaAPIUtils::validate_entity_data($party_data);
         $party_data = PartyAPI::do_create_entity($party_data);
         

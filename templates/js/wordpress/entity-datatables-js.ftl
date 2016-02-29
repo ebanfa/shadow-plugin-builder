@@ -3,6 +3,8 @@ jQuery(document).ready(function($)
 {
 <#list module.entities as entity>
 
+    var baseUrl = ${application.name?lower_case}_base_url.baseUrl;
+
     <#if entity.name == "Party">
     $('#${entity.postName}-table').dataTable({
         "ajax": {
@@ -43,7 +45,7 @@ jQuery(document).ready(function($)
                         parent_params = parent_params + $('#${entity.name?lower_case}_parent_params').val(); 
                     }
 
-                    return '<a class="data-table-link" href="../page/?type=entity&artifact=${entity.name?lower_case}&id=' + row.id + role + '&page_action=view' + '" data-related-artifact-name="${entity.name?lower_case}" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=${entity.name?lower_case}&id=' + row.id + role + '&page_action=view' + '" data-related-artifact-name="${entity.name?lower_case}" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
                 },
                 "targets": 1
             }
@@ -87,7 +89,7 @@ jQuery(document).ready(function($)
                     if($('#${entity.name?lower_case}_parent_params').length) {
                         parent_params = parent_params + $('#${entity.name?lower_case}_parent_params').val(); 
                     }
-                    return '<a class="data-table-link" href="../page/?type=entity&artifact=${entity.name?lower_case}&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="${entity.name?lower_case}" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=${entity.name?lower_case}&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="${entity.name?lower_case}" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
                 },
                 "targets": 1
             }

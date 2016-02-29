@@ -41,7 +41,7 @@ if (!defined('ABSPATH')) {
                                 <div class="lv-body c-overflow">
 				    <?php if(!empty($notification_items)) {
                                               foreach($notification_items as $item) { ?>
-                                    <a class="lv-item" href="<?php echo get_site_url() . '/page?type=entity&artifact=notification&id=' . $item['id']; ?>&page_action=view">
+                                    <a class="lv-item" href="<?php echo EntityActionProcessor::get_base_url() . 'artifact=notification&id=' . $item['id']; ?>&page_action=view">
                                         <div class="media">
                                             <div class="pull-left">
                                                 <img class="lv-img-sm" src="img/profile-pics/1.jpg" alt="">

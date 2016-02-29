@@ -3,8 +3,8 @@
 	<name>ShadowCore</name>
 	<packageName>shadowbanker</packageName>
 	<description>Shadow Banker</description>
-	<templatesDir>/var/lib/openshift/568431577628e1f9cf0000f1/app-root/data/shadow-plugin-builder/templates/</templatesDir>
-	<generateSourcesDir>/var/lib/openshift/568431577628e1f9cf0000f1/app-root/data/shadow-plugin-builder/target/</generateSourcesDir>
+	<templatesDir>/home/edward/Project/shadow-plugin-builder/templates/</templatesDir>
+	<generateSourcesDir>/home/edward/Project/shadow-plugin-builder/target/</generateSourcesDir>
 
 	<menuBar>
 		<menuGroup>
@@ -15,7 +15,7 @@
 			<active>N</active>
 			<cssClass>md-dashboard</cssClass>
 			<targetType>page</targetType>
-			<target>/page?artifact=dashboard&amp;page_action=view</target>
+			<target>/wordpress/?page_id=2&amp;artifact=dashboard&amp;page_action=view</target>
 		</menuGroup>
 
 		<menuGroup>
@@ -31,7 +31,7 @@
 				<active>N</active>
 				<cssClass>md-mail add-client-btn</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?artifact=party&amp;page_action=list&amp;role=client</target>
+				<target>/wordpress/?page_id=2&amp;artifact=party&amp;page_action=list&amp;role=client</target>
 			</menu>
 			<menu>
 				<name>tenants</name>
@@ -40,7 +40,7 @@
 				<active>N</active>
 				<cssClass>md-mail add-tenant-btn</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?artifact=party&amp;page_action=list&amp;role=tenant</target>
+				<target>/wordpress/?page_id=2&amp;artifact=party&amp;page_action=list&amp;role=tenant</target>
 			</menu>
 			<menu>
 				<name>prospectivetenants</name>
@@ -49,7 +49,7 @@
 				<active>N</active>
 				<cssClass>md-mail add-prospect-btn</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?artifact=party&amp;page_action=list&amp;role=prospective_tenant</target>
+				<target>/wordpress/?page_id=2&amp;artifact=party&amp;page_action=list&amp;role=prospective_tenant</target>
 			</menu>
 			<menu>
 				<name>serviceproviders</name>
@@ -58,7 +58,7 @@
 				<active>N</active>
 				<cssClass>md-mail add-serviceprovider-btn</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?artifact=party&amp;page_action=list&amp;role=service_provider</target>
+				<target>/wordpress/?page_id=2&amp;artifact=party&amp;page_action=list&amp;role=service_provider</target>
 			</menu>
 		</menuGroup>
 
@@ -75,7 +75,7 @@
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?page_action=list&amp;artifact=property</target>
+				<target>/wordpress/?page_id=2&amp;page_action=list&amp;artifact=property</target>
 			</menu>
 			<menu>
 				<name>buildings</name>
@@ -84,7 +84,7 @@
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?page_action=list&amp;artifact=building</target>
+				<target>/wordpress/?page_id=2&amp;page_action=list&amp;artifact=building</target>
 			</menu>
 			<menu>
 				<name>inspections</name>
@@ -93,7 +93,7 @@
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?page_action=list&amp;artifact=inspection</target>
+				<target>/wordpress/?page_id=2&amp;page_action=list&amp;artifact=inspection</target>
 			</menu>
 			<menu>
 				<name>maintenance</name>
@@ -102,7 +102,7 @@
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?page_action=list&amp;artifact=maintenance</target>
+				<target>/wordpress/?page_id=2&amp;page_action=list&amp;artifact=maintenance</target>
 			</menu>
 		</menuGroup>
 
@@ -119,7 +119,7 @@
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?page_action=list&amp;artifact=managementagreement</target>
+				<target>/wordpress/?page_id=2&amp;page_action=list&amp;artifact=managementagreement</target>
 			</menu>
 			<menu>
 				<name>rentagreements</name>
@@ -128,7 +128,7 @@
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?page_action=list&amp;artifact=rentagreement</target>
+				<target>/wordpress/?page_id=2&amp;page_action=list&amp;artifact=rentagreement</target>
 			</menu>
 			<menu>
 				<name>serviceagreements</name>
@@ -137,7 +137,7 @@
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?page_action=list&amp;artifact=serviceagreement</target>
+				<target>/wordpress/?page_id=2&amp;page_action=list&amp;artifact=serviceagreement</target>
 			</menu>
 			<menu>
 				<name>charges</name>
@@ -146,7 +146,7 @@
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?page_action=list&amp;artifact=charge</target>
+				<target>/wordpress/?page_id=2&amp;page_action=list&amp;artifact=charge</target>
 			</menu>
 			<menu>
 				<name>terms</name>
@@ -155,7 +155,7 @@
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?page_action=list&amp;artifact=term</target>
+				<target>/wordpress/?page_id=2&amp;page_action=list&amp;artifact=term</target>
 			</menu>
 		</menuGroup>
 
@@ -172,7 +172,7 @@
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?page_action=list&amp;artifact=transaction</target>
+				<target>/wordpress/?page_id=2&amp;page_action=list&amp;artifact=transaction</target>
 			</menu>
 			<menu>
 				<name>generalledger</name>
@@ -181,7 +181,7 @@
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?page_action=list&amp;artifact=transaction</target>
+				<target>/wordpress/?page_id=2&amp;page_action=list&amp;artifact=transaction</target>
 			</menu>
 			<menu>
 				<name>transactions</name>
@@ -190,7 +190,7 @@
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?page_action=list&amp;artifact=transaction</target>
+				<target>/wordpress/?page_id=2&amp;page_action=list&amp;artifact=transaction</target>
 			</menu>
 			<menu>
 				<name>invoices</name>
@@ -199,7 +199,7 @@
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?page_action=list&amp;artifact=invoice</target>
+				<target>/wordpress/?page_id=2&amp;page_action=list&amp;artifact=invoice</target>
 			</menu>
 			<menu>
 				<name>receipts</name>
@@ -208,7 +208,7 @@
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?page_action=list&amp;artifact=receipts</target>
+				<target>/wordpress/?page_id=2&amp;page_action=list&amp;artifact=receipts</target>
 			</menu>
 			<menu>
 				<name>payments</name>
@@ -217,7 +217,7 @@
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?page_action=list&amp;artifact=payment</target>
+				<target>/wordpress/?page_id=2&amp;page_action=list&amp;artifact=payment</target>
 			</menu>
 			<menu>
 				<name>expenses</name>
@@ -226,7 +226,7 @@
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?page_action=list&amp;artifact=expense</target>
+				<target>/wordpress/?page_id=2&amp;page_action=list&amp;artifact=expense</target>
 			</menu>
 		</menuGroup>
 
@@ -244,7 +244,7 @@
 				<cssClass>md-business</cssClass>
 				<targetType>page</targetType>
 				<targetTemplate>html/wordpress/page/reports/financialreports-page-php.ftl</targetTemplate>
-				<target>/page?type=page&amp;artifact=balancesheet</target>
+				<target>/wordpress/?page_id=2&amp;artifact=balancesheet</target>
 			</menu>
 			<menu>
 				<name>balancesheetconsolidated</name>
@@ -254,7 +254,7 @@
 				<cssClass>md-business</cssClass>
 				<targetType>page</targetType>
 				<targetTemplate>html/wordpress/page/reports/financialreports-page-php.ftl</targetTemplate>
-				<target>/page?type=page&amp;artifact=balancesheetconsolidated</target>
+				<target>/wordpress/?page_id=2&amp;artifact=balancesheetconsolidated</target>
 			</menu>
 			<menu>
 				<name>generalledger</name>
@@ -264,7 +264,7 @@
 				<cssClass>md-business</cssClass>
 				<targetType>page</targetType>
 				<targetTemplate>html/wordpress/page/reports/financialreports-page-php.ftl</targetTemplate>
-				<target>/page?type=page&amp;artifact=generalledger</target>
+				<target>/wordpress/?page_id=2&amp;artifact=generalledger</target>
 			</menu>
 			<menu>
 				<name>generalledgerconsolidated</name>
@@ -274,7 +274,7 @@
 				<cssClass>md-business</cssClass>
 				<targetType>page</targetType>
 				<targetTemplate>html/wordpress/page/reports/financialreports-page-php.ftl</targetTemplate>
-				<target>/page?type=page&amp;artifact=generalledgerconsolidated</target>
+				<target>/wordpress/?page_id=2&amp;artifact=generalledgerconsolidated</target>
 			</menu>
 			<menu>
 				<name>incomestatement</name>
@@ -284,7 +284,7 @@
 				<cssClass>md-business</cssClass>
 				<targetType>page</targetType>
 				<targetTemplate>html/wordpress/page/reports/financialreports-page-php.ftl</targetTemplate>
-				<target>/page?type=page&amp;artifact=incomestatement</target>
+				<target>/wordpress/?page_id=2&amp;artifact=incomestatement</target>
 			</menu>
 			<menu>
 				<name>incomestatementconsolidated</name>
@@ -294,7 +294,7 @@
 				<cssClass>md-business</cssClass>
 				<targetType>page</targetType>
 				<targetTemplate>html/wordpress/page/reports/financialreports-page-php.ftl</targetTemplate>
-				<target>/page?type=page&amp;artifact=incomestatementconsolidated</target>
+				<target>/wordpress/?page_id=2&amp;artifact=incomestatementconsolidated</target>
 			</menu>
 			<menu>
 				<name>incomestatementdetailed</name>
@@ -304,7 +304,7 @@
 				<cssClass>md-business</cssClass>
 				<targetType>page</targetType>
 				<targetTemplate>html/wordpress/page/reports/financialreports-page-php.ftl</targetTemplate>
-				<target>/page?type=page&amp;artifact=incomestatementdetailed</target>
+				<target>/wordpress/?page_id=2&amp;artifact=incomestatementdetailed</target>
 			</menu>
 			<menu>
 				<name>rentalownerendingbalance</name>
@@ -314,7 +314,7 @@
 				<cssClass>md-business</cssClass>
 				<targetType>page</targetType>
 				<targetTemplate>html/wordpress/page/reports/financialreports-page-php.ftl</targetTemplate>
-				<target>/page?type=page&amp;artifact=rentalownerendingbalance</target>
+				<target>/wordpress/?page_id=2&amp;artifact=rentalownerendingbalance</target>
 			</menu>
 			<menu>
 				<name>rentalownerstatement</name>
@@ -324,7 +324,7 @@
 				<cssClass>md-business</cssClass>
 				<targetType>page</targetType>
 				<targetTemplate>html/wordpress/page/reports/financialreports-page-php.ftl</targetTemplate>
-				<target>/page?type=page&amp;artifact=rentalownerstatement</target>
+				<target>/wordpress/?page_id=2&amp;artifact=rentalownerstatement</target>
 			</menu>
 			<menu>
 				<name>propertystatement</name>
@@ -334,7 +334,7 @@
 				<cssClass>md-business</cssClass>
 				<targetType>page</targetType>
 				<targetTemplate>html/wordpress/page/reports/financialreports-page-php.ftl</targetTemplate>
-				<target>/page?type=page&amp;artifact=propertystatement</target>
+				<target>/wordpress/?page_id=2&amp;artifact=propertystatement</target>
 			</menu>
 			<menu>
 				<name>trialbalance</name>
@@ -344,7 +344,7 @@
 				<cssClass>md-business</cssClass>
 				<targetType>page</targetType>
 				<targetTemplate>html/wordpress/page/reports/financialreports-page-php.ftl</targetTemplate>
-				<target>/page?type=page&amp;artifact=trialbalance</target>
+				<target>/wordpress/?page_id=2&amp;artifact=trialbalance</target>
 			</menu>
 			<menu>
 				<name>trialbalanceconsolidated</name>
@@ -354,7 +354,7 @@
 				<cssClass>md-business</cssClass>
 				<targetType>page</targetType>
 				<targetTemplate>html/wordpress/page/reports/financialreports-page-php.ftl</targetTemplate>
-				<target>/page?type=page&amp;artifact=trialbalanceconsolidated</target>
+				<target>/wordpress/?page_id=2&amp;artifact=trialbalanceconsolidated</target>
 			</menu>
 		</menuGroup>
 
@@ -372,7 +372,7 @@
 				<cssClass>md-business</cssClass>
 				<targetType>page</targetType>
 				<targetTemplate>html/wordpress/page/rentreports-page-php.ftl</targetTemplate>
-				<target>/page?type=page&amp;artifact=currenttenants</target>
+				<target>/wordpress/?page_id=2&amp;artifact=currenttenants</target>
 			</menu>
 			<menu>
 				<name>delinquenttenants</name>
@@ -382,7 +382,7 @@
 				<cssClass>md-business</cssClass>
 				<targetType>page</targetType>
 				<targetTemplate>html/wordpress/page/rentreports-page-php.ftl</targetTemplate>
-				<target>/page?type=page&amp;artifact=delinquenttenants</target>
+				<target>/wordpress/?page_id=2&amp;artifact=delinquenttenants</target>
 			</menu>
 			<menu>
 				<name>rentexpiration</name>
@@ -392,7 +392,7 @@
 				<cssClass>md-business</cssClass>
 				<targetType>page</targetType>
 				<targetTemplate>html/wordpress/page/rentreports-page-php.ftl</targetTemplate>
-				<target>/page?type=page&amp;artifact=rentexpiration</target>
+				<target>/wordpress/?page_id=2&amp;artifact=rentexpiration</target>
 			</menu>
 			<menu>
 				<name>rentpaid</name>
@@ -402,7 +402,7 @@
 				<cssClass>md-business</cssClass>
 				<targetType>page</targetType>
 				<targetTemplate>html/wordpress/page/rentreports-page-php.ftl</targetTemplate>
-				<target>/page?type=page&amp;artifact=rentpaid</target>
+				<target>/wordpress/?page_id=2&amp;artifact=rentpaid</target>
 			</menu>
 			<menu>
 				<name>tenantstatement</name>
@@ -412,7 +412,7 @@
 				<cssClass>md-business</cssClass>
 				<targetType>page</targetType>
 				<targetTemplate>html/wordpress/page/rentreports-page-php.ftl</targetTemplate>
-				<target>/page?type=page&amp;artifact=rentreports</target>
+				<target>/wordpress/?page_id=2&amp;artifact=rentreports</target>
 			</menu>
 			<menu>
 				<name>unitlisting</name>
@@ -422,7 +422,7 @@
 				<cssClass>md-business</cssClass>
 				<targetType>page</targetType>
 				<targetTemplate>html/wordpress/page/rentreports-page-php.ftl</targetTemplate>
-				<target>/page?type=page&amp;artifact=unitlisting</target>
+				<target>/wordpress/?page_id=2&amp;artifact=unitlisting</target>
 			</menu>
 			<menu>
 				<name>occupiedunits</name>
@@ -432,7 +432,7 @@
 				<cssClass>md-business</cssClass>
 				<targetType>page</targetType>
 				<targetTemplate>html/wordpress/page/rentreports-page-php.ftl</targetTemplate>
-				<target>/page?type=page&amp;artifact=occupiedunits</target>
+				<target>/wordpress/?page_id=2&amp;artifact=occupiedunits</target>
 			</menu>
 			<menu>
 				<name>vacantunits</name>
@@ -442,7 +442,7 @@
 				<cssClass>md-business</cssClass>
 				<targetType>page</targetType>
 				<targetTemplate>html/wordpress/page/rentreports-page-php.ftl</targetTemplate>
-				<target>/page?type=page&amp;artifact=vacantunits</target>
+				<target>/wordpress/?page_id=2&amp;artifact=vacantunits</target>
 			</menu>
 
 		</menuGroup>
@@ -460,7 +460,7 @@
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?artifact=party&amp;page_action=list&amp;role=user_organization</target>
+				<target>/wordpress/?page_id=2&amp;artifact=party&amp;page_action=list&amp;role=user_organization</target>
 			</menu>
 			<menu>
 				<name>employees</name>
@@ -469,7 +469,7 @@
 				<active>N</active>
 				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?artifact=party&amp;page_action=list&amp;role=staff</target>
+				<target>/wordpress/?page_id=2&amp;artifact=party&amp;page_action=list&amp;role=staff</target>
 			</menu>
 			<menu>
 				<name>jobs</name>
@@ -478,7 +478,7 @@
 				<active>N</active>
 				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?artifact=job&amp;page_action=list</target>
+				<target>/wordpress/?page_id=2&amp;artifact=job&amp;page_action=list</target>
 			</menu>
 			<menu>
 				<name>reviews</name>
@@ -487,7 +487,7 @@
 				<active>N</active>
 				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?artifact=performancereview&amp;page_action=list;</target>
+				<target>/wordpress/?page_id=2&amp;artifact=performancereview&amp;page_action=list;</target>
 			</menu>
 			<menu>
 				<name>payroll</name>
@@ -496,7 +496,7 @@
 				<active>N</active>
 				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?artifact=payroll&amp;page_action=list</target>
+				<target>/wordpress/?page_id=2&amp;artifact=payroll&amp;page_action=list</target>
 			</menu>
 		</menuGroup>
 
@@ -513,7 +513,7 @@
 				<active>N</active>
 				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?page_action=list&amp;artifact=userprofile</target>
+				<target>/wordpress/?page_id=2&amp;page_action=list&amp;artifact=userprofile</target>
 			</menu>
 			<menu>
 				<name>inbox</name>
@@ -522,7 +522,7 @@
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/page?page_action=list&amp;artifact=conversation</target>
+				<target>/wordpress/?page_id=2&amp;page_action=list&amp;artifact=conversation</target>
 			</menu>
 			<menu>
 				<name>signout</name>
@@ -960,6 +960,8 @@
 			<global>N</global>
 			<!-- <viewPageTemplate>html/wordpress/entity/party/party-single.ftl</viewPageTemplate>
 			<listPageTemplate>html/wordpress/entity/party/party-list.ftl</listPageTemplate> -->
+			<createPageTemplate>html/wordpress/entity/party/party-create-form.ftl</createPageTemplate>
+			<viewPageTemplate>html/wordpress/entity/party/party-single.ftl</viewPageTemplate> 
 			<singleViewTemplate>views/wordpress/party/single-party-view.ftl</singleViewTemplate>
 			<apiTemplate>api/wordpress/party/party-service-api.ftl</apiTemplate>
 			<field>
@@ -992,22 +994,6 @@
 				<dataColumn>true</dataColumn>
 				<description>Type</description>
 				<displayName>Type</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
-				<name>business_unit</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>N</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>sb_businessunit</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Business Unit</description>
-				<displayName>Business Unit</displayName>
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
@@ -1058,6 +1044,22 @@
 				<description>Description</description>
 				<displayName>Description</displayName>
 				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
 			</field>
 		</entity>
 
@@ -1339,10 +1341,13 @@
 			<postName>sb_partygroup</postName>
 			<description>Party Group</description>
 			<global>N</global>
+			<createPageTemplate>html/wordpress/entity/partygroup/partygroup-create-form.ftl</createPageTemplate>
+			<editPageTemplate>html/wordpress/entity/partygroup/partygroup-edit-form.ftl</editPageTemplate>
 			<!-- <createPageTemplate>html/wordpress/entity/partygroup/partygroup-create-form.ftl</createPageTemplate>
 			<editPageTemplate>html/wordpress/entity/partygroup/partygroup-edit-form.ftl</editPageTemplate>
 			<viewPageTemplate>html/wordpress/entity/partygroup/partygroup-single.ftl</viewPageTemplate>
 			<apiTemplate>services/wordpress/partygroup/partygroup-service-api.ftl</apiTemplate> -->
+			<apiTemplate>api/wordpress/partygroup/partygroup-service-api.ftl</apiTemplate>
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
@@ -1462,6 +1467,8 @@
 			<postName>sb_person</postName>
 			<description>Person</description>
 			<global>N</global>
+			<createPageTemplate>html/wordpress/entity/person/person-create-form.ftl</createPageTemplate>
+			<editPageTemplate>html/wordpress/entity/person/person-edit-form.ftl</editPageTemplate>
 			<apiTemplate>api/wordpress/person/person-service-api.ftl</apiTemplate>
 			<!-- <createPageTemplate>html/wordpress/entity/person/person-create-form.ftl</createPageTemplate>
 			<editPageTemplate>html/wordpress/entity/person/person-edit-form.ftl</editPageTemplate>
@@ -12198,12 +12205,12 @@
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
 				<isFormField>N</isFormField>
-				<required>Y</required>
+				<required>N</required>
 				<createField>N</createField>
 				<editField>N</editField>
 				<viewField>N</viewField>
 				<listField>N</listField>
-				<dataType>text</dataType>
+				<dataType>alphanumeric</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
 				<description>Code</description>
@@ -12219,7 +12226,7 @@
 				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
-				<dataType>text</dataType>
+				<dataType>name</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
 				<description>Name</description>
@@ -12276,7 +12283,6 @@
 			</field>
 		</entity>
 
-
 		<entity>
 			<name>NotificationStatus</name>
 			<postName>sb_notifystatus</postName>
@@ -12286,12 +12292,12 @@
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
 				<isFormField>N</isFormField>
-				<required>Y</required>
+				<required>N</required>
 				<createField>N</createField>
 				<editField>N</editField>
 				<viewField>N</viewField>
 				<listField>N</listField>
-				<dataType>text</dataType>
+				<dataType>alphanumeric</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
 				<description>Code</description>
@@ -12307,7 +12313,7 @@
 				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
-				<dataType>text</dataType>
+				<dataType>name</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
 				<description>Name</description>
@@ -12341,12 +12347,12 @@
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
 				<isFormField>N</isFormField>
-				<required>Y</required>
+				<required>N</required>
 				<createField>N</createField>
 				<editField>N</editField>
 				<viewField>N</viewField>
 				<listField>N</listField>
-				<dataType>text</dataType>
+				<dataType>alphanumeric</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
 				<description>Code</description>
@@ -12362,7 +12368,7 @@
 				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
-				<dataType>text</dataType>
+				<dataType>name</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
 				<description>Name</description>
@@ -12395,17 +12401,18 @@
 			<global>N</global>
             <!-- <viewPageTemplate>html/wordpress/entity/notification/single-notification.ftl</viewPageTemplate>
 			<apiTemplate>services/wordpress/notification/notification-service-api.ftl</apiTemplate> -->
+			<singleViewTemplate>views/wordpress/notification/single-notification-view.ftl</singleViewTemplate>
 			<apiTemplate>api/wordpress/notification/notification-service-api.ftl</apiTemplate>
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
 				<isFormField>N</isFormField>
-				<required>Y</required>
+				<required>N</required>
 				<createField>N</createField>
 				<editField>N</editField>
 				<viewField>N</viewField>
 				<listField>N</listField>
-				<dataType>text</dataType>
+				<dataType>alphanumeric</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
 				<description>Code</description>
@@ -12413,7 +12420,7 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
-				<name>owner</name>
+				<name>n_owner</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
@@ -12429,7 +12436,7 @@
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
-				<name>type</name>
+				<name>n_type</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
@@ -12485,7 +12492,7 @@
 				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
-				<dataType>text</dataType>
+				<dataType>name</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
 				<description>Title</description>
@@ -12507,6 +12514,22 @@
 				<description>Message</description>
 				<displayName>Message</displayName>
 				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>Y</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
 			</field>
 		</entity>
 
