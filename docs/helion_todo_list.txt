@@ -1,0 +1,20 @@
+HELION TODO LIST
+-----------------------------
+1. Implement processing of work orders for properties
+2. Fix the data model for charges, agreements, and properties
+3. Fix schema for accounting and financial reporting
+4. Create data model for party accounts (accounts to hold balances for parties)
+5. Implement processing of new rent agreements
+6. Implement processing of new properties, buildings, facilities, floors and units
+7. Implement processing of new parties
+8. Implement processing of new charges and terms
+9. Implement functionality for rent payment, expenses, fee collection and payments.
+10. Implement generation and processing of rent invoices.
+11. Implement end of day processing to update customer accounts
+12. Fix email notifications for account creation, and password changes
+13. Implement tenant/client notifications for  inspections maintenance, billing and payments
+14. Fix files functionality for properties, parties, agreements, payments and expenses
+15. Implement functionality for financial and rental reports
+16. Implement functionality for chat messages and file exchange between system users
+17. Implement functionality to switch user business unit
+18. Implement functionality to invite users to business unit.
