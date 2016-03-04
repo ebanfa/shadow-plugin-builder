@@ -102,6 +102,37 @@ class BaseEntityView extends ArtifactView {
     public function get_parent_url() {
        return $this->parent_url;
     }
+
+    /**
+     * 
+     */
+    public function get_form_fields() {
+        $form_fields = array();
+        foreach ($this->model['entity_fields'] as $field) {
+            // Create fields
+            if ($this->page_action == 'create' && $field['is_create_field'] && $field['is_form_field']) {
+                array_push($form_fields, $this->prepare_view_form_field($field));
+            }
+            
+            if ($this->page_action == 'edit' && $field['is_edit_field'] && $field['is_form_field']) {
+                array_push($form_fields, $this->prepare_view_form_field($field));
+            }
+
+            if ($this->page_action == 'view' && $field['is_view_field']) {
+                array_push($form_fields, $this->prepare_view_form_field($field));
+            }
+
+            if ($this->page_action == 'list' && $field['is_list_field']) {
+                array_push($form_fields, $this->prepare_view_form_field($field));
+            }
+        }
+        // Pass the fields through the filter if any
+        $fields_filter = 'shadowbanker_' . $this->artifact . '_form_fields';
+        if (has_filter($fields_filter)) {
+            $form_fields = apply_filters($fields_filter, $this, $form_fields);
+        }
+        return $form_fields; 
+    }
     
     /**
      * 
@@ -109,8 +140,9 @@ class BaseEntityView extends ArtifactView {
     public function get_related_form_fields() {
         $model = $this->model;
         $related_form_fields = array();
+        $fields = $this->get_form_fields();
         // The appropriate relationship fields for the current page action
-        foreach ($model['entity_fields'] as $field) {
+        foreach ($fields as $field) {
             if($this->page_action == 'create' && $field['is_relationship_field'] && $field['is_create_field']) {
                 array_push($related_form_fields, $field);
             }

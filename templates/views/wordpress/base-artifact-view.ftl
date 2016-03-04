@@ -23,7 +23,7 @@ class ArtifactView {
         $this->set_up();
     }
 
-    /**
+    /**page
      * Set up view
      */
     public function set_up() {

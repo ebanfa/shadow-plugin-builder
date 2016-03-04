@@ -18,7 +18,7 @@
         data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
         data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
 
-        <?php do_entity_form_fields($model, true, true) ; ?>
+        <?php do_entity_form_fields($view, true, true) ; ?>
 
         <!-- This fields are used by the relationship field selection routine -->
         <input type="hidden" id="current-related-field" name="current-related-field" value="">
@@ -76,9 +76,13 @@
             });
 
             $('body').on('click', '.related-field-search-link', function(e){
+                console.log('Heloo');
                 e.preventDefault();
+                console.log('Heloo');
                 var currentRelatedFieldName = $(this).data('related-field-name');
+                console.log('Heloo');
                 $('#current-related-field').val(currentRelatedFieldName);
+                console.log('Heloo');
                 $('#' + currentRelatedFieldName + '_modal').modal('show');
 
                 

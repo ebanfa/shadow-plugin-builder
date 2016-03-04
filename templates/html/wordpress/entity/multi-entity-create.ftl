@@ -31,8 +31,8 @@
                 <div class="tab-content">
                         <!-- Main entity tab -->
                         <div class="tab-pane fade" id="tab0"> 
-
-                            <?php do_action('shadowbanker_render_entity_form_fields'); ?>
+                            <?php do_entity_form_fields($view, true, true) ; ?>
+                            <?php// do_action('shadowbanker_render_entity_form_fields'); ?>
                         </div>
 
                         <!-- Multi entity select tabs-->
@@ -157,7 +157,7 @@
                                 </ul>
                             </div>
                             <div class="card-body card-padding">
-                                <?php do_entity_form_fields($tab['model'], true, false) ; ?>
+                                <?php do_model_form_fields($tab['model'], true, false) ; ?>
                             </div>
 
                             <?php } else if($tab['tab_type'] == 'multi-select') { ?>

@@ -14,7 +14,7 @@ class PartyAPI {
      */
     public static function do_create_entity($entity_data){
         $entity_data =  EntityAPI::do_create_entity($entity_data);
-        if(!$entity_data['has_errors']) {
+        if(!$entity_data['has_errors']&& $entity_data['edit_mode'] ) {
             $notification_data = array();
             $notification_data['data'] = $entity_data;
             $notification_data['code'] = $entity_data['entity_code'];
@@ -37,7 +37,11 @@ class PartyAPI {
             } 
             // Set the creator
             $current_user_party = self::get_current_user_party();
-            $notification_data['n_owner'] = $current_user_party['id'];
+            if(isset($current_user_party['id'])) {
+                $notification_data['n_owner'] = $current_user_party['id'];
+            }
+            else { $notification_data['n_owner'] = $entity_data['id']; }
+
             $notification_data['log_level'] = NotificationAPI::$info;
 
             NotificationAPI::do_notification($notification_data);

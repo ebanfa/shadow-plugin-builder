@@ -5,20 +5,24 @@
         exit; // Exit if accessed directly
     }
 
-        function do_entity_form_fields($model, $edit_mode, $show_relationship_popup) {
-            foreach ($model['entity_fields'] as $field) {
+        function do_entity_form_fields($view, $edit_mode, $show_relationship_popup) {
+            $model = $view->get_model();
+            foreach ($view->get_form_fields() as $field) {
+                do_entity_form_field($model, $field, $show_relationship_popup);
+            }
+        }
 
-                if ($edit_mode) {
-                    if ($field['is_create_field'] && $field['is_form_field']) {
-                        do_entity_form_field($model, $field, $show_relationship_popup);
-                    }
-                }
-                else {
-
-                    if ($field['is_edit_field'] && $field['is_form_field']) {
-                        do_entity_form_field($model, $field, $show_relationship_popup);
-                    }
-                }
+        function do_model_form_fields($model, $edit_mode, $show_relationship_popup) {
+            $fields = array();
+            if($edit_mode) {
+                $fields = ViewUtils::get_entity_create_fields($model);
+            }
+            else {
+                $fields = ViewUtils::get_entity_edit_fields($model);
+            }
+            
+            foreach ($fields as $field) {
+                do_entity_form_field($model, $field, $show_relationship_popup);
             }
         }
 
@@ -38,6 +42,7 @@
                 if($field['data_type'] == 'number') do_number_field($model, $field);
                 if($field['data_type'] == 'money') do_money_field($model, $field);
                 if($field['data_type'] == 'flag') do_flag_field($model, $field);
+                if($field['data_type'] == 'option') do_option_field($model, $field);
                 if($field['data_type'] == 'date') do_date_field($model, $field);
             }
             else {
@@ -193,6 +198,27 @@
         </div>
 <?php  } 
 
+        function do_option_field($model, $field) { ?>
+
+        <div class="<?php echo $field['col_size']; ?>">
+            <div class="form-group">
+                <div class="fg-line">
+                    <div class="select">
+                        <select id="<?php echo $field['name'];?>" name="<?php echo $field['name'];?>" class="form-control">
+                            <option>Select a <?php echo $field['description'];?></option>
+                            <?php
+                                foreach ($field['options'] as $option) { ?>
+                                <option value="<?php echo $option['value']; ?>">
+                                    <?php echo $option['name']; ?>
+                                </option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+<?php  } 
+
         function do_date_field($model, $field) { ?>
 
         <div class="<?php echo $field['col_size']; ?>">
@@ -214,8 +240,34 @@
 <?php  } 
 
         function do_relationship_field($model, $field, $show_relationship_popup) { 
+            $is_visible = true;
+            $view_model = ViewUtils::get_current_view_model();
+            if($view_model['entity_name'] == $field['entity_name'])
+                $is_visible = false;
 
-            if($show_relationship_popup) { ?>
+            if($show_relationship_popup && $is_visible) { 
+                if(isset($field['has_options'])) { ?>
+
+        <div class="<?php echo $field['col_size']; ?>">
+            <div class="form-group">
+                <div class="fg-line">
+                    <div class="select">
+                        <select id="<?php echo $field['name'];?>" name="<?php echo $field['name'];?>" class="form-control">
+                            <option>Select a <?php echo $field['description'];?></option>
+                            <?php
+                                foreach ($field['options'] as $option) { ?>
+                                <option value="<?php echo $option['value']; ?>">
+                                    <?php echo $option['name']; ?>
+                                </option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+               <?php } else { ?>
     
         <div class="col-xs-11">
             <div class="form-group">
@@ -241,7 +293,7 @@
             <i class="md md-trending-up"></i>
         </a>
 
-<?php   }  else { ?>
+<?php   } }  elseif ($is_visible) { ?>
         <div class="<?php echo $field['col_size']; ?>">
             <div class="form-group">
                 <div class="fg-line">
@@ -250,8 +302,16 @@
                             <option>Select a <?php echo $field['description'];?></option>
                             <?php
                                 $entity_list = get_posts(array('post_type' => $field['data_type'], 'posts_per_page' => -1, 'orderby' => 'ID', 'order' => 'ASC'));
-                                foreach ($entity_list as $entity) { ?>
-                                <option value="<?php echo $entity->ID; ?>">
+                                $option_value = '';
+                                if(isset($model['id'])) { 
+                                    $option_value = $model[$field['name']]; 
+                                } else {
+                                    $option_value = $entity->ID;
+                                };
+
+                                foreach ($entity_list as $entity) { 
+                            ?>
+                                <option value="<?php echo $entity->ID; ?>" <?php if(isset($model['id']) && $option_value == $entity->ID) echo 'selected'; ?>>
                                     <?php echo get_post_meta($entity->ID, 'name', true); ?>
                                 </option>
                             <?php } ?>
@@ -260,10 +320,8 @@
                 </div>
             </div>
         </div>
+        
 
 <?php        }
     }
 ?>
-
-
-

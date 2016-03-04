@@ -110,7 +110,7 @@ class EntityRequestUtils {
           $name = sanitize_text_field($field['name']);
           if($name === $field_name){
               return sanitize_text_field($field['value']);
-              $criteria_data[$name] = $value;
+              //$criteria_data[$name] = $value;
           }
         }
         return false;

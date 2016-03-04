@@ -29,11 +29,11 @@ class CreatePropertyView extends MultiEntityCreateView {
                 'artifact_name' => 'building',
                 'type_instances' => array(),
                 ) ,
-            'parkingfacility' => array(
+            'facility' => array(
                 'tab_type' => 'multi-create',
-                'description' => 'Parking Facility',
-                'model' => EntityAPI::get_model('parkingfacility'),
-                'artifact_name' => 'parkingfacility',
+                'description' => 'Facilities',
+                'model' => EntityAPI::get_model('facility'),
+                'artifact_name' => 'facility',
                 'type_instances' => array(),
                 ) ,
             );

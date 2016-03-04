@@ -35,8 +35,8 @@ class SinglePartyView extends SingleEntityView {
         $role = sanitize_text_field($_REQUEST['role']);
         if($role == 'client') return $this->process_client_view(); 
         if($role == 'tenant') return $this->process_tenant_view(); 
-        if($role == 'prospectivetenant') return $this->process_prospectivetenant_view(); 
-        if($role == 'serviceprovider') return $this->process_serviceprovider_view(); 
+        if($role == 'prospective_tenant') return $this->process_prospectivetenant_view(); 
+        if($role == 'service_provider') return $this->process_serviceprovider_view(); 
     }
 
     /**

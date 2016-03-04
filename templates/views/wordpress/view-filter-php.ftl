@@ -8,7 +8,7 @@ if (!defined('ABSPATH')) {
 }
 
 
-class ViewController {
+class ViewFilter {
 
     /**
      *

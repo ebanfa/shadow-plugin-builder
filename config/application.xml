@@ -961,6 +961,8 @@
 			<!-- <viewPageTemplate>html/wordpress/entity/party/party-single.ftl</viewPageTemplate>
 			<listPageTemplate>html/wordpress/entity/party/party-list.ftl</listPageTemplate> -->
 			<createPageTemplate>html/wordpress/entity/party/party-create-form.ftl</createPageTemplate>
+			<editPageTemplate>html/wordpress/entity/party/party-edit-form.ftl</editPageTemplate>
+			<viewFilterTemplate>views/wordpress/party/party-view-filter.ftl</viewFilterTemplate>
 			<viewPageTemplate>html/wordpress/entity/party/party-single.ftl</viewPageTemplate> 
 			<singleViewTemplate>views/wordpress/party/single-party-view.ftl</singleViewTemplate>
 			<apiTemplate>api/wordpress/party/party-service-api.ftl</apiTemplate>
@@ -1467,6 +1469,7 @@
 			<postName>sb_person</postName>
 			<description>Person</description>
 			<global>N</global>
+			<viewFilterTemplate>views/wordpress/person/person-view-filter.ftl</viewFilterTemplate>
 			<createPageTemplate>html/wordpress/entity/person/person-create-form.ftl</createPageTemplate>
 			<editPageTemplate>html/wordpress/entity/person/person-edit-form.ftl</editPageTemplate>
 			<apiTemplate>api/wordpress/person/person-service-api.ftl</apiTemplate>
@@ -1579,7 +1582,7 @@
 				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
-				<dataType>flag</dataType>
+				<dataType>option</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
 				<description>Gender</description>
@@ -3055,13 +3058,13 @@
 			</field>
 			<field>
 				<name>type</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
-				<required>N</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
 				<dataType>sb_chargetype</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
@@ -3071,13 +3074,13 @@
 			</field>
 			<field>
 				<name>frequency</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
-				<required>N</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
 				<dataType>sb_chargefreq</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
@@ -3110,7 +3113,7 @@
 				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
-				<dataType>numeric</dataType>
+				<dataType>money</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
 				<description>Amount</description>
@@ -3636,6 +3639,7 @@
 			<name>Property</name>
 			<postName>sb_property</postName>
 			<description>Property</description>
+			<viewFilterTemplate>views/wordpress/property/property-view-filter.ftl</viewFilterTemplate>
 			<createViewTemplate>views/wordpress/property/create-entity-view.ftl</createViewTemplate>
 		     <!--   <viewPageTemplate>html/wordpress/entity/collateral/single-property.ftl</viewPageTemplate>
                         <createPageTemplate>html/wordpress/entity/property/property-create-form.ftl</createPageTemplate>
@@ -3689,8 +3693,8 @@
 				<dataType>sb_proptype</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
-				<description>Type</description>
-				<displayName>Type</displayName>
+				<description>Property Type</description>
+				<displayName>Property Type</displayName>
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
@@ -4385,7 +4389,7 @@
 				<relationshipField>N</relationshipField>
 			</field>			
 			<field>
-				<name>number_of_floors</name>
+				<name>no_of_flrs</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
@@ -4399,6 +4403,54 @@
 				<description>No Of Floors</description>
 				<displayName>No Of Floors</displayName>
 				<relationshipField>N</relationshipField>
+			</field>			
+			<field>
+				<name>units_in_flr</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>number</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Average Units Per Floor</description>
+				<displayName>Average Units Per Floor</displayName>
+				<relationshipField>N</relationshipField>
+			</field>			
+			<field>
+				<name>has_basement</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>flag</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Has Basement</description>
+				<displayName>Has Basement</displayName>
+				<relationshipField>N</relationshipField>
+			</field>			
+			<field>
+				<name>basement_count</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>number</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Basement Count</description>
+				<displayName>Basement Count</displayName>
+				<relationshipField>N</relationshipField>
 			</field>
 			<field>
 				<name>b_property</name>
@@ -4406,7 +4458,7 @@
 			    <isFormField>Y</isFormField>
 				<required>Y</required>
 				<createField>Y</createField>
-				<editField>N</editField>
+				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
 				<dataType>sb_property</dataType>
@@ -4414,6 +4466,22 @@
 				<dataColumn>true</dataColumn>
 				<description>Property</description>
 				<displayName>Property</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>b_unitalloc</name>
+				<isVisible>Y</isVisible>
+			    <isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_allocunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Unit Allocation</description>
+				<displayName>Unit Allocation</displayName>
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
@@ -4988,7 +5056,7 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
-				<name>type</name>
+				<name>flr_type</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
@@ -5686,7 +5754,7 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
-				<name>type</name>
+				<name>u_type</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
@@ -6022,9 +6090,9 @@
 		</entity>
 
 		<entity>
-			<name>ParkingFacilityType</name>
-			<postName>sb_pfacilitytype</postName>
-			<description>Parking Facility Type</description>
+			<name>FacilityCategory</name>
+			<postName>sb_facilitycat</postName>
+			<description>Facility Category</description>
 			<global>Y</global>
 			<field>
 				<name>entity_code</name>
@@ -6077,9 +6145,80 @@
 		</entity>
 
 		<entity>
-			<name>ParkingFacility</name>
-			<postName>sb_pfacility</postName>
-			<description>Parking Facility</description>
+			<name>FacilityType</name>
+			<postName>sb_facilitytype</postName>
+			<description>Facility Type</description>
+			<global>Y</global>
+			<field>
+				<name>entity_code</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>N</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>alphanumeric</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Code</description>
+				<displayName>Code</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>ft_category</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_facilitycat</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Facility Category</description>
+				<displayName>Facility Category</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>name</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>name</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Name</description>
+				<displayName>name</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>description</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text-lg</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Description</description>
+				<displayName>Description</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+		</entity>
+
+		<entity>
+			<name>Facility</name>
+			<postName>sb_facility</postName>
+			<description>Facility</description>
 			<global>N</global>
 			<field>
 				<name>entity_code</name>
@@ -6098,7 +6237,7 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
-				<name>pf_building</name>
+				<name>f_property</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
@@ -6106,11 +6245,27 @@
 				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
-				<dataType>sb_building</dataType>
+				<dataType>sb_property</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
-				<description>Building</description>
-				<displayName>Building</displayName>
+				<description>Property</description>
+				<displayName>Property</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>f_type</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_facilitytype</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Facility Type</description>
+				<displayName>Facility Type</displayName>
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
@@ -6164,9 +6319,9 @@
 		</entity>
 
 		<entity>
-			<name>ParkingFacilityCharge</name>
-			<postName>sb_pfecharge</postName>
-			<description>Parking Facility Charge</description>
+			<name>FacilityCharge</name>
+			<postName>sb_facharge</postName>
+			<description>Facility Charge</description>
 			<global>N</global>
 			<field>
 				<name>entity_code</name>
@@ -6185,7 +6340,7 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
-				<name>pfc_pfacility</name>
+				<name>fc_facility</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
@@ -6193,15 +6348,15 @@
 				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
-				<dataType>sb_pfacility</dataType>
+				<dataType>sb_facility</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
-				<description>Parking Facility</description>
-				<displayName>Parking Facility</displayName>
+				<description>Facility</description>
+				<displayName>Facility</displayName>
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
-				<name>pfc_charge</name>
+				<name>fc_charge</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
@@ -6267,9 +6422,9 @@
 		</entity>
 
 		<entity>
-			<name>ParkingFacilityExpense</name>
-			<postName>sb_pfeexpense</postName>
-			<description>Parking Facility Expense</description>
+			<name>FacilityExpense</name>
+			<postName>sb_feexpense</postName>
+			<description>Facility Expense</description>
 			<global>N</global>
 			<field>
 				<name>entity_code</name>
@@ -6288,7 +6443,7 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
-				<name>pfe_pfacility</name>
+				<name>fe_facility</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
@@ -6304,7 +6459,7 @@
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
-				<name>pfe_expense</name>
+				<name>fe_expense</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
@@ -8509,7 +8664,7 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
-				<name>type</name>
+				<name>i_type</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
@@ -8520,8 +8675,8 @@
 				<dataType>sb_insptype</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
-				<description>Type</description>
-				<displayName>Type</displayName>
+				<description>Inspection Type</description>
+				<displayName>Inspection Type</displayName>
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>

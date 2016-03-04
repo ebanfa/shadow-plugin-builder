@@ -7,6 +7,10 @@
 
     $view = $_REQUEST['page_info']['view'];
     $model = $view->get_model();
+    $party_role_param = '';
+    if(isset($_REQUEST['role'])) { 
+        $party_role_param = '&role=' . sanitize_text_field($_REQUEST['role']);
+    }
 ?>
     <form role="form" name="<?php echo $model['entity_post_name'];?>_form" 
         id="<?php echo $model['entity_post_name'];?>_form" action="" 
@@ -18,7 +22,7 @@
         data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
         data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
 
-        <?php do_entity_form_fields($view, false, true) ; ?>
+        <?php do_entity_form_fields($model, false, true) ; ?>
         
         <div class="btn-demo m-t-10">   
             <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
@@ -30,12 +34,12 @@
             <button id="<?php echo $view->get_artifact_name(); ?>-form-btn" type="submit" class="btn btn-primary waves-effect">
                 <?php _e('Update', 'framework') ?>
             </button>
+
+
             
-            <a href="<?php echo EntityActionProcessor::get_base_url()  . 'artifact=' . $view->get_artifact_name() . '&id=' . $model['id']; ?>&page_action=view" 
+            <a href="<?php echo EntityActionProcessor::get_base_url()  . 'artifact=' . $view->get_artifact_name() . '&id=' . $model['id']; ?>&page_action=view<?php echo $party_role_param; ?>" 
                class="btn bgm-indigo waves-effect"><?php _e('Back', 'framework') ?>
             </a>
     </div>
     
 </form>
-<!-- Put this out side the form to prevent illegal nested forms -->
-<?php do_action('shadowbanker_render_related_entity_field_modals'); ?>

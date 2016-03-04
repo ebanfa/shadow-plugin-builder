@@ -95,6 +95,40 @@ class ViewUtils {
         }
         return $field;
     }
+
+    /**
+     * 
+     */
+    public static function get_current_view_model() {
+        $view = $_REQUEST['page_info']['view'];
+        return $view->get_model();
+    }
+
+    /**
+     * 
+     */
+    public static function get_entity_create_fields($model) {
+        $fields = array();
+        foreach ($model['entity_fields'] as $field) {
+            if($field['is_create_field'] && $field['is_form_field']) {
+                array_push($fields, $field);
+            }
+        }
+        return $fields;
+    }
+
+    /**
+     * 
+     */
+    public static function get_entity_edit_fields($model) {
+        $fields = array();
+        foreach ($model['entity_fields'] as $field) {
+            if($field['is_edit_field'] && $field['is_form_field']) {
+                array_push($fields, $field);
+            }
+        }
+        return $fields;
+    }
 }
 
 ?>

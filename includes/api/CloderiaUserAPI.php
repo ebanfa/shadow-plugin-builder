@@ -49,6 +49,7 @@ class CloderiaUserAPI {
             $entity_data['user_name'] = $user_data['user_login'];
             $entity_data['password'] = $user_data['user_pass'];
             $entity_data['description'] = $user_data['description'];
+            $entity_data['business_unit'] = 0;
             $entity_data['name'] = $user_data['first_name'] . ' ' . $user_data['last_name'];
             // These two fields are not persistent fields, we just use the to hold the
             // data for first and last name
@@ -114,7 +115,9 @@ class CloderiaUserAPI {
             $entity_data['id_number'] = '0000000000';
             $entity_data['date_of_birth'] = date("Y-m-d H:i:s");
             $entity_data['business_unit'] = $businessunit_data['id'];
-            $entity_data = EntityAPI::create_entity($entity_data);
+            // Call do create here to prevent a duplicate party object
+            //  from being created by PersonAPI
+            $entity_data = EntityAPI::do_create_entity($entity_data);
         }
         return $entity_data;
     }

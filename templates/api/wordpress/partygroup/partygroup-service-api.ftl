@@ -97,7 +97,7 @@ class PartyGroupAPI  {
         $party_data['business_unit'] = $entity_data['business_unit'];
 
         //$party_data = CloderiaAPIUtils::validate_entity_data($party_data);
-        $party_data = PartyAPI::do_create_entity($party_data);
+        $party_data = EntityAPI::create_entity($party_data);
         
         return $party_data;
     }

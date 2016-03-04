@@ -22,6 +22,7 @@ public class Entity {
 	private String isVirtual;
 	private String displayName;
 	private String description;
+	private String viewFilterTemplate;
 	private String singleViewTemplate;
 	private String createViewTemplate;
 	private String createPageTemplate;
@@ -68,6 +69,21 @@ public class Entity {
 	@XmlElement
 	public void setSingleViewTemplate(String singleViewTemplate) {
 		this.singleViewTemplate = singleViewTemplate;
+	}
+
+	/**
+	 * @return the viewFilterTemplate
+	 */
+	public String getViewFilterTemplate() {
+		return viewFilterTemplate;
+	}
+
+	/**
+	 * @param viewFilterTemplate the viewFilterTemplate to set
+	 */
+	@XmlElement
+	public void setViewFilterTemplate(String viewFilterTemplate) {
+		this.viewFilterTemplate = viewFilterTemplate;
 	}
 
 	/**

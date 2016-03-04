@@ -8,7 +8,7 @@ if (!defined('ABSPATH')) {
 }
 
 
-class PartyView extends ViewController {
+class PartyViewFilter extends ViewFilter {
 
     public static $view_title_map = array('client' => 'Client',
         'tenant' => 'Tenant',
@@ -18,11 +18,11 @@ class PartyView extends ViewController {
      *
      */
     public static function init_hooks() { 
-        add_filter('shadowbanker_party_view_title', array('PartyView', 'filter_view_title'), 10, 2);
-        add_filter('shadowbanker_party_form_fields', array('PartyView', 'filter_form_fields'), 10, 2);
-        add_filter('shadowbanker_party_action_links', array('PartyView', 'filter_view_action_links'), 10, 2);
-        add_filter('shadowbanker_partygroup_action_links', array('PartyView', 'filter_view_action_links'), 10, 2);
-        add_filter('shadowbanker_person_action_links', array('PartyView', 'filter_view_action_links'), 10, 2);
+        add_filter('shadowbanker_party_view_title', array('PartyViewFilter', 'filter_view_title'), 10, 2);
+        add_filter('shadowbanker_party_form_fields', array('PartyViewFilter', 'filter_form_fields'), 10, 2);
+        add_filter('shadowbanker_party_action_links', array('PartyViewFilter', 'filter_view_action_links'), 10, 2);
+        add_filter('shadowbanker_partygroup_action_links', array('PartyViewFilter', 'filter_view_action_links'), 10, 2);
+        add_filter('shadowbanker_person_action_links', array('PartyViewFilter', 'filter_view_action_links'), 10, 2);
     }
 
     /**
@@ -32,7 +32,10 @@ class PartyView extends ViewController {
         $page_action = $view->get_page_action();
         $form_fields = parent::filter_form_fields($view, $form_fields);
         if(isset($_REQUEST['role']) && $page_action == 'list') {
-            $form_fields['role'] = array('name' => 'role', 'value' => sanitize_text_field($_REQUEST['role']));
+            $form_fields = array();
+            $field = array();
+            $field['options_criteria'] = array('name' => 'role', 'value' => sanitize_text_field($_REQUEST['role']));
+            array_push($form_fields, $field);
         }
         
         return $form_fields;

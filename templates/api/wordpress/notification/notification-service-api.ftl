@@ -12,6 +12,7 @@ class NotificationAPI {
     public static $info = 'INFO';
     public static $viewed = 'VIEWED';
     public static $party_created = 'PARTY_CREATED';
+    public static $property_created = 'PROPERTY_CREATED';
     /**
      *
      */

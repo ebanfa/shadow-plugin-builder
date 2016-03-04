@@ -8,7 +8,7 @@ if (!defined('ABSPATH')) {
 }
 
 
-class FormFieldFilter extends ViewController {
+class FormFieldFilter extends ViewFilter {
 
     /**
      *

@@ -91,8 +91,7 @@ class ${application.name} {
         include_once('includes/view/ArtifactView.php');
         include_once('includes/view/BaseEntityView.php');
         include_once('includes/view/DashboardView.php');
-        include_once('includes/view/ViewController.php');
-        include_once('includes/view/PartyView.php');
+        include_once('includes/view/ViewFilter.php');
         include_once('includes/view/CreateEntityView.php');
         include_once('includes/view/EditEntityView.php');
         include_once('includes/view/SingleEntityView.php');
@@ -100,7 +99,10 @@ class ${application.name} {
         include_once('includes/view/FormFieldFilter.php');
         include_once('includes/view/MultiEntityCreateView.php');
         include_once('includes/view/party/SinglePartyView.php');
+        include_once('includes/view/party/PartyViewFilter.php');
+        include_once('includes/view/person/PersonViewFilter.php');
         include_once('includes/view/property/CreatePropertyView.php');
+        include_once('includes/view/property/PropertyViewFilter.php');
         include_once('includes/view/notification/SingleNotificationView.php');
         include_once('includes/view/rentagreement/CreateRentAgreementView.php');
         include_once('includes/view/serviceagreement/CreateServiceAgreementView.php');
@@ -203,7 +205,9 @@ class ${application.name} {
         // Remove admin bar for non admin users
         add_action('after_setup_theme', 'CloderiaAdminAPI::do_remove_admin_bar');
         /*add_action('wp_logout', '${application.name}::redirect_logout_url');*/
-        PartyView::init_hooks();
+        PartyViewFilter::init_hooks();
+        PersonViewFilter::init_hooks();
+        PropertyViewFilter::init_hooks();
         FormFieldFilter::init_hooks();
 
     }

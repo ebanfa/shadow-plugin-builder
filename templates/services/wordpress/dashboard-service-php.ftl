@@ -1,4 +1,3 @@
-
 <?php
 
 /*
@@ -19,7 +18,6 @@ class DashboardService {
         $tenants_count =  DashboardService::get_tenants_count();
         $lease_agreements_value = DashboardService::get_lease_agreements_value($party_data['id']);
         $current_monthly_rent_income = DashboardService::get_current_monthly_rent_income($party_data['id']);
-        
 
         $party_dashboard_stats['property_count'] =  $property_count;
         $party_dashboard_stats['tenants_count'] =  $tenants_count;

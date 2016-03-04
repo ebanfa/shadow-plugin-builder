@@ -24,6 +24,7 @@ public class Field {
 	private String dataColumn;
 	private String description;
 	private String displayName;
+	private String optionsProvider;
 	private String relationshipField;
 	
 	/**

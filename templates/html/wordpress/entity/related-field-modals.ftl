@@ -25,7 +25,7 @@
                 <div class="card">
                     <div class="card-header bgm-lightgreen">
                         <h2>
-                            Select <?php echo $field['name']; ?>
+                            Select <?php echo $field['entity_name']; ?>
                         </h2>
                         <ul class="actions actions-alt">
                             <li class="dropdown">
@@ -46,6 +46,9 @@
 
                         <form id="<?php echo $field['data_type']; ?>-list-form">
                             <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
+                            <?php if(isset($field['options_criteria'])) { ?>
+                            <input type="hidden" name="<?php echo $field['options_criteria']['name']; ?>" id="<?php echo $field['options_criteria']['name']; ?>" value="<?php echo $field['options_criteria']['value']; ?>" /> 
+                            <?php } ?>
                             <input type="hidden" name="submitted" id="submitted" value="true" /> 
                         </form>
                         <div class="table-responsive">
