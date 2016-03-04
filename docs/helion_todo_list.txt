@@ -18,3 +18,116 @@ HELION TODO LIST
 16. Implement functionality for chat messages and file exchange between system users
 17. Implement functionality to switch user business unit
 18. Implement functionality to invite users to business unit.
+19. Fix HR model and implement functionality
+20
+
+
+
+
+
+
+
+
+Chapter 3.    QuickBooks Fundamentals (pg 32)
+3.01    Install QuickBooks
+3.02    Open a Sample Data File
+3.03    Credentials if Prompted for User Name and Password
+3.04    Transactions in the Sample File
+3.05    Introduction to the QuickBooks Environment
+3.06    Properties are "Customers" in the "Customer Center"
+3.07    Tenants are "Jobs" in the "Customer Center"
+3.08    Transactions in the Customer Center
+3.09    Every Account is in the "Chart of Accounts"
+3.10    Properties are Asset Accounts
+3.11    Some Accounts have a "Register"
+3.12    Properties use a "Class" or "Sub-class"
+3.13    "Invoices" Charge Tenants for Rent
+3.14    "Items" go in Every Invoice
+3.15    Rent is Your Primary "Item"
+3.16    Customize Invoice Templates with your Logo
+3.17    "Memorized Transactions" Occur Automatically
+3.18    "Write Checks" don't "Pay Bills"
+3.19    Write Checks
+3.20    "Make Deposits" versus "Receive Payments"
+3.21    The "Vendor List" is for Companies You Pay
+3.22    If you have employees use the "Employee List"
+3.23    People on the "Other Names List"
+3.24    Delete, Make Inactive, and Void Transactions
+3.25    "Merge" List Items
+3.26    "Reconcile" your bank account
+3.27    Online Banking Setup
+3.28    "Split Transactions"
+3.29    Changing QuickBooks "Preferences"
+3.30    "Back up" your Company Data
+3.31    "Restore" your Company Data
+3.32    Enter Your Reimbursable Expenses in Journal Entries
+3.33    Writing, Ordering, and Printing Checks
+3.34    Payroll Options
+3.35    Suggested Approach to Starting Your Company File
+3.36    You Must Complete Company Information
+Chapter 4.    Property Tasks (pg 107)
+4.01    The Basics of Properties in QuickBooks
+4.02    Record Earnest Money in an Offer to Purchase
+4.03    Record a Purchase with Cash
+4.04    Record a Purchase with a Conventional Mortgage
+4.05    Financing from another Property (or an Investor)
+4.06    Record a Hard Money Loan or Line of Credit
+4.07    Add an Existing Company-Owned Property
+4.08    Transfer a Property you own into Your Company
+4.09    Contribute Properties with Accumulated Depreciation
+4.10    Accounting for Escrow Impound Accounts
+4.11    Record Maintenance Expenses
+4.12    Record Capital Improvements
+4.13    Pay a Mortgage
+4.14    Sell a Property
+Chapter 5.    Tenant Tasks (pg 134)
+5.01    Add a Tenant to a Property
+5.02    Automatically Charge Residents for Rent
+5.03    Receive Rent
+5.04    Manually Charge Late Fees
+5.05    Automatically Charge Late Fees
+5.06    Deal with Bad Checks
+5.07    Send Statements to Tenants
+5.08    Enter Prepaid Rent
+5.09    Receiving Prepaid Rent
+5.10    Charge for Damages while Rented
+5.11    Enter Deposit to Hold a Unit
+5.12    Enter Security Deposits
+5.13    Enter Security Deposit and First Month's Rent Together
+5.14    Fully Refund Security Deposits
+5.15    Partially Refund Security Deposits
+5.16    Write Off Rent as Uncollectible
+Chapter 6.    Advanced QuickBooks Usage & Tips
+(pg 151)
+6.01    "Reminders" and "To Do" Lists, and the "Calendar"
+6.02    Define Fields for Customers and Jobs
+6.03    Paying an Owner who is not on Payroll
+6.04    Reimburse someone's purchase for the company
+6.05    Tracking Company Startup Costs
+6.06    Common Area Maintenance (CAM)
+6.07    Contributing Cash into Your Company
+6.08    End of Year
+6.09    1-Line View in the Register
+6.10    Using an Accountant's Review Copy File
+6.11    Merging your Accountant's Changes
+6.12    Keyboard Shortcuts
+Chapter 7.    Reporting Tasks (pg 193)
+7.01    Using Reports
+7.02    QuickReports
+7.03    Profit and Loss (Income Statement) Standard Report
+7.04    Profit and Loss Detail Report
+7.05    Profit and Loss by Property
+7.06    Profit and Loss for One Property
+7.07    Balance Statement Standard
+7.08    Balance Statement Details
+7.09    Customizing Reports, using Filters, and More
+7.10    Reports to Find and Correct Errors
+7.11    Running a Rent-Roll (Report on Overdue Tenants)
+7.12    Historical Charges and Payments by Tenant
+7.13    1099 Reports for Vendors
+7.14    Report on Asset Value Changes per Property
+7.15    Report on Capital Improvements per Property
+7.16    Building Insurance Expiration and Status Report
+7.17    Tenant Move-In-Date and Contact Information Report
+7.18    Using Customer Type for Enhanced Reporting
+7.22    Congratulations you made it! 
