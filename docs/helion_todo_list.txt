@@ -1,9 +1,9 @@
 HELION TODO LIST
 -----------------------------
 1. Implement processing of work orders for properties
-2. Fix the data model for charges, agreements, and properties
-3. Fix schema for accounting and financial reporting
-4. Create data model for party accounts (accounts to hold balances for parties)
+2. Fix the data model for charges, agreements, terms and properties --
+3. Fix schema for accounting and financial reporting **
+4. Create data model for party accounts (accounts to hold balances for parties) --
 5. Implement processing of new rent agreements
 6. Implement processing of new properties, buildings, facilities, floors and units
 7. Implement processing of new parties
@@ -18,15 +18,11 @@ HELION TODO LIST
 16. Implement functionality for chat messages and file exchange between system users
 17. Implement functionality to switch user business unit
 18. Implement functionality to invite users to business unit.
-19. Fix HR model and implement functionality
-20
-
-
-
-
-
-
-
+19. Fix HR model **
+20. Fix search functionality
+21. Implement data model to track property inventory, assets and liabilities --
+22. How to track property staff info (like care takers contact) --
+19. Implement functionality
 
 Chapter 3.    QuickBooks Fundamentals (pg 32)
 3.01    Install QuickBooks
