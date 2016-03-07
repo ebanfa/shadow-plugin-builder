@@ -1,0 +1,166 @@
+
+Unit type should be linked to property
+
+Type of charges
+-----------------------
+-- Property Charge -
+-- Building Charge -
+-- Floor Charge -
+-- Unit Type Charge -
+-- Unit Charge -
+-- Agreement Type Charge -
+-- Agreement Charge -
+-- Parking Facility Charge -
+-- Parking Slot Type Charge -
+
+Categories of Agreements
+------------------------
+- Rent Agreement
+- Service Agreement
+- Property Management Agreement
+
+
+Types of Rent Agreements
+------------------------
+
+Types of expenses
+------------------------
+  - Property Tax
+  - Insuance
+  - Maintenance
+
+Expense Level
+------------------------
+-- Property Expense -
+-- Building Expense -
+-- Floor Expense -
+-- Unit Type Expense -
+-- Unit Expense -
+-- Agreement Type Expense xxx
+-- Agreement Expense xxx
+-- Parking Facility Expense -
+-- Parking Slot Type Expense -
+
+Unit Type
+------------------------
+Detached (bungalow or 2-storey)
+Semi-detached (bungalow or 2-storey)
+End Terrace
+Mid Terrace
+4 in a block
+Maisonette
+Tenement
+Bedsit
+
+
+
+Unit type
+Unit
+
+Floor Unit
+Building Unit
+Property Unit
+
+Property Party
+
+Inventory type
+Inventory
+Inventory Item Type
+Inventory Item 
+Inventory Item Status
+
+Uom
+Fixed Asset Depreciation Method
+Fixed Asset Type
+Fixed Asset
+Fixed Asset Status
+
+Invoice Type
+Invoice
+Invoice Item Type
+Invoice Item    
+Invoice Status
+Invoice Term
+Billing Account
+Billing Account Role Type
+Billing Account Role
+Payment Method Type
+Payment Type
+Payment
+Payment Application
+
+
+
+Period Type --
+Accounting Period (Parent Child) --
+Internal Organization --
+Organization GL Account (Parent Child) --
+Organization GL Account Balance --
+General Ledger Account Type --
+General Ledger Account --
+Account Transaction Type (Parent Child) --
+Account Transaction --
+Account Transaction Detail --
+Fixed Asset Type --
+Fixed Asset --
+Fixed Asset Depreciation Method
+Depreciation Method --
+Budget Type --
+Budget --
+Budget Item Type --
+Budget Item (Parent Child) --
+Budget Role --
+Standard Time Period --
+Budget Status --
+Budget Revision --
+Budget Revision Impact
+Budget Review --
+Budget Review Result --
+Budget Scenario --
+Budget Scenario Rule --
+Budget Scenario Application -- 
+Payment Budget Allocation --
+Requirement Budget Allocation
+GL Budget XREF
+
+Position Classification Type
+Position Type Class
+Position Type
+Position
+Position Status
+Position Fulfillment
+Responsibility Type
+Valid Responsibility
+Position Resposibility
+Position reporting Structure
+Position Type Rate
+Rate Type
+Pay Grade
+Salary Step
+Pay History
+Benefit Type
+Party Benefit
+Deduction Type
+Deduction
+Payroll Preference
+Employment Application Status
+Employment Application Source Type
+Employment Application
+Qualification Type
+Party Qualification
+Skill Type
+Party Skill
+Training Type Class
+Person Training
+Resume
+Performance Note Type
+Performance Note
+Performance Review
+Performance Review Item Type
+Performance Review Item
+Termination Type
+Termination Reason
+Unemployment Claim Status
+Unemployment Claim
+
+
