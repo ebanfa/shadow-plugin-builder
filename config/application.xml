@@ -4333,7 +4333,7 @@
 				<editField>N</editField>
 				<viewField>N</viewField>
 				<listField>N</listField>
-				<dataType>sb_person</dataType>
+				<dataType>sb_partyrole</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
 				<description>Staff</description>

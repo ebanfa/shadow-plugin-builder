@@ -121,46 +121,45 @@ Budget Scenario Rule --
 Budget Scenario Application -- 
 Payment Budget Allocation --
 Requirement Budget Allocation
-GL Budget XREF
+GL Budget XREF --
 
-Position Classification Type
-Position Type Class
-Position Type
-Position
-Position Status
-Position Fulfillment
-Responsibility Type
-Valid Responsibility
-Position Resposibility
-Position reporting Structure
-Position Type Rate
-Rate Type
-Pay Grade
-Salary Step
-Pay History
-Benefit Type
-Party Benefit
-Deduction Type
-Deduction
-Payroll Preference
-Employment Application Status
-Employment Application Source Type
-Employment Application
-Qualification Type
-Party Qualification
-Skill Type
-Party Skill
-Training Type Class
-Person Training
-Resume
-Performance Note Type
-Performance Note
-Performance Review
-Performance Review Item Type
-Performance Review Item
-Termination Type
-Termination Reason
-Unemployment Claim Status
-Unemployment Claim
+Position Classification Type --
+Position Type Class --
+Position Type --
+Position --
+Position Status --
+Position Fulfillment --
+Responsibility Type --
+Valid Responsibility --
+Position Resposibility --
+Position reporting Structure --
+Rate Type --
+Pay Grade --
+Position Type Rate --
+Salary Step --
+Pay History --
+Benefit Type --
+Party Benefit --
+Deduction Type --
+Deduction --
+Payroll Preference --
+Employment Application Status -- 
+Employment Application Source Type --
+Employment Application --
+Party Qualification --
+Skill Type --
+Party Skill --
+Training Type Class --
+Person Training --
+Resume --
+Performance Note Type --
+Performance Note --
+Performance Review --
+Performance Review Item Type --
+Performance Review Item --
+Termination Type -- 
+Termination Reason --
+Unemployment Claim Status --
+Unemployment Claim --
 
 
