@@ -103,6 +103,7 @@ class ${application.name} {
         include_once('includes/view/person/PersonViewFilter.php');
         include_once('includes/view/property/CreatePropertyView.php');
         include_once('includes/view/property/PropertyViewFilter.php');
+        include_once('includes/view/assessment/AssessmentViewFilter.php');
         include_once('includes/view/notification/SingleNotificationView.php');
         include_once('includes/view/rentagreement/CreateRentAgreementView.php');
         include_once('includes/view/serviceagreement/CreateServiceAgreementView.php');
@@ -208,6 +209,7 @@ class ${application.name} {
         PartyViewFilter::init_hooks();
         PersonViewFilter::init_hooks();
         PropertyViewFilter::init_hooks();
+        AssessmentViewFilter::init_hooks();
         FormFieldFilter::init_hooks();
 
     }

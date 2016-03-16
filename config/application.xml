@@ -93,7 +93,7 @@
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/wordpress/?page_id=2&amp;page_action=list&amp;artifact=acquisition</target>
+				<target>/wordpress/?page_id=2&amp;page_action=list&amp;artifact=purchaseagreement</target>
 			</menu>
 			<menu>
 				<name>disposal</name>
@@ -102,7 +102,7 @@
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/wordpress/?page_id=2&amp;page_action=list&amp;artifact=disposal</target>
+				<target>/wordpress/?page_id=2&amp;page_action=list&amp;artifact=saleagreement</target>
 			</menu>
 			<menu>
 				<name>transfers</name>
@@ -3798,6 +3798,228 @@
 		</entity>
 
 		<entity>
+			<name>MortgageType</name>
+			<postName>sb_mortgagetype</postName>
+			<description>Mortgage Type</description>
+			<global>Y</global>
+			<field>
+				<name>entity_code</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>N</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>alphanumeric</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Code</description>
+				<displayName>Code</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>name</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>name</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Name</description>
+				<displayName>name</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>description</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text-lg</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Description</description>
+				<displayName>Description</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+		</entity>
+
+		<entity>
+			<name>Mortgage</name>
+			<postName>sb_mortgage</postName>
+			<description>Mortgage</description>
+			<global>N</global>
+			<field>
+				<name>entity_code</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>N</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>alphanumeric</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Code</description>
+				<displayName>Code</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>m_type</name>
+				<isVisible>Y</isVisible>
+			    <isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_mortgagetype</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Mortgage Type</description>
+				<displayName>Mortgage Type</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>m_property</name>
+				<isVisible>Y</isVisible>
+			    <isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_property</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Property</description>
+				<displayName>Property</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>name</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>name</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Name</description>
+				<displayName>name</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>lender</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_party</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Lender</description>
+				<displayName>Lender</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>term</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>number</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Term</description>
+				<displayName>Term</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>principal</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>name</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Principal</description>
+				<displayName>Principal</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>rate</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>number</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Interest Rate</description>
+				<displayName>Interest Rate</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>description</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text-lg</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Description</description>
+				<displayName>Description</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+		</entity>
+
+		<entity>
 			<name>LandAccessibility</name>
 			<postName>sb_laccessibility</postName>
 			<description>Land Accessibility</description>
@@ -4110,7 +4332,7 @@
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
-				<name>li_soiltype/name>
+				<name>li_soiltype</name>
 				<isVisible>Y</isVisible>
 			    <isFormField>N</isFormField>
 				<required>Y</required>
@@ -8682,10 +8904,934 @@
 		</entity>
 
 		<entity>
+			<name>PurchaseAgreement</name>
+			<postName>sb_purchaseagrmnt</postName>
+			<description>Purchase Agreement</description>
+			<global>N</global>
+			<isVirtual>N</isVirtual>
+			<createViewTemplate>views/wordpress/purchaseagreement/create-entity-view.ftl</createViewTemplate>
+			<apiTemplate>api/wordpress/purchaseagreement/purchaseagreement-service-api.ftl</apiTemplate>
+			<field>
+				<name>entity_code</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>N</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>alphanumeric</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Code</description>
+				<displayName>Code</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>pa_seller</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_party</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Seller</description>
+				<displayName>Seller</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>pa_buyer</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_party</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Buyer</description>
+				<displayName>Buyer</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>pa_listagent</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_party</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Listing Agent</description>
+				<displayName>Listing Agent</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>pa_sellagent</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_party</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Selling Agent</description>
+				<displayName>Selling Agent</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>pa_agreement</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_agreement</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Agreement</description>
+				<displayName>Agreement</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>name</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>name</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Name</description>
+				<displayName>name</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>valid_to_date</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>date</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Valid To Date</description>
+				<displayName>Valid To Date</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>closing_date</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>date</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Closing Date</description>
+				<displayName>Closing Date</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>possesion_date</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>date</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Possession Date</description>
+				<displayName>Possession Date</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>date_created</name>
+				<isVisible>Y</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>date</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Date Created</description>
+				<displayName>Date Created</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>sell_fg</name>
+				<isVisible>Y</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>flag</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Sale Purchase Flag</description>
+				<displayName>Sale Purchase Flag</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>description</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text-lg</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Description</description>
+				<displayName>Description</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+		</entity>
+
+		<entity>
+			<name>SettlementData</name>
+			<postName>sb_settlementdata</postName>
+			<description>Settlement Data</description>
+			<global>N</global>
+			<isVirtual>N</isVirtual>
+			<!-- <createViewTemplate>views/wordpress/rentagreement/create-entity-view.ftl</createViewTemplate>
+			<apiTemplate>api/wordpress/rentagreement/rentagreement-service-api.ftl</apiTemplate> -->
+			<field>
+				<name>entity_code</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>N</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>alphanumeric</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Code</description>
+				<displayName>Code</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>sd_agreement</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_purchaseagrmnt</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Purchase Agreement</description>
+				<displayName>Purchase Agreement</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>name</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>name</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Name</description>
+				<displayName>name</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>settle_date</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>date</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Settlement Date</description>
+				<displayName>Settlement Date</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>price</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>money</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Price</description>
+				<displayName>Price</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>deposit</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>money</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Deposit</description>
+				<displayName>Deposit</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>closing_amount</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>money</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Closing Amount</description>
+				<displayName>Closing Amount</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>late_fee</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>number</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Late Payment Fee (%)</description>
+				<displayName>Late Payment Fee (%)</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>financing_type</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>option</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Financing Type</description>
+				<displayName>Financing Type</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>date_created</name>
+				<isVisible>Y</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>date</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Date Created</description>
+				<displayName>Date Created</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>description</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text-lg</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Description</description>
+				<displayName>Description</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+		</entity>
+
+		<entity>
+			<name>SettlementDataLoan</name>
+			<postName>sb_settledataloan</postName>
+			<description>Loan Information</description>
+			<global>N</global>
+			<isVirtual>N</isVirtual>
+			<!-- <createViewTemplate>views/wordpress/rentagreement/create-entity-view.ftl</createViewTemplate>
+			<apiTemplate>api/wordpress/rentagreement/rentagreement-service-api.ftl</apiTemplate> -->
+			<field>
+				<name>entity_code</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>N</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>alphanumeric</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Code</description>
+				<displayName>Code</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>li_settledata</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_settlementdata</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Settlement Data</description>
+				<displayName>Settlement Data</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>name</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>name</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Name</description>
+				<displayName>name</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>loan_date</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>date</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Loan Date</description>
+				<displayName>Loan Date</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>loan_amount</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>money</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Amount</description>
+				<displayName>Amount</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>interest_rate</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>number</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Interest Rate</description>
+				<displayName>Interest Rate</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>term</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>number</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Term</description>
+				<displayName>Term</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>loan_type</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>option</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Loan Type</description>
+				<displayName>Loan Type</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>date_created</name>
+				<isVisible>Y</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>date</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Date Created</description>
+				<displayName>Date Created</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>description</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text-lg</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Description</description>
+				<displayName>Description</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+		</entity>
+
+		<entity>
+			<name>PurchaseAgreementInspection</name>
+			<postName>sb_agrmntinspection</postName>
+			<description>Purchase Agreement Inspection</description>
+			<global>N</global>
+			<isVirtual>N</isVirtual>
+			<!-- <createViewTemplate>views/wordpress/rentagreement/create-entity-view.ftl</createViewTemplate>
+			<apiTemplate>api/wordpress/rentagreement/rentagreement-service-api.ftl</apiTemplate> -->
+			<field>
+				<name>entity_code</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>N</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>alphanumeric</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Code</description>
+				<displayName>Code</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>pai_agreement</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_purchaseagrmnt</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Purchase Agreement</description>
+				<displayName>Purchase Agreement</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>pai_inspection</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_inspection</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Inspection</description>
+				<displayName>Inspection</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>name</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>name</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Name</description>
+				<displayName>name</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>inspection_date</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>date</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Inspection Date</description>
+				<displayName>Inspection Date</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>description</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text-lg</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Description</description>
+				<displayName>Description</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+		</entity>
+
+		<entity>
+			<name>AgreementItemType</name>
+			<postName>sb_agrmntitemtype</postName>
+			<description>Agreement Item Type</description>
+			<global>Y</global>
+			<isVirtual>N</isVirtual>
+			<!-- <createViewTemplate>views/wordpress/rentagreement/create-entity-view.ftl</createViewTemplate>
+			<apiTemplate>api/wordpress/rentagreement/rentagreement-service-api.ftl</apiTemplate> -->
+			<field>
+				<name>entity_code</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>N</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>alphanumeric</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Code</description>
+				<displayName>Code</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>pai_inspection</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_inspection</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Inspection</description>
+				<displayName>Inspection</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>name</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>name</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Name</description>
+				<displayName>name</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>description</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text-lg</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Description</description>
+				<displayName>Description</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+		</entity>
+
+		<entity>
+			<name>AgreementItem</name>
+			<postName>sb_agreementitem</postName>
+			<description>Agreement Item</description>
+			<global>N</global>
+			<isVirtual>N</isVirtual>
+			<!-- <createViewTemplate>views/wordpress/rentagreement/create-entity-view.ftl</createViewTemplate>
+			<apiTemplate>api/wordpress/rentagreement/rentagreement-service-api.ftl</apiTemplate> -->
+			<field>
+				<name>entity_code</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>N</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>alphanumeric</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Code</description>
+				<displayName>Code</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>ai_agreement</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_agreement</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Agreement</description>
+				<displayName>Agreement</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>ai_type</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_agrmntitemtype</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Item Type</description>
+				<displayName>Item Type</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>name</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>name</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Name</description>
+				<displayName>name</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>description</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text-lg</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Description</description>
+				<displayName>Description</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+		</entity>
+
+		<entity>
 			<name>RentAgreement</name>
 			<postName>sb_rentagreement</postName>
 			<description>Rent Agreement</description>
-			<global>Y</global>
+			<global>N</global>
 			<isVirtual>N</isVirtual>
 			<createViewTemplate>views/wordpress/rentagreement/create-entity-view.ftl</createViewTemplate>
 			<apiTemplate>api/wordpress/rentagreement/rentagreement-service-api.ftl</apiTemplate>
@@ -8817,13 +9963,29 @@
 				<displayName>Description</displayName>
 				<relationshipField>N</relationshipField>
 			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
 		</entity>
 
 		<entity>
 			<name>ManagementAgreement</name>
 			<postName>sb_managreement</postName>
 			<description>Management Agreement</description>
-			<global>Y</global>
+			<global>N</global>
 			<isVirtual>N</isVirtual>
 			<createViewTemplate>views/wordpress/managementagreement/create-entity-view.ftl</createViewTemplate>
 			<apiTemplate>api/wordpress/managementagreement/managementagreement-service-api.ftl</apiTemplate>
@@ -8955,13 +10117,29 @@
 				<displayName>Description</displayName>
 				<relationshipField>N</relationshipField>
 			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
 		</entity>
 
 		<entity>
 			<name>ServiceAgreement</name>
 			<postName>sb_seragreement</postName>
 			<description>Service Agreement</description>
-			<global>Y</global>
+			<global>N</global>
 			<isVirtual>N</isVirtual>
 			<createViewTemplate>views/wordpress/serviceagreement/create-entity-view.ftl</createViewTemplate>
 			<apiTemplate>api/wordpress/serviceagreement/serviceagreement-service-api.ftl</apiTemplate>
@@ -9092,6 +10270,22 @@
 				<description>Description</description>
 				<displayName>Description</displayName>
 				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
 			</field>
 		</entity>
 
@@ -9225,7 +10419,7 @@
 			<name>AgreementService</name>
 			<postName>sb_agreeservice</postName>
 			<description>Agreement Service</description>
-			<global>Y</global>
+			<global>N</global>
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
@@ -9305,6 +10499,22 @@
 				<description>Description</description>
 				<displayName>Description</displayName>
 				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
 			</field>
 		</entity>
 
@@ -10566,6 +11776,7 @@
 			<name>Assessment</name>
 			<postName>sb_assessment</postName>
 			<description>Assessment</description>
+			<viewFilterTemplate>views/wordpress/assessment/assessment-view-filter.ftl</viewFilterTemplate>
 			<global>Y</global>
 			<field>
 				<name>entity_code</name>
@@ -11406,7 +12617,7 @@
 				<editField>Y</editField>
 				<viewField>N</viewField>
 				<listField>N</listField>
-				<dataType>sb_cdtype</datpropertyaType>
+				<dataType>sb_cdtype</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
 				<description>Data Type</description>
@@ -11597,7 +12808,7 @@
 				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
-				<dataType>sb_cditype</datpropertyaType>
+				<dataType>sb_cditype</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
 				<description>Improvement Type</description>
@@ -11883,7 +13094,7 @@
 				<editField>Y</editField>
 				<viewField>N</viewField>
 				<listField>N</listField>
-				<dataType>sb_idtype</datpropertyaType>
+				<dataType>sb_idtype</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
 				<description>Data Type</description>
@@ -12121,7 +13332,7 @@
 				<editField>Y</editField>
 				<viewField>N</viewField>
 				<listField>N</listField>
-				<dataType>sb_idetype</datpropertyaType>
+				<dataType>sb_idetype</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
 				<description>Expense Type</description>
@@ -12137,7 +13348,7 @@
 				<editField>Y</editField>
 				<viewField>N</viewField>
 				<listField>N</listField>
-				<dataType>sb_incomedata</datpropertyaType>
+				<dataType>sb_incomedata</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
 				<description>Income Data</description>
