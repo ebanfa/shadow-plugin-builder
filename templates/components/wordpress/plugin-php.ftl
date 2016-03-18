@@ -104,9 +104,11 @@ class ${application.name} {
         include_once('includes/view/property/CreatePropertyView.php');
         include_once('includes/view/property/PropertyViewFilter.php');
         include_once('includes/view/assessment/AssessmentViewFilter.php');
+        include_once('includes/view/assessment/CreateAssessmentView.php');
         include_once('includes/view/notification/SingleNotificationView.php');
         include_once('includes/view/rentagreement/CreateRentAgreementView.php');
         include_once('includes/view/serviceagreement/CreateServiceAgreementView.php');
+        include_once('includes/view/purchaseagreement/CreatePurchaseAgreementView.php');
         include_once('includes/view/managementagreement/CreateManagementAgreementView.php');
         include_once('includes/view/entity-form-fields.php');
         // Framework API
