@@ -44,6 +44,7 @@
                 if($field['data_type'] == 'flag') do_flag_field($model, $field);
                 if($field['data_type'] == 'option') do_option_field($model, $field);
                 if($field['data_type'] == 'date') do_date_field($model, $field);
+                if($field['data_type'] == 'datetime') do_datetime_field($model, $field);
             }
             else {
                 do_relationship_field($model, $field, $show_relationship_popup);
@@ -230,6 +231,26 @@
                             id="<?php echo $field['name'];?>" name="<?php echo $field['name'];?>" 
                             <?php if(isset($model['id'])) { echo 'value="' . $model[$field['name']] . '" '; }?> 
                             class="form-control date-picker" 
+                            data-toggle="dropdown" placeholder="<?php echo $field['description']; ?>" 
+                            data-bv-message="The <?php echo $field['description']; ?> is not valid" 
+                            data-bv-notempty-message="The <?php echo $field['description']; ?> is required and cannot be empty">
+                    </div>
+                </div>
+            </div>
+        </div>
+<?php  } 
+
+        function do_datetime_field($model, $field) { ?>
+
+        <div class="<?php echo $field['col_size']; ?>">
+            <div class="form-group">
+                <div class="fg-line">
+                    <span class="input-group-addon"><i class="md md-event"></i></span>
+                    <div class="dtp-container dropdown fg-line">
+                        <input type='text' 
+                            id="<?php echo $field['name'];?>" name="<?php echo $field['name'];?>" 
+                            <?php if(isset($model['id'])) { echo 'value="' . $model[$field['name']] . '" '; }?> 
+                            class="form-control datetime-picker" 
                             data-toggle="dropdown" placeholder="<?php echo $field['description']; ?>" 
                             data-bv-message="The <?php echo $field['description']; ?> is not valid" 
                             data-bv-notempty-message="The <?php echo $field['description']; ?> is required and cannot be empty">
