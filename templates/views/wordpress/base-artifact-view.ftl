@@ -95,6 +95,10 @@ class ArtifactView {
      * Action method to enqueue the required scripts
      */
     public function get_page_action_txt() {
+        $page_description_filter = 'shadowbanker_' . $this->artifact . '_view_description';
+        if (has_filter($page_description_filter)) {
+            $this->page_action_txt = apply_filters($page_description_filter, $this, $this->page_action_txt);
+        }
        return $this->page_action_txt;
     }
 

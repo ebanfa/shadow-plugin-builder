@@ -109,6 +109,7 @@ class ${application.name} {
         include_once('includes/view/rentagreement/CreateRentAgreementView.php');
         include_once('includes/view/serviceagreement/CreateServiceAgreementView.php');
         include_once('includes/view/purchaseagreement/CreatePurchaseAgreementView.php');
+        include_once('includes/view/purchaseagreement/PurchaseAgreementViewFilter.php');
         include_once('includes/view/managementagreement/CreateManagementAgreementView.php');
         include_once('includes/view/entity-form-fields.php');
         // Framework API
@@ -212,6 +213,7 @@ class ${application.name} {
         PersonViewFilter::init_hooks();
         PropertyViewFilter::init_hooks();
         AssessmentViewFilter::init_hooks();
+        PurchaseAgreementViewFilter::init_hooks();
         FormFieldFilter::init_hooks();
 
     }

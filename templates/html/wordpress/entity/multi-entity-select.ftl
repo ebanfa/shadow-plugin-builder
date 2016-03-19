@@ -42,11 +42,11 @@
                             <div class="col-sm-12 m-b-20 btn-demo">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-primary">
-                                        Select the <?php echo $tab['model']['entity_name'];?> Type
+                                        Select the <?php echo $tab['model']['entity_description'];?> Type
                                     </button>
                                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                         <span class="caret"></span>
-                                        <span class="sr-only">Select the <?php echo $tab['model']['entity_name'];?> Type</span>
+                                        <span class="sr-only">Select the <?php echo $tab['model']['entity_description'];?> Type</span>
                                     </button>
                                     <ul class="dropdown-menu" role="menu">
 
@@ -64,7 +64,7 @@
                             <div class="divider"></div>
                             <div class="col-sm-12 m-b-20">
                                 <div id="<?php echo $tab['artifact_name'];?>_dependent_list_box" class="list-group">
-                                    <div class="list-group-item active"><span id="<?php echo $tab['artifact_name'];?>_count"class="badge">0</span> Selected <?php echo $tab['model']['entity_name'];?></div>
+                                    <div class="list-group-item active"><span id="<?php echo $tab['artifact_name'];?>_count"class="badge">0</span> Selected <?php echo $tab['model']['entity_description'];?></div>
                                     <!-- <div class="list-group-item"><span class="badge warning">X</span>Dapibus ac facilisis in</div> -->
                                 </div>
                             </div>
@@ -113,7 +113,7 @@
                         <div class="card">
                             <div class="card-header bgm-lightgreen">
                                 <h2>
-                                    Select the <?php echo $tab['model']['entity_name'];?>
+                                    Select the <?php echo $tab['model']['entity_description'];?>
                                 </h2>
                                 <ul class="actions actions-alt">
                                     <li class="dropdown">

@@ -10,11 +10,27 @@ if (!defined('ABSPATH')) {
 class CreatePurchaseAgreementView extends MultiEntityCreateView {
 
 
+    public static $model_description_map = array(
+        'purchase' => 'Property Purchase',
+        'sale' => 'Property Sale',);
+
     /**
      *
      */
     function __construct() {
         parent::__construct();
+    }
+
+    /**
+     * Process the load the model for this artifact
+     */
+    public function process_model() {
+        parent::process_model();
+        if(isset($_REQUEST['a_type'])) {
+            $a_type = sanitize_text_field($_REQUEST['a_type']);
+            if(isset(self::$model_description_map[$a_type]))
+                 $this->model['entity_description'] = self::$model_description_map[$a_type];
+        }
     }
 
     /**
