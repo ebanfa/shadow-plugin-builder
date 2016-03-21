@@ -258,14 +258,16 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 	}
 
 	private void doEnities(Module module) {
-		for(Entity entity: module.getEntities()) {
-			if (entity.getIsVirtual() != null) {
-				if (entity.getIsVirtual().equals("N")) {
-					this.generateArtifact(module, entity, 
-						"entities/wordpress/entity.ftl" , this.pluginDir + "includes/abstracts/" + entity.getName() + "CPT.php");
-				}
+		List<Entity> entitiesInModule = module.getEntities();
+		for(Entity entity: entitiesInModule) {
+
+			if (entity.getIsVirtual() != null) {		
+				System.out.println(">>>>>>>>>>>>>>>>>>>>>>Found virtual entity:" + entity.getName() + " with parent" + entity.getParentName());		
+				this.generateArtifact(module, entity, 
+					"entities/wordpress/entity.ftl" , this.pluginDir + "includes/abstracts/" + entity.getName() + "CPT.php");
 			}
 			else {
+				entity.setIsVirtual("N");
 				this.generateArtifact(module, entity, 
 					"entities/wordpress/entity.ftl" , this.pluginDir + "includes/abstracts/" + entity.getName() + "CPT.php");
 			}

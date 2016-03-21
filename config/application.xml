@@ -12288,7 +12288,7 @@
 				<createField>Y</createField>
 				<editField>Y</editField>
 				<viewField>N</viewField>
-				<listField>N</listField>
+				<listField>L</listField>
 				<dataType>sb_party</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
@@ -12304,7 +12304,7 @@
 				<createField>Y</createField>
 				<editField>Y</editField>
 				<viewField>N</viewField>
-				<listField>N</listField>
+				<listField>L</listField>
 				<dataType>sb_property</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
@@ -12320,7 +12320,7 @@
 				<createField>Y</createField>
 				<editField>Y</editField>
 				<viewField>N</viewField>
-				<listField>N</listField>
+				<listField>L</listField>
 				<dataType>sb_building</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
@@ -12336,7 +12336,7 @@
 				<createField>Y</createField>
 				<editField>Y</editField>
 				<viewField>N</viewField>
-				<listField>N</listField>
+				<listField>L</listField>
 				<dataType>sb_land</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
@@ -12407,6 +12407,47 @@
 				<description>Business Unit</description>
 				<displayName>Business Unit</displayName>
 				<relationshipField>Y</relationshipField>
+			</field>
+		</entity>
+
+		<entity>
+			<name>LandAssessment</name>
+			<postName>sb_landassmnt</postName>
+			<description>Land Assessment</description>
+			<isVirtual>Y</isVirtual>
+			<global>N</global>
+			<parentName>Assessment</parentName>
+			<field>
+				<name>name</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>name</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Name</description>
+				<displayName>name</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>parent_id</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>N</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>number</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Parent ID</description>
+				<displayName>Parent ID</displayName>
+				<relationshipField>N</relationshipField>
 			</field>
 		</entity>
 
@@ -23316,10 +23357,26 @@
 				<displayName>Description</displayName>
 				<relationshipField>N</relationshipField>
 			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>N</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
 		</entity>
 
 		<entity>
-			<name>Deliverabler</name>
+			<name>Deliverable</name>
 			<postName>sb_deliverable</postName>
 			<description>Deliverable</description>
 			<global>N</global>
@@ -23387,13 +23444,29 @@
 				<displayName>Description</displayName>
 				<relationshipField>N</relationshipField>
 			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>N</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
 		</entity>
 
 		<entity>
 			<name>RequirementType</name>
 			<postName>sb_requiretype</postName>
 			<description>Requirement Type</description>
-			<global>Y</global>
+			<global>N</global>
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
@@ -23441,6 +23514,22 @@
 				<description>Description</description>
 				<displayName>Description</displayName>
 				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>N</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
 			</field>
 		</entity>
 
@@ -23821,7 +23910,7 @@
 			<name>WorkEffortPurposeType</name>
 			<postName>sb_weptype</postName>
 			<description>Work Effort Purpose Type</description>
-			<global>Y</global>
+			<global>N</global>
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
@@ -23869,6 +23958,22 @@
 				<description>Description</description>
 				<displayName>Description</displayName>
 				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>N</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
 			</field>
 		</entity>
 
@@ -23876,7 +23981,7 @@
 			<name>WorkEffortStatus</name>
 			<postName>sb_westatus</postName>
 			<description>Work Effort Status</description>
-			<global>Y</global>
+			<global>N</global>
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
@@ -23924,6 +24029,22 @@
 				<description>Description</description>
 				<displayName>Description</displayName>
 				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>N</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
 			</field>
 		</entity>
 
@@ -24204,13 +24325,29 @@
 				<displayName>Special Terms</displayName>
 				<relationshipField>N</relationshipField>
 			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>N</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
 		</entity>
 
 		<entity>
 			<name>WorkRequirementFulfillment</name>
 			<postName>sb_wrfulfillment</postName>
 			<description>Work Requirement Fulfillment</description>
-			<global>Y</global>
+			<global>N</global>
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
@@ -24290,6 +24427,22 @@
 				<description>Description</description>
 				<displayName>Description</displayName>
 				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>N</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
 			</field>
 		</entity>
 
@@ -24464,6 +24617,22 @@
 				<description>Description</description>
 				<displayName>Description</displayName>
 				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>N</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
 			</field>
 		</entity>
 
@@ -24671,13 +24840,29 @@
 				<displayName>Description</displayName>
 				<relationshipField>N</relationshipField>
 			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>N</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
 		</entity>
 
 		<entity>
 			<name>TimeSheet</name>
 			<postName>sb_timesheet</postName>
 			<description>Time Sheet</description>
-			<global>Y</global>
+			<global>N</global>
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
@@ -24774,13 +24959,29 @@
 				<displayName>Description</displayName>
 				<relationshipField>N</relationshipField>
 			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>N</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
 		</entity>
 
 		<entity>
 			<name>TimeSheetRoleType</name>
 			<postName>sb_tsrtype</postName>
 			<description>Time Sheet Role Type</description>
-			<global>Y</global>
+			<global>N</global>
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
@@ -24829,13 +25030,29 @@
 				<displayName>Description</displayName>
 				<relationshipField>N</relationshipField>
 			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>N</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
 		</entity>
 
 		<entity>
 			<name>TimeSheetRole</name>
 			<postName>sb_tsrole</postName>
 			<description>Time Sheet Role</description>
-			<global>Y</global>
+			<global>N</global>
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
@@ -24932,13 +25149,29 @@
 				<displayName>Description</displayName>
 				<relationshipField>N</relationshipField>
 			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>N</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
 		</entity>
 
 		<entity>
 			<name>TimeEntry</name>
 			<postName>sb_timeentry</postName>
 			<description>Time Entry</description>
-			<global>Y</global>
+			<global>N</global>
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
@@ -25067,13 +25300,29 @@
 				<displayName>Description</displayName>
 				<relationshipField>N</relationshipField>
 			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>N</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
 		</entity>
 
 		<entity>
 			<name>PartyRate</name>
 			<postName>sb_partyrate</postName>
 			<description>Party Rate</description>
-			<global>Y</global>
+			<global>N</global>
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
@@ -25202,13 +25451,29 @@
 				<displayName>Description</displayName>
 				<relationshipField>N</relationshipField>
 			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>N</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
 		</entity>
 
 		<entity>
 			<name>WorkEffortAssignmentRate</name>
 			<postName>sb_wearate</postName>
 			<description>Work Effort Assignment Rate</description>
-			<global>Y</global>
+			<global>N</global>
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
@@ -25337,13 +25602,29 @@
 				<displayName>Description</displayName>
 				<relationshipField>N</relationshipField>
 			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>N</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
 		</entity>
 
 		<entity>
 			<name>WorkEffortInventoryAssignment</name>
 			<postName>sb_weiassign</postName>
 			<description>Work Effort Inventory Assignment</description>
-			<global>Y</global>
+			<global>N</global>
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
@@ -25440,13 +25721,29 @@
 				<displayName>Description</displayName>
 				<relationshipField>N</relationshipField>
 			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>N</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
 		</entity>
 
 		<entity>
 			<name>WorkEffortFixedAssignmentStatus</name>
 			<postName>sb_wefaastatus</postName>
 			<description>Work Effort Fixed Assignment Status</description>
-			<global>Y</global>
+			<global>N</global>
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
@@ -25495,13 +25792,29 @@
 				<displayName>Description</displayName>
 				<relationshipField>N</relationshipField>
 			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>N</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
 		</entity>
 
 		<entity>
 			<name>WorkEffortFixedAssetAssignment</name>
 			<postName>sb_wefaassign</postName>
 			<description>Work Effort Fixed Asset Assignment</description>
-			<global>Y</global>
+			<global>N</global>
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
@@ -25646,13 +25959,29 @@
 				<displayName>Description</displayName>
 				<relationshipField>N</relationshipField>
 			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>N</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
 		</entity>
 
 		<entity>
 			<name>PartyFixedAssetAssignmentStatus</name>
 			<postName>sb_wepastatus</postName>
 			<description>Party Fixed Asset Assignment Status</description>
-			<global>Y</global>
+			<global>N</global>
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
@@ -25701,13 +26030,29 @@
 				<displayName>Description</displayName>
 				<relationshipField>N</relationshipField>
 			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>N</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
 		</entity>
 
 		<entity>
 			<name>PartyFixedAssetAssignment</name>
 			<postName>sb_pfaassign</postName>
 			<description>Party Fixed Asset Assignment</description>
-			<global>Y</global>
+			<global>N</global>
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
@@ -25852,13 +26197,29 @@
 				<displayName>Description</displayName>
 				<relationshipField>N</relationshipField>
 			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>N</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
 		</entity>
 
 		<entity>
 			<name>WorkEffortDeliverable</name>
 			<postName>sb_wedeliverable</postName>
 			<description>Work Effort Deliverable</description>
-			<global>Y</global>
+			<global>N</global>
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
@@ -25887,7 +26248,7 @@
 				<dataType>sb_deliverable</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
-				<description>Deliverablet</description>
+				<description>Deliverable</description>
 				<displayName>Deliverable</displayName>
 				<relationshipField>Y</relationshipField>
 			</field>
@@ -25954,6 +26315,22 @@
 				<description>Description</description>
 				<displayName>Description</displayName>
 				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>N</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
 			</field>
 		</entity>
 		

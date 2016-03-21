@@ -20,6 +20,7 @@ public class Entity {
 	private String global;
 	private String postName;
 	private String isVirtual;
+	private String parentName;
 	private String displayName;
 	private String description;
 	private String viewFilterTemplate;
@@ -175,6 +176,21 @@ public class Entity {
 	@XmlElement
 	public void setPostName(String postName) {
 		this.postName = postName;
+	}
+
+	/**
+	 * @return the parentName	
+	 */
+	public String getParentName() {
+		return parentName;
+	}
+
+	/**
+	 * @param parentName the parentName to set
+	 */
+	@XmlElement
+	public void setParentName(String parentName) {
+		this.parentName = parentName;
 	}
 
 	/**

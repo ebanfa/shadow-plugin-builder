@@ -121,6 +121,32 @@ class EntityAPIUtils {
         $entity_data['entity_fields'] = $entity_class->getStaticPropertyValue('entity_fields');
         $entity_data['related_child_entities'] = $entity_class->getStaticPropertyValue('related_child_entities');
         $entity_data['is_global_entity'] = $entity_class->getStaticPropertyValue('is_global_entity');
+        $entity_data['is_virtual_entity'] = $entity_class->getStaticPropertyValue('is_virtual_entity');
+
+        if($entity_data['is_virtual_entity']) {
+            $parent_artifact_name = $entity_class->getStaticPropertyValue('parent_name');
+            $parent_entity_name = ArtifactUtils::$artifacts[$parent_artifact_name]['name'] . 'CPT';
+            $parent_entity_class = new ReflectionClass($parent_entity_name);
+            $parent_fields = $parent_entity_class->getStaticPropertyValue('entity_fields');
+            // Add the parent's fields and the parent's related child entities to the current virtual entity
+            // Note that it is possible that a field will appear in the virtual as well as the parent entity.
+            // In such a case the field in the virtual entity will override the field defined in the parent
+
+            // First we add all fields into a new array while removing duplicates
+            $all_fields = array();
+            // First we add all fields from the parent that are not in the virtual entity
+            foreach ($parent_fields as $key => $value) {
+                if(!array_key_exists($key, $entity_data['entity_fields'])) {
+                    $all_fields[$key] = $value;
+                }
+            }
+            // Second we add all the virtual entity's field
+            foreach ($entity_data['entity_fields'] as $key => $value) {
+                $all_fields[$key] = $value;
+            }
+            $entity_data['entity_fields'] = $all_fields;
+            $entity_data['parent_artifact_name'] = $parent_artifact_name;
+        }
         return $entity_data;
     }
 }

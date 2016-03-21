@@ -10,6 +10,14 @@ class ${entity.name}CPT {
 <#else>
     public static $is_global_entity = false; 
 </#if>
+
+
+<#if entity.isVirtual == "Y">
+    public static $is_virtual_entity = true; 
+    public static $parent_name = '${entity.parentName?lower_case}'; 
+<#else>
+    public static $is_virtual_entity = false; 
+</#if>
     
 
 
