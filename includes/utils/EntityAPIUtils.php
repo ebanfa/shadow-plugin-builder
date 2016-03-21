@@ -15,7 +15,7 @@ class EntityAPIUtils {
      */
     public static function entity_to_data($entity_data, $entity, $load_deps) {
         $entity_data['id'] = $entity->ID;
-        //Process entity create form fields
+        //Process entity fields
     	foreach ($entity_data['entity_fields'] as $field_data) {
     		if(!$field_data['is_relationship_field']) {
     			$entity_data[$field_data['name']] = get_post_meta($entity->ID, $field_data['name'], true);
@@ -32,6 +32,28 @@ class EntityAPIUtils {
 		        }
     		}
     	}
+        // Check if we are dealing with a virtual entity
+        if ($entity_data['is_virtual_entity']) {
+            // Get the parent id 
+            $parent_id = $entity_data['parent_id'];
+            $parent_entity_data = EntityAPIUtils::init_entity_data($entity_data['parent_artifact_name']);
+            // Find the parent instance
+            $parent_entity_data = EntityPersistenceAPI::get_entity_by_id($parent_entity_data, $parent_id);
+            // Copy the values of each parent field to the virtual entity instance
+            foreach ($parent_entity_data['entity_fields'] as $field_data) {
+                if(!$field_data['is_relationship_field'] && isset($parent_entity_data[$field_data['name']])) {
+                    // Make sure we do not over write fields that are already defined in the virtual entity
+                    if(!isset($entity_data[$field_data['name']])) {
+                        $entity_data[$field_data['name']] = $parent_entity_data[$field_data['name']];
+                    }
+                }
+                if($field_data['is_relationship_field']) {
+                    $entity_data[$field_data['name']] = $parent_entity_data[$field_data['name']];
+                    $entity_data[$field_data['name'] . '_txt'] = $parent_entity_data[$field_data['name'] . '_txt'];
+                    $entity_data[$field_data['name'] . '_code'] = $parent_entity_data[$field_data['name'] . '_code'];
+                }
+            }
+        }
         return $entity_data;
     }
 
