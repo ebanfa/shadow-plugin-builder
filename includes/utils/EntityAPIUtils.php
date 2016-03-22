@@ -43,7 +43,7 @@ class EntityAPIUtils {
             foreach ($parent_entity_data['entity_fields'] as $field_data) {
                 if(!$field_data['is_relationship_field'] && isset($parent_entity_data[$field_data['name']])) {
                     // Make sure we do not over write fields that are already defined in the virtual entity
-                    if(!isset($entity_data[$field_data['name']])) {
+                    if($field_data['name'] != 'id' || $field_data['name'] != 'entity_code') {
                         $entity_data[$field_data['name']] = $parent_entity_data[$field_data['name']];
                     }
                 }
@@ -150,6 +150,8 @@ class EntityAPIUtils {
             $parent_entity_name = ArtifactUtils::$artifacts[$parent_artifact_name]['name'] . 'CPT';
             $parent_entity_class = new ReflectionClass($parent_entity_name);
             $parent_fields = $parent_entity_class->getStaticPropertyValue('entity_fields');
+            // For now we only use related child entities from the parent
+            $entity_data['related_child_entities'] = $parent_entity_class->getStaticPropertyValue('related_child_entities');
             // Add the parent's fields and the parent's related child entities to the current virtual entity
             // Note that it is possible that a field will appear in the virtual as well as the parent entity.
             // In such a case the field in the virtual entity will override the field defined in the parent

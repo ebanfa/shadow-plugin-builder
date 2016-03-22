@@ -105,6 +105,13 @@ class ${application.name} {
         include_once('includes/view/property/PropertyViewFilter.php');
         include_once('includes/view/assessment/AssessmentViewFilter.php');
         include_once('includes/view/assessment/CreateAssessmentView.php');
+        include_once('includes/view/budget/CreateBudgetView.php');
+        include_once('includes/view/invoice/CreateInvoiceView.php');
+        include_once('includes/view/receipt/CreateReceiptView.php');
+        include_once('includes/view/payroll/CreatePayrollView.php');
+        include_once('includes/view/outpayment/CreateOutPaymentView.php');
+        include_once('includes/view/inspection/CreateInspectionView.php');
+        include_once('includes/view/maintenance/CreateMaintenanceView.php');
         include_once('includes/view/notification/SingleNotificationView.php');
         include_once('includes/view/rentagreement/CreateRentAgreementView.php');
         include_once('includes/view/serviceagreement/CreateServiceAgreementView.php');

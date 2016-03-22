@@ -117,13 +117,12 @@ class EntityAPI {
             $virtual_entity_search_results = array();
             foreach ($parent_search_results as $parent_data) {
                 // Use the id of the parent to find the virtual entity
-                $virtual_entity_data = EntityPersistenceAPI::get_by_field(
-                    $entity_data['artifact_name'], 'parent_id', $parent_data['id']);
+                $virtual_entity_data = EntityPersistenceAPI::get_entity_by_meta($entity_data, 'parent_id', $parent_data['id']);
                 array_push($virtual_entity_search_results, $virtual_entity_data);
             }
             return $virtual_entity_search_results;
         }
-        else return do_find_entity_impl($entity_data);
+        else return self::do_find_entity_impl($entity_data);
     }
 
 
@@ -158,7 +157,7 @@ class EntityAPI {
         // Check if we are dealing with a virtual entity
         if ($entity_data['is_virtual_entity']) {
             // Use the id of the virtual entity ($_POST['id']) to fetch the virtual entity instance
-            $entity_data = self::get_by_id($entity_data['artifact_name'], $id);
+            $entity_data = self::get_by_id($entity_data['entity_artifact_name'], $id);
             // Get the parent entity data
             $parent_entity_data = EntityAPIUtils::init_entity_data($entity_data['parent_artifact_name']);
             $parent_entity_data = self::get_by_id($entity_data['parent_artifact_name'], $id);
@@ -213,10 +212,15 @@ class EntityAPI {
         if ($entity_data['is_virtual_entity']) {
             // Get the parent entity data
             $parent_entity_data = EntityAPIUtils::init_entity_data($entity_data['parent_artifact_name']);
+            echo "Finding parent by::>>>>>>>>>>>>>>>>>>>>>>>>> meta:".$field_name . ' with value: ' . $field_value;
             // Search for field on the parent
             $parent_entity_data = EntityPersistenceAPI::get_entity_by_meta($parent_entity_data, $field_name, $field_value);
-            // Now find the virtual entity child of the parent from above
-            return EntityPersistenceAPI::get_by_field($entity_data['artifact_name'], 'parent_id', $parent_data['id']);
+            if (isset($parent_entity_data['id'])) {
+                // Now find the virtual entity child of the parent from above
+                return EntityPersistenceAPI::get_entity_by_meta(
+                    $entity_data['entity_artifact_name'], 'parent_id', $parent_entity_data['id']);
+                
+            } else return false;
         }
         else return EntityPersistenceAPI::get_entity_by_meta($entity_data, $field_name, $field_value);
     }
@@ -246,8 +250,8 @@ class EntityAPI {
             $virtual_entity_search_results = array();
             foreach ($parent_search_results as $parent_data) {
                 // Use the id of the parent to find the virtual entity
-                $virtual_entity_data = EntityPersistenceAPI::get_by_field(
-                    $entity_data['artifact_name'], 'parent_id', $parent_data['id']);
+                $virtual_entity_data = self::get_by_field(
+                    $entity_data['entity_artifact_name'], 'parent_id', $parent_data['id']);
                 array_push($virtual_entity_search_results, $virtual_entity_data);
             }
             return $virtual_entity_search_results;
