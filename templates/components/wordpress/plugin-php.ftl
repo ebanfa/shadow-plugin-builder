@@ -80,6 +80,9 @@ class ${application.name} {
         include_once('includes/api/PropertyAPI.php');
         include_once('includes/api/NotificationAPI.php');
         include_once('includes/api/RentAgreementAPI.php');
+        include_once('includes/api/ChartOfAccountsAPI.php');
+        include_once('includes/api/COAAccountStructureAPI.php');
+        include_once('includes/api/COAAccountSegmentTypeAPI.php');
         include_once('includes/api/ServiceAgreementAPI.php');
         include_once('includes/api/ManagementAgreementAPI.php');
         include_once('includes/api/BusinessUnitAPI.php');
@@ -114,6 +117,9 @@ class ${application.name} {
         include_once('includes/view/maintenance/CreateMaintenanceView.php');
         include_once('includes/view/notification/SingleNotificationView.php');
         include_once('includes/view/rentagreement/CreateRentAgreementView.php');
+        include_once('includes/view/chartofaccounts/SingleChartOfAccountsView.php');
+        include_once('includes/view/coaaccountstructure/CreateCOAAccountStructureView.php');
+        include_once('includes/view/coaaccountsegmenttype/CreateCOAAccountSegmentTypeView.php');
         include_once('includes/view/serviceagreement/CreateServiceAgreementView.php');
         include_once('includes/view/purchaseagreement/CreatePurchaseAgreementView.php');
         include_once('includes/view/purchaseagreement/PurchaseAgreementViewFilter.php');
@@ -161,6 +167,7 @@ class ${application.name} {
         add_action('template_redirect', 'CloderiaAdminAPI::do_ajax_setup');
 
         EntityActionProcessor::init_hooks();
+        ChartOfAccountsAPI::init_hooks();
         //Order related Ajax functions
         #add_action('wp_ajax_do_content_order_ajax', 'CloderiaOrdersAPI::do_content_order_ajax');
         #add_action('wp_ajax_nopriv_do_content_order_ajax', 'CloderiaOrdersAPI::do_content_order_ajax');
@@ -255,6 +262,7 @@ class ${application.name} {
         wp_register_script('wizard_js', plugins_url('/js/vendors/bootstrap-wizard/jquery.bootstrap.wizard.min.js', __FILE__), array('jquery'), true);
 
         wp_register_script('input_mask_js', plugins_url('/js/jquery.mask.min.js', __FILE__), array('jquery'), true);
+        wp_register_script('jstree_js', plugins_url('/js/jstree.min.js', __FILE__), array('jquery'), true);
         wp_register_script('conversations_js', plugins_url('/js/conversation-messages.js', __FILE__), array('jquery'), true);
 
         wp_enqueue_script('jquery_form_js');
@@ -266,6 +274,7 @@ class ${application.name} {
         wp_enqueue_script('cp_init');
         wp_enqueue_script('entity_datasource_js');
         wp_enqueue_script('entity_multi_datatables_js');
+        wp_enqueue_script('jstree_js');
         wp_enqueue_script('input_mask_js');
         wp_enqueue_script('datetimepicker_js');
         wp_enqueue_script('wizard_js');

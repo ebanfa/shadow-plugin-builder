@@ -169,6 +169,7 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 		for (Module module : application.getModules()) {
 			//System.out.println(module);
 			processRelatedChildEntities(module);
+			processVirtualEntities(module) ;
 			doComponents(module);
 			doEnities(module);
 			doAPI(module);
@@ -208,6 +209,49 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 			}
 		}
 		module.setEntities(cloneOfEntitiesInModule);
+	}
+
+	private void processVirtualEntities(Module module) {
+		List<Entity> entitiesInModule = module.getEntities();
+		List<Entity> cloneOfEntitiesInModule = new ArrayList(entitiesInModule);
+		// Loop through all the entities in the module
+		for(Entity entity : module.getEntities()) {
+
+			if (entity.getIsVirtual() != null) {
+				String parentName = entity.getParentName();
+				if(parentName != null) {
+
+					List<Field> fieldsInEntity = entity.getFields();
+
+					for(Entity item: cloneOfEntitiesInModule){
+						if(item.getName().equals(parentName)) {
+							List<Field> parentFields = item.getFields();
+							List<Field> childFields = entity.getFields();
+							entity.getVirtualFields().addAll(childFields);
+
+							for(Field parentField: parentFields) {
+								boolean fieldExists = false;
+								for(Field childField: childFields) {
+									if(childField.getName().equals(parentField.getName())) {
+										fieldExists = true;
+									}
+
+								}
+								if(!fieldExists){
+									entity.getVirtualFields().add(parentField);
+								}
+
+							}
+							//entity.getVirtualFields().addAll(parentFields);
+
+						}
+
+					}
+
+				}
+
+			}
+		}
 	}
 
 	private void doMenuHTML(Application application) {

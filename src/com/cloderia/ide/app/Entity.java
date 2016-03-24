@@ -33,6 +33,7 @@ public class Entity {
 	private String apiTemplate;
 	private String relatedEntityFieldName;
 	private List<Field> fields = new ArrayList<Field>();
+	private List<Field> virtualFields = new ArrayList<Field>();
 	private Map<String, Entity> relatedChildEntities = new HashMap<String, Entity>();
 
 	/**
@@ -235,6 +236,20 @@ public class Entity {
 	@XmlElement(name="field")
 	public void setFields(List<Field> fields) {
 		this.fields = fields;
+	}
+
+	/**
+	 * @return the virtualFields
+	 */
+	public List<Field> getVirtualFields() {
+		return virtualFields;
+	}
+
+	/**
+	 * @param virtualFields the virtualFields to set
+	 */
+	public void setVirtualFields(List<Field> virtualFields) {
+		this.virtualFields = virtualFields;
 	}
 
 	/**

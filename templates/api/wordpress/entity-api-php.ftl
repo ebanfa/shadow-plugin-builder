@@ -47,7 +47,7 @@ class EntityAPI {
                 return self::do_create_entity_impl($entity_data);
             }
         }
-        else return do_create_entity_impl($entity_data);
+        else return self::do_create_entity_impl($entity_data);
     }
 
     /**

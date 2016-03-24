@@ -66,17 +66,31 @@ jQuery(document).ready(function($)
         },
         columns: [
             { data: "id" }, 
-<#list entity.fields as field>
-    <#if field.listField == "Y">
-        <#if field.relationshipField == "N">
-            { data: "${field.name}" },
-        </#if>
+<#if entity.isVirtual == "Y">
+    <#list entity.virtualFields as field>
+        <#if field.listField == "Y">
+            <#if field.relationshipField == "N">
+                { data: "${field.name}" },
+            </#if>
 
-        <#if field.relationshipField == "Y">
-            { data: "${field.name}_txt" },
+            <#if field.relationshipField == "Y">
+                { data: "${field.name}_txt" },
+            </#if>
         </#if>
-    </#if>
-</#list>
+    </#list>
+<#else>
+    <#list entity.fields as field>
+        <#if field.listField == "Y">
+            <#if field.relationshipField == "N">
+                { data: "${field.name}" },
+            </#if>
+
+            <#if field.relationshipField == "Y">
+                { data: "${field.name}_txt" },
+            </#if>
+        </#if>
+    </#list>
+</#if>
         ],
         columnDefs: [
             { "visible": false,  "targets": 0 },

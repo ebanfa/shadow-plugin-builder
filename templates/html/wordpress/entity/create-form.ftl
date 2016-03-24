@@ -76,13 +76,9 @@
             });
 
             $('body').on('click', '.related-field-search-link', function(e){
-                console.log('Heloo');
                 e.preventDefault();
-                console.log('Heloo');
                 var currentRelatedFieldName = $(this).data('related-field-name');
-                console.log('Heloo');
                 $('#current-related-field').val(currentRelatedFieldName);
-                console.log('Heloo');
                 $('#' + currentRelatedFieldName + '_modal').modal('show');
 
                 
