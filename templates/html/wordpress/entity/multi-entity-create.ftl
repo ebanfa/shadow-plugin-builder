@@ -14,7 +14,7 @@
             <ul class="tab-nav text-center">
                 <li><a href="#tab0" data-toggle="tab"><?php echo $model['entity_description'];?></a></li>
                 <?php  $count = 1; foreach ($tabs as $tab) {  ?>
-                <li><a href="#tab<?php echo $count;?>" data-toggle="tab"><?php echo $tab['description'];?></a></li>
+                <li><a id="tab<?php echo $count;?>-link" href="#tab<?php echo $count;?>" data-toggle="tab"><?php echo $tab['description'];?></a></li>
                 <?php  $count++; } ?>
             </ul>
             

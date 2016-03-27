@@ -35,15 +35,16 @@
 <div class="tab-content p-20">
     <div role="tabpanel" class="tab-pane animated fadeIn in active" id="tab-0">
         <div id="success"></div>
-        <div>
+
+        <div class="m-20">
             <div id="jstree_demo_div"> </div>
         </div>
+        
         <div class="btn-demo m-t-10">
+            <?php if($view->is_pending()) { ?>
             <a href="<?php echo $view->get_edit_url(); ?>" class="btn btn-primary waves-effect">
                <?php _e('Edit', 'framework') ?>
             </a>
-
-            <?php if($view->is_pending()) { ?>
             <form id="generate-coa-form" style="display:none" action=""  method="POST">
                 <input type="hidden" name="id" value="<?php echo $model['id']; ?>">
                 <input type="hidden" name="artifact" value="<?php echo $view->get_artifact_name(); ?>">
@@ -125,7 +126,7 @@ $(document).ready(function () {
             'data' : {
                 'url' : ${application.name?lower_case}_ajax_script.ajaxurl,
                 'type' : 'POST',
-                'data' : {action: 'load_coa_ajax'}
+                'data' : {action: 'load_coa_ajax', id: '<?php echo $model['id']; ?>'}
             }
         }
     });
@@ -151,7 +152,6 @@ $('#generate-coa-btn').click(function(e){
         type: 'POST',
         success: function(responseData) {
             if (responseData.success) {
-
                 swal({   
                     title: "Great Job!",   
                     text: "The data operation completed successfully",   
@@ -159,7 +159,7 @@ $('#generate-coa-btn').click(function(e){
                     showCancelButton: false,   
                     closeOnConfirm: true 
                 }, function(){   
-                    $('#success').html(responseData.data.message);
+                    window.location.reload();
                 });
             }
             else {

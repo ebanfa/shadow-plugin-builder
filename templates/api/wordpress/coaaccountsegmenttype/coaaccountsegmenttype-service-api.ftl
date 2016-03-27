@@ -51,7 +51,7 @@ class COAAccountSegmentTypeAPI  {
 
                 $seg_ty_value_data['edit_mode'] = true;
                 $seg_ty_value_data['name'] = $seg_ty_value['name'];
-                $seg_ty_value_data['value'] = $seg_ty_value['value'];
+                //$seg_ty_value_data['value'] = $seg_ty_value['value'];
                 $seg_ty_value_data['v_segtype'] = $entity_data['id'];
                 $seg_ty_value_data['description'] = $seg_ty_value['description'];
 

@@ -14959,6 +14959,7 @@
 			<postName>sb_coaacctsegtype</postName>
 			<description>COA Account Segement Type</description>
 			<global>N</global>
+			<viewFilterTemplate>views/wordpress/coaaccountsegmenttype/coaaccountsegmenttype-view-filter.ftl</viewFilterTemplate>
 			<createViewTemplate>views/wordpress/coaaccountsegmenttype/create-entity-view.ftl</createViewTemplate>
 			<apiTemplate>api/wordpress/coaaccountsegmenttype/coaaccountsegmenttype-service-api.ftl</apiTemplate> 
 			<field>
@@ -15007,6 +15008,38 @@
 				<dataColumn>true</dataColumn>
 				<description>Mask</description>
 				<displayName>Mask</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>has_val_src</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>N</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>flag</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Has Value Source</description>
+				<displayName>Has Value Source</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>val_provider</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>option</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Value Provider</description>
+				<displayName>Value Provider</displayName>
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
@@ -15091,22 +15124,6 @@
 				<listField>Y</listField>
 				<dataType>name</dataType>
 				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Name</description>
-				<displayName>name</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>value</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>text</dataType>
-				<size>medium</size>
 				<dataColumn>true</dataColumn>
 				<description>Value</description>
 				<displayName>Value</displayName>
@@ -15443,10 +15460,10 @@
 			<field>
 				<name>status</name>
 				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<isFormField>N</isFormField>
 				<required>Y</required>
 				<createField>Y</createField>
-				<editField>Y</editField>
+				<editField>N</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
 				<dataType>sb_coastatus</dataType>
@@ -15491,9 +15508,9 @@
 		</entity>
 
 		<entity>
-			<name>COASegment</name>
-			<postName>sb_coaseg</postName>
-			<description>COA Segment</description>
+			<name>COAAccountSegmentInstance</name>
+			<postName>sb_coaaseginst</postName>
+			<description>COA Account Segment Instance</description>
 			<global>N</global>
 			<field>
 				<name>entity_code</name>
@@ -15541,6 +15558,22 @@
 				<dataColumn>true</dataColumn>
 				<description>Account Segment</description>
 				<displayName>Account Segment</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>parent_instance</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_coaaseginst</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Parent</description>
+				<displayName>Parent</displayName>
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>

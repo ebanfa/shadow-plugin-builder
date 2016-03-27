@@ -120,6 +120,7 @@ class ${application.name} {
         include_once('includes/view/chartofaccounts/SingleChartOfAccountsView.php');
         include_once('includes/view/coaaccountstructure/CreateCOAAccountStructureView.php');
         include_once('includes/view/coaaccountsegmenttype/CreateCOAAccountSegmentTypeView.php');
+        include_once('includes/view/coaaccountsegmenttype/COAAccountSegmentTypeViewFilter.php');
         include_once('includes/view/serviceagreement/CreateServiceAgreementView.php');
         include_once('includes/view/purchaseagreement/CreatePurchaseAgreementView.php');
         include_once('includes/view/purchaseagreement/PurchaseAgreementViewFilter.php');
@@ -228,6 +229,7 @@ class ${application.name} {
         PropertyViewFilter::init_hooks();
         AssessmentViewFilter::init_hooks();
         PurchaseAgreementViewFilter::init_hooks();
+        COAAccountSegmentTypeViewFilter::init_hooks();
         FormFieldFilter::init_hooks();
 
     }

@@ -88,11 +88,11 @@ class CloderiaUIDisplayAPI {
             cp_get_template('entity/list.php');
         }
     }
-
+    
     public static function before_artifact_content() {
         cp_get_template('entity/artifact-wrapper-start.php');
     }
-    
+
     public static function the_artifact_content($view) {
         $view->render();
     }
