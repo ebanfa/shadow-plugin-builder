@@ -48,24 +48,43 @@ class COAAccountStructureAPI  {
             // Sort the segments according to segment sequence
             foreach ($segments as $segment) {
                 $segment = json_decode(stripslashes($segment), true);
-                $segment_data = EntityAPIUtils::init_entity_data('coaaccountsegment');
+                // Create the segment
+                $segment_data = self::do_create_segments($entity_data['id'], 
+                    $segment['seg_type'], $segment['name'], $segment['seg_sequence'], $segment['description']);
 
-                $segment_data['edit_mode'] = true;
-                $segment_data['name'] = $segment['name'];
-                //$segment_data['mask'] = $segment_data['mask'];
-                $segment_data['seg_sequence'] = $segment['seg_sequence'];
-                $segment_data['seg_acctstruct'] = $entity_data['id'];
-                $segment_data['seg_type'] = $segment['seg_type'];
-                $segment_data['description'] = $segment['description'];
-
-                $segment_data = EntityAPI::do_create_entity($segment_data);
-                
                 $segments_count++;
                 // add to the list
                 array_push($segments_list, $segment_data);
             }
+            /*// Now we need to add the segments for ledger and accounts
+            $ledger_seg_type = EntityAPI::get_by_field('coaaccountsegmenttype', 'name', 'Ledger');
+            if(isset($ledger_seg_type['id'])) {
+                $segment_data = self::do_create_segments($entity_data['id'], 
+                    $ledger_seg_type['id'], 'Ledger', $segments_count + 1, 'Legder Segment');
+            }
+            // Now we need to add the segments for ledger and accounts
+            $account_seg_type = EntityAPI::get_by_field('coaaccountsegmenttype', 'name', 'Account');
+            if(isset($account_seg_type['id'])) {
+                $segment_data = self::do_create_segments($entity_data['id'], 
+                    $account_seg_type['id'], 'Account', $segments_count + 2, 'Account Segment');
+            }*/
         }
         return $segments_list;
+    }
+
+   /**
+     *
+     */
+    public static function do_create_segment($structure, $type, $name, $sequence, $description){
+        $segment_data = EntityAPIUtils::init_entity_data('coaaccountsegment');
+        $segment_data['edit_mode'] = true;
+        $segment_data['name'] = $name;
+        $segment_data['seg_type'] = $type;
+        $segment_data['seg_sequence'] = $sequence;
+        $segment_data['seg_acctstruct'] = $structure;
+        $segment_data['description'] = $description;
+        return EntityAPI::do_create_entity($segment_data);
+
     }
 
 }

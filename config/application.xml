@@ -15631,15 +15631,17 @@
 			<postName>sb_glaccttype</postName>
 			<description>GL Account Type</description>
 			<global>Y</global>
+			<createViewTemplate>views/wordpress/glaccounttype/create-entity-view.ftl</createViewTemplate>
+			<apiTemplate>api/wordpress/glaccounttype/glaccounttype-service-api.ftl</apiTemplate> 
 			<field>
 				<name>entity_code</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
 				<required>Y</required>
-				<createField>N</createField>
+				<createField>Y</createField>
 				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
 				<dataType>alphanumeric</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
@@ -15688,13 +15690,13 @@
 			<global>N</global>
 			<field>
 				<name>entity_code</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
 				<required>Y</required>
-				<createField>N</createField>
+				<createField>Y</createField>
 				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
 				<dataType>alphanumeric</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>

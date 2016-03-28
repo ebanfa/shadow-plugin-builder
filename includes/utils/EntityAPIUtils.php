@@ -17,9 +17,21 @@ class EntityAPIUtils {
         $entity_data['id'] = $entity->ID;
         //Process entity fields
     	foreach ($entity_data['entity_fields'] as $field_data) {
-    		if(!$field_data['is_relationship_field']) {
+            // Non relationship and non flag fields
+    		if(!$field_data['is_relationship_field'] && $field_data['data_type'] != 'flag') {
     			$entity_data[$field_data['name']] = get_post_meta($entity->ID, $field_data['name'], true);
     		}
+            // Flag fields
+            if(!$field_data['is_relationship_field'] && $field_data['data_type'] == 'flag') {
+                $flag_val = get_post_meta($entity->ID, $field_data['name'], true);
+
+                if(EntityStringUtils::is_invalid_string($flag_val))
+                    $entity_data[$field_data['name']] = 'No';
+                if($flag_val == 'T')
+                    $entity_data[$field_data['name']] = 'Yes';
+                if($flag_val == 'F')
+                    $entity_data[$field_data['name']] = 'No';
+            }
             
     		if($field_data['is_relationship_field']) {
     			$related_entity_id = get_post_meta($entity->ID, $field_data['name'], true);

@@ -63,7 +63,7 @@ class ${application.name} {
         $this->init_template_hooks();
         $this->init_admin_template_hooks();
     }
-    
+
     /**
      * Include all required files
      */
@@ -80,6 +80,7 @@ class ${application.name} {
         include_once('includes/api/PropertyAPI.php');
         include_once('includes/api/NotificationAPI.php');
         include_once('includes/api/RentAgreementAPI.php');
+        include_once('includes/api/GLAccountTypeAPI.php');
         include_once('includes/api/ChartOfAccountsAPI.php');
         include_once('includes/api/COAAccountStructureAPI.php');
         include_once('includes/api/COAAccountSegmentTypeAPI.php');
@@ -117,6 +118,7 @@ class ${application.name} {
         include_once('includes/view/maintenance/CreateMaintenanceView.php');
         include_once('includes/view/notification/SingleNotificationView.php');
         include_once('includes/view/rentagreement/CreateRentAgreementView.php');
+        include_once('includes/view/glaccounttype/CreateGLAccountTypeView.php');
         include_once('includes/view/chartofaccounts/SingleChartOfAccountsView.php');
         include_once('includes/view/coaaccountstructure/CreateCOAAccountStructureView.php');
         include_once('includes/view/coaaccountsegmenttype/CreateCOAAccountSegmentTypeView.php');

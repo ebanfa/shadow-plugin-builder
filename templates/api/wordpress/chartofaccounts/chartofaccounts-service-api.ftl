@@ -135,9 +135,16 @@ class ChartOfAccountsAPI  {
 
             if(!isset($segment_type_data['id'])) 
                 wp_send_json_error(array('message' => "Data error, could not find segment type for segment" . $segment_type_data['name']));
-            // get the values for the segment (the root segment can have only one value)
-            $segment_values = EntityAPI::find_by_criteria(
-                'coaaccountsegmenttypevalue', array('v_segtype' => $segment_type_data['id']));
+            
+            if($segment_type_data['has_val_src'] == 'Yes') {
+                // Query the value entity
+                $segment_values = EntityAPI::find_by_criteria($segment_type_data['val_provider'], array());
+            }
+            else {
+                // get the values for the segment (the root segment can have only one value)
+                $segment_values = EntityAPI::find_by_criteria(
+                    'coaaccountsegmenttypevalue', array('v_segtype' => $segment_type_data['id']));
+            }
 
 
             if(empty($segment_values)) 
