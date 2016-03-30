@@ -190,7 +190,7 @@
                 <div class="checkbox m-b-15">
                     <label>
                         <input id="<?php echo $field['name'];?>" 
-                        name="<?php echo $field['name']; ?>"  type="checkbox" value="" 
+                        name="<?php echo $field['name']; ?>"  type="checkbox" value="N" 
                         data-bv-message="The <?php echo $field['description']; ?> is not valid" 
                         data-bv-notempty-message="The <?php echo $field['description']; ?> is required and cannot be empty" 
                         <?php if($field['is_required']) { echo ' required'; }?>>

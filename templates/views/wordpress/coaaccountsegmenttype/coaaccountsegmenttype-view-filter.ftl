@@ -51,13 +51,13 @@ class COAAccountSegmentTypeViewFilter extends ViewFilter {
             {
                 $('body').on('click', '#has_val_src', function(e){
                     if($("#has_val_src").is(':checked')) {
-                        console.log('checked!!');
                         $('#has_val_src').attr('checked', true);
+                        $('#has_val_src').val('Y');
                         $('#tab1-link').css('display', 'none');
                     }
                     else {
-                        console.log('unchecked!!');
                         $('#has_val_src').attr('checked', false);
+                        $('#has_val_src').val('N');
                         $('#tab1-link').css('display', 'inline-block');
                     }
                                         

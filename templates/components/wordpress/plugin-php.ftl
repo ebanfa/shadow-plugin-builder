@@ -84,6 +84,8 @@ class ${application.name} {
         include_once('includes/api/ChartOfAccountsAPI.php');
         include_once('includes/api/COAAccountStructureAPI.php');
         include_once('includes/api/COAAccountSegmentTypeAPI.php');
+        include_once('includes/api/TransactionTypeAPI.php');
+        include_once('includes/api/FinancialEventTypeAPI.php');
         include_once('includes/api/ServiceAgreementAPI.php');
         include_once('includes/api/ManagementAgreementAPI.php');
         include_once('includes/api/BusinessUnitAPI.php');
@@ -123,6 +125,8 @@ class ${application.name} {
         include_once('includes/view/coaaccountstructure/CreateCOAAccountStructureView.php');
         include_once('includes/view/coaaccountsegmenttype/CreateCOAAccountSegmentTypeView.php');
         include_once('includes/view/coaaccountsegmenttype/COAAccountSegmentTypeViewFilter.php');
+        include_once('includes/view/transactiontype/CreateTransactionTypeView.php');
+        include_once('includes/view/financialeventtype/CreateFinancialEventTypeView.php');
         include_once('includes/view/serviceagreement/CreateServiceAgreementView.php');
         include_once('includes/view/purchaseagreement/CreatePurchaseAgreementView.php');
         include_once('includes/view/purchaseagreement/PurchaseAgreementViewFilter.php');

@@ -50,7 +50,7 @@ class EntityActionProcessor {
             $entity_data = EntityAPI::create_entity($entity_data);
         }
         // Run post edit hooks
-        //self::do_after_ajax_edit($entity_data);
+        self::do_after_ajax_edit($entity_data);
     }
 
     /**

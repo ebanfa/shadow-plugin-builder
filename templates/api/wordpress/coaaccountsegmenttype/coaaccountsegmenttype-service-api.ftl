@@ -15,6 +15,9 @@ class COAAccountSegmentTypeAPI  {
     public static function do_create_entity($entity_data){
 
         // 1. Create the segment type
+        if(!isset($_POST['has_val_src'])) {
+            $entity_data['has_val_src'] = 'N';
+        }
         $entity_data = EntityAPI::do_create_entity($entity_data);
         // 2. Create the segment type values
         $seg_ty_values_list = self::do_create_segment_values($entity_data);

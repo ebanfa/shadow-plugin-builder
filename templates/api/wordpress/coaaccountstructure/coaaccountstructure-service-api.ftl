@@ -49,7 +49,7 @@ class COAAccountStructureAPI  {
             foreach ($segments as $segment) {
                 $segment = json_decode(stripslashes($segment), true);
                 // Create the segment
-                $segment_data = self::do_create_segments($entity_data['id'], 
+                $segment_data = self::do_create_segment($entity_data['id'], 
                     $segment['seg_type'], $segment['name'], $segment['seg_sequence'], $segment['description']);
 
                 $segments_count++;

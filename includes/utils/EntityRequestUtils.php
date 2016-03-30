@@ -75,17 +75,10 @@ class EntityRequestUtils {
                     $entity_data[$field_data['name']] = sanitize_text_field($_POST[$field_data['name']]);
             }
         }
-        //Process date field
+        //Process flag field
         elseif($field_data['data_type'] === 'flag' ) {
-            if (isset($_POST[$field_data['name']])) {
-              if(EntityStringUtils::is_invalid_string($_POST[$field_data['name']])) {
-                  $entity_data[$field_data['name']] = 'F';
-              }
-              else{
-                  $entity_data[$field_data['name']] = 'T';
-              }
-
-            }
+            if (!isset($_POST[$field_data['name']]))
+                $entity_data[$field_data['name']] = 'N';
         }
         // Process non date fields
         else {
