@@ -251,8 +251,8 @@ class ChartOfAccountsAPI  {
         $bu_glaccount_data['from_date'] = date("Y-m-d H:i:s");
         $bu_glaccount_data['internal_org'] = $business_unit['id'];
         $bu_glaccount_data['name'] = $business_unit['name'] . ' ' . $value_data['name'];
-        $bu_glaccount_data['description'] = $bu_glaccount['name'];
-        $bu_glaccount_data = EntityAPI::do_create_entity($bu_glaccount);
+        $bu_glaccount_data['description'] = $bu_glaccount_data['name'];
+        $bu_glaccount_data = EntityAPI::do_create_entity($bu_glaccount_data);
         // Create the account balance instance for this bu gl account
 
         $accounting_period_data = self::get_current_accounting_period();
@@ -275,7 +275,7 @@ class ChartOfAccountsAPI  {
      *
      */
     public static function get_current_accounting_period(){
-        $accounting_period_data = EntityAPI::find_by_field('accountingperiod', 'active_fg', 'Y');
+        $accounting_period_data = EntityAPI::get_by_field('accountingperiod', 'active_fg', 'Y');
         return $accounting_period_data;
     } 
 

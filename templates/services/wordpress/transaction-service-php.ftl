@@ -69,7 +69,7 @@ class TransactionService {
     /*
      *
      */
-    public static function post_transaction($transaction_data, financial_event_data){
+    public static function post_transaction($transaction_data, $financial_event_data) {
         // Get all accounts mapped to this transaction type
         $glaccount_txntype_mapping = EntityAPI::find_by_criteria(
             'txntypeaccount', array('tta_txn_type' => $transaction_data['txn_type']));

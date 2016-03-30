@@ -184,6 +184,15 @@
 			<type>group</type>
 			<cssClass>md-account-balance</cssClass>
 			<menu>
+				<name>accountingperiods</name>
+				<displayName>Accounting Periods</displayName>
+				<description>Accounting Periods</description>
+				<active>N</active>
+				<cssClass>md-mail</cssClass>
+				<targetType>entity</targetType>
+				<target>/wordpress/?page_id=2&amp;page_action=list&amp;artifact=accountingperiod</target>
+			</menu>
+			<menu>
 				<name>segmenttypes</name>
 				<displayName>Acccount Segment Types</displayName>
 				<description>Acccount Segment Types</description>
