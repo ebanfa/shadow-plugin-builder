@@ -353,7 +353,9 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 	private void doServices(Module module) {
 		String includeServiceOutputDir = this.pluginDir + "includes/service/";
 		this.generateArtifact(module, null, 
-					"services/wordpress/dashboard-service-php.ftl" , includeServiceOutputDir +  "DashboardService.php");
+					"services/wordpress/dashboard-service-php.ftl" , includeServiceOutputDir +  "DashboardService.php");;
+		this.generateArtifact(module, null, 
+					"services/wordpress/transaction-service-php.ftl" , includeServiceOutputDir +  "TransactionService.php");
 	}
 
 	private void doControllers(Module module) {

@@ -14800,6 +14800,22 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
+				<name>active_fg</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>flag</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Is Active</description>
+				<displayName>Is Active</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
 				<name>from_date</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>

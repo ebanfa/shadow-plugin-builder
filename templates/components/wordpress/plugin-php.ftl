@@ -143,6 +143,7 @@ class ${application.name} {
         include_once('includes/api/CloderiaFileUploadValidatorAPI.php');
         // Services
         include_once('includes/service/DashboardService.php');
+        include_once('includes/service/TransactionService.php');
         // Utility Classes
         include_once('includes/utils/EntityStringUtils.php');
         include_once('includes/utils/EntityRequestUtils.php');
