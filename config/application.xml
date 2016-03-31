@@ -264,8 +264,25 @@
 				<targetType>entity</targetType>
 				<target>/wordpress/?page_id=2&amp;page_action=list&amp;artifact=glbudgetxref</target>
 			</menu>
+		</menuGroup>
+
+		<menuGroup>
+			<name>transactions</name>
+			<displayName>Transactions</displayName>
+			<description>Transactions</description>
+			<type>group</type>
+			<cssClass>md-description</cssClass>
 			<menu>
-				<name>transactions</name>
+				<name>transactiontypes</name>
+				<displayName>Transaction Types</displayName>
+				<description>Transaction Types</description>
+				<active>N</active>
+				<cssClass>md-mail</cssClass>
+				<targetType>entity</targetType>
+				<target>/wordpress/?page_id=2&amp;page_action=list&amp;artifact=transactiontype</target>
+			</menu>
+			<menu>
+				<name>transaction</name>
 				<displayName>Transactions</displayName>
 				<description>Transactions</description>
 				<active>N</active>
@@ -14278,6 +14295,38 @@
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
+				<name>p_fparty</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_party</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>From Party</description>
+				<displayName>From Party</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>p_tparty</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_party</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>To Party</description>
+				<displayName>To Party</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
 				<name>name</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
@@ -14367,6 +14416,7 @@
 			<global>N</global>
 			<parentName>Payment</parentName>
 			<createViewTemplate>views/wordpress/receipt/create-entity-view.ftl</createViewTemplate>
+			<apiTemplate>api/wordpress/receipt/receipt-service-api.ftl</apiTemplate> 
 			<field>
 				<name>entity_code</name>
 				<isVisible>Y</isVisible>
@@ -14400,6 +14450,38 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
+				<name>p_tparty</name>
+				<isVisible>Y</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>sb_party</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>To Party</description>
+				<displayName>To Party</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>amount</name>
+				<isVisible>Y</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>money</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Amount</description>
+				<displayName>Amount</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
 				<name>parent_id</name>
 				<isVisible>N</isVisible>
 				<isFormField>N</isFormField>
@@ -14419,12 +14501,13 @@
 
 		<entity>
 			<name>OutPayment</name>
-			<postName>sb_putpay</postName>
-			<description>Payment</description>
+			<postName>sb_outpayment</postName>
+			<description>Disbursement</description>
 			<isVirtual>Y</isVirtual>
 			<global>N</global>
 			<parentName>Payment</parentName>
 			<createViewTemplate>views/wordpress/outpayment/create-entity-view.ftl</createViewTemplate>
+			<apiTemplate>api/wordpress/outpayment/outpayment-service-api.ftl</apiTemplate> 
 			<field>
 				<name>entity_code</name>
 				<isVisible>Y</isVisible>
@@ -14584,6 +14667,22 @@
 				<dataColumn>true</dataColumn>
 				<description>Billing Account</description>
 				<displayName>Billing Account</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>pa_invoice</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_invoice</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Invoice</description>
+				<displayName>Invoice</displayName>
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
@@ -16154,13 +16253,13 @@
 			<apiTemplate>api/wordpress/financialeventtype/financialeventtype-service-api.ftl</apiTemplate>
 			<field>
 				<name>entity_code</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
 				<required>Y</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
 				<dataType>alphanumeric</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
@@ -16648,13 +16747,13 @@
 			<apiTemplate>api/wordpress/transactiontype/transactiontype-service-api.ftl</apiTemplate>
 			<field>
 				<name>entity_code</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
 				<required>Y</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
 				<dataType>alphanumeric</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
@@ -16741,7 +16840,7 @@
 				<createField>Y</createField>
 				<editField>Y</editField>
 				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<listField>N</listField>
 				<dataType>sb_txntype</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>

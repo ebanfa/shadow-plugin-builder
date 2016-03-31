@@ -39,7 +39,7 @@ class TransactionTypeAPI  {
      *
      */
     public static function do_create_acct_mapping($entity_data){
-        $feventtxntypes_list = array();
+        $txntypeaccounts_list = array();
         // 1. Check for the segments request param
         if(isset($_POST['txntypeaccount'])) {
             // 2. Loop through the array of segments objects (JSON encoded)

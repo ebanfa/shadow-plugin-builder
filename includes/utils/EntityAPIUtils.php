@@ -24,13 +24,20 @@ class EntityAPIUtils {
             
     		if($field_data['is_relationship_field']) {
     			$related_entity_id = get_post_meta($entity->ID, $field_data['name'], true);
-                // Get the related post
-                $related_entity = get_post($related_entity_id);
-		        if($related_entity) {
-                    $entity_data[$field_data['name']] = $related_entity_id;
-			        $entity_data[$field_data['name'] . '_txt'] = get_post_meta($related_entity->ID, 'name', true);
-			        $entity_data[$field_data['name'] . '_code'] = get_post_meta($related_entity->ID, 'entity_code', true);
-		        }
+                if(!EntityStringUtils::is_invalid_string($related_entity_id)) {
+                    // Get the related post
+                    $related_entity = get_post($related_entity_id);
+                    if($related_entity) {
+                        $entity_data[$field_data['name']] = $related_entity_id;
+                        $entity_data[$field_data['name'] . '_txt'] = get_post_meta($related_entity->ID, 'name', true);
+                        $entity_data[$field_data['name'] . '_code'] = get_post_meta($related_entity->ID, 'entity_code', true);
+                    }
+                }
+                else {
+                    $entity_data[$field_data['name']] = -1;
+                    $entity_data[$field_data['name'] . '_txt'] = 'N/A';
+                    $entity_data[$field_data['name'] . '_code'] = 'N/A';
+                }
     		}
     	}
         // Check if we are dealing with a virtual entity
