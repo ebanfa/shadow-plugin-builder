@@ -15,16 +15,26 @@ class ReceiptAPI  {
      *
      */
     public static function do_create_entity($entity_data){
+        // 1. Get the payment type for receipts
+        $receipt_payment_type_data = EntityAPI::get_by_code('paymenttype', ReceiptAPI::$eventTypeCode);
 
-        // 1. Create the account structure type
-        $entity_data = EntityAPI::do_create_entity($entity_data);
-        // 2. Create the segments
-        $payment_applications_list = self::do_create_pay_application($entity_data);
+        if(isset($receipt_payment_type_data['id'])){
+            // 2. Get the to party as the current party
+            $entity_data ['p_type'] = $receipt_payment_type_data['id'];
 
-        foreach ($payment_applications_list as $payment_application) {
-            self::do_create_financial_events($entity_data, $payment_application);
+            $party_data = PartyAPI::get_current_user_party();
+            if(isset($party_data['id'])) $entity_data ['p_tparty'] = $party_data['id'];
+
+            $entity_data = EntityAPI::do_create_entity($entity_data);
+            // 3. Create the payment applications
+            $payment_applications_list = self::do_create_pay_application($entity_data);
+
+            foreach ($payment_applications_list as $payment_application) {
+                self::do_create_financial_events($entity_data, $payment_application);
+            }
         }
         return $entity_data;
+        
     }
 
     /**
@@ -62,7 +72,7 @@ class ReceiptAPI  {
                 if(isset($payment_application['pa_account'])) $payment_application_data['pa_account'] = $payment_application['pa_account'];
                 if(isset($payment_application['pa_invoice'])) $payment_application_data['pa_invoice'] = $payment_application['pa_invoice'];
 
-                $payment_application_data['amount'] = $payment_application['amount'];
+                $payment_application_data['amount'] = str_replace(',', '', $payment_application['amount']); ;
                 $payment_application_data['effective_date'] = $payment_application['effective_date'];
                 $payment_application_data['description'] = $payment_application['description'];
                 $payment_application_data = EntityAPI::do_create_entity($payment_application_data);
@@ -95,7 +105,9 @@ class ReceiptAPI  {
             $event_data['to_party'] = $entity_data['p_tparty'];
             $event_data['from_party'] = $entity_data['p_fparty'];
             $event_data['amount'] = $payment_application['amount'];
-            $event_data['internal_org'] = BusinessUnitAPI::get_current_user_business_unit();
+
+            $internal_org = BusinessUnitAPI::get_current_user_business_unit();
+            if(isset($internal_org['id'])) $event_data['internal_org'] = $internal_org['id'];
 
             if(isset($payment_application['invoice'])) $event_data['invoice'] = $entity_data['name'];
             // Create the instance data

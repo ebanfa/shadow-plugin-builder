@@ -118,7 +118,8 @@ class EntityAPI {
             foreach ($parent_search_results as $parent_data) {
                 // Use the id of the parent to find the virtual entity
                 $virtual_entity_data = EntityPersistenceAPI::get_entity_by_meta($entity_data, 'parent_id', $parent_data['id']);
-                array_push($virtual_entity_search_results, $virtual_entity_data);
+                if(isset($virtual_entity_data['id']))
+                    array_push($virtual_entity_search_results, $virtual_entity_data);
             }
             return $virtual_entity_search_results;
         }

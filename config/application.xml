@@ -310,8 +310,8 @@
 			</menu>
 			<menu>
 				<name>outpayments</name>
-				<displayName>Payments</displayName>
-				<description>Payments</description>
+				<displayName>Disbursements</displayName>
+				<description>Disbursements</description>
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
@@ -14450,6 +14450,22 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
+				<name>p_type</name>
+				<isVisible>Y</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>sb_paymenttype</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Payment Type</description>
+				<displayName>Payment Type</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
 				<name>p_tparty</name>
 				<isVisible>Y</isVisible>
 				<isFormField>N</isFormField>
@@ -16131,7 +16147,7 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
-				<name>glaccount</name>
+				<name>buglaccount</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
@@ -16139,11 +16155,11 @@
 				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
-				<dataType>sb_glaccount</dataType>
+				<dataType>sb_buglaccount</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
-				<description>GL Account</description>
-				<displayName>GL Account</displayName>
+				<description>BU GL Account</description>
+				<displayName>BU GL Account</displayName>
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
@@ -17077,7 +17093,7 @@
 				<dataColumn>true</dataColumn>
 				<description>Business Unit GL Account</description>
 				<displayName>Business Unit GL Account</displayName>
-				<relationshipField>N</relationshipField>
+				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
 				<name>name</name>

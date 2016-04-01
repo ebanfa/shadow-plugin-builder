@@ -80,6 +80,13 @@ class EntityRequestUtils {
             if (!isset($_POST[$field_data['name']]))
                 $entity_data[$field_data['name']] = 'N';
         }
+        //Process money field
+        elseif($field_data['data_type'] === 'money' ) {
+            if (!isset($_POST[$field_data['name']])){
+                $string = str_replace(',', '', $_POST[$field_data['name']]);
+                $entity_data[$field_data['name']] = $string ;
+            }
+        }
         // Process non date fields
         else {
             if (isset($_POST[$field_data['name']])){

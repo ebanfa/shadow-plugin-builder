@@ -31,7 +31,8 @@ class TransactionService {
                 // build the transation data from the event 
                 $transaction_data = self::create_transaction($financial_event_data, $map_data);
                 // Post the transactions
-                $transaction_data = self::post_transaction($transaction_data);
+                if(isset($transaction_data['id']))
+                    $transaction_data = self::post_transaction($transaction_data, $financial_event_data);
             }
         }
         
@@ -45,7 +46,7 @@ class TransactionService {
         $txn_type_id = $map_data['fetxn_type'];
         $txn_type_data = EntityAPI::get_by_id('transactiontype', $txn_type_id);
 
-        if(isset($txn_type_id['id'])) {
+        if(isset($txn_type_data['id'])) {
            
             $transaction_data = EntityAPIUtils::init_entity_data('transaction');
             $transaction_data['edit_mode'] = true;
@@ -112,8 +113,8 @@ class TransactionService {
             $account_type = EntityAPI::get_by_id('glaccounttype', $gl_account_data['glacct_type']);
             if(isset($account_type['id'])) {
                 // Use the account type code to get the debit credit mapping for this account
-                if(isset($debit_credit_rules[$account_type['id']])) {
-                    $rule = $debit_credit_rules[$account_type['id']];
+                if(isset(self::$debit_credit_rules[$account_type['entity_code']])) {
+                    $rule = self::$debit_credit_rules[$account_type['entity_code']];
                     if($db_cr_fg == 'Y') {
                         self::do_update_account_balance($bu_glaccount_data, $rule['debit'], $amount);
                     }
@@ -131,11 +132,14 @@ class TransactionService {
     public static function do_update_account_balance($bu_glaccount_data, $action, $amount) {
         // Get the account balance object for this account (status active)
         $account_balance_data = self::get_account_balance_data($bu_glaccount_data);
-        $account_balance_data['edit_mode'] = true;
+        $account_balance_data['edit_mode'] = false;
         if($action == 'INCREASE')
-            $account_balance_data['balance'] = strval(intval($account_balance_data['balance']) + intval($amount));
+            $account_balance_data['balance'] = floatval($account_balance_data['balance']) + floatval($amount);
         else
-            $account_balance_data['balance'] = strval(intval($account_balance_data['balance']) - intval($amount));
+            $account_balance_data['balance'] = floatval($account_balance_data['balance']) - floatval($amount);
+
+
+        EntityAPI::do_create_entity($account_balance_data); 
     }
 
     /*
@@ -147,7 +151,7 @@ class TransactionService {
         if($account_period_data['id']) {
             $account_balance_list = EntityAPI::find_by_criteria(
                 'businessunitglaccountbalance', array('internal_org' => $bu_glaccount_data['internal_org'], 
-                    'glaccount' => $bu_glaccount_data['glaccount'], 'acctng_period' => $account_period_data['id']));
+                    'buglaccount' => $bu_glaccount_data['id'], 'acctng_period' => $account_period_data['id']));
             if (!empty($account_balance_list)) {
                 return $account_balance_list[0];
             }

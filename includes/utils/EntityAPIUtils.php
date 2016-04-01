@@ -166,15 +166,15 @@ class EntityAPIUtils {
 
             // First we add all fields into a new array while removing duplicates
             $all_fields = array();
+            // Second we add all the virtual entity's field
+            foreach ($entity_data['entity_fields'] as $key => $value) {
+                $all_fields[$key] = $value;
+            }
             // First we add all fields from the parent that are not in the virtual entity
             foreach ($parent_fields as $key => $value) {
                 if(!array_key_exists($key, $entity_data['entity_fields'])) {
                     $all_fields[$key] = $value;
                 }
-            }
-            // Second we add all the virtual entity's field
-            foreach ($entity_data['entity_fields'] as $key => $value) {
-                $all_fields[$key] = $value;
             }
             $entity_data['entity_fields'] = $all_fields;
             $entity_data['parent_artifact_name'] = $parent_artifact_name;
