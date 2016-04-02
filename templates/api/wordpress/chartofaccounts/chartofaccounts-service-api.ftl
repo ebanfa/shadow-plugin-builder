@@ -67,7 +67,7 @@ class ChartOfAccountsAPI  {
 
             if($value['is_account'] == 'Y' && isset($value['casi_buglaccount'])) {
                 $bu_glaccount_id = $value['casi_buglaccount'];
-                $bu_glaccount_data = EntityAPI::get_by_id('businessunitglaccount', $bu_glaccount_id)
+                $bu_glaccount_data = EntityAPI::get_by_id('businessunitglaccount', $bu_glaccount_id);
                 if(isset($bu_glaccount_data['id'])) {
                     $instance['text'] = $bu_glaccount_data['name'];
                     $instance['account_bal'] = self::get_account_balance($bu_glaccount_data);;
