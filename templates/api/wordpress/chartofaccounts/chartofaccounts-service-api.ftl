@@ -70,7 +70,8 @@ class ChartOfAccountsAPI  {
                 $bu_glaccount_data = EntityAPI::get_by_id('businessunitglaccount', $bu_glaccount_id);
                 if(isset($bu_glaccount_data['id'])) {
                     $instance['text'] = $bu_glaccount_data['name'];
-                    $instance['account_bal'] = self::get_account_balance($bu_glaccount_data);;
+                    $instance['account_bal'] = self::get_account_balance($bu_glaccount_data);
+                    $instance['text'] = $bu_glaccount_data['name'] . ' ' . $instance['account_bal'];
                     //$instance['title'] = $value['name'] . ' ' . $value['account_bal'];
                 }
             }
@@ -329,7 +330,7 @@ class ChartOfAccountsAPI  {
             $account_balance_data = EntityAPI::get_by_field(
                 'businessunitglaccountbalance', 'buglaccount', $bu_glaccount_data['id']);
             if(isset($account_balance_data['id'])) {
-                return $account_balance_data['id'];
+                return $account_balance_data['balance'];
             }
         }
         return '0000000';

@@ -15758,7 +15758,7 @@
 				<viewField>Y</viewField>
 				<listField>Y</listField>
 				<dataType>sb_buglaccount</dataType>
-				<size>medium</size>
+				<size>large</size>
 				<dataColumn>true</dataColumn>
 				<description>BU GL Account</description>
 				<displayName>BU GL Account</displayName>
