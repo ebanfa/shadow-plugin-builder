@@ -65,9 +65,14 @@ class ChartOfAccountsAPI  {
             $instance['id'] =  '' . $value['id'] . '';
             $instance['parent'] = $value['parent_instance'];
 
-            if($value['is_account'] == 'Y') {
-                $instance['account_no'] = $value['account_no'];
-                $instance['account_bal'] = $value['account_bal'];
+            if($value['is_account'] == 'Y' && isset($value['casi_buglaccount'])) {
+                $bu_glaccount_id = $value['casi_buglaccount'];
+                $bu_glaccount_data = EntityAPI::get_by_id('businessunitglaccount', $bu_glaccount_id)
+                if(isset($bu_glaccount_data['id'])) {
+                    $instance['text'] = $bu_glaccount_data['name'];
+                    $instance['account_bal'] = self::get_account_balance($bu_glaccount_data);;
+                    //$instance['title'] = $value['name'] . ' ' . $value['account_bal'];
+                }
             }
             if(intval($instance['parent']) == 0) $instance['parent'] = '#';
 
@@ -182,19 +187,15 @@ class ChartOfAccountsAPI  {
         $segment_instances = array(); 
         // for each segment value
         foreach ($segment_values as $value_data) {
-            if(!$segment_data['is_root_segment']){
+            if(!$segment_data['is_root_segment']) {
                 // for each parent instance create a child instance for the given value
                 foreach ($parent_instances as $parent_instance_data) {
-                    //echo 'Creating segment instance ' . $segment_data['name'] . ' using data value ' . $value_data['name'];
-                    //print_r($parent_instance_data);
                     $child_instance_data = self::create_segment_instance(
                         $coa_data, $parent_instance_data, $segment_data, $value_data, $business_units);
                     array_push($segment_instances, $child_instance_data);
                 }
             }
             else {
-                // The root segment instance will have parent id of -1
-                //echo 'Creating root segment instance ' . $segment_data['name'] . ' using data value ' . $value_data['name'];
                 $child_instance_data = self::create_segment_instance(
                     $coa_data, array('id' => '0'), $segment_data, $value_data, $business_units);
                 array_push($segment_instances, $child_instance_data);
@@ -207,24 +208,35 @@ class ChartOfAccountsAPI  {
      *
      */
     public static function create_segment_instance($coa_data, $parent_instance_data, $segment_data, $value_data, $business_units){
-        // for each parent instance
         $child_instance_data = EntityAPIUtils::init_entity_data('coaaccountsegmentinstance');
         // Get the segment type
         $segment_type_id = $segment_data['seg_type'];
         $segment_type_data = EntityAPI::get_by_id('coaaccountsegmenttype', $segment_type_id);
+        // If this is a business unit segment the we keep track of the business unit
+        $bu_segment_type_data = EntityAPI::get_by_code('coaaccountsegmenttype', 'BU');
+        if(isset($bu_segment_type_data['id'])) {
+            if($segment_type_data['id'] == $bu_segment_type_data['id']) {
+                $child_instance_data['current_businessunit'] = $value_data['entity_code'];
+            }
+        }
+        if(isset($parent_instance_data['current_businessunit'])) {
+            $child_instance_data['current_businessunit'] = $parent_instance_data['current_businessunit'];
+        }
         // If this a gl account segment instance we are creating, we have to create a business
         // unit gl account instance for it. The segment value data is considered to be a gl account
         // so for each of the business units we create a mapping with the current value data/gl account
-
         $acct_segment_type_data = EntityAPI::get_by_code('coaaccountsegmenttype', 'ACCT');
-        if(isset($acct_segment_type_data['id'])) {
+        if(isset($acct_segment_type_data['id']) && isset($child_instance_data['current_businessunit'])) {
             if($segment_type_data['id'] == $acct_segment_type_data['id']) {
-                foreach ($business_units as $business_unit) {
+                /*foreach ($business_units as $business_unit) {
                     $bu_glaccount_data = self::create_bu_glaccount($business_unit, $value_data);
-                }
+                }*/
+
+                $business_unit = EntityAPI::get_by_code('businessunit', $child_instance_data['current_businessunit']);
+                $bu_glaccount_data = self::create_bu_glaccount($business_unit, $value_data);
                 $child_instance_data['is_account'] = 'Y';
-                $child_instance_data['account_no'] = $value_data['account_no'];
-                $child_instance_data['account_bal'] = self::get_account_balance($child_instance_data['account_no']);
+                $child_instance_data['casi_buglaccount'] = $bu_glaccount_data['id'];
+                $child_instance_data['account_bal'] = self::get_account_balance($bu_glaccount_data);
             }
             else {
                 $child_instance_data['is_account'] = 'N';
@@ -312,7 +324,14 @@ class ChartOfAccountsAPI  {
     /**
      *
      */
-    public static function get_account_balance($account_no){
+    public static function get_account_balance($bu_glaccount_data){
+        if(isset($bu_glaccount_data['id'])) {
+            $account_balance_data = EntityAPI::get_by_field(
+                'businessunitglaccountbalance', 'buglaccount', $bu_glaccount_data['id']);
+            if(isset($account_balance_data['id'])) {
+                return $account_balance_data['id'];
+            }
+        }
         return '0000000';
     }
 

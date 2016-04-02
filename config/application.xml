@@ -15749,7 +15749,7 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
-				<name>account_no</name>
+				<name>casi_buglaccount</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
@@ -15757,28 +15757,12 @@
 				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
-				<dataType>alphanumeric</dataType>
+				<dataType>sb_buglaccount</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
-				<description>Account No</description>
-				<displayName>Account No</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>account_bal</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>money</dataType>
-				<size>medium</size>
-				<dataColumn>true</dataColumn>
-				<description>Account Balance</description>
-				<displayName>Account Balance</displayName>
-				<relationshipField>N</relationshipField>
+				<description>BU GL Account</description>
+				<displayName>BU GL Account</displayName>
+				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
 				<name>description</name>
