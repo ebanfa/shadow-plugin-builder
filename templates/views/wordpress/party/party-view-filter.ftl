@@ -10,10 +10,14 @@ if (!defined('ABSPATH')) {
 
 class PartyViewFilter extends ViewFilter {
 
-    public static $view_title_map = array('client' => 'Client',
+    public static $view_title_map = array(
+        'client' => 'Client',
         'tenant' => 'Tenant',
+        'service_provider' => 'Service Provider',
+        'utility_company' => 'Utility Company',
         'prospective_tenant' => 'Prospective Tenant',
-        'service_provider' => 'Service Provider',);
+        'property_personnel' => 'Property Personnel');
+
     /**
      *
      */
@@ -60,8 +64,10 @@ class PartyViewFilter extends ViewFilter {
     public static function filter_view_action_links($view, $action_links) {
         $page_action = $view->get_page_action();
         $party_role_param = '';
+        $role = '';
         if(isset($_REQUEST['role'])) {
-            $party_role_param = '&role=' . sanitize_text_field($_REQUEST['role']);
+            $role = sanitize_text_field($_REQUEST['role']);
+            $party_role_param = '&role=' . $role;
         }
         //$action_links = parent::filter_view_action_links($view, $action_links);
         $action_links = array();
@@ -71,6 +77,7 @@ class PartyViewFilter extends ViewFilter {
                 'link' => EntityActionProcessor::get_base_url() . 'page_action=list&artifact='. $view->get_artifact_name() . $party_role_param);
         }
         if($page_action == 'list') {
+            if($role != 'utility_company')
             // Add Person link
             $action_links['create_person_link'] = array('name' => 'Add New Person', 
                 'link' => EntityActionProcessor::get_base_url() . 'page_action=create&artifact=person' . $party_role_param);

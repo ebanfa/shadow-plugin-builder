@@ -52,6 +52,15 @@
 				<target>/wordpress/?page_id=2&amp;artifact=party&amp;page_action=list&amp;role=prospective_tenant</target>
 			</menu>
 			<menu>
+				<name>propertyparties</name>
+				<displayName>Property Personnel</displayName>
+				<description>Property Personnel</description>
+				<active>N</active>
+				<cssClass>md-mail</cssClass>
+				<targetType>entity</targetType>
+				<target>/wordpress/?page_id=2&amp;artifact=party&amp;page_action=list&amp;role=property_personnel</target>
+			</menu>
+			<menu>
 				<name>serviceproviders</name>
 				<displayName>Service Providers</displayName>
 				<description>Service Providers</description>
@@ -59,6 +68,15 @@
 				<cssClass>md-mail add-serviceprovider-btn</cssClass>
 				<targetType>entity</targetType>
 				<target>/wordpress/?page_id=2&amp;artifact=party&amp;page_action=list&amp;role=service_provider</target>
+			</menu>
+			<menu>
+				<name>utility</name>
+				<displayName>Utility Companies</displayName>
+				<description>Utility Companies</description>
+				<active>N</active>
+				<cssClass>md-mail add-serviceprovider-btn</cssClass>
+				<targetType>entity</targetType>
+				<target>/wordpress/?page_id=2&amp;artifact=party&amp;page_action=list&amp;role=utility_company</target>
 			</menu>
 		</menuGroup>
 
@@ -78,31 +96,40 @@
 				<target>/wordpress/?page_id=2&amp;page_action=list&amp;artifact=property</target>
 			</menu>
 			<menu>
-				<name>assessments</name>
-				<displayName>Assessments</displayName>
-				<description>Assessments</description>
+				<name>rent</name>
+				<displayName>Rent</displayName>
+				<description>Rent</description>
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/wordpress/?page_id=2&amp;page_action=list&amp;artifact=assessment</target>
+				<target>/wordpress/?page_id=2&amp;page_action=list&amp;artifact=rent</target>
 			</menu>
 			<menu>
-				<name>acquisitions</name>
-				<displayName>Acquisitions</displayName>
-				<description>Acquisitions</description>
+				<name>invoices</name>
+				<displayName>Invoices</displayName>
+				<description>Invoices</description>
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/wordpress/?page_id=2&amp;page_action=list&amp;artifact=purchaseagreement&amp;a_type=purchase</target>
+				<target>/wordpress/?page_id=2&amp;page_action=list&amp;artifact=invoices</target>
 			</menu>
 			<menu>
-				<name>disposal</name>
-				<displayName>Disposal</displayName>
-				<description>Disposal</description>
+				<name>purchaseorders</name>
+				<displayName>Purchase Orders</displayName>
+				<description>Purchase Orders</description>
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/wordpress/?page_id=2&amp;page_action=list&amp;artifact=purchaseagreement&amp;a_type=sale</target>
+				<target>/wordpress/?page_id=2&amp;page_action=list&amp;artifact=purchaseorders</target>
+			</menu>
+			<menu>
+				<name>inventory</name>
+				<displayName>Inventory</displayName>
+				<description>Inventory</description>
+				<active>N</active>
+				<cssClass>md-mail</cssClass>
+				<targetType>entity</targetType>
+				<target>/wordpress/?page_id=2&amp;page_action=list&amp;artifact=inventory</target>
 			</menu>
 			<menu>
 				<name>inspections</name>
@@ -115,12 +142,48 @@
 			</menu>
 			<menu>
 				<name>maintenance</name>
-				<displayName>Maintenance</displayName>
-				<description>Maintenance</description>
+				<displayName>Maintenance &amp; Repairs</displayName>
+				<description>Maintenance &amp; Repairs</description>
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
 				<target>/wordpress/?page_id=2&amp;page_action=list&amp;artifact=maintenance</target>
+			</menu>
+			<menu>
+				<name>improvements</name>
+				<displayName>Improvements</displayName>
+				<description>Improvements</description>
+				<active>N</active>
+				<cssClass>md-mail</cssClass>
+				<targetType>entity</targetType>
+				<target>/wordpress/?page_id=2&amp;page_action=list&amp;artifact=improvement</target>
+			</menu>
+			<menu>
+				<name>assets</name>
+				<displayName>Assets</displayName>
+				<description>Assets</description>
+				<active>N</active>
+				<cssClass>md-mail</cssClass>
+				<targetType>entity</targetType>
+				<target>/wordpress/?page_id=2&amp;page_action=list&amp;artifact=assets&amp;</target>
+			</menu>
+			<menu>
+				<name>expenses</name>
+				<displayName>Expenses</displayName>
+				<description>Expenses</description>
+				<active>N</active>
+				<cssClass>md-mail</cssClass>
+				<targetType>entity</targetType>
+				<target>/wordpress/?page_id=2&amp;page_action=list&amp;artifact=expenses</target>
+			</menu>
+			<menu>
+				<name>loans</name>
+				<displayName>Loans &amp; Mortgages</displayName>
+				<description>Loans &amp; Mortgages</description>
+				<active>N</active>
+				<cssClass>md-mail</cssClass>
+				<targetType>entity</targetType>
+				<target>/wordpress/?page_id=2&amp;page_action=list&amp;artifact=liabilities</target>
 			</menu>
 		</menuGroup>
 
@@ -176,6 +239,41 @@
 				<target>/wordpress/?page_id=2&amp;page_action=list&amp;artifact=term</target>
 			</menu>
 		</menuGroup>
+
+		<!-- <menuGroup>
+			<name>acquisition</name>
+			<displayName>Acquisitions &amp; Disposal</displayName>
+			<description>Acquisitions &amp; Disposal</description>
+			<type>group</type>
+			<cssClass>md-location-city</cssClass>
+			<menu>
+				<name>assessments</name>
+				<displayName>Assessments</displayName>
+				<description>Assessments</description>
+				<active>N</active>
+				<cssClass>md-mail</cssClass>
+				<targetType>entity</targetType>
+				<target>/wordpress/?page_id=2&amp;page_action=list&amp;artifact=assessment</target>
+			</menu>
+			<menu>
+				<name>acquisitions</name>
+				<displayName>Acquisitions</displayName>
+				<description>Acquisitions</description>
+				<active>N</active>
+				<cssClass>md-mail</cssClass>
+				<targetType>entity</targetType>
+				<target>/wordpress/?page_id=2&amp;page_action=list&amp;artifact=purchaseagreement&amp;a_type=purchase</target>
+			</menu>
+			<menu>
+				<name>disposal</name>
+				<displayName>Disposal</displayName>
+				<description>Disposal</description>
+				<active>N</active>
+				<cssClass>md-mail</cssClass>
+				<targetType>entity</targetType>
+				<target>/wordpress/?page_id=2&amp;page_action=list&amp;artifact=purchaseagreement&amp;a_type=sale</target>
+			</menu>
+		</menuGroup> -->
 
 		<menuGroup>
 			<name>accounting</name>

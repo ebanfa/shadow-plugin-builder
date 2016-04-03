@@ -37,6 +37,8 @@ class SinglePartyView extends SingleEntityView {
         if($role == 'tenant') return $this->process_tenant_view(); 
         if($role == 'prospective_tenant') return $this->process_prospectivetenant_view(); 
         if($role == 'service_provider') return $this->process_serviceprovider_view(); 
+        if($role == 'utility_company') return $this->process_utilitycompany_view(); 
+        if($role == 'property_personnel') return $this->process_propertypersonnel_view(); 
     }
 
     /**
@@ -118,6 +120,58 @@ class SinglePartyView extends SingleEntityView {
             }
         }
         return $tabs;
+    }
+
+    /**
+     * 
+     */
+    public function process_utilitycompany_view() {
+
+        $tabs = array();
+        $tabs_entities = array('rent', 'rentagreement', 'dispute');
+
+        foreach ($this->model['related_child_entities'] as $related_child_entity) {
+            $artifact_name = strtolower($related_child_entity['entity_name']);
+            if(in_array($artifact_name, $tabs_entities)) {
+                $tab = array(
+                    'tab_type' => 'entity-list',
+                    'name' => $related_child_entity['name'],
+                    'description' => $related_child_entity['entity_description'],
+                    'model' => EntityAPI::get_model(strtolower($related_child_entity['entity_name'])),
+                    'artifact_name' => $artifact_name,
+                    'type_instances' =>  array(),
+                );
+                array_push($tabs, $tab);
+            }
+        }
+        return $tabs;
+        
+    }
+
+    /**
+     * 
+     */
+    public function process_propertypersonnel_view() {
+
+        $tabs = array();
+        $tabs_entities = array('rent', 'rentagreement', 'dispute');
+
+        foreach ($this->model['related_child_entities'] as $related_child_entity) {
+            $artifact_name = strtolower($related_child_entity['entity_name']);
+            if(in_array($artifact_name, $tabs_entities)) {
+                $tab = array(
+                    'tab_type' => 'entity-list',
+                    'name' => $related_child_entity['name'],
+                    'description' => $related_child_entity['entity_description'],
+                    'model' => EntityAPI::get_model(strtolower($related_child_entity['entity_name'])),
+                    'artifact_name' => $artifact_name,
+                    'type_instances' =>  array(),
+                );
+                array_push($tabs, $tab);
+            }
+        }
+        return $tabs;
+        
     }
 
     /**
