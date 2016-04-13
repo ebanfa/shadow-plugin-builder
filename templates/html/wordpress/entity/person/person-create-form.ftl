@@ -26,7 +26,7 @@
         <input type="hidden" id="current-relationship-field-id" name="current-relationship-field-id" value="">
         <input type="hidden" id="current-relationship-field-name" name="current-relationship-field-name" value="">
         <?php if(isset($_REQUEST['role'])) { ?>
-        <input type="hidden" id="role" name="role" value="<?php echo sanitize_text_field($_REQUEST['role']); ?>">
+       <!--  <input type="hidden" id="role" name="role" value="<?php //echo sanitize_text_field($_REQUEST['role']); ?>"> -->
         <?php } ?>
 
         <div class="btn-demo m-t-10">

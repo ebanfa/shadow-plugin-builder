@@ -90,6 +90,8 @@ class ${application.name} {
         include_once('includes/api/FinancialEventTypeAPI.php');
         include_once('includes/api/ServiceAgreementAPI.php');
         include_once('includes/api/ManagementAgreementAPI.php');
+        include_once('includes/api/ContactUsAPI.php');
+        include_once('includes/api/LoanApplicationAPI.php');
         include_once('includes/api/BusinessUnitAPI.php');
         include_once('includes/api/EntityPersistenceAPI.php');
         // Entity Controller
@@ -109,6 +111,8 @@ class ${application.name} {
         include_once('includes/view/party/SinglePartyView.php');
         include_once('includes/view/party/PartyViewFilter.php');
         include_once('includes/view/person/PersonViewFilter.php');
+        include_once('includes/view/person/CreatePersonView.php');
+        include_once('includes/view/partygroup/CreatePartyGroupView.php');
         include_once('includes/view/property/CreatePropertyView.php');
         include_once('includes/view/property/PropertyViewFilter.php');
         include_once('includes/view/assessment/AssessmentViewFilter.php');
@@ -189,7 +193,6 @@ class ${application.name} {
 
 
     public function init_backend_hooks() {
-        //
         add_action('cloderia_create_shadow_user', 'CloderiaUserAPI::create_shadow_user', 10, 1);
         add_action('shadowbanker_notify_user', 'NotificationAPI::do_notification', 10, 1);
     }
@@ -283,8 +286,8 @@ class ${application.name} {
         wp_enqueue_script('datatables_core_js');
         wp_enqueue_script('datatables_bootstrap_js');
         wp_enqueue_script('cp_init');
-        wp_enqueue_script('entity_datasource_js');
-        wp_enqueue_script('entity_multi_datatables_js');
+        //wp_enqueue_script('entity_datasource_js');
+        //wp_enqueue_script('entity_multi_datatables_js');
         wp_enqueue_script('jstree_js');
         wp_enqueue_script('input_mask_js');
         wp_enqueue_script('datetimepicker_js');

@@ -82,8 +82,8 @@ create_archive(){
 
 deploy_archive(){
     echo "Deploying archive"
-    rm -rf ../current/wp-content/plugins/shadow-core
-    cp -r target/shadow-core ../current/wp-content/plugins/
+    sudo rm -rf /var/www/html/wordpress/wp-content/plugins/shadow-core
+    sudo cp -r target/shadow-core /var/www/html/wordpress/wp-content/plugins
 
 }
 do_erase_option() {
