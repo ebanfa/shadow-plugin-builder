@@ -5,7 +5,7 @@ class WorkEffortStatusCPT {
     public static $prefix = ''; 
 
     public static $post_name = 'sb_westatus'; 
-    public static $is_global_entity = false; 
+    public static $is_global_entity = true; 
 
 
     public static $is_virtual_entity = false; 
@@ -30,11 +30,6 @@ class WorkEffortStatusCPT {
         array('name' => 'description',
             'title' => 'Description',
             'description' => 'The Description field',
-            'type' => 'text',
-        ),
-        array('name' => 'business_unit',
-            'title' => 'Business Unit',
-            'description' => 'The Business Unit field',
             'type' => 'text',
         ),
     );
@@ -81,20 +76,6 @@ class WorkEffortStatusCPT {
             'is_list_field' => true,
             'is_form_field' => true,
             'is_relationship_field' => false,),
-        'business_unit' => array('name' => 'business_unit',
-            'description' => 'Business Unit',
-            'size' => 'large',
-            'entity_name' => 'BusinessUnit',
-            'entity_description' => 'Business Unit',
-            'data_type' => 'sb_businessunit',
-            'is_required' => true,
-            'is_visible' => false,
-            'is_create_field' => true,
-            'is_edit_field' => false,
-            'is_view_field' => true,
-            'is_list_field' => false,
-            'is_form_field' => false,
-            'is_relationship_field' => true,),
    );
 
     /**
@@ -131,7 +112,7 @@ class WorkEffortStatusCPT {
                     'entity_name' => 'WorkEffort',
                     'entity_description' => 'Work Effort',
                     'data_type' => 'sb_workeffort',
-                    'is_required' => true,
+                    'is_required' => false,
                     'is_visible' => true,
                     'is_create_field' => true,
                     'is_edit_field' => true,
@@ -139,7 +120,7 @@ class WorkEffortStatusCPT {
                     'is_list_field' => true,
                     'is_form_field' => true,
                     'is_relationship_field' => true,),
-                'we_type' => array('name' => 'we_type',
+                'type' => array('name' => 'type',
                     'description' => 'Work Effort Type',
                     'size' => 'large',
                     'entity_name' => 'WorkEffortType',
@@ -414,10 +395,6 @@ class WorkEffortStatusCPT {
         }
         if ($column_name == 'description') {
             $field_value = get_post_meta($post_id, 'description', true );
-            echo $field_value;
-        }
-        if ($column_name == 'business_unit') {
-            $field_value = get_post_meta($post_id, 'business_unit', true );
             echo $field_value;
         }
     }

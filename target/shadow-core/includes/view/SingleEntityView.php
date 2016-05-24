@@ -49,6 +49,7 @@ class SingleEntityView extends BaseEntityView {
         $artifact_data = ArtifactUtils::$artifacts[$this->artifact];
         if($artifact_data['artifact_type'] == 'entity' && isset($_REQUEST['id'])) {
             $this->model = EntityAPI::get_by_id($this->get_artifact_name(), sanitize_text_field($_REQUEST['id']));
+            //var_dump($this->model);
             $tabs = $this->get_tabs();
         }
     }
@@ -66,7 +67,15 @@ class SingleEntityView extends BaseEntityView {
      */
     public function get_edit_url() {
         // execute default render operation
-        return EntityActionProcessor::get_base_url() . 'artifact=' . $this->get_artifact_name() . '&id=' . $this->model['id'] . $this->get_parent_url() . '&page_action=edit';
+        $additional_seach_options = '';
+        foreach ($this->get_form_fields() as $field) { 
+            if(isset($field['view_criteria'])) { 
+                foreach ($field['view_criteria'] as $criteria_name => $criteria_value) {
+                    $additional_seach_options = $additional_seach_options . '&' . $criteria_name . '=' . $criteria_value;
+                }
+            }
+        } 
+        return EntityActionProcessor::get_base_url() . 'artifact=' . $this->get_artifact_name() . '&id=' . $this->model['id'] . $this->get_parent_url() . '&page_action=edit' . $additional_seach_options;
     }
 
     /**

@@ -50,8 +50,8 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 	private Application application;
 	private Configuration configuration;
 
-	private static final String TEMPLATES_DIR = "templates/";
 	private static final String API_DIR = "includes/api/";
+	private static final String TEMPLATES_DIR = "templates/";
 	private static final String CPT_DIR = "includes/abstracts/";
 
 	/**
@@ -72,7 +72,9 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 		this.pluginDir = this.targetDir + this.pluginName + "/";
 		this.appName = pluginName.substring(0, 1).toUpperCase() + pluginName.substring(1);
 		this.templatesDir = baseDir + "templates/";
-		this.config = baseDir + "config/application.xml";
+		
+		this.config = baseDir + "config/helion-application.xml";
+		//this.config = baseDir + "config/business-site-application.xml";
 	}
 
 	
@@ -171,6 +173,7 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 			processRelatedChildEntities(module);
 			processVirtualEntities(module) ;
 			doComponents(module);
+			doSQL(module);
 			doEnities(module);
 			doAPI(module);
 			doUtilities(module);
@@ -308,14 +311,20 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 			if (entity.getIsVirtual() != null) {		
 				//System.out.println(">>>>>>>>>>>>>>>>>>>>>>Found virtual entity:" + entity.getName() + " with parent" + entity.getParentName());		
 				this.generateArtifact(module, entity, 
-					"entities/wordpress/entity.ftl" , this.pluginDir + "includes/abstracts/" + entity.getName() + "CPT.php");
+					"entities/wordpress/entity.ftl" , this.pluginDir + "includes/abstracts/" + entity.getName() + "CPT.php");this.generateArtifact(module, entity, 
+					"entities/wordpress/model.ftl" , this.pluginDir + "includes/abstracts/" + entity.getName() + ".php");
 			}
 			else {
 				entity.setIsVirtual("N");
 				this.generateArtifact(module, entity, 
-					"entities/wordpress/entity.ftl" , this.pluginDir + "includes/abstracts/" + entity.getName() + "CPT.php");
+					"entities/wordpress/entity.ftl" , this.pluginDir + "includes/abstracts/" + entity.getName() + "CPT.php");this.generateArtifact(module, entity, 
+					"entities/wordpress/model.ftl" , this.pluginDir + "includes/abstracts/" + entity.getName() + ".php");
 			}
 		}
+	}
+
+	private void doSQL(Module module) {
+		this.generateArtifact(module, null, "entities/wordpress/db.ftl", this.pluginDir + "sql/db.sql");
 	}
 
 	private void doAPI(Module module) {
@@ -397,6 +406,8 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 		this.generateArtifact(module, null, "views/wordpress/edit-entity-view.ftl" , includeViewOutputDir +  "EditEntityView.php");
 		this.generateArtifact(module, null, "views/wordpress/single-entity-view.ftl" , includeViewOutputDir +  "SingleEntityView.php");
 		this.generateArtifact(module, null, "views/wordpress/list-entity-view.ftl" , includeViewOutputDir +  "ListEntityView.php");
+		this.generateArtifact(module, null, "views/wordpress/categorized-entity-view-filter.ftl" , includeViewOutputDir +  "CategorizedViewFilter.php");
+		this.generateArtifact(module, null, "views/wordpress/param-categorized-entity-view-filter.ftl" , includeViewOutputDir +  "ParamCategorizedViewFilter.php");
 		this.generateArtifact(module, null, "views/wordpress/form-field-filter.ftl" , includeViewOutputDir +  "FormFieldFilter.php");
 		this.generateArtifact(module, null, "views/wordpress/view-utils-php.ftl" , includeViewOutputDir +  "ViewUtils.php");
 		this.generateArtifact(module, null, "views/wordpress/entity-form-fields.ftl" , includeViewOutputDir +  "entity-form-fields.php");
@@ -469,6 +480,7 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 		this.generateArtifact(module, null, "html/wordpress/entity/artifact-wrapper-end.ftl" , entityOutputDir + "artifact-wrapper-end.php");
 		this.generateArtifact(module, null, "html/wordpress/entity/artifact-wrapper-start.ftl" , entityOutputDir + "artifact-wrapper-start.php");
 		// Menu Bar
+		this.generateArtifact(module, null, "html/wordpress/chat-bar-php.ftl" , outputDir + "chat-bar.php");
 		this.generateArtifact(module, null, "html/wordpress/menu-php.ftl" , outputDir + "app-menu.php");
 		this.generateArtifact(module, null, "html/wordpress/menu-start-php.ftl" , outputDir + "app-menu-start.php");
 		this.generateArtifact(module, null, "html/wordpress/menu-end-php.ftl" , outputDir + "app-menu-end.php");

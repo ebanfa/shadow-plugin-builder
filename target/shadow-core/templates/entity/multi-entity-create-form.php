@@ -9,6 +9,16 @@
     $model = $view->get_model();
     $tabs = $view->get_tabs();
 ?>
+        <?php 
+            $view_options = '';
+            foreach ($view->get_form_fields() as $field) { 
+                if(isset($field['view_criteria'])) { 
+                    foreach ($field['view_criteria'] as $criteria_name => $criteria_value) { 
+                        $view_options = $view_options . '&' . $criteria_name . '=' . $criteria_value;
+                    }
+                }
+            } 
+        ?>
                 
         <div class="form-wizard-basic fw-container">
             <ul class="tab-nav text-center">
@@ -102,6 +112,9 @@
                 </div>
 
                 <!-- This fields are used by the relationship field selection routine -->
+                <?php if(!EntityStringUtils::is_invalid_string($view_options)){ ?>
+                <input type="hidden" id="view_options" name="view_options" value="<?php echo $view_options; ?>">
+                <?php } ?>
                 <input type="hidden" id="current-related-field" name="current-related-field" value="">
                 <input type="hidden" id="current-relationship-field-id" name="current-relationship-field-id" value="">
                 <input type="hidden" id="current-relationship-field-name" name="current-relationship-field-name" value="">

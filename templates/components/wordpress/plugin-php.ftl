@@ -67,35 +67,30 @@ class ${application.name} {
     /**
      * Include all required files
      */
+     /**
+     * Include all required files
+     */
     public function includes() {
         // Model
 <#list module.entities as entity>
         include_once('includes/abstracts/${entity.name}CPT.php');
+        include_once('includes/abstracts/${entity.name}.php');
 </#list>
         // Entity API
         include_once('includes/api/EntityAPI.php');
-        include_once('includes/api/PartyAPI.php');
-        include_once('includes/api/PersonAPI.php');
-        include_once('includes/api/ReceiptAPI.php');
-        include_once('includes/api/OutPaymentAPI.php');
-        include_once('includes/api/PartyGroupAPI.php');
-        include_once('includes/api/PropertyAPI.php');
-        include_once('includes/api/NotificationAPI.php');
-        include_once('includes/api/RentAgreementAPI.php');
-        include_once('includes/api/GLAccountTypeAPI.php');
-        include_once('includes/api/ChartOfAccountsAPI.php');
-        include_once('includes/api/COAAccountStructureAPI.php');
-        include_once('includes/api/COAAccountSegmentTypeAPI.php');
-        include_once('includes/api/TransactionTypeAPI.php');
-        include_once('includes/api/FinancialEventTypeAPI.php');
-        include_once('includes/api/ServiceAgreementAPI.php');
-        include_once('includes/api/ManagementAgreementAPI.php');
-        include_once('includes/api/ContactUsAPI.php');
-        include_once('includes/api/LoanApplicationAPI.php');
-        include_once('includes/api/BusinessUnitAPI.php');
+
+        // API
+<#list module.entities as entity>
+        <#if entity.apiTemplate ??>
+        include_once('includes/api/${entity.name}API.php');
+        </#if>
+</#list>
+        
         include_once('includes/api/EntityPersistenceAPI.php');
         // Entity Controller
         include_once('includes/controller/EntityActionProcessor.php');
+
+
         // Entity View and view controllers
         include_once('includes/view/ViewUtils.php');
         include_once('includes/view/ArtifactView.php');
@@ -108,36 +103,22 @@ class ${application.name} {
         include_once('includes/view/ListEntityView.php');
         include_once('includes/view/FormFieldFilter.php');
         include_once('includes/view/MultiEntityCreateView.php');
-        include_once('includes/view/party/SinglePartyView.php');
-        include_once('includes/view/party/PartyViewFilter.php');
-        include_once('includes/view/person/PersonViewFilter.php');
-        include_once('includes/view/person/CreatePersonView.php');
-        include_once('includes/view/partygroup/CreatePartyGroupView.php');
-        include_once('includes/view/property/CreatePropertyView.php');
-        include_once('includes/view/property/PropertyViewFilter.php');
-        include_once('includes/view/assessment/AssessmentViewFilter.php');
-        include_once('includes/view/assessment/CreateAssessmentView.php');
-        include_once('includes/view/budget/CreateBudgetView.php');
-        include_once('includes/view/invoice/CreateInvoiceView.php');
-        include_once('includes/view/receipt/CreateReceiptView.php');
-        include_once('includes/view/payroll/CreatePayrollView.php');
-        include_once('includes/view/outpayment/CreateOutPaymentView.php');
-        include_once('includes/view/inspection/CreateInspectionView.php');
-        include_once('includes/view/maintenance/CreateMaintenanceView.php');
-        include_once('includes/view/notification/SingleNotificationView.php');
-        include_once('includes/view/rentagreement/CreateRentAgreementView.php');
-        include_once('includes/view/glaccounttype/CreateGLAccountTypeView.php');
-        include_once('includes/view/chartofaccounts/SingleChartOfAccountsView.php');
-        include_once('includes/view/coaaccountstructure/CreateCOAAccountStructureView.php');
-        include_once('includes/view/coaaccountsegmenttype/CreateCOAAccountSegmentTypeView.php');
-        include_once('includes/view/coaaccountsegmenttype/COAAccountSegmentTypeViewFilter.php');
-        include_once('includes/view/transactiontype/CreateTransactionTypeView.php');
-        include_once('includes/view/financialeventtype/CreateFinancialEventTypeView.php');
-        include_once('includes/view/serviceagreement/CreateServiceAgreementView.php');
-        include_once('includes/view/purchaseagreement/CreatePurchaseAgreementView.php');
-        include_once('includes/view/purchaseagreement/PurchaseAgreementViewFilter.php');
-        include_once('includes/view/managementagreement/CreateManagementAgreementView.php');
+        include_once('includes/view/CategorizedViewFilter.php');
+        include_once('includes/view/ParamCategorizedViewFilter.php');
+<#list module.entities as entity>
+        <#if entity.createViewTemplate ??>
+        include_once('includes/view/${entity.name?lower_case}/Create${entity.name}View.php');
+        </#if>
+        <#if entity.singleViewTemplate ??>
+        include_once('includes/view/${entity.name?lower_case}/Single${entity.name}View.php');
+        </#if>
+        <#if entity.viewFilterTemplate ??>
+        include_once('includes/view/${entity.name?lower_case}/${entity.name}ViewFilter.php');
+        </#if>
+</#list>
+
         include_once('includes/view/entity-form-fields.php');
+
         // Framework API
         include_once('includes/api/CloderiaFileAPI.php');
         include_once('includes/api/CloderiaUserAPI.php');
@@ -156,6 +137,7 @@ class ${application.name} {
         include_once('includes/utils/EntityAPIUtils.php');
         include_once('includes/utils/ArtifactUtils.php');
 
+        include_once('includes/utils/CloderiaLogUtils.php');
         include_once('includes/utils/CloderiaUserUtils.php');
         include_once('includes/utils/CloderiaCustomFieldsUtils.php');
         include_once('includes/utils/CloderiaCustomPostTypesUtils.php');
@@ -181,7 +163,7 @@ class ${application.name} {
         add_action('template_redirect', 'CloderiaAdminAPI::do_ajax_setup');
 
         EntityActionProcessor::init_hooks();
-        ChartOfAccountsAPI::init_hooks();
+        //ChartOfAccountsAPI::init_hooks();
         //Order related Ajax functions
         #add_action('wp_ajax_do_content_order_ajax', 'CloderiaOrdersAPI::do_content_order_ajax');
         #add_action('wp_ajax_nopriv_do_content_order_ajax', 'CloderiaOrdersAPI::do_content_order_ajax');
@@ -194,6 +176,7 @@ class ${application.name} {
 
     public function init_backend_hooks() {
         add_action('cloderia_create_shadow_user', 'CloderiaUserAPI::create_shadow_user', 10, 1);
+        add_action('cloderia_user_reset_password', 'CloderiaUserAPI::create_shadow_user', 10, 1);
         add_action('shadowbanker_notify_user', 'NotificationAPI::do_notification', 10, 1);
     }
 
@@ -208,6 +191,8 @@ class ${application.name} {
         add_action('shadowbanker_show_app_menu', 'CloderiaUIDisplayAPI::display_app_menu', 10);
         add_action('shadowbanker_before_app_menu', 'CloderiaUIDisplayAPI::before_app_menu', 10);
         add_action('shadowbanker_after_app_menu', 'CloderiaUIDisplayAPI::after_app_menu', 10);
+        // Chat bar display icons
+        add_action('shadowbanker_show_chat_bar', 'CloderiaUIDisplayAPI::display_chat_bar', 10);
 
         add_action('shadowbanker_render_create_entity_view', 'CloderiaUIDisplayAPI::render_create_form', 10);
         add_action('shadowbanker_render_edit_entity_view', 'CloderiaUIDisplayAPI::render_edit_form', 10);
@@ -234,15 +219,15 @@ class ${application.name} {
         add_action('shadowbanker_after_artifact_content', 'CloderiaUIDisplayAPI::after_artifact_content', 10);
         
         // Remove admin bar for non admin users
-        add_action('after_setup_theme', 'CloderiaAdminAPI::do_remove_admin_bar');
+        //add_action('after_setup_theme', 'CloderiaAdminAPI::do_remove_admin_bar');
         /*add_action('wp_logout', '${application.name}::redirect_logout_url');*/
-        PartyViewFilter::init_hooks();
-        PersonViewFilter::init_hooks();
-        PropertyViewFilter::init_hooks();
-        AssessmentViewFilter::init_hooks();
-        PurchaseAgreementViewFilter::init_hooks();
-        COAAccountSegmentTypeViewFilter::init_hooks();
         FormFieldFilter::init_hooks();
+
+<#list module.entities as entity>
+        <#if entity.viewFilterTemplate ??>
+        ${entity.name}ViewFilter::init_hooks();
+        </#if>
+</#list>
 
     }
 
@@ -280,21 +265,29 @@ class ${application.name} {
         wp_register_script('conversations_js', plugins_url('/js/conversation-messages.js', __FILE__), array('jquery'), true);
 
         wp_enqueue_script('jquery_form_js');
-        wp_enqueue_script('bootstrap_js');
+        //wp_enqueue_script('bootstrap_js');
         wp_enqueue_script('bootstrap_validator_js');
         wp_enqueue_script('bootstrap_tabdrop_js');
         wp_enqueue_script('datatables_core_js');
         wp_enqueue_script('datatables_bootstrap_js');
         wp_enqueue_script('cp_init');
-        //wp_enqueue_script('entity_datasource_js');
-        //wp_enqueue_script('entity_multi_datatables_js');
+
+        // Enqueue data tables js for view pages
+        if(isset($_REQUEST['page_action'])) {
+            $page_action = sanitize_text_field($_REQUEST['page_action']);
+            if($page_action == 'view') {
+                wp_enqueue_script('entity_datasource_js');
+                wp_enqueue_script('entity_multi_datatables_js');
+            }
+        }
+
         wp_enqueue_script('jstree_js');
         wp_enqueue_script('input_mask_js');
-        wp_enqueue_script('datetimepicker_js');
+        //wp_enqueue_script('datetimepicker_js');
         wp_enqueue_script('wizard_js');
-        wp_enqueue_script('conversations_js');
+        //wp_enqueue_script('conversations_js');
         
-        wp_localize_script('conversations_js', '${application.name?lower_case}_ajax_script', array('ajaxurl' => admin_url('admin-ajax.php')));
+        //wp_localize_script('conversations_js', '${application.name?lower_case}_ajax_script', array('ajaxurl' => admin_url('admin-ajax.php')));
         wp_localize_script('entity_datasource_js', '${application.name?lower_case}_ajax_script', array('ajaxurl' => admin_url('admin-ajax.php')));
          wp_localize_script('entity_datasource_js', '${application.name?lower_case}_base_url', array('baseUrl' => EntityActionProcessor::get_base_url()));
     }

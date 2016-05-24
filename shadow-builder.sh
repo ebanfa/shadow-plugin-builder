@@ -33,6 +33,7 @@ build_plugin_directory () {
     mkdir $TARGET/$PLUGIN_NAME/js
     mkdir $TARGET/$PLUGIN_NAME/js/vendors
     mkdir $TARGET/$PLUGIN_NAME/css
+    mkdir $TARGET/$PLUGIN_NAME/sql
     mkdir $TARGET/$PLUGIN_NAME/data
     mkdir $TARGET/$PLUGIN_NAME/images
     mkdir $TARGET/$PLUGIN_NAME/includes
@@ -53,6 +54,7 @@ build_plugin_directory () {
 copy_resources(){
     echo "Copying resources"
     cp includes/api/* $TARGET/$PLUGIN_NAME/includes/api
+    cp -rf vendor/ $TARGET/$PLUGIN_NAME/
     cp includes/utils/* $TARGET/$PLUGIN_NAME/includes/utils
     cp includes/font/* $TARGET/$PLUGIN_NAME/includes/font
     cp includes/service/* $TARGET/$PLUGIN_NAME/includes/service
@@ -83,7 +85,8 @@ create_archive(){
 deploy_archive(){
     echo "Deploying archive"
     sudo rm -rf /var/www/html/wordpress/wp-content/plugins/shadow-core
-    sudo cp -r target/shadow-core /var/www/html/wordpress/wp-content/plugins
+    sudo cp -rf target/shadow-core /var/www/html/wordpress/wp-content/plugins
+    sudo chown -R www-data.www-data /var/www/html/wordpress/wp-content/plugins
 
 }
 do_erase_option() {

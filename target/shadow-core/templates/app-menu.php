@@ -10,49 +10,50 @@ if (is_user_logged_in()) {
         $current_user = wp_get_current_user();
 ?>
 
-<?php do_action('shadowbanker_before_app_menu') ?>
+<?php do_action('shadowbanker_before_app_menu'); ?>
 
 	<ul class="main-menu">
-			<li><a href="/wordpress/page?artifact=dashboard&page_action=view"><i class="md md-dashboard"></i> Dashboard</a></li>
+			<li><a href="/wordpress/page?artifact=dashboard&page_action=view"><i class="md zmdi zmdi-view-dashboard zmdi-hc-fw"></i> Dashboard</a></li>
 		<li class="sub-menu">
-            <a href=""><i class="md md-account-circle"></i> Party Management</a>
+            <a href=""><i class="md zmdi zmdi-account-add zmdi-hc-fw"></i> Parties</a>
             <ul>
-				<li><a href="/wordpress/page?artifact=party&page_action=list&role=client"><i class="md md-mail add-client-btn"></i> Clients</a></li>
-				<li><a href="/wordpress/page?artifact=party&page_action=list&role=tenant"><i class="md md-mail add-tenant-btn"></i> Tenants</a></li>
-				<li><a href="/wordpress/page?artifact=party&page_action=list&role=prospective_tenant"><i class="md md-mail add-prospect-btn"></i> Prospective Tenants</a></li>
-				<li><a href="/wordpress/page?artifact=party&page_action=list&role=property_personnel"><i class="md md-mail"></i> Property Personnel</a></li>
-				<li><a href="/wordpress/page?artifact=party&page_action=list&role=service_provider"><i class="md md-mail add-serviceprovider-btn"></i> Service Providers</a></li>
-				<li><a href="/wordpress/page?artifact=party&page_action=list&role=utility_company"><i class="md md-mail add-serviceprovider-btn"></i> Utility Companies</a></li>
+				<li><a href="/wordpress/page?artifact=party&page_action=list&role=landlord"><i class="md zmdi zmdi-account-circle zmdi-hc-fw"></i> Clients</a></li>
+				<li><a href="/wordpress/page?artifact=party&page_action=list&role=tenant"><i class="md zmdi zmdi-account-box-o zmdi-hc-fw"></i> Tenants</a></li>
+				<li><a href="/wordpress/page?artifact=party&page_action=list&role=prospective_tenant"><i class="md zmdi zmdi-accounts-outline zmdi-hc-fw"></i> Prospective Tenants</a></li>
+				<li><a href="/wordpress/page?artifact=party&page_action=list&role=property_personnel"><i class="md zmdi zmdi-accounts-alt zmdi-hc-fw"></i> Property Personnel</a></li>
+				<li><a href="/wordpress/page?artifact=party&page_action=list&role=service_provider"><i class="md zmdi zmdi-accounts-list zmdi-hc-fw"></i> Service Providers</a></li>
+				<li><a href="/wordpress/page?artifact=party&page_action=list&role=utility_company"><i class="md zmdi zmdi-account-box-phone zmdi-hc-fw"></i> Utility Companies</a></li>
             </ul>
         </li>
 		<li class="sub-menu">
-            <a href=""><i class="md md-location-city"></i> Property Information</a>
+            <a href=""><i class="md zmdi zmdi-city-alt zmdi-hc-fw"></i> Property</a>
             <ul>
-				<li><a href="/wordpress/page?page_action=list&artifact=property"><i class="md md-mail"></i> Properties</a></li>
-				<li><a href="/wordpress/page?page_action=list&artifact=rent"><i class="md md-mail"></i> Rent</a></li>
-				<li><a href="/wordpress/page?page_action=list&artifact=invoice"><i class="md md-mail"></i> Invoices</a></li>
-				<li><a href="/wordpress/page?page_action=list&artifact=purchaseorders"><i class="md md-mail"></i> Purchase Orders</a></li>
-				<li><a href="/wordpress/page?page_action=list&artifact=inventory"><i class="md md-mail"></i> Inventory</a></li>
-				<li><a href="/wordpress/page?page_action=list&artifact=inspection"><i class="md md-mail"></i> Inspections</a></li>
-				<li><a href="/wordpress/page?page_action=list&artifact=maintenance"><i class="md md-mail"></i> Maintenance & Repairs</a></li>
-				<li><a href="/wordpress/page?page_action=list&artifact=improvement"><i class="md md-mail"></i> Improvements</a></li>
-				<li><a href="/wordpress/page?page_action=list&artifact=assets&"><i class="md md-mail"></i> Assets</a></li>
-				<li><a href="/wordpress/page?page_action=list&artifact=expenses"><i class="md md-mail"></i> Expenses</a></li>
-				<li><a href="/wordpress/page?page_action=list&artifact=liabilities"><i class="md md-mail"></i> Loans & Mortgages</a></li>
+				<li><a href="/wordpress/page?page_action=list&artifact=property"><i class="md zmdi zmdi-city zmdi-hc-fw"></i> Properties</a></li>
+				<li><a href="/wordpress/page?page_action=list&artifact=invoice&bcat=property"><i class="md md-mail"></i> Invoices</a></li>
+				<li><a href="/wordpress/page?page_action=list&artifact=purchaseorder&bcat=property"><i class="md md-mail"></i> Purchase Orders</a></li>
+				<li><a href="/wordpress/page?page_action=list&artifact=receipt&bcat=property"><i class="md md-mail"></i> Receipts</a></li>
+				<li><a href="/wordpress/page?page_action=list&artifact=disbursement&bcat=property"><i class="md md-mail"></i> Disbursements</a></li>
+				<li><a href="/wordpress/page?page_action=list&artifact=asset&bcat=property"><i class="md md-mail"></i> Assets</a></li>
+				<li><a href="/wordpress/page?page_action=list&artifact=inventory&bcat=property"><i class="md md-mail"></i> Inventory</a></li>
+				<li><a href="/wordpress/page?page_action=list&artifact=liability&bcat=property"><i class="md md-mail"></i> Liabilities</a></li>
+				<li><a href="/wordpress/page?page_action=list&artifact=workeffort&bcat=property&cat=inspection"><i class="md md-mail"></i> Inspections</a></li>
+				<li><a href="/wordpress/page?page_action=list&artifact=workeffort&bcat=property&cat=maintenance"><i class="md md-mail"></i> Maintenance & Repairs</a></li>
+				<li><a href="/wordpress/page?page_action=list&artifact=workeffort&bcat=property&cat=improvement"><i class="md md-mail"></i> Improvements</a></li>
             </ul>
         </li>
 		<li class="sub-menu">
-            <a href=""><i class="md md-description"></i> Agreements</a>
+            <a href=""><i class="md zmdi zmdi-case-check zmdi-hc-fw"></i> Agreements</a>
             <ul>
-				<li><a href="/wordpress/page?page_action=list&artifact=managementagreement"><i class="md md-mail"></i> Management Agreements</a></li>
-				<li><a href="/wordpress/page?page_action=list&artifact=rentagreement"><i class="md md-mail"></i> Rent Agreements</a></li>
-				<li><a href="/wordpress/page?page_action=list&artifact=serviceagreement"><i class="md md-mail"></i> Service Agreements</a></li>
-				<li><a href="/wordpress/page?page_action=list&artifact=charge"><i class="md md-mail"></i> Charges</a></li>
-				<li><a href="/wordpress/page?page_action=list&artifact=term"><i class="md md-mail"></i> Terms</a></li>
+				<li><a href="/wordpress/page?page_action=list&artifact=agreement&bcat=business&cat=management"><i class="md md-mail"></i> Clients</a></li>
+				<li><a href="/wordpress/page?page_action=list&artifact=agreement&bcat=business&cat=rent"><i class="md md-mail"></i> Tenants</a></li>
+				<li><a href="/wordpress/page?page_action=list&artifact=agreement&bcat=business&cat=supplier"><i class="md md-mail"></i> Suppliers</a></li>
+				<li><a href="/wordpress/page?page_action=list&artifact=agreement&bcat=business&cat=service"><i class="md md-mail"></i> Service Providers</a></li>
+				<li><a href="/wordpress/page?page_action=list&artifact=charge&bcat=business"><i class="md md-mail"></i> Charges</a></li>
+				<li><a href="/wordpress/page?page_action=list&artifact=term&bcat=business"><i class="md md-mail"></i> Terms</a></li>
             </ul>
         </li>
 		<li class="sub-menu">
-            <a href=""><i class="md md-account-balance"></i> Accounting & Budgeting</a>
+            <a href=""><i class="md zmdi zmdi-money zmdi-hc-fw"></i> Accounting</a>
             <ul>
 				<li><a href="/wordpress/page?page_action=list&artifact=accountingperiod"><i class="md md-mail"></i> Accounting Periods</a></li>
 				<li><a href="/wordpress/page?page_action=list&artifact=coaaccountsegmenttype"><i class="md md-mail"></i> Acccount Segment Types</a></li>
@@ -60,24 +61,32 @@ if (is_user_logged_in()) {
 				<li><a href="/wordpress/page?page_action=list&artifact=chartofaccounts"><i class="md md-mail"></i> Chart Of Accounts</a></li>
 				<li><a href="/wordpress/page?page_action=list&artifact=glaccount"><i class="md md-mail"></i> General Ledger</a></li>
 				<li><a href="/wordpress/page?page_action=list&artifact=glaccounttype"><i class="md md-mail"></i> GL Account Types</a></li>
+				<li><a href="/wordpress/page?page_action=list&artifact=transactiontype"><i class="md md-mail"></i> Transaction Types</a></li>
+				<li><a href="/wordpress/page?page_action=list&artifact=transactiondetail"><i class="md md-mail"></i> Transactions</a></li>
+            </ul>
+        </li>
+		<li class="sub-menu">
+            <a href=""><i class="md zmdi zmdi-money-box zmdi-hc-fw"></i> Budgeting</a>
+            <ul>
 				<li><a href="/wordpress/page?page_action=list&artifact=budget"><i class="md md-mail"></i> Budgets</a></li>
 				<li><a href="/wordpress/page?page_action=list&artifact=budgetreview"><i class="md md-mail"></i> Budget Reviews</a></li>
 				<li><a href="/wordpress/page?page_action=list&artifact=glbudgetxref"><i class="md md-mail"></i> GL Budget Xref</a></li>
             </ul>
         </li>
 		<li class="sub-menu">
-            <a href=""><i class="md md-description"></i> Transactions</a>
+            <a href=""><i class="md zmdi zmdi-labels zmdi-hc-fw"></i> Business</a>
             <ul>
-				<li><a href="/wordpress/page?page_action=list&artifact=transactiontype"><i class="md md-mail"></i> Transaction Types</a></li>
-				<li><a href="/wordpress/page?page_action=list&artifact=transaction"><i class="md md-mail"></i> Transactions</a></li>
-				<li><a href="/wordpress/page?page_action=list&artifact=invoice"><i class="md md-mail"></i> Invoices</a></li>
-				<li><a href="/wordpress/page?page_action=list&artifact=receipt"><i class="md md-mail"></i> Receipts</a></li>
-				<li><a href="/wordpress/page?page_action=list&artifact=outpayment"><i class="md md-mail"></i> Disbursements</a></li>
-				<li><a href="/wordpress/page?page_action=list&artifact=expense"><i class="md md-mail"></i> Expenses</a></li>
+				<li><a href="/wordpress/page?page_action=list&artifact=invoice&bcat=business"><i class="md md-mail"></i> Invoices</a></li>
+				<li><a href="/wordpress/page?page_action=list&artifact=purchaseorder&bcat=business"><i class="md md-mail"></i> Purchase Orders</a></li>
+				<li><a href="/wordpress/page?page_action=list&artifact=receipt&bcat=business"><i class="md md-mail"></i> Receipts</a></li>
+				<li><a href="/wordpress/page?page_action=list&artifact=disbursement&bcat=business"><i class="md md-mail"></i> Disbursements</a></li>
+				<li><a href="/wordpress/page?page_action=list&artifact=asset&bcat=business"><i class="md md-mail"></i> Assets</a></li>
+				<li><a href="/wordpress/page?page_action=list&artifact=inventory&bcat=business"><i class="md md-mail"></i> Inventory</a></li>
+				<li><a href="/wordpress/page?page_action=list&artifact=liability&bcat=business"><i class="md md-mail"></i> Liabilities</a></li>
             </ul>
         </li>
 		<li class="sub-menu">
-            <a href=""><i class="md md-work"></i> Financial Reports</a>
+            <a href=""><i class="md zmdi zmdi-chart zmdi-hc-fw"></i> Financial Reports</a>
             <ul>
 				<li><a href="/wordpress/page?artifact=balancesheet"><i class="md md-business"></i> Balance Sheet</a></li>
 				<li><a href="/wordpress/page?artifact=balancesheetconsolidated"><i class="md md-business"></i> Balance Sheet Consolidated</a></li>
@@ -94,7 +103,7 @@ if (is_user_logged_in()) {
             </ul>
         </li>
 		<li class="sub-menu">
-            <a href=""><i class="md md-trending-up"></i> Rent Reports</a>
+            <a href=""><i class="md zmdi zmdi-collection-text zmdi-hc-fw"></i> Rent Reports</a>
             <ul>
 				<li><a href="/wordpress/page?artifact=currenttenants"><i class="md md-business"></i> Current Tenants</a></li>
 				<li><a href="/wordpress/page?artifact=delinquenttenants"><i class="md md-business"></i> Delinquent Tenants</a></li>
@@ -107,33 +116,22 @@ if (is_user_logged_in()) {
             </ul>
         </li>
 		<li class="sub-menu">
-            <a href=""><i class="md md-person"></i> HRM</a>
+            <a href=""><i class="md zmdi zmdi-labels zmdi-hc-fw"></i> Business Settings</a>
             <ul>
-				<li><a href="/wordpress/page?artifact=party&page_action=list&role=user_organization"><i class="md md-mail"></i> Organizations</a></li>
-				<li><a href="/wordpress/page?artifact=party&page_action=list&role=staff"><i class="md md-person"></i> Employees</a></li>
-				<li><a href="/wordpress/page?artifact=position&page_action=list"><i class="md md-person"></i> Jobs</a></li>
-				<li><a href="/wordpress/page?artifact=payroll&page_action=list"><i class="md md-person"></i> Payroll</a></li>
-				<li><a href="/wordpress/page?artifact=payhistory&page_action=list"><i class="md md-person"></i> Jobs</a></li>
-				<li><a href="/wordpress/page?artifact=performancereview&page_action=list;"><i class="md md-person"></i> Performance Reviews</a></li>
+				<li><a href="/wordpress/page?page_action=list&artifact=currency"><i class="md zmdi zmdi-money-box zmdi-hc-fw"></i> Currencies</a></li>
+				<li><a href="/wordpress/page?artifact=party&page_action=list&role=business_user"><i class="md zmdi zmdi-account-circle zmdi-hc-fw"></i> Business Users</a></li>
+				<li><a href="/wordpress/page?artifact=userinvite&page_action=list"><i class="md zmdi zmdi-account-circle zmdi-hc-fw"></i> User Invites</a></li>
             </ul>
         </li>
 		<li class="sub-menu">
-            <a href=""><i class="md md-person"></i> Business Settings</a>
+            <a href=""><i class="md zmdi zmdi-settings zmdi-hc-fw"></i> My Settings</a>
             <ul>
-				<li><a href="/wordpress/page?page_action=list&artifact=locationtype"><i class="md md-person"></i> Location Types</a></li>
-				<li><a href="/wordpress/page?page_action=list&artifact=location"><i class="md md-person"></i> Locations</a></li>
-            </ul>
-        </li>
-		<li class="sub-menu">
-            <a href=""><i class="md md-person"></i> Settings</a>
-            <ul>
-				<li><a href="/wordpress/page?page_action=list&artifact=userprofile"><i class="md md-person"></i> Profile</a></li>
-				<li><a href="/wordpress/page?page_action=list&artifact=conversation"><i class="md md-mail"></i> Inbox</a></li>
+				<li><a href="/wordpress/page?page_action=list&artifact=partyprofile"><i class="md md-person"></i> Profile</a></li>
 				<li><a href="<?php echo wp_logout_url(home_url()); ?>"><i class="md md-input"></i> Sign Out</a></li>
             </ul>
         </li>
 	</ul>
 
-<?php do_action('shadowbanker_after_app_menu') ?>
+<?php do_action('shadowbanker_after_app_menu'); ?>
 
 <?php } ?>

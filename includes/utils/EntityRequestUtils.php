@@ -73,6 +73,7 @@ class EntityRequestUtils {
             else{
                 if (isset($_POST[$field_data['name']]))
                     $entity_data[$field_data['name']] = sanitize_text_field($_POST[$field_data['name']]);
+                    //$entity_data[$field_data['name']] = date("Y-m-d H:i:s");
             }
         }
         //Process flag field
@@ -82,9 +83,9 @@ class EntityRequestUtils {
         }
         //Process money field
         elseif($field_data['data_type'] === 'money' ) {
-            if (!isset($_POST[$field_data['name']])){
+            if (isset($_POST[$field_data['name']])){
                 $string = str_replace(',', '', $_POST[$field_data['name']]);
-                $entity_data[$field_data['name']] = $string ;
+                $entity_data[$field_data['name']] = floatval($string) ;
             }
         }
         // Process non date fields
@@ -102,15 +103,49 @@ class EntityRequestUtils {
      */
     public static function build_criteria_from_form_data($entity_data) {
         $criteria_data = array();
-        $columns_data = $_POST['columns'];
-        foreach($columns_data as $column_data){
-          $column_name = sanitize_text_field($column_data['data']);
-          if(array_key_exists($column_name, $entity_data['entity_fields'])){
-              if(isset($column_data['search'])) {
-                $field_value = $column_data['search']['value'];
-              }
-              $criteria_data[$column_name] = $field_value;
-          }
+        /*if(isset($_POST['bcat'])) {
+            $category_data = EntityAPI::get_by_code(
+                'businesscategory', array('entity_code' => strtoupper(sanitize_text_field($_POST['cat']))));
+            if(isset($category_data['id']))
+                $criteria_data['type.category'] = $category_data['id'];
+        }*/
+        // Process global search 
+        if(!EntityStringUtils::is_invalid_string($_POST['search']['value'])) {
+            $criteria_data['is_global'] = true;
+            $criteria_data['search'] = sanitize_text_field($_POST['search']['value']);
+        }
+        // Non global search
+        else {
+            if(isset($_POST['columns'])) {
+                $columns_data = $_POST['columns'];
+                foreach($columns_data as $column_data){
+                    $column_name = sanitize_text_field($column_data['data']);
+                    if(EntityStringUtils::ends_with($column_name, '_txt')) {
+                        $column_name = str_replace('_txt', '', $column_name);
+                    }
+                    if(array_key_exists($column_name, $entity_data['entity_fields'])){
+                        if(isset($column_data['search'])) {
+                            if(!EntityStringUtils::is_invalid_string($column_data['search']['value'])) {
+                                $field_value = sanitize_text_field($column_data['search']['value']);
+                                $criteria_data[$column_name] = $field_value;
+                            }
+                        }
+                    }
+                }
+
+                foreach($entity_data['entity_fields'] as $field_name => $field_data){
+                    if(isset($_POST[$field_data['name']]))
+                        $criteria_data[$field_data['name']] = sanitize_text_field($_POST[$field_data['name']]);
+                }
+            }
+            else {
+
+                if(isset($_POST['form'])) {
+                    if(isset($_POST['form'][3])) {
+                        $criteria_data[$_POST['form'][3]['name']] = $_POST['form'][3]['value'];
+                    }
+                }
+            }
         }
         return $criteria_data;
     }
@@ -119,13 +154,14 @@ class EntityRequestUtils {
      *
      */
     public static function get_query_form_field($field_name) {
-        $form_data = $_POST['form'];
-        foreach($form_data as $field){
-          $name = sanitize_text_field($field['name']);
-          if($name === $field_name){
-              return sanitize_text_field($field['value']);
-              //$criteria_data[$name] = $value;
-          }
+        $columns_data = $_POST['columns'];
+        foreach($columns_data as $field){
+            $column_name = sanitize_text_field($field['data']);
+            if($column_name == $field_name){
+                if(isset($column_data['search'])) {
+                    return sanitize_text_field($column_data['search']['value']);
+                }
+            }
         }
         return false;
     }

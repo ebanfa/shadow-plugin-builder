@@ -126,7 +126,7 @@ class LocationTypeCPT {
                     'entity_name' => 'Location',
                     'entity_description' => 'Location',
                     'data_type' => 'sb_location',
-                    'is_required' => true,
+                    'is_required' => false,
                     'is_visible' => true,
                     'is_create_field' => true,
                     'is_edit_field' => true,

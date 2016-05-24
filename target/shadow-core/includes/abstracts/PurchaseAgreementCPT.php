@@ -496,8 +496,6 @@ class PurchaseAgreementCPT {
                 'pai_inspection' => array('name' => 'pai_inspection',
                     'description' => 'Inspection',
                     'size' => 'large',
-                    'entity_name' => 'Inspection',
-                    'entity_description' => 'Inspection',
                     'data_type' => 'sb_inspection',
                     'is_required' => true,
                     'is_visible' => false,

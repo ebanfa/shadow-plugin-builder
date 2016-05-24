@@ -65,12 +65,11 @@ class CloderiaMenuUtils {
 		{
 			update_option( 'cp_paypal_url', stripslashes($_POST['cp_paypal']) );
 			update_option( 'cp_paypal_id', stripslashes($_POST['cp_paypal_id']) );
-			update_option( 'cp_notify_loans', stripslashes($_POST['cp_notify_loans']) );
+			update_option( 'cp_notify_orders', stripslashes($_POST['cp_notify_orders']) );
 			update_option( 'cp_notify_accounts', stripslashes($_POST['cp_notify_accounts']) );
 			update_option( 'cp_site_domain', stripslashes($_POST['cp_site_domain']) );
+			update_option( 'cp_default_currency', stripslashes($_POST['cp_default_currency']) );
 			update_option( 'cp_default_partytype', stripslashes($_POST['cp_default_partytype']) );
-			update_option( 'cp_admin_account', stripslashes($_POST['cp_admin_account']) );
-			update_option( 'cp_currency_symbol', stripslashes($_POST['cp_currency_symbol']) );
 			$msg = '<div class="updated"><p>Your settings have been <strong>updated</strong></p></div>';
 		}
 		//"Short code here"; //esc_attr( get_option(self::option_key, self::default_shortcode_name) );

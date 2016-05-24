@@ -32,7 +32,8 @@ class LoanApplicationAPI {
      *
      */
     public static function do_find_entity($entity_data) {
-        return  EntityAPI::do_find_entity($entity_data); 
+        $current_user = wp_get_current_user();
+        return  EntityPersistenceAPI::find_by_criteria($entity_data, array('email' => $current_user->user_login));
     }
 
 

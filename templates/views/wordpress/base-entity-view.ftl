@@ -136,7 +136,7 @@ class BaseEntityView extends ArtifactView {
         // Pass the fields through the filter if any
         $fields_filter = 'shadowbanker_' . $this->artifact . '_form_fields';
         if (has_filter($fields_filter)) {
-            $form_fields = apply_filters($fields_filter, $this, $form_fields);
+            return apply_filters($fields_filter, $this, $form_fields);
         }
         return $form_fields; 
     }

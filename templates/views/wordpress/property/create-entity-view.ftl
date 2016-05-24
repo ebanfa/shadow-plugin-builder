@@ -23,7 +23,7 @@ class CreatePropertyView extends MultiEntityCreateView {
     function get_tabs() {
         if(isset($_REQUEST['category'])) {
             $category = sanitize_text_field($_REQUEST['category']);
-            if($category == 'office') return self::get_office_tabs();
+            if($category == 'commercial') return self::get_office_tabs();
             if($category == 'retail') return self::get_retail_tabs();
             if($category == 'industrial') return self::get_industrial_tabs();
             if($category == 'residential') return self::get_residential_tabs();

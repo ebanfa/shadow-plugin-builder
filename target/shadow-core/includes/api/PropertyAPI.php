@@ -25,7 +25,7 @@ class PropertyAPI {
         return $entity_data;
     }
 
-     /**
+    /**
      *
      */
     public static function do_find_entity($entity_data) {
@@ -36,7 +36,72 @@ class PropertyAPI {
      *
      */
     public static function do_create_property($entity_data){
-        return EntityAPI::do_create_entity($entity_data);
+        if(isset($_REQUEST['category'])) {
+            $property_category = sanitize_text_field($_REQUEST['category']);
+            $property_type = EntityAPI::get_by_code('propertytype', strtoupper($property_category));
+            if(isset($property_type['id'])) {
+                $entity_data['p_type'] = $property_type['id'];
+            }
+        }
+        $party_data = self::create_property_party($entity_data);
+        if(isset($party_data['id'])) $entity_data['party'] = $party_data['id'];
+        $property_data = EntityAPI::do_create_entity($entity_data);
+        return $property_data;
+    }
+
+    /**
+     *
+     */
+    public static function create_property_party($entity_data) {
+
+        $party_data = EntityAPIUtils::init_entity_data('party');
+
+        if($entity_data['edit_mode']) {
+            $party_data['edit_mode'] = true;
+            $party_type = EntityAPI::get_by_code('partytype', 'ORGANIZATION');
+            $party_data['party_type'] = $party_type['id'];
+            //$party_data['business_unit'] = $entity_data['business_unit'];
+        }
+        else {
+            // First we need to load the entity from the db
+            // So we can retrieve the id of the parent party
+            if(isset($entity_data['id'])) {
+                $saved_entity_data = EntityAPI::get_by_id('property', $entity_data['id']);
+                $parent_party_data = EntityAPI::get_by_id('party', $saved_entity_data['party']);
+                $parent_party_data['edit_mode'] = false;
+                $party_data = array_merge($parent_party_data, $party_data);
+                $entity_data['business_unit'] = $saved_entity_data['business_unit'];
+            }
+        }
+        // Set the name on the part and on the entity
+        $party_data['name'] = $entity_data['name'];
+        $party_data['description'] = $entity_data['name'];
+        $party_data['business_unit'] = $entity_data['business_unit'];
+        $party_data = EntityAPI::create_entity($party_data);
+
+        $party_role = self::create_default_party_role($party_data);
+        return $party_data;
+    }
+
+    /**
+     *
+     */
+    public static function create_default_party_role($party_data) {
+        $entity_data = EntityAPIUtils::init_entity_data('partyrole');
+        $owner_role_data = EntityAPI::get_by_code('roletype', 'PROPERTY');
+
+        if(isset($owner_role_data['id']) && isset($party_data['id'])) {
+            $entity_data['edit_mode'] = true;
+            $entity_data['name'] = $party_data['name'];
+            $entity_data['role'] = $owner_role_data['id'];
+            $entity_data['party'] = $party_data['id'];
+            $entity_data['parent_unit'] = $party_data['business_unit'];
+            $entity_data['business_unit'] = $party_data['business_unit'];
+            $entity_data['description'] = 'Default role ' . $owner_role_data['name'] . ' for party ' . $party_data['name'];
+            $entity_data = EntityAPI::create_entity($entity_data);
+        }
+        return $entity_data;
+
     }
 
     /**
@@ -64,19 +129,7 @@ class PropertyAPI {
                 $building_data['has_basement'] = $building['has_basement'];
                 $building_data['basement_count'] = $building['basement_count'];
 
-                $building_data = EntityAPI::do_create_entity($building_data);
-                $unit_allocation = EntityAPI::get_by_id('allocationunit', $building_data['b_unitalloc']);
-                // If the unit allocation specified is of tyoe building, we will create
-                // the unit for the building here
-                if(isset($unit_allocation['id'])) {
-                    $building_data['b_unitalloc_code'] = $unit_allocation['entity_code'];
-                    if($building_data['b_unitalloc_code'] == 'BUILDING'){
-                        self::create_building_unit($building_data, $building_count);
-                    }
-                }
-                $building_count++;
-                // Create the floors
-                self::do_create_building_floors($building_data);
+                $building_data = BuildingAPI::do_create_entity($building_data);
                 // add to the list
                 array_push($buildings_list, $building_data);
             }

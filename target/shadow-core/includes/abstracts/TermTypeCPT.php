@@ -22,6 +22,11 @@ class TermTypeCPT {
             'description' => 'The Code field',
             'type' => 'text',
         ),
+        array('name' => 'business_category',
+            'title' => 'Category',
+            'description' => 'The Category field',
+            'type' => 'text',
+        ),
         array('name' => 'name',
             'title' => 'Name',
             'description' => 'The Name field',
@@ -52,6 +57,20 @@ class TermTypeCPT {
             'is_list_field' => false,
             'is_form_field' => false,
             'is_relationship_field' => false,),
+        'business_category' => array('name' => 'business_category',
+            'description' => 'Category',
+            'size' => 'large',
+            'entity_name' => 'BusinessCategory',
+            'entity_description' => 'Business Category',
+            'data_type' => 'sb_businesscat',
+            'is_required' => true,
+            'is_visible' => true,
+            'is_create_field' => true,
+            'is_edit_field' => true,
+            'is_view_field' => true,
+            'is_list_field' => true,
+            'is_form_field' => true,
+            'is_relationship_field' => true,),
         'name' => array('name' => 'name',
             'description' => 'Name',
             'size' => 'large',
@@ -251,6 +270,7 @@ class TermTypeCPT {
     }
 
     public static function sb_termtype_table_head($defaults){
+        $defaults['business_category']  = 'Category';
         $defaults['name']  = 'name';
         $defaults['description']  = 'Description';
         return $defaults;
@@ -259,6 +279,10 @@ class TermTypeCPT {
     public static function sb_termtype_table_content($column_name, $post_id){
         if ($column_name == 'entity_code') {
             $field_value = get_post_meta($post_id, 'entity_code', true );
+            echo $field_value;
+        }
+        if ($column_name == 'business_category') {
+            $field_value = get_post_meta($post_id, 'business_category', true );
             echo $field_value;
         }
         if ($column_name == 'name') {

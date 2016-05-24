@@ -26,6 +26,9 @@ class EntityActionProcessor {
 
         add_action('wp_ajax_find_entity_ajax', 'EntityActionProcessor::find_entity_ajax');
         add_action('wp_ajax_nopriv_find_entity_ajax', 'EntityActionProcessor::find_entity_ajax');
+        
+        add_action('wp_ajax_find_all_ajax', 'EntityActionProcessor::find_all_ajax');
+        add_action('wp_ajax_nopriv_find_all_ajax', 'EntityActionProcessor::find_all_ajax');
 
         add_action('wp_ajax_delete_entity_ajax', 'EntityActionProcessor::delete_entity_ajax');
         add_action('wp_ajax_nopriv_delete_entity_ajax', 'EntityActionProcessor::delete_entity_ajax');
@@ -46,7 +49,6 @@ class EntityActionProcessor {
         $entity_data = self::do_before_ajax_edit();
         // Create the entity of we have no errors
         if(!$entity_data['has_errors']) {
-
             $entity_data = EntityAPI::create_entity($entity_data);
         }
         // Run post edit hooks
@@ -67,8 +69,7 @@ class EntityActionProcessor {
         $entity_data = EntityAPIUtils::validate_entity_data($entity_data);
         return $entity_data;
     }
-
-
+    
     /**
      *
      */
@@ -87,7 +88,7 @@ class EntityActionProcessor {
                 }
                
             }
-
+            //var_dump($entity_data);
             // Process the parent id, if any
             if(isset($_REQUEST['parent_id']) && isset($_REQUEST['parent_artifact']) && isset($_REQUEST['parent_field'])) 
             {
@@ -96,7 +97,9 @@ class EntityActionProcessor {
                 $redirect_url = $redirect_url . '&parent_field=' . sanitize_text_field($_REQUEST['parent_field']);
                 if(isset($_REQUEST['parent_param'])) $redirect_url = $redirect_url . '&parent_param=' .  $_REQUEST['parent_param'];
             }
-            wp_send_json_success(array('message' => "<script type='text/javascript'>window.location='" . $redirect_url . "'</script>"));
+
+            $redirect_url = $redirect_url;
+            wp_send_json_success(array('message' => $redirect_url));
         } else {
             wp_send_json_error(array('message' => $entity_data['message']));
         }
@@ -108,6 +111,15 @@ class EntityActionProcessor {
     public static function find_entity_ajax() {
         $entity_data = self::do_before_ajax_find();
         $search_results = EntityAPI::find_entity($entity_data);
+        self::do_after_ajax_find($entity_data, $search_results);
+    }
+
+    /**
+     *
+     */
+    public static function find_all_ajax() {
+        $entity_data = self::do_before_ajax_find();
+        $search_results = EntityAPI::find_all($entity_data);
         self::do_after_ajax_find($entity_data, $search_results);
     }
 

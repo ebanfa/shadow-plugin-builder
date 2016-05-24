@@ -22,19 +22,14 @@ class BusinessUnitCPT {
             'description' => 'The Code field',
             'type' => 'text',
         ),
-        array('name' => 'party',
-            'title' => 'Party',
-            'description' => 'The Party field',
-            'type' => 'text',
-        ),
         array('name' => 'parent_unit',
             'title' => 'Parent Business Unit',
             'description' => 'The Parent Business Unit field',
             'type' => 'text',
         ),
-        array('name' => 'business_unit',
-            'title' => 'Business Unit',
-            'description' => 'The Business Unit field',
+        array('name' => 'currency',
+            'title' => 'Currency',
+            'description' => 'The Currency field',
             'type' => 'text',
         ),
         array('name' => 'name',
@@ -52,14 +47,14 @@ class BusinessUnitCPT {
             'description' => 'The Address Line 2 field',
             'type' => 'text',
         ),
-        array('name' => 'location',
-            'title' => 'Location',
-            'description' => 'The Location field',
-            'type' => 'text',
-        ),
         array('name' => 'description',
             'title' => 'Description',
             'description' => 'The Description field',
+            'type' => 'text',
+        ),
+        array('name' => 'business',
+            'title' => 'Parent Business',
+            'description' => 'The Parent Business field',
             'type' => 'text',
         ),
     );
@@ -82,27 +77,13 @@ class BusinessUnitCPT {
             'is_list_field' => false,
             'is_form_field' => false,
             'is_relationship_field' => false,),
-        'party' => array('name' => 'party',
-            'description' => 'Party',
-            'size' => 'large',
-            'entity_name' => 'Party',
-            'entity_description' => 'Party',
-            'data_type' => 'sb_party',
-            'is_required' => true,
-            'is_visible' => true,
-            'is_create_field' => true,
-            'is_edit_field' => true,
-            'is_view_field' => true,
-            'is_list_field' => false,
-            'is_form_field' => true,
-            'is_relationship_field' => true,),
         'parent_unit' => array('name' => 'parent_unit',
             'description' => 'Parent Business Unit',
             'size' => 'large',
             'entity_name' => 'BusinessUnit',
             'entity_description' => 'Business Unit',
             'data_type' => 'sb_businessunit',
-            'is_required' => true,
+            'is_required' => false,
             'is_visible' => true,
             'is_create_field' => true,
             'is_edit_field' => true,
@@ -110,19 +91,19 @@ class BusinessUnitCPT {
             'is_list_field' => false,
             'is_form_field' => true,
             'is_relationship_field' => true,),
-        'business_unit' => array('name' => 'business_unit',
-            'description' => 'Business Unit',
+        'currency' => array('name' => 'currency',
+            'description' => 'Currency',
             'size' => 'large',
-            'entity_name' => 'BusinessUnit',
-            'entity_description' => 'Business Unit',
-            'data_type' => 'sb_businessunit',
-            'is_required' => true,
-            'is_visible' => false,
+            'entity_name' => 'Currency',
+            'entity_description' => 'Currency',
+            'data_type' => 'sb_currency',
+            'is_required' => false,
+            'is_visible' => true,
             'is_create_field' => true,
             'is_edit_field' => true,
             'is_view_field' => true,
-            'is_list_field' => false,
-            'is_form_field' => false,
+            'is_list_field' => true,
+            'is_form_field' => true,
             'is_relationship_field' => true,),
         'name' => array('name' => 'name',
             'description' => 'Name',
@@ -160,20 +141,6 @@ class BusinessUnitCPT {
             'is_list_field' => true,
             'is_form_field' => true,
             'is_relationship_field' => false,),
-        'location' => array('name' => 'location',
-            'description' => 'Location',
-            'size' => 'large',
-            'entity_name' => 'Location',
-            'entity_description' => 'Location',
-            'data_type' => 'sb_location',
-            'is_required' => true,
-            'is_visible' => true,
-            'is_create_field' => true,
-            'is_edit_field' => true,
-            'is_view_field' => true,
-            'is_list_field' => true,
-            'is_form_field' => true,
-            'is_relationship_field' => true,),
         'description' => array('name' => 'description',
             'description' => 'Description',
             'size' => 'large',
@@ -186,6 +153,20 @@ class BusinessUnitCPT {
             'is_list_field' => true,
             'is_form_field' => true,
             'is_relationship_field' => false,),
+        'business' => array('name' => 'business',
+            'description' => 'Parent Business',
+            'size' => 'large',
+            'entity_name' => 'Business',
+            'entity_description' => 'Business',
+            'data_type' => 'sb_business',
+            'is_required' => false,
+            'is_visible' => true,
+            'is_create_field' => false,
+            'is_edit_field' => false,
+            'is_view_field' => false,
+            'is_list_field' => false,
+            'is_form_field' => true,
+            'is_relationship_field' => true,),
    );
 
     /**
@@ -713,7 +694,7 @@ class BusinessUnitCPT {
                     'entity_name' => 'PartyRole',
                     'entity_description' => 'Party Role',
                     'data_type' => 'sb_partyrole',
-                    'is_required' => true,
+                    'is_required' => false,
                     'is_visible' => true,
                     'is_create_field' => true,
                     'is_edit_field' => true,
@@ -749,20 +730,6 @@ class BusinessUnitCPT {
                     'is_list_field' => true,
                     'is_form_field' => true,
                     'is_relationship_field' => true,),
-                'business_unit' => array('name' => 'business_unit',
-                    'description' => 'Business Unit',
-                    'size' => 'large',
-                    'entity_name' => 'BusinessUnit',
-                    'entity_description' => 'Business Unit',
-                    'data_type' => 'sb_businessunit',
-                    'is_required' => true,
-                    'is_visible' => false,
-                    'is_create_field' => true,
-                    'is_edit_field' => false,
-                    'is_view_field' => true,
-                    'is_list_field' => true,
-                    'is_form_field' => false,
-                    'is_relationship_field' => true,),
                 'name' => array('name' => 'name',
                     'description' => 'Name',
                     'size' => 'large',
@@ -787,6 +754,20 @@ class BusinessUnitCPT {
                     'is_list_field' => true,
                     'is_form_field' => true,
                     'is_relationship_field' => false,),
+                'business_unit' => array('name' => 'business_unit',
+                    'description' => 'Business Unit',
+                    'size' => 'large',
+                    'entity_name' => 'BusinessUnit',
+                    'entity_description' => 'Business Unit',
+                    'data_type' => 'sb_businessunit',
+                    'is_required' => true,
+                    'is_visible' => false,
+                    'is_create_field' => true,
+                    'is_edit_field' => false,
+                    'is_view_field' => true,
+                    'is_list_field' => true,
+                    'is_form_field' => false,
+                    'is_relationship_field' => true,),
             ),
         ),
         'default_unit' => array('name' => 'default_unit',
@@ -1042,10 +1023,10 @@ class BusinessUnitCPT {
     }
 
     public static function sb_businessunit_table_head($defaults){
+        $defaults['currency']  = 'Currency';
         $defaults['name']  = 'name';
         $defaults['address_1']  = 'Address Line 1';
         $defaults['address_2']  = 'Address Line 2';
-        $defaults['location']  = 'Location';
         $defaults['description']  = 'Description';
         return $defaults;
     }
@@ -1055,16 +1036,12 @@ class BusinessUnitCPT {
             $field_value = get_post_meta($post_id, 'entity_code', true );
             echo $field_value;
         }
-        if ($column_name == 'party') {
-            $field_value = get_post_meta($post_id, 'party', true );
-            echo $field_value;
-        }
         if ($column_name == 'parent_unit') {
             $field_value = get_post_meta($post_id, 'parent_unit', true );
             echo $field_value;
         }
-        if ($column_name == 'business_unit') {
-            $field_value = get_post_meta($post_id, 'business_unit', true );
+        if ($column_name == 'currency') {
+            $field_value = get_post_meta($post_id, 'currency', true );
             echo $field_value;
         }
         if ($column_name == 'name') {
@@ -1079,12 +1056,12 @@ class BusinessUnitCPT {
             $field_value = get_post_meta($post_id, 'address_2', true );
             echo $field_value;
         }
-        if ($column_name == 'location') {
-            $field_value = get_post_meta($post_id, 'location', true );
-            echo $field_value;
-        }
         if ($column_name == 'description') {
             $field_value = get_post_meta($post_id, 'description', true );
+            echo $field_value;
+        }
+        if ($column_name == 'business') {
+            $field_value = get_post_meta($post_id, 'business', true );
             echo $field_value;
         }
     }

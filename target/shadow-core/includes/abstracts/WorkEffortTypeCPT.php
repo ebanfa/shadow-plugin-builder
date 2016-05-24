@@ -22,6 +22,16 @@ class WorkEffortTypeCPT {
             'description' => 'The Code field',
             'type' => 'text',
         ),
+        array('name' => 'category',
+            'title' => 'Category',
+            'description' => 'The Category field',
+            'type' => 'text',
+        ),
+        array('name' => 'business_category',
+            'title' => 'Business Category',
+            'description' => 'The Business Category field',
+            'type' => 'text',
+        ),
         array('name' => 'name',
             'title' => 'Name',
             'description' => 'The Name field',
@@ -52,6 +62,34 @@ class WorkEffortTypeCPT {
             'is_list_field' => false,
             'is_form_field' => false,
             'is_relationship_field' => false,),
+        'category' => array('name' => 'category',
+            'description' => 'Category',
+            'size' => 'large',
+            'entity_name' => 'WorkEffortCategory',
+            'entity_description' => 'Work Effort Category',
+            'data_type' => 'sb_wetypecat',
+            'is_required' => true,
+            'is_visible' => true,
+            'is_create_field' => true,
+            'is_edit_field' => true,
+            'is_view_field' => false,
+            'is_list_field' => false,
+            'is_form_field' => true,
+            'is_relationship_field' => true,),
+        'business_category' => array('name' => 'business_category',
+            'description' => 'Business Category',
+            'size' => 'large',
+            'entity_name' => 'BusinessCategory',
+            'entity_description' => 'Business Category',
+            'data_type' => 'sb_businesscat',
+            'is_required' => true,
+            'is_visible' => true,
+            'is_create_field' => true,
+            'is_edit_field' => true,
+            'is_view_field' => false,
+            'is_list_field' => false,
+            'is_form_field' => true,
+            'is_relationship_field' => true,),
         'name' => array('name' => 'name',
             'description' => 'Name',
             'size' => 'large',
@@ -87,7 +125,7 @@ class WorkEffortTypeCPT {
      * So an array of Party entities will be an inferred field on PartyType.
      */
  public static $related_child_entities = array(
-        'we_type' => array('name' => 'we_type',
+        'type' => array('name' => 'type',
             'entity_name' => 'WorkEffort',
             'data_type' => 'sb_workeffort',
             'artifact_name' => 'workeffort',
@@ -112,7 +150,7 @@ class WorkEffortTypeCPT {
                     'entity_name' => 'WorkEffort',
                     'entity_description' => 'Work Effort',
                     'data_type' => 'sb_workeffort',
-                    'is_required' => true,
+                    'is_required' => false,
                     'is_visible' => true,
                     'is_create_field' => true,
                     'is_edit_field' => true,
@@ -120,7 +158,7 @@ class WorkEffortTypeCPT {
                     'is_list_field' => true,
                     'is_form_field' => true,
                     'is_relationship_field' => true,),
-                'we_type' => array('name' => 'we_type',
+                'type' => array('name' => 'type',
                     'description' => 'Work Effort Type',
                     'size' => 'large',
                     'entity_name' => 'WorkEffortType',
@@ -387,6 +425,14 @@ class WorkEffortTypeCPT {
     public static function sb_wetype_table_content($column_name, $post_id){
         if ($column_name == 'entity_code') {
             $field_value = get_post_meta($post_id, 'entity_code', true );
+            echo $field_value;
+        }
+        if ($column_name == 'category') {
+            $field_value = get_post_meta($post_id, 'category', true );
+            echo $field_value;
+        }
+        if ($column_name == 'business_category') {
+            $field_value = get_post_meta($post_id, 'business_category', true );
             echo $field_value;
         }
         if ($column_name == 'name') {

@@ -15,23 +15,22 @@ class CloderiaCustomPostTypesUtils {
 	public static $prefix = ''; 
 
 	// Which types of content do we want to standardize?
-	public static $content_types_array = array('sb_loanapp','sb_currency','sb_contactus','sb_loctype','sb_location','sb_partycat','sb_partytype','sb_roletype','sb_party','sb_businessunit','sb_partyrole','sb_reltype','sb_relstatus','sb_partyrel','sb_partygroup','sb_person','sb_partyprofile','sb_partyaddress','sb_partyfiles','sb_chargecat','sb_chargetype','sb_chargefreq','sb_charge','sb_expensecat','sb_expensetype','sb_expensefreq','sb_expense','sb_inventype','sb_fassettype','sb_dmethod','sb_invitemtype','sb_uom','sb_utilitytype','sb_utility','sb_proptype','sb_propstatus','sb_property','sb_zonetype','sb_zoningdata','sb_mortgagetype','sb_mortgage','sb_laccessibility','sb_ltopography','sb_landtype','sb_soiltype','sb_lshape','sb_land','sb_plottype','sb_plot','sb_improvetype','sb_improvement','sb_proputility','sb_pcharge','sb_fixedasset','sb_inventory','sb_piitem','sb_pexpense','sb_propstaff','sb_propfiles','sb_buildingtype','sb_building','sb_bcharge','sb_bexpense','sb_buildfiles','sb_allocunit','sb_floortype','sb_floor','sb_fcharge','sb_fexpense','sb_unittype','sb_utypecharge','sb_utypeexpense','sb_unit','sb_unitcharge','sb_unitexpense','sb_facilitycat','sb_facilitytype','sb_facility','sb_facharge','sb_feexpense','sb_pslottype','sb_pstypecharge','sb_pstypeexpense','sb_pslot','sb_agreetype','sb_agreetypecharge','sb_termtype','sb_term','sb_agreement','sb_purchaseagrmnt','sb_settlementdata','sb_settledataloan','sb_agrmntinspection','sb_agrmntitemtype','sb_agreementitem','sb_rentagreement','sb_seragreement','sb_managreement','sb_servicetype','sb_service','sb_agreeservice','sb_agreeunit','sb_agreecharge','sb_agreeterm','sb_chargeinagrmt','sb_rentstatus','sb_rent','sb_assmttype','sb_assessment','sb_landassmnt','sb_sdtype','sb_salesdata','sb_sditemtype','sb_salesdataitem','sb_cdtype','sb_costdata','sb_cditemtype','sb_cditemdata','sb_idtype','sb_incomedata','sb_idetype','sb_idexpense','sb_billaccount','sb_invoicetype','sb_invoicestatus','sb_invoice','sb_invoiceitemtype','sb_invoiceitem','sb_invoiceterm','sb_paymenttype','sb_paymethtype','sb_payment','sb_receipt','sb_outpayment','sb_payroll','sb_payapp','sb_periodtype','sb_acctperiod','sb_coaacctstruct','sb_coaacctsegtype','sb_coaasegval','sb_coaacctseg','sb_coastatus','sb_coa','sb_coaaseginst','sb_glaccttype','sb_glaccount','sb_buglaccount','sb_buglaccountbal','sb_feventtype','sb_fevent','sb_feventtxntype','sb_txntypeacct','sb_txntype','sb_transaction','sb_txndetail','sb_budgettype','sb_budgetstatus','sb_budget','sb_bitemtype','sb_budgetitem','sb_budgetrole','sb_stperiod','sb_brrtype','sb_budgetreview','sb_brevision','sb_budgetrevimpact','sb_budgetscenario','sb_bscenariorule','sb_bscenarioapp','sb_pballocation','sb_glbudgetxref','sb_disputetype','sb_disputestatus','sb_dispute','sb_disputeitem','sb_conversation','sb_message','sb_messagesfiles','sb_notifytype','sb_notifystatus','sb_notifylevel','sb_notification','sb_pclasstype','sb_ptypeclass','sb_positiontype','sb_pstatus','sb_resptype','sb_validresp','sb_position','sb_posresp','sb_pfulfillment','sb_preportstruct','sb_ratetype','sb_paygrade','sb_salarystep','sb_ptyperate','sb_payhistory','sb_benefittype','sb_partybenefit','sb_deductiontype','sb_deduction','sb_prpreference','sb_empappstatus','sb_empappsrctype','sb_empapplication','sb_qualtype','sb_skilltype','sb_tctype','sb_ptraining','sb_resume','sb_partyskill','sb_partyqual','sb_perfnoteype','sb_perfnote','sb_perfreview','sb_ratingtype','sb_previtemtype','sb_perfreviewitem','sb_terminationtype','sb_termreason','sb_ucstatus','sb_uempclaim','sb_delivertype','sb_deliverable','sb_requiretype','sb_requirement','sb_requirerole','sb_wetype','sb_weptype','sb_westatus','sb_workeffort','sb_inspection','sb_maintenance','sb_wrfulfillment','sb_weatype','sb_weassociation','sb_wertype','sb_wepatyassign','sb_timesheet','sb_tsrtype','sb_tsrole','sb_timeentry','sb_partyrate','sb_wearate','sb_weiassign','sb_wefaastatus','sb_wefaassign','sb_wepastatus','sb_pfaassign','sb_wedeliverable',);
+	public static $content_types_array = array('sb_currency','sb_loctype','sb_location','sb_business','sb_businessunit','sb_partycat','sb_partytype','sb_roletype','sb_party','sb_partyrole','sb_reltype','sb_relstatus','sb_partyrel','sb_partygroup','sb_person','sb_partyprofile','sb_partyaddress','sb_partyfiles','sb_invitestatus','sb_userinvite','sb_businesscat','sb_chargetype','sb_chargefreq','sb_charge','sb_expensetype','sb_expensefreq','sb_expense','sb_liabcat','sb_liabtype','sb_liability','sb_dmethod','sb_uom','sb_utilitytype','sb_utility','sb_proptype','sb_propstatus','sb_property','sb_zonetype','sb_zoningdata','sb_mortgagetype','sb_mortgage','sb_laccessibility','sb_ltopography','sb_landtype','sb_soiltype','sb_lshape','sb_land','sb_plottype','sb_plot','sb_improvetype','sb_improvement','sb_proputility','sb_pcharge','sb_assetcat','sb_assettype','sb_asset','sb_inventype','sb_inventory','sb_invitemtype','sb_inventoryitem','sb_propstaff','sb_propfiles','sb_buildingtype','sb_buildtypropty','sb_allocunit','sb_building','sb_bcharge','sb_buildfiles','sb_floortype','sb_floor','sb_fcharge','sb_unittype','sb_utypecharge','sb_unit','sb_unitcharge','sb_facilitycat','sb_facilitytype','sb_facility','sb_facharge','sb_pslottype','sb_pstypecharge','sb_pslot','sb_agreecat','sb_agreetype','sb_agreetypecharge','sb_termtype','sb_term','sb_agreement','sb_purchaseagrmnt','sb_settlementdata','sb_settledataloan','sb_agrmntitemtype','sb_agreementitem','sb_servicetype','sb_service','sb_agreeservice','sb_agreeunit','sb_agreecharge','sb_agreeterm','sb_chargeinagrmt','sb_rentstatus','sb_rent','sb_assmttype','sb_assessment','sb_sdtype','sb_salesdata','sb_sditemtype','sb_salesdataitem','sb_cdtype','sb_costdata','sb_cditemtype','sb_cditemdata','sb_idtype','sb_incomedata','sb_idetype','sb_idexpense','sb_billaccount','sb_accttxntype','sb_accttxnstatus','sb_accttransaction','sb_fundmeth','sb_templatetype','sb_template','sb_invoicetype','sb_invoicestatus','sb_invoice','sb_invoicerole','sb_invoiceitemtype','sb_invoiceitem','sb_invoiceterm','sb_pordertype','sb_porderstatus','sb_porder','sb_porole','sb_poitemtype','sb_porderitem','sb_porderterm','sb_paymenttype','sb_paymethtype','sb_payment','sb_payapp','sb_receipttype','sb_disbursetype','sb_receipt','sb_disbursement','sb_periodtype','sb_acctperiod','sb_coaacctstruct','sb_coaacctsegtype','sb_coaasegval','sb_coaacctseg','sb_coastatus','sb_coa','sb_glaccttype','sb_glaccount','sb_buglaccount','sb_buglaccountbal','sb_coaaseginst','sb_feventtype','sb_fevent','sb_txntype','sb_transaction','sb_txndetail','sb_feventtxntype','sb_txntypeacct','sb_budgettype','sb_budgetstatus','sb_budget','sb_bitemtype','sb_budgetitem','sb_budgetrole','sb_stperiod','sb_brrtype','sb_budgetreview','sb_brevision','sb_budgetrevimpact','sb_budgetscenario','sb_bscenariorule','sb_bscenarioapp','sb_pballocation','sb_glbudgetxref','sb_disputetype','sb_disputestatus','sb_dispute','sb_disputeitem','sb_conversation','sb_message','sb_messagesfiles','sb_notifytype','sb_notifystatus','sb_notifylevel','sb_notification','sb_pclasstype','sb_ptypeclass','sb_positiontype','sb_pstatus','sb_resptype','sb_validresp','sb_position','sb_posresp','sb_pfulfillment','sb_preportstruct','sb_ratetype','sb_paygrade','sb_salarystep','sb_ptyperate','sb_payhistory','sb_benefittype','sb_partybenefit','sb_deductiontype','sb_deduction','sb_prpreference','sb_empappstatus','sb_empappsrctype','sb_empapplication','sb_qualtype','sb_skilltype','sb_tctype','sb_ptraining','sb_resume','sb_partyskill','sb_partyqual','sb_perfnoteype','sb_perfnote','sb_perfreview','sb_ratingtype','sb_previtemtype','sb_perfreviewitem','sb_terminationtype','sb_termreason','sb_ucstatus','sb_uempclaim','sb_delivertype','sb_deliverable','sb_requiretype','sb_requirement','sb_requirerole','sb_wetypecat','sb_wetype','sb_weptype','sb_westatus','sb_workeffort','sb_agrmntinspection','sb_wrfulfillment','sb_weatype','sb_weassociation','sb_wertype','sb_wepatyassign','sb_timesheet','sb_tsrtype','sb_tsrole','sb_timeentry','sb_partyrate','sb_wearate','sb_weiassign','sb_wefaastatus','sb_wefaassign','sb_wepastatus','sb_pfaassign','sb_wedeliverable',);
 
 	/**
 	 * Register the custom post type so it shows up in menus
 	 */
 	public static function register_custom_post_type()
 	{
-        LoanApplicationCPT::register_custom_post_type();
         CurrencyCPT::register_custom_post_type();
-        ContactUsCPT::register_custom_post_type();
         LocationTypeCPT::register_custom_post_type();
         LocationCPT::register_custom_post_type();
+        BusinessCPT::register_custom_post_type();
+        BusinessUnitCPT::register_custom_post_type();
         PartyCategoryCPT::register_custom_post_type();
         PartyTypeCPT::register_custom_post_type();
         RoleTypeCPT::register_custom_post_type();
         PartyCPT::register_custom_post_type();
-        BusinessUnitCPT::register_custom_post_type();
         PartyRoleCPT::register_custom_post_type();
         RelationshipTypeCPT::register_custom_post_type();
         RelationshipStatusCPT::register_custom_post_type();
@@ -41,18 +40,19 @@ class CloderiaCustomPostTypesUtils {
         PartyProfileCPT::register_custom_post_type();
         PartyAddressCPT::register_custom_post_type();
         PartyFilesCPT::register_custom_post_type();
-        ChargeCategoryCPT::register_custom_post_type();
+        UserInviteStatusCPT::register_custom_post_type();
+        UserInviteCPT::register_custom_post_type();
+        BusinessCategoryCPT::register_custom_post_type();
         ChargeTypeCPT::register_custom_post_type();
         ChargeFrequencyCPT::register_custom_post_type();
         ChargeCPT::register_custom_post_type();
-        ExpenseCategoryCPT::register_custom_post_type();
         ExpenseTypeCPT::register_custom_post_type();
         ExpenseFrequencyCPT::register_custom_post_type();
         ExpenseCPT::register_custom_post_type();
-        InventoryTypeCPT::register_custom_post_type();
-        FixedAssetTypeCPT::register_custom_post_type();
+        LiabilityCategoryCPT::register_custom_post_type();
+        LiabilityTypeCPT::register_custom_post_type();
+        LiabilityCPT::register_custom_post_type();
         DeprecationMethodCPT::register_custom_post_type();
-        InventoryItemTypeCPT::register_custom_post_type();
         UnitOfMeasureCPT::register_custom_post_type();
         UtilityTypeCPT::register_custom_post_type();
         UtilityCPT::register_custom_post_type();
@@ -75,37 +75,36 @@ class CloderiaCustomPostTypesUtils {
         ImprovementCPT::register_custom_post_type();
         PropertyUtilityCPT::register_custom_post_type();
         PropertyChargeCPT::register_custom_post_type();
-        FixedAssetCPT::register_custom_post_type();
+        AssetCategoryCPT::register_custom_post_type();
+        AssetTypeCPT::register_custom_post_type();
+        AssetCPT::register_custom_post_type();
+        InventoryTypeCPT::register_custom_post_type();
         InventoryCPT::register_custom_post_type();
-        PropertyInventoryItemCPT::register_custom_post_type();
-        PropertyExpenseCPT::register_custom_post_type();
+        InventoryItemTypeCPT::register_custom_post_type();
+        InventoryItemCPT::register_custom_post_type();
         PropertyStaffCPT::register_custom_post_type();
         PropertyFilesCPT::register_custom_post_type();
         BuildingTypeCPT::register_custom_post_type();
+        BuildingTypePropertyTypeCPT::register_custom_post_type();
+        AllocationUnitCPT::register_custom_post_type();
         BuildingCPT::register_custom_post_type();
         BuildingChargeCPT::register_custom_post_type();
-        BuildingExpenseCPT::register_custom_post_type();
         BuildingFilesCPT::register_custom_post_type();
-        AllocationUnitCPT::register_custom_post_type();
         FloorTypeCPT::register_custom_post_type();
         FloorCPT::register_custom_post_type();
         FloorChargeCPT::register_custom_post_type();
-        FloorExpenseCPT::register_custom_post_type();
         UnitTypeCPT::register_custom_post_type();
         UnitTypeChargeCPT::register_custom_post_type();
-        UnitTypeExpenseCPT::register_custom_post_type();
         UnitCPT::register_custom_post_type();
         UnitChargeCPT::register_custom_post_type();
-        UnitExpenseCPT::register_custom_post_type();
         FacilityCategoryCPT::register_custom_post_type();
         FacilityTypeCPT::register_custom_post_type();
         FacilityCPT::register_custom_post_type();
         FacilityChargeCPT::register_custom_post_type();
-        FacilityExpenseCPT::register_custom_post_type();
         ParkingSlotTypeCPT::register_custom_post_type();
         ParkingSlotTypeChargeCPT::register_custom_post_type();
-        ParkingSlotTypeExpenseCPT::register_custom_post_type();
         ParkingSlotCPT::register_custom_post_type();
+        AgreementCategoryCPT::register_custom_post_type();
         AgreementTypeCPT::register_custom_post_type();
         AgreementTypeChargeCPT::register_custom_post_type();
         TermTypeCPT::register_custom_post_type();
@@ -114,12 +113,8 @@ class CloderiaCustomPostTypesUtils {
         PurchaseAgreementCPT::register_custom_post_type();
         SettlementDataCPT::register_custom_post_type();
         SettlementDataLoanCPT::register_custom_post_type();
-        PurchaseAgreementInspectionCPT::register_custom_post_type();
         AgreementItemTypeCPT::register_custom_post_type();
         AgreementItemCPT::register_custom_post_type();
-        RentAgreementCPT::register_custom_post_type();
-        ServiceAgreementCPT::register_custom_post_type();
-        ManagementAgreementCPT::register_custom_post_type();
         ServiceTypeCPT::register_custom_post_type();
         ServiceCPT::register_custom_post_type();
         AgreementServiceCPT::register_custom_post_type();
@@ -131,7 +126,6 @@ class CloderiaCustomPostTypesUtils {
         RentCPT::register_custom_post_type();
         AssessmentTypeCPT::register_custom_post_type();
         AssessmentCPT::register_custom_post_type();
-        LandAssessmentCPT::register_custom_post_type();
         SalesDataTypeCPT::register_custom_post_type();
         SalesDataCPT::register_custom_post_type();
         SalesDataItemTypeCPT::register_custom_post_type();
@@ -145,19 +139,34 @@ class CloderiaCustomPostTypesUtils {
         IncomeDataExpenseTypeCPT::register_custom_post_type();
         IncomeDataExpenseCPT::register_custom_post_type();
         BillingAccountCPT::register_custom_post_type();
+        AccountTransactionTypeCPT::register_custom_post_type();
+        AccountTransactionStatusCPT::register_custom_post_type();
+        AccountTransactionCPT::register_custom_post_type();
+        FundingMethodCPT::register_custom_post_type();
+        TemplateTypeCPT::register_custom_post_type();
+        TemplateCPT::register_custom_post_type();
         InvoiceTypeCPT::register_custom_post_type();
         InvoiceStatusCPT::register_custom_post_type();
         InvoiceCPT::register_custom_post_type();
+        InvoiceRoleCPT::register_custom_post_type();
         InvoiceItemTypeCPT::register_custom_post_type();
         InvoiceItemCPT::register_custom_post_type();
         InvoiceTermCPT::register_custom_post_type();
+        PurchaseOrderTypeCPT::register_custom_post_type();
+        PurchaseOrderStatusCPT::register_custom_post_type();
+        PurchaseOrderCPT::register_custom_post_type();
+        PurchaseOrderRoleCPT::register_custom_post_type();
+        PurchaseOrderItemTypeCPT::register_custom_post_type();
+        PurchaseOrderItemCPT::register_custom_post_type();
+        PurchaseOrderTermCPT::register_custom_post_type();
         PaymentTypeCPT::register_custom_post_type();
         PaymentMethodTypeCPT::register_custom_post_type();
         PaymentCPT::register_custom_post_type();
-        ReceiptCPT::register_custom_post_type();
-        OutPaymentCPT::register_custom_post_type();
-        PayrollCPT::register_custom_post_type();
         PaymentApplicationCPT::register_custom_post_type();
+        ReceiptTypeCPT::register_custom_post_type();
+        DisbursementTypeCPT::register_custom_post_type();
+        ReceiptCPT::register_custom_post_type();
+        DisbursementCPT::register_custom_post_type();
         PeriodTypeCPT::register_custom_post_type();
         AccountingPeriodCPT::register_custom_post_type();
         COAAccountStructureCPT::register_custom_post_type();
@@ -166,18 +175,18 @@ class CloderiaCustomPostTypesUtils {
         COAAccountSegmentCPT::register_custom_post_type();
         COAStatusCPT::register_custom_post_type();
         ChartOfAccountsCPT::register_custom_post_type();
-        COAAccountSegmentInstanceCPT::register_custom_post_type();
         GLAccountTypeCPT::register_custom_post_type();
         GLAccountCPT::register_custom_post_type();
         BusinessUnitGLAccountCPT::register_custom_post_type();
         BusinessUnitGLAccountBalanceCPT::register_custom_post_type();
+        COAAccountSegmentInstanceCPT::register_custom_post_type();
         FinancialEventTypeCPT::register_custom_post_type();
         FinancialEventCPT::register_custom_post_type();
-        FEventTxnTypeCPT::register_custom_post_type();
-        TxnTypeAccountCPT::register_custom_post_type();
         TransactionTypeCPT::register_custom_post_type();
         TransactionCPT::register_custom_post_type();
         TransactionDetailCPT::register_custom_post_type();
+        FEventTxnTypeCPT::register_custom_post_type();
+        TxnTypeAccountCPT::register_custom_post_type();
         BudgetTypeCPT::register_custom_post_type();
         BudgetStatusCPT::register_custom_post_type();
         BudgetCPT::register_custom_post_type();
@@ -250,12 +259,12 @@ class CloderiaCustomPostTypesUtils {
         RequirementTypeCPT::register_custom_post_type();
         RequirementCPT::register_custom_post_type();
         RequirementRoleCPT::register_custom_post_type();
+        WorkEffortCategoryCPT::register_custom_post_type();
         WorkEffortTypeCPT::register_custom_post_type();
         WorkEffortPurposeTypeCPT::register_custom_post_type();
         WorkEffortStatusCPT::register_custom_post_type();
         WorkEffortCPT::register_custom_post_type();
-        InspectionCPT::register_custom_post_type();
-        MaintenanceCPT::register_custom_post_type();
+        PurchaseAgreementInspectionCPT::register_custom_post_type();
         WorkRequirementFulfillmentCPT::register_custom_post_type();
         WorkEffortAssociationTypeCPT::register_custom_post_type();
         WorkEffortAssociationCPT::register_custom_post_type();
@@ -285,20 +294,20 @@ class CloderiaCustomPostTypesUtils {
 	{
 		switch ($post->post_type) 
 		{
-			case 'sb_loanapp':
-				LoanApplicationCPT::save_custom_fields($post_id, $post);
-				break;
 			case 'sb_currency':
 				CurrencyCPT::save_custom_fields($post_id, $post);
-				break;
-			case 'sb_contactus':
-				ContactUsCPT::save_custom_fields($post_id, $post);
 				break;
 			case 'sb_loctype':
 				LocationTypeCPT::save_custom_fields($post_id, $post);
 				break;
 			case 'sb_location':
 				LocationCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_business':
+				BusinessCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_businessunit':
+				BusinessUnitCPT::save_custom_fields($post_id, $post);
 				break;
 			case 'sb_partycat':
 				PartyCategoryCPT::save_custom_fields($post_id, $post);
@@ -311,9 +320,6 @@ class CloderiaCustomPostTypesUtils {
 				break;
 			case 'sb_party':
 				PartyCPT::save_custom_fields($post_id, $post);
-				break;
-			case 'sb_businessunit':
-				BusinessUnitCPT::save_custom_fields($post_id, $post);
 				break;
 			case 'sb_partyrole':
 				PartyRoleCPT::save_custom_fields($post_id, $post);
@@ -342,8 +348,14 @@ class CloderiaCustomPostTypesUtils {
 			case 'sb_partyfiles':
 				PartyFilesCPT::save_custom_fields($post_id, $post);
 				break;
-			case 'sb_chargecat':
-				ChargeCategoryCPT::save_custom_fields($post_id, $post);
+			case 'sb_invitestatus':
+				UserInviteStatusCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_userinvite':
+				UserInviteCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_businesscat':
+				BusinessCategoryCPT::save_custom_fields($post_id, $post);
 				break;
 			case 'sb_chargetype':
 				ChargeTypeCPT::save_custom_fields($post_id, $post);
@@ -354,9 +366,6 @@ class CloderiaCustomPostTypesUtils {
 			case 'sb_charge':
 				ChargeCPT::save_custom_fields($post_id, $post);
 				break;
-			case 'sb_expensecat':
-				ExpenseCategoryCPT::save_custom_fields($post_id, $post);
-				break;
 			case 'sb_expensetype':
 				ExpenseTypeCPT::save_custom_fields($post_id, $post);
 				break;
@@ -366,17 +375,17 @@ class CloderiaCustomPostTypesUtils {
 			case 'sb_expense':
 				ExpenseCPT::save_custom_fields($post_id, $post);
 				break;
-			case 'sb_inventype':
-				InventoryTypeCPT::save_custom_fields($post_id, $post);
+			case 'sb_liabcat':
+				LiabilityCategoryCPT::save_custom_fields($post_id, $post);
 				break;
-			case 'sb_fassettype':
-				FixedAssetTypeCPT::save_custom_fields($post_id, $post);
+			case 'sb_liabtype':
+				LiabilityTypeCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_liability':
+				LiabilityCPT::save_custom_fields($post_id, $post);
 				break;
 			case 'sb_dmethod':
 				DeprecationMethodCPT::save_custom_fields($post_id, $post);
-				break;
-			case 'sb_invitemtype':
-				InventoryItemTypeCPT::save_custom_fields($post_id, $post);
 				break;
 			case 'sb_uom':
 				UnitOfMeasureCPT::save_custom_fields($post_id, $post);
@@ -444,17 +453,26 @@ class CloderiaCustomPostTypesUtils {
 			case 'sb_pcharge':
 				PropertyChargeCPT::save_custom_fields($post_id, $post);
 				break;
-			case 'sb_fixedasset':
-				FixedAssetCPT::save_custom_fields($post_id, $post);
+			case 'sb_assetcat':
+				AssetCategoryCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_assettype':
+				AssetTypeCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_asset':
+				AssetCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_inventype':
+				InventoryTypeCPT::save_custom_fields($post_id, $post);
 				break;
 			case 'sb_inventory':
 				InventoryCPT::save_custom_fields($post_id, $post);
 				break;
-			case 'sb_piitem':
-				PropertyInventoryItemCPT::save_custom_fields($post_id, $post);
+			case 'sb_invitemtype':
+				InventoryItemTypeCPT::save_custom_fields($post_id, $post);
 				break;
-			case 'sb_pexpense':
-				PropertyExpenseCPT::save_custom_fields($post_id, $post);
+			case 'sb_inventoryitem':
+				InventoryItemCPT::save_custom_fields($post_id, $post);
 				break;
 			case 'sb_propstaff':
 				PropertyStaffCPT::save_custom_fields($post_id, $post);
@@ -465,20 +483,20 @@ class CloderiaCustomPostTypesUtils {
 			case 'sb_buildingtype':
 				BuildingTypeCPT::save_custom_fields($post_id, $post);
 				break;
+			case 'sb_buildtypropty':
+				BuildingTypePropertyTypeCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_allocunit':
+				AllocationUnitCPT::save_custom_fields($post_id, $post);
+				break;
 			case 'sb_building':
 				BuildingCPT::save_custom_fields($post_id, $post);
 				break;
 			case 'sb_bcharge':
 				BuildingChargeCPT::save_custom_fields($post_id, $post);
 				break;
-			case 'sb_bexpense':
-				BuildingExpenseCPT::save_custom_fields($post_id, $post);
-				break;
 			case 'sb_buildfiles':
 				BuildingFilesCPT::save_custom_fields($post_id, $post);
-				break;
-			case 'sb_allocunit':
-				AllocationUnitCPT::save_custom_fields($post_id, $post);
 				break;
 			case 'sb_floortype':
 				FloorTypeCPT::save_custom_fields($post_id, $post);
@@ -489,26 +507,17 @@ class CloderiaCustomPostTypesUtils {
 			case 'sb_fcharge':
 				FloorChargeCPT::save_custom_fields($post_id, $post);
 				break;
-			case 'sb_fexpense':
-				FloorExpenseCPT::save_custom_fields($post_id, $post);
-				break;
 			case 'sb_unittype':
 				UnitTypeCPT::save_custom_fields($post_id, $post);
 				break;
 			case 'sb_utypecharge':
 				UnitTypeChargeCPT::save_custom_fields($post_id, $post);
 				break;
-			case 'sb_utypeexpense':
-				UnitTypeExpenseCPT::save_custom_fields($post_id, $post);
-				break;
 			case 'sb_unit':
 				UnitCPT::save_custom_fields($post_id, $post);
 				break;
 			case 'sb_unitcharge':
 				UnitChargeCPT::save_custom_fields($post_id, $post);
-				break;
-			case 'sb_unitexpense':
-				UnitExpenseCPT::save_custom_fields($post_id, $post);
 				break;
 			case 'sb_facilitycat':
 				FacilityCategoryCPT::save_custom_fields($post_id, $post);
@@ -522,20 +531,17 @@ class CloderiaCustomPostTypesUtils {
 			case 'sb_facharge':
 				FacilityChargeCPT::save_custom_fields($post_id, $post);
 				break;
-			case 'sb_feexpense':
-				FacilityExpenseCPT::save_custom_fields($post_id, $post);
-				break;
 			case 'sb_pslottype':
 				ParkingSlotTypeCPT::save_custom_fields($post_id, $post);
 				break;
 			case 'sb_pstypecharge':
 				ParkingSlotTypeChargeCPT::save_custom_fields($post_id, $post);
 				break;
-			case 'sb_pstypeexpense':
-				ParkingSlotTypeExpenseCPT::save_custom_fields($post_id, $post);
-				break;
 			case 'sb_pslot':
 				ParkingSlotCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_agreecat':
+				AgreementCategoryCPT::save_custom_fields($post_id, $post);
 				break;
 			case 'sb_agreetype':
 				AgreementTypeCPT::save_custom_fields($post_id, $post);
@@ -561,23 +567,11 @@ class CloderiaCustomPostTypesUtils {
 			case 'sb_settledataloan':
 				SettlementDataLoanCPT::save_custom_fields($post_id, $post);
 				break;
-			case 'sb_agrmntinspection':
-				PurchaseAgreementInspectionCPT::save_custom_fields($post_id, $post);
-				break;
 			case 'sb_agrmntitemtype':
 				AgreementItemTypeCPT::save_custom_fields($post_id, $post);
 				break;
 			case 'sb_agreementitem':
 				AgreementItemCPT::save_custom_fields($post_id, $post);
-				break;
-			case 'sb_rentagreement':
-				RentAgreementCPT::save_custom_fields($post_id, $post);
-				break;
-			case 'sb_seragreement':
-				ServiceAgreementCPT::save_custom_fields($post_id, $post);
-				break;
-			case 'sb_managreement':
-				ManagementAgreementCPT::save_custom_fields($post_id, $post);
 				break;
 			case 'sb_servicetype':
 				ServiceTypeCPT::save_custom_fields($post_id, $post);
@@ -611,9 +605,6 @@ class CloderiaCustomPostTypesUtils {
 				break;
 			case 'sb_assessment':
 				AssessmentCPT::save_custom_fields($post_id, $post);
-				break;
-			case 'sb_landassmnt':
-				LandAssessmentCPT::save_custom_fields($post_id, $post);
 				break;
 			case 'sb_sdtype':
 				SalesDataTypeCPT::save_custom_fields($post_id, $post);
@@ -654,6 +645,24 @@ class CloderiaCustomPostTypesUtils {
 			case 'sb_billaccount':
 				BillingAccountCPT::save_custom_fields($post_id, $post);
 				break;
+			case 'sb_accttxntype':
+				AccountTransactionTypeCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_accttxnstatus':
+				AccountTransactionStatusCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_accttransaction':
+				AccountTransactionCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_fundmeth':
+				FundingMethodCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_templatetype':
+				TemplateTypeCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_template':
+				TemplateCPT::save_custom_fields($post_id, $post);
+				break;
 			case 'sb_invoicetype':
 				InvoiceTypeCPT::save_custom_fields($post_id, $post);
 				break;
@@ -662,6 +671,9 @@ class CloderiaCustomPostTypesUtils {
 				break;
 			case 'sb_invoice':
 				InvoiceCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_invoicerole':
+				InvoiceRoleCPT::save_custom_fields($post_id, $post);
 				break;
 			case 'sb_invoiceitemtype':
 				InvoiceItemTypeCPT::save_custom_fields($post_id, $post);
@@ -672,6 +684,27 @@ class CloderiaCustomPostTypesUtils {
 			case 'sb_invoiceterm':
 				InvoiceTermCPT::save_custom_fields($post_id, $post);
 				break;
+			case 'sb_pordertype':
+				PurchaseOrderTypeCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_porderstatus':
+				PurchaseOrderStatusCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_porder':
+				PurchaseOrderCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_porole':
+				PurchaseOrderRoleCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_poitemtype':
+				PurchaseOrderItemTypeCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_porderitem':
+				PurchaseOrderItemCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_porderterm':
+				PurchaseOrderTermCPT::save_custom_fields($post_id, $post);
+				break;
 			case 'sb_paymenttype':
 				PaymentTypeCPT::save_custom_fields($post_id, $post);
 				break;
@@ -681,17 +714,20 @@ class CloderiaCustomPostTypesUtils {
 			case 'sb_payment':
 				PaymentCPT::save_custom_fields($post_id, $post);
 				break;
+			case 'sb_payapp':
+				PaymentApplicationCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_receipttype':
+				ReceiptTypeCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_disbursetype':
+				DisbursementTypeCPT::save_custom_fields($post_id, $post);
+				break;
 			case 'sb_receipt':
 				ReceiptCPT::save_custom_fields($post_id, $post);
 				break;
-			case 'sb_outpayment':
-				OutPaymentCPT::save_custom_fields($post_id, $post);
-				break;
-			case 'sb_payroll':
-				PayrollCPT::save_custom_fields($post_id, $post);
-				break;
-			case 'sb_payapp':
-				PaymentApplicationCPT::save_custom_fields($post_id, $post);
+			case 'sb_disbursement':
+				DisbursementCPT::save_custom_fields($post_id, $post);
 				break;
 			case 'sb_periodtype':
 				PeriodTypeCPT::save_custom_fields($post_id, $post);
@@ -717,9 +753,6 @@ class CloderiaCustomPostTypesUtils {
 			case 'sb_coa':
 				ChartOfAccountsCPT::save_custom_fields($post_id, $post);
 				break;
-			case 'sb_coaaseginst':
-				COAAccountSegmentInstanceCPT::save_custom_fields($post_id, $post);
-				break;
 			case 'sb_glaccttype':
 				GLAccountTypeCPT::save_custom_fields($post_id, $post);
 				break;
@@ -732,17 +765,14 @@ class CloderiaCustomPostTypesUtils {
 			case 'sb_buglaccountbal':
 				BusinessUnitGLAccountBalanceCPT::save_custom_fields($post_id, $post);
 				break;
+			case 'sb_coaaseginst':
+				COAAccountSegmentInstanceCPT::save_custom_fields($post_id, $post);
+				break;
 			case 'sb_feventtype':
 				FinancialEventTypeCPT::save_custom_fields($post_id, $post);
 				break;
 			case 'sb_fevent':
 				FinancialEventCPT::save_custom_fields($post_id, $post);
-				break;
-			case 'sb_feventtxntype':
-				FEventTxnTypeCPT::save_custom_fields($post_id, $post);
-				break;
-			case 'sb_txntypeacct':
-				TxnTypeAccountCPT::save_custom_fields($post_id, $post);
 				break;
 			case 'sb_txntype':
 				TransactionTypeCPT::save_custom_fields($post_id, $post);
@@ -752,6 +782,12 @@ class CloderiaCustomPostTypesUtils {
 				break;
 			case 'sb_txndetail':
 				TransactionDetailCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_feventtxntype':
+				FEventTxnTypeCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_txntypeacct':
+				TxnTypeAccountCPT::save_custom_fields($post_id, $post);
 				break;
 			case 'sb_budgettype':
 				BudgetTypeCPT::save_custom_fields($post_id, $post);
@@ -969,6 +1005,9 @@ class CloderiaCustomPostTypesUtils {
 			case 'sb_requirerole':
 				RequirementRoleCPT::save_custom_fields($post_id, $post);
 				break;
+			case 'sb_wetypecat':
+				WorkEffortCategoryCPT::save_custom_fields($post_id, $post);
+				break;
 			case 'sb_wetype':
 				WorkEffortTypeCPT::save_custom_fields($post_id, $post);
 				break;
@@ -981,11 +1020,8 @@ class CloderiaCustomPostTypesUtils {
 			case 'sb_workeffort':
 				WorkEffortCPT::save_custom_fields($post_id, $post);
 				break;
-			case 'sb_inspection':
-				InspectionCPT::save_custom_fields($post_id, $post);
-				break;
-			case 'sb_maintenance':
-				MaintenanceCPT::save_custom_fields($post_id, $post);
+			case 'sb_agrmntinspection':
+				PurchaseAgreementInspectionCPT::save_custom_fields($post_id, $post);
 				break;
 			case 'sb_wrfulfillment':
 				WorkRequirementFulfillmentCPT::save_custom_fields($post_id, $post);

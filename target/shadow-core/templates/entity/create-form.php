@@ -20,10 +20,23 @@
 
         <?php do_entity_form_fields($view, true, true) ; ?>
 
+        <?php 
+            $view_options = '';
+            foreach ($view->get_form_fields() as $field) { 
+                if(isset($field['view_criteria'])) { 
+                    foreach ($field['view_criteria'] as $criteria_name => $criteria_value) { 
+                        $view_options = $view_options . '&' . $criteria_name . '=' . $criteria_value;
+                    }
+                }
+            } 
+        ?>
         <!-- This fields are used by the relationship field selection routine -->
         <input type="hidden" id="current-related-field" name="current-related-field" value="">
         <input type="hidden" id="current-relationship-field-id" name="current-relationship-field-id" value="">
         <input type="hidden" id="current-relationship-field-name" name="current-relationship-field-name" value="">
+        <?php if(!EntityStringUtils::is_invalid_string($view_options)){ ?>
+        <input type="hidden" id="view_options" name="view_options" value="<?php echo $view_options; ?>">
+        <?php } ?>
 
         <?php  
             if(isset($_REQUEST['page_info'])) { 

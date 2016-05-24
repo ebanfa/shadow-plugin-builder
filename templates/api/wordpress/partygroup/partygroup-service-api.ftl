@@ -23,6 +23,9 @@ class PartyGroupAPI  {
                     $entity_data['entity_code'] = EntityStringUtils::get_token(8);
                 }
             }
+            else {
+                $entity_data['entity_code'] = EntityStringUtils::get_token(8);
+            }
             // Set up the business unit
             $business_unit = BusinessUnitAPI::get_current_user_business_unit();
             if (isset($business_unit['id'])) {

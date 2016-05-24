@@ -15,7 +15,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: ${application.name?lower_case}_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -30,8 +30,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {

@@ -42,16 +42,6 @@ class PartyRelationshipCPT {
             'description' => 'The Relationship Status field',
             'type' => 'text',
         ),
-        array('name' => 'term_type',
-            'title' => 'Termination Type',
-            'description' => 'The Termination Type field',
-            'type' => 'text',
-        ),
-        array('name' => 'term_reason',
-            'title' => 'Termination Reason',
-            'description' => 'The Termination Reason field',
-            'type' => 'text',
-        ),
         array('name' => 'name',
             'title' => 'Name',
             'description' => 'The Name field',
@@ -145,34 +135,6 @@ class PartyRelationshipCPT {
             'entity_name' => 'RelationshipStatus',
             'entity_description' => 'Relationship Status',
             'data_type' => 'sb_relstatus',
-            'is_required' => true,
-            'is_visible' => true,
-            'is_create_field' => true,
-            'is_edit_field' => true,
-            'is_view_field' => true,
-            'is_list_field' => true,
-            'is_form_field' => true,
-            'is_relationship_field' => true,),
-        'term_type' => array('name' => 'term_type',
-            'description' => 'Termination Type',
-            'size' => 'large',
-            'entity_name' => 'TerminationType',
-            'entity_description' => 'Termination Type',
-            'data_type' => 'sb_terminationtype',
-            'is_required' => true,
-            'is_visible' => true,
-            'is_create_field' => true,
-            'is_edit_field' => true,
-            'is_view_field' => true,
-            'is_list_field' => true,
-            'is_form_field' => true,
-            'is_relationship_field' => true,),
-        'term_reason' => array('name' => 'term_reason',
-            'description' => 'Termination Reason',
-            'size' => 'large',
-            'entity_name' => 'TerminationReason',
-            'entity_description' => 'Termination Reason',
-            'data_type' => 'sb_termreason',
             'is_required' => true,
             'is_visible' => true,
             'is_create_field' => true,
@@ -313,8 +275,6 @@ class PartyRelationshipCPT {
         $defaults['from_role']  = 'From Party Role';
         $defaults['to_role']  = 'To Party Role';
         $defaults['status']  = 'Relationship Status';
-        $defaults['term_type']  = 'Termination Type';
-        $defaults['term_reason']  = 'Termination Reason';
         $defaults['name']  = 'name';
         $defaults['from_date']  = 'From Date';
         $defaults['to_date']  = 'To Date';
@@ -342,14 +302,6 @@ class PartyRelationshipCPT {
         }
         if ($column_name == 'status') {
             $field_value = get_post_meta($post_id, 'status', true );
-            echo $field_value;
-        }
-        if ($column_name == 'term_type') {
-            $field_value = get_post_meta($post_id, 'term_type', true );
-            echo $field_value;
-        }
-        if ($column_name == 'term_reason') {
-            $field_value = get_post_meta($post_id, 'term_reason', true );
             echo $field_value;
         }
         if ($column_name == 'name') {

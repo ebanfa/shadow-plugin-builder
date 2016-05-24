@@ -75,6 +75,8 @@ class WorkEffortInventoryAssignmentCPT {
         'inventory_item' => array('name' => 'inventory_item',
             'description' => 'Inventory Item',
             'size' => 'large',
+            'entity_name' => 'InventoryItem',
+            'entity_description' => 'Inventory Item',
             'data_type' => 'sb_inventoryitem',
             'is_required' => true,
             'is_visible' => true,

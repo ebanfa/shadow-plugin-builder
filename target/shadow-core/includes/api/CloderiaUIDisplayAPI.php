@@ -37,6 +37,11 @@ class CloderiaUIDisplayAPI {
         cp_get_template('app-menu-end.php');
     }
 
+
+    public static function display_chat_bar() {
+        cp_get_template('chat-bar.php');
+    }
+
     public static function display_page($page_info){
         cp_get_template('page/'. $page_info['artifact'] .'.php');
     }

@@ -31,7 +31,6 @@ class BusinessUnitAPI {
         // Get the party of the current user
         $current_user_party = PartyAPI::get_current_user_party();
         if(isset($current_user_party['id'])){ 
-
             // Get the party profile of the current user
             $current_user_party_role = EntityAPI::get_by_field('partyprofile', 'party', $current_user_party['id']);
             // The current business is gotten from the business unit set as default business unit

@@ -17,7 +17,7 @@ class ContactUsAPI {
         $data_context = array();
         $data_context['name'] = $entity_data['name'];
         $data_context['email'] = $entity_data['email'];
-        $data_context['b_name'] = $entity_data['b_name'];
+        //$data_context['b_name'] = $entity_data['b_name'];
         $data_context['message'] = $entity_data['message'];
         CloderiaUserAPI::send_email($data_context, get_option('cp_notify_accounts'), 
             'account-created-subject.tpl', 'account-created-message.tpl', array());

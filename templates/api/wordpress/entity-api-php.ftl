@@ -13,7 +13,7 @@ class EntityAPI {
         $entity_name = $entity_data['entity_name'];
         $class_name = $entity_name . 'API';
         if (class_exists($class_name)) {
-            return call_user_func($class_name . '::do_create_entity', $entity_data);
+            return call_user_func(array($class_name, 'do_create_entity'), $entity_data);
         }
         else{
             return self::do_create_entity($entity_data);
@@ -24,40 +24,16 @@ class EntityAPI {
      *
      */
     public static function do_create_entity($entity_data){
-
-        // Check if the we are delaing with a virtual entity
-        if ($entity_data['is_virtual_entity']) {
-            // Get the parent entity data
-            $parent_entity_data = EntityAPIUtils::init_entity_data($entity_data['parent_artifact_name']);
-            $parent_entity_data['edit_mode'] = $entity_data['edit_mode'];
-            // Copy the fields from the virtual entity data to the parent entity data
-            foreach ($parent_entity_data['entity_fields'] as $key => $value) {
-                if(isset($entity_data[$key])) {
-                    $parent_entity_data[$key] = $entity_data[$key];
-                }
-            }
-            // Create the parent entity
-            $parent_entity_data = self::do_create_entity_impl($parent_entity_data);
-            if(isset($parent_entity_data['id'])) {
-                if ($entity_data['edit_mode']) {
-                    // Set the parent id on the virtual entity
-                    $entity_data['parent_id'] = $parent_entity_data['id'];
-                }
-                // Save the virtual entity and return it to the caller
-                return self::do_create_entity_impl($entity_data);
-            }
-        }
-        else return self::do_create_entity_impl($entity_data);
+        return self::do_create_entity_impl($entity_data);
     }
 
     /**
      *
      */
     public static function do_create_entity_impl($entity_data){
-
         $entity_data['has_errors'] = false;
         if ($entity_data['edit_mode']) {
-            // Create the order
+            // Create the entity
             if(isset($entity_data['entity_code'])){
                 if(EntityStringUtils::is_invalid_string($entity_data['entity_code'])) {
                     $entity_data['entity_code'] = EntityStringUtils::get_token(8);
@@ -74,7 +50,9 @@ class EntityAPI {
                 }
             }
             EntityRequestUtils::copy_fields_to_post($entity_data);
-            $entity_data = EntityPersistenceAPI::create_entity($entity_data);
+            $entity_data = EntityAPIUtils::validate_entity_data($entity_data);
+            if(!$entity_data['has_errors']) 
+                $entity_data = EntityPersistenceAPI::create_entity($entity_data);
         } else {
             EntityRequestUtils::copy_fields_to_post($entity_data);
             // Edit mode dont need redirect...for now
@@ -106,26 +84,8 @@ class EntityAPI {
     public static function do_find_entity($entity_data) {
         $artifact_name = $entity_data['entity_artifact_name'];
         // Check if we are dealing with a virtual entity
-        if ($entity_data['is_virtual_entity']) {
-            // Get the parent entity data
-            $parent_entity_data = EntityAPIUtils::init_entity_data($entity_data['parent_artifact_name']);
-            // Build criteria for parent from form data
-            $parent_criteria_data = EntityRequestUtils::build_criteria_from_form_data($parent_entity_data);
-            $parent_search_results = EntityPersistenceAPI::find_by_criteria($parent_entity_data, $parent_criteria_data);
-            // Loop through each parent and find the corresponding virtual with the parent_id that points
-            // to the current parent
-            $virtual_entity_search_results = array();
-            foreach ($parent_search_results as $parent_data) {
-                // Use the id of the parent to find the virtual entity
-                $virtual_entity_data = EntityPersistenceAPI::get_entity_by_meta($entity_data, 'parent_id', $parent_data['id']);
-                if(isset($virtual_entity_data['id']))
-                    array_push($virtual_entity_search_results, $virtual_entity_data);
-            }
-            return $virtual_entity_search_results;
-        }
-        else return self::do_find_entity_impl($entity_data);
+        return self::do_find_entity_impl($entity_data);
     }
-
 
     /**
      *
@@ -134,6 +94,25 @@ class EntityAPI {
         $artifact_name = $entity_data['entity_artifact_name'];
         $criteria_data = EntityRequestUtils::build_criteria_from_form_data($entity_data);
         return EntityPersistenceAPI::find_by_criteria($entity_data, $criteria_data);
+    }
+
+    /**
+     *
+     */
+    public static function find_all($entity_data) {
+        $entity_name = $entity_data['entity_name'];
+        $class_name = $entity_name . 'API';
+        if (class_exists($class_name) && method_exists($class_name,'do_find_all')) {
+            return call_user_func($class_name . '::do_find_all', $entity_data);
+        }
+        return self::do_find_all($entity_data);
+    }
+
+    /**
+     *
+     */
+    public static function do_find_all($entity_data) {
+        return EntityPersistenceAPI::find_all($entity_data);
     }
 
     /**
@@ -155,32 +134,14 @@ class EntityAPI {
         // Ensure we have a valid ID
         if (!isset($_POST['id']) ) wp_send_json_error(array('message' => "Entity identifier missing"));
         $id = sanitize_text_field($_POST['id']);
-        // Check if we are dealing with a virtual entity
-        if ($entity_data['is_virtual_entity']) {
-            // Use the id of the virtual entity ($_POST['id']) to fetch the virtual entity instance
-            $entity_data = self::get_by_id($entity_data['entity_artifact_name'], $id);
-            // Get the parent entity data
-            $parent_entity_data = EntityAPIUtils::init_entity_data($entity_data['parent_artifact_name']);
-            $parent_entity_data = self::get_by_id($entity_data['parent_artifact_name'], $id);
-            // Delete the child then delete the parent
-            $entity_data = do_delete_entity_impl($entity_data);
-            $parent_entity_data = do_delete_entity_impl($parent_entity_data);
-            return $entity_data;
-        }
-        else return do_delete_entity_impl($entity_data);
+        return self::do_delete_entity_impl($entity_data, $id);
     }
 
     /**
      *
      */
-    public static function do_delete_entity_impl($entity_data) {
-        $post_obj = wp_delete_post($id);
-        if ($post_obj) {
-           $entity_data['has_errors'] = false;
-        } else {
-            $entity_data['has_errors'] = true;
-        }
-        return $entity_data;
+    public static function do_delete_entity_impl($entity_data, $id) {
+        return EntityPersistenceAPI::delete_entity($entity_data, $id);
     }
 
     /**
@@ -197,10 +158,6 @@ class EntityAPI {
      */
     public static function get_by_code($artifact_name, $entity_code){
         $entity_data = EntityAPIUtils::init_entity_data($artifact_name);
-        // Check if we are dealing with a virtual entity
-        // Virtual entities like other reqular entities also have code fields
-        // Both the virtual and its parent share the same value for the code field
-        // So this will query the code field on the child
         return EntityPersistenceAPI::get_entity_by_code($entity_data, $entity_code);
     }
 
@@ -210,29 +167,26 @@ class EntityAPI {
     public static function get_by_field($artifact_name, $field_name, $field_value){
         $entity_data = EntityAPIUtils::init_entity_data($artifact_name);
         // Check if we are dealing with a virtual entity
-        if ($entity_data['is_virtual_entity']) {
-            // Get the parent entity data
-            $parent_entity_data = EntityAPIUtils::init_entity_data($entity_data['parent_artifact_name']);
-            echo "Finding parent by::>>>>>>>>>>>>>>>>>>>>>>>>> meta:".$field_name . ' with value: ' . $field_value;
-            // Search for field on the parent
-            $parent_entity_data = EntityPersistenceAPI::get_entity_by_meta($parent_entity_data, $field_name, $field_value);
-            if (isset($parent_entity_data['id'])) {
-                // Now find the virtual entity child of the parent from above
-                return EntityPersistenceAPI::get_entity_by_meta(
-                    $entity_data['entity_artifact_name'], 'parent_id', $parent_entity_data['id']);
-                
-            } else return false;
-        }
-        else return EntityPersistenceAPI::get_entity_by_meta($entity_data, $field_name, $field_value);
+         return EntityPersistenceAPI::get_entity_by_meta($entity_data, $field_name, $field_value);
     }
 
     /**
-     * Get all parts with id's in the list provided
+     * Get all posts with id's in the list provided
      */
-    public static function find_by_ids($artifact_name, $party_ids) {
+    public static function find_by_ids($artifact_name, $entity_ids) {
         $entity_data = EntityAPIUtils::init_entity_data($artifact_name);
-        // The ids search will only scan the virtual entity, not the parent
-        return EntityPersistenceAPI::find_by_ids($entity_data, $party_ids);
+        //return EntityPersistenceAPI::find_by_ids($entity_data, $entity_ids);
+        return EntityPersistenceAPI::find_by_criteria($entity_data, array('id' => $entity_ids));
+    }
+
+    /**
+     * Get all posts with id's in the list provided
+     */
+    public static function find_by_ids_and_criteria($artifact_name, $entity_ids) {
+        $entity_data = EntityAPIUtils::init_entity_data($artifact_name);
+        $criteria_data = EntityRequestUtils::build_criteria_from_form_data($entity_data);
+        $criteria_data['id'] = $entity_ids;
+        return EntityPersistenceAPI::find_by_criteria($entity_data, $criteria_data);
     }
 
     /**
@@ -241,30 +195,21 @@ class EntityAPI {
     public static function find_by_criteria($artifact_name, $criteria_data) {
         $entity_data = EntityAPIUtils::init_entity_data($artifact_name);
         // Check if we are dealing with a virtual entity
-        if ($entity_data['is_virtual_entity']) {
-            // Get the parent entity data
-            $parent_entity_data = EntityAPIUtils::init_entity_data($entity_data['parent_artifact_name']);
-            // Build criteria for parent from form data
-            $parent_search_results = EntityPersistenceAPI::find_by_criteria($parent_entity_data, $criteria_data);
-            // Loop through each parent and find the corresponding virtual with the parent_id that points
-            // to the current parent
-            $virtual_entity_search_results = array();
-            foreach ($parent_search_results as $parent_data) {
-                // Use the id of the parent to find the virtual entity
-                $virtual_entity_data = self::get_by_field(
-                    $entity_data['entity_artifact_name'], 'parent_id', $parent_data['id']);
-                array_push($virtual_entity_search_results, $virtual_entity_data);
-            }
-            return $virtual_entity_search_results;
-        }
-        else return EntityPersistenceAPI::find_by_criteria($entity_data, $criteria_data);
+        return EntityPersistenceAPI::find_by_criteria($entity_data, $criteria_data);
     }
 
     /**
      * 
      */
     public static function get_model($artifact_name) {
-        return EntityAPIUtils::init_entity_data($artifact_name);
+        $entity_data = EntityAPIUtils::init_entity_data($artifact_name);
+        $class_name = $entity_data['entity_name'] . 'API';
+        if (class_exists($class_name) && method_exists($class_name,'get_model')) {
+            return call_user_func($class_name . '::get_model', $artifact_name);
+        }
+        else{
+            return $entity_data;
+        }
     }
 
 

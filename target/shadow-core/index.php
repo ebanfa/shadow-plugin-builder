@@ -10,7 +10,8 @@ Author URI:
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
-
+// For composer dependencies
+require 'vendor/autoload.php';
 // Main Plugin Class
 include_once('ShadowCore.php');
 

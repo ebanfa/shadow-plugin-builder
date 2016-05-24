@@ -22,11 +22,6 @@ class AgreementItemTypeCPT {
             'description' => 'The Code field',
             'type' => 'text',
         ),
-        array('name' => 'pai_inspection',
-            'title' => 'Inspection',
-            'description' => 'The Inspection field',
-            'type' => 'text',
-        ),
         array('name' => 'name',
             'title' => 'Name',
             'description' => 'The Name field',
@@ -57,20 +52,6 @@ class AgreementItemTypeCPT {
             'is_list_field' => false,
             'is_form_field' => false,
             'is_relationship_field' => false,),
-        'pai_inspection' => array('name' => 'pai_inspection',
-            'description' => 'Inspection',
-            'size' => 'large',
-            'entity_name' => 'Inspection',
-            'entity_description' => 'Inspection',
-            'data_type' => 'sb_inspection',
-            'is_required' => true,
-            'is_visible' => false,
-            'is_create_field' => true,
-            'is_edit_field' => true,
-            'is_view_field' => true,
-            'is_list_field' => true,
-            'is_form_field' => false,
-            'is_relationship_field' => true,),
         'name' => array('name' => 'name',
             'description' => 'Name',
             'size' => 'large',
@@ -248,7 +229,6 @@ class AgreementItemTypeCPT {
     }
 
     public static function sb_agrmntitemtype_table_head($defaults){
-        $defaults['pai_inspection']  = 'Inspection';
         $defaults['name']  = 'name';
         $defaults['description']  = 'Description';
         return $defaults;
@@ -257,10 +237,6 @@ class AgreementItemTypeCPT {
     public static function sb_agrmntitemtype_table_content($column_name, $post_id){
         if ($column_name == 'entity_code') {
             $field_value = get_post_meta($post_id, 'entity_code', true );
-            echo $field_value;
-        }
-        if ($column_name == 'pai_inspection') {
-            $field_value = get_post_meta($post_id, 'pai_inspection', true );
             echo $field_value;
         }
         if ($column_name == 'name') {

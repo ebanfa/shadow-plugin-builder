@@ -163,10 +163,10 @@
      * Calculates the cost of an order.
      */
     BlitzDocument.doOrderFormCalculation = function () {
-        var orderForm = document.getElementById('academic_order_form');
+        var orderForm = document.getElementById('contact');
         var orderCostPerPage = 0;
         var orderTotalCost = 0;
-        var single = false;
+        var single = orderForm.o_interval.checked;
         var number = orderForm.numpages;
 
         var discount = orderForm.discount_percent_h.value;
@@ -204,7 +204,7 @@
         wthdyx = Math.round((orderCostPerPage * number.options[number.selectedIndex].value + doVasPO(document.getElementsByName('vas_id[]'))) * Math.pow(10, 2)) / Math.pow(10, 2);
 
         document.getElementById("total").value = wthdyx;
-        document.getElementById("total_price").innerHTML = '$' + wthdyx + ' <i class="fa fa-shopping-cart"></i>';
+        document.getElementById("total_price").innerHTML = '$' + wthdyx;
         orderForm.MMNBGFREWQASCXZSOPJHGVNMTIuOTU.value = wthdyx;
     }
 

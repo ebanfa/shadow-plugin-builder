@@ -48,7 +48,19 @@
                 if($field['data_type'] == 'hidden') do_hidden_field($model, $field);
             }
             else {
-                do_relationship_field($model, $field, $show_relationship_popup);
+                if(isset($_REQUEST['parent_artifact'])) {
+                    $parent_artifact = sanitize_text_field($_REQUEST['parent_artifact']);
+                    if(strtolower($field['entity_name']) == $parent_artifact) {
+                        $field['value'] = sanitize_text_field($_REQUEST['parent_id']);
+                        do_hidden_field($model, $field);
+                    }
+                    else {
+                        do_relationship_field($model, $field, $show_relationship_popup);
+                    }
+                }
+                else {
+                    do_relationship_field($model, $field, $show_relationship_popup);
+                }
 
             }
             do_action('shadowbanker_after_entity_form_field');
@@ -274,13 +286,14 @@
 <?php  } 
 
         function do_relationship_field($model, $field, $show_relationship_popup) { 
+
             $is_visible = true;
             $view_model = ViewUtils::get_current_view_model();
             if($view_model['entity_name'] == $field['entity_name'])
                 $is_visible = false;
 
             if($show_relationship_popup && $is_visible) { 
-                if(isset($field['has_options'])) { ?>
+                if(isset($field['has_options'])) {  ?>
 
         <div class="<?php echo $field['col_size']; ?>">
             <div class="form-group">
@@ -327,26 +340,91 @@
             <i class="md md-trending-up"></i>
         </a>
 
-<?php   } }  elseif ($is_visible) { ?>
+        <script type="text/javascript">
+            $(document).ready(function() { 
+                // Setup - add a text input to each footer cell 
+                $('#<?php echo $field['name']; ?>-table tfoot th').each(function () { 
+                    var title = $('#<?php echo $field['nameo']; ?>-table thead th').eq($(this).index()).text(); 
+                    $(this).html('<div class="form-group"><div class="fg-line"><input type="text" class="form-control" placeholder="Search '+title+'" /></div></div>'); 
+                }); 
+
+                // DataTable 
+                var table = $('#<?php echo $field['name']; ?>-table').DataTable({                
+                    "processing": true, // for show processing bar
+                    "serverSide": true, // for process on server side
+                    "orderMulti": false, // for disable multi column order
+                    //"dom": '<"top"i>rt<"bottom"lp><"clear">', // for hide default global search box // little confusion? don't worry I explained in the tutorial website
+                    'ajax': {
+                        'url':'<?php echo admin_url('admin-ajax.php'); ?>',
+                        'type':'POST',
+                        'datatype':'json',
+                        'data': function(d){
+                            d.action = 'find_entity_ajax';
+                            d.artifact = '<?php echo strtolower($field['entity_name']); ?>';
+                            <?php 
+                            if(isset($field['options_criteria'])) { 
+                                foreach ($field['options_criteria'] as $criteria_name => $criteria_value) {?>
+                            d.<?php echo $criteria_name; ?> = '<?php echo $criteria_value; ?>';    
+                            <?php }} ?>
+                            
+                        },
+                    },
+                    'columns': [
+                        {'data': 'id' },
+                    <?php 
+                        $field_model = EntityAPIUtils::init_entity_data(strtolower($field['entity_name']));
+                        foreach ($field_model['entity_fields'] as $field_name => $entity_field) { 
+                            if($entity_field['is_list_field'] && !$entity_field['is_relationship_field']) { 
+                                echo '{"data": "'.$entity_field['name'].'"},'; 
+                            }
+                            if($entity_field['is_list_field'] && $entity_field['is_relationship_field']) { 
+                                echo '{"data": "'.$entity_field['name'].'_txt"},'; 
+                            }
+                        } 
+                    ?>
+                    ],
+                    'columnDefs': [
+                        { "visible": false,  "targets": 0 },
+                        {
+                            // The `data` parameter refers to the data for the cell (defined by the
+                            // `data` option, which defaults to the column being worked with, in
+                            // this case `data: 0`.
+                            "render": function ( data, type, row ) {
+                                var additional_seach_options = '';
+                                if($('#additional_seach_options').length) { additional_seach_options = $('#additional_seach_options').val(); }
+
+                                
+                                return '<a class="data-table-link" href="' + '<?php echo EntityActionProcessor::get_base_url(); ?>' + 'artifact=<?php echo strtolower($field['entity_name']); ?>&id=' + row.id + '&page_action=view' +  additional_seach_options +'" data-related-artifact-name="<?php echo strtolower($field['entity_name']); ?>" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                            },
+                            "targets": 1
+                        }
+                    ]
+                }); 
+                // Apply the search 
+                table.columns().eq( 0 ).each( 
+                    function ( colIdx ) { 
+                        $('input', table.column(colIdx).footer()).on('keyup change', function () { 
+                            table.column(colIdx).search(this.value).draw(); 
+                        }); 
+                    } 
+                ); 
+            });
+        </script>
+
+<?php   } }  elseif ($is_visible) { 
+
+                if(isset($field['has_options'])) {  ?>
+
         <div class="<?php echo $field['col_size']; ?>">
             <div class="form-group">
                 <div class="fg-line">
                     <div class="select">
                         <select id="<?php echo $field['name'];?>" name="<?php echo $field['name'];?>" class="form-control">
-                            <option value="">Select a <?php echo $field['description'];?></option>
+                            <option>Select a <?php echo $field['description'];?></option>
                             <?php
-                                $entity_list = get_posts(array('post_type' => $field['data_type'], 'posts_per_page' => -1, 'orderby' => 'ID', 'order' => 'ASC'));
-                                $option_value = '';
-                                if(isset($model['id'])) { 
-                                    $option_value = $model[$field['name']]; 
-                                } else {
-                                    $option_value = $entity->ID;
-                                };
-
-                                foreach ($entity_list as $entity) { 
-                            ?>
-                                <option value="<?php echo $entity->ID; ?>" <?php if(isset($model['id']) && $option_value == $entity->ID) echo 'selected'; ?>>
-                                    <?php echo get_post_meta($entity->ID, 'name', true); ?>
+                                foreach ($field['options'] as $option) { ?>
+                                <option value="<?php echo $option['value']; ?>">
+                                    <?php echo $option['name']; ?>
                                 </option>
                             <?php } ?>
                         </select>
@@ -354,8 +432,22 @@
                 </div>
             </div>
         </div>
+        <?php  } else { ?>
+        <div class="<?php echo $field['col_size']; ?>">
+            <div class="form-group">
+                <div class="fg-line">
+                    <div class="select">
+                        <select id="<?php echo $field['name'];?>" name="<?php echo $field['name'];?>" class="form-control">
+                            <option value="">Select a <?php echo $field['description'];?></option>
+
+                            
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
         
 
-<?php        }
+<?php      }  }
     }
 ?>

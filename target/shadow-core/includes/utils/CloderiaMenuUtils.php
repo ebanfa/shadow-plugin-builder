@@ -19,16 +19,16 @@ class CloderiaMenuUtils {
 	 */
 	public static function add_plugin_admin_submenus() {
 		// Add Currency CPT sub menu
-	 	add_submenu_page( self::admin_menu_slug , 'Loan Application', 'Loan Application', 'manage_options', 
-	 		self::admin_menu_slug . '_show_sb_loanapp', 'CloderiaMenuUtils::render_sb_loanapp');
 	 	add_submenu_page( self::admin_menu_slug , 'Currency', 'Currency', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_currency', 'CloderiaMenuUtils::render_sb_currency');
-	 	add_submenu_page( self::admin_menu_slug , 'Contact Us', 'Contact Us', 'manage_options', 
-	 		self::admin_menu_slug . '_show_sb_contactus', 'CloderiaMenuUtils::render_sb_contactus');
 	 	add_submenu_page( self::admin_menu_slug , 'Location Type', 'Location Type', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_loctype', 'CloderiaMenuUtils::render_sb_loctype');
 	 	add_submenu_page( self::admin_menu_slug , 'Location', 'Location', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_location', 'CloderiaMenuUtils::render_sb_location');
+	 	add_submenu_page( self::admin_menu_slug , 'Business', 'Business', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_business', 'CloderiaMenuUtils::render_sb_business');
+	 	add_submenu_page( self::admin_menu_slug , 'Business Unit', 'Business Unit', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_businessunit', 'CloderiaMenuUtils::render_sb_businessunit');
 	 	add_submenu_page( self::admin_menu_slug , 'Party Category', 'Party Category', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_partycat', 'CloderiaMenuUtils::render_sb_partycat');
 	 	add_submenu_page( self::admin_menu_slug , 'Party Type', 'Party Type', 'manage_options', 
@@ -37,8 +37,6 @@ class CloderiaMenuUtils {
 	 		self::admin_menu_slug . '_show_sb_roletype', 'CloderiaMenuUtils::render_sb_roletype');
 	 	add_submenu_page( self::admin_menu_slug , 'Party', 'Party', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_party', 'CloderiaMenuUtils::render_sb_party');
-	 	add_submenu_page( self::admin_menu_slug , 'Business Unit', 'Business Unit', 'manage_options', 
-	 		self::admin_menu_slug . '_show_sb_businessunit', 'CloderiaMenuUtils::render_sb_businessunit');
 	 	add_submenu_page( self::admin_menu_slug , 'Party Role', 'Party Role', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_partyrole', 'CloderiaMenuUtils::render_sb_partyrole');
 	 	add_submenu_page( self::admin_menu_slug , 'Relationship Type', 'Relationship Type', 'manage_options', 
@@ -57,30 +55,32 @@ class CloderiaMenuUtils {
 	 		self::admin_menu_slug . '_show_sb_partyaddress', 'CloderiaMenuUtils::render_sb_partyaddress');
 	 	add_submenu_page( self::admin_menu_slug , 'Party Files', 'Party Files', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_partyfiles', 'CloderiaMenuUtils::render_sb_partyfiles');
-	 	add_submenu_page( self::admin_menu_slug , 'Charge Category', 'Charge Category', 'manage_options', 
-	 		self::admin_menu_slug . '_show_sb_chargecat', 'CloderiaMenuUtils::render_sb_chargecat');
+	 	add_submenu_page( self::admin_menu_slug , 'User Invite Status', 'User Invite Status', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_invitestatus', 'CloderiaMenuUtils::render_sb_invitestatus');
+	 	add_submenu_page( self::admin_menu_slug , 'User Invite', 'User Invite', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_userinvite', 'CloderiaMenuUtils::render_sb_userinvite');
+	 	add_submenu_page( self::admin_menu_slug , 'Business Category', 'Business Category', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_businesscat', 'CloderiaMenuUtils::render_sb_businesscat');
 	 	add_submenu_page( self::admin_menu_slug , 'Charge Type', 'Charge Type', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_chargetype', 'CloderiaMenuUtils::render_sb_chargetype');
 	 	add_submenu_page( self::admin_menu_slug , 'Charge Frequency', 'Charge Frequency', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_chargefreq', 'CloderiaMenuUtils::render_sb_chargefreq');
 	 	add_submenu_page( self::admin_menu_slug , 'Charge', 'Charge', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_charge', 'CloderiaMenuUtils::render_sb_charge');
-	 	add_submenu_page( self::admin_menu_slug , 'Expense Category', 'Expense Category', 'manage_options', 
-	 		self::admin_menu_slug . '_show_sb_expensecat', 'CloderiaMenuUtils::render_sb_expensecat');
 	 	add_submenu_page( self::admin_menu_slug , 'Expense Type', 'Expense Type', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_expensetype', 'CloderiaMenuUtils::render_sb_expensetype');
 	 	add_submenu_page( self::admin_menu_slug , 'Expense Frequency', 'Expense Frequency', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_expensefreq', 'CloderiaMenuUtils::render_sb_expensefreq');
 	 	add_submenu_page( self::admin_menu_slug , 'Expense', 'Expense', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_expense', 'CloderiaMenuUtils::render_sb_expense');
-	 	add_submenu_page( self::admin_menu_slug , 'Inventory Type', 'Inventory Type', 'manage_options', 
-	 		self::admin_menu_slug . '_show_sb_inventype', 'CloderiaMenuUtils::render_sb_inventype');
-	 	add_submenu_page( self::admin_menu_slug , 'Fixed Asset Type', 'Fixed Asset Type', 'manage_options', 
-	 		self::admin_menu_slug . '_show_sb_fassettype', 'CloderiaMenuUtils::render_sb_fassettype');
+	 	add_submenu_page( self::admin_menu_slug , 'Liability Category', 'Liability Category', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_liabcat', 'CloderiaMenuUtils::render_sb_liabcat');
+	 	add_submenu_page( self::admin_menu_slug , 'Liability Type', 'Liability Type', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_liabtype', 'CloderiaMenuUtils::render_sb_liabtype');
+	 	add_submenu_page( self::admin_menu_slug , 'Liability', 'Liability', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_liability', 'CloderiaMenuUtils::render_sb_liability');
 	 	add_submenu_page( self::admin_menu_slug , 'Depreciation Method', 'Depreciation Method', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_dmethod', 'CloderiaMenuUtils::render_sb_dmethod');
-	 	add_submenu_page( self::admin_menu_slug , 'Inventory Item Type', 'Inventory Item Type', 'manage_options', 
-	 		self::admin_menu_slug . '_show_sb_invitemtype', 'CloderiaMenuUtils::render_sb_invitemtype');
 	 	add_submenu_page( self::admin_menu_slug , 'Unit Of Measure', 'Unit Of Measure', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_uom', 'CloderiaMenuUtils::render_sb_uom');
 	 	add_submenu_page( self::admin_menu_slug , 'Utility Type', 'Utility Type', 'manage_options', 
@@ -125,50 +125,50 @@ class CloderiaMenuUtils {
 	 		self::admin_menu_slug . '_show_sb_proputility', 'CloderiaMenuUtils::render_sb_proputility');
 	 	add_submenu_page( self::admin_menu_slug , 'Property Charge', 'Property Charge', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_pcharge', 'CloderiaMenuUtils::render_sb_pcharge');
-	 	add_submenu_page( self::admin_menu_slug , 'Property Fixed Asset', 'Property Fixed Asset', 'manage_options', 
-	 		self::admin_menu_slug . '_show_sb_fixedasset', 'CloderiaMenuUtils::render_sb_fixedasset');
+	 	add_submenu_page( self::admin_menu_slug , 'Asset Category', 'Asset Category', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_assetcat', 'CloderiaMenuUtils::render_sb_assetcat');
+	 	add_submenu_page( self::admin_menu_slug , 'Asset Type', 'Asset Type', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_assettype', 'CloderiaMenuUtils::render_sb_assettype');
+	 	add_submenu_page( self::admin_menu_slug , 'Asset', 'Asset', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_asset', 'CloderiaMenuUtils::render_sb_asset');
+	 	add_submenu_page( self::admin_menu_slug , 'Inventory Type', 'Inventory Type', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_inventype', 'CloderiaMenuUtils::render_sb_inventype');
 	 	add_submenu_page( self::admin_menu_slug , 'Inventory', 'Inventory', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_inventory', 'CloderiaMenuUtils::render_sb_inventory');
-	 	add_submenu_page( self::admin_menu_slug , 'Property Inventory Item', 'Property Inventory Item', 'manage_options', 
-	 		self::admin_menu_slug . '_show_sb_piitem', 'CloderiaMenuUtils::render_sb_piitem');
-	 	add_submenu_page( self::admin_menu_slug , 'Property Expense', 'Property Expense', 'manage_options', 
-	 		self::admin_menu_slug . '_show_sb_pexpense', 'CloderiaMenuUtils::render_sb_pexpense');
+	 	add_submenu_page( self::admin_menu_slug , 'Inventory Item Type', 'Inventory Item Type', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_invitemtype', 'CloderiaMenuUtils::render_sb_invitemtype');
+	 	add_submenu_page( self::admin_menu_slug , 'Inventory Item', 'Inventory Item', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_inventoryitem', 'CloderiaMenuUtils::render_sb_inventoryitem');
 	 	add_submenu_page( self::admin_menu_slug , 'Property Staff', 'Property Staff', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_propstaff', 'CloderiaMenuUtils::render_sb_propstaff');
 	 	add_submenu_page( self::admin_menu_slug , 'Property Files', 'Property Files', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_propfiles', 'CloderiaMenuUtils::render_sb_propfiles');
 	 	add_submenu_page( self::admin_menu_slug , 'Building Type', 'Building Type', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_buildingtype', 'CloderiaMenuUtils::render_sb_buildingtype');
+	 	add_submenu_page( self::admin_menu_slug , 'Building Type Property Type', 'Building Type Property Type', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_buildtypropty', 'CloderiaMenuUtils::render_sb_buildtypropty');
+	 	add_submenu_page( self::admin_menu_slug , 'Allocation Unit', 'Allocation Unit', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_allocunit', 'CloderiaMenuUtils::render_sb_allocunit');
 	 	add_submenu_page( self::admin_menu_slug , 'Building', 'Building', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_building', 'CloderiaMenuUtils::render_sb_building');
 	 	add_submenu_page( self::admin_menu_slug , 'Building Charge', 'Building Charge', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_bcharge', 'CloderiaMenuUtils::render_sb_bcharge');
-	 	add_submenu_page( self::admin_menu_slug , 'Building Expense', 'Building Expense', 'manage_options', 
-	 		self::admin_menu_slug . '_show_sb_bexpense', 'CloderiaMenuUtils::render_sb_bexpense');
 	 	add_submenu_page( self::admin_menu_slug , 'Building Files', 'Building Files', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_buildfiles', 'CloderiaMenuUtils::render_sb_buildfiles');
-	 	add_submenu_page( self::admin_menu_slug , 'Allocation Unit', 'Allocation Unit', 'manage_options', 
-	 		self::admin_menu_slug . '_show_sb_allocunit', 'CloderiaMenuUtils::render_sb_allocunit');
 	 	add_submenu_page( self::admin_menu_slug , 'Floor Type', 'Floor Type', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_floortype', 'CloderiaMenuUtils::render_sb_floortype');
 	 	add_submenu_page( self::admin_menu_slug , 'Floor', 'Floor', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_floor', 'CloderiaMenuUtils::render_sb_floor');
 	 	add_submenu_page( self::admin_menu_slug , 'Floor Charge', 'Floor Charge', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_fcharge', 'CloderiaMenuUtils::render_sb_fcharge');
-	 	add_submenu_page( self::admin_menu_slug , 'Floor Expense', 'Floor Expense', 'manage_options', 
-	 		self::admin_menu_slug . '_show_sb_fexpense', 'CloderiaMenuUtils::render_sb_fexpense');
 	 	add_submenu_page( self::admin_menu_slug , 'Unit Type', 'Unit Type', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_unittype', 'CloderiaMenuUtils::render_sb_unittype');
 	 	add_submenu_page( self::admin_menu_slug , 'Unit Type Charge', 'Unit Type Charge', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_utypecharge', 'CloderiaMenuUtils::render_sb_utypecharge');
-	 	add_submenu_page( self::admin_menu_slug , 'Unit Type Expense', 'Unit Type Expense', 'manage_options', 
-	 		self::admin_menu_slug . '_show_sb_utypeexpense', 'CloderiaMenuUtils::render_sb_utypeexpense');
 	 	add_submenu_page( self::admin_menu_slug , 'Unit', 'Unit', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_unit', 'CloderiaMenuUtils::render_sb_unit');
 	 	add_submenu_page( self::admin_menu_slug , 'Unit Charge', 'Unit Charge', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_unitcharge', 'CloderiaMenuUtils::render_sb_unitcharge');
-	 	add_submenu_page( self::admin_menu_slug , 'Unit Expense', 'Unit Expense', 'manage_options', 
-	 		self::admin_menu_slug . '_show_sb_unitexpense', 'CloderiaMenuUtils::render_sb_unitexpense');
 	 	add_submenu_page( self::admin_menu_slug , 'Facility Category', 'Facility Category', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_facilitycat', 'CloderiaMenuUtils::render_sb_facilitycat');
 	 	add_submenu_page( self::admin_menu_slug , 'Facility Type', 'Facility Type', 'manage_options', 
@@ -177,16 +177,14 @@ class CloderiaMenuUtils {
 	 		self::admin_menu_slug . '_show_sb_facility', 'CloderiaMenuUtils::render_sb_facility');
 	 	add_submenu_page( self::admin_menu_slug , 'Facility Charge', 'Facility Charge', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_facharge', 'CloderiaMenuUtils::render_sb_facharge');
-	 	add_submenu_page( self::admin_menu_slug , 'Facility Expense', 'Facility Expense', 'manage_options', 
-	 		self::admin_menu_slug . '_show_sb_feexpense', 'CloderiaMenuUtils::render_sb_feexpense');
 	 	add_submenu_page( self::admin_menu_slug , 'Parking Slot Type', 'Parking Slot Type', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_pslottype', 'CloderiaMenuUtils::render_sb_pslottype');
 	 	add_submenu_page( self::admin_menu_slug , 'Parking Slot Type Charge', 'Parking Slot Type Charge', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_pstypecharge', 'CloderiaMenuUtils::render_sb_pstypecharge');
-	 	add_submenu_page( self::admin_menu_slug , 'Parking Slot Type Expense', 'Parking Slot Type Expense', 'manage_options', 
-	 		self::admin_menu_slug . '_show_sb_pstypeexpense', 'CloderiaMenuUtils::render_sb_pstypeexpense');
 	 	add_submenu_page( self::admin_menu_slug , 'Parking Slot', 'Parking Slot', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_pslot', 'CloderiaMenuUtils::render_sb_pslot');
+	 	add_submenu_page( self::admin_menu_slug , 'Agreement Category', 'Agreement Category', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_agreecat', 'CloderiaMenuUtils::render_sb_agreecat');
 	 	add_submenu_page( self::admin_menu_slug , 'Agreement Type', 'Agreement Type', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_agreetype', 'CloderiaMenuUtils::render_sb_agreetype');
 	 	add_submenu_page( self::admin_menu_slug , 'Agreement Type Charge', 'Agreement Type Charge', 'manage_options', 
@@ -203,18 +201,10 @@ class CloderiaMenuUtils {
 	 		self::admin_menu_slug . '_show_sb_settlementdata', 'CloderiaMenuUtils::render_sb_settlementdata');
 	 	add_submenu_page( self::admin_menu_slug , 'Loan Information', 'Loan Information', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_settledataloan', 'CloderiaMenuUtils::render_sb_settledataloan');
-	 	add_submenu_page( self::admin_menu_slug , 'Purchase Agreement Inspection', 'Purchase Agreement Inspection', 'manage_options', 
-	 		self::admin_menu_slug . '_show_sb_agrmntinspection', 'CloderiaMenuUtils::render_sb_agrmntinspection');
 	 	add_submenu_page( self::admin_menu_slug , 'Agreement Item Type', 'Agreement Item Type', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_agrmntitemtype', 'CloderiaMenuUtils::render_sb_agrmntitemtype');
 	 	add_submenu_page( self::admin_menu_slug , 'Agreement Item', 'Agreement Item', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_agreementitem', 'CloderiaMenuUtils::render_sb_agreementitem');
-	 	add_submenu_page( self::admin_menu_slug , 'Rent Agreement', 'Rent Agreement', 'manage_options', 
-	 		self::admin_menu_slug . '_show_sb_rentagreement', 'CloderiaMenuUtils::render_sb_rentagreement');
-	 	add_submenu_page( self::admin_menu_slug , 'Service Agreement', 'Service Agreement', 'manage_options', 
-	 		self::admin_menu_slug . '_show_sb_seragreement', 'CloderiaMenuUtils::render_sb_seragreement');
-	 	add_submenu_page( self::admin_menu_slug , 'Management Agreement', 'Management Agreement', 'manage_options', 
-	 		self::admin_menu_slug . '_show_sb_managreement', 'CloderiaMenuUtils::render_sb_managreement');
 	 	add_submenu_page( self::admin_menu_slug , 'Service Type', 'Service Type', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_servicetype', 'CloderiaMenuUtils::render_sb_servicetype');
 	 	add_submenu_page( self::admin_menu_slug , 'Service', 'Service', 'manage_options', 
@@ -237,8 +227,6 @@ class CloderiaMenuUtils {
 	 		self::admin_menu_slug . '_show_sb_assmttype', 'CloderiaMenuUtils::render_sb_assmttype');
 	 	add_submenu_page( self::admin_menu_slug , 'Assessment', 'Assessment', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_assessment', 'CloderiaMenuUtils::render_sb_assessment');
-	 	add_submenu_page( self::admin_menu_slug , 'Land Assessment', 'Land Assessment', 'manage_options', 
-	 		self::admin_menu_slug . '_show_sb_landassmnt', 'CloderiaMenuUtils::render_sb_landassmnt');
 	 	add_submenu_page( self::admin_menu_slug , 'Sales Data Type', 'Sales Data Type', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_sdtype', 'CloderiaMenuUtils::render_sb_sdtype');
 	 	add_submenu_page( self::admin_menu_slug , 'Sales Data', 'Sales Data', 'manage_options', 
@@ -265,32 +253,62 @@ class CloderiaMenuUtils {
 	 		self::admin_menu_slug . '_show_sb_idexpense', 'CloderiaMenuUtils::render_sb_idexpense');
 	 	add_submenu_page( self::admin_menu_slug , 'Billing Account', 'Billing Account', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_billaccount', 'CloderiaMenuUtils::render_sb_billaccount');
+	 	add_submenu_page( self::admin_menu_slug , 'Account Transaction Type', 'Account Transaction Type', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_accttxntype', 'CloderiaMenuUtils::render_sb_accttxntype');
+	 	add_submenu_page( self::admin_menu_slug , 'Account Transaction Status', 'Account Transaction Status', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_accttxnstatus', 'CloderiaMenuUtils::render_sb_accttxnstatus');
+	 	add_submenu_page( self::admin_menu_slug , 'Account Transaction', 'Account Transaction', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_accttransaction', 'CloderiaMenuUtils::render_sb_accttransaction');
+	 	add_submenu_page( self::admin_menu_slug , 'Funding Method', 'Funding Method', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_fundmeth', 'CloderiaMenuUtils::render_sb_fundmeth');
+	 	add_submenu_page( self::admin_menu_slug , 'Template Type', 'Template Type', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_templatetype', 'CloderiaMenuUtils::render_sb_templatetype');
+	 	add_submenu_page( self::admin_menu_slug , 'Template', 'Template', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_template', 'CloderiaMenuUtils::render_sb_template');
 	 	add_submenu_page( self::admin_menu_slug , 'Invoice Type', 'Invoice Type', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_invoicetype', 'CloderiaMenuUtils::render_sb_invoicetype');
 	 	add_submenu_page( self::admin_menu_slug , 'Invoice Status', 'Invoice Status', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_invoicestatus', 'CloderiaMenuUtils::render_sb_invoicestatus');
 	 	add_submenu_page( self::admin_menu_slug , 'Invoice', 'Invoice', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_invoice', 'CloderiaMenuUtils::render_sb_invoice');
+	 	add_submenu_page( self::admin_menu_slug , 'Invoice Role', 'Invoice Role', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_invoicerole', 'CloderiaMenuUtils::render_sb_invoicerole');
 	 	add_submenu_page( self::admin_menu_slug , 'Invoice Item Type', 'Invoice Item Type', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_invoiceitemtype', 'CloderiaMenuUtils::render_sb_invoiceitemtype');
 	 	add_submenu_page( self::admin_menu_slug , 'Invoice Item', 'Invoice Item', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_invoiceitem', 'CloderiaMenuUtils::render_sb_invoiceitem');
 	 	add_submenu_page( self::admin_menu_slug , 'Invoice Term', 'Invoice Term', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_invoiceterm', 'CloderiaMenuUtils::render_sb_invoiceterm');
+	 	add_submenu_page( self::admin_menu_slug , 'Purchase Order Type', 'Purchase Order Type', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_pordertype', 'CloderiaMenuUtils::render_sb_pordertype');
+	 	add_submenu_page( self::admin_menu_slug , 'Purchase Order Status', 'Purchase Order Status', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_porderstatus', 'CloderiaMenuUtils::render_sb_porderstatus');
+	 	add_submenu_page( self::admin_menu_slug , 'Purchase Order', 'Purchase Order', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_porder', 'CloderiaMenuUtils::render_sb_porder');
+	 	add_submenu_page( self::admin_menu_slug , 'Purchase Order Role', 'Purchase Order Role', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_porole', 'CloderiaMenuUtils::render_sb_porole');
+	 	add_submenu_page( self::admin_menu_slug , 'Purchase Order Item Type', 'Purchase Order Item Type', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_poitemtype', 'CloderiaMenuUtils::render_sb_poitemtype');
+	 	add_submenu_page( self::admin_menu_slug , 'Purchase Order Item', 'Purchase Order Item', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_porderitem', 'CloderiaMenuUtils::render_sb_porderitem');
+	 	add_submenu_page( self::admin_menu_slug , 'Purchase Order Term', 'Purchase Order Term', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_porderterm', 'CloderiaMenuUtils::render_sb_porderterm');
 	 	add_submenu_page( self::admin_menu_slug , 'Payment Type', 'Payment Type', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_paymenttype', 'CloderiaMenuUtils::render_sb_paymenttype');
 	 	add_submenu_page( self::admin_menu_slug , 'Payment Method Type', 'Payment Method Type', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_paymethtype', 'CloderiaMenuUtils::render_sb_paymethtype');
 	 	add_submenu_page( self::admin_menu_slug , 'Payment', 'Payment', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_payment', 'CloderiaMenuUtils::render_sb_payment');
+	 	add_submenu_page( self::admin_menu_slug , 'Payment Application', 'Payment Application', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_payapp', 'CloderiaMenuUtils::render_sb_payapp');
+	 	add_submenu_page( self::admin_menu_slug , 'Receipt Type', 'Receipt Type', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_receipttype', 'CloderiaMenuUtils::render_sb_receipttype');
+	 	add_submenu_page( self::admin_menu_slug , 'Disbursement Type', 'Disbursement Type', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_disbursetype', 'CloderiaMenuUtils::render_sb_disbursetype');
 	 	add_submenu_page( self::admin_menu_slug , 'Receipt', 'Receipt', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_receipt', 'CloderiaMenuUtils::render_sb_receipt');
 	 	add_submenu_page( self::admin_menu_slug , 'Disbursement', 'Disbursement', 'manage_options', 
-	 		self::admin_menu_slug . '_show_sb_outpayment', 'CloderiaMenuUtils::render_sb_outpayment');
-	 	add_submenu_page( self::admin_menu_slug , 'Payroll', 'Payroll', 'manage_options', 
-	 		self::admin_menu_slug . '_show_sb_payroll', 'CloderiaMenuUtils::render_sb_payroll');
-	 	add_submenu_page( self::admin_menu_slug , 'Payment Application', 'Payment Application', 'manage_options', 
-	 		self::admin_menu_slug . '_show_sb_payapp', 'CloderiaMenuUtils::render_sb_payapp');
+	 		self::admin_menu_slug . '_show_sb_disbursement', 'CloderiaMenuUtils::render_sb_disbursement');
 	 	add_submenu_page( self::admin_menu_slug , 'Period Type', 'Period Type', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_periodtype', 'CloderiaMenuUtils::render_sb_periodtype');
 	 	add_submenu_page( self::admin_menu_slug , 'Accounting Period', 'Accounting Period', 'manage_options', 
@@ -307,8 +325,6 @@ class CloderiaMenuUtils {
 	 		self::admin_menu_slug . '_show_sb_coastatus', 'CloderiaMenuUtils::render_sb_coastatus');
 	 	add_submenu_page( self::admin_menu_slug , 'Chart Of Accounts', 'Chart Of Accounts', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_coa', 'CloderiaMenuUtils::render_sb_coa');
-	 	add_submenu_page( self::admin_menu_slug , 'COA Account Segment Instance', 'COA Account Segment Instance', 'manage_options', 
-	 		self::admin_menu_slug . '_show_sb_coaaseginst', 'CloderiaMenuUtils::render_sb_coaaseginst');
 	 	add_submenu_page( self::admin_menu_slug , 'GL Account Type', 'GL Account Type', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_glaccttype', 'CloderiaMenuUtils::render_sb_glaccttype');
 	 	add_submenu_page( self::admin_menu_slug , 'GL Account', 'GL Account', 'manage_options', 
@@ -317,20 +333,22 @@ class CloderiaMenuUtils {
 	 		self::admin_menu_slug . '_show_sb_buglaccount', 'CloderiaMenuUtils::render_sb_buglaccount');
 	 	add_submenu_page( self::admin_menu_slug , 'Business Unit GL Account Balance', 'Business Unit GL Account Balance', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_buglaccountbal', 'CloderiaMenuUtils::render_sb_buglaccountbal');
+	 	add_submenu_page( self::admin_menu_slug , 'COA Account Segment Instance', 'COA Account Segment Instance', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_coaaseginst', 'CloderiaMenuUtils::render_sb_coaaseginst');
 	 	add_submenu_page( self::admin_menu_slug , 'Financial Event Type', 'Financial Event Type', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_feventtype', 'CloderiaMenuUtils::render_sb_feventtype');
 	 	add_submenu_page( self::admin_menu_slug , 'Financial EVent', 'Financial EVent', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_fevent', 'CloderiaMenuUtils::render_sb_fevent');
-	 	add_submenu_page( self::admin_menu_slug , 'Financial Event Transaction Type', 'Financial Event Transaction Type', 'manage_options', 
-	 		self::admin_menu_slug . '_show_sb_feventtxntype', 'CloderiaMenuUtils::render_sb_feventtxntype');
-	 	add_submenu_page( self::admin_menu_slug , 'Transaction Type GL Account', 'Transaction Type GL Account', 'manage_options', 
-	 		self::admin_menu_slug . '_show_sb_txntypeacct', 'CloderiaMenuUtils::render_sb_txntypeacct');
 	 	add_submenu_page( self::admin_menu_slug , 'Transaction Type', 'Transaction Type', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_txntype', 'CloderiaMenuUtils::render_sb_txntype');
 	 	add_submenu_page( self::admin_menu_slug , 'Transaction', 'Transaction', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_transaction', 'CloderiaMenuUtils::render_sb_transaction');
 	 	add_submenu_page( self::admin_menu_slug , 'Transaction Detail', 'Transaction Detail', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_txndetail', 'CloderiaMenuUtils::render_sb_txndetail');
+	 	add_submenu_page( self::admin_menu_slug , 'Financial Event Transaction Type', 'Financial Event Transaction Type', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_feventtxntype', 'CloderiaMenuUtils::render_sb_feventtxntype');
+	 	add_submenu_page( self::admin_menu_slug , 'Transaction Type GL Account', 'Transaction Type GL Account', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_txntypeacct', 'CloderiaMenuUtils::render_sb_txntypeacct');
 	 	add_submenu_page( self::admin_menu_slug , 'Budget Type', 'Budget Type', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_budgettype', 'CloderiaMenuUtils::render_sb_budgettype');
 	 	add_submenu_page( self::admin_menu_slug , 'Budget Status', 'Budget Status', 'manage_options', 
@@ -475,6 +493,8 @@ class CloderiaMenuUtils {
 	 		self::admin_menu_slug . '_show_sb_requirement', 'CloderiaMenuUtils::render_sb_requirement');
 	 	add_submenu_page( self::admin_menu_slug , 'Require Role', 'Require Role', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_requirerole', 'CloderiaMenuUtils::render_sb_requirerole');
+	 	add_submenu_page( self::admin_menu_slug , 'Work Effort Category', 'Work Effort Category', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_wetypecat', 'CloderiaMenuUtils::render_sb_wetypecat');
 	 	add_submenu_page( self::admin_menu_slug , 'Work Effort Type', 'Work Effort Type', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_wetype', 'CloderiaMenuUtils::render_sb_wetype');
 	 	add_submenu_page( self::admin_menu_slug , 'Work Effort Purpose Type', 'Work Effort Purpose Type', 'manage_options', 
@@ -483,10 +503,8 @@ class CloderiaMenuUtils {
 	 		self::admin_menu_slug . '_show_sb_westatus', 'CloderiaMenuUtils::render_sb_westatus');
 	 	add_submenu_page( self::admin_menu_slug , 'Work Effort', 'Work Effort', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_workeffort', 'CloderiaMenuUtils::render_sb_workeffort');
-	 	add_submenu_page( self::admin_menu_slug , 'Inspection', 'Inspection', 'manage_options', 
-	 		self::admin_menu_slug . '_show_sb_inspection', 'CloderiaMenuUtils::render_sb_inspection');
-	 	add_submenu_page( self::admin_menu_slug , 'Maintenance', 'Maintenance', 'manage_options', 
-	 		self::admin_menu_slug . '_show_sb_maintenance', 'CloderiaMenuUtils::render_sb_maintenance');
+	 	add_submenu_page( self::admin_menu_slug , 'Purchase Agreement Inspection', 'Purchase Agreement Inspection', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_agrmntinspection', 'CloderiaMenuUtils::render_sb_agrmntinspection');
 	 	add_submenu_page( self::admin_menu_slug , 'Work Requirement Fulfillment', 'Work Requirement Fulfillment', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_wrfulfillment', 'CloderiaMenuUtils::render_sb_wrfulfillment');
 	 	add_submenu_page( self::admin_menu_slug , 'Work Effort Association Type', 'Work Effort Association Type', 'manage_options', 
@@ -527,16 +545,15 @@ class CloderiaMenuUtils {
 	 * Remove Content Port plugin CPT default menus
 	 */
 	public static function remove_toplevel_cpt_menus() {
-       remove_menu_page( 'edit.php?post_type=sb_loanapp');
        remove_menu_page( 'edit.php?post_type=sb_currency');
-       remove_menu_page( 'edit.php?post_type=sb_contactus');
        remove_menu_page( 'edit.php?post_type=sb_loctype');
        remove_menu_page( 'edit.php?post_type=sb_location');
+       remove_menu_page( 'edit.php?post_type=sb_business');
+       remove_menu_page( 'edit.php?post_type=sb_businessunit');
        remove_menu_page( 'edit.php?post_type=sb_partycat');
        remove_menu_page( 'edit.php?post_type=sb_partytype');
        remove_menu_page( 'edit.php?post_type=sb_roletype');
        remove_menu_page( 'edit.php?post_type=sb_party');
-       remove_menu_page( 'edit.php?post_type=sb_businessunit');
        remove_menu_page( 'edit.php?post_type=sb_partyrole');
        remove_menu_page( 'edit.php?post_type=sb_reltype');
        remove_menu_page( 'edit.php?post_type=sb_relstatus');
@@ -546,18 +563,19 @@ class CloderiaMenuUtils {
        remove_menu_page( 'edit.php?post_type=sb_partyprofile');
        remove_menu_page( 'edit.php?post_type=sb_partyaddress');
        remove_menu_page( 'edit.php?post_type=sb_partyfiles');
-       remove_menu_page( 'edit.php?post_type=sb_chargecat');
+       remove_menu_page( 'edit.php?post_type=sb_invitestatus');
+       remove_menu_page( 'edit.php?post_type=sb_userinvite');
+       remove_menu_page( 'edit.php?post_type=sb_businesscat');
        remove_menu_page( 'edit.php?post_type=sb_chargetype');
        remove_menu_page( 'edit.php?post_type=sb_chargefreq');
        remove_menu_page( 'edit.php?post_type=sb_charge');
-       remove_menu_page( 'edit.php?post_type=sb_expensecat');
        remove_menu_page( 'edit.php?post_type=sb_expensetype');
        remove_menu_page( 'edit.php?post_type=sb_expensefreq');
        remove_menu_page( 'edit.php?post_type=sb_expense');
-       remove_menu_page( 'edit.php?post_type=sb_inventype');
-       remove_menu_page( 'edit.php?post_type=sb_fassettype');
+       remove_menu_page( 'edit.php?post_type=sb_liabcat');
+       remove_menu_page( 'edit.php?post_type=sb_liabtype');
+       remove_menu_page( 'edit.php?post_type=sb_liability');
        remove_menu_page( 'edit.php?post_type=sb_dmethod');
-       remove_menu_page( 'edit.php?post_type=sb_invitemtype');
        remove_menu_page( 'edit.php?post_type=sb_uom');
        remove_menu_page( 'edit.php?post_type=sb_utilitytype');
        remove_menu_page( 'edit.php?post_type=sb_utility');
@@ -580,37 +598,36 @@ class CloderiaMenuUtils {
        remove_menu_page( 'edit.php?post_type=sb_improvement');
        remove_menu_page( 'edit.php?post_type=sb_proputility');
        remove_menu_page( 'edit.php?post_type=sb_pcharge');
-       remove_menu_page( 'edit.php?post_type=sb_fixedasset');
+       remove_menu_page( 'edit.php?post_type=sb_assetcat');
+       remove_menu_page( 'edit.php?post_type=sb_assettype');
+       remove_menu_page( 'edit.php?post_type=sb_asset');
+       remove_menu_page( 'edit.php?post_type=sb_inventype');
        remove_menu_page( 'edit.php?post_type=sb_inventory');
-       remove_menu_page( 'edit.php?post_type=sb_piitem');
-       remove_menu_page( 'edit.php?post_type=sb_pexpense');
+       remove_menu_page( 'edit.php?post_type=sb_invitemtype');
+       remove_menu_page( 'edit.php?post_type=sb_inventoryitem');
        remove_menu_page( 'edit.php?post_type=sb_propstaff');
        remove_menu_page( 'edit.php?post_type=sb_propfiles');
        remove_menu_page( 'edit.php?post_type=sb_buildingtype');
+       remove_menu_page( 'edit.php?post_type=sb_buildtypropty');
+       remove_menu_page( 'edit.php?post_type=sb_allocunit');
        remove_menu_page( 'edit.php?post_type=sb_building');
        remove_menu_page( 'edit.php?post_type=sb_bcharge');
-       remove_menu_page( 'edit.php?post_type=sb_bexpense');
        remove_menu_page( 'edit.php?post_type=sb_buildfiles');
-       remove_menu_page( 'edit.php?post_type=sb_allocunit');
        remove_menu_page( 'edit.php?post_type=sb_floortype');
        remove_menu_page( 'edit.php?post_type=sb_floor');
        remove_menu_page( 'edit.php?post_type=sb_fcharge');
-       remove_menu_page( 'edit.php?post_type=sb_fexpense');
        remove_menu_page( 'edit.php?post_type=sb_unittype');
        remove_menu_page( 'edit.php?post_type=sb_utypecharge');
-       remove_menu_page( 'edit.php?post_type=sb_utypeexpense');
        remove_menu_page( 'edit.php?post_type=sb_unit');
        remove_menu_page( 'edit.php?post_type=sb_unitcharge');
-       remove_menu_page( 'edit.php?post_type=sb_unitexpense');
        remove_menu_page( 'edit.php?post_type=sb_facilitycat');
        remove_menu_page( 'edit.php?post_type=sb_facilitytype');
        remove_menu_page( 'edit.php?post_type=sb_facility');
        remove_menu_page( 'edit.php?post_type=sb_facharge');
-       remove_menu_page( 'edit.php?post_type=sb_feexpense');
        remove_menu_page( 'edit.php?post_type=sb_pslottype');
        remove_menu_page( 'edit.php?post_type=sb_pstypecharge');
-       remove_menu_page( 'edit.php?post_type=sb_pstypeexpense');
        remove_menu_page( 'edit.php?post_type=sb_pslot');
+       remove_menu_page( 'edit.php?post_type=sb_agreecat');
        remove_menu_page( 'edit.php?post_type=sb_agreetype');
        remove_menu_page( 'edit.php?post_type=sb_agreetypecharge');
        remove_menu_page( 'edit.php?post_type=sb_termtype');
@@ -619,12 +636,8 @@ class CloderiaMenuUtils {
        remove_menu_page( 'edit.php?post_type=sb_purchaseagrmnt');
        remove_menu_page( 'edit.php?post_type=sb_settlementdata');
        remove_menu_page( 'edit.php?post_type=sb_settledataloan');
-       remove_menu_page( 'edit.php?post_type=sb_agrmntinspection');
        remove_menu_page( 'edit.php?post_type=sb_agrmntitemtype');
        remove_menu_page( 'edit.php?post_type=sb_agreementitem');
-       remove_menu_page( 'edit.php?post_type=sb_rentagreement');
-       remove_menu_page( 'edit.php?post_type=sb_seragreement');
-       remove_menu_page( 'edit.php?post_type=sb_managreement');
        remove_menu_page( 'edit.php?post_type=sb_servicetype');
        remove_menu_page( 'edit.php?post_type=sb_service');
        remove_menu_page( 'edit.php?post_type=sb_agreeservice');
@@ -636,7 +649,6 @@ class CloderiaMenuUtils {
        remove_menu_page( 'edit.php?post_type=sb_rent');
        remove_menu_page( 'edit.php?post_type=sb_assmttype');
        remove_menu_page( 'edit.php?post_type=sb_assessment');
-       remove_menu_page( 'edit.php?post_type=sb_landassmnt');
        remove_menu_page( 'edit.php?post_type=sb_sdtype');
        remove_menu_page( 'edit.php?post_type=sb_salesdata');
        remove_menu_page( 'edit.php?post_type=sb_sditemtype');
@@ -650,19 +662,34 @@ class CloderiaMenuUtils {
        remove_menu_page( 'edit.php?post_type=sb_idetype');
        remove_menu_page( 'edit.php?post_type=sb_idexpense');
        remove_menu_page( 'edit.php?post_type=sb_billaccount');
+       remove_menu_page( 'edit.php?post_type=sb_accttxntype');
+       remove_menu_page( 'edit.php?post_type=sb_accttxnstatus');
+       remove_menu_page( 'edit.php?post_type=sb_accttransaction');
+       remove_menu_page( 'edit.php?post_type=sb_fundmeth');
+       remove_menu_page( 'edit.php?post_type=sb_templatetype');
+       remove_menu_page( 'edit.php?post_type=sb_template');
        remove_menu_page( 'edit.php?post_type=sb_invoicetype');
        remove_menu_page( 'edit.php?post_type=sb_invoicestatus');
        remove_menu_page( 'edit.php?post_type=sb_invoice');
+       remove_menu_page( 'edit.php?post_type=sb_invoicerole');
        remove_menu_page( 'edit.php?post_type=sb_invoiceitemtype');
        remove_menu_page( 'edit.php?post_type=sb_invoiceitem');
        remove_menu_page( 'edit.php?post_type=sb_invoiceterm');
+       remove_menu_page( 'edit.php?post_type=sb_pordertype');
+       remove_menu_page( 'edit.php?post_type=sb_porderstatus');
+       remove_menu_page( 'edit.php?post_type=sb_porder');
+       remove_menu_page( 'edit.php?post_type=sb_porole');
+       remove_menu_page( 'edit.php?post_type=sb_poitemtype');
+       remove_menu_page( 'edit.php?post_type=sb_porderitem');
+       remove_menu_page( 'edit.php?post_type=sb_porderterm');
        remove_menu_page( 'edit.php?post_type=sb_paymenttype');
        remove_menu_page( 'edit.php?post_type=sb_paymethtype');
        remove_menu_page( 'edit.php?post_type=sb_payment');
-       remove_menu_page( 'edit.php?post_type=sb_receipt');
-       remove_menu_page( 'edit.php?post_type=sb_outpayment');
-       remove_menu_page( 'edit.php?post_type=sb_payroll');
        remove_menu_page( 'edit.php?post_type=sb_payapp');
+       remove_menu_page( 'edit.php?post_type=sb_receipttype');
+       remove_menu_page( 'edit.php?post_type=sb_disbursetype');
+       remove_menu_page( 'edit.php?post_type=sb_receipt');
+       remove_menu_page( 'edit.php?post_type=sb_disbursement');
        remove_menu_page( 'edit.php?post_type=sb_periodtype');
        remove_menu_page( 'edit.php?post_type=sb_acctperiod');
        remove_menu_page( 'edit.php?post_type=sb_coaacctstruct');
@@ -671,18 +698,18 @@ class CloderiaMenuUtils {
        remove_menu_page( 'edit.php?post_type=sb_coaacctseg');
        remove_menu_page( 'edit.php?post_type=sb_coastatus');
        remove_menu_page( 'edit.php?post_type=sb_coa');
-       remove_menu_page( 'edit.php?post_type=sb_coaaseginst');
        remove_menu_page( 'edit.php?post_type=sb_glaccttype');
        remove_menu_page( 'edit.php?post_type=sb_glaccount');
        remove_menu_page( 'edit.php?post_type=sb_buglaccount');
        remove_menu_page( 'edit.php?post_type=sb_buglaccountbal');
+       remove_menu_page( 'edit.php?post_type=sb_coaaseginst');
        remove_menu_page( 'edit.php?post_type=sb_feventtype');
        remove_menu_page( 'edit.php?post_type=sb_fevent');
-       remove_menu_page( 'edit.php?post_type=sb_feventtxntype');
-       remove_menu_page( 'edit.php?post_type=sb_txntypeacct');
        remove_menu_page( 'edit.php?post_type=sb_txntype');
        remove_menu_page( 'edit.php?post_type=sb_transaction');
        remove_menu_page( 'edit.php?post_type=sb_txndetail');
+       remove_menu_page( 'edit.php?post_type=sb_feventtxntype');
+       remove_menu_page( 'edit.php?post_type=sb_txntypeacct');
        remove_menu_page( 'edit.php?post_type=sb_budgettype');
        remove_menu_page( 'edit.php?post_type=sb_budgetstatus');
        remove_menu_page( 'edit.php?post_type=sb_budget');
@@ -755,12 +782,12 @@ class CloderiaMenuUtils {
        remove_menu_page( 'edit.php?post_type=sb_requiretype');
        remove_menu_page( 'edit.php?post_type=sb_requirement');
        remove_menu_page( 'edit.php?post_type=sb_requirerole');
+       remove_menu_page( 'edit.php?post_type=sb_wetypecat');
        remove_menu_page( 'edit.php?post_type=sb_wetype');
        remove_menu_page( 'edit.php?post_type=sb_weptype');
        remove_menu_page( 'edit.php?post_type=sb_westatus');
        remove_menu_page( 'edit.php?post_type=sb_workeffort');
-       remove_menu_page( 'edit.php?post_type=sb_inspection');
-       remove_menu_page( 'edit.php?post_type=sb_maintenance');
+       remove_menu_page( 'edit.php?post_type=sb_agrmntinspection');
        remove_menu_page( 'edit.php?post_type=sb_wrfulfillment');
        remove_menu_page( 'edit.php?post_type=sb_weatype');
        remove_menu_page( 'edit.php?post_type=sb_weassociation');
@@ -811,12 +838,11 @@ class CloderiaMenuUtils {
 		{
 			update_option( 'cp_paypal_url', stripslashes($_POST['cp_paypal']) );
 			update_option( 'cp_paypal_id', stripslashes($_POST['cp_paypal_id']) );
-			update_option( 'cp_notify_loans', stripslashes($_POST['cp_notify_loans']) );
+			update_option( 'cp_notify_orders', stripslashes($_POST['cp_notify_orders']) );
 			update_option( 'cp_notify_accounts', stripslashes($_POST['cp_notify_accounts']) );
 			update_option( 'cp_site_domain', stripslashes($_POST['cp_site_domain']) );
+			update_option( 'cp_default_currency', stripslashes($_POST['cp_default_currency']) );
 			update_option( 'cp_default_partytype', stripslashes($_POST['cp_default_partytype']) );
-			update_option( 'cp_admin_account', stripslashes($_POST['cp_admin_account']) );
-			update_option( 'cp_currency_symbol', stripslashes($_POST['cp_currency_symbol']) );
 			$msg = '<div class="updated"><p>Your settings have been <strong>updated</strong></p></div>';
 		}
 		//"Short code here"; //esc_attr( get_option(self::option_key, self::default_shortcode_name) );
@@ -827,29 +853,9 @@ class CloderiaMenuUtils {
     /**
 	 * Create Orders post-type sub menu
 	 */
-	public static function render_sb_loanapp()
-	{
-		$url = admin_url().'edit.php?post_type=sb_loanapp';
-		?>
-	 	<script>location.href='<?php echo $url;?>';</script>
-		<?php
-	}
-    /**
-	 * Create Orders post-type sub menu
-	 */
 	public static function render_sb_currency()
 	{
 		$url = admin_url().'edit.php?post_type=sb_currency';
-		?>
-	 	<script>location.href='<?php echo $url;?>';</script>
-		<?php
-	}
-    /**
-	 * Create Orders post-type sub menu
-	 */
-	public static function render_sb_contactus()
-	{
-		$url = admin_url().'edit.php?post_type=sb_contactus';
 		?>
 	 	<script>location.href='<?php echo $url;?>';</script>
 		<?php
@@ -870,6 +876,26 @@ class CloderiaMenuUtils {
 	public static function render_sb_location()
 	{
 		$url = admin_url().'edit.php?post_type=sb_location';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_business()
+	{
+		$url = admin_url().'edit.php?post_type=sb_business';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_businessunit()
+	{
+		$url = admin_url().'edit.php?post_type=sb_businessunit';
 		?>
 	 	<script>location.href='<?php echo $url;?>';</script>
 		<?php
@@ -910,16 +936,6 @@ class CloderiaMenuUtils {
 	public static function render_sb_party()
 	{
 		$url = admin_url().'edit.php?post_type=sb_party';
-		?>
-	 	<script>location.href='<?php echo $url;?>';</script>
-		<?php
-	}
-    /**
-	 * Create Orders post-type sub menu
-	 */
-	public static function render_sb_businessunit()
-	{
-		$url = admin_url().'edit.php?post_type=sb_businessunit';
 		?>
 	 	<script>location.href='<?php echo $url;?>';</script>
 		<?php
@@ -1017,9 +1033,29 @@ class CloderiaMenuUtils {
     /**
 	 * Create Orders post-type sub menu
 	 */
-	public static function render_sb_chargecat()
+	public static function render_sb_invitestatus()
 	{
-		$url = admin_url().'edit.php?post_type=sb_chargecat';
+		$url = admin_url().'edit.php?post_type=sb_invitestatus';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_userinvite()
+	{
+		$url = admin_url().'edit.php?post_type=sb_userinvite';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_businesscat()
+	{
+		$url = admin_url().'edit.php?post_type=sb_businesscat';
 		?>
 	 	<script>location.href='<?php echo $url;?>';</script>
 		<?php
@@ -1057,16 +1093,6 @@ class CloderiaMenuUtils {
     /**
 	 * Create Orders post-type sub menu
 	 */
-	public static function render_sb_expensecat()
-	{
-		$url = admin_url().'edit.php?post_type=sb_expensecat';
-		?>
-	 	<script>location.href='<?php echo $url;?>';</script>
-		<?php
-	}
-    /**
-	 * Create Orders post-type sub menu
-	 */
 	public static function render_sb_expensetype()
 	{
 		$url = admin_url().'edit.php?post_type=sb_expensetype';
@@ -1097,9 +1123,9 @@ class CloderiaMenuUtils {
     /**
 	 * Create Orders post-type sub menu
 	 */
-	public static function render_sb_inventype()
+	public static function render_sb_liabcat()
 	{
-		$url = admin_url().'edit.php?post_type=sb_inventype';
+		$url = admin_url().'edit.php?post_type=sb_liabcat';
 		?>
 	 	<script>location.href='<?php echo $url;?>';</script>
 		<?php
@@ -1107,9 +1133,19 @@ class CloderiaMenuUtils {
     /**
 	 * Create Orders post-type sub menu
 	 */
-	public static function render_sb_fassettype()
+	public static function render_sb_liabtype()
 	{
-		$url = admin_url().'edit.php?post_type=sb_fassettype';
+		$url = admin_url().'edit.php?post_type=sb_liabtype';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_liability()
+	{
+		$url = admin_url().'edit.php?post_type=sb_liability';
 		?>
 	 	<script>location.href='<?php echo $url;?>';</script>
 		<?php
@@ -1120,16 +1156,6 @@ class CloderiaMenuUtils {
 	public static function render_sb_dmethod()
 	{
 		$url = admin_url().'edit.php?post_type=sb_dmethod';
-		?>
-	 	<script>location.href='<?php echo $url;?>';</script>
-		<?php
-	}
-    /**
-	 * Create Orders post-type sub menu
-	 */
-	public static function render_sb_invitemtype()
-	{
-		$url = admin_url().'edit.php?post_type=sb_invitemtype';
 		?>
 	 	<script>location.href='<?php echo $url;?>';</script>
 		<?php
@@ -1357,9 +1383,39 @@ class CloderiaMenuUtils {
     /**
 	 * Create Orders post-type sub menu
 	 */
-	public static function render_sb_fixedasset()
+	public static function render_sb_assetcat()
 	{
-		$url = admin_url().'edit.php?post_type=sb_fixedasset';
+		$url = admin_url().'edit.php?post_type=sb_assetcat';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_assettype()
+	{
+		$url = admin_url().'edit.php?post_type=sb_assettype';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_asset()
+	{
+		$url = admin_url().'edit.php?post_type=sb_asset';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_inventype()
+	{
+		$url = admin_url().'edit.php?post_type=sb_inventype';
 		?>
 	 	<script>location.href='<?php echo $url;?>';</script>
 		<?php
@@ -1377,9 +1433,9 @@ class CloderiaMenuUtils {
     /**
 	 * Create Orders post-type sub menu
 	 */
-	public static function render_sb_piitem()
+	public static function render_sb_invitemtype()
 	{
-		$url = admin_url().'edit.php?post_type=sb_piitem';
+		$url = admin_url().'edit.php?post_type=sb_invitemtype';
 		?>
 	 	<script>location.href='<?php echo $url;?>';</script>
 		<?php
@@ -1387,9 +1443,9 @@ class CloderiaMenuUtils {
     /**
 	 * Create Orders post-type sub menu
 	 */
-	public static function render_sb_pexpense()
+	public static function render_sb_inventoryitem()
 	{
-		$url = admin_url().'edit.php?post_type=sb_pexpense';
+		$url = admin_url().'edit.php?post_type=sb_inventoryitem';
 		?>
 	 	<script>location.href='<?php echo $url;?>';</script>
 		<?php
@@ -1427,6 +1483,26 @@ class CloderiaMenuUtils {
     /**
 	 * Create Orders post-type sub menu
 	 */
+	public static function render_sb_buildtypropty()
+	{
+		$url = admin_url().'edit.php?post_type=sb_buildtypropty';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_allocunit()
+	{
+		$url = admin_url().'edit.php?post_type=sb_allocunit';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
 	public static function render_sb_building()
 	{
 		$url = admin_url().'edit.php?post_type=sb_building';
@@ -1447,29 +1523,9 @@ class CloderiaMenuUtils {
     /**
 	 * Create Orders post-type sub menu
 	 */
-	public static function render_sb_bexpense()
-	{
-		$url = admin_url().'edit.php?post_type=sb_bexpense';
-		?>
-	 	<script>location.href='<?php echo $url;?>';</script>
-		<?php
-	}
-    /**
-	 * Create Orders post-type sub menu
-	 */
 	public static function render_sb_buildfiles()
 	{
 		$url = admin_url().'edit.php?post_type=sb_buildfiles';
-		?>
-	 	<script>location.href='<?php echo $url;?>';</script>
-		<?php
-	}
-    /**
-	 * Create Orders post-type sub menu
-	 */
-	public static function render_sb_allocunit()
-	{
-		$url = admin_url().'edit.php?post_type=sb_allocunit';
 		?>
 	 	<script>location.href='<?php echo $url;?>';</script>
 		<?php
@@ -1507,16 +1563,6 @@ class CloderiaMenuUtils {
     /**
 	 * Create Orders post-type sub menu
 	 */
-	public static function render_sb_fexpense()
-	{
-		$url = admin_url().'edit.php?post_type=sb_fexpense';
-		?>
-	 	<script>location.href='<?php echo $url;?>';</script>
-		<?php
-	}
-    /**
-	 * Create Orders post-type sub menu
-	 */
 	public static function render_sb_unittype()
 	{
 		$url = admin_url().'edit.php?post_type=sb_unittype';
@@ -1537,16 +1583,6 @@ class CloderiaMenuUtils {
     /**
 	 * Create Orders post-type sub menu
 	 */
-	public static function render_sb_utypeexpense()
-	{
-		$url = admin_url().'edit.php?post_type=sb_utypeexpense';
-		?>
-	 	<script>location.href='<?php echo $url;?>';</script>
-		<?php
-	}
-    /**
-	 * Create Orders post-type sub menu
-	 */
 	public static function render_sb_unit()
 	{
 		$url = admin_url().'edit.php?post_type=sb_unit';
@@ -1560,16 +1596,6 @@ class CloderiaMenuUtils {
 	public static function render_sb_unitcharge()
 	{
 		$url = admin_url().'edit.php?post_type=sb_unitcharge';
-		?>
-	 	<script>location.href='<?php echo $url;?>';</script>
-		<?php
-	}
-    /**
-	 * Create Orders post-type sub menu
-	 */
-	public static function render_sb_unitexpense()
-	{
-		$url = admin_url().'edit.php?post_type=sb_unitexpense';
 		?>
 	 	<script>location.href='<?php echo $url;?>';</script>
 		<?php
@@ -1617,16 +1643,6 @@ class CloderiaMenuUtils {
     /**
 	 * Create Orders post-type sub menu
 	 */
-	public static function render_sb_feexpense()
-	{
-		$url = admin_url().'edit.php?post_type=sb_feexpense';
-		?>
-	 	<script>location.href='<?php echo $url;?>';</script>
-		<?php
-	}
-    /**
-	 * Create Orders post-type sub menu
-	 */
 	public static function render_sb_pslottype()
 	{
 		$url = admin_url().'edit.php?post_type=sb_pslottype';
@@ -1647,9 +1663,9 @@ class CloderiaMenuUtils {
     /**
 	 * Create Orders post-type sub menu
 	 */
-	public static function render_sb_pstypeexpense()
+	public static function render_sb_pslot()
 	{
-		$url = admin_url().'edit.php?post_type=sb_pstypeexpense';
+		$url = admin_url().'edit.php?post_type=sb_pslot';
 		?>
 	 	<script>location.href='<?php echo $url;?>';</script>
 		<?php
@@ -1657,9 +1673,9 @@ class CloderiaMenuUtils {
     /**
 	 * Create Orders post-type sub menu
 	 */
-	public static function render_sb_pslot()
+	public static function render_sb_agreecat()
 	{
-		$url = admin_url().'edit.php?post_type=sb_pslot';
+		$url = admin_url().'edit.php?post_type=sb_agreecat';
 		?>
 	 	<script>location.href='<?php echo $url;?>';</script>
 		<?php
@@ -1747,16 +1763,6 @@ class CloderiaMenuUtils {
     /**
 	 * Create Orders post-type sub menu
 	 */
-	public static function render_sb_agrmntinspection()
-	{
-		$url = admin_url().'edit.php?post_type=sb_agrmntinspection';
-		?>
-	 	<script>location.href='<?php echo $url;?>';</script>
-		<?php
-	}
-    /**
-	 * Create Orders post-type sub menu
-	 */
 	public static function render_sb_agrmntitemtype()
 	{
 		$url = admin_url().'edit.php?post_type=sb_agrmntitemtype';
@@ -1770,36 +1776,6 @@ class CloderiaMenuUtils {
 	public static function render_sb_agreementitem()
 	{
 		$url = admin_url().'edit.php?post_type=sb_agreementitem';
-		?>
-	 	<script>location.href='<?php echo $url;?>';</script>
-		<?php
-	}
-    /**
-	 * Create Orders post-type sub menu
-	 */
-	public static function render_sb_rentagreement()
-	{
-		$url = admin_url().'edit.php?post_type=sb_rentagreement';
-		?>
-	 	<script>location.href='<?php echo $url;?>';</script>
-		<?php
-	}
-    /**
-	 * Create Orders post-type sub menu
-	 */
-	public static function render_sb_seragreement()
-	{
-		$url = admin_url().'edit.php?post_type=sb_seragreement';
-		?>
-	 	<script>location.href='<?php echo $url;?>';</script>
-		<?php
-	}
-    /**
-	 * Create Orders post-type sub menu
-	 */
-	public static function render_sb_managreement()
-	{
-		$url = admin_url().'edit.php?post_type=sb_managreement';
 		?>
 	 	<script>location.href='<?php echo $url;?>';</script>
 		<?php
@@ -1910,16 +1886,6 @@ class CloderiaMenuUtils {
 	public static function render_sb_assessment()
 	{
 		$url = admin_url().'edit.php?post_type=sb_assessment';
-		?>
-	 	<script>location.href='<?php echo $url;?>';</script>
-		<?php
-	}
-    /**
-	 * Create Orders post-type sub menu
-	 */
-	public static function render_sb_landassmnt()
-	{
-		$url = admin_url().'edit.php?post_type=sb_landassmnt';
 		?>
 	 	<script>location.href='<?php echo $url;?>';</script>
 		<?php
@@ -2057,6 +2023,66 @@ class CloderiaMenuUtils {
     /**
 	 * Create Orders post-type sub menu
 	 */
+	public static function render_sb_accttxntype()
+	{
+		$url = admin_url().'edit.php?post_type=sb_accttxntype';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_accttxnstatus()
+	{
+		$url = admin_url().'edit.php?post_type=sb_accttxnstatus';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_accttransaction()
+	{
+		$url = admin_url().'edit.php?post_type=sb_accttransaction';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_fundmeth()
+	{
+		$url = admin_url().'edit.php?post_type=sb_fundmeth';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_templatetype()
+	{
+		$url = admin_url().'edit.php?post_type=sb_templatetype';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_template()
+	{
+		$url = admin_url().'edit.php?post_type=sb_template';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
 	public static function render_sb_invoicetype()
 	{
 		$url = admin_url().'edit.php?post_type=sb_invoicetype';
@@ -2080,6 +2106,16 @@ class CloderiaMenuUtils {
 	public static function render_sb_invoice()
 	{
 		$url = admin_url().'edit.php?post_type=sb_invoice';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_invoicerole()
+	{
+		$url = admin_url().'edit.php?post_type=sb_invoicerole';
 		?>
 	 	<script>location.href='<?php echo $url;?>';</script>
 		<?php
@@ -2117,6 +2153,76 @@ class CloderiaMenuUtils {
     /**
 	 * Create Orders post-type sub menu
 	 */
+	public static function render_sb_pordertype()
+	{
+		$url = admin_url().'edit.php?post_type=sb_pordertype';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_porderstatus()
+	{
+		$url = admin_url().'edit.php?post_type=sb_porderstatus';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_porder()
+	{
+		$url = admin_url().'edit.php?post_type=sb_porder';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_porole()
+	{
+		$url = admin_url().'edit.php?post_type=sb_porole';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_poitemtype()
+	{
+		$url = admin_url().'edit.php?post_type=sb_poitemtype';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_porderitem()
+	{
+		$url = admin_url().'edit.php?post_type=sb_porderitem';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_porderterm()
+	{
+		$url = admin_url().'edit.php?post_type=sb_porderterm';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
 	public static function render_sb_paymenttype()
 	{
 		$url = admin_url().'edit.php?post_type=sb_paymenttype';
@@ -2147,6 +2253,36 @@ class CloderiaMenuUtils {
     /**
 	 * Create Orders post-type sub menu
 	 */
+	public static function render_sb_payapp()
+	{
+		$url = admin_url().'edit.php?post_type=sb_payapp';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_receipttype()
+	{
+		$url = admin_url().'edit.php?post_type=sb_receipttype';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_disbursetype()
+	{
+		$url = admin_url().'edit.php?post_type=sb_disbursetype';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
 	public static function render_sb_receipt()
 	{
 		$url = admin_url().'edit.php?post_type=sb_receipt';
@@ -2157,29 +2293,9 @@ class CloderiaMenuUtils {
     /**
 	 * Create Orders post-type sub menu
 	 */
-	public static function render_sb_outpayment()
+	public static function render_sb_disbursement()
 	{
-		$url = admin_url().'edit.php?post_type=sb_outpayment';
-		?>
-	 	<script>location.href='<?php echo $url;?>';</script>
-		<?php
-	}
-    /**
-	 * Create Orders post-type sub menu
-	 */
-	public static function render_sb_payroll()
-	{
-		$url = admin_url().'edit.php?post_type=sb_payroll';
-		?>
-	 	<script>location.href='<?php echo $url;?>';</script>
-		<?php
-	}
-    /**
-	 * Create Orders post-type sub menu
-	 */
-	public static function render_sb_payapp()
-	{
-		$url = admin_url().'edit.php?post_type=sb_payapp';
+		$url = admin_url().'edit.php?post_type=sb_disbursement';
 		?>
 	 	<script>location.href='<?php echo $url;?>';</script>
 		<?php
@@ -2267,16 +2383,6 @@ class CloderiaMenuUtils {
     /**
 	 * Create Orders post-type sub menu
 	 */
-	public static function render_sb_coaaseginst()
-	{
-		$url = admin_url().'edit.php?post_type=sb_coaaseginst';
-		?>
-	 	<script>location.href='<?php echo $url;?>';</script>
-		<?php
-	}
-    /**
-	 * Create Orders post-type sub menu
-	 */
 	public static function render_sb_glaccttype()
 	{
 		$url = admin_url().'edit.php?post_type=sb_glaccttype';
@@ -2317,6 +2423,16 @@ class CloderiaMenuUtils {
     /**
 	 * Create Orders post-type sub menu
 	 */
+	public static function render_sb_coaaseginst()
+	{
+		$url = admin_url().'edit.php?post_type=sb_coaaseginst';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
 	public static function render_sb_feventtype()
 	{
 		$url = admin_url().'edit.php?post_type=sb_feventtype';
@@ -2330,26 +2446,6 @@ class CloderiaMenuUtils {
 	public static function render_sb_fevent()
 	{
 		$url = admin_url().'edit.php?post_type=sb_fevent';
-		?>
-	 	<script>location.href='<?php echo $url;?>';</script>
-		<?php
-	}
-    /**
-	 * Create Orders post-type sub menu
-	 */
-	public static function render_sb_feventtxntype()
-	{
-		$url = admin_url().'edit.php?post_type=sb_feventtxntype';
-		?>
-	 	<script>location.href='<?php echo $url;?>';</script>
-		<?php
-	}
-    /**
-	 * Create Orders post-type sub menu
-	 */
-	public static function render_sb_txntypeacct()
-	{
-		$url = admin_url().'edit.php?post_type=sb_txntypeacct';
 		?>
 	 	<script>location.href='<?php echo $url;?>';</script>
 		<?php
@@ -2380,6 +2476,26 @@ class CloderiaMenuUtils {
 	public static function render_sb_txndetail()
 	{
 		$url = admin_url().'edit.php?post_type=sb_txndetail';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_feventtxntype()
+	{
+		$url = admin_url().'edit.php?post_type=sb_feventtxntype';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_txntypeacct()
+	{
+		$url = admin_url().'edit.php?post_type=sb_txntypeacct';
 		?>
 	 	<script>location.href='<?php echo $url;?>';</script>
 		<?php
@@ -3107,6 +3223,16 @@ class CloderiaMenuUtils {
     /**
 	 * Create Orders post-type sub menu
 	 */
+	public static function render_sb_wetypecat()
+	{
+		$url = admin_url().'edit.php?post_type=sb_wetypecat';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
 	public static function render_sb_wetype()
 	{
 		$url = admin_url().'edit.php?post_type=sb_wetype';
@@ -3147,19 +3273,9 @@ class CloderiaMenuUtils {
     /**
 	 * Create Orders post-type sub menu
 	 */
-	public static function render_sb_inspection()
+	public static function render_sb_agrmntinspection()
 	{
-		$url = admin_url().'edit.php?post_type=sb_inspection';
-		?>
-	 	<script>location.href='<?php echo $url;?>';</script>
-		<?php
-	}
-    /**
-	 * Create Orders post-type sub menu
-	 */
-	public static function render_sb_maintenance()
-	{
-		$url = admin_url().'edit.php?post_type=sb_maintenance';
+		$url = admin_url().'edit.php?post_type=sb_agrmntinspection';
 		?>
 	 	<script>location.href='<?php echo $url;?>';</script>
 		<?php

@@ -58,13 +58,18 @@ class TransactionCPT {
             'type' => 'text',
         ),
         array('name' => 'payment',
-            'title' => 'To Payment',
-            'description' => 'The To Payment field',
+            'title' => 'Payment',
+            'description' => 'The Payment field',
             'type' => 'text',
         ),
         array('name' => 'invoice',
             'title' => 'Invoice',
             'description' => 'The Invoice field',
+            'type' => 'text',
+        ),
+        array('name' => 'porder',
+            'title' => 'Purchase Order',
+            'description' => 'The Purchase Order field',
             'type' => 'text',
         ),
         array('name' => 'description',
@@ -190,7 +195,7 @@ class TransactionCPT {
             'is_form_field' => false,
             'is_relationship_field' => true,),
         'payment' => array('name' => 'payment',
-            'description' => 'To Payment',
+            'description' => 'Payment',
             'size' => 'large',
             'entity_name' => 'Payment',
             'entity_description' => 'Payment',
@@ -209,6 +214,20 @@ class TransactionCPT {
             'entity_name' => 'Invoice',
             'entity_description' => 'Invoice',
             'data_type' => 'sb_invoice',
+            'is_required' => false,
+            'is_visible' => true,
+            'is_create_field' => true,
+            'is_edit_field' => false,
+            'is_view_field' => false,
+            'is_list_field' => false,
+            'is_form_field' => false,
+            'is_relationship_field' => true,),
+        'porder' => array('name' => 'porder',
+            'description' => 'Purchase Order',
+            'size' => 'large',
+            'entity_name' => 'PurchaseOrder',
+            'entity_description' => 'Purchase Order',
+            'data_type' => 'sb_porder',
             'is_required' => false,
             'is_visible' => true,
             'is_create_field' => true,
@@ -480,6 +499,10 @@ class TransactionCPT {
         }
         if ($column_name == 'invoice') {
             $field_value = get_post_meta($post_id, 'invoice', true );
+            echo $field_value;
+        }
+        if ($column_name == 'porder') {
+            $field_value = get_post_meta($post_id, 'porder', true );
             echo $field_value;
         }
         if ($column_name == 'description') {

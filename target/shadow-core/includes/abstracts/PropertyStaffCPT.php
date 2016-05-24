@@ -42,11 +42,6 @@ class PropertyStaffCPT {
             'description' => 'The Phone Number field',
             'type' => 'text',
         ),
-        array('name' => 'email',
-            'title' => 'Email Address',
-            'description' => 'The Email Address field',
-            'type' => 'text',
-        ),
         array('name' => 'description',
             'title' => 'Description',
             'description' => 'The Description field',
@@ -121,18 +116,6 @@ class PropertyStaffCPT {
             'description' => 'Phone Number',
             'size' => 'large',
             'data_type' => 'phone',
-            'is_required' => true,
-            'is_visible' => true,
-            'is_create_field' => true,
-            'is_edit_field' => true,
-            'is_view_field' => true,
-            'is_list_field' => true,
-            'is_form_field' => true,
-            'is_relationship_field' => false,),
-        'email' => array('name' => 'email',
-            'description' => 'Email Address',
-            'size' => 'large',
-            'data_type' => 'email',
             'is_required' => true,
             'is_visible' => true,
             'is_create_field' => true,
@@ -235,7 +218,6 @@ class PropertyStaffCPT {
     public static function sb_propstaff_table_head($defaults){
         $defaults['name']  = 'name';
         $defaults['phone']  = 'Phone Number';
-        $defaults['email']  = 'Email Address';
         $defaults['description']  = 'Description';
         return $defaults;
     }
@@ -259,10 +241,6 @@ class PropertyStaffCPT {
         }
         if ($column_name == 'phone') {
             $field_value = get_post_meta($post_id, 'phone', true );
-            echo $field_value;
-        }
-        if ($column_name == 'email') {
-            $field_value = get_post_meta($post_id, 'email', true );
             echo $field_value;
         }
         if ($column_name == 'description') {

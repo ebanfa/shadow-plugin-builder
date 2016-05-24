@@ -36,7 +36,7 @@ class PurchaseAgreementViewFilter extends ViewFilter {
         if(isset($_REQUEST['role']) && $page_action == 'list') {
             $form_fields = array();
             $field = array();
-            $field['options_criteria'] = array('name' => 'role', 'value' => sanitize_text_field($_REQUEST['role']));
+            $field['options_criteria'] = array('role' => sanitize_text_field($_REQUEST['role']));
             array_push($form_fields, $field);
         }
         

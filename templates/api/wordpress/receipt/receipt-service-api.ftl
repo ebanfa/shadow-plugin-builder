@@ -15,10 +15,38 @@ class ReceiptAPI  {
      *
      */
     public static function do_create_entity($entity_data){
-        // 1. Get the payment type for receipts
-        $receipt_payment_type_data = EntityAPI::get_by_code('paymenttype', ReceiptAPI::$eventTypeCode);
 
-        if(isset($receipt_payment_type_data['id'])){
+        // Create the payment from the receipt data
+        $receipt_payment_type_data = EntityAPI::get_by_code('paymenttype', ReceiptAPI::$eventTypeCode);
+        if(isset($receipt_payment_type_data['id'])) {
+            $payment_data = EntityAPIUtils::init_entity_data('payment');
+            $payment_data ['edit_mode'] = true;
+            $payment_data ['name'] = $entity_data['name'];
+            $payment_data ['amount'] = $entity_data['amount'];
+            $payment_data ['p_methtype'] = $entity_data['r_methtype'];
+            $payment_data ['description'] = $entity_data['description'];
+            $payment_data ['p_type'] = $receipt_payment_type_data['id'];
+            $payment_data ['p_fpartyrole'] = $entity_data['r_fpartyrole'];
+            $payment_data ['p_tpartyrole'] = $entity_data['r_tpartyrole'];
+            $payment_data ['effective_date'] = $entity_data['effective_date'];
+
+            $payment_data = EntityAPI::do_create_entity($payment_data);
+            // Create the payment application
+            $payment_application_data = array();
+            if(isset($payment_data['id'])) {
+
+            }
+            // Only create the receipt if the payment and application have
+            // been created  && isset($payment_application_data['id'])
+            if(isset($payment_data['id'])) {
+                $entity_data['r_payment'] = $payment_data['id'];
+                $entity_data = EntityAPI::do_create_entity($entity_data);
+            }
+        }
+        
+        // Create the receipt
+
+        /*if(isset($receipt_payment_type_data['id'])) {
             // 2. Get the to party as the current party
             $entity_data ['p_type'] = $receipt_payment_type_data['id'];
 
@@ -32,7 +60,7 @@ class ReceiptAPI  {
             foreach ($payment_applications_list as $payment_application) {
                 self::do_create_financial_events($entity_data, $payment_application);
             }
-        }
+        }*/
         return $entity_data;
         
     }

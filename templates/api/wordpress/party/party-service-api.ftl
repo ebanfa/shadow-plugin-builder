@@ -14,38 +14,7 @@ class PartyAPI {
      */
     public static function do_create_entity($entity_data){
         $entity_data =  EntityAPI::do_create_entity($entity_data);
-        if(!$entity_data['has_errors']&& $entity_data['edit_mode'] ) {
-            $notification_data = array();
-            $notification_data['data'] = $entity_data;
-            $notification_data['code'] = $entity_data['entity_code'];
-            $notification_data['name'] = $entity_data['name'];
-
-            $business_unit = EntityAPI::get_by_id('businessunit', $entity_data['business_unit']);
-            if(isset($business_unit['id'])) {
-                $notification_data['business_unit'] = $business_unit['name'];
-            }
-            
-
-            $notification_data['n_type'] = NotificationAPI::$party_created;
-            if(isset($_REQUEST['role'])) {
-                $role = sanitize_text_field($_REQUEST['role']);
-                $role_type = EntityAPI::get_by_code('roletype', strtoupper($role));
-                if(isset($role_type['id'])) {
-                    $notification_data['role'] = $role_type['name'];
-                }
-                
-            } 
-            // Set the creator
-            $current_user_party = self::get_current_user_party();
-            if(isset($current_user_party['id'])) {
-                $notification_data['n_owner'] = $current_user_party['id'];
-            }
-            else { $notification_data['n_owner'] = $entity_data['id']; }
-
-            $notification_data['log_level'] = NotificationAPI::$info;
-
-            NotificationAPI::do_notification($notification_data);
-        }
+        $billingaccount_data = self::create_billing_account($entity_data);
         return $entity_data;
     }
 
@@ -53,23 +22,21 @@ class PartyAPI {
      *
      */
     public static function do_find_entity($entity_data) {
-        $role_type = EntityRequestUtils::get_query_form_field('role');
-
-        if($role_type) return  self::find_by_role($role_type); 
+        $role_type = EntityRequestUtils::get_query_string_field('role');
+        if($role_type) return  self::find_by_role($entity_data, $role_type); 
         return  EntityAPI::do_find_entity($entity_data); 
     }
 
     /**
      * Get all parties with a given roles
      */
-    public static function find_by_role($role) {
+    public static function find_by_role($entity_data, $role) {
 
         $search_results = array();
         // Get the role 
         $role_type = EntityAPI::get_by_code('roletype', strtoupper($role));
         // Process only if we got a valid response from the call above
         if(isset($role_type['id']) && isset($role_type['entity_code'])) {
-            // Special treatment is required if the role type is 'user_organization'
             if($role === 'user_organization') {
                 $search_results = self::find_user_organizations();
             } else {
@@ -81,7 +48,16 @@ class PartyAPI {
                 foreach ($party_roles as $party_role) {
                     array_push($party_ids, $party_role['party']);
                 }
-                $search_results = EntityAPI::find_by_ids('party', $party_ids);
+                // Doing all this shit cause I am not good at SQL :-(
+                if(!empty($party_ids)) {
+                    $results = EntityAPI::find_by_ids_and_criteria('party', $party_ids);
+                    foreach ($results as $key => $party_data) {
+                        foreach ($party_roles as $party_role) {
+                            if($party_data['id'] == $party_role['party'])
+                                array_push($search_results, $party_data);
+                        }
+                    }
+                }
             }
         }
         return $search_results;
@@ -113,7 +89,7 @@ class PartyAPI {
                     }
                 }
             }
-            return EntityAPI::find_by_ids('party', $search_results);
+            return EntityAPI::find_by_ids('party', $search_results, array());
         }
         return $search_results;
     }
@@ -133,7 +109,7 @@ class PartyAPI {
             }
             // Get the business units 
             $business_unit_ids = array_unique($business_unit_ids);
-            return EntityAPI::find_by_ids('businessunit', $business_unit_ids);
+            return EntityAPI::find_by_ids('businessunit', $business_unit_ids, array());
         }
         return $search_results;
     }
@@ -173,6 +149,60 @@ class PartyAPI {
            $user_party = self::get_user_party($current_user->ID);
         }
         return $user_party;
+    }
+
+    /**
+     *
+     */
+    public static function create_billing_account($party_data) {
+
+        $billingaccount_data = EntityAPIUtils::init_entity_data('billingaccount');
+        if(isset($party_data['id'])) {
+            $billingaccount_data['balance'] = 0;
+            $billingaccount_data['edit_mode'] = true;
+            $billingaccount_data['party'] = $party_data['id'];
+            $billingaccount_data['name'] = $party_data['name'];
+            $billingaccount_data['date_created'] = date("Y-m-d H:i:s");
+            $billingaccount_data['description'] = $party_data['description'];
+            $billingaccount_data['business_unit'] = $party_data['business_unit'];
+            $billingaccount_data =  EntityAPI::create_entity($billingaccount_data); 
+        }
+        return $billingaccount_data;
+    }
+
+    /**
+     *
+     */
+    public static function do_notification($entity_data) {
+
+        if(!$entity_data['has_errors']&& $entity_data['edit_mode']) {
+            $notification_data = array();
+            $notification_data['data'] = $entity_data;
+            $notification_data['code'] = $entity_data['entity_code'];
+            $notification_data['name'] = $entity_data['name'];
+
+            $business_unit = EntityAPI::get_by_id('businessunit', $entity_data['business_unit']);
+            if(isset($business_unit['id'])) {
+                $notification_data['business_unit'] = $business_unit['name'];
+            }
+            
+            /*$notification_data['n_type'] = NotificationAPI::$party_created;
+            if(isset($_REQUEST['role'])) {
+                $role = sanitize_text_field($_REQUEST['role']);
+                $role_type = EntityAPI::get_by_code('roletype', strtoupper($role));
+                if(isset($role_type['id'])) {
+                    $notification_data['role'] = $role_type['name'];
+                }
+            } 
+            // Set the creator
+            $current_user_party = self::get_current_user_party();
+            if(isset($current_user_party['id'])) {
+                $notification_data['n_owner'] = $current_user_party['id'];
+            }
+            else { $notification_data['n_owner'] = $entity_data['id']; }
+            $notification_data['log_level'] = NotificationAPI::$info;
+            NotificationAPI::do_notification($notification_data);*/
+        }
     }
 
 

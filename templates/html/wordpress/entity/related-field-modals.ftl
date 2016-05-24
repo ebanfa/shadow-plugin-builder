@@ -46,13 +46,14 @@
 
                         <form id="<?php echo $field['data_type']; ?>-list-form">
                             <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
-                            <?php if(isset($field['options_criteria'])) { ?>
-                            <input type="hidden" name="<?php echo $field['options_criteria']['name']; ?>" id="<?php echo $field['options_criteria']['name']; ?>" value="<?php echo $field['options_criteria']['value']; ?>" /> 
-                            <?php } ?>
+                            <?php if(isset($field['options_criteria'])) { 
+                                foreach ($field['options_criteria'] as $criteria_name => $criteria_value) { ?>
+                            <input type="hidden" name="<?php echo $criteria_name; ?>" id="<?php echo $criteria_name; ?>" value="<?php echo $criteria_value; ?>" /> 
+                            <?php }} ?>
                             <input type="hidden" name="submitted" id="submitted" value="true" /> 
                         </form>
                         <div class="table-responsive">
-                            <table id="<?php echo $field['data_type']; ?>-table" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
+                            <table id="<?php echo $field['name']; ?>-table" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
                                         <th>ID</th>

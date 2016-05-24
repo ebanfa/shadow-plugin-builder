@@ -7,7 +7,7 @@ class CloderiaCustomFieldsUtils
 	public static $prefix = ''; 
 	public static $page = 'custom-content';
 	// Which types of content do we want to standardize?
-	public static $content_types_array = array('sb_loanapp','sb_currency','sb_contactus','sb_loctype','sb_location','sb_partycat','sb_partytype','sb_roletype','sb_party','sb_businessunit','sb_partyrole','sb_reltype','sb_relstatus','sb_partyrel','sb_partygroup','sb_person','sb_partyprofile','sb_partyaddress','sb_partyfiles','sb_chargecat','sb_chargetype','sb_chargefreq','sb_charge','sb_expensecat','sb_expensetype','sb_expensefreq','sb_expense','sb_inventype','sb_fassettype','sb_dmethod','sb_invitemtype','sb_uom','sb_utilitytype','sb_utility','sb_proptype','sb_propstatus','sb_property','sb_zonetype','sb_zoningdata','sb_mortgagetype','sb_mortgage','sb_laccessibility','sb_ltopography','sb_landtype','sb_soiltype','sb_lshape','sb_land','sb_plottype','sb_plot','sb_improvetype','sb_improvement','sb_proputility','sb_pcharge','sb_fixedasset','sb_inventory','sb_piitem','sb_pexpense','sb_propstaff','sb_propfiles','sb_buildingtype','sb_building','sb_bcharge','sb_bexpense','sb_buildfiles','sb_allocunit','sb_floortype','sb_floor','sb_fcharge','sb_fexpense','sb_unittype','sb_utypecharge','sb_utypeexpense','sb_unit','sb_unitcharge','sb_unitexpense','sb_facilitycat','sb_facilitytype','sb_facility','sb_facharge','sb_feexpense','sb_pslottype','sb_pstypecharge','sb_pstypeexpense','sb_pslot','sb_agreetype','sb_agreetypecharge','sb_termtype','sb_term','sb_agreement','sb_purchaseagrmnt','sb_settlementdata','sb_settledataloan','sb_agrmntinspection','sb_agrmntitemtype','sb_agreementitem','sb_rentagreement','sb_seragreement','sb_managreement','sb_servicetype','sb_service','sb_agreeservice','sb_agreeunit','sb_agreecharge','sb_agreeterm','sb_chargeinagrmt','sb_rentstatus','sb_rent','sb_assmttype','sb_assessment','sb_landassmnt','sb_sdtype','sb_salesdata','sb_sditemtype','sb_salesdataitem','sb_cdtype','sb_costdata','sb_cditemtype','sb_cditemdata','sb_idtype','sb_incomedata','sb_idetype','sb_idexpense','sb_billaccount','sb_invoicetype','sb_invoicestatus','sb_invoice','sb_invoiceitemtype','sb_invoiceitem','sb_invoiceterm','sb_paymenttype','sb_paymethtype','sb_payment','sb_receipt','sb_outpayment','sb_payroll','sb_payapp','sb_periodtype','sb_acctperiod','sb_coaacctstruct','sb_coaacctsegtype','sb_coaasegval','sb_coaacctseg','sb_coastatus','sb_coa','sb_coaaseginst','sb_glaccttype','sb_glaccount','sb_buglaccount','sb_buglaccountbal','sb_feventtype','sb_fevent','sb_feventtxntype','sb_txntypeacct','sb_txntype','sb_transaction','sb_txndetail','sb_budgettype','sb_budgetstatus','sb_budget','sb_bitemtype','sb_budgetitem','sb_budgetrole','sb_stperiod','sb_brrtype','sb_budgetreview','sb_brevision','sb_budgetrevimpact','sb_budgetscenario','sb_bscenariorule','sb_bscenarioapp','sb_pballocation','sb_glbudgetxref','sb_disputetype','sb_disputestatus','sb_dispute','sb_disputeitem','sb_conversation','sb_message','sb_messagesfiles','sb_notifytype','sb_notifystatus','sb_notifylevel','sb_notification','sb_pclasstype','sb_ptypeclass','sb_positiontype','sb_pstatus','sb_resptype','sb_validresp','sb_position','sb_posresp','sb_pfulfillment','sb_preportstruct','sb_ratetype','sb_paygrade','sb_salarystep','sb_ptyperate','sb_payhistory','sb_benefittype','sb_partybenefit','sb_deductiontype','sb_deduction','sb_prpreference','sb_empappstatus','sb_empappsrctype','sb_empapplication','sb_qualtype','sb_skilltype','sb_tctype','sb_ptraining','sb_resume','sb_partyskill','sb_partyqual','sb_perfnoteype','sb_perfnote','sb_perfreview','sb_ratingtype','sb_previtemtype','sb_perfreviewitem','sb_terminationtype','sb_termreason','sb_ucstatus','sb_uempclaim','sb_delivertype','sb_deliverable','sb_requiretype','sb_requirement','sb_requirerole','sb_wetype','sb_weptype','sb_westatus','sb_workeffort','sb_inspection','sb_maintenance','sb_wrfulfillment','sb_weatype','sb_weassociation','sb_wertype','sb_wepatyassign','sb_timesheet','sb_tsrtype','sb_tsrole','sb_timeentry','sb_partyrate','sb_wearate','sb_weiassign','sb_wefaastatus','sb_wefaassign','sb_wepastatus','sb_pfaassign','sb_wedeliverable',);
+	public static $content_types_array = array('sb_currency','sb_loctype','sb_location','sb_business','sb_businessunit','sb_partycat','sb_partytype','sb_roletype','sb_party','sb_partyrole','sb_reltype','sb_relstatus','sb_partyrel','sb_partygroup','sb_person','sb_partyprofile','sb_partyaddress','sb_partyfiles','sb_invitestatus','sb_userinvite','sb_businesscat','sb_chargetype','sb_chargefreq','sb_charge','sb_expensetype','sb_expensefreq','sb_expense','sb_liabcat','sb_liabtype','sb_liability','sb_dmethod','sb_uom','sb_utilitytype','sb_utility','sb_proptype','sb_propstatus','sb_property','sb_zonetype','sb_zoningdata','sb_mortgagetype','sb_mortgage','sb_laccessibility','sb_ltopography','sb_landtype','sb_soiltype','sb_lshape','sb_land','sb_plottype','sb_plot','sb_improvetype','sb_improvement','sb_proputility','sb_pcharge','sb_assetcat','sb_assettype','sb_asset','sb_inventype','sb_inventory','sb_invitemtype','sb_inventoryitem','sb_propstaff','sb_propfiles','sb_buildingtype','sb_buildtypropty','sb_allocunit','sb_building','sb_bcharge','sb_buildfiles','sb_floortype','sb_floor','sb_fcharge','sb_unittype','sb_utypecharge','sb_unit','sb_unitcharge','sb_facilitycat','sb_facilitytype','sb_facility','sb_facharge','sb_pslottype','sb_pstypecharge','sb_pslot','sb_agreecat','sb_agreetype','sb_agreetypecharge','sb_termtype','sb_term','sb_agreement','sb_purchaseagrmnt','sb_settlementdata','sb_settledataloan','sb_agrmntitemtype','sb_agreementitem','sb_servicetype','sb_service','sb_agreeservice','sb_agreeunit','sb_agreecharge','sb_agreeterm','sb_chargeinagrmt','sb_rentstatus','sb_rent','sb_assmttype','sb_assessment','sb_sdtype','sb_salesdata','sb_sditemtype','sb_salesdataitem','sb_cdtype','sb_costdata','sb_cditemtype','sb_cditemdata','sb_idtype','sb_incomedata','sb_idetype','sb_idexpense','sb_billaccount','sb_accttxntype','sb_accttxnstatus','sb_accttransaction','sb_fundmeth','sb_templatetype','sb_template','sb_invoicetype','sb_invoicestatus','sb_invoice','sb_invoicerole','sb_invoiceitemtype','sb_invoiceitem','sb_invoiceterm','sb_pordertype','sb_porderstatus','sb_porder','sb_porole','sb_poitemtype','sb_porderitem','sb_porderterm','sb_paymenttype','sb_paymethtype','sb_payment','sb_payapp','sb_receipttype','sb_disbursetype','sb_receipt','sb_disbursement','sb_periodtype','sb_acctperiod','sb_coaacctstruct','sb_coaacctsegtype','sb_coaasegval','sb_coaacctseg','sb_coastatus','sb_coa','sb_glaccttype','sb_glaccount','sb_buglaccount','sb_buglaccountbal','sb_coaaseginst','sb_feventtype','sb_fevent','sb_txntype','sb_transaction','sb_txndetail','sb_feventtxntype','sb_txntypeacct','sb_budgettype','sb_budgetstatus','sb_budget','sb_bitemtype','sb_budgetitem','sb_budgetrole','sb_stperiod','sb_brrtype','sb_budgetreview','sb_brevision','sb_budgetrevimpact','sb_budgetscenario','sb_bscenariorule','sb_bscenarioapp','sb_pballocation','sb_glbudgetxref','sb_disputetype','sb_disputestatus','sb_dispute','sb_disputeitem','sb_conversation','sb_message','sb_messagesfiles','sb_notifytype','sb_notifystatus','sb_notifylevel','sb_notification','sb_pclasstype','sb_ptypeclass','sb_positiontype','sb_pstatus','sb_resptype','sb_validresp','sb_position','sb_posresp','sb_pfulfillment','sb_preportstruct','sb_ratetype','sb_paygrade','sb_salarystep','sb_ptyperate','sb_payhistory','sb_benefittype','sb_partybenefit','sb_deductiontype','sb_deduction','sb_prpreference','sb_empappstatus','sb_empappsrctype','sb_empapplication','sb_qualtype','sb_skilltype','sb_tctype','sb_ptraining','sb_resume','sb_partyskill','sb_partyqual','sb_perfnoteype','sb_perfnote','sb_perfreview','sb_ratingtype','sb_previtemtype','sb_perfreviewitem','sb_terminationtype','sb_termreason','sb_ucstatus','sb_uempclaim','sb_delivertype','sb_deliverable','sb_requiretype','sb_requirement','sb_requirerole','sb_wetypecat','sb_wetype','sb_weptype','sb_westatus','sb_workeffort','sb_agrmntinspection','sb_wrfulfillment','sb_weatype','sb_weassociation','sb_wertype','sb_wepatyassign','sb_timesheet','sb_tsrtype','sb_tsrole','sb_timeentry','sb_partyrate','sb_wearate','sb_weiassign','sb_wefaastatus','sb_wefaassign','sb_wepastatus','sb_pfaassign','sb_wedeliverable',);
 
 	/*------------------------------------------------------------------------------
 	SYNOPSIS: prints the value of a custom field from the current post.
@@ -79,20 +79,20 @@ class CloderiaCustomFieldsUtils
 		$custom_fields = '';
 		switch ($content_type) 
 		{
-        case 'sb_loanapp':
-				$custom_fields = LoanApplicationCPT::$custom_fields;
-				break;
         case 'sb_currency':
 				$custom_fields = CurrencyCPT::$custom_fields;
-				break;
-        case 'sb_contactus':
-				$custom_fields = ContactUsCPT::$custom_fields;
 				break;
         case 'sb_loctype':
 				$custom_fields = LocationTypeCPT::$custom_fields;
 				break;
         case 'sb_location':
 				$custom_fields = LocationCPT::$custom_fields;
+				break;
+        case 'sb_business':
+				$custom_fields = BusinessCPT::$custom_fields;
+				break;
+        case 'sb_businessunit':
+				$custom_fields = BusinessUnitCPT::$custom_fields;
 				break;
         case 'sb_partycat':
 				$custom_fields = PartyCategoryCPT::$custom_fields;
@@ -105,9 +105,6 @@ class CloderiaCustomFieldsUtils
 				break;
         case 'sb_party':
 				$custom_fields = PartyCPT::$custom_fields;
-				break;
-        case 'sb_businessunit':
-				$custom_fields = BusinessUnitCPT::$custom_fields;
 				break;
         case 'sb_partyrole':
 				$custom_fields = PartyRoleCPT::$custom_fields;
@@ -136,8 +133,14 @@ class CloderiaCustomFieldsUtils
         case 'sb_partyfiles':
 				$custom_fields = PartyFilesCPT::$custom_fields;
 				break;
-        case 'sb_chargecat':
-				$custom_fields = ChargeCategoryCPT::$custom_fields;
+        case 'sb_invitestatus':
+				$custom_fields = UserInviteStatusCPT::$custom_fields;
+				break;
+        case 'sb_userinvite':
+				$custom_fields = UserInviteCPT::$custom_fields;
+				break;
+        case 'sb_businesscat':
+				$custom_fields = BusinessCategoryCPT::$custom_fields;
 				break;
         case 'sb_chargetype':
 				$custom_fields = ChargeTypeCPT::$custom_fields;
@@ -148,9 +151,6 @@ class CloderiaCustomFieldsUtils
         case 'sb_charge':
 				$custom_fields = ChargeCPT::$custom_fields;
 				break;
-        case 'sb_expensecat':
-				$custom_fields = ExpenseCategoryCPT::$custom_fields;
-				break;
         case 'sb_expensetype':
 				$custom_fields = ExpenseTypeCPT::$custom_fields;
 				break;
@@ -160,17 +160,17 @@ class CloderiaCustomFieldsUtils
         case 'sb_expense':
 				$custom_fields = ExpenseCPT::$custom_fields;
 				break;
-        case 'sb_inventype':
-				$custom_fields = InventoryTypeCPT::$custom_fields;
+        case 'sb_liabcat':
+				$custom_fields = LiabilityCategoryCPT::$custom_fields;
 				break;
-        case 'sb_fassettype':
-				$custom_fields = FixedAssetTypeCPT::$custom_fields;
+        case 'sb_liabtype':
+				$custom_fields = LiabilityTypeCPT::$custom_fields;
+				break;
+        case 'sb_liability':
+				$custom_fields = LiabilityCPT::$custom_fields;
 				break;
         case 'sb_dmethod':
 				$custom_fields = DeprecationMethodCPT::$custom_fields;
-				break;
-        case 'sb_invitemtype':
-				$custom_fields = InventoryItemTypeCPT::$custom_fields;
 				break;
         case 'sb_uom':
 				$custom_fields = UnitOfMeasureCPT::$custom_fields;
@@ -238,17 +238,26 @@ class CloderiaCustomFieldsUtils
         case 'sb_pcharge':
 				$custom_fields = PropertyChargeCPT::$custom_fields;
 				break;
-        case 'sb_fixedasset':
-				$custom_fields = FixedAssetCPT::$custom_fields;
+        case 'sb_assetcat':
+				$custom_fields = AssetCategoryCPT::$custom_fields;
+				break;
+        case 'sb_assettype':
+				$custom_fields = AssetTypeCPT::$custom_fields;
+				break;
+        case 'sb_asset':
+				$custom_fields = AssetCPT::$custom_fields;
+				break;
+        case 'sb_inventype':
+				$custom_fields = InventoryTypeCPT::$custom_fields;
 				break;
         case 'sb_inventory':
 				$custom_fields = InventoryCPT::$custom_fields;
 				break;
-        case 'sb_piitem':
-				$custom_fields = PropertyInventoryItemCPT::$custom_fields;
+        case 'sb_invitemtype':
+				$custom_fields = InventoryItemTypeCPT::$custom_fields;
 				break;
-        case 'sb_pexpense':
-				$custom_fields = PropertyExpenseCPT::$custom_fields;
+        case 'sb_inventoryitem':
+				$custom_fields = InventoryItemCPT::$custom_fields;
 				break;
         case 'sb_propstaff':
 				$custom_fields = PropertyStaffCPT::$custom_fields;
@@ -259,20 +268,20 @@ class CloderiaCustomFieldsUtils
         case 'sb_buildingtype':
 				$custom_fields = BuildingTypeCPT::$custom_fields;
 				break;
+        case 'sb_buildtypropty':
+				$custom_fields = BuildingTypePropertyTypeCPT::$custom_fields;
+				break;
+        case 'sb_allocunit':
+				$custom_fields = AllocationUnitCPT::$custom_fields;
+				break;
         case 'sb_building':
 				$custom_fields = BuildingCPT::$custom_fields;
 				break;
         case 'sb_bcharge':
 				$custom_fields = BuildingChargeCPT::$custom_fields;
 				break;
-        case 'sb_bexpense':
-				$custom_fields = BuildingExpenseCPT::$custom_fields;
-				break;
         case 'sb_buildfiles':
 				$custom_fields = BuildingFilesCPT::$custom_fields;
-				break;
-        case 'sb_allocunit':
-				$custom_fields = AllocationUnitCPT::$custom_fields;
 				break;
         case 'sb_floortype':
 				$custom_fields = FloorTypeCPT::$custom_fields;
@@ -283,26 +292,17 @@ class CloderiaCustomFieldsUtils
         case 'sb_fcharge':
 				$custom_fields = FloorChargeCPT::$custom_fields;
 				break;
-        case 'sb_fexpense':
-				$custom_fields = FloorExpenseCPT::$custom_fields;
-				break;
         case 'sb_unittype':
 				$custom_fields = UnitTypeCPT::$custom_fields;
 				break;
         case 'sb_utypecharge':
 				$custom_fields = UnitTypeChargeCPT::$custom_fields;
 				break;
-        case 'sb_utypeexpense':
-				$custom_fields = UnitTypeExpenseCPT::$custom_fields;
-				break;
         case 'sb_unit':
 				$custom_fields = UnitCPT::$custom_fields;
 				break;
         case 'sb_unitcharge':
 				$custom_fields = UnitChargeCPT::$custom_fields;
-				break;
-        case 'sb_unitexpense':
-				$custom_fields = UnitExpenseCPT::$custom_fields;
 				break;
         case 'sb_facilitycat':
 				$custom_fields = FacilityCategoryCPT::$custom_fields;
@@ -316,20 +316,17 @@ class CloderiaCustomFieldsUtils
         case 'sb_facharge':
 				$custom_fields = FacilityChargeCPT::$custom_fields;
 				break;
-        case 'sb_feexpense':
-				$custom_fields = FacilityExpenseCPT::$custom_fields;
-				break;
         case 'sb_pslottype':
 				$custom_fields = ParkingSlotTypeCPT::$custom_fields;
 				break;
         case 'sb_pstypecharge':
 				$custom_fields = ParkingSlotTypeChargeCPT::$custom_fields;
 				break;
-        case 'sb_pstypeexpense':
-				$custom_fields = ParkingSlotTypeExpenseCPT::$custom_fields;
-				break;
         case 'sb_pslot':
 				$custom_fields = ParkingSlotCPT::$custom_fields;
+				break;
+        case 'sb_agreecat':
+				$custom_fields = AgreementCategoryCPT::$custom_fields;
 				break;
         case 'sb_agreetype':
 				$custom_fields = AgreementTypeCPT::$custom_fields;
@@ -355,23 +352,11 @@ class CloderiaCustomFieldsUtils
         case 'sb_settledataloan':
 				$custom_fields = SettlementDataLoanCPT::$custom_fields;
 				break;
-        case 'sb_agrmntinspection':
-				$custom_fields = PurchaseAgreementInspectionCPT::$custom_fields;
-				break;
         case 'sb_agrmntitemtype':
 				$custom_fields = AgreementItemTypeCPT::$custom_fields;
 				break;
         case 'sb_agreementitem':
 				$custom_fields = AgreementItemCPT::$custom_fields;
-				break;
-        case 'sb_rentagreement':
-				$custom_fields = RentAgreementCPT::$custom_fields;
-				break;
-        case 'sb_seragreement':
-				$custom_fields = ServiceAgreementCPT::$custom_fields;
-				break;
-        case 'sb_managreement':
-				$custom_fields = ManagementAgreementCPT::$custom_fields;
 				break;
         case 'sb_servicetype':
 				$custom_fields = ServiceTypeCPT::$custom_fields;
@@ -405,9 +390,6 @@ class CloderiaCustomFieldsUtils
 				break;
         case 'sb_assessment':
 				$custom_fields = AssessmentCPT::$custom_fields;
-				break;
-        case 'sb_landassmnt':
-				$custom_fields = LandAssessmentCPT::$custom_fields;
 				break;
         case 'sb_sdtype':
 				$custom_fields = SalesDataTypeCPT::$custom_fields;
@@ -448,6 +430,24 @@ class CloderiaCustomFieldsUtils
         case 'sb_billaccount':
 				$custom_fields = BillingAccountCPT::$custom_fields;
 				break;
+        case 'sb_accttxntype':
+				$custom_fields = AccountTransactionTypeCPT::$custom_fields;
+				break;
+        case 'sb_accttxnstatus':
+				$custom_fields = AccountTransactionStatusCPT::$custom_fields;
+				break;
+        case 'sb_accttransaction':
+				$custom_fields = AccountTransactionCPT::$custom_fields;
+				break;
+        case 'sb_fundmeth':
+				$custom_fields = FundingMethodCPT::$custom_fields;
+				break;
+        case 'sb_templatetype':
+				$custom_fields = TemplateTypeCPT::$custom_fields;
+				break;
+        case 'sb_template':
+				$custom_fields = TemplateCPT::$custom_fields;
+				break;
         case 'sb_invoicetype':
 				$custom_fields = InvoiceTypeCPT::$custom_fields;
 				break;
@@ -456,6 +456,9 @@ class CloderiaCustomFieldsUtils
 				break;
         case 'sb_invoice':
 				$custom_fields = InvoiceCPT::$custom_fields;
+				break;
+        case 'sb_invoicerole':
+				$custom_fields = InvoiceRoleCPT::$custom_fields;
 				break;
         case 'sb_invoiceitemtype':
 				$custom_fields = InvoiceItemTypeCPT::$custom_fields;
@@ -466,6 +469,27 @@ class CloderiaCustomFieldsUtils
         case 'sb_invoiceterm':
 				$custom_fields = InvoiceTermCPT::$custom_fields;
 				break;
+        case 'sb_pordertype':
+				$custom_fields = PurchaseOrderTypeCPT::$custom_fields;
+				break;
+        case 'sb_porderstatus':
+				$custom_fields = PurchaseOrderStatusCPT::$custom_fields;
+				break;
+        case 'sb_porder':
+				$custom_fields = PurchaseOrderCPT::$custom_fields;
+				break;
+        case 'sb_porole':
+				$custom_fields = PurchaseOrderRoleCPT::$custom_fields;
+				break;
+        case 'sb_poitemtype':
+				$custom_fields = PurchaseOrderItemTypeCPT::$custom_fields;
+				break;
+        case 'sb_porderitem':
+				$custom_fields = PurchaseOrderItemCPT::$custom_fields;
+				break;
+        case 'sb_porderterm':
+				$custom_fields = PurchaseOrderTermCPT::$custom_fields;
+				break;
         case 'sb_paymenttype':
 				$custom_fields = PaymentTypeCPT::$custom_fields;
 				break;
@@ -475,17 +499,20 @@ class CloderiaCustomFieldsUtils
         case 'sb_payment':
 				$custom_fields = PaymentCPT::$custom_fields;
 				break;
+        case 'sb_payapp':
+				$custom_fields = PaymentApplicationCPT::$custom_fields;
+				break;
+        case 'sb_receipttype':
+				$custom_fields = ReceiptTypeCPT::$custom_fields;
+				break;
+        case 'sb_disbursetype':
+				$custom_fields = DisbursementTypeCPT::$custom_fields;
+				break;
         case 'sb_receipt':
 				$custom_fields = ReceiptCPT::$custom_fields;
 				break;
-        case 'sb_outpayment':
-				$custom_fields = OutPaymentCPT::$custom_fields;
-				break;
-        case 'sb_payroll':
-				$custom_fields = PayrollCPT::$custom_fields;
-				break;
-        case 'sb_payapp':
-				$custom_fields = PaymentApplicationCPT::$custom_fields;
+        case 'sb_disbursement':
+				$custom_fields = DisbursementCPT::$custom_fields;
 				break;
         case 'sb_periodtype':
 				$custom_fields = PeriodTypeCPT::$custom_fields;
@@ -511,9 +538,6 @@ class CloderiaCustomFieldsUtils
         case 'sb_coa':
 				$custom_fields = ChartOfAccountsCPT::$custom_fields;
 				break;
-        case 'sb_coaaseginst':
-				$custom_fields = COAAccountSegmentInstanceCPT::$custom_fields;
-				break;
         case 'sb_glaccttype':
 				$custom_fields = GLAccountTypeCPT::$custom_fields;
 				break;
@@ -526,17 +550,14 @@ class CloderiaCustomFieldsUtils
         case 'sb_buglaccountbal':
 				$custom_fields = BusinessUnitGLAccountBalanceCPT::$custom_fields;
 				break;
+        case 'sb_coaaseginst':
+				$custom_fields = COAAccountSegmentInstanceCPT::$custom_fields;
+				break;
         case 'sb_feventtype':
 				$custom_fields = FinancialEventTypeCPT::$custom_fields;
 				break;
         case 'sb_fevent':
 				$custom_fields = FinancialEventCPT::$custom_fields;
-				break;
-        case 'sb_feventtxntype':
-				$custom_fields = FEventTxnTypeCPT::$custom_fields;
-				break;
-        case 'sb_txntypeacct':
-				$custom_fields = TxnTypeAccountCPT::$custom_fields;
 				break;
         case 'sb_txntype':
 				$custom_fields = TransactionTypeCPT::$custom_fields;
@@ -546,6 +567,12 @@ class CloderiaCustomFieldsUtils
 				break;
         case 'sb_txndetail':
 				$custom_fields = TransactionDetailCPT::$custom_fields;
+				break;
+        case 'sb_feventtxntype':
+				$custom_fields = FEventTxnTypeCPT::$custom_fields;
+				break;
+        case 'sb_txntypeacct':
+				$custom_fields = TxnTypeAccountCPT::$custom_fields;
 				break;
         case 'sb_budgettype':
 				$custom_fields = BudgetTypeCPT::$custom_fields;
@@ -763,6 +790,9 @@ class CloderiaCustomFieldsUtils
         case 'sb_requirerole':
 				$custom_fields = RequirementRoleCPT::$custom_fields;
 				break;
+        case 'sb_wetypecat':
+				$custom_fields = WorkEffortCategoryCPT::$custom_fields;
+				break;
         case 'sb_wetype':
 				$custom_fields = WorkEffortTypeCPT::$custom_fields;
 				break;
@@ -775,11 +805,8 @@ class CloderiaCustomFieldsUtils
         case 'sb_workeffort':
 				$custom_fields = WorkEffortCPT::$custom_fields;
 				break;
-        case 'sb_inspection':
-				$custom_fields = InspectionCPT::$custom_fields;
-				break;
-        case 'sb_maintenance':
-				$custom_fields = MaintenanceCPT::$custom_fields;
+        case 'sb_agrmntinspection':
+				$custom_fields = PurchaseAgreementInspectionCPT::$custom_fields;
 				break;
         case 'sb_wrfulfillment':
 				$custom_fields = WorkRequirementFulfillmentCPT::$custom_fields;
@@ -843,20 +870,20 @@ class CloderiaCustomFieldsUtils
 
 		$field_value = $field['value'];
 		switch ($content_type) {
-        case 'sb_loanapp':
-				$field_value = LoanApplicationCPT::get_field_value($content_type, $post_id, $field);
-				break;
         case 'sb_currency':
 				$field_value = CurrencyCPT::get_field_value($content_type, $post_id, $field);
-				break;
-        case 'sb_contactus':
-				$field_value = ContactUsCPT::get_field_value($content_type, $post_id, $field);
 				break;
         case 'sb_loctype':
 				$field_value = LocationTypeCPT::get_field_value($content_type, $post_id, $field);
 				break;
         case 'sb_location':
 				$field_value = LocationCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_business':
+				$field_value = BusinessCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_businessunit':
+				$field_value = BusinessUnitCPT::get_field_value($content_type, $post_id, $field);
 				break;
         case 'sb_partycat':
 				$field_value = PartyCategoryCPT::get_field_value($content_type, $post_id, $field);
@@ -869,9 +896,6 @@ class CloderiaCustomFieldsUtils
 				break;
         case 'sb_party':
 				$field_value = PartyCPT::get_field_value($content_type, $post_id, $field);
-				break;
-        case 'sb_businessunit':
-				$field_value = BusinessUnitCPT::get_field_value($content_type, $post_id, $field);
 				break;
         case 'sb_partyrole':
 				$field_value = PartyRoleCPT::get_field_value($content_type, $post_id, $field);
@@ -900,8 +924,14 @@ class CloderiaCustomFieldsUtils
         case 'sb_partyfiles':
 				$field_value = PartyFilesCPT::get_field_value($content_type, $post_id, $field);
 				break;
-        case 'sb_chargecat':
-				$field_value = ChargeCategoryCPT::get_field_value($content_type, $post_id, $field);
+        case 'sb_invitestatus':
+				$field_value = UserInviteStatusCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_userinvite':
+				$field_value = UserInviteCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_businesscat':
+				$field_value = BusinessCategoryCPT::get_field_value($content_type, $post_id, $field);
 				break;
         case 'sb_chargetype':
 				$field_value = ChargeTypeCPT::get_field_value($content_type, $post_id, $field);
@@ -912,9 +942,6 @@ class CloderiaCustomFieldsUtils
         case 'sb_charge':
 				$field_value = ChargeCPT::get_field_value($content_type, $post_id, $field);
 				break;
-        case 'sb_expensecat':
-				$field_value = ExpenseCategoryCPT::get_field_value($content_type, $post_id, $field);
-				break;
         case 'sb_expensetype':
 				$field_value = ExpenseTypeCPT::get_field_value($content_type, $post_id, $field);
 				break;
@@ -924,17 +951,17 @@ class CloderiaCustomFieldsUtils
         case 'sb_expense':
 				$field_value = ExpenseCPT::get_field_value($content_type, $post_id, $field);
 				break;
-        case 'sb_inventype':
-				$field_value = InventoryTypeCPT::get_field_value($content_type, $post_id, $field);
+        case 'sb_liabcat':
+				$field_value = LiabilityCategoryCPT::get_field_value($content_type, $post_id, $field);
 				break;
-        case 'sb_fassettype':
-				$field_value = FixedAssetTypeCPT::get_field_value($content_type, $post_id, $field);
+        case 'sb_liabtype':
+				$field_value = LiabilityTypeCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_liability':
+				$field_value = LiabilityCPT::get_field_value($content_type, $post_id, $field);
 				break;
         case 'sb_dmethod':
 				$field_value = DeprecationMethodCPT::get_field_value($content_type, $post_id, $field);
-				break;
-        case 'sb_invitemtype':
-				$field_value = InventoryItemTypeCPT::get_field_value($content_type, $post_id, $field);
 				break;
         case 'sb_uom':
 				$field_value = UnitOfMeasureCPT::get_field_value($content_type, $post_id, $field);
@@ -1002,17 +1029,26 @@ class CloderiaCustomFieldsUtils
         case 'sb_pcharge':
 				$field_value = PropertyChargeCPT::get_field_value($content_type, $post_id, $field);
 				break;
-        case 'sb_fixedasset':
-				$field_value = FixedAssetCPT::get_field_value($content_type, $post_id, $field);
+        case 'sb_assetcat':
+				$field_value = AssetCategoryCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_assettype':
+				$field_value = AssetTypeCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_asset':
+				$field_value = AssetCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_inventype':
+				$field_value = InventoryTypeCPT::get_field_value($content_type, $post_id, $field);
 				break;
         case 'sb_inventory':
 				$field_value = InventoryCPT::get_field_value($content_type, $post_id, $field);
 				break;
-        case 'sb_piitem':
-				$field_value = PropertyInventoryItemCPT::get_field_value($content_type, $post_id, $field);
+        case 'sb_invitemtype':
+				$field_value = InventoryItemTypeCPT::get_field_value($content_type, $post_id, $field);
 				break;
-        case 'sb_pexpense':
-				$field_value = PropertyExpenseCPT::get_field_value($content_type, $post_id, $field);
+        case 'sb_inventoryitem':
+				$field_value = InventoryItemCPT::get_field_value($content_type, $post_id, $field);
 				break;
         case 'sb_propstaff':
 				$field_value = PropertyStaffCPT::get_field_value($content_type, $post_id, $field);
@@ -1023,20 +1059,20 @@ class CloderiaCustomFieldsUtils
         case 'sb_buildingtype':
 				$field_value = BuildingTypeCPT::get_field_value($content_type, $post_id, $field);
 				break;
+        case 'sb_buildtypropty':
+				$field_value = BuildingTypePropertyTypeCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_allocunit':
+				$field_value = AllocationUnitCPT::get_field_value($content_type, $post_id, $field);
+				break;
         case 'sb_building':
 				$field_value = BuildingCPT::get_field_value($content_type, $post_id, $field);
 				break;
         case 'sb_bcharge':
 				$field_value = BuildingChargeCPT::get_field_value($content_type, $post_id, $field);
 				break;
-        case 'sb_bexpense':
-				$field_value = BuildingExpenseCPT::get_field_value($content_type, $post_id, $field);
-				break;
         case 'sb_buildfiles':
 				$field_value = BuildingFilesCPT::get_field_value($content_type, $post_id, $field);
-				break;
-        case 'sb_allocunit':
-				$field_value = AllocationUnitCPT::get_field_value($content_type, $post_id, $field);
 				break;
         case 'sb_floortype':
 				$field_value = FloorTypeCPT::get_field_value($content_type, $post_id, $field);
@@ -1047,26 +1083,17 @@ class CloderiaCustomFieldsUtils
         case 'sb_fcharge':
 				$field_value = FloorChargeCPT::get_field_value($content_type, $post_id, $field);
 				break;
-        case 'sb_fexpense':
-				$field_value = FloorExpenseCPT::get_field_value($content_type, $post_id, $field);
-				break;
         case 'sb_unittype':
 				$field_value = UnitTypeCPT::get_field_value($content_type, $post_id, $field);
 				break;
         case 'sb_utypecharge':
 				$field_value = UnitTypeChargeCPT::get_field_value($content_type, $post_id, $field);
 				break;
-        case 'sb_utypeexpense':
-				$field_value = UnitTypeExpenseCPT::get_field_value($content_type, $post_id, $field);
-				break;
         case 'sb_unit':
 				$field_value = UnitCPT::get_field_value($content_type, $post_id, $field);
 				break;
         case 'sb_unitcharge':
 				$field_value = UnitChargeCPT::get_field_value($content_type, $post_id, $field);
-				break;
-        case 'sb_unitexpense':
-				$field_value = UnitExpenseCPT::get_field_value($content_type, $post_id, $field);
 				break;
         case 'sb_facilitycat':
 				$field_value = FacilityCategoryCPT::get_field_value($content_type, $post_id, $field);
@@ -1080,20 +1107,17 @@ class CloderiaCustomFieldsUtils
         case 'sb_facharge':
 				$field_value = FacilityChargeCPT::get_field_value($content_type, $post_id, $field);
 				break;
-        case 'sb_feexpense':
-				$field_value = FacilityExpenseCPT::get_field_value($content_type, $post_id, $field);
-				break;
         case 'sb_pslottype':
 				$field_value = ParkingSlotTypeCPT::get_field_value($content_type, $post_id, $field);
 				break;
         case 'sb_pstypecharge':
 				$field_value = ParkingSlotTypeChargeCPT::get_field_value($content_type, $post_id, $field);
 				break;
-        case 'sb_pstypeexpense':
-				$field_value = ParkingSlotTypeExpenseCPT::get_field_value($content_type, $post_id, $field);
-				break;
         case 'sb_pslot':
 				$field_value = ParkingSlotCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_agreecat':
+				$field_value = AgreementCategoryCPT::get_field_value($content_type, $post_id, $field);
 				break;
         case 'sb_agreetype':
 				$field_value = AgreementTypeCPT::get_field_value($content_type, $post_id, $field);
@@ -1119,23 +1143,11 @@ class CloderiaCustomFieldsUtils
         case 'sb_settledataloan':
 				$field_value = SettlementDataLoanCPT::get_field_value($content_type, $post_id, $field);
 				break;
-        case 'sb_agrmntinspection':
-				$field_value = PurchaseAgreementInspectionCPT::get_field_value($content_type, $post_id, $field);
-				break;
         case 'sb_agrmntitemtype':
 				$field_value = AgreementItemTypeCPT::get_field_value($content_type, $post_id, $field);
 				break;
         case 'sb_agreementitem':
 				$field_value = AgreementItemCPT::get_field_value($content_type, $post_id, $field);
-				break;
-        case 'sb_rentagreement':
-				$field_value = RentAgreementCPT::get_field_value($content_type, $post_id, $field);
-				break;
-        case 'sb_seragreement':
-				$field_value = ServiceAgreementCPT::get_field_value($content_type, $post_id, $field);
-				break;
-        case 'sb_managreement':
-				$field_value = ManagementAgreementCPT::get_field_value($content_type, $post_id, $field);
 				break;
         case 'sb_servicetype':
 				$field_value = ServiceTypeCPT::get_field_value($content_type, $post_id, $field);
@@ -1169,9 +1181,6 @@ class CloderiaCustomFieldsUtils
 				break;
         case 'sb_assessment':
 				$field_value = AssessmentCPT::get_field_value($content_type, $post_id, $field);
-				break;
-        case 'sb_landassmnt':
-				$field_value = LandAssessmentCPT::get_field_value($content_type, $post_id, $field);
 				break;
         case 'sb_sdtype':
 				$field_value = SalesDataTypeCPT::get_field_value($content_type, $post_id, $field);
@@ -1212,6 +1221,24 @@ class CloderiaCustomFieldsUtils
         case 'sb_billaccount':
 				$field_value = BillingAccountCPT::get_field_value($content_type, $post_id, $field);
 				break;
+        case 'sb_accttxntype':
+				$field_value = AccountTransactionTypeCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_accttxnstatus':
+				$field_value = AccountTransactionStatusCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_accttransaction':
+				$field_value = AccountTransactionCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_fundmeth':
+				$field_value = FundingMethodCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_templatetype':
+				$field_value = TemplateTypeCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_template':
+				$field_value = TemplateCPT::get_field_value($content_type, $post_id, $field);
+				break;
         case 'sb_invoicetype':
 				$field_value = InvoiceTypeCPT::get_field_value($content_type, $post_id, $field);
 				break;
@@ -1220,6 +1247,9 @@ class CloderiaCustomFieldsUtils
 				break;
         case 'sb_invoice':
 				$field_value = InvoiceCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_invoicerole':
+				$field_value = InvoiceRoleCPT::get_field_value($content_type, $post_id, $field);
 				break;
         case 'sb_invoiceitemtype':
 				$field_value = InvoiceItemTypeCPT::get_field_value($content_type, $post_id, $field);
@@ -1230,6 +1260,27 @@ class CloderiaCustomFieldsUtils
         case 'sb_invoiceterm':
 				$field_value = InvoiceTermCPT::get_field_value($content_type, $post_id, $field);
 				break;
+        case 'sb_pordertype':
+				$field_value = PurchaseOrderTypeCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_porderstatus':
+				$field_value = PurchaseOrderStatusCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_porder':
+				$field_value = PurchaseOrderCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_porole':
+				$field_value = PurchaseOrderRoleCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_poitemtype':
+				$field_value = PurchaseOrderItemTypeCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_porderitem':
+				$field_value = PurchaseOrderItemCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_porderterm':
+				$field_value = PurchaseOrderTermCPT::get_field_value($content_type, $post_id, $field);
+				break;
         case 'sb_paymenttype':
 				$field_value = PaymentTypeCPT::get_field_value($content_type, $post_id, $field);
 				break;
@@ -1239,17 +1290,20 @@ class CloderiaCustomFieldsUtils
         case 'sb_payment':
 				$field_value = PaymentCPT::get_field_value($content_type, $post_id, $field);
 				break;
+        case 'sb_payapp':
+				$field_value = PaymentApplicationCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_receipttype':
+				$field_value = ReceiptTypeCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_disbursetype':
+				$field_value = DisbursementTypeCPT::get_field_value($content_type, $post_id, $field);
+				break;
         case 'sb_receipt':
 				$field_value = ReceiptCPT::get_field_value($content_type, $post_id, $field);
 				break;
-        case 'sb_outpayment':
-				$field_value = OutPaymentCPT::get_field_value($content_type, $post_id, $field);
-				break;
-        case 'sb_payroll':
-				$field_value = PayrollCPT::get_field_value($content_type, $post_id, $field);
-				break;
-        case 'sb_payapp':
-				$field_value = PaymentApplicationCPT::get_field_value($content_type, $post_id, $field);
+        case 'sb_disbursement':
+				$field_value = DisbursementCPT::get_field_value($content_type, $post_id, $field);
 				break;
         case 'sb_periodtype':
 				$field_value = PeriodTypeCPT::get_field_value($content_type, $post_id, $field);
@@ -1275,9 +1329,6 @@ class CloderiaCustomFieldsUtils
         case 'sb_coa':
 				$field_value = ChartOfAccountsCPT::get_field_value($content_type, $post_id, $field);
 				break;
-        case 'sb_coaaseginst':
-				$field_value = COAAccountSegmentInstanceCPT::get_field_value($content_type, $post_id, $field);
-				break;
         case 'sb_glaccttype':
 				$field_value = GLAccountTypeCPT::get_field_value($content_type, $post_id, $field);
 				break;
@@ -1290,17 +1341,14 @@ class CloderiaCustomFieldsUtils
         case 'sb_buglaccountbal':
 				$field_value = BusinessUnitGLAccountBalanceCPT::get_field_value($content_type, $post_id, $field);
 				break;
+        case 'sb_coaaseginst':
+				$field_value = COAAccountSegmentInstanceCPT::get_field_value($content_type, $post_id, $field);
+				break;
         case 'sb_feventtype':
 				$field_value = FinancialEventTypeCPT::get_field_value($content_type, $post_id, $field);
 				break;
         case 'sb_fevent':
 				$field_value = FinancialEventCPT::get_field_value($content_type, $post_id, $field);
-				break;
-        case 'sb_feventtxntype':
-				$field_value = FEventTxnTypeCPT::get_field_value($content_type, $post_id, $field);
-				break;
-        case 'sb_txntypeacct':
-				$field_value = TxnTypeAccountCPT::get_field_value($content_type, $post_id, $field);
 				break;
         case 'sb_txntype':
 				$field_value = TransactionTypeCPT::get_field_value($content_type, $post_id, $field);
@@ -1310,6 +1358,12 @@ class CloderiaCustomFieldsUtils
 				break;
         case 'sb_txndetail':
 				$field_value = TransactionDetailCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_feventtxntype':
+				$field_value = FEventTxnTypeCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_txntypeacct':
+				$field_value = TxnTypeAccountCPT::get_field_value($content_type, $post_id, $field);
 				break;
         case 'sb_budgettype':
 				$field_value = BudgetTypeCPT::get_field_value($content_type, $post_id, $field);
@@ -1527,6 +1581,9 @@ class CloderiaCustomFieldsUtils
         case 'sb_requirerole':
 				$field_value = RequirementRoleCPT::get_field_value($content_type, $post_id, $field);
 				break;
+        case 'sb_wetypecat':
+				$field_value = WorkEffortCategoryCPT::get_field_value($content_type, $post_id, $field);
+				break;
         case 'sb_wetype':
 				$field_value = WorkEffortTypeCPT::get_field_value($content_type, $post_id, $field);
 				break;
@@ -1539,11 +1596,8 @@ class CloderiaCustomFieldsUtils
         case 'sb_workeffort':
 				$field_value = WorkEffortCPT::get_field_value($content_type, $post_id, $field);
 				break;
-        case 'sb_inspection':
-				$field_value = InspectionCPT::get_field_value($content_type, $post_id, $field);
-				break;
-        case 'sb_maintenance':
-				$field_value = MaintenanceCPT::get_field_value($content_type, $post_id, $field);
+        case 'sb_agrmntinspection':
+				$field_value = PurchaseAgreementInspectionCPT::get_field_value($content_type, $post_id, $field);
 				break;
         case 'sb_wrfulfillment':
 				$field_value = WorkRequirementFulfillmentCPT::get_field_value($content_type, $post_id, $field);

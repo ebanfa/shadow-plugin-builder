@@ -45,23 +45,32 @@ class SinglePartyView extends SingleEntityView {
      * 
      */
     public function process_client_view() {
-        $tabs = array();
-        $tabs_entities = array('property', 'managementagreement', 'dispute');
-
-        foreach ($this->model['related_child_entities'] as $related_child_entity) {
-            $artifact_name = strtolower($related_child_entity['entity_name']);
-            if(!in_array($artifact_name, $tabs_entities)) {
-                $tab = array(
-                    'tab_type' => 'entity-list',
-                    'name' => $related_child_entity['name'],
-                    'description' => $related_child_entity['entity_description'],
-                    'model' => EntityAPI::get_model(strtolower($related_child_entity['entity_name'])),
-                    'artifact_name' => $artifact_name,
-                    'type_instances' =>  array(),
-                );
-                array_push($tabs, $tab);
-            }
-        }
+        $tabs = array(
+            array(
+                'tab_type' => 'entity-list',
+                'name' => 'property',
+                'description' => 'Property',
+                'model' => EntityAPI::get_model('property'),
+                'artifact_name' => 'property',
+                'type_instances' =>  array(),
+            ),
+            array(
+                'tab_type' => 'entity-list',
+                'name' => 'managementagreement',
+                'description' => 'Management Agreement',
+                'model' => EntityAPI::get_model('managementagreement'),
+                'artifact_name' => 'managementagreement',
+                'type_instances' =>  array(),
+            ),
+            array(
+                'tab_type' => 'entity-list',
+                'name' => 'dispute',
+                'description' => 'Dispute',
+                'model' => EntityAPI::get_model('dispute'),
+                'artifact_name' => 'dispute',
+                'type_instances' =>  array(),
+            )
+        );
         return $tabs;
     }
 
@@ -73,7 +82,7 @@ class SinglePartyView extends SingleEntityView {
         $tabs = array();
         $tabs_entities = array('rent', 'rentagreement', 'dispute');
 
-        foreach ($this->model['related_child_entities'] as $related_child_entity) {
+        /*foreach ($this->model['related_child_entities'] as $related_child_entity) {
             $artifact_name = strtolower($related_child_entity['entity_name']);
             if(in_array($artifact_name, $tabs_entities)) {
                 $tab = array(
@@ -86,7 +95,7 @@ class SinglePartyView extends SingleEntityView {
                 );
                 array_push($tabs, $tab);
             }
-        }
+        }*/
         return $tabs;
         
     }

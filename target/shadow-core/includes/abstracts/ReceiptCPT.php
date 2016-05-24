@@ -8,8 +8,7 @@ class ReceiptCPT {
     public static $is_global_entity = false; 
 
 
-    public static $is_virtual_entity = true; 
-    public static $parent_name = 'payment'; 
+    public static $is_virtual_entity = false; 
     
 
 
@@ -23,19 +22,34 @@ class ReceiptCPT {
             'description' => 'The Code field',
             'type' => 'text',
         ),
+        array('name' => 'type',
+            'title' => 'Receipt Type',
+            'description' => 'The Receipt Type field',
+            'type' => 'text',
+        ),
+        array('name' => 'r_methtype',
+            'title' => 'Payment Method Type',
+            'description' => 'The Payment Method Type field',
+            'type' => 'text',
+        ),
+        array('name' => 'r_fpartyrole',
+            'title' => 'From Party Role',
+            'description' => 'The From Party Role field',
+            'type' => 'text',
+        ),
+        array('name' => 'r_tpartyrole',
+            'title' => 'To Party Role',
+            'description' => 'The To Party Role field',
+            'type' => 'text',
+        ),
+        array('name' => 'r_payment',
+            'title' => 'Payment',
+            'description' => 'The Payment field',
+            'type' => 'text',
+        ),
         array('name' => 'name',
             'title' => 'Name',
             'description' => 'The Name field',
-            'type' => 'text',
-        ),
-        array('name' => 'p_type',
-            'title' => 'Payment Type',
-            'description' => 'The Payment Type field',
-            'type' => 'text',
-        ),
-        array('name' => 'p_tparty',
-            'title' => 'To Party',
-            'description' => 'The To Party field',
             'type' => 'text',
         ),
         array('name' => 'amount',
@@ -43,9 +57,19 @@ class ReceiptCPT {
             'description' => 'The Amount field',
             'type' => 'text',
         ),
-        array('name' => 'parent_id',
-            'title' => 'Parent ID',
-            'description' => 'The Parent ID field',
+        array('name' => 'effective_date',
+            'title' => 'Effective Date',
+            'description' => 'The Effective Date field',
+            'type' => 'text',
+        ),
+        array('name' => 'description',
+            'title' => 'Description',
+            'description' => 'The Description field',
+            'type' => 'text',
+        ),
+        array('name' => 'business_unit',
+            'title' => 'Business Unit',
+            'description' => 'The Business Unit field',
             'type' => 'text',
         ),
     );
@@ -60,14 +84,84 @@ class ReceiptCPT {
             'description' => 'Code',
             'size' => 'medium',
             'data_type' => 'alphanumeric',
-            'is_required' => true,
-            'is_visible' => true,
+            'is_required' => false,
+            'is_visible' => false,
             'is_create_field' => false,
             'is_edit_field' => false,
             'is_view_field' => false,
             'is_list_field' => false,
             'is_form_field' => false,
             'is_relationship_field' => false,),
+        'type' => array('name' => 'type',
+            'description' => 'Receipt Type',
+            'size' => 'large',
+            'entity_name' => 'ReceiptType',
+            'entity_description' => 'Receipt Type',
+            'data_type' => 'sb_receipttype',
+            'is_required' => true,
+            'is_visible' => true,
+            'is_create_field' => true,
+            'is_edit_field' => true,
+            'is_view_field' => true,
+            'is_list_field' => true,
+            'is_form_field' => true,
+            'is_relationship_field' => true,),
+        'r_methtype' => array('name' => 'r_methtype',
+            'description' => 'Payment Method Type',
+            'size' => 'large',
+            'entity_name' => 'PaymentMethodType',
+            'entity_description' => 'Payment Method Type',
+            'data_type' => 'sb_paymethtype',
+            'is_required' => true,
+            'is_visible' => true,
+            'is_create_field' => true,
+            'is_edit_field' => true,
+            'is_view_field' => true,
+            'is_list_field' => true,
+            'is_form_field' => true,
+            'is_relationship_field' => true,),
+        'r_fpartyrole' => array('name' => 'r_fpartyrole',
+            'description' => 'From Party Role',
+            'size' => 'large',
+            'entity_name' => 'PartyRole',
+            'entity_description' => 'Party Role',
+            'data_type' => 'sb_partyrole',
+            'is_required' => true,
+            'is_visible' => true,
+            'is_create_field' => true,
+            'is_edit_field' => true,
+            'is_view_field' => true,
+            'is_list_field' => true,
+            'is_form_field' => true,
+            'is_relationship_field' => true,),
+        'r_tpartyrole' => array('name' => 'r_tpartyrole',
+            'description' => 'To Party Role',
+            'size' => 'large',
+            'entity_name' => 'PartyRole',
+            'entity_description' => 'Party Role',
+            'data_type' => 'sb_partyrole',
+            'is_required' => true,
+            'is_visible' => true,
+            'is_create_field' => true,
+            'is_edit_field' => true,
+            'is_view_field' => true,
+            'is_list_field' => true,
+            'is_form_field' => true,
+            'is_relationship_field' => true,),
+        'r_payment' => array('name' => 'r_payment',
+            'description' => 'Payment',
+            'size' => 'large',
+            'entity_name' => 'Payment',
+            'entity_description' => 'Payment',
+            'data_type' => 'sb_payment',
+            'is_required' => true,
+            'is_visible' => true,
+            'is_create_field' => false,
+            'is_edit_field' => false,
+            'is_view_field' => false,
+            'is_list_field' => false,
+            'is_form_field' => true,
+            'is_relationship_field' => true,),
         'name' => array('name' => 'name',
             'description' => 'Name',
             'size' => 'large',
@@ -80,58 +174,56 @@ class ReceiptCPT {
             'is_list_field' => true,
             'is_form_field' => true,
             'is_relationship_field' => false,),
-        'p_type' => array('name' => 'p_type',
-            'description' => 'Payment Type',
-            'size' => 'large',
-            'entity_name' => 'PaymentType',
-            'entity_description' => 'Payment Type',
-            'data_type' => 'sb_paymenttype',
-            'is_required' => true,
-            'is_visible' => true,
-            'is_create_field' => false,
-            'is_edit_field' => false,
-            'is_view_field' => false,
-            'is_list_field' => false,
-            'is_form_field' => false,
-            'is_relationship_field' => true,),
-        'p_tparty' => array('name' => 'p_tparty',
-            'description' => 'To Party',
-            'size' => 'large',
-            'entity_name' => 'Party',
-            'entity_description' => 'Party',
-            'data_type' => 'sb_party',
-            'is_required' => true,
-            'is_visible' => true,
-            'is_create_field' => false,
-            'is_edit_field' => false,
-            'is_view_field' => false,
-            'is_list_field' => false,
-            'is_form_field' => false,
-            'is_relationship_field' => true,),
         'amount' => array('name' => 'amount',
             'description' => 'Amount',
             'size' => 'large',
             'data_type' => 'money',
             'is_required' => true,
             'is_visible' => true,
-            'is_create_field' => false,
-            'is_edit_field' => false,
-            'is_view_field' => false,
-            'is_list_field' => false,
-            'is_form_field' => false,
+            'is_create_field' => true,
+            'is_edit_field' => true,
+            'is_view_field' => true,
+            'is_list_field' => true,
+            'is_form_field' => true,
             'is_relationship_field' => false,),
-        'parent_id' => array('name' => 'parent_id',
-            'description' => 'Parent ID',
+        'effective_date' => array('name' => 'effective_date',
+            'description' => 'Effective Date',
+            'size' => 'medium',
+            'data_type' => 'date',
+            'is_required' => true,
+            'is_visible' => true,
+            'is_create_field' => true,
+            'is_edit_field' => true,
+            'is_view_field' => true,
+            'is_list_field' => true,
+            'is_form_field' => true,
+            'is_relationship_field' => false,),
+        'description' => array('name' => 'description',
+            'description' => 'Description',
             'size' => 'large',
-            'data_type' => 'number',
-            'is_required' => false,
+            'data_type' => 'text-lg',
+            'is_required' => true,
+            'is_visible' => true,
+            'is_create_field' => true,
+            'is_edit_field' => true,
+            'is_view_field' => true,
+            'is_list_field' => true,
+            'is_form_field' => true,
+            'is_relationship_field' => false,),
+        'business_unit' => array('name' => 'business_unit',
+            'description' => 'Business Unit',
+            'size' => 'large',
+            'entity_name' => 'BusinessUnit',
+            'entity_description' => 'Business Unit',
+            'data_type' => 'sb_businessunit',
+            'is_required' => true,
             'is_visible' => false,
             'is_create_field' => false,
             'is_edit_field' => false,
             'is_view_field' => false,
             'is_list_field' => false,
             'is_form_field' => false,
-            'is_relationship_field' => false,),
+            'is_relationship_field' => true,),
    );
 
     /**
@@ -198,7 +290,14 @@ class ReceiptCPT {
     }
 
     public static function sb_receipt_table_head($defaults){
+        $defaults['type']  = 'Receipt Type';
+        $defaults['r_methtype']  = 'Payment Method Type';
+        $defaults['r_fpartyrole']  = 'From Party Role';
+        $defaults['r_tpartyrole']  = 'To Party Role';
         $defaults['name']  = 'name';
+        $defaults['amount']  = 'Amount';
+        $defaults['effective_date']  = 'Effective Date';
+        $defaults['description']  = 'Description';
         return $defaults;
     }
 
@@ -207,24 +306,44 @@ class ReceiptCPT {
             $field_value = get_post_meta($post_id, 'entity_code', true );
             echo $field_value;
         }
+        if ($column_name == 'type') {
+            $field_value = get_post_meta($post_id, 'type', true );
+            echo $field_value;
+        }
+        if ($column_name == 'r_methtype') {
+            $field_value = get_post_meta($post_id, 'r_methtype', true );
+            echo $field_value;
+        }
+        if ($column_name == 'r_fpartyrole') {
+            $field_value = get_post_meta($post_id, 'r_fpartyrole', true );
+            echo $field_value;
+        }
+        if ($column_name == 'r_tpartyrole') {
+            $field_value = get_post_meta($post_id, 'r_tpartyrole', true );
+            echo $field_value;
+        }
+        if ($column_name == 'r_payment') {
+            $field_value = get_post_meta($post_id, 'r_payment', true );
+            echo $field_value;
+        }
         if ($column_name == 'name') {
             $field_value = get_post_meta($post_id, 'name', true );
-            echo $field_value;
-        }
-        if ($column_name == 'p_type') {
-            $field_value = get_post_meta($post_id, 'p_type', true );
-            echo $field_value;
-        }
-        if ($column_name == 'p_tparty') {
-            $field_value = get_post_meta($post_id, 'p_tparty', true );
             echo $field_value;
         }
         if ($column_name == 'amount') {
             $field_value = get_post_meta($post_id, 'amount', true );
             echo $field_value;
         }
-        if ($column_name == 'parent_id') {
-            $field_value = get_post_meta($post_id, 'parent_id', true );
+        if ($column_name == 'effective_date') {
+            $field_value = get_post_meta($post_id, 'effective_date', true );
+            echo $field_value;
+        }
+        if ($column_name == 'description') {
+            $field_value = get_post_meta($post_id, 'description', true );
+            echo $field_value;
+        }
+        if ($column_name == 'business_unit') {
+            $field_value = get_post_meta($post_id, 'business_unit', true );
             echo $field_value;
         }
     }

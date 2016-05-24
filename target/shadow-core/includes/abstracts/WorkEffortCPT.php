@@ -27,7 +27,7 @@ class WorkEffortCPT {
             'description' => 'The Redone Via Work Effort field',
             'type' => 'text',
         ),
-        array('name' => 'we_type',
+        array('name' => 'type',
             'title' => 'Work Effort Type',
             'description' => 'The Work Effort Type field',
             'type' => 'text',
@@ -133,7 +133,7 @@ class WorkEffortCPT {
             'entity_name' => 'WorkEffort',
             'entity_description' => 'Work Effort',
             'data_type' => 'sb_workeffort',
-            'is_required' => true,
+            'is_required' => false,
             'is_visible' => true,
             'is_create_field' => true,
             'is_edit_field' => true,
@@ -141,7 +141,7 @@ class WorkEffortCPT {
             'is_list_field' => true,
             'is_form_field' => true,
             'is_relationship_field' => true,),
-        'we_type' => array('name' => 'we_type',
+        'type' => array('name' => 'type',
             'description' => 'Work Effort Type',
             'size' => 'large',
             'entity_name' => 'WorkEffortType',
@@ -839,7 +839,7 @@ class WorkEffortCPT {
                     'entity_name' => 'WorkEffort',
                     'entity_description' => 'Work Effort',
                     'data_type' => 'sb_workeffort',
-                    'is_required' => true,
+                    'is_required' => false,
                     'is_visible' => true,
                     'is_create_field' => true,
                     'is_edit_field' => true,
@@ -847,7 +847,7 @@ class WorkEffortCPT {
                     'is_list_field' => true,
                     'is_form_field' => true,
                     'is_relationship_field' => true,),
-                'we_type' => array('name' => 'we_type',
+                'type' => array('name' => 'type',
                     'description' => 'Work Effort Type',
                     'size' => 'large',
                     'entity_name' => 'WorkEffortType',
@@ -1194,7 +1194,7 @@ class WorkEffortCPT {
 
     public static function sb_workeffort_table_head($defaults){
         $defaults['we_redone_via']  = 'Redone Via Work Effort';
-        $defaults['we_type']  = 'Work Effort Type';
+        $defaults['type']  = 'Work Effort Type';
         $defaults['wep_type']  = 'Purpose Type';
         $defaults['we_property']  = 'Property';
         $defaults['name']  = 'name';
@@ -1221,8 +1221,8 @@ class WorkEffortCPT {
             $field_value = get_post_meta($post_id, 'we_redone_via', true );
             echo $field_value;
         }
-        if ($column_name == 'we_type') {
-            $field_value = get_post_meta($post_id, 'we_type', true );
+        if ($column_name == 'type') {
+            $field_value = get_post_meta($post_id, 'type', true );
             echo $field_value;
         }
         if ($column_name == 'wep_type') {

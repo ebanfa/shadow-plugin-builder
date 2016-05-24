@@ -33,15 +33,21 @@ class PropertyViewFilter extends ViewFilter {
             if(isset($_REQUEST['category'])) {
                 //$category = sanitize_text_field($_REQUEST['category']);
                 //$property_category = EntityAPI::get_by_code('propertycategory', array('entity_code' => strtoupper($category)));
+                $category_field = array();
+                $category_field['name'] = 'category';
+                $category_field['data_type'] = 'hidden';
+                $category_field['is_relationship_field'] = false;
+                $category_field['value'] = sanitize_text_field($_REQUEST['category']);
+                $form_fields['category'] = $category_field;
             }
 
             foreach ($form_fields as $key => $field) {
                 if($field['name'] == 'p_party'){
-                    $field['options_criteria'] = array('name' => 'role', 'value' => 'client');
+                    $field['options_criteria'] = array('role' => 'landlord');
                     $form_fields[$key] = $field;
                 }
                 if($field['name'] == 'p_type' && isset($property_category['id'])){
-                    $field['options_criteria'] = array('name' => 'category', 'value' => $property_category['id']);
+                    $field['options_criteria'] = array('category' => $property_category['id']);
                     $form_fields[$key] = $field;
                 }
             }
@@ -59,7 +65,8 @@ class PropertyViewFilter extends ViewFilter {
         
         if($page_action == 'list') {
             // Get all property categories
-            $property_types = EntityAPI::find_by_criteria('propertytype', array());
+            $entity_data = EntityAPIUtils::init_entity_data('propertytype');
+            $property_types = EntityAPI::find_all($entity_data);
             // for each create a link
             foreach ($property_types as $key => $type) {
                 $action_links[$key] = array('name' => 'New '. $type['name'], 

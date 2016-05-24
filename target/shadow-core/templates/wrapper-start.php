@@ -18,16 +18,16 @@
 
 			<ul class="actions ">
 				<li>
-					<a href="index.html"> <i class="md md-trending-up"></i></a>
+					<a href="#"> <i class="zmdi zmdi-trending-up"></i></a>
 				</li>
 				<li>
-					<a href="index.html"> <i class="md md-done-all"></i></a></li>
+					<a href="#"> <i class="zmdi zmdi-check-all"></i></a></li>
 				<li class="dropdown">
-					<a href="index.html" data-toggle="dropdown"><i class="md md-more-vert"></i></a>
+					<a href="#" data-toggle="dropdown"><i class="zmdi zmdi-more-vert"></i></a>
 					<ul class="dropdown-menu dropdown-menu-right">
-						<li><a href="index.html">Refresh</a></li>
-						<li><a href="index.html">Manage Widgets</a></li>
-						<li><a href="index.html">Widgets Settings</a></li>
+						<li><a href="#">Refresh</a></li>
+						<li><a href="#">Manage Widgets</a></li>
+						<li><a href="#">Widgets Settings</a></li>
 					</ul>
 				</li>
 			</ul>

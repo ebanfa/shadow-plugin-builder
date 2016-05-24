@@ -22,7 +22,7 @@ class ChargeTypeCPT {
             'description' => 'The Code field',
             'type' => 'text',
         ),
-        array('name' => 'category',
+        array('name' => 'business_category',
             'title' => 'Category',
             'description' => 'The Category field',
             'type' => 'text',
@@ -57,12 +57,12 @@ class ChargeTypeCPT {
             'is_list_field' => false,
             'is_form_field' => false,
             'is_relationship_field' => false,),
-        'category' => array('name' => 'category',
+        'business_category' => array('name' => 'business_category',
             'description' => 'Category',
             'size' => 'large',
-            'entity_name' => 'ChargeCategory',
-            'entity_description' => 'Charge Category',
-            'data_type' => 'sb_chargecat',
+            'entity_name' => 'BusinessCategory',
+            'entity_description' => 'Business Category',
+            'data_type' => 'sb_businesscat',
             'is_required' => false,
             'is_visible' => false,
             'is_create_field' => false,
@@ -268,8 +268,8 @@ class ChargeTypeCPT {
             $field_value = get_post_meta($post_id, 'entity_code', true );
             echo $field_value;
         }
-        if ($column_name == 'category') {
-            $field_value = get_post_meta($post_id, 'category', true );
+        if ($column_name == 'business_category') {
+            $field_value = get_post_meta($post_id, 'business_category', true );
             echo $field_value;
         }
         if ($column_name == 'name') {

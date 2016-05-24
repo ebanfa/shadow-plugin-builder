@@ -4,7 +4,6 @@
     if (!defined('ABSPATH')) {
         exit; // Exit if accessed directly
     }
-
     $view = $_REQUEST['page_info']['view'];
     $model = $view->get_model();
     $tabs = $view->get_tabs();
@@ -14,7 +13,7 @@
     if(isset($_REQUEST['parent_param'])) $parent_param = urldecode($_REQUEST['parent_param']);
 
 ?>
-<ul class="tab-nav tn-justified tn-icon" role="tablist">
+<ul class="tab-nav tn-justified tn-icon c-overflow" role="tablist">
     <li role="presentation" class="active">
         <a class="col-sx-4" href="#tab-0" aria-controls="tab-0" role="tab" data-toggle="tab">
             <?php echo $model['entity_description']; ?>
@@ -54,6 +53,9 @@
                 </tbody>
             </table>
         </div>
+        <?php 
+            
+        ?>
         <div class="btn-demo m-t-10">
             <a href="<?php echo $view->get_edit_url(); ?>" class="btn btn-primary waves-effect">
                <?php _e('Edit', 'framework') ?>
@@ -133,7 +135,7 @@ $('#delete-entity-btn').click(function(e){
         var form = $('#delete-entity-form').ajaxSubmit(
         {/* options */
             url: shadowcore_ajax_script.ajaxurl,
-            data: ({action: 'delete_<?php echo $model['entity_post_name']; ?>_ajax'}),
+            data: ({action: 'delete_entity_ajax'}),
             success: function (response)
             {
                 var success_msg = '';

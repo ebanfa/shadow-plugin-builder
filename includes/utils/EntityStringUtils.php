@@ -15,7 +15,15 @@ class EntityStringUtils {
     public static function is_invalid_string($string){
         return (!isset($string) || trim($string)==='');
     }
+    public static function starts_with($haystack, $needle) {
+        // search backwards starting from haystack length characters from the end
+        return $needle === "" || strrpos($haystack, $needle, -strlen($haystack)) !== false;
+    }
 
+    public static function ends_with($haystack, $needle) {
+        // search forward starting from end minus needle length characters
+        return $needle === "" || (($temp = strlen($haystack) - strlen($needle)) >= 0 && strpos($haystack, $needle, $temp) !== false);
+    }
     /**
      *  crypto_rand_secure function
      */
@@ -47,6 +55,25 @@ class EntityStringUtils {
         }
         return $token;
     }
+
+    /*------------------------------------------------------------------------------
+    SYNOPSIS: a simple parsing function for basic templating.
+    INPUT:
+        $tpl (str): a string containing [+placeholders+]
+        $hash (array): an associative array('key' => 'value');
+    OUTPUT
+        string; placeholders corresponding to the keys of the hash will be replaced
+        with the values and the string will be returned.
+    ------------------------------------------------------------------------------*/
+    public static function parse($tpl, $hash) {
+        foreach ($hash as $key => $value) {
+            if($key != 'attachments') {
+                $tpl = str_replace('[+'.$key.'+]', $value, $tpl);
+            }
+        }
+        return $tpl;
+    }
+
     
 }
 

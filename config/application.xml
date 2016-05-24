@@ -7,7 +7,7 @@
 	<generateSourcesDir>/home/adrian/Projects/shadow-plugin-builder/target/</generateSourcesDir>
 
 	<menuBar>
-		<menuGroup>
+		<!-- <menuGroup>
 			<name>dashboard</name>
 			<displayName>Dashboard</displayName>
 			<description>Dashboard</description>
@@ -238,7 +238,7 @@
 				<targetType>entity</targetType>
 				<target>/wordpress/page?page_action=list&amp;artifact=term</target>
 			</menu>
-		</menuGroup>
+		</menuGroup> -->
 
 		<!-- <menuGroup>
 			<name>acquisition</name>
@@ -275,7 +275,7 @@
 			</menu>
 		</menuGroup> -->
 
-		<menuGroup>
+		<!-- <menuGroup>
 			<name>accounting</name>
 			<displayName>Accounting &amp; Budgeting</displayName>
 			<description>Accounting &amp; Budgeting</description>
@@ -729,15 +729,24 @@
 				<targetType>entity</targetType>
 				<target>/wordpress/page?page_action=list&amp;artifact=location</target>
 			</menu>
-		</menuGroup>
+		</menuGroup> -->
 
 		<menuGroup>
-			<name>settings</name>
-			<displayName>Settings</displayName>
-			<description>Settings</description>
+			<name>profile</name>
+			<displayName>Profile</displayName>
+			<description>Profile</description>
 			<type>group</type>
 			<cssClass>md-person</cssClass>
 			<menu>
+				<name>orders</name>
+				<displayName>Orders</displayName>
+				<description>Orders</description>
+				<active>N</active>
+				<cssClass>md-person</cssClass>
+				<targetType>entity</targetType>
+				<target>/wordpress/page?page_action=list&amp;artifact=contentorder</target>
+			</menu>
+			<!-- <menu>
 				<name>profile</name>
 				<displayName>Profile</displayName>
 				<description>Profile</description>
@@ -754,7 +763,7 @@
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
 				<target>/wordpress/page?page_action=list&amp;artifact=conversation</target>
-			</menu>
+			</menu> -->
 			<menu>
 				<name>signout</name>
 				<displayName>Sign Out</displayName>
@@ -792,7 +801,7 @@
 			<name>LoanApplication</name>
 			<postName>sb_loanapp</postName>
 			<description>Loan Application</description>
-			<global>Y</global>
+			<global>N</global>
 			<apiTemplate>api/wordpress/loanapplication/loanapplication-service-api.ftl</apiTemplate>
 			<field>
 				<name>entity_code</name>
@@ -1050,6 +1059,190 @@
 				<displayName>Description</displayName>
 				<relationshipField>N</relationshipField>
 			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+		</entity>
+
+		<entity>
+			<name>ContentOrder</name>
+			<postName>sb_corder</postName>
+			<description>Content Order</description>
+			<global>N</global>
+			<apiTemplate>api/wordpress/party/party-service-api.ftl</apiTemplate>
+			<field>
+				<name>entity_code</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>alphanumeric</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Code</description>
+				<displayName>Code</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>name</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>name</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Name</description>
+				<displayName>name</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>email</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>email</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Name</description>
+				<displayName>name</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>document_type</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_doctype</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Document Type</description>
+				<displayName>Document Type</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>urgency</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_docurgency</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Urgency</description>
+				<displayName>Urgency</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>numpages</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_noopages</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>No Of Pages</description>
+				<displayName>No Of Pages</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>subject_area</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_subarea</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Subject Area</description>
+				<displayName>Subject Area</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>writing_style</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_wstyle</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Writing Style</description>
+				<displayName>Writing Style</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>description</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text-lg</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Description</description>
+				<displayName>Description</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
 		</entity>
 
 		<entity>
@@ -1122,6 +1315,7 @@
 				<relationshipField>N</relationshipField>
 			</field>
 		</entity>
+
 		<entity>
 			<name>ContactUs</name>
 			<postName>sb_contactus</postName>
@@ -2282,7 +2476,7 @@
 			<postName>sb_partygroup</postName>
 			<description>Party Group</description>
 			<global>N</global>
-			<!-- <createPageTemplate>html/wordpress/entity/partygroup/partygroup-create-form.ftl</createPageTemplate> -->
+			<viewFilterTemplate>views/wordpress/partygroup/partygroup-view-filter.ftl</viewFilterTemplate>
 			<editPageTemplate>html/wordpress/entity/partygroup/partygroup-edit-form.ftl</editPageTemplate>
 			<createViewTemplate>views/wordpress/partygroup/create-entity-view.ftl</createViewTemplate>
 			<apiTemplate>api/wordpress/partygroup/partygroup-service-api.ftl</apiTemplate>
@@ -6865,6 +7059,9 @@
 			<postName>sb_building</postName>
 			<description>Building</description>
 			<global>N</global>
+			<!-- <viewFilterTemplate>views/wordpress/purchaseagreement/purchaseagreement-view-filter.ftl</viewFilterTemplate>
+			<createViewTemplate>views/wordpress/purchaseagreement/create-entity-view.ftl</createViewTemplate> -->
+			<!-- <apiTemplate>api/wordpress/building/building-service-api.ftl</apiTemplate> -->
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>

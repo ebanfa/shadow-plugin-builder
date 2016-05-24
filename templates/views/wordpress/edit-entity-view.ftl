@@ -39,20 +39,18 @@ class EditEntityView extends BaseEntityView {
      */
     public function get_form_fields() {
         $form_fields = parent::get_form_fields();
-        $edit_fields = $this->get_edit_form_fields();
-        //$form_fields = array_unique(array_merge($form_fields, $create_fields));
+        $edit_fields = $this->get_edit_form_fields($form_fields);
         return $edit_fields; 
     }
 
     /**
      * 
      */
-    public function get_edit_form_fields() {
+    public function get_edit_form_fields($form_fields) {
         $edit_fields = array();
-        foreach ($this->model['entity_fields'] as $field) {
-
+        foreach ($form_fields as $field) {
             if ($field['is_edit_field'] && $field['is_form_field']) {
-                array_push($edit_fields, $this->prepare_view_form_field($field));
+                array_push($edit_fields, $field);
             }
         }
         return $edit_fields; 

@@ -1,51 +1,6 @@
 
 jQuery(document).ready(function ($)
 {   
-    $('#sb_loanapp_form').bootstrapValidator().on('success.form.bv', function (e)
-    {
-        e.preventDefault();
-        var formData = new FormData(), params = $(e.target).serializeArray();
-        // Copy other params from the form into the formData
-        $.each(params, function(i, val) {
-            formData.append(val.name, val.value);
-        });
-        // As required by wordpress
-        formData.append('action', 'create_entity_ajax');
-        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
-        // Make the Ajax call
-        $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            type: 'POST',
-            success: function(responseData) {
-                if (responseData.success) {
-
-                    swal({   
-                        title: "Great Job!",   
-                        text: "The data operation completed successfully",   
-                        type: "success",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
-                    });
-                }
-                else {
-                    swal({   
-                        title: "Oops!",   
-                        text: responseData.data.message,   
-                        type: "warning",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    });
-                }
-            }
-        });
-    });
-
     $('#sb_currency_form').bootstrapValidator().on('success.form.bv', function (e)
     {
         e.preventDefault();
@@ -59,7 +14,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -74,53 +29,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
-                    });
-                }
-                else {
-                    swal({   
-                        title: "Oops!",   
-                        text: responseData.data.message,   
-                        type: "warning",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    });
-                }
-            }
-        });
-    });
-
-    $('#sb_contactus_form').bootstrapValidator().on('success.form.bv', function (e)
-    {
-        e.preventDefault();
-        var formData = new FormData(), params = $(e.target).serializeArray();
-        // Copy other params from the form into the formData
-        $.each(params, function(i, val) {
-            formData.append(val.name, val.value);
-        });
-        // As required by wordpress
-        formData.append('action', 'create_entity_ajax');
-        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
-        // Make the Ajax call
-        $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            type: 'POST',
-            success: function(responseData) {
-                if (responseData.success) {
-
-                    swal({   
-                        title: "Great Job!",   
-                        text: "The data operation completed successfully",   
-                        type: "success",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -149,7 +63,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -164,8 +78,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -194,7 +112,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -209,8 +127,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -226,7 +148,7 @@ jQuery(document).ready(function ($)
         });
     });
 
-    $('#sb_partycat_form').bootstrapValidator().on('success.form.bv', function (e)
+    $('#sb_business_form').bootstrapValidator().on('success.form.bv', function (e)
     {
         e.preventDefault();
         var formData = new FormData(), params = $(e.target).serializeArray();
@@ -239,7 +161,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -254,143 +176,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
-                    });
-                }
-                else {
-                    swal({   
-                        title: "Oops!",   
-                        text: responseData.data.message,   
-                        type: "warning",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    });
-                }
-            }
-        });
-    });
-
-    $('#sb_partytype_form').bootstrapValidator().on('success.form.bv', function (e)
-    {
-        e.preventDefault();
-        var formData = new FormData(), params = $(e.target).serializeArray();
-        // Copy other params from the form into the formData
-        $.each(params, function(i, val) {
-            formData.append(val.name, val.value);
-        });
-        // As required by wordpress
-        formData.append('action', 'create_entity_ajax');
-        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
-        // Make the Ajax call
-        $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            type: 'POST',
-            success: function(responseData) {
-                if (responseData.success) {
-
-                    swal({   
-                        title: "Great Job!",   
-                        text: "The data operation completed successfully",   
-                        type: "success",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
-                    });
-                }
-                else {
-                    swal({   
-                        title: "Oops!",   
-                        text: responseData.data.message,   
-                        type: "warning",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    });
-                }
-            }
-        });
-    });
-
-    $('#sb_roletype_form').bootstrapValidator().on('success.form.bv', function (e)
-    {
-        e.preventDefault();
-        var formData = new FormData(), params = $(e.target).serializeArray();
-        // Copy other params from the form into the formData
-        $.each(params, function(i, val) {
-            formData.append(val.name, val.value);
-        });
-        // As required by wordpress
-        formData.append('action', 'create_entity_ajax');
-        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
-        // Make the Ajax call
-        $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            type: 'POST',
-            success: function(responseData) {
-                if (responseData.success) {
-
-                    swal({   
-                        title: "Great Job!",   
-                        text: "The data operation completed successfully",   
-                        type: "success",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
-                    });
-                }
-                else {
-                    swal({   
-                        title: "Oops!",   
-                        text: responseData.data.message,   
-                        type: "warning",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    });
-                }
-            }
-        });
-    });
-
-    $('#sb_party_form').bootstrapValidator().on('success.form.bv', function (e)
-    {
-        e.preventDefault();
-        var formData = new FormData(), params = $(e.target).serializeArray();
-        // Copy other params from the form into the formData
-        $.each(params, function(i, val) {
-            formData.append(val.name, val.value);
-        });
-        // As required by wordpress
-        formData.append('action', 'create_entity_ajax');
-        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
-        // Make the Ajax call
-        $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            type: 'POST',
-            success: function(responseData) {
-                if (responseData.success) {
-
-                    swal({   
-                        title: "Great Job!",   
-                        text: "The data operation completed successfully",   
-                        type: "success",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -419,7 +210,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -434,8 +225,208 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_partycat_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_partytype_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_roletype_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_party_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -464,7 +455,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -479,8 +470,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -509,7 +504,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -524,8 +519,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -554,7 +553,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -569,8 +568,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -599,7 +602,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -614,8 +617,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -644,7 +651,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -659,8 +666,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -689,7 +700,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -704,8 +715,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -734,7 +749,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -749,8 +764,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -779,7 +798,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -794,8 +813,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -824,7 +847,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -839,8 +862,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -856,7 +883,7 @@ jQuery(document).ready(function ($)
         });
     });
 
-    $('#sb_chargecat_form').bootstrapValidator().on('success.form.bv', function (e)
+    $('#sb_invitestatus_form').bootstrapValidator().on('success.form.bv', function (e)
     {
         e.preventDefault();
         var formData = new FormData(), params = $(e.target).serializeArray();
@@ -869,7 +896,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -884,8 +911,110 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_userinvite_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_businesscat_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -914,7 +1043,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -929,8 +1058,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -959,7 +1092,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -974,8 +1107,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -1004,7 +1141,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -1019,53 +1156,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
-                    });
-                }
-                else {
-                    swal({   
-                        title: "Oops!",   
-                        text: responseData.data.message,   
-                        type: "warning",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    });
-                }
-            }
-        });
-    });
-
-    $('#sb_expensecat_form').bootstrapValidator().on('success.form.bv', function (e)
-    {
-        e.preventDefault();
-        var formData = new FormData(), params = $(e.target).serializeArray();
-        // Copy other params from the form into the formData
-        $.each(params, function(i, val) {
-            formData.append(val.name, val.value);
-        });
-        // As required by wordpress
-        formData.append('action', 'create_entity_ajax');
-        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
-        // Make the Ajax call
-        $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            type: 'POST',
-            success: function(responseData) {
-                if (responseData.success) {
-
-                    swal({   
-                        title: "Great Job!",   
-                        text: "The data operation completed successfully",   
-                        type: "success",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -1094,7 +1190,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -1109,8 +1205,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -1139,7 +1239,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -1154,8 +1254,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -1184,7 +1288,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -1199,8 +1303,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -1216,7 +1324,7 @@ jQuery(document).ready(function ($)
         });
     });
 
-    $('#sb_inventype_form').bootstrapValidator().on('success.form.bv', function (e)
+    $('#sb_liabcat_form').bootstrapValidator().on('success.form.bv', function (e)
     {
         e.preventDefault();
         var formData = new FormData(), params = $(e.target).serializeArray();
@@ -1229,7 +1337,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -1244,8 +1352,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -1261,7 +1373,7 @@ jQuery(document).ready(function ($)
         });
     });
 
-    $('#sb_fassettype_form').bootstrapValidator().on('success.form.bv', function (e)
+    $('#sb_liabtype_form').bootstrapValidator().on('success.form.bv', function (e)
     {
         e.preventDefault();
         var formData = new FormData(), params = $(e.target).serializeArray();
@@ -1274,7 +1386,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -1289,8 +1401,61 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_liability_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -1319,7 +1484,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -1334,53 +1499,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
-                    });
-                }
-                else {
-                    swal({   
-                        title: "Oops!",   
-                        text: responseData.data.message,   
-                        type: "warning",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    });
-                }
-            }
-        });
-    });
-
-    $('#sb_invitemtype_form').bootstrapValidator().on('success.form.bv', function (e)
-    {
-        e.preventDefault();
-        var formData = new FormData(), params = $(e.target).serializeArray();
-        // Copy other params from the form into the formData
-        $.each(params, function(i, val) {
-            formData.append(val.name, val.value);
-        });
-        // As required by wordpress
-        formData.append('action', 'create_entity_ajax');
-        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
-        // Make the Ajax call
-        $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            type: 'POST',
-            success: function(responseData) {
-                if (responseData.success) {
-
-                    swal({   
-                        title: "Great Job!",   
-                        text: "The data operation completed successfully",   
-                        type: "success",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -1409,7 +1533,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -1424,8 +1548,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -1454,7 +1582,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -1469,8 +1597,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -1499,7 +1631,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -1514,8 +1646,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -1544,7 +1680,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -1559,8 +1695,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -1589,7 +1729,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -1604,8 +1744,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -1634,7 +1778,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -1649,8 +1793,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -1679,7 +1827,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -1694,8 +1842,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -1724,7 +1876,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -1739,8 +1891,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -1769,7 +1925,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -1784,8 +1940,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -1814,7 +1974,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -1829,8 +1989,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -1859,7 +2023,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -1874,8 +2038,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -1904,7 +2072,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -1919,8 +2087,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -1949,7 +2121,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -1964,8 +2136,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -1994,7 +2170,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -2009,8 +2185,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -2039,7 +2219,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -2054,8 +2234,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -2084,7 +2268,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -2099,8 +2283,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -2129,7 +2317,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -2144,8 +2332,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -2174,7 +2366,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -2189,8 +2381,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -2219,7 +2415,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -2234,8 +2430,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -2264,7 +2464,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -2279,8 +2479,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -2309,7 +2513,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -2324,8 +2528,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -2354,7 +2562,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -2369,8 +2577,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -2386,7 +2598,7 @@ jQuery(document).ready(function ($)
         });
     });
 
-    $('#sb_fixedasset_form').bootstrapValidator().on('success.form.bv', function (e)
+    $('#sb_assetcat_form').bootstrapValidator().on('success.form.bv', function (e)
     {
         e.preventDefault();
         var formData = new FormData(), params = $(e.target).serializeArray();
@@ -2399,7 +2611,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -2414,8 +2626,159 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_assettype_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_asset_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_inventype_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -2444,7 +2807,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -2459,8 +2822,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -2476,7 +2843,7 @@ jQuery(document).ready(function ($)
         });
     });
 
-    $('#sb_piitem_form').bootstrapValidator().on('success.form.bv', function (e)
+    $('#sb_invitemtype_form').bootstrapValidator().on('success.form.bv', function (e)
     {
         e.preventDefault();
         var formData = new FormData(), params = $(e.target).serializeArray();
@@ -2489,7 +2856,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -2504,8 +2871,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -2521,7 +2892,7 @@ jQuery(document).ready(function ($)
         });
     });
 
-    $('#sb_pexpense_form').bootstrapValidator().on('success.form.bv', function (e)
+    $('#sb_inventoryitem_form').bootstrapValidator().on('success.form.bv', function (e)
     {
         e.preventDefault();
         var formData = new FormData(), params = $(e.target).serializeArray();
@@ -2534,7 +2905,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -2549,8 +2920,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -2579,7 +2954,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -2594,8 +2969,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -2624,7 +3003,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -2639,8 +3018,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -2669,7 +3052,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -2684,8 +3067,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -2701,7 +3088,7 @@ jQuery(document).ready(function ($)
         });
     });
 
-    $('#sb_building_form').bootstrapValidator().on('success.form.bv', function (e)
+    $('#sb_buildtypropty_form').bootstrapValidator().on('success.form.bv', function (e)
     {
         e.preventDefault();
         var formData = new FormData(), params = $(e.target).serializeArray();
@@ -2714,7 +3101,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -2729,143 +3116,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
-                    });
-                }
-                else {
-                    swal({   
-                        title: "Oops!",   
-                        text: responseData.data.message,   
-                        type: "warning",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    });
-                }
-            }
-        });
-    });
-
-    $('#sb_bcharge_form').bootstrapValidator().on('success.form.bv', function (e)
-    {
-        e.preventDefault();
-        var formData = new FormData(), params = $(e.target).serializeArray();
-        // Copy other params from the form into the formData
-        $.each(params, function(i, val) {
-            formData.append(val.name, val.value);
-        });
-        // As required by wordpress
-        formData.append('action', 'create_entity_ajax');
-        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
-        // Make the Ajax call
-        $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            type: 'POST',
-            success: function(responseData) {
-                if (responseData.success) {
-
-                    swal({   
-                        title: "Great Job!",   
-                        text: "The data operation completed successfully",   
-                        type: "success",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
-                    });
-                }
-                else {
-                    swal({   
-                        title: "Oops!",   
-                        text: responseData.data.message,   
-                        type: "warning",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    });
-                }
-            }
-        });
-    });
-
-    $('#sb_bexpense_form').bootstrapValidator().on('success.form.bv', function (e)
-    {
-        e.preventDefault();
-        var formData = new FormData(), params = $(e.target).serializeArray();
-        // Copy other params from the form into the formData
-        $.each(params, function(i, val) {
-            formData.append(val.name, val.value);
-        });
-        // As required by wordpress
-        formData.append('action', 'create_entity_ajax');
-        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
-        // Make the Ajax call
-        $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            type: 'POST',
-            success: function(responseData) {
-                if (responseData.success) {
-
-                    swal({   
-                        title: "Great Job!",   
-                        text: "The data operation completed successfully",   
-                        type: "success",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
-                    });
-                }
-                else {
-                    swal({   
-                        title: "Oops!",   
-                        text: responseData.data.message,   
-                        type: "warning",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    });
-                }
-            }
-        });
-    });
-
-    $('#sb_buildfiles_form').bootstrapValidator().on('success.form.bv', function (e)
-    {
-        e.preventDefault();
-        var formData = new FormData(), params = $(e.target).serializeArray();
-        // Copy other params from the form into the formData
-        $.each(params, function(i, val) {
-            formData.append(val.name, val.value);
-        });
-        // As required by wordpress
-        formData.append('action', 'create_entity_ajax');
-        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
-        // Make the Ajax call
-        $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            type: 'POST',
-            success: function(responseData) {
-                if (responseData.success) {
-
-                    swal({   
-                        title: "Great Job!",   
-                        text: "The data operation completed successfully",   
-                        type: "success",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -2894,7 +3150,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -2909,8 +3165,159 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_building_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_bcharge_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_buildfiles_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -2939,7 +3346,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -2954,8 +3361,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -2984,7 +3395,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -2999,8 +3410,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -3029,7 +3444,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -3044,53 +3459,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
-                    });
-                }
-                else {
-                    swal({   
-                        title: "Oops!",   
-                        text: responseData.data.message,   
-                        type: "warning",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    });
-                }
-            }
-        });
-    });
-
-    $('#sb_fexpense_form').bootstrapValidator().on('success.form.bv', function (e)
-    {
-        e.preventDefault();
-        var formData = new FormData(), params = $(e.target).serializeArray();
-        // Copy other params from the form into the formData
-        $.each(params, function(i, val) {
-            formData.append(val.name, val.value);
-        });
-        // As required by wordpress
-        formData.append('action', 'create_entity_ajax');
-        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
-        // Make the Ajax call
-        $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            type: 'POST',
-            success: function(responseData) {
-                if (responseData.success) {
-
-                    swal({   
-                        title: "Great Job!",   
-                        text: "The data operation completed successfully",   
-                        type: "success",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -3119,7 +3493,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -3134,8 +3508,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -3164,7 +3542,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -3179,53 +3557,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
-                    });
-                }
-                else {
-                    swal({   
-                        title: "Oops!",   
-                        text: responseData.data.message,   
-                        type: "warning",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    });
-                }
-            }
-        });
-    });
-
-    $('#sb_utypeexpense_form').bootstrapValidator().on('success.form.bv', function (e)
-    {
-        e.preventDefault();
-        var formData = new FormData(), params = $(e.target).serializeArray();
-        // Copy other params from the form into the formData
-        $.each(params, function(i, val) {
-            formData.append(val.name, val.value);
-        });
-        // As required by wordpress
-        formData.append('action', 'create_entity_ajax');
-        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
-        // Make the Ajax call
-        $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            type: 'POST',
-            success: function(responseData) {
-                if (responseData.success) {
-
-                    swal({   
-                        title: "Great Job!",   
-                        text: "The data operation completed successfully",   
-                        type: "success",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -3254,7 +3591,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -3269,8 +3606,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -3299,7 +3640,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -3314,53 +3655,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
-                    });
-                }
-                else {
-                    swal({   
-                        title: "Oops!",   
-                        text: responseData.data.message,   
-                        type: "warning",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    });
-                }
-            }
-        });
-    });
-
-    $('#sb_unitexpense_form').bootstrapValidator().on('success.form.bv', function (e)
-    {
-        e.preventDefault();
-        var formData = new FormData(), params = $(e.target).serializeArray();
-        // Copy other params from the form into the formData
-        $.each(params, function(i, val) {
-            formData.append(val.name, val.value);
-        });
-        // As required by wordpress
-        formData.append('action', 'create_entity_ajax');
-        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
-        // Make the Ajax call
-        $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            type: 'POST',
-            success: function(responseData) {
-                if (responseData.success) {
-
-                    swal({   
-                        title: "Great Job!",   
-                        text: "The data operation completed successfully",   
-                        type: "success",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -3389,7 +3689,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -3404,8 +3704,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -3434,7 +3738,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -3449,8 +3753,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -3479,7 +3787,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -3494,8 +3802,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -3524,7 +3836,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -3539,53 +3851,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
-                    });
-                }
-                else {
-                    swal({   
-                        title: "Oops!",   
-                        text: responseData.data.message,   
-                        type: "warning",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    });
-                }
-            }
-        });
-    });
-
-    $('#sb_feexpense_form').bootstrapValidator().on('success.form.bv', function (e)
-    {
-        e.preventDefault();
-        var formData = new FormData(), params = $(e.target).serializeArray();
-        // Copy other params from the form into the formData
-        $.each(params, function(i, val) {
-            formData.append(val.name, val.value);
-        });
-        // As required by wordpress
-        formData.append('action', 'create_entity_ajax');
-        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
-        // Make the Ajax call
-        $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            type: 'POST',
-            success: function(responseData) {
-                if (responseData.success) {
-
-                    swal({   
-                        title: "Great Job!",   
-                        text: "The data operation completed successfully",   
-                        type: "success",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -3614,7 +3885,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -3629,8 +3900,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -3659,7 +3934,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -3674,53 +3949,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
-                    });
-                }
-                else {
-                    swal({   
-                        title: "Oops!",   
-                        text: responseData.data.message,   
-                        type: "warning",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    });
-                }
-            }
-        });
-    });
-
-    $('#sb_pstypeexpense_form').bootstrapValidator().on('success.form.bv', function (e)
-    {
-        e.preventDefault();
-        var formData = new FormData(), params = $(e.target).serializeArray();
-        // Copy other params from the form into the formData
-        $.each(params, function(i, val) {
-            formData.append(val.name, val.value);
-        });
-        // As required by wordpress
-        formData.append('action', 'create_entity_ajax');
-        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
-        // Make the Ajax call
-        $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            type: 'POST',
-            success: function(responseData) {
-                if (responseData.success) {
-
-                    swal({   
-                        title: "Great Job!",   
-                        text: "The data operation completed successfully",   
-                        type: "success",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -3749,7 +3983,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -3764,8 +3998,61 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_agreecat_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -3794,7 +4081,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -3809,8 +4096,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -3839,7 +4130,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -3854,8 +4145,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -3884,7 +4179,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -3899,8 +4194,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -3929,7 +4228,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -3944,8 +4243,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -3974,7 +4277,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -3989,8 +4292,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -4019,7 +4326,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -4034,8 +4341,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -4064,7 +4375,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -4079,8 +4390,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -4109,7 +4424,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -4124,53 +4439,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
-                    });
-                }
-                else {
-                    swal({   
-                        title: "Oops!",   
-                        text: responseData.data.message,   
-                        type: "warning",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    });
-                }
-            }
-        });
-    });
-
-    $('#sb_agrmntinspection_form').bootstrapValidator().on('success.form.bv', function (e)
-    {
-        e.preventDefault();
-        var formData = new FormData(), params = $(e.target).serializeArray();
-        // Copy other params from the form into the formData
-        $.each(params, function(i, val) {
-            formData.append(val.name, val.value);
-        });
-        // As required by wordpress
-        formData.append('action', 'create_entity_ajax');
-        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
-        // Make the Ajax call
-        $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            type: 'POST',
-            success: function(responseData) {
-                if (responseData.success) {
-
-                    swal({   
-                        title: "Great Job!",   
-                        text: "The data operation completed successfully",   
-                        type: "success",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -4199,7 +4473,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -4214,8 +4488,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -4244,7 +4522,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -4259,143 +4537,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
-                    });
-                }
-                else {
-                    swal({   
-                        title: "Oops!",   
-                        text: responseData.data.message,   
-                        type: "warning",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    });
-                }
-            }
-        });
-    });
-
-    $('#sb_rentagreement_form').bootstrapValidator().on('success.form.bv', function (e)
-    {
-        e.preventDefault();
-        var formData = new FormData(), params = $(e.target).serializeArray();
-        // Copy other params from the form into the formData
-        $.each(params, function(i, val) {
-            formData.append(val.name, val.value);
-        });
-        // As required by wordpress
-        formData.append('action', 'create_entity_ajax');
-        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
-        // Make the Ajax call
-        $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            type: 'POST',
-            success: function(responseData) {
-                if (responseData.success) {
-
-                    swal({   
-                        title: "Great Job!",   
-                        text: "The data operation completed successfully",   
-                        type: "success",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
-                    });
-                }
-                else {
-                    swal({   
-                        title: "Oops!",   
-                        text: responseData.data.message,   
-                        type: "warning",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    });
-                }
-            }
-        });
-    });
-
-    $('#sb_seragreement_form').bootstrapValidator().on('success.form.bv', function (e)
-    {
-        e.preventDefault();
-        var formData = new FormData(), params = $(e.target).serializeArray();
-        // Copy other params from the form into the formData
-        $.each(params, function(i, val) {
-            formData.append(val.name, val.value);
-        });
-        // As required by wordpress
-        formData.append('action', 'create_entity_ajax');
-        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
-        // Make the Ajax call
-        $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            type: 'POST',
-            success: function(responseData) {
-                if (responseData.success) {
-
-                    swal({   
-                        title: "Great Job!",   
-                        text: "The data operation completed successfully",   
-                        type: "success",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
-                    });
-                }
-                else {
-                    swal({   
-                        title: "Oops!",   
-                        text: responseData.data.message,   
-                        type: "warning",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    });
-                }
-            }
-        });
-    });
-
-    $('#sb_managreement_form').bootstrapValidator().on('success.form.bv', function (e)
-    {
-        e.preventDefault();
-        var formData = new FormData(), params = $(e.target).serializeArray();
-        // Copy other params from the form into the formData
-        $.each(params, function(i, val) {
-            formData.append(val.name, val.value);
-        });
-        // As required by wordpress
-        formData.append('action', 'create_entity_ajax');
-        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
-        // Make the Ajax call
-        $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            type: 'POST',
-            success: function(responseData) {
-                if (responseData.success) {
-
-                    swal({   
-                        title: "Great Job!",   
-                        text: "The data operation completed successfully",   
-                        type: "success",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -4424,7 +4571,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -4439,8 +4586,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -4469,7 +4620,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -4484,8 +4635,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -4514,7 +4669,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -4529,8 +4684,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -4559,7 +4718,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -4574,8 +4733,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -4604,7 +4767,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -4619,8 +4782,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -4649,7 +4816,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -4664,8 +4831,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -4694,7 +4865,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -4709,8 +4880,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -4739,7 +4914,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -4754,8 +4929,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -4784,7 +4963,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -4799,8 +4978,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -4829,7 +5012,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -4844,8 +5027,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -4874,7 +5061,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -4889,53 +5076,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
-                    });
-                }
-                else {
-                    swal({   
-                        title: "Oops!",   
-                        text: responseData.data.message,   
-                        type: "warning",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    });
-                }
-            }
-        });
-    });
-
-    $('#sb_landassmnt_form').bootstrapValidator().on('success.form.bv', function (e)
-    {
-        e.preventDefault();
-        var formData = new FormData(), params = $(e.target).serializeArray();
-        // Copy other params from the form into the formData
-        $.each(params, function(i, val) {
-            formData.append(val.name, val.value);
-        });
-        // As required by wordpress
-        formData.append('action', 'create_entity_ajax');
-        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
-        // Make the Ajax call
-        $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            type: 'POST',
-            success: function(responseData) {
-                if (responseData.success) {
-
-                    swal({   
-                        title: "Great Job!",   
-                        text: "The data operation completed successfully",   
-                        type: "success",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -4964,7 +5110,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -4979,8 +5125,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -5009,7 +5159,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -5024,8 +5174,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -5054,7 +5208,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -5069,8 +5223,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -5099,7 +5257,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -5114,8 +5272,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -5144,7 +5306,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -5159,8 +5321,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -5189,7 +5355,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -5204,8 +5370,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -5234,7 +5404,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -5249,8 +5419,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -5279,7 +5453,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -5294,8 +5468,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -5324,7 +5502,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -5339,8 +5517,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -5369,7 +5551,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -5384,8 +5566,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -5414,7 +5600,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -5429,8 +5615,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -5459,7 +5649,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -5474,8 +5664,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -5504,7 +5698,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -5519,8 +5713,306 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_accttxntype_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_accttxnstatus_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_accttransaction_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_fundmeth_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_templatetype_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_template_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -5549,7 +6041,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -5564,8 +6056,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -5594,7 +6090,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -5609,8 +6105,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -5639,7 +6139,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -5654,8 +6154,61 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_invoicerole_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -5684,7 +6237,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -5699,8 +6252,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -5729,7 +6286,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -5744,8 +6301,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -5774,7 +6335,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -5789,8 +6350,355 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_pordertype_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_porderstatus_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_porder_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_porole_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_poitemtype_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_porderitem_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_porderterm_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -5819,7 +6727,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -5834,8 +6742,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -5864,7 +6776,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -5879,8 +6791,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -5909,7 +6825,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -5924,143 +6840,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
-                    });
-                }
-                else {
-                    swal({   
-                        title: "Oops!",   
-                        text: responseData.data.message,   
-                        type: "warning",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    });
-                }
-            }
-        });
-    });
-
-    $('#sb_receipt_form').bootstrapValidator().on('success.form.bv', function (e)
-    {
-        e.preventDefault();
-        var formData = new FormData(), params = $(e.target).serializeArray();
-        // Copy other params from the form into the formData
-        $.each(params, function(i, val) {
-            formData.append(val.name, val.value);
-        });
-        // As required by wordpress
-        formData.append('action', 'create_entity_ajax');
-        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
-        // Make the Ajax call
-        $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            type: 'POST',
-            success: function(responseData) {
-                if (responseData.success) {
-
-                    swal({   
-                        title: "Great Job!",   
-                        text: "The data operation completed successfully",   
-                        type: "success",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
-                    });
-                }
-                else {
-                    swal({   
-                        title: "Oops!",   
-                        text: responseData.data.message,   
-                        type: "warning",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    });
-                }
-            }
-        });
-    });
-
-    $('#sb_outpayment_form').bootstrapValidator().on('success.form.bv', function (e)
-    {
-        e.preventDefault();
-        var formData = new FormData(), params = $(e.target).serializeArray();
-        // Copy other params from the form into the formData
-        $.each(params, function(i, val) {
-            formData.append(val.name, val.value);
-        });
-        // As required by wordpress
-        formData.append('action', 'create_entity_ajax');
-        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
-        // Make the Ajax call
-        $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            type: 'POST',
-            success: function(responseData) {
-                if (responseData.success) {
-
-                    swal({   
-                        title: "Great Job!",   
-                        text: "The data operation completed successfully",   
-                        type: "success",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
-                    });
-                }
-                else {
-                    swal({   
-                        title: "Oops!",   
-                        text: responseData.data.message,   
-                        type: "warning",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    });
-                }
-            }
-        });
-    });
-
-    $('#sb_payroll_form').bootstrapValidator().on('success.form.bv', function (e)
-    {
-        e.preventDefault();
-        var formData = new FormData(), params = $(e.target).serializeArray();
-        // Copy other params from the form into the formData
-        $.each(params, function(i, val) {
-            formData.append(val.name, val.value);
-        });
-        // As required by wordpress
-        formData.append('action', 'create_entity_ajax');
-        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
-        // Make the Ajax call
-        $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            type: 'POST',
-            success: function(responseData) {
-                if (responseData.success) {
-
-                    swal({   
-                        title: "Great Job!",   
-                        text: "The data operation completed successfully",   
-                        type: "success",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -6089,7 +6874,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -6104,8 +6889,208 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_receipttype_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_disbursetype_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_receipt_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_disbursement_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -6134,7 +7119,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -6149,8 +7134,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -6179,7 +7168,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -6194,8 +7183,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -6224,7 +7217,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -6239,8 +7232,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -6269,7 +7266,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -6284,8 +7281,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -6314,7 +7315,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -6329,8 +7330,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -6359,7 +7364,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -6374,8 +7379,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -6404,7 +7413,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -6419,8 +7428,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -6449,7 +7462,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -6464,53 +7477,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
-                    });
-                }
-                else {
-                    swal({   
-                        title: "Oops!",   
-                        text: responseData.data.message,   
-                        type: "warning",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    });
-                }
-            }
-        });
-    });
-
-    $('#sb_coaaseginst_form').bootstrapValidator().on('success.form.bv', function (e)
-    {
-        e.preventDefault();
-        var formData = new FormData(), params = $(e.target).serializeArray();
-        // Copy other params from the form into the formData
-        $.each(params, function(i, val) {
-            formData.append(val.name, val.value);
-        });
-        // As required by wordpress
-        formData.append('action', 'create_entity_ajax');
-        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
-        // Make the Ajax call
-        $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            type: 'POST',
-            success: function(responseData) {
-                if (responseData.success) {
-
-                    swal({   
-                        title: "Great Job!",   
-                        text: "The data operation completed successfully",   
-                        type: "success",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -6539,7 +7511,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -6554,8 +7526,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -6584,7 +7560,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -6599,8 +7575,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -6629,7 +7609,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -6644,8 +7624,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -6674,7 +7658,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -6689,8 +7673,61 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_coaaseginst_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -6719,7 +7756,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -6734,8 +7771,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -6764,7 +7805,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -6779,98 +7820,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
-                    });
-                }
-                else {
-                    swal({   
-                        title: "Oops!",   
-                        text: responseData.data.message,   
-                        type: "warning",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    });
-                }
-            }
-        });
-    });
-
-    $('#sb_feventtxntype_form').bootstrapValidator().on('success.form.bv', function (e)
-    {
-        e.preventDefault();
-        var formData = new FormData(), params = $(e.target).serializeArray();
-        // Copy other params from the form into the formData
-        $.each(params, function(i, val) {
-            formData.append(val.name, val.value);
-        });
-        // As required by wordpress
-        formData.append('action', 'create_entity_ajax');
-        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
-        // Make the Ajax call
-        $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            type: 'POST',
-            success: function(responseData) {
-                if (responseData.success) {
-
-                    swal({   
-                        title: "Great Job!",   
-                        text: "The data operation completed successfully",   
-                        type: "success",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
-                    });
-                }
-                else {
-                    swal({   
-                        title: "Oops!",   
-                        text: responseData.data.message,   
-                        type: "warning",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    });
-                }
-            }
-        });
-    });
-
-    $('#sb_txntypeacct_form').bootstrapValidator().on('success.form.bv', function (e)
-    {
-        e.preventDefault();
-        var formData = new FormData(), params = $(e.target).serializeArray();
-        // Copy other params from the form into the formData
-        $.each(params, function(i, val) {
-            formData.append(val.name, val.value);
-        });
-        // As required by wordpress
-        formData.append('action', 'create_entity_ajax');
-        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
-        // Make the Ajax call
-        $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            type: 'POST',
-            success: function(responseData) {
-                if (responseData.success) {
-
-                    swal({   
-                        title: "Great Job!",   
-                        text: "The data operation completed successfully",   
-                        type: "success",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -6899,7 +7854,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -6914,8 +7869,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -6944,7 +7903,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -6959,8 +7918,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -6989,7 +7952,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -7004,8 +7967,110 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_feventtxntype_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_txntypeacct_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -7034,7 +8099,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -7049,8 +8114,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -7079,7 +8148,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -7094,8 +8163,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -7124,7 +8197,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -7139,8 +8212,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -7169,7 +8246,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -7184,8 +8261,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -7214,7 +8295,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -7229,8 +8310,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -7259,7 +8344,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -7274,8 +8359,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -7304,7 +8393,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -7319,8 +8408,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -7349,7 +8442,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -7364,8 +8457,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -7394,7 +8491,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -7409,8 +8506,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -7439,7 +8540,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -7454,8 +8555,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -7484,7 +8589,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -7499,8 +8604,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -7529,7 +8638,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -7544,8 +8653,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -7574,7 +8687,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -7589,8 +8702,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -7619,7 +8736,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -7634,8 +8751,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -7664,7 +8785,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -7679,8 +8800,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -7709,7 +8834,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -7724,8 +8849,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -7754,7 +8883,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -7769,8 +8898,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -7799,7 +8932,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -7814,8 +8947,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -7844,7 +8981,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -7859,8 +8996,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -7889,7 +9030,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -7904,8 +9045,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -7934,7 +9079,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -7949,8 +9094,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -7979,7 +9128,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -7994,8 +9143,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -8024,7 +9177,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -8039,8 +9192,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -8069,7 +9226,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -8084,8 +9241,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -8114,7 +9275,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -8129,8 +9290,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -8159,7 +9324,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -8174,8 +9339,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -8204,7 +9373,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -8219,8 +9388,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -8249,7 +9422,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -8264,8 +9437,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -8294,7 +9471,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -8309,8 +9486,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -8339,7 +9520,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -8354,8 +9535,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -8384,7 +9569,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -8399,8 +9584,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -8429,7 +9618,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -8444,8 +9633,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -8474,7 +9667,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -8489,8 +9682,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -8519,7 +9716,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -8534,8 +9731,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -8564,7 +9765,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -8579,8 +9780,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -8609,7 +9814,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -8624,8 +9829,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -8654,7 +9863,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -8669,8 +9878,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -8699,7 +9912,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -8714,8 +9927,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -8744,7 +9961,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -8759,8 +9976,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -8789,7 +10010,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -8804,8 +10025,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -8834,7 +10059,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -8849,8 +10074,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -8879,7 +10108,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -8894,8 +10123,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -8924,7 +10157,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -8939,8 +10172,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -8969,7 +10206,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -8984,8 +10221,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -9014,7 +10255,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -9029,8 +10270,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -9059,7 +10304,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -9074,8 +10319,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -9104,7 +10353,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -9119,8 +10368,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -9149,7 +10402,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -9164,8 +10417,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -9194,7 +10451,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -9209,8 +10466,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -9239,7 +10500,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -9254,8 +10515,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -9284,7 +10549,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -9299,8 +10564,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -9329,7 +10598,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -9344,8 +10613,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -9374,7 +10647,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -9389,8 +10662,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -9419,7 +10696,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -9434,8 +10711,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -9464,7 +10745,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -9479,8 +10760,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -9509,7 +10794,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -9524,8 +10809,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -9554,7 +10843,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -9569,8 +10858,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -9599,7 +10892,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -9614,8 +10907,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -9644,7 +10941,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -9659,8 +10956,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -9689,7 +10990,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -9704,8 +11005,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -9734,7 +11039,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -9749,8 +11054,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -9779,7 +11088,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -9794,8 +11103,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -9824,7 +11137,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -9839,8 +11152,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -9869,7 +11186,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -9884,8 +11201,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -9914,7 +11235,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -9929,8 +11250,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -9959,7 +11284,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -9974,8 +11299,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -10004,7 +11333,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -10019,8 +11348,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -10049,7 +11382,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -10064,8 +11397,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -10094,7 +11431,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -10109,8 +11446,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -10139,7 +11480,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -10154,8 +11495,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -10184,7 +11529,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -10199,8 +11544,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -10229,7 +11578,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -10244,8 +11593,61 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_wetypecat_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -10274,7 +11676,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -10289,8 +11691,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -10319,7 +11725,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -10334,8 +11740,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -10364,7 +11774,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -10379,8 +11789,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -10409,7 +11823,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -10424,8 +11838,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -10441,7 +11859,7 @@ jQuery(document).ready(function ($)
         });
     });
 
-    $('#sb_inspection_form').bootstrapValidator().on('success.form.bv', function (e)
+    $('#sb_agrmntinspection_form').bootstrapValidator().on('success.form.bv', function (e)
     {
         e.preventDefault();
         var formData = new FormData(), params = $(e.target).serializeArray();
@@ -10454,7 +11872,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -10469,53 +11887,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
-                    });
-                }
-                else {
-                    swal({   
-                        title: "Oops!",   
-                        text: responseData.data.message,   
-                        type: "warning",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    });
-                }
-            }
-        });
-    });
-
-    $('#sb_maintenance_form').bootstrapValidator().on('success.form.bv', function (e)
-    {
-        e.preventDefault();
-        var formData = new FormData(), params = $(e.target).serializeArray();
-        // Copy other params from the form into the formData
-        $.each(params, function(i, val) {
-            formData.append(val.name, val.value);
-        });
-        // As required by wordpress
-        formData.append('action', 'create_entity_ajax');
-        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
-        // Make the Ajax call
-        $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            type: 'POST',
-            success: function(responseData) {
-                if (responseData.success) {
-
-                    swal({   
-                        title: "Great Job!",   
-                        text: "The data operation completed successfully",   
-                        type: "success",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -10544,7 +11921,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -10559,8 +11936,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -10589,7 +11970,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -10604,8 +11985,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -10634,7 +12019,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -10649,8 +12034,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -10679,7 +12068,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -10694,8 +12083,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -10724,7 +12117,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -10739,8 +12132,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -10769,7 +12166,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -10784,8 +12181,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -10814,7 +12215,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -10829,8 +12230,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -10859,7 +12264,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -10874,8 +12279,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -10904,7 +12313,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -10919,8 +12328,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -10949,7 +12362,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -10964,8 +12377,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -10994,7 +12411,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -11009,8 +12426,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -11039,7 +12460,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -11054,8 +12475,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -11084,7 +12509,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -11099,8 +12524,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -11129,7 +12558,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -11144,8 +12573,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -11174,7 +12607,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -11189,8 +12622,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -11219,7 +12656,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -11234,8 +12671,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {
@@ -11264,7 +12705,7 @@ jQuery(document).ready(function ($)
         swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
         // Make the Ajax call
         $.ajax({
-            url: shadowcore_ajax_script.ajaxurl,
+            url: '../wp-admin/admin-ajax.php',
             data: formData,
             cache: false,
             contentType: false,
@@ -11279,8 +12720,12 @@ jQuery(document).ready(function ($)
                         type: "success",   
                         showCancelButton: false,   
                         closeOnConfirm: true 
-                    }, function(){   
-                        $('#success').html(responseData.data.message);
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
                     });
                 }
                 else {

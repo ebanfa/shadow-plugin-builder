@@ -22,6 +22,16 @@ class InvoiceTypeCPT {
             'description' => 'The Code field',
             'type' => 'text',
         ),
+        array('name' => 'it_template',
+            'title' => 'Template',
+            'description' => 'The Template field',
+            'type' => 'text',
+        ),
+        array('name' => 'business_category',
+            'title' => 'Category',
+            'description' => 'The Category field',
+            'type' => 'text',
+        ),
         array('name' => 'name',
             'title' => 'Name',
             'description' => 'The Name field',
@@ -52,6 +62,34 @@ class InvoiceTypeCPT {
             'is_list_field' => false,
             'is_form_field' => false,
             'is_relationship_field' => false,),
+        'it_template' => array('name' => 'it_template',
+            'description' => 'Template',
+            'size' => 'large',
+            'entity_name' => 'Template',
+            'entity_description' => 'Template',
+            'data_type' => 'sb_template',
+            'is_required' => false,
+            'is_visible' => true,
+            'is_create_field' => true,
+            'is_edit_field' => true,
+            'is_view_field' => false,
+            'is_list_field' => false,
+            'is_form_field' => true,
+            'is_relationship_field' => true,),
+        'business_category' => array('name' => 'business_category',
+            'description' => 'Category',
+            'size' => 'large',
+            'entity_name' => 'BusinessCategory',
+            'entity_description' => 'Business Category',
+            'data_type' => 'sb_businesscat',
+            'is_required' => true,
+            'is_visible' => true,
+            'is_create_field' => true,
+            'is_edit_field' => true,
+            'is_view_field' => false,
+            'is_list_field' => false,
+            'is_form_field' => true,
+            'is_relationship_field' => true,),
         'name' => array('name' => 'name',
             'description' => 'Name',
             'size' => 'large',
@@ -87,7 +125,7 @@ class InvoiceTypeCPT {
      * So an array of Party entities will be an inferred field on PartyType.
      */
  public static $related_child_entities = array(
-        'i_type' => array('name' => 'i_type',
+        'type' => array('name' => 'type',
             'entity_name' => 'Invoice',
             'data_type' => 'sb_invoice',
             'artifact_name' => 'invoice',
@@ -103,10 +141,10 @@ class InvoiceTypeCPT {
                     'is_create_field' => false,
                     'is_edit_field' => false,
                     'is_view_field' => false,
-                    'is_list_field' => false,
+                    'is_list_field' => true,
                     'is_form_field' => false,
                     'is_relationship_field' => false,),
-                'i_type' => array('name' => 'i_type',
+                'type' => array('name' => 'type',
                     'description' => 'Invoice Type',
                     'size' => 'large',
                     'entity_name' => 'InvoiceType',
@@ -118,6 +156,20 @@ class InvoiceTypeCPT {
                     'is_edit_field' => true,
                     'is_view_field' => false,
                     'is_list_field' => false,
+                    'is_form_field' => true,
+                    'is_relationship_field' => true,),
+                'owner_role' => array('name' => 'owner_role',
+                    'description' => 'Owner Role',
+                    'size' => 'large',
+                    'entity_name' => 'PartyRole',
+                    'entity_description' => 'Party Role',
+                    'data_type' => 'sb_partyrole',
+                    'is_required' => true,
+                    'is_visible' => true,
+                    'is_create_field' => true,
+                    'is_edit_field' => false,
+                    'is_view_field' => false,
+                    'is_list_field' => true,
                     'is_form_field' => true,
                     'is_relationship_field' => true,),
                 'bill_acct' => array('name' => 'bill_acct',
@@ -142,7 +194,7 @@ class InvoiceTypeCPT {
                     'data_type' => 'sb_invoicestatus',
                     'is_required' => true,
                     'is_visible' => true,
-                    'is_create_field' => true,
+                    'is_create_field' => false,
                     'is_edit_field' => true,
                     'is_view_field' => false,
                     'is_list_field' => false,
@@ -219,7 +271,7 @@ class InvoiceTypeCPT {
                     'is_create_field' => true,
                     'is_edit_field' => false,
                     'is_view_field' => true,
-                    'is_list_field' => false,
+                    'is_list_field' => true,
                     'is_form_field' => false,
                     'is_relationship_field' => true,),
             ),
@@ -287,6 +339,14 @@ class InvoiceTypeCPT {
     public static function sb_invoicetype_table_content($column_name, $post_id){
         if ($column_name == 'entity_code') {
             $field_value = get_post_meta($post_id, 'entity_code', true );
+            echo $field_value;
+        }
+        if ($column_name == 'it_template') {
+            $field_value = get_post_meta($post_id, 'it_template', true );
+            echo $field_value;
+        }
+        if ($column_name == 'business_category') {
+            $field_value = get_post_meta($post_id, 'business_category', true );
             echo $field_value;
         }
         if ($column_name == 'name') {

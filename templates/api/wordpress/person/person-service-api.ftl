@@ -15,13 +15,15 @@ class PersonAPI  {
     public static function do_create_entity($entity_data){
 
         $entity_data['has_errors'] = false;
-
         if ($entity_data['edit_mode']) {
             // Create the order
             if(isset($entity_data['entity_code'])){
                 if(EntityStringUtils::is_invalid_string($entity_data['entity_code'])) {
                     $entity_data['entity_code'] = EntityStringUtils::get_token(8);
                 }
+            }
+            else {
+                $entity_data['entity_code'] = EntityStringUtils::get_token(8);
             }
             // Set up the business unit
             $business_unit = BusinessUnitAPI::get_current_user_business_unit();
@@ -79,7 +81,7 @@ class PersonAPI  {
             $party_data['edit_mode'] = true;
             $party_type = EntityAPI::get_by_code('partytype', 'INDIVIDUAL');
             $party_data['party_type'] = $party_type['id'];
-            //$party_data['business_unit'] = $entity_data['business_unit'];
+            $party_data['business_unit'] = $entity_data['business_unit'];
         }
         else {
             // First we need to load the entity from the db

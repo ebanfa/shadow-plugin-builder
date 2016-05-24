@@ -27,9 +27,9 @@ class MortgageCPT {
             'description' => 'The Mortgage Type field',
             'type' => 'text',
         ),
-        array('name' => 'm_property',
-            'title' => 'Property',
-            'description' => 'The Property field',
+        array('name' => 'm_party',
+            'title' => 'Party',
+            'description' => 'The Party field',
             'type' => 'text',
         ),
         array('name' => 'name',
@@ -101,12 +101,12 @@ class MortgageCPT {
             'is_list_field' => true,
             'is_form_field' => true,
             'is_relationship_field' => true,),
-        'm_property' => array('name' => 'm_property',
-            'description' => 'Property',
+        'm_party' => array('name' => 'm_party',
+            'description' => 'Party',
             'size' => 'large',
-            'entity_name' => 'Property',
-            'entity_description' => 'Property',
-            'data_type' => 'sb_property',
+            'entity_name' => 'Party',
+            'entity_description' => 'Party',
+            'data_type' => 'sb_party',
             'is_required' => true,
             'is_visible' => true,
             'is_create_field' => true,
@@ -270,7 +270,7 @@ class MortgageCPT {
 
     public static function sb_mortgage_table_head($defaults){
         $defaults['m_type']  = 'Mortgage Type';
-        $defaults['m_property']  = 'Property';
+        $defaults['m_party']  = 'Party';
         $defaults['name']  = 'name';
         $defaults['lender']  = 'Lender';
         $defaults['term']  = 'Term';
@@ -289,8 +289,8 @@ class MortgageCPT {
             $field_value = get_post_meta($post_id, 'm_type', true );
             echo $field_value;
         }
-        if ($column_name == 'm_property') {
-            $field_value = get_post_meta($post_id, 'm_property', true );
+        if ($column_name == 'm_party') {
+            $field_value = get_post_meta($post_id, 'm_party', true );
             echo $field_value;
         }
         if ($column_name == 'name') {

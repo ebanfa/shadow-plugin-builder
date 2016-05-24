@@ -5,54 +5,6 @@ jQuery(document).ready(function($)
     var baseUrl = shadowcore_base_url.baseUrl;
 
     
-    $('#sb_loanapp-table').dataTable({
-        "ajax": {
-            'type': 'POST',
-            'url': shadowcore_ajax_script.ajaxurl,
-            'data': function(d){
-               d.action = 'find_entity_ajax';
-               d.artifact = 'loanapplication';
-               d.form = $("#sb_loanapp-list-form").serializeArray();
-            },
-        },
-        columns: [
-            { data: "id" }, 
-                { data: "name" },
-
-                { data: "b_name" },
-
-                { data: "b_phone" },
-
-                { data: "email" },
-
-                { data: "state" },
-
-                { data: "industry" },
-
-                { data: "ln_amt" },
-
-        ],
-        columnDefs: [
-            { "visible": false,  "targets": 0 },
-            {
-                // The `data` parameter refers to the data for the cell (defined by the
-                // `data` option, which defaults to the column being worked with, in
-                // this case `data: 0`.
-                "render": function ( data, type, row ) {
-                    var parent_params = '';
-                    if($('#loanapplication_parent_params').length) {
-                        parent_params = parent_params + $('#loanapplication_parent_params').val(); 
-                    }
-                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=loanapplication&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="loanapplication" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
-                },
-                "targets": 1
-            }
-        ]
-    });
-
-    var baseUrl = shadowcore_base_url.baseUrl;
-
-    
     $('#sb_currency-table').dataTable({
         "ajax": {
             'type': 'POST',
@@ -86,50 +38,6 @@ jQuery(document).ready(function($)
                         parent_params = parent_params + $('#currency_parent_params').val(); 
                     }
                     return '<a class="data-table-link" href="' + baseUrl + 'artifact=currency&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="currency" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
-                },
-                "targets": 1
-            }
-        ]
-    });
-
-    var baseUrl = shadowcore_base_url.baseUrl;
-
-    
-    $('#sb_contactus-table').dataTable({
-        "ajax": {
-            'type': 'POST',
-            'url': shadowcore_ajax_script.ajaxurl,
-            'data': function(d){
-               d.action = 'find_entity_ajax';
-               d.artifact = 'contactus';
-               d.form = $("#sb_contactus-list-form").serializeArray();
-            },
-        },
-        columns: [
-            { data: "id" }, 
-                { data: "subject" },
-
-                { data: "name" },
-
-                { data: "email" },
-
-                { data: "b_name" },
-
-                { data: "message" },
-
-        ],
-        columnDefs: [
-            { "visible": false,  "targets": 0 },
-            {
-                // The `data` parameter refers to the data for the cell (defined by the
-                // `data` option, which defaults to the column being worked with, in
-                // this case `data: 0`.
-                "render": function ( data, type, row ) {
-                    var parent_params = '';
-                    if($('#contactus_parent_params').length) {
-                        parent_params = parent_params + $('#contactus_parent_params').val(); 
-                    }
-                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=contactus&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="contactus" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
                 },
                 "targets": 1
             }
@@ -214,6 +122,92 @@ jQuery(document).ready(function($)
                         parent_params = parent_params + $('#location_parent_params').val(); 
                     }
                     return '<a class="data-table-link" href="' + baseUrl + 'artifact=location&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="location" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = shadowcore_base_url.baseUrl;
+
+    
+    $('#sb_business-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': shadowcore_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'business';
+               d.form = $("#sb_business-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+                { data: "entity_code" },
+
+
+                { data: "currency_txt" },
+                { data: "name" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#business_parent_params').length) {
+                        parent_params = parent_params + $('#business_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=business&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="business" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = shadowcore_base_url.baseUrl;
+
+    
+    $('#sb_businessunit-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': shadowcore_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'businessunit';
+               d.form = $("#sb_businessunit-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+
+                { data: "currency_txt" },
+                { data: "name" },
+
+                { data: "address_1" },
+
+                { data: "address_2" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#businessunit_parent_params').length) {
+                        parent_params = parent_params + $('#businessunit_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=businessunit&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="businessunit" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
                 },
                 "targets": 1
             }
@@ -385,50 +379,6 @@ jQuery(document).ready(function($)
     var baseUrl = shadowcore_base_url.baseUrl;
 
     
-    $('#sb_businessunit-table').dataTable({
-        "ajax": {
-            'type': 'POST',
-            'url': shadowcore_ajax_script.ajaxurl,
-            'data': function(d){
-               d.action = 'find_entity_ajax';
-               d.artifact = 'businessunit';
-               d.form = $("#sb_businessunit-list-form").serializeArray();
-            },
-        },
-        columns: [
-            { data: "id" }, 
-                { data: "name" },
-
-                { data: "address_1" },
-
-                { data: "address_2" },
-
-
-                { data: "location_txt" },
-                { data: "description" },
-
-        ],
-        columnDefs: [
-            { "visible": false,  "targets": 0 },
-            {
-                // The `data` parameter refers to the data for the cell (defined by the
-                // `data` option, which defaults to the column being worked with, in
-                // this case `data: 0`.
-                "render": function ( data, type, row ) {
-                    var parent_params = '';
-                    if($('#businessunit_parent_params').length) {
-                        parent_params = parent_params + $('#businessunit_parent_params').val(); 
-                    }
-                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=businessunit&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="businessunit" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
-                },
-                "targets": 1
-            }
-        ]
-    });
-
-    var baseUrl = shadowcore_base_url.baseUrl;
-
-    
     $('#sb_partyrole-table').dataTable({
         "ajax": {
             'type': 'POST',
@@ -449,12 +399,12 @@ jQuery(document).ready(function($)
                 { data: "role_txt" },
 
                 { data: "parent_unit_txt" },
-
-                { data: "business_unit_txt" },
                 { data: "name" },
 
                 { data: "description" },
 
+
+                { data: "business_unit_txt" },
         ],
         columnDefs: [
             { "visible": false,  "targets": 0 },
@@ -573,10 +523,6 @@ jQuery(document).ready(function($)
                 { data: "to_role_txt" },
 
                 { data: "status_txt" },
-
-                { data: "term_type_txt" },
-
-                { data: "term_reason_txt" },
                 { data: "name" },
 
                 { data: "from_date" },
@@ -831,14 +777,14 @@ jQuery(document).ready(function($)
     var baseUrl = shadowcore_base_url.baseUrl;
 
     
-    $('#sb_chargecat-table').dataTable({
+    $('#sb_invitestatus-table').dataTable({
         "ajax": {
             'type': 'POST',
             'url': shadowcore_ajax_script.ajaxurl,
             'data': function(d){
                d.action = 'find_entity_ajax';
-               d.artifact = 'chargecategory';
-               d.form = $("#sb_chargecat-list-form").serializeArray();
+               d.artifact = 'userinvitestatus';
+               d.form = $("#sb_invitestatus-list-form").serializeArray();
             },
         },
         columns: [
@@ -856,10 +802,90 @@ jQuery(document).ready(function($)
                 // this case `data: 0`.
                 "render": function ( data, type, row ) {
                     var parent_params = '';
-                    if($('#chargecategory_parent_params').length) {
-                        parent_params = parent_params + $('#chargecategory_parent_params').val(); 
+                    if($('#userinvitestatus_parent_params').length) {
+                        parent_params = parent_params + $('#userinvitestatus_parent_params').val(); 
                     }
-                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=chargecategory&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="chargecategory" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=userinvitestatus&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="userinvitestatus" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = shadowcore_base_url.baseUrl;
+
+    
+    $('#sb_userinvite-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': shadowcore_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'userinvite';
+               d.form = $("#sb_userinvite-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+
+                { data: "status_txt" },
+                { data: "first_name" },
+
+                { data: "last_name" },
+
+                { data: "user_email" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#userinvite_parent_params').length) {
+                        parent_params = parent_params + $('#userinvite_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=userinvite&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="userinvite" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = shadowcore_base_url.baseUrl;
+
+    
+    $('#sb_businesscat-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': shadowcore_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'businesscategory';
+               d.form = $("#sb_businesscat-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+                { data: "name" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#businesscategory_parent_params').length) {
+                        parent_params = parent_params + $('#businesscategory_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=businesscategory&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="businesscategory" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
                 },
                 "targets": 1
             }
@@ -991,44 +1017,6 @@ jQuery(document).ready(function($)
     var baseUrl = shadowcore_base_url.baseUrl;
 
     
-    $('#sb_expensecat-table').dataTable({
-        "ajax": {
-            'type': 'POST',
-            'url': shadowcore_ajax_script.ajaxurl,
-            'data': function(d){
-               d.action = 'find_entity_ajax';
-               d.artifact = 'expensecategory';
-               d.form = $("#sb_expensecat-list-form").serializeArray();
-            },
-        },
-        columns: [
-            { data: "id" }, 
-                { data: "name" },
-
-                { data: "description" },
-
-        ],
-        columnDefs: [
-            { "visible": false,  "targets": 0 },
-            {
-                // The `data` parameter refers to the data for the cell (defined by the
-                // `data` option, which defaults to the column being worked with, in
-                // this case `data: 0`.
-                "render": function ( data, type, row ) {
-                    var parent_params = '';
-                    if($('#expensecategory_parent_params').length) {
-                        parent_params = parent_params + $('#expensecategory_parent_params').val(); 
-                    }
-                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=expensecategory&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="expensecategory" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
-                },
-                "targets": 1
-            }
-        ]
-    });
-
-    var baseUrl = shadowcore_base_url.baseUrl;
-
-    
     $('#sb_expensetype-table').dataTable({
         "ajax": {
             'type': 'POST',
@@ -1042,7 +1030,7 @@ jQuery(document).ready(function($)
         columns: [
             { data: "id" }, 
 
-                { data: "category_txt" },
+                { data: "business_category_txt" },
                 { data: "name" },
 
                 { data: "description" },
@@ -1155,14 +1143,14 @@ jQuery(document).ready(function($)
     var baseUrl = shadowcore_base_url.baseUrl;
 
     
-    $('#sb_inventype-table').dataTable({
+    $('#sb_liabcat-table').dataTable({
         "ajax": {
             'type': 'POST',
             'url': shadowcore_ajax_script.ajaxurl,
             'data': function(d){
                d.action = 'find_entity_ajax';
-               d.artifact = 'inventorytype';
-               d.form = $("#sb_inventype-list-form").serializeArray();
+               d.artifact = 'liabilitycategory';
+               d.form = $("#sb_liabcat-list-form").serializeArray();
             },
         },
         columns: [
@@ -1180,10 +1168,10 @@ jQuery(document).ready(function($)
                 // this case `data: 0`.
                 "render": function ( data, type, row ) {
                     var parent_params = '';
-                    if($('#inventorytype_parent_params').length) {
-                        parent_params = parent_params + $('#inventorytype_parent_params').val(); 
+                    if($('#liabilitycategory_parent_params').length) {
+                        parent_params = parent_params + $('#liabilitycategory_parent_params').val(); 
                     }
-                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=inventorytype&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="inventorytype" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=liabilitycategory&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="liabilitycategory" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
                 },
                 "targets": 1
             }
@@ -1193,18 +1181,20 @@ jQuery(document).ready(function($)
     var baseUrl = shadowcore_base_url.baseUrl;
 
     
-    $('#sb_fassettype-table').dataTable({
+    $('#sb_liabtype-table').dataTable({
         "ajax": {
             'type': 'POST',
             'url': shadowcore_ajax_script.ajaxurl,
             'data': function(d){
                d.action = 'find_entity_ajax';
-               d.artifact = 'fixedassettype';
-               d.form = $("#sb_fassettype-list-form").serializeArray();
+               d.artifact = 'liabilitytype';
+               d.form = $("#sb_liabtype-list-form").serializeArray();
             },
         },
         columns: [
             { data: "id" }, 
+
+                { data: "category_txt" },
                 { data: "name" },
 
                 { data: "description" },
@@ -1218,10 +1208,60 @@ jQuery(document).ready(function($)
                 // this case `data: 0`.
                 "render": function ( data, type, row ) {
                     var parent_params = '';
-                    if($('#fixedassettype_parent_params').length) {
-                        parent_params = parent_params + $('#fixedassettype_parent_params').val(); 
+                    if($('#liabilitytype_parent_params').length) {
+                        parent_params = parent_params + $('#liabilitytype_parent_params').val(); 
                     }
-                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=fixedassettype&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="fixedassettype" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=liabilitytype&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="liabilitytype" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = shadowcore_base_url.baseUrl;
+
+    
+    $('#sb_liability-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': shadowcore_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'liability';
+               d.form = $("#sb_liability-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+
+                { data: "type_txt" },
+
+                { data: "l_party_txt" },
+                { data: "name" },
+
+
+                { data: "lender_txt" },
+                { data: "term" },
+
+                { data: "principal" },
+
+                { data: "rate" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#liability_parent_params').length) {
+                        parent_params = parent_params + $('#liability_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=liability&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="liability" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
                 },
                 "targets": 1
             }
@@ -1260,44 +1300,6 @@ jQuery(document).ready(function($)
                         parent_params = parent_params + $('#deprecationmethod_parent_params').val(); 
                     }
                     return '<a class="data-table-link" href="' + baseUrl + 'artifact=deprecationmethod&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="deprecationmethod" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
-                },
-                "targets": 1
-            }
-        ]
-    });
-
-    var baseUrl = shadowcore_base_url.baseUrl;
-
-    
-    $('#sb_invitemtype-table').dataTable({
-        "ajax": {
-            'type': 'POST',
-            'url': shadowcore_ajax_script.ajaxurl,
-            'data': function(d){
-               d.action = 'find_entity_ajax';
-               d.artifact = 'inventoryitemtype';
-               d.form = $("#sb_invitemtype-list-form").serializeArray();
-            },
-        },
-        columns: [
-            { data: "id" }, 
-                { data: "name" },
-
-                { data: "description" },
-
-        ],
-        columnDefs: [
-            { "visible": false,  "targets": 0 },
-            {
-                // The `data` parameter refers to the data for the cell (defined by the
-                // `data` option, which defaults to the column being worked with, in
-                // this case `data: 0`.
-                "render": function ( data, type, row ) {
-                    var parent_params = '';
-                    if($('#inventoryitemtype_parent_params').length) {
-                        parent_params = parent_params + $('#inventoryitemtype_parent_params').val(); 
-                    }
-                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=inventoryitemtype&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="inventoryitemtype" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
                 },
                 "targets": 1
             }
@@ -1435,6 +1437,8 @@ jQuery(document).ready(function($)
         },
         columns: [
             { data: "id" }, 
+                { data: "entity_code" },
+
                 { data: "name" },
 
                 { data: "description" },
@@ -1682,7 +1686,7 @@ jQuery(document).ready(function($)
 
                 { data: "m_type_txt" },
 
-                { data: "m_property_txt" },
+                { data: "m_party_txt" },
                 { data: "name" },
 
 
@@ -2217,29 +2221,21 @@ jQuery(document).ready(function($)
     var baseUrl = shadowcore_base_url.baseUrl;
 
     
-    $('#sb_fixedasset-table').dataTable({
+    $('#sb_assetcat-table').dataTable({
         "ajax": {
             'type': 'POST',
             'url': shadowcore_ajax_script.ajaxurl,
             'data': function(d){
                d.action = 'find_entity_ajax';
-               d.artifact = 'fixedasset';
-               d.form = $("#sb_fixedasset-list-form").serializeArray();
+               d.artifact = 'assetcategory';
+               d.form = $("#sb_assetcat-list-form").serializeArray();
             },
         },
         columns: [
             { data: "id" }, 
-
-                { data: "pfa_dmethod_txt" },
-
-                { data: "pfa_assettype_txt" },
-
-                { data: "pfa_uom_txt" },
                 { data: "name" },
 
                 { data: "description" },
-
-                { data: "p_price" },
 
         ],
         columnDefs: [
@@ -2250,10 +2246,132 @@ jQuery(document).ready(function($)
                 // this case `data: 0`.
                 "render": function ( data, type, row ) {
                     var parent_params = '';
-                    if($('#fixedasset_parent_params').length) {
-                        parent_params = parent_params + $('#fixedasset_parent_params').val(); 
+                    if($('#assetcategory_parent_params').length) {
+                        parent_params = parent_params + $('#assetcategory_parent_params').val(); 
                     }
-                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=fixedasset&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="fixedasset" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=assetcategory&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="assetcategory" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = shadowcore_base_url.baseUrl;
+
+    
+    $('#sb_assettype-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': shadowcore_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'assettype';
+               d.form = $("#sb_assettype-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+                { data: "name" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#assettype_parent_params').length) {
+                        parent_params = parent_params + $('#assettype_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=assettype&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="assettype" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = shadowcore_base_url.baseUrl;
+
+    
+    $('#sb_asset-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': shadowcore_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'asset';
+               d.form = $("#sb_asset-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+
+                { data: "a_dmethod_txt" },
+
+                { data: "type_txt" },
+
+                { data: "a_uom_txt" },
+                { data: "name" },
+
+                { data: "description" },
+
+                { data: "a_price" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#asset_parent_params').length) {
+                        parent_params = parent_params + $('#asset_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=asset&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="asset" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = shadowcore_base_url.baseUrl;
+
+    
+    $('#sb_inventype-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': shadowcore_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'inventorytype';
+               d.form = $("#sb_inventype-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+                { data: "name" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#inventorytype_parent_params').length) {
+                        parent_params = parent_params + $('#inventorytype_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=inventorytype&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="inventorytype" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
                 },
                 "targets": 1
             }
@@ -2276,7 +2394,9 @@ jQuery(document).ready(function($)
         columns: [
             { data: "id" }, 
 
-                { data: "inventype_txt" },
+                { data: "i_party_txt" },
+
+                { data: "type_txt" },
                 { data: "name" },
 
                 { data: "description" },
@@ -2303,20 +2423,60 @@ jQuery(document).ready(function($)
     var baseUrl = shadowcore_base_url.baseUrl;
 
     
-    $('#sb_piitem-table').dataTable({
+    $('#sb_invitemtype-table').dataTable({
         "ajax": {
             'type': 'POST',
             'url': shadowcore_ajax_script.ajaxurl,
             'data': function(d){
                d.action = 'find_entity_ajax';
-               d.artifact = 'propertyinventoryitem';
-               d.form = $("#sb_piitem-list-form").serializeArray();
+               d.artifact = 'inventoryitemtype';
+               d.form = $("#sb_invitemtype-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+                { data: "name" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#inventoryitemtype_parent_params').length) {
+                        parent_params = parent_params + $('#inventoryitemtype_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=inventoryitemtype&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="inventoryitemtype" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = shadowcore_base_url.baseUrl;
+
+    
+    $('#sb_inventoryitem-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': shadowcore_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'inventoryitem';
+               d.form = $("#sb_inventoryitem-list-form").serializeArray();
             },
         },
         columns: [
             { data: "id" }, 
 
-                { data: "pi_itemtype_txt" },
+                { data: "i_itemtype_txt" },
+
+                { data: "i_inventory_txt" },
 
                 { data: "pi_uom_txt" },
                 { data: "name" },
@@ -2334,52 +2494,10 @@ jQuery(document).ready(function($)
                 // this case `data: 0`.
                 "render": function ( data, type, row ) {
                     var parent_params = '';
-                    if($('#propertyinventoryitem_parent_params').length) {
-                        parent_params = parent_params + $('#propertyinventoryitem_parent_params').val(); 
+                    if($('#inventoryitem_parent_params').length) {
+                        parent_params = parent_params + $('#inventoryitem_parent_params').val(); 
                     }
-                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=propertyinventoryitem&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="propertyinventoryitem" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
-                },
-                "targets": 1
-            }
-        ]
-    });
-
-    var baseUrl = shadowcore_base_url.baseUrl;
-
-    
-    $('#sb_pexpense-table').dataTable({
-        "ajax": {
-            'type': 'POST',
-            'url': shadowcore_ajax_script.ajaxurl,
-            'data': function(d){
-               d.action = 'find_entity_ajax';
-               d.artifact = 'propertyexpense';
-               d.form = $("#sb_pexpense-list-form").serializeArray();
-            },
-        },
-        columns: [
-            { data: "id" }, 
-
-                { data: "pe_expense_txt" },
-                { data: "name" },
-
-                { data: "description" },
-
-                { data: "date_incurred" },
-
-        ],
-        columnDefs: [
-            { "visible": false,  "targets": 0 },
-            {
-                // The `data` parameter refers to the data for the cell (defined by the
-                // `data` option, which defaults to the column being worked with, in
-                // this case `data: 0`.
-                "render": function ( data, type, row ) {
-                    var parent_params = '';
-                    if($('#propertyexpense_parent_params').length) {
-                        parent_params = parent_params + $('#propertyexpense_parent_params').val(); 
-                    }
-                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=propertyexpense&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="propertyexpense" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=inventoryitem&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="inventoryitem" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
                 },
                 "targets": 1
             }
@@ -2404,8 +2522,6 @@ jQuery(document).ready(function($)
                 { data: "name" },
 
                 { data: "phone" },
-
-                { data: "email" },
 
                 { data: "description" },
 
@@ -2517,6 +2633,86 @@ jQuery(document).ready(function($)
     var baseUrl = shadowcore_base_url.baseUrl;
 
     
+    $('#sb_buildtypropty-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': shadowcore_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'buildingtypepropertytype';
+               d.form = $("#sb_buildtypropty-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+                { data: "name" },
+
+
+                { data: "btpt_buildingtype_txt" },
+
+                { data: "btpt_propertytype_txt" },
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#buildingtypepropertytype_parent_params').length) {
+                        parent_params = parent_params + $('#buildingtypepropertytype_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=buildingtypepropertytype&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="buildingtypepropertytype" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = shadowcore_base_url.baseUrl;
+
+    
+    $('#sb_allocunit-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': shadowcore_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'allocationunit';
+               d.form = $("#sb_allocunit-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+                { data: "name" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#allocationunit_parent_params').length) {
+                        parent_params = parent_params + $('#allocationunit_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=allocationunit&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="allocationunit" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = shadowcore_base_url.baseUrl;
+
+    
     $('#sb_building-table').dataTable({
         "ajax": {
             'type': 'POST',
@@ -2611,50 +2807,6 @@ jQuery(document).ready(function($)
     var baseUrl = shadowcore_base_url.baseUrl;
 
     
-    $('#sb_bexpense-table').dataTable({
-        "ajax": {
-            'type': 'POST',
-            'url': shadowcore_ajax_script.ajaxurl,
-            'data': function(d){
-               d.action = 'find_entity_ajax';
-               d.artifact = 'buildingexpense';
-               d.form = $("#sb_bexpense-list-form").serializeArray();
-            },
-        },
-        columns: [
-            { data: "id" }, 
-
-                { data: "be_building_txt" },
-
-                { data: "be_expense_txt" },
-                { data: "name" },
-
-                { data: "description" },
-
-                { data: "date_incurred" },
-
-        ],
-        columnDefs: [
-            { "visible": false,  "targets": 0 },
-            {
-                // The `data` parameter refers to the data for the cell (defined by the
-                // `data` option, which defaults to the column being worked with, in
-                // this case `data: 0`.
-                "render": function ( data, type, row ) {
-                    var parent_params = '';
-                    if($('#buildingexpense_parent_params').length) {
-                        parent_params = parent_params + $('#buildingexpense_parent_params').val(); 
-                    }
-                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=buildingexpense&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="buildingexpense" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
-                },
-                "targets": 1
-            }
-        ]
-    });
-
-    var baseUrl = shadowcore_base_url.baseUrl;
-
-    
     $('#sb_buildfiles-table').dataTable({
         "ajax": {
             'type': 'POST',
@@ -2694,44 +2846,6 @@ jQuery(document).ready(function($)
                         parent_params = parent_params + $('#buildingfiles_parent_params').val(); 
                     }
                     return '<a class="data-table-link" href="' + baseUrl + 'artifact=buildingfiles&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="buildingfiles" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
-                },
-                "targets": 1
-            }
-        ]
-    });
-
-    var baseUrl = shadowcore_base_url.baseUrl;
-
-    
-    $('#sb_allocunit-table').dataTable({
-        "ajax": {
-            'type': 'POST',
-            'url': shadowcore_ajax_script.ajaxurl,
-            'data': function(d){
-               d.action = 'find_entity_ajax';
-               d.artifact = 'allocationunit';
-               d.form = $("#sb_allocunit-list-form").serializeArray();
-            },
-        },
-        columns: [
-            { data: "id" }, 
-                { data: "name" },
-
-                { data: "description" },
-
-        ],
-        columnDefs: [
-            { "visible": false,  "targets": 0 },
-            {
-                // The `data` parameter refers to the data for the cell (defined by the
-                // `data` option, which defaults to the column being worked with, in
-                // this case `data: 0`.
-                "render": function ( data, type, row ) {
-                    var parent_params = '';
-                    if($('#allocationunit_parent_params').length) {
-                        parent_params = parent_params + $('#allocationunit_parent_params').val(); 
-                    }
-                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=allocationunit&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="allocationunit" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
                 },
                 "targets": 1
             }
@@ -2871,50 +2985,6 @@ jQuery(document).ready(function($)
     var baseUrl = shadowcore_base_url.baseUrl;
 
     
-    $('#sb_fexpense-table').dataTable({
-        "ajax": {
-            'type': 'POST',
-            'url': shadowcore_ajax_script.ajaxurl,
-            'data': function(d){
-               d.action = 'find_entity_ajax';
-               d.artifact = 'floorexpense';
-               d.form = $("#sb_fexpense-list-form").serializeArray();
-            },
-        },
-        columns: [
-            { data: "id" }, 
-
-                { data: "fe_floor_txt" },
-
-                { data: "fe_expense_txt" },
-                { data: "name" },
-
-                { data: "description" },
-
-                { data: "date_incurred" },
-
-        ],
-        columnDefs: [
-            { "visible": false,  "targets": 0 },
-            {
-                // The `data` parameter refers to the data for the cell (defined by the
-                // `data` option, which defaults to the column being worked with, in
-                // this case `data: 0`.
-                "render": function ( data, type, row ) {
-                    var parent_params = '';
-                    if($('#floorexpense_parent_params').length) {
-                        parent_params = parent_params + $('#floorexpense_parent_params').val(); 
-                    }
-                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=floorexpense&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="floorexpense" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
-                },
-                "targets": 1
-            }
-        ]
-    });
-
-    var baseUrl = shadowcore_base_url.baseUrl;
-
-    
     $('#sb_unittype-table').dataTable({
         "ajax": {
             'type': 'POST',
@@ -2988,50 +3058,6 @@ jQuery(document).ready(function($)
                         parent_params = parent_params + $('#unittypecharge_parent_params').val(); 
                     }
                     return '<a class="data-table-link" href="' + baseUrl + 'artifact=unittypecharge&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="unittypecharge" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
-                },
-                "targets": 1
-            }
-        ]
-    });
-
-    var baseUrl = shadowcore_base_url.baseUrl;
-
-    
-    $('#sb_utypeexpense-table').dataTable({
-        "ajax": {
-            'type': 'POST',
-            'url': shadowcore_ajax_script.ajaxurl,
-            'data': function(d){
-               d.action = 'find_entity_ajax';
-               d.artifact = 'unittypeexpense';
-               d.form = $("#sb_utypeexpense-list-form").serializeArray();
-            },
-        },
-        columns: [
-            { data: "id" }, 
-
-                { data: "ute_type_txt" },
-
-                { data: "ute_property_txt" },
-
-                { data: "ute_expense_txt" },
-                { data: "name" },
-
-                { data: "description" },
-
-        ],
-        columnDefs: [
-            { "visible": false,  "targets": 0 },
-            {
-                // The `data` parameter refers to the data for the cell (defined by the
-                // `data` option, which defaults to the column being worked with, in
-                // this case `data: 0`.
-                "render": function ( data, type, row ) {
-                    var parent_params = '';
-                    if($('#unittypeexpense_parent_params').length) {
-                        parent_params = parent_params + $('#unittypeexpense_parent_params').val(); 
-                    }
-                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=unittypeexpense&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="unittypeexpense" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
                 },
                 "targets": 1
             }
@@ -3122,48 +3148,6 @@ jQuery(document).ready(function($)
                         parent_params = parent_params + $('#unitcharge_parent_params').val(); 
                     }
                     return '<a class="data-table-link" href="' + baseUrl + 'artifact=unitcharge&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="unitcharge" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
-                },
-                "targets": 1
-            }
-        ]
-    });
-
-    var baseUrl = shadowcore_base_url.baseUrl;
-
-    
-    $('#sb_unitexpense-table').dataTable({
-        "ajax": {
-            'type': 'POST',
-            'url': shadowcore_ajax_script.ajaxurl,
-            'data': function(d){
-               d.action = 'find_entity_ajax';
-               d.artifact = 'unitexpense';
-               d.form = $("#sb_unitexpense-list-form").serializeArray();
-            },
-        },
-        columns: [
-            { data: "id" }, 
-
-                { data: "ue_unit_txt" },
-
-                { data: "ue_expense_txt" },
-                { data: "name" },
-
-                { data: "description" },
-
-        ],
-        columnDefs: [
-            { "visible": false,  "targets": 0 },
-            {
-                // The `data` parameter refers to the data for the cell (defined by the
-                // `data` option, which defaults to the column being worked with, in
-                // this case `data: 0`.
-                "render": function ( data, type, row ) {
-                    var parent_params = '';
-                    if($('#unitexpense_parent_params').length) {
-                        parent_params = parent_params + $('#unitexpense_parent_params').val(); 
-                    }
-                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=unitexpense&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="unitexpense" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
                 },
                 "targets": 1
             }
@@ -3335,48 +3319,6 @@ jQuery(document).ready(function($)
     var baseUrl = shadowcore_base_url.baseUrl;
 
     
-    $('#sb_feexpense-table').dataTable({
-        "ajax": {
-            'type': 'POST',
-            'url': shadowcore_ajax_script.ajaxurl,
-            'data': function(d){
-               d.action = 'find_entity_ajax';
-               d.artifact = 'facilityexpense';
-               d.form = $("#sb_feexpense-list-form").serializeArray();
-            },
-        },
-        columns: [
-            { data: "id" }, 
-
-                { data: "fe_facility_txt" },
-
-                { data: "fe_expense_txt" },
-                { data: "name" },
-
-                { data: "description" },
-
-        ],
-        columnDefs: [
-            { "visible": false,  "targets": 0 },
-            {
-                // The `data` parameter refers to the data for the cell (defined by the
-                // `data` option, which defaults to the column being worked with, in
-                // this case `data: 0`.
-                "render": function ( data, type, row ) {
-                    var parent_params = '';
-                    if($('#facilityexpense_parent_params').length) {
-                        parent_params = parent_params + $('#facilityexpense_parent_params').val(); 
-                    }
-                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=facilityexpense&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="facilityexpense" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
-                },
-                "targets": 1
-            }
-        ]
-    });
-
-    var baseUrl = shadowcore_base_url.baseUrl;
-
-    
     $('#sb_pslottype-table').dataTable({
         "ajax": {
             'type': 'POST',
@@ -3457,48 +3399,6 @@ jQuery(document).ready(function($)
     var baseUrl = shadowcore_base_url.baseUrl;
 
     
-    $('#sb_pstypeexpense-table').dataTable({
-        "ajax": {
-            'type': 'POST',
-            'url': shadowcore_ajax_script.ajaxurl,
-            'data': function(d){
-               d.action = 'find_entity_ajax';
-               d.artifact = 'parkingslottypeexpense';
-               d.form = $("#sb_pstypeexpense-list-form").serializeArray();
-            },
-        },
-        columns: [
-            { data: "id" }, 
-
-                { data: "pste_type_txt" },
-
-                { data: "pste_expense_txt" },
-                { data: "name" },
-
-                { data: "description" },
-
-        ],
-        columnDefs: [
-            { "visible": false,  "targets": 0 },
-            {
-                // The `data` parameter refers to the data for the cell (defined by the
-                // `data` option, which defaults to the column being worked with, in
-                // this case `data: 0`.
-                "render": function ( data, type, row ) {
-                    var parent_params = '';
-                    if($('#parkingslottypeexpense_parent_params').length) {
-                        parent_params = parent_params + $('#parkingslottypeexpense_parent_params').val(); 
-                    }
-                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=parkingslottypeexpense&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="parkingslottypeexpense" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
-                },
-                "targets": 1
-            }
-        ]
-    });
-
-    var baseUrl = shadowcore_base_url.baseUrl;
-
-    
     $('#sb_pslot-table').dataTable({
         "ajax": {
             'type': 'POST',
@@ -3532,6 +3432,44 @@ jQuery(document).ready(function($)
                         parent_params = parent_params + $('#parkingslot_parent_params').val(); 
                     }
                     return '<a class="data-table-link" href="' + baseUrl + 'artifact=parkingslot&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="parkingslot" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = shadowcore_base_url.baseUrl;
+
+    
+    $('#sb_agreecat-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': shadowcore_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'agreementcategory';
+               d.form = $("#sb_agreecat-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+                { data: "name" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#agreementcategory_parent_params').length) {
+                        parent_params = parent_params + $('#agreementcategory_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=agreementcategory&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="agreementcategory" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
                 },
                 "targets": 1
             }
@@ -3635,6 +3573,8 @@ jQuery(document).ready(function($)
         },
         columns: [
             { data: "id" }, 
+
+                { data: "business_category_txt" },
                 { data: "name" },
 
                 { data: "description" },
@@ -3915,50 +3855,6 @@ jQuery(document).ready(function($)
     var baseUrl = shadowcore_base_url.baseUrl;
 
     
-    $('#sb_agrmntinspection-table').dataTable({
-        "ajax": {
-            'type': 'POST',
-            'url': shadowcore_ajax_script.ajaxurl,
-            'data': function(d){
-               d.action = 'find_entity_ajax';
-               d.artifact = 'purchaseagreementinspection';
-               d.form = $("#sb_agrmntinspection-list-form").serializeArray();
-            },
-        },
-        columns: [
-            { data: "id" }, 
-
-                { data: "pai_agreement_txt" },
-
-                { data: "pai_inspection_txt" },
-                { data: "name" },
-
-                { data: "inspection_date" },
-
-                { data: "description" },
-
-        ],
-        columnDefs: [
-            { "visible": false,  "targets": 0 },
-            {
-                // The `data` parameter refers to the data for the cell (defined by the
-                // `data` option, which defaults to the column being worked with, in
-                // this case `data: 0`.
-                "render": function ( data, type, row ) {
-                    var parent_params = '';
-                    if($('#purchaseagreementinspection_parent_params').length) {
-                        parent_params = parent_params + $('#purchaseagreementinspection_parent_params').val(); 
-                    }
-                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=purchaseagreementinspection&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="purchaseagreementinspection" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
-                },
-                "targets": 1
-            }
-        ]
-    });
-
-    var baseUrl = shadowcore_base_url.baseUrl;
-
-    
     $('#sb_agrmntitemtype-table').dataTable({
         "ajax": {
             'type': 'POST',
@@ -3971,8 +3867,6 @@ jQuery(document).ready(function($)
         },
         columns: [
             { data: "id" }, 
-
-                { data: "pai_inspection_txt" },
                 { data: "name" },
 
                 { data: "description" },
@@ -4032,162 +3926,6 @@ jQuery(document).ready(function($)
                         parent_params = parent_params + $('#agreementitem_parent_params').val(); 
                     }
                     return '<a class="data-table-link" href="' + baseUrl + 'artifact=agreementitem&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="agreementitem" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
-                },
-                "targets": 1
-            }
-        ]
-    });
-
-    var baseUrl = shadowcore_base_url.baseUrl;
-
-    
-    $('#sb_rentagreement-table').dataTable({
-        "ajax": {
-            'type': 'POST',
-            'url': shadowcore_ajax_script.ajaxurl,
-            'data': function(d){
-               d.action = 'find_entity_ajax';
-               d.artifact = 'rentagreement';
-               d.form = $("#sb_rentagreement-list-form").serializeArray();
-            },
-        },
-        columns: [
-            { data: "id" }, 
-                { data: "name" },
-
-
-                { data: "a_party_txt" },
-
-                { data: "a_counter_party_txt" },
-
-                { data: "a_property_txt" },
-                { data: "amount" },
-
-                { data: "description" },
-
-                { data: "date_start" },
-
-                { data: "date_end" },
-
-                { data: "date_created" },
-
-        ],
-        columnDefs: [
-            { "visible": false,  "targets": 0 },
-            {
-                // The `data` parameter refers to the data for the cell (defined by the
-                // `data` option, which defaults to the column being worked with, in
-                // this case `data: 0`.
-                "render": function ( data, type, row ) {
-                    var parent_params = '';
-                    if($('#rentagreement_parent_params').length) {
-                        parent_params = parent_params + $('#rentagreement_parent_params').val(); 
-                    }
-                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=rentagreement&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="rentagreement" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
-                },
-                "targets": 1
-            }
-        ]
-    });
-
-    var baseUrl = shadowcore_base_url.baseUrl;
-
-    
-    $('#sb_seragreement-table').dataTable({
-        "ajax": {
-            'type': 'POST',
-            'url': shadowcore_ajax_script.ajaxurl,
-            'data': function(d){
-               d.action = 'find_entity_ajax';
-               d.artifact = 'serviceagreement';
-               d.form = $("#sb_seragreement-list-form").serializeArray();
-            },
-        },
-        columns: [
-            { data: "id" }, 
-                { data: "name" },
-
-
-                { data: "a_party_txt" },
-
-                { data: "a_counter_party_txt" },
-
-                { data: "a_property_txt" },
-                { data: "amount" },
-
-                { data: "description" },
-
-                { data: "date_start" },
-
-                { data: "date_end" },
-
-                { data: "date_created" },
-
-        ],
-        columnDefs: [
-            { "visible": false,  "targets": 0 },
-            {
-                // The `data` parameter refers to the data for the cell (defined by the
-                // `data` option, which defaults to the column being worked with, in
-                // this case `data: 0`.
-                "render": function ( data, type, row ) {
-                    var parent_params = '';
-                    if($('#serviceagreement_parent_params').length) {
-                        parent_params = parent_params + $('#serviceagreement_parent_params').val(); 
-                    }
-                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=serviceagreement&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="serviceagreement" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
-                },
-                "targets": 1
-            }
-        ]
-    });
-
-    var baseUrl = shadowcore_base_url.baseUrl;
-
-    
-    $('#sb_managreement-table').dataTable({
-        "ajax": {
-            'type': 'POST',
-            'url': shadowcore_ajax_script.ajaxurl,
-            'data': function(d){
-               d.action = 'find_entity_ajax';
-               d.artifact = 'managementagreement';
-               d.form = $("#sb_managreement-list-form").serializeArray();
-            },
-        },
-        columns: [
-            { data: "id" }, 
-                { data: "name" },
-
-
-                { data: "a_party_txt" },
-
-                { data: "a_counter_party_txt" },
-
-                { data: "a_property_txt" },
-                { data: "amount" },
-
-                { data: "description" },
-
-                { data: "date_start" },
-
-                { data: "date_end" },
-
-                { data: "date_created" },
-
-        ],
-        columnDefs: [
-            { "visible": false,  "targets": 0 },
-            {
-                // The `data` parameter refers to the data for the cell (defined by the
-                // `data` option, which defaults to the column being worked with, in
-                // this case `data: 0`.
-                "render": function ( data, type, row ) {
-                    var parent_params = '';
-                    if($('#managementagreement_parent_params').length) {
-                        parent_params = parent_params + $('#managementagreement_parent_params').val(); 
-                    }
-                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=managementagreement&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="managementagreement" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
                 },
                 "targets": 1
             }
@@ -4646,48 +4384,6 @@ jQuery(document).ready(function($)
                         parent_params = parent_params + $('#assessment_parent_params').val(); 
                     }
                     return '<a class="data-table-link" href="' + baseUrl + 'artifact=assessment&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="assessment" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
-                },
-                "targets": 1
-            }
-        ]
-    });
-
-    var baseUrl = shadowcore_base_url.baseUrl;
-
-    
-    $('#sb_landassmnt-table').dataTable({
-        "ajax": {
-            'type': 'POST',
-            'url': shadowcore_ajax_script.ajaxurl,
-            'data': function(d){
-               d.action = 'find_entity_ajax';
-               d.artifact = 'landassessment';
-               d.form = $("#sb_landassmnt-list-form").serializeArray();
-            },
-        },
-        columns: [
-            { data: "id" }, 
-                { data: "name" },
-
-
-                { data: "a_land_txt" },
-                { data: "assmt_created" },
-
-                { data: "description" },
-
-        ],
-        columnDefs: [
-            { "visible": false,  "targets": 0 },
-            {
-                // The `data` parameter refers to the data for the cell (defined by the
-                // `data` option, which defaults to the column being worked with, in
-                // this case `data: 0`.
-                "render": function ( data, type, row ) {
-                    var parent_params = '';
-                    if($('#landassessment_parent_params').length) {
-                        parent_params = parent_params + $('#landassessment_parent_params').val(); 
-                    }
-                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=landassessment&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="landassessment" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
                 },
                 "targets": 1
             }
@@ -5255,6 +4951,244 @@ jQuery(document).ready(function($)
     var baseUrl = shadowcore_base_url.baseUrl;
 
     
+    $('#sb_accttxntype-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': shadowcore_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'accounttransactiontype';
+               d.form = $("#sb_accttxntype-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+                { data: "entity_code" },
+
+                { data: "name" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#accounttransactiontype_parent_params').length) {
+                        parent_params = parent_params + $('#accounttransactiontype_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=accounttransactiontype&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="accounttransactiontype" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = shadowcore_base_url.baseUrl;
+
+    
+    $('#sb_accttxnstatus-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': shadowcore_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'accounttransactionstatus';
+               d.form = $("#sb_accttxnstatus-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+                { data: "entity_code" },
+
+                { data: "name" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#accounttransactionstatus_parent_params').length) {
+                        parent_params = parent_params + $('#accounttransactionstatus_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=accounttransactionstatus&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="accounttransactionstatus" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = shadowcore_base_url.baseUrl;
+
+    
+    $('#sb_accttransaction-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': shadowcore_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'accounttransaction';
+               d.form = $("#sb_accttransaction-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+
+                { data: "status_txt" },
+                { data: "name" },
+
+                { data: "txn_date" },
+
+
+                { data: "account_txt" },
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#accounttransaction_parent_params').length) {
+                        parent_params = parent_params + $('#accounttransaction_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=accounttransaction&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="accounttransaction" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = shadowcore_base_url.baseUrl;
+
+    
+    $('#sb_fundmeth-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': shadowcore_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'fundingmethod';
+               d.form = $("#sb_fundmeth-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+                { data: "name" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#fundingmethod_parent_params').length) {
+                        parent_params = parent_params + $('#fundingmethod_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=fundingmethod&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="fundingmethod" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = shadowcore_base_url.baseUrl;
+
+    
+    $('#sb_templatetype-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': shadowcore_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'templatetype';
+               d.form = $("#sb_templatetype-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+                { data: "name" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#templatetype_parent_params').length) {
+                        parent_params = parent_params + $('#templatetype_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=templatetype&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="templatetype" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = shadowcore_base_url.baseUrl;
+
+    
+    $('#sb_template-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': shadowcore_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'template';
+               d.form = $("#sb_template-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+                { data: "name" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#template_parent_params').length) {
+                        parent_params = parent_params + $('#template_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=template&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="template" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = shadowcore_base_url.baseUrl;
+
+    
     $('#sb_invoicetype-table').dataTable({
         "ajax": {
             'type': 'POST',
@@ -5343,6 +5277,10 @@ jQuery(document).ready(function($)
         },
         columns: [
             { data: "id" }, 
+                { data: "entity_code" },
+
+
+                { data: "owner_role_txt" },
 
                 { data: "bill_acct_txt" },
                 { data: "name" },
@@ -5353,6 +5291,8 @@ jQuery(document).ready(function($)
 
                 { data: "message" },
 
+
+                { data: "business_unit_txt" },
         ],
         columnDefs: [
             { "visible": false,  "targets": 0 },
@@ -5366,6 +5306,44 @@ jQuery(document).ready(function($)
                         parent_params = parent_params + $('#invoice_parent_params').val(); 
                     }
                     return '<a class="data-table-link" href="' + baseUrl + 'artifact=invoice&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="invoice" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = shadowcore_base_url.baseUrl;
+
+    
+    $('#sb_invoicerole-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': shadowcore_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'invoicerole';
+               d.form = $("#sb_invoicerole-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+                { data: "name" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#invoicerole_parent_params').length) {
+                        parent_params = parent_params + $('#invoicerole_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=invoicerole&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="invoicerole" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
                 },
                 "targets": 1
             }
@@ -5503,6 +5481,294 @@ jQuery(document).ready(function($)
     var baseUrl = shadowcore_base_url.baseUrl;
 
     
+    $('#sb_pordertype-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': shadowcore_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'purchaseordertype';
+               d.form = $("#sb_pordertype-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+                { data: "name" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#purchaseordertype_parent_params').length) {
+                        parent_params = parent_params + $('#purchaseordertype_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=purchaseordertype&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="purchaseordertype" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = shadowcore_base_url.baseUrl;
+
+    
+    $('#sb_porderstatus-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': shadowcore_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'purchaseorderstatus';
+               d.form = $("#sb_porderstatus-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+                { data: "name" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#purchaseorderstatus_parent_params').length) {
+                        parent_params = parent_params + $('#purchaseorderstatus_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=purchaseorderstatus&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="purchaseorderstatus" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = shadowcore_base_url.baseUrl;
+
+    
+    $('#sb_porder-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': shadowcore_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'purchaseorder';
+               d.form = $("#sb_porder-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+
+                { data: "owner_role_txt" },
+
+                { data: "bill_acct_txt" },
+                { data: "name" },
+
+                { data: "amount" },
+
+                { data: "description" },
+
+                { data: "message" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#purchaseorder_parent_params').length) {
+                        parent_params = parent_params + $('#purchaseorder_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=purchaseorder&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="purchaseorder" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = shadowcore_base_url.baseUrl;
+
+    
+    $('#sb_porole-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': shadowcore_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'purchaseorderrole';
+               d.form = $("#sb_porole-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+                { data: "name" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#purchaseorderrole_parent_params').length) {
+                        parent_params = parent_params + $('#purchaseorderrole_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=purchaseorderrole&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="purchaseorderrole" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = shadowcore_base_url.baseUrl;
+
+    
+    $('#sb_poitemtype-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': shadowcore_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'purchaseorderitemtype';
+               d.form = $("#sb_poitemtype-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+                { data: "name" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#purchaseorderitemtype_parent_params').length) {
+                        parent_params = parent_params + $('#purchaseorderitemtype_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=purchaseorderitemtype&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="purchaseorderitemtype" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = shadowcore_base_url.baseUrl;
+
+    
+    $('#sb_porderitem-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': shadowcore_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'purchaseorderitem';
+               d.form = $("#sb_porderitem-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+                { data: "name" },
+
+                { data: "quantity" },
+
+                { data: "unit_price" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#purchaseorderitem_parent_params').length) {
+                        parent_params = parent_params + $('#purchaseorderitem_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=purchaseorderitem&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="purchaseorderitem" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = shadowcore_base_url.baseUrl;
+
+    
+    $('#sb_porderterm-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': shadowcore_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'purchaseorderterm';
+               d.form = $("#sb_porderterm-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+
+                { data: "pot_porder_txt" },
+
+                { data: "po_term_txt" },
+                { data: "name" },
+
+                { data: "value" },
+
+                { data: "from_start" },
+
+                { data: "thru_end" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#purchaseorderterm_parent_params').length) {
+                        parent_params = parent_params + $('#purchaseorderterm_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=purchaseorderterm&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="purchaseorderterm" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = shadowcore_base_url.baseUrl;
+
+    
     $('#sb_paymenttype-table').dataTable({
         "ajax": {
             'type': 'POST',
@@ -5596,9 +5862,9 @@ jQuery(document).ready(function($)
 
                 { data: "p_methtype_txt" },
 
-                { data: "p_fparty_txt" },
+                { data: "p_fpartyrole_txt" },
 
-                { data: "p_tparty_txt" },
+                { data: "p_tpartyrole_txt" },
                 { data: "name" },
 
                 { data: "amount" },
@@ -5620,150 +5886,6 @@ jQuery(document).ready(function($)
                         parent_params = parent_params + $('#payment_parent_params').val(); 
                     }
                     return '<a class="data-table-link" href="' + baseUrl + 'artifact=payment&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="payment" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
-                },
-                "targets": 1
-            }
-        ]
-    });
-
-    var baseUrl = shadowcore_base_url.baseUrl;
-
-    
-    $('#sb_receipt-table').dataTable({
-        "ajax": {
-            'type': 'POST',
-            'url': shadowcore_ajax_script.ajaxurl,
-            'data': function(d){
-               d.action = 'find_entity_ajax';
-               d.artifact = 'receipt';
-               d.form = $("#sb_receipt-list-form").serializeArray();
-            },
-        },
-        columns: [
-            { data: "id" }, 
-                { data: "name" },
-
-
-                { data: "p_methtype_txt" },
-
-                { data: "p_fparty_txt" },
-                { data: "effective_date" },
-
-                { data: "description" },
-
-        ],
-        columnDefs: [
-            { "visible": false,  "targets": 0 },
-            {
-                // The `data` parameter refers to the data for the cell (defined by the
-                // `data` option, which defaults to the column being worked with, in
-                // this case `data: 0`.
-                "render": function ( data, type, row ) {
-                    var parent_params = '';
-                    if($('#receipt_parent_params').length) {
-                        parent_params = parent_params + $('#receipt_parent_params').val(); 
-                    }
-                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=receipt&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="receipt" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
-                },
-                "targets": 1
-            }
-        ]
-    });
-
-    var baseUrl = shadowcore_base_url.baseUrl;
-
-    
-    $('#sb_outpayment-table').dataTable({
-        "ajax": {
-            'type': 'POST',
-            'url': shadowcore_ajax_script.ajaxurl,
-            'data': function(d){
-               d.action = 'find_entity_ajax';
-               d.artifact = 'outpayment';
-               d.form = $("#sb_outpayment-list-form").serializeArray();
-            },
-        },
-        columns: [
-            { data: "id" }, 
-                { data: "name" },
-
-
-                { data: "p_type_txt" },
-
-                { data: "p_methtype_txt" },
-
-                { data: "p_fparty_txt" },
-
-                { data: "p_tparty_txt" },
-                { data: "amount" },
-
-                { data: "effective_date" },
-
-                { data: "description" },
-
-        ],
-        columnDefs: [
-            { "visible": false,  "targets": 0 },
-            {
-                // The `data` parameter refers to the data for the cell (defined by the
-                // `data` option, which defaults to the column being worked with, in
-                // this case `data: 0`.
-                "render": function ( data, type, row ) {
-                    var parent_params = '';
-                    if($('#outpayment_parent_params').length) {
-                        parent_params = parent_params + $('#outpayment_parent_params').val(); 
-                    }
-                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=outpayment&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="outpayment" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
-                },
-                "targets": 1
-            }
-        ]
-    });
-
-    var baseUrl = shadowcore_base_url.baseUrl;
-
-    
-    $('#sb_payroll-table').dataTable({
-        "ajax": {
-            'type': 'POST',
-            'url': shadowcore_ajax_script.ajaxurl,
-            'data': function(d){
-               d.action = 'find_entity_ajax';
-               d.artifact = 'payroll';
-               d.form = $("#sb_payroll-list-form").serializeArray();
-            },
-        },
-        columns: [
-            { data: "id" }, 
-                { data: "name" },
-
-
-                { data: "p_type_txt" },
-
-                { data: "p_methtype_txt" },
-
-                { data: "p_fparty_txt" },
-
-                { data: "p_tparty_txt" },
-                { data: "amount" },
-
-                { data: "effective_date" },
-
-                { data: "description" },
-
-        ],
-        columnDefs: [
-            { "visible": false,  "targets": 0 },
-            {
-                // The `data` parameter refers to the data for the cell (defined by the
-                // `data` option, which defaults to the column being worked with, in
-                // this case `data: 0`.
-                "render": function ( data, type, row ) {
-                    var parent_params = '';
-                    if($('#payroll_parent_params').length) {
-                        parent_params = parent_params + $('#payroll_parent_params').val(); 
-                    }
-                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=payroll&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="payroll" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
                 },
                 "targets": 1
             }
@@ -5812,6 +5934,182 @@ jQuery(document).ready(function($)
                         parent_params = parent_params + $('#paymentapplication_parent_params').val(); 
                     }
                     return '<a class="data-table-link" href="' + baseUrl + 'artifact=paymentapplication&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="paymentapplication" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = shadowcore_base_url.baseUrl;
+
+    
+    $('#sb_receipttype-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': shadowcore_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'receipttype';
+               d.form = $("#sb_receipttype-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+                { data: "name" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#receipttype_parent_params').length) {
+                        parent_params = parent_params + $('#receipttype_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=receipttype&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="receipttype" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = shadowcore_base_url.baseUrl;
+
+    
+    $('#sb_disbursetype-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': shadowcore_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'disbursementtype';
+               d.form = $("#sb_disbursetype-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+                { data: "name" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#disbursementtype_parent_params').length) {
+                        parent_params = parent_params + $('#disbursementtype_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=disbursementtype&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="disbursementtype" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = shadowcore_base_url.baseUrl;
+
+    
+    $('#sb_receipt-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': shadowcore_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'receipt';
+               d.form = $("#sb_receipt-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+
+                { data: "type_txt" },
+
+                { data: "r_methtype_txt" },
+
+                { data: "r_fpartyrole_txt" },
+
+                { data: "r_tpartyrole_txt" },
+                { data: "name" },
+
+                { data: "amount" },
+
+                { data: "effective_date" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#receipt_parent_params').length) {
+                        parent_params = parent_params + $('#receipt_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=receipt&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="receipt" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = shadowcore_base_url.baseUrl;
+
+    
+    $('#sb_disbursement-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': shadowcore_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'disbursement';
+               d.form = $("#sb_disbursement-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+
+                { data: "type_txt" },
+
+                { data: "p_methtype_txt" },
+
+                { data: "d_fpartyrole_txt" },
+
+                { data: "d_tpartyrole_txt" },
+                { data: "name" },
+
+                { data: "amount" },
+
+                { data: "effective_date" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#disbursement_parent_params').length) {
+                        parent_params = parent_params + $('#disbursement_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=disbursement&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="disbursement" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
                 },
                 "targets": 1
             }
@@ -6165,54 +6463,6 @@ jQuery(document).ready(function($)
     var baseUrl = shadowcore_base_url.baseUrl;
 
     
-    $('#sb_coaaseginst-table').dataTable({
-        "ajax": {
-            'type': 'POST',
-            'url': shadowcore_ajax_script.ajaxurl,
-            'data': function(d){
-               d.action = 'find_entity_ajax';
-               d.artifact = 'coaaccountsegmentinstance';
-               d.form = $("#sb_coaaseginst-list-form").serializeArray();
-            },
-        },
-        columns: [
-            { data: "id" }, 
-
-                { data: "coa_txt" },
-
-                { data: "acct_segment_txt" },
-
-                { data: "parent_instance_txt" },
-                { data: "name" },
-
-                { data: "is_account" },
-
-
-                { data: "casi_buglaccount_txt" },
-                { data: "description" },
-
-        ],
-        columnDefs: [
-            { "visible": false,  "targets": 0 },
-            {
-                // The `data` parameter refers to the data for the cell (defined by the
-                // `data` option, which defaults to the column being worked with, in
-                // this case `data: 0`.
-                "render": function ( data, type, row ) {
-                    var parent_params = '';
-                    if($('#coaaccountsegmentinstance_parent_params').length) {
-                        parent_params = parent_params + $('#coaaccountsegmentinstance_parent_params').val(); 
-                    }
-                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=coaaccountsegmentinstance&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="coaaccountsegmentinstance" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
-                },
-                "targets": 1
-            }
-        ]
-    });
-
-    var baseUrl = shadowcore_base_url.baseUrl;
-
-    
     $('#sb_glaccttype-table').dataTable({
         "ajax": {
             'type': 'POST',
@@ -6391,6 +6641,54 @@ jQuery(document).ready(function($)
     var baseUrl = shadowcore_base_url.baseUrl;
 
     
+    $('#sb_coaaseginst-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': shadowcore_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'coaaccountsegmentinstance';
+               d.form = $("#sb_coaaseginst-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+
+                { data: "coa_txt" },
+
+                { data: "acct_segment_txt" },
+
+                { data: "parent_instance_txt" },
+                { data: "name" },
+
+                { data: "is_account" },
+
+
+                { data: "casi_buglaccount_txt" },
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#coaaccountsegmentinstance_parent_params').length) {
+                        parent_params = parent_params + $('#coaaccountsegmentinstance_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=coaaccountsegmentinstance&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="coaaccountsegmentinstance" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = shadowcore_base_url.baseUrl;
+
+    
     $('#sb_feventtype-table').dataTable({
         "ajax": {
             'type': 'POST',
@@ -6466,92 +6764,6 @@ jQuery(document).ready(function($)
                         parent_params = parent_params + $('#financialevent_parent_params').val(); 
                     }
                     return '<a class="data-table-link" href="' + baseUrl + 'artifact=financialevent&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="financialevent" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
-                },
-                "targets": 1
-            }
-        ]
-    });
-
-    var baseUrl = shadowcore_base_url.baseUrl;
-
-    
-    $('#sb_feventtxntype-table').dataTable({
-        "ajax": {
-            'type': 'POST',
-            'url': shadowcore_ajax_script.ajaxurl,
-            'data': function(d){
-               d.action = 'find_entity_ajax';
-               d.artifact = 'feventtxntype';
-               d.form = $("#sb_feventtxntype-list-form").serializeArray();
-            },
-        },
-        columns: [
-            { data: "id" }, 
-
-                { data: "fevent_type_txt" },
-
-                { data: "fetxn_type_txt" },
-                { data: "name" },
-
-                { data: "description" },
-
-        ],
-        columnDefs: [
-            { "visible": false,  "targets": 0 },
-            {
-                // The `data` parameter refers to the data for the cell (defined by the
-                // `data` option, which defaults to the column being worked with, in
-                // this case `data: 0`.
-                "render": function ( data, type, row ) {
-                    var parent_params = '';
-                    if($('#feventtxntype_parent_params').length) {
-                        parent_params = parent_params + $('#feventtxntype_parent_params').val(); 
-                    }
-                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=feventtxntype&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="feventtxntype" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
-                },
-                "targets": 1
-            }
-        ]
-    });
-
-    var baseUrl = shadowcore_base_url.baseUrl;
-
-    
-    $('#sb_txntypeacct-table').dataTable({
-        "ajax": {
-            'type': 'POST',
-            'url': shadowcore_ajax_script.ajaxurl,
-            'data': function(d){
-               d.action = 'find_entity_ajax';
-               d.artifact = 'txntypeaccount';
-               d.form = $("#sb_txntypeacct-list-form").serializeArray();
-            },
-        },
-        columns: [
-            { data: "id" }, 
-
-                { data: "tta_txn_type_txt" },
-
-                { data: "tta_account_txt" },
-                { data: "name" },
-
-                { data: "db_cr_fg" },
-
-                { data: "description" },
-
-        ],
-        columnDefs: [
-            { "visible": false,  "targets": 0 },
-            {
-                // The `data` parameter refers to the data for the cell (defined by the
-                // `data` option, which defaults to the column being worked with, in
-                // this case `data: 0`.
-                "render": function ( data, type, row ) {
-                    var parent_params = '';
-                    if($('#txntypeaccount_parent_params').length) {
-                        parent_params = parent_params + $('#txntypeaccount_parent_params').val(); 
-                    }
-                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=txntypeaccount&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="txntypeaccount" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
                 },
                 "targets": 1
             }
@@ -6682,6 +6894,92 @@ jQuery(document).ready(function($)
                         parent_params = parent_params + $('#transactiondetail_parent_params').val(); 
                     }
                     return '<a class="data-table-link" href="' + baseUrl + 'artifact=transactiondetail&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="transactiondetail" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = shadowcore_base_url.baseUrl;
+
+    
+    $('#sb_feventtxntype-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': shadowcore_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'feventtxntype';
+               d.form = $("#sb_feventtxntype-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+
+                { data: "fevent_type_txt" },
+
+                { data: "fetxn_type_txt" },
+                { data: "name" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#feventtxntype_parent_params').length) {
+                        parent_params = parent_params + $('#feventtxntype_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=feventtxntype&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="feventtxntype" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = shadowcore_base_url.baseUrl;
+
+    
+    $('#sb_txntypeacct-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': shadowcore_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'txntypeaccount';
+               d.form = $("#sb_txntypeacct-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+
+                { data: "tta_txn_type_txt" },
+
+                { data: "tta_account_txt" },
+                { data: "name" },
+
+                { data: "db_cr_fg" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#txntypeaccount_parent_params').length) {
+                        parent_params = parent_params + $('#txntypeaccount_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=txntypeaccount&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="txntypeaccount" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
                 },
                 "targets": 1
             }
@@ -9869,6 +10167,44 @@ jQuery(document).ready(function($)
     var baseUrl = shadowcore_base_url.baseUrl;
 
     
+    $('#sb_wetypecat-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': shadowcore_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'workeffortcategory';
+               d.form = $("#sb_wetypecat-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+                { data: "name" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#workeffortcategory_parent_params').length) {
+                        parent_params = parent_params + $('#workeffortcategory_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=workeffortcategory&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="workeffortcategory" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = shadowcore_base_url.baseUrl;
+
+    
     $('#sb_wetype-table').dataTable({
         "ajax": {
             'type': 'POST',
@@ -9998,7 +10334,7 @@ jQuery(document).ready(function($)
 
                 { data: "we_redone_via_txt" },
 
-                { data: "we_type_txt" },
+                { data: "type_txt" },
 
                 { data: "wep_type_txt" },
 
@@ -10049,49 +10385,27 @@ jQuery(document).ready(function($)
     var baseUrl = shadowcore_base_url.baseUrl;
 
     
-    $('#sb_inspection-table').dataTable({
+    $('#sb_agrmntinspection-table').dataTable({
         "ajax": {
             'type': 'POST',
             'url': shadowcore_ajax_script.ajaxurl,
             'data': function(d){
                d.action = 'find_entity_ajax';
-               d.artifact = 'inspection';
-               d.form = $("#sb_inspection-list-form").serializeArray();
+               d.artifact = 'purchaseagreementinspection';
+               d.form = $("#sb_agrmntinspection-list-form").serializeArray();
             },
         },
         columns: [
             { data: "id" }, 
+
+                { data: "pai_agreement_txt" },
+
+                { data: "pai_inspection_txt" },
                 { data: "name" },
 
-
-                { data: "we_redone_via_txt" },
-
-                { data: "we_type_txt" },
-
-                { data: "wep_type_txt" },
-
-                { data: "we_property_txt" },
-                { data: "tot_dallowed" },
-
-                { data: "tot_hallowed" },
-
-                { data: "est_hours" },
-
-                { data: "act_hours" },
-
-                { data: "sched_start_date" },
-
-                { data: "sched_end_date" },
-
-                { data: "act_start_date" },
-
-                { data: "act_end_date" },
+                { data: "inspection_date" },
 
                 { data: "description" },
-
-
-                { data: "status_txt" },
-                { data: "special_terms" },
 
         ],
         columnDefs: [
@@ -10102,76 +10416,10 @@ jQuery(document).ready(function($)
                 // this case `data: 0`.
                 "render": function ( data, type, row ) {
                     var parent_params = '';
-                    if($('#inspection_parent_params').length) {
-                        parent_params = parent_params + $('#inspection_parent_params').val(); 
+                    if($('#purchaseagreementinspection_parent_params').length) {
+                        parent_params = parent_params + $('#purchaseagreementinspection_parent_params').val(); 
                     }
-                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=inspection&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="inspection" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
-                },
-                "targets": 1
-            }
-        ]
-    });
-
-    var baseUrl = shadowcore_base_url.baseUrl;
-
-    
-    $('#sb_maintenance-table').dataTable({
-        "ajax": {
-            'type': 'POST',
-            'url': shadowcore_ajax_script.ajaxurl,
-            'data': function(d){
-               d.action = 'find_entity_ajax';
-               d.artifact = 'maintenance';
-               d.form = $("#sb_maintenance-list-form").serializeArray();
-            },
-        },
-        columns: [
-            { data: "id" }, 
-                { data: "name" },
-
-
-                { data: "we_redone_via_txt" },
-
-                { data: "we_type_txt" },
-
-                { data: "wep_type_txt" },
-
-                { data: "we_property_txt" },
-                { data: "tot_dallowed" },
-
-                { data: "tot_hallowed" },
-
-                { data: "est_hours" },
-
-                { data: "act_hours" },
-
-                { data: "sched_start_date" },
-
-                { data: "sched_end_date" },
-
-                { data: "act_start_date" },
-
-                { data: "act_end_date" },
-
-                { data: "description" },
-
-
-                { data: "status_txt" },
-                { data: "special_terms" },
-
-        ],
-        columnDefs: [
-            { "visible": false,  "targets": 0 },
-            {
-                // The `data` parameter refers to the data for the cell (defined by the
-                // `data` option, which defaults to the column being worked with, in
-                // this case `data: 0`.
-                "render": function ( data, type, row ) {
-                    var parent_params = '';
-                    if($('#maintenance_parent_params').length) {
-                        parent_params = parent_params + $('#maintenance_parent_params').val(); 
-                    }
-                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=maintenance&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="maintenance" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=purchaseagreementinspection&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="purchaseagreementinspection" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
                 },
                 "targets": 1
             }

@@ -10,7 +10,7 @@ if (is_user_logged_in()) {
         $current_user = wp_get_current_user();
 ?>
 
-<?php do_action('shadowbanker_before_app_menu') ?>
+<?php do_action('shadowbanker_before_app_menu'); ?>
 
 	<ul class="main-menu">
 	<#list menuBar.menuGroups as group>
@@ -38,6 +38,6 @@ if (is_user_logged_in()) {
 	</#list>
 	</ul>
 
-<?php do_action('shadowbanker_after_app_menu') ?>
+<?php do_action('shadowbanker_after_app_menu'); ?>
 
 <?php } ?>

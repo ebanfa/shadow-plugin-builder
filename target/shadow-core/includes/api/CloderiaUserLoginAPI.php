@@ -92,31 +92,50 @@ class ContentUserLoginAPI {
 	    } else {
 	        wp_set_current_user($user_verify->ID);
 	        wp_set_auth_cookie($user_verify->ID);
-	        update_user_meta($user_verify->ID, 'online_status', 'ONLINE');
 	        // Build the return
 	        $content_user = array('user_login' => $username, 'user_password' => $password);
-	        $content_user_type = get_user_meta($user_verify->ID, 'content_user_type', true);
-	        // For those that somehow dont have a content_user_type
-	        // we set the content user type to 'client'
-	        if (empty($content_user_type) && current_user_can('administrator')) {
-	            $content_user_type = 'client';
-	            update_user_meta($user_verify->ID, 'content_user_type', $content_user_type);
-	        }
-	        $content_user['content_user_type'] = $content_user_type;
 	        // Process redirect
 	        if (isset($_POST['redirect_to'])) {
 	            $content_user['redirect_url'] = $_POST['redirect_to'];
-	        } else {
+	        } /*else {
 	            // Redirect to the relevant profile page based on user type
 	            if ($content_user['content_user_type'] === 'client') {
 	                $content_user['redirect_url'] = site_url() . '/content-user';
 	            } else {
 	                $content_user['redirect_url'] = site_url() . '/content-creator';
 	            }
-	        }
+	        }*/
 	        return array('hasErrors' => false, 'content_user' => $content_user);
 	    }
 	}
+
+	/*
+     *
+     */
+    public static function build_signup_data($entity_data) {
+
+        $password = EntityStringUtils::get_token(8);
+        $user_name = sanitize_text_field($entity_data['email']);
+
+        $first_name = $entity_data['email'];
+        $last_name = $entity_data['email'];
+        //$user_type = 'INDIVIDUAL';
+        // Split the username at the @ sign
+        $account_name = $user_name;
+        $split_username = explode('@', $account_name);
+        if (!empty($split_username)) {
+            $account_name = ucfirst($split_username[0]);
+        }
+        $user_data = array();
+        $user_data['user_login'] = $user_name;
+        $user_data['user_pass'] = $password;
+        $user_data['first_name'] = $first_name;
+        $user_data['last_name'] = $last_name;
+        $user_data['display_name'] = $account_name;
+        $user_data['user_email'] = $user_name;
+        $user_data['description'] = '';
+        return $user_data;
+    }
     
 
 }
