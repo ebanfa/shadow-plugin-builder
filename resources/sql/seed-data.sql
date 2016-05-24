@@ -98,9 +98,15 @@ INSERT INTO agreementcategory (id, entity_code, name, description) VALUES (3, 'S
 INSERT INTO agreementcategory (id, entity_code, name, description) VALUES (4, 'MANAGEMENT', 'Management Agreement', 'Management Agreement');
 
 /* Insert statement for Work Effort Type */
-INSERT INTO agreementtype (category, business_category, entity_code, name, description) VALUES (1, 1, 'MONTH', ' Month-to-month', ' Month-to-month');
-INSERT INTO agreementtype (category, business_category, entity_code, name, description) VALUES (1, 1, 'ONEWAY', ' One-way lease', ' One-way lease');
-INSERT INTO agreementtype (category, business_category, entity_code, name, description) VALUES (1, 1, 'FIXED', ' Fixed-term lease', ' Fixed-term lease');
+
+INSERT INTO agreementtype (category, business_category, entity_code, name, description) VALUES (1, 2, 'MONTH', 'Month-to-month', 'Month-to-month');
+INSERT INTO agreementtype (category, business_category, entity_code, name, description) VALUES (1, 2, 'ONEWAY', 'One-way lease', 'One-way lease');
+INSERT INTO agreementtype (category, business_category, entity_code, name, description) VALUES (1, 2, 'FIXED', 'Fixed-term lease', 'Fixed-term lease');
+
+INSERT INTO agreementtype (category, business_category, entity_code, name, description) VALUES (2, 2, 'PROPERTY_SERVICE', 'Property Service Agreement', 'Property Service Agreement');
+INSERT INTO agreementtype (category, business_category, entity_code, name, description) VALUES (3, 2, 'PROPERTY_SUPPLIER', 'Property Supplier Agreement', 'Property Supplier Agreement');
+
+INSERT INTO agreementtype (category, business_category, entity_code, name, description) VALUES (4, 2, 'CLIENT', 'Client Agreement', 'Client Agreement');
 
 /* Insert statement for Receipt Type */
 INSERT INTO receipttype (business_category, entity_code, name, description) VALUES (1, 'RENT', 'Rent Payment', 'Rent Payment');

@@ -44,10 +44,10 @@ if (is_user_logged_in()) {
 		<li class="sub-menu">
             <a href=""><i class="md zmdi zmdi-case-check zmdi-hc-fw"></i> Agreements</a>
             <ul>
-				<li><a href="/wordpress/page?page_action=list&artifact=agreement&bcat=business&cat=management"><i class="md md-mail"></i> Clients</a></li>
-				<li><a href="/wordpress/page?page_action=list&artifact=agreement&bcat=business&cat=rent"><i class="md md-mail"></i> Tenants</a></li>
-				<li><a href="/wordpress/page?page_action=list&artifact=agreement&bcat=business&cat=supplier"><i class="md md-mail"></i> Suppliers</a></li>
-				<li><a href="/wordpress/page?page_action=list&artifact=agreement&bcat=business&cat=service"><i class="md md-mail"></i> Service Providers</a></li>
+				<li><a href="/wordpress/page?page_action=list&artifact=agreement&bcat=property&cat=management"><i class="md md-mail"></i> Clients</a></li>
+				<li><a href="/wordpress/page?page_action=list&artifact=agreement&bcat=property&cat=rent"><i class="md md-mail"></i> Tenants</a></li>
+				<li><a href="/wordpress/page?page_action=list&artifact=agreement&bcat=property&cat=supplier"><i class="md md-mail"></i> Suppliers</a></li>
+				<li><a href="/wordpress/page?page_action=list&artifact=agreement&bcat=property&cat=service"><i class="md md-mail"></i> Service Providers</a></li>
 				<li><a href="/wordpress/page?page_action=list&artifact=charge&bcat=business"><i class="md md-mail"></i> Charges</a></li>
 				<li><a href="/wordpress/page?page_action=list&artifact=term&bcat=business"><i class="md md-mail"></i> Terms</a></li>
             </ul>

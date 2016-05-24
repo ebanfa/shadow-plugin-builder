@@ -209,7 +209,7 @@
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/wordpress/page?page_action=list&amp;artifact=agreement&amp;bcat=business&amp;cat=management</target>
+				<target>/wordpress/page?page_action=list&amp;artifact=agreement&amp;bcat=property&amp;cat=management</target>
 			</menu>
 			<menu>
 				<name>tenant</name>
@@ -218,7 +218,7 @@
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/wordpress/page?page_action=list&amp;artifact=agreement&amp;bcat=business&amp;cat=rent</target>
+				<target>/wordpress/page?page_action=list&amp;artifact=agreement&amp;bcat=property&amp;cat=rent</target>
 			</menu>
 			<menu>
 				<name>supplier</name>
@@ -227,7 +227,7 @@
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/wordpress/page?page_action=list&amp;artifact=agreement&amp;bcat=business&amp;cat=supplier</target>
+				<target>/wordpress/page?page_action=list&amp;artifact=agreement&amp;bcat=property&amp;cat=supplier</target>
 			</menu>
 			<menu>
 				<name>service</name>
@@ -236,7 +236,7 @@
 				<active>N</active>
 				<cssClass>md-mail</cssClass>
 				<targetType>entity</targetType>
-				<target>/wordpress/page?page_action=list&amp;artifact=agreement&amp;bcat=business&amp;cat=service</target>
+				<target>/wordpress/page?page_action=list&amp;artifact=agreement&amp;bcat=property&amp;cat=service</target>
 			</menu>
 			<menu>
 				<name>charges</name>
