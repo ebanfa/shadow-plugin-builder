@@ -28,13 +28,6 @@ class UnitOfMeasure extends Model {
     {
         return $this->hasMany('Asset');
     }
-    /**
-     * 
-     */
-    public function pi_uom()
-    {
-        return $this->hasMany('InventoryItem');
-    }
 
 }
 

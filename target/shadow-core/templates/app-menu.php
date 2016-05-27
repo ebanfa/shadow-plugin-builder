@@ -15,7 +15,7 @@ if (is_user_logged_in()) {
 	<ul class="main-menu">
 			<li><a href="/wordpress/page?artifact=dashboard&page_action=view"><i class="md zmdi zmdi-view-dashboard zmdi-hc-fw"></i> Dashboard</a></li>
 		<li class="sub-menu">
-            <a href=""><i class="md zmdi zmdi-account-add zmdi-hc-fw"></i> Parties</a>
+            <a href=""><i class="md zmdi zmdi-account-add zmdi-hc-fw"></i> People</a>
             <ul>
 				<li><a href="/wordpress/page?artifact=party&page_action=list&role=landlord"><i class="md zmdi zmdi-account-circle zmdi-hc-fw"></i> Clients</a></li>
 				<li><a href="/wordpress/page?artifact=party&page_action=list&role=tenant"><i class="md zmdi zmdi-account-box-o zmdi-hc-fw"></i> Tenants</a></li>
@@ -127,6 +127,7 @@ if (is_user_logged_in()) {
             <a href=""><i class="md zmdi zmdi-settings zmdi-hc-fw"></i> My Settings</a>
             <ul>
 				<li><a href="/wordpress/page?page_action=list&artifact=partyprofile"><i class="md md-person"></i> Profile</a></li>
+				<li><a href="/wordpress/page?page_action=list&artifact=conversation"><i class="md md-person"></i> Inbox</a></li>
 				<li><a href="<?php echo wp_logout_url(home_url()); ?>"><i class="md md-input"></i> Sign Out</a></li>
             </ul>
         </li>

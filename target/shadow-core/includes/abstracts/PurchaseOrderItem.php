@@ -16,7 +16,7 @@ class PurchaseOrderItem extends Model {
     /**
      * 
      */
-    public function porder()
+    public function pi_porder()
     {
         return $this->belongsTo('PurchaseOrder');
     }

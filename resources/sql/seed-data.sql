@@ -46,6 +46,12 @@ INSERT INTO propertytype (entity_code, name, description) VALUES ('RESIDENTIAL',
 /* Insert statement for Property Status */
 INSERT INTO propertystatus (entity_code, name, description) VALUES ('PENDING', 'Pending', 'Pending');
 
+/* Insert statement for Building Type */
+INSERT INTO buildingtype (entity_code, name, description) VALUES ('CONDO', 'Condominium', 'Condominium');
+
+/* Insert statement for Allocation Unit */
+INSERT INTO allocationunit (entity_code, name, description) VALUES ('APARTMENT_UNITS', 'Apartment Units', 'Apartment Units');
+
 /* Insert statement for Template Type */
 INSERT INTO templatetype (id, entity_code, name, description) VALUES (1, 'INVOICE_TEMPLATE', 'Invoice Template', 'Invoice Template');
 
@@ -157,3 +163,6 @@ INSERT INTO liabilitytype (category, business_category, entity_code, name, descr
 INSERT INTO liabilitytype (category, business_category, entity_code, name, description) VALUES (2, 1, 'MORTGAGE', 'Mortgage', 'Mortgage');
 INSERT INTO liabilitytype (category, business_category, entity_code, name, description) VALUES (1, 2, 'AP', 'Accounts Payable', 'Accounts Payable');
 INSERT INTO liabilitytype (category, business_category, entity_code, name, description) VALUES (2, 2, 'MORTGAGE', 'Mortgage', 'Mortgage');
+
+
+INSERT INTO unittype (entity_code, name, description) VALUES ('APARTMENT', 'Apartment', 'Apartment');

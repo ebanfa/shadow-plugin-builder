@@ -32,9 +32,9 @@ class InventoryItemCPT {
             'description' => 'The Inventory field',
             'type' => 'text',
         ),
-        array('name' => 'pi_uom',
-            'title' => 'Unit Of Measure',
-            'description' => 'The Unit Of Measure field',
+        array('name' => 'i_asset',
+            'title' => 'Asset',
+            'description' => 'The Asset field',
             'type' => 'text',
         ),
         array('name' => 'name',
@@ -105,12 +105,12 @@ class InventoryItemCPT {
             'is_list_field' => true,
             'is_form_field' => true,
             'is_relationship_field' => true,),
-        'pi_uom' => array('name' => 'pi_uom',
-            'description' => 'Unit Of Measure',
+        'i_asset' => array('name' => 'i_asset',
+            'description' => 'Asset',
             'size' => 'large',
-            'entity_name' => 'UnitOfMeasure',
-            'entity_description' => 'Unit Of Measure',
-            'data_type' => 'sb_uom',
+            'entity_name' => 'Asset',
+            'entity_description' => 'Asset',
+            'data_type' => 'sb_asset',
             'is_required' => true,
             'is_visible' => true,
             'is_create_field' => true,
@@ -336,7 +336,7 @@ class InventoryItemCPT {
     public static function sb_inventoryitem_table_head($defaults){
         $defaults['i_itemtype']  = 'Inventory Item Type';
         $defaults['i_inventory']  = 'Inventory';
-        $defaults['pi_uom']  = 'Unit Of Measure';
+        $defaults['i_asset']  = 'Asset';
         $defaults['name']  = 'Name';
         $defaults['quantity']  = 'Quantity';
         $defaults['description']  = 'Description';
@@ -356,8 +356,8 @@ class InventoryItemCPT {
             $field_value = get_post_meta($post_id, 'i_inventory', true );
             echo $field_value;
         }
-        if ($column_name == 'pi_uom') {
-            $field_value = get_post_meta($post_id, 'pi_uom', true );
+        if ($column_name == 'i_asset') {
+            $field_value = get_post_meta($post_id, 'i_asset', true );
             echo $field_value;
         }
         if ($column_name == 'name') {

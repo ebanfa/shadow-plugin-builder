@@ -2478,7 +2478,7 @@ jQuery(document).ready(function($)
 
                 { data: "i_inventory_txt" },
 
-                { data: "pi_uom_txt" },
+                { data: "i_asset_txt" },
                 { data: "name" },
 
                 { data: "quantity" },

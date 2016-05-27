@@ -112,6 +112,9 @@ class ${application.name} {
         <#if entity.singleViewTemplate ??>
         include_once('includes/view/${entity.name?lower_case}/Single${entity.name}View.php');
         </#if>
+        <#if entity.listViewTemplate ??>
+        include_once('includes/view/${entity.name?lower_case}/List${entity.name}View.php');
+        </#if>
         <#if entity.viewFilterTemplate ??>
         include_once('includes/view/${entity.name?lower_case}/${entity.name}ViewFilter.php');
         </#if>

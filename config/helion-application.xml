@@ -20,8 +20,8 @@
 
 		<menuGroup>
 			<name>partymanagement</name>
-			<displayName>Parties</displayName>
-			<description>Parties</description>
+			<displayName>People</displayName>
+			<description>People</description>
 			<type>group</type>
 			<cssClass>zmdi zmdi-account-add zmdi-hc-fw</cssClass>
 			<menu>
@@ -745,6 +745,15 @@
 				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
 				<target>/wordpress/page?page_action=list&amp;artifact=partyprofile</target>
+			</menu>
+			<menu>
+				<name>conversations</name>
+				<displayName>Inbox</displayName>
+				<description>Inbox</description>
+				<active>N</active>
+				<cssClass>md-person</cssClass>
+				<targetType>entity</targetType>
+				<target>/wordpress/page?page_action=list&amp;artifact=conversation</target>
 			</menu>
 			<menu>
 				<name>signout</name>
@@ -6361,6 +6370,7 @@
 			<description>Inventory</description>
             <global>N</global>
 			<viewFilterTemplate>views/wordpress/categorized-child-entity-view-filter.ftl</viewFilterTemplate>
+			<createViewTemplate>views/wordpress/inventory/create-entity-view.ftl</createViewTemplate>
 			<apiTemplate>api/wordpress/inventory/inventory-service-api.ftl</apiTemplate>
 			<field>
 				<name>entity_code</name>
@@ -6569,19 +6579,19 @@
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
-				<name>pi_uom</name>
+				<name>i_asset</name>
 				<isVisible>Y</isVisible>
-			    <isFormField>Y</isFormField>
+				<isFormField>Y</isFormField>
 				<required>Y</required>
 				<createField>Y</createField>
 				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
-				<dataType>sb_uom</dataType>
+				<dataType>sb_asset</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
-				<description>Unit Of Measure</description>
-				<displayName>Unit Of Measure</displayName>
+				<description>Asset</description>
+				<displayName>Asset</displayName>
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
@@ -9427,7 +9437,8 @@
 			<postName>sb_agreement</postName>
 			<description>Agreement</description>
 			<global>N</global>
-			<viewFilterTemplate>views/wordpress/param-categorized-child-entity-view-filter.ftl</viewFilterTemplate>
+			<viewFilterTemplate>views/wordpress/agreement/agreement-entity-view-filter.ftl</viewFilterTemplate>
+			<createViewTemplate>views/wordpress/agreement/create-entity-view.ftl</createViewTemplate>
 			<apiTemplate>api/wordpress/agreement/agreement-service-api.ftl</apiTemplate>
 			<field>
 				<name>entity_code</name>
@@ -9498,7 +9509,7 @@
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
-				<createField>Y</createField>
+				<createField>N</createField>
 				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
@@ -14277,7 +14288,7 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
-				<name>invoice</name>
+				<name>ii_invoice</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
@@ -15033,7 +15044,7 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
-				<name>porder</name>
+				<name>pi_porder</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
@@ -20578,7 +20589,8 @@
 			<postName>sb_conversation</postName>
 			<description>Conversation</description>
 			<global>Y</global>
-            <!-- <listPageTemplate>html/wordpress/entity/conversation/conversation-archive.ftl</listPageTemplate>
+			<listPageTemplate>html/wordpress/entity/conversation/conversation-archive.ftl</listPageTemplate>
+            <!-- 
 			<apiTemplate>services/wordpress/conversation/conversation-service-api.ftl</apiTemplate> -->
 			<field>
 				<name>entity_code</name>
@@ -26657,6 +26669,7 @@
 			<description>Work Effort</description>
 			<global>N</global>
 			<viewFilterTemplate>views/wordpress/param-categorized-child-entity-view-filter.ftl</viewFilterTemplate>
+			<createViewTemplate>views/wordpress/workeffort/create-entity-view.ftl</createViewTemplate>
 			<apiTemplate>api/wordpress/workeffort/workeffort-service-api.ftl</apiTemplate>
 			<field>
 				<name>entity_code</name>
@@ -26903,7 +26916,7 @@
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
-				<createField>Y</createField>
+				<createField>N</createField>
 				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>

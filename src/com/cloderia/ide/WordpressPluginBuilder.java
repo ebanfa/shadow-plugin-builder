@@ -74,6 +74,7 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 		this.templatesDir = baseDir + "templates/";
 		
 		this.config = baseDir + "config/helion-application.xml";
+		//this.config = baseDir + "config/essaysite-application.xml";
 		//this.config = baseDir + "config/business-site-application.xml";
 	}
 
@@ -395,6 +396,12 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 				String entityViewOutputDir = includeViewOutputDir + entityName.toLowerCase() + "/";
 				this.createDirectoryIfNeeded(entityViewOutputDir);
 				this.generateArtifact(module, entity, entity.getSingleViewTemplate() , entityViewOutputDir + "Single" + entityName + "View.php");
+			} 
+
+			if(entity.getListViewTemplate() != null){
+				String entityViewOutputDir = includeViewOutputDir + entityName.toLowerCase() + "/";
+				this.createDirectoryIfNeeded(entityViewOutputDir);
+				this.generateArtifact(module, entity, entity.getSingleViewTemplate() , entityViewOutputDir + "List" + entityName + "View.php");
 			} 
 		}
 		this.generateArtifact(module, null, "views/wordpress/dashboard/dashboard-view-php.ftl" , includeViewOutputDir +  "DashboardView.php");

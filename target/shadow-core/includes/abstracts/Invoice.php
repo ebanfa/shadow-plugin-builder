@@ -52,6 +52,13 @@ class Invoice extends Model {
     /**
      * 
      */
+    public function ii_invoice()
+    {
+        return $this->hasMany('InvoiceItem');
+    }
+    /**
+     * 
+     */
     public function ir_invoice()
     {
         return $this->hasMany('InvoiceRole');

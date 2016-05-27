@@ -106,7 +106,7 @@ class PurchaseOrderItemTypeCPT {
                     'is_list_field' => false,
                     'is_form_field' => false,
                     'is_relationship_field' => false,),
-                'porder' => array('name' => 'porder',
+                'pi_porder' => array('name' => 'pi_porder',
                     'description' => 'Purchase Order',
                     'size' => 'large',
                     'entity_name' => 'PurchaseOrder',

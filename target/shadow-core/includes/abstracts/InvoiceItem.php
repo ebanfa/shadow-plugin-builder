@@ -16,7 +16,7 @@ class InvoiceItem extends Model {
     /**
      * 
      */
-    public function invoice()
+    public function ii_invoice()
     {
         return $this->belongsTo('Invoice');
     }

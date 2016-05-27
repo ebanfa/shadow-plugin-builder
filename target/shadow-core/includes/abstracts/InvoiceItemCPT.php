@@ -22,7 +22,7 @@ class InvoiceItemCPT {
             'description' => 'The Code field',
             'type' => 'text',
         ),
-        array('name' => 'invoice',
+        array('name' => 'ii_invoice',
             'title' => 'Invoice',
             'description' => 'The Invoice field',
             'type' => 'text',
@@ -77,7 +77,7 @@ class InvoiceItemCPT {
             'is_list_field' => false,
             'is_form_field' => false,
             'is_relationship_field' => false,),
-        'invoice' => array('name' => 'invoice',
+        'ii_invoice' => array('name' => 'ii_invoice',
             'description' => 'Invoice',
             'size' => 'large',
             'entity_name' => 'Invoice',
@@ -245,8 +245,8 @@ class InvoiceItemCPT {
             $field_value = get_post_meta($post_id, 'entity_code', true );
             echo $field_value;
         }
-        if ($column_name == 'invoice') {
-            $field_value = get_post_meta($post_id, 'invoice', true );
+        if ($column_name == 'ii_invoice') {
+            $field_value = get_post_meta($post_id, 'ii_invoice', true );
             echo $field_value;
         }
         if ($column_name == 'item_type') {

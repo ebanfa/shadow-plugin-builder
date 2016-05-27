@@ -432,13 +432,21 @@
                 </div>
             </div>
         </div>
-        <?php  } else { ?>
+        <?php  } else { 
+                $field_entity_data = EntityAPIUtils::init_entity_data(strtolower($field['entity_name']));
+                $field_options = EntityAPI::find_all($field_entity_data); ?>
         <div class="<?php echo $field['col_size']; ?>">
             <div class="form-group">
                 <div class="fg-line">
                     <div class="select">
                         <select id="<?php echo $field['name'];?>" name="<?php echo $field['name'];?>" class="form-control">
                             <option value="">Select a <?php echo $field['description'];?></option>
+                            <?php
+                                foreach ($field_options as $option) { ?>
+                                <option value="<?php echo $option['id']; ?>">
+                                    <?php echo $option['name']; ?>
+                                </option>
+                            <?php } ?>
 
                             
                         </select>

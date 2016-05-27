@@ -13,23 +13,25 @@
     if(isset($_REQUEST['parent_param'])) $parent_param = urldecode($_REQUEST['parent_param']);
 
 ?>
-<ul class="tab-nav tn-justified tn-icon c-overflow" role="tablist">
-    <li role="presentation" class="active">
-        <a class="col-sx-4" href="#tab-0" aria-controls="tab-0" role="tab" data-toggle="tab">
-            <?php echo $model['entity_description']; ?>
-        </a>
-    </li>
+<div class="c-overflow">
+    <ul class="tab-nav" role="tablist" style="overflow: visible;">
+        <li class="active">
+            <a href="#tab-0" aria-controls="tab-0" role="tab" data-toggle="tab">
+                <?php echo $model['entity_description']; ?>
+            </a>
+        </li>
 
-    <?php  $count = 1; foreach ($tabs as $tab) {  ?>
-    <li role="presentation">
-        <a class="col-xs-4" 
-            href="#tab-<?php echo $count; ?>" 
-            aria-controls="tab-<?php echo $count; ?>" role="tab" data-toggle="tab">
-            <?php echo $tab['description']; ?>
-        </a>
-    </li>
-    <?php  $count++; } ?>
-</ul>
+        <?php  $count = 1; foreach ($tabs as $tab) {  ?>
+        <li>
+            <a
+                href="#tab-<?php echo $count; ?>" 
+                aria-controls="tab-<?php echo $count; ?>" role="tab" data-toggle="tab">
+                <?php echo $tab['description']; ?>
+            </a>
+        </li>
+        <?php  $count++; } ?>
+    </ul>
+</div>
 
 <div class="tab-content p-20">
     <div role="tabpanel" class="tab-pane animated fadeIn in active" id="tab-0">
@@ -87,7 +89,7 @@
                 <input type="hidden" name="<?php echo $tab['name'];?>" value="<?php echo $model['id']; ?>"/>
             </form>
             <div class="table-responsive">
-                <table id="<?php echo $tab['model']['entity_post_name'];?>-table" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
+                <table id="<?php echo $tab['model']['entity_post_name'];?>_related-table" class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -117,7 +119,71 @@
                     name="<?php echo $child_artifact_name; ?>_parent_params" 
                     value="<?php echo $child_parent_url; ?>" /> 
             </div>
-        </div>        
+        </div>    
+        <script type="text/javascript">
+            $(document).ready(function() { 
+                // Setup - add a text input to each footer cell 
+                $('#<?php echo $tab['model']['entity_post_name']; ?>_related-table tfoot th').each(function () { 
+                    var title = $('#<?php echo $tab['model']['entity_post_name']; ?>_related-table thead th').eq($(this).index()).text(); 
+                    $(this).html('<div class="form-group"><div class="fg-line"><input type="text" class="form-control" placeholder="Search '+title+'" /></div></div>'); 
+                }); 
+
+                // DataTable 
+                var table = $('#<?php echo $tab['model']['entity_post_name']; ?>_related-table').DataTable({                
+                    "processing": true, // for show processing bar
+                    "serverSide": true, // for process on server side
+                    "orderMulti": false, // for disable multi column order
+                    //"dom": '<"top"i>rt<"bottom"lp><"clear">', // for hide default global search box // little confusion? don't worry I explained in the tutorial website
+                    'ajax': {
+                        'url':'<?php echo admin_url('admin-ajax.php'); ?>',
+                        'type':'POST',
+                        'datatype':'json',
+                        'data': function(d){
+                            d.action = 'find_entity_ajax';
+                            d.artifact = '<?php echo $child_artifact_name; ?>';
+                        },
+                    },
+                    'columns': [
+                        {'data': 'id' },
+                    <?php 
+                        $field_model = EntityAPIUtils::init_entity_data(strtolower($field['entity_name']));
+                        foreach ($tab['model']['entity_fields'] as $field_name => $entity_field) { 
+                            if($entity_field['is_list_field'] && !$entity_field['is_relationship_field']) { 
+                                echo '{"data": "'.$entity_field['name'].'"},'; 
+                            }
+                            if($entity_field['is_list_field'] && $entity_field['is_relationship_field']) { 
+                                echo '{"data": "'.$entity_field['name'].'_txt"},'; 
+                            }
+                        } 
+                    ?>
+                    ],
+                    'columnDefs': [
+                        { "visible": false,  "targets": 0 },
+                        {
+                            // The `data` parameter refers to the data for the cell (defined by the
+                            // `data` option, which defaults to the column being worked with, in
+                            // this case `data: 0`.
+                            "render": function ( data, type, row ) {
+                                var additional_seach_options = '';
+                                if($('#additional_seach_options').length) { additional_seach_options = $('#additional_seach_options').val(); }
+
+                                
+                                return '<a class="data-table-link" href="' + '<?php echo EntityActionProcessor::get_base_url(); ?>' + 'artifact=<?php echo strtolower($tab['model']['entity_name']); ?>&id=' + row.id + '&page_action=view' +  additional_seach_options +'&parent_id=<?php echo $model['id']; ?>&parent_artifact=<?php echo $view->get_artifact_name(); ?>&parent_field=<?php echo $child_field_name; ?>" data-related-artifact-name="<?php echo strtolower($tab['model']['entity_name']); ?>" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                            },
+                            "targets": 1
+                        }
+                    ]
+                }); 
+                // Apply the search 
+                table.columns().eq( 0 ).each( 
+                    function ( colIdx ) { 
+                        $('input', table.column(colIdx).footer()).on('keyup change', function () { 
+                            table.column(colIdx).search(this.value).draw(); 
+                        }); 
+                    } 
+                ); 
+            });
+        </script>    
     <?php $ifield_count++; } ?>
 </div>
 <script type="text/javascript">

@@ -30,9 +30,9 @@ class InventoryItem extends Model {
     /**
      * 
      */
-    public function pi_uom()
+    public function i_asset()
     {
-        return $this->belongsTo('UnitOfMeasure');
+        return $this->belongsTo('Asset');
     }
     /**
      * 

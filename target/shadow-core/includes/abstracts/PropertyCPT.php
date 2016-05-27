@@ -2025,7 +2025,7 @@ class PropertyCPT {
                     'data_type' => 'sb_westatus',
                     'is_required' => true,
                     'is_visible' => true,
-                    'is_create_field' => true,
+                    'is_create_field' => false,
                     'is_edit_field' => true,
                     'is_view_field' => true,
                     'is_list_field' => true,

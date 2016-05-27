@@ -52,6 +52,13 @@ class PurchaseOrder extends Model {
     /**
      * 
      */
+    public function pi_porder()
+    {
+        return $this->hasMany('PurchaseOrderItem');
+    }
+    /**
+     * 
+     */
     public function pr_porder()
     {
         return $this->hasMany('PurchaseOrderRole');
@@ -59,16 +66,16 @@ class PurchaseOrder extends Model {
     /**
      * 
      */
-    public function porder()
+    public function pot_porder()
     {
-        return $this->hasMany('Transaction');
+        return $this->hasMany('PurchaseOrderTerm');
     }
     /**
      * 
      */
-    public function pot_porder()
+    public function porder()
     {
-        return $this->hasMany('PurchaseOrderTerm');
+        return $this->hasMany('Transaction');
     }
 
 }

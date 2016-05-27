@@ -106,7 +106,7 @@ class InvoiceItemTypeCPT {
                     'is_list_field' => false,
                     'is_form_field' => false,
                     'is_relationship_field' => false,),
-                'invoice' => array('name' => 'invoice',
+                'ii_invoice' => array('name' => 'ii_invoice',
                     'description' => 'Invoice',
                     'size' => 'large',
                     'entity_name' => 'Invoice',

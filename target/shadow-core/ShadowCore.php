@@ -649,8 +649,10 @@ class ShadowCore {
         include_once('includes/view/property/CreatePropertyView.php');
         include_once('includes/view/property/PropertyViewFilter.php');
         include_once('includes/view/asset/AssetViewFilter.php');
+        include_once('includes/view/inventory/CreateInventoryView.php');
         include_once('includes/view/inventory/InventoryViewFilter.php');
         include_once('includes/view/buildingtype/CreateBuildingTypeView.php');
+        include_once('includes/view/agreement/CreateAgreementView.php');
         include_once('includes/view/agreement/AgreementViewFilter.php');
         include_once('includes/view/purchaseagreement/CreatePurchaseAgreementView.php');
         include_once('includes/view/purchaseagreement/PurchaseAgreementViewFilter.php');
@@ -672,6 +674,7 @@ class ShadowCore {
         include_once('includes/view/transactiontype/CreateTransactionTypeView.php');
         include_once('includes/view/budget/CreateBudgetView.php');
         include_once('includes/view/notification/SingleNotificationView.php');
+        include_once('includes/view/workeffort/CreateWorkEffortView.php');
         include_once('includes/view/workeffort/WorkEffortViewFilter.php');
 
         include_once('includes/view/entity-form-fields.php');

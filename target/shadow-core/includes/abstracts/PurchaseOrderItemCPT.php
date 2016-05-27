@@ -22,7 +22,7 @@ class PurchaseOrderItemCPT {
             'description' => 'The Code field',
             'type' => 'text',
         ),
-        array('name' => 'porder',
+        array('name' => 'pi_porder',
             'title' => 'Purchase Order',
             'description' => 'The Purchase Order field',
             'type' => 'text',
@@ -77,7 +77,7 @@ class PurchaseOrderItemCPT {
             'is_list_field' => false,
             'is_form_field' => false,
             'is_relationship_field' => false,),
-        'porder' => array('name' => 'porder',
+        'pi_porder' => array('name' => 'pi_porder',
             'description' => 'Purchase Order',
             'size' => 'large',
             'entity_name' => 'PurchaseOrder',
@@ -245,8 +245,8 @@ class PurchaseOrderItemCPT {
             $field_value = get_post_meta($post_id, 'entity_code', true );
             echo $field_value;
         }
-        if ($column_name == 'porder') {
-            $field_value = get_post_meta($post_id, 'porder', true );
+        if ($column_name == 'pi_porder') {
+            $field_value = get_post_meta($post_id, 'pi_porder', true );
             echo $field_value;
         }
         if ($column_name == 'item_type') {

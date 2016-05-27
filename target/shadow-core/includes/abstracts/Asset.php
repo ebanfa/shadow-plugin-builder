@@ -59,6 +59,13 @@ class Asset extends Model {
     /**
      * 
      */
+    public function i_asset()
+    {
+        return $this->hasMany('InventoryItem');
+    }
+    /**
+     * 
+     */
     public function pfasset()
     {
         return $this->hasMany('Requirement');

@@ -46,7 +46,7 @@ class ArtifactRequestProcessor {
             if($page_action == 'edit') $view_class_nm = 'Edit' . $page_info['artifact_name']. 'View';
             if($page_action == 'view') $view_class_nm = 'Single' . $page_info['artifact_name']. 'View';
             if($page_action == 'list') $view_class_nm = 'List' . $page_info['artifact_name']. 'View';
-
+            //echo '>>>>>>>>>>>>>>>>>>>>>>' . $view_class_nm;
 
             if (!class_exists($view_class_nm)) {
                 if($page_action == 'create') $view_class_nm = 'CreateEntityView';
