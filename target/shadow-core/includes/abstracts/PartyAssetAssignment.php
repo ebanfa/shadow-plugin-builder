@@ -2,10 +2,10 @@
 
 use \WeDevs\ORM\Eloquent\Model as Model;
 
-class WorkEffortFixedAssetAssignment extends Model {
+class PartyAssetAssignment extends Model {
 
     public $primaryKey = 'id';
-    public $table = 'workeffortfixedassetassignment';
+    public $table = 'partyassetassignment';
     /**
      * Indicates if the model should be timestamped.
      *
@@ -16,23 +16,23 @@ class WorkEffortFixedAssetAssignment extends Model {
     /**
      * 
      */
-    public function fixed_asset()
+    public function pas_asset()
     {
         return $this->belongsTo('Asset');
     }
     /**
      * 
      */
-    public function workeffort()
+    public function party()
     {
-        return $this->belongsTo('WorkEffort');
+        return $this->belongsTo('Party');
     }
     /**
      * 
      */
     public function status()
     {
-        return $this->belongsTo('WorkEffortFixedAssignmentStatus');
+        return $this->belongsTo('PartyFAssetAssignmentStatus');
     }
     /**
      * 

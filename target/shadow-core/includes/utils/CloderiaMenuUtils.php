@@ -87,6 +87,14 @@ class CloderiaMenuUtils {
 	 		self::admin_menu_slug . '_show_sb_utilitytype', 'CloderiaMenuUtils::render_sb_utilitytype');
 	 	add_submenu_page( self::admin_menu_slug , 'Utility', 'Utility', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_utility', 'CloderiaMenuUtils::render_sb_utility');
+	 	add_submenu_page( self::admin_menu_slug , 'Facility Category', 'Facility Category', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_facilitycat', 'CloderiaMenuUtils::render_sb_facilitycat');
+	 	add_submenu_page( self::admin_menu_slug , 'Facility Type', 'Facility Type', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_facilitytype', 'CloderiaMenuUtils::render_sb_facilitytype');
+	 	add_submenu_page( self::admin_menu_slug , 'Facility', 'Facility', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_facility', 'CloderiaMenuUtils::render_sb_facility');
+	 	add_submenu_page( self::admin_menu_slug , 'Facility Charge', 'Facility Charge', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_facharge', 'CloderiaMenuUtils::render_sb_facharge');
 	 	add_submenu_page( self::admin_menu_slug , 'Property Type', 'Property Type', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_proptype', 'CloderiaMenuUtils::render_sb_proptype');
 	 	add_submenu_page( self::admin_menu_slug , 'Property Status', 'Property Status', 'manage_options', 
@@ -169,14 +177,6 @@ class CloderiaMenuUtils {
 	 		self::admin_menu_slug . '_show_sb_unit', 'CloderiaMenuUtils::render_sb_unit');
 	 	add_submenu_page( self::admin_menu_slug , 'Unit Charge', 'Unit Charge', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_unitcharge', 'CloderiaMenuUtils::render_sb_unitcharge');
-	 	add_submenu_page( self::admin_menu_slug , 'Facility Category', 'Facility Category', 'manage_options', 
-	 		self::admin_menu_slug . '_show_sb_facilitycat', 'CloderiaMenuUtils::render_sb_facilitycat');
-	 	add_submenu_page( self::admin_menu_slug , 'Facility Type', 'Facility Type', 'manage_options', 
-	 		self::admin_menu_slug . '_show_sb_facilitytype', 'CloderiaMenuUtils::render_sb_facilitytype');
-	 	add_submenu_page( self::admin_menu_slug , 'Facility', 'Facility', 'manage_options', 
-	 		self::admin_menu_slug . '_show_sb_facility', 'CloderiaMenuUtils::render_sb_facility');
-	 	add_submenu_page( self::admin_menu_slug , 'Facility Charge', 'Facility Charge', 'manage_options', 
-	 		self::admin_menu_slug . '_show_sb_facharge', 'CloderiaMenuUtils::render_sb_facharge');
 	 	add_submenu_page( self::admin_menu_slug , 'Parking Slot Type', 'Parking Slot Type', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_pslottype', 'CloderiaMenuUtils::render_sb_pslottype');
 	 	add_submenu_page( self::admin_menu_slug , 'Parking Slot Type Charge', 'Parking Slot Type Charge', 'manage_options', 
@@ -503,8 +503,6 @@ class CloderiaMenuUtils {
 	 		self::admin_menu_slug . '_show_sb_westatus', 'CloderiaMenuUtils::render_sb_westatus');
 	 	add_submenu_page( self::admin_menu_slug , 'Work Effort', 'Work Effort', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_workeffort', 'CloderiaMenuUtils::render_sb_workeffort');
-	 	add_submenu_page( self::admin_menu_slug , 'Purchase Agreement Inspection', 'Purchase Agreement Inspection', 'manage_options', 
-	 		self::admin_menu_slug . '_show_sb_agrmntinspection', 'CloderiaMenuUtils::render_sb_agrmntinspection');
 	 	add_submenu_page( self::admin_menu_slug , 'Work Requirement Fulfillment', 'Work Requirement Fulfillment', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_wrfulfillment', 'CloderiaMenuUtils::render_sb_wrfulfillment');
 	 	add_submenu_page( self::admin_menu_slug , 'Work Effort Association Type', 'Work Effort Association Type', 'manage_options', 
@@ -529,14 +527,14 @@ class CloderiaMenuUtils {
 	 		self::admin_menu_slug . '_show_sb_wearate', 'CloderiaMenuUtils::render_sb_wearate');
 	 	add_submenu_page( self::admin_menu_slug , 'Work Effort Inventory Assignment', 'Work Effort Inventory Assignment', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_weiassign', 'CloderiaMenuUtils::render_sb_weiassign');
-	 	add_submenu_page( self::admin_menu_slug , 'Work Effort Fixed Assignment Status', 'Work Effort Fixed Assignment Status', 'manage_options', 
-	 		self::admin_menu_slug . '_show_sb_wefaastatus', 'CloderiaMenuUtils::render_sb_wefaastatus');
-	 	add_submenu_page( self::admin_menu_slug , 'Work Effort Fixed Asset Assignment', 'Work Effort Fixed Asset Assignment', 'manage_options', 
-	 		self::admin_menu_slug . '_show_sb_wefaassign', 'CloderiaMenuUtils::render_sb_wefaassign');
-	 	add_submenu_page( self::admin_menu_slug , 'Party Fixed Asset Assignment Status', 'Party Fixed Asset Assignment Status', 'manage_options', 
+	 	add_submenu_page( self::admin_menu_slug , 'Work Effort Asset Assignment Status', 'Work Effort Asset Assignment Status', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_weaastatus', 'CloderiaMenuUtils::render_sb_weaastatus');
+	 	add_submenu_page( self::admin_menu_slug , 'Work Effort Asset Assignment', 'Work Effort Asset Assignment', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_weaassign', 'CloderiaMenuUtils::render_sb_weaassign');
+	 	add_submenu_page( self::admin_menu_slug , 'Party Asset Assignment Status', 'Party Asset Assignment Status', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_wepastatus', 'CloderiaMenuUtils::render_sb_wepastatus');
-	 	add_submenu_page( self::admin_menu_slug , 'Party Fixed Asset Assignment', 'Party Fixed Asset Assignment', 'manage_options', 
-	 		self::admin_menu_slug . '_show_sb_pfaassign', 'CloderiaMenuUtils::render_sb_pfaassign');
+	 	add_submenu_page( self::admin_menu_slug , 'Party Asset Assignment', 'Party Asset Assignment', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_paassign', 'CloderiaMenuUtils::render_sb_paassign');
 	 	add_submenu_page( self::admin_menu_slug , 'Work Effort Deliverable', 'Work Effort Deliverable', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_wedeliverable', 'CloderiaMenuUtils::render_sb_wedeliverable');
 	}
@@ -579,6 +577,10 @@ class CloderiaMenuUtils {
        remove_menu_page( 'edit.php?post_type=sb_uom');
        remove_menu_page( 'edit.php?post_type=sb_utilitytype');
        remove_menu_page( 'edit.php?post_type=sb_utility');
+       remove_menu_page( 'edit.php?post_type=sb_facilitycat');
+       remove_menu_page( 'edit.php?post_type=sb_facilitytype');
+       remove_menu_page( 'edit.php?post_type=sb_facility');
+       remove_menu_page( 'edit.php?post_type=sb_facharge');
        remove_menu_page( 'edit.php?post_type=sb_proptype');
        remove_menu_page( 'edit.php?post_type=sb_propstatus');
        remove_menu_page( 'edit.php?post_type=sb_property');
@@ -620,10 +622,6 @@ class CloderiaMenuUtils {
        remove_menu_page( 'edit.php?post_type=sb_utypecharge');
        remove_menu_page( 'edit.php?post_type=sb_unit');
        remove_menu_page( 'edit.php?post_type=sb_unitcharge');
-       remove_menu_page( 'edit.php?post_type=sb_facilitycat');
-       remove_menu_page( 'edit.php?post_type=sb_facilitytype');
-       remove_menu_page( 'edit.php?post_type=sb_facility');
-       remove_menu_page( 'edit.php?post_type=sb_facharge');
        remove_menu_page( 'edit.php?post_type=sb_pslottype');
        remove_menu_page( 'edit.php?post_type=sb_pstypecharge');
        remove_menu_page( 'edit.php?post_type=sb_pslot');
@@ -787,7 +785,6 @@ class CloderiaMenuUtils {
        remove_menu_page( 'edit.php?post_type=sb_weptype');
        remove_menu_page( 'edit.php?post_type=sb_westatus');
        remove_menu_page( 'edit.php?post_type=sb_workeffort');
-       remove_menu_page( 'edit.php?post_type=sb_agrmntinspection');
        remove_menu_page( 'edit.php?post_type=sb_wrfulfillment');
        remove_menu_page( 'edit.php?post_type=sb_weatype');
        remove_menu_page( 'edit.php?post_type=sb_weassociation');
@@ -800,10 +797,10 @@ class CloderiaMenuUtils {
        remove_menu_page( 'edit.php?post_type=sb_partyrate');
        remove_menu_page( 'edit.php?post_type=sb_wearate');
        remove_menu_page( 'edit.php?post_type=sb_weiassign');
-       remove_menu_page( 'edit.php?post_type=sb_wefaastatus');
-       remove_menu_page( 'edit.php?post_type=sb_wefaassign');
+       remove_menu_page( 'edit.php?post_type=sb_weaastatus');
+       remove_menu_page( 'edit.php?post_type=sb_weaassign');
        remove_menu_page( 'edit.php?post_type=sb_wepastatus');
-       remove_menu_page( 'edit.php?post_type=sb_pfaassign');
+       remove_menu_page( 'edit.php?post_type=sb_paassign');
        remove_menu_page( 'edit.php?post_type=sb_wedeliverable');
 	}
 
@@ -1186,6 +1183,46 @@ class CloderiaMenuUtils {
 	public static function render_sb_utility()
 	{
 		$url = admin_url().'edit.php?post_type=sb_utility';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_facilitycat()
+	{
+		$url = admin_url().'edit.php?post_type=sb_facilitycat';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_facilitytype()
+	{
+		$url = admin_url().'edit.php?post_type=sb_facilitytype';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_facility()
+	{
+		$url = admin_url().'edit.php?post_type=sb_facility';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_facharge()
+	{
+		$url = admin_url().'edit.php?post_type=sb_facharge';
 		?>
 	 	<script>location.href='<?php echo $url;?>';</script>
 		<?php
@@ -1596,46 +1633,6 @@ class CloderiaMenuUtils {
 	public static function render_sb_unitcharge()
 	{
 		$url = admin_url().'edit.php?post_type=sb_unitcharge';
-		?>
-	 	<script>location.href='<?php echo $url;?>';</script>
-		<?php
-	}
-    /**
-	 * Create Orders post-type sub menu
-	 */
-	public static function render_sb_facilitycat()
-	{
-		$url = admin_url().'edit.php?post_type=sb_facilitycat';
-		?>
-	 	<script>location.href='<?php echo $url;?>';</script>
-		<?php
-	}
-    /**
-	 * Create Orders post-type sub menu
-	 */
-	public static function render_sb_facilitytype()
-	{
-		$url = admin_url().'edit.php?post_type=sb_facilitytype';
-		?>
-	 	<script>location.href='<?php echo $url;?>';</script>
-		<?php
-	}
-    /**
-	 * Create Orders post-type sub menu
-	 */
-	public static function render_sb_facility()
-	{
-		$url = admin_url().'edit.php?post_type=sb_facility';
-		?>
-	 	<script>location.href='<?php echo $url;?>';</script>
-		<?php
-	}
-    /**
-	 * Create Orders post-type sub menu
-	 */
-	public static function render_sb_facharge()
-	{
-		$url = admin_url().'edit.php?post_type=sb_facharge';
 		?>
 	 	<script>location.href='<?php echo $url;?>';</script>
 		<?php
@@ -3273,16 +3270,6 @@ class CloderiaMenuUtils {
     /**
 	 * Create Orders post-type sub menu
 	 */
-	public static function render_sb_agrmntinspection()
-	{
-		$url = admin_url().'edit.php?post_type=sb_agrmntinspection';
-		?>
-	 	<script>location.href='<?php echo $url;?>';</script>
-		<?php
-	}
-    /**
-	 * Create Orders post-type sub menu
-	 */
 	public static function render_sb_wrfulfillment()
 	{
 		$url = admin_url().'edit.php?post_type=sb_wrfulfillment';
@@ -3403,9 +3390,9 @@ class CloderiaMenuUtils {
     /**
 	 * Create Orders post-type sub menu
 	 */
-	public static function render_sb_wefaastatus()
+	public static function render_sb_weaastatus()
 	{
-		$url = admin_url().'edit.php?post_type=sb_wefaastatus';
+		$url = admin_url().'edit.php?post_type=sb_weaastatus';
 		?>
 	 	<script>location.href='<?php echo $url;?>';</script>
 		<?php
@@ -3413,9 +3400,9 @@ class CloderiaMenuUtils {
     /**
 	 * Create Orders post-type sub menu
 	 */
-	public static function render_sb_wefaassign()
+	public static function render_sb_weaassign()
 	{
-		$url = admin_url().'edit.php?post_type=sb_wefaassign';
+		$url = admin_url().'edit.php?post_type=sb_weaassign';
 		?>
 	 	<script>location.href='<?php echo $url;?>';</script>
 		<?php
@@ -3433,9 +3420,9 @@ class CloderiaMenuUtils {
     /**
 	 * Create Orders post-type sub menu
 	 */
-	public static function render_sb_pfaassign()
+	public static function render_sb_paassign()
 	{
-		$url = admin_url().'edit.php?post_type=sb_pfaassign';
+		$url = admin_url().'edit.php?post_type=sb_paassign';
 		?>
 	 	<script>location.href='<?php echo $url;?>';</script>
 		<?php

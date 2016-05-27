@@ -19,7 +19,7 @@ class WorkEffortCategory extends Model {
      */
     public function category()
     {
-        return $this->hasMany('WorkEffortType');
+        return $this->hasMany('WorkEffortPurposeType');
     }
 
 }

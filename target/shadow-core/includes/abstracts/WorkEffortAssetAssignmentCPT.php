@@ -1,10 +1,10 @@
 <?php 
 
-class PartyFixedAssetAssignmentCPT {
+class WorkEffortAssetAssignmentCPT {
 
     public static $prefix = ''; 
 
-    public static $post_name = 'sb_pfaassign'; 
+    public static $post_name = 'sb_weaassign'; 
     public static $is_global_entity = false; 
 
 
@@ -22,14 +22,14 @@ class PartyFixedAssetAssignmentCPT {
             'description' => 'The Code field',
             'type' => 'text',
         ),
-        array('name' => 'fixed_asset',
-            'title' => 'Fixed Asset',
-            'description' => 'The Fixed Asset field',
+        array('name' => 'weaa_asset',
+            'title' => 'Asset',
+            'description' => 'The Asset field',
             'type' => 'text',
         ),
-        array('name' => 'party',
-            'title' => 'Party',
-            'description' => 'The Party field',
+        array('name' => 'workeffort',
+            'title' => 'Work Effort',
+            'description' => 'The Work Effort field',
             'type' => 'text',
         ),
         array('name' => 'status',
@@ -87,8 +87,8 @@ class PartyFixedAssetAssignmentCPT {
             'is_list_field' => false,
             'is_form_field' => false,
             'is_relationship_field' => false,),
-        'fixed_asset' => array('name' => 'fixed_asset',
-            'description' => 'Fixed Asset',
+        'weaa_asset' => array('name' => 'weaa_asset',
+            'description' => 'Asset',
             'size' => 'large',
             'entity_name' => 'Asset',
             'entity_description' => 'Asset',
@@ -101,12 +101,12 @@ class PartyFixedAssetAssignmentCPT {
             'is_list_field' => true,
             'is_form_field' => true,
             'is_relationship_field' => true,),
-        'party' => array('name' => 'party',
-            'description' => 'Party',
+        'workeffort' => array('name' => 'workeffort',
+            'description' => 'Work Effort',
             'size' => 'large',
-            'entity_name' => 'Party',
-            'entity_description' => 'Party',
-            'data_type' => 'sb_party',
+            'entity_name' => 'WorkEffort',
+            'entity_description' => 'Work Effort',
+            'data_type' => 'sb_workeffort',
             'is_required' => true,
             'is_visible' => true,
             'is_create_field' => true,
@@ -118,9 +118,9 @@ class PartyFixedAssetAssignmentCPT {
         'status' => array('name' => 'status',
             'description' => 'Status',
             'size' => 'large',
-            'entity_name' => 'PartyFixedAssetAssignmentStatus',
-            'entity_description' => 'Party Fixed Asset Assignment Status',
-            'data_type' => 'sb_wepastatus',
+            'entity_name' => 'WorkEffortAssetAssignmentStatus',
+            'entity_description' => 'Work Effort Asset Assignment Status',
+            'data_type' => 'sb_weaastatus',
             'is_required' => true,
             'is_visible' => true,
             'is_create_field' => true,
@@ -221,20 +221,20 @@ class PartyFixedAssetAssignmentCPT {
      */
     public static function register_custom_post_type()
     {
-       register_post_type('sb_pfaassign', 
+       register_post_type('sb_weaassign', 
             array(
-                'label' => 'Party Fixed Asset Assignment',
+                'label' => 'Work Effort Asset Assignment',
                 'labels' => array(
                 'add_new'           => 'Add New',
-                'add_new_item'      => 'Add New Party Fixed Asset Assignment',
-                'edit_item'         => 'Edit Party Fixed Asset Assignment',
-                'new_item'          => 'New Party Fixed Asset Assignment',
-                'view_item'         => 'View Party Fixed Asset Assignment',
-                'search_items'      => 'Search Party Fixed Asset Assignment',
-                'not_found'         => 'No Party Fixed Asset Assignment Found ',
+                'add_new_item'      => 'Add New Work Effort Asset Assignment',
+                'edit_item'         => 'Edit Work Effort Asset Assignment',
+                'new_item'          => 'New Work Effort Asset Assignment',
+                'view_item'         => 'View Work Effort Asset Assignment',
+                'search_items'      => 'Search Work Effort Asset Assignment',
+                'not_found'         => 'No Work Effort Asset Assignment Found ',
                 'not_found_in_trash'=> 'Not Found in Trash',
                 ),
-                'description' => 'Reusable Party Fixed Asset Assignment',
+                'description' => 'Reusable Work Effort Asset Assignment',
                 'public' => true,
                 'show_ui' => true,
                 'menu_position' => 5,
@@ -254,7 +254,7 @@ class PartyFixedAssetAssignmentCPT {
   ------------------------------------------------------------------------------*/
     public static function save_custom_fields( $post_id, $post) 
     {
-        if ( $post->post_type == 'sb_pfaassign') 
+        if ( $post->post_type == 'sb_weaassign') 
         {
             // The 2nd arg here is important because there are multiple nonces on the page
             if ( !empty($_POST))// && check_admin_referer('update_custom_content_fields','custom_content_fields_nonce') )
@@ -268,9 +268,9 @@ class PartyFixedAssetAssignmentCPT {
         return $field['value'];
     }
 
-    public static function sb_pfaassign_table_head($defaults){
-        $defaults['fixed_asset']  = 'Fixed Asset';
-        $defaults['party']  = 'Party';
+    public static function sb_weaassign_table_head($defaults){
+        $defaults['weaa_asset']  = 'Asset';
+        $defaults['workeffort']  = 'Work Effort';
         $defaults['status']  = 'Status';
         $defaults['from_date']  = 'From Date';
         $defaults['to_date']  = 'To Date';
@@ -280,17 +280,17 @@ class PartyFixedAssetAssignmentCPT {
         return $defaults;
     }
 
-    public static function sb_pfaassign_table_content($column_name, $post_id){
+    public static function sb_weaassign_table_content($column_name, $post_id){
         if ($column_name == 'entity_code') {
             $field_value = get_post_meta($post_id, 'entity_code', true );
             echo $field_value;
         }
-        if ($column_name == 'fixed_asset') {
-            $field_value = get_post_meta($post_id, 'fixed_asset', true );
+        if ($column_name == 'weaa_asset') {
+            $field_value = get_post_meta($post_id, 'weaa_asset', true );
             echo $field_value;
         }
-        if ($column_name == 'party') {
-            $field_value = get_post_meta($post_id, 'party', true );
+        if ($column_name == 'workeffort') {
+            $field_value = get_post_meta($post_id, 'workeffort', true );
             echo $field_value;
         }
         if ($column_name == 'status') {

@@ -1,10 +1,10 @@
 <?php 
 
-class PurchaseAgreementInspectionCPT {
+class PartyAssetAssignmentCPT {
 
     public static $prefix = ''; 
 
-    public static $post_name = 'sb_agrmntinspection'; 
+    public static $post_name = 'sb_paassign'; 
     public static $is_global_entity = false; 
 
 
@@ -22,14 +22,29 @@ class PurchaseAgreementInspectionCPT {
             'description' => 'The Code field',
             'type' => 'text',
         ),
-        array('name' => 'pai_agreement',
-            'title' => 'Purchase Agreement',
-            'description' => 'The Purchase Agreement field',
+        array('name' => 'pas_asset',
+            'title' => 'Asset',
+            'description' => 'The Asset field',
             'type' => 'text',
         ),
-        array('name' => 'pai_inspection',
-            'title' => 'Inspection',
-            'description' => 'The Inspection field',
+        array('name' => 'party',
+            'title' => 'Party',
+            'description' => 'The Party field',
+            'type' => 'text',
+        ),
+        array('name' => 'status',
+            'title' => 'Status',
+            'description' => 'The Status field',
+            'type' => 'text',
+        ),
+        array('name' => 'from_date',
+            'title' => 'From Date',
+            'description' => 'The From Date field',
+            'type' => 'text',
+        ),
+        array('name' => 'to_date',
+            'title' => 'To Date',
+            'description' => 'The To Date field',
             'type' => 'text',
         ),
         array('name' => 'name',
@@ -37,9 +52,9 @@ class PurchaseAgreementInspectionCPT {
             'description' => 'The Name field',
             'type' => 'text',
         ),
-        array('name' => 'inspection_date',
-            'title' => 'Inspection Date',
-            'description' => 'The Inspection Date field',
+        array('name' => 'alloc_cost',
+            'title' => 'Allocated Cost',
+            'description' => 'The Allocated Cost field',
             'type' => 'text',
         ),
         array('name' => 'description',
@@ -72,32 +87,72 @@ class PurchaseAgreementInspectionCPT {
             'is_list_field' => false,
             'is_form_field' => false,
             'is_relationship_field' => false,),
-        'pai_agreement' => array('name' => 'pai_agreement',
-            'description' => 'Purchase Agreement',
+        'pas_asset' => array('name' => 'pas_asset',
+            'description' => 'Asset',
             'size' => 'large',
-            'entity_name' => 'PurchaseAgreement',
-            'entity_description' => 'Purchase Agreement',
-            'data_type' => 'sb_purchaseagrmnt',
+            'entity_name' => 'Asset',
+            'entity_description' => 'Asset',
+            'data_type' => 'sb_asset',
             'is_required' => true,
-            'is_visible' => false,
+            'is_visible' => true,
             'is_create_field' => true,
             'is_edit_field' => true,
             'is_view_field' => true,
             'is_list_field' => true,
-            'is_form_field' => false,
+            'is_form_field' => true,
             'is_relationship_field' => true,),
-        'pai_inspection' => array('name' => 'pai_inspection',
-            'description' => 'Inspection',
+        'party' => array('name' => 'party',
+            'description' => 'Party',
             'size' => 'large',
-            'data_type' => 'sb_inspection',
+            'entity_name' => 'Party',
+            'entity_description' => 'Party',
+            'data_type' => 'sb_party',
             'is_required' => true,
-            'is_visible' => false,
+            'is_visible' => true,
             'is_create_field' => true,
             'is_edit_field' => true,
             'is_view_field' => true,
             'is_list_field' => true,
-            'is_form_field' => false,
+            'is_form_field' => true,
             'is_relationship_field' => true,),
+        'status' => array('name' => 'status',
+            'description' => 'Status',
+            'size' => 'large',
+            'entity_name' => 'PartyFAssetAssignmentStatus',
+            'entity_description' => 'Party Asset Assignment Status',
+            'data_type' => 'sb_wepastatus',
+            'is_required' => true,
+            'is_visible' => true,
+            'is_create_field' => true,
+            'is_edit_field' => true,
+            'is_view_field' => true,
+            'is_list_field' => true,
+            'is_form_field' => true,
+            'is_relationship_field' => true,),
+        'from_date' => array('name' => 'from_date',
+            'description' => 'From Date',
+            'size' => 'medium',
+            'data_type' => 'date',
+            'is_required' => true,
+            'is_visible' => true,
+            'is_create_field' => true,
+            'is_edit_field' => true,
+            'is_view_field' => true,
+            'is_list_field' => true,
+            'is_form_field' => true,
+            'is_relationship_field' => false,),
+        'to_date' => array('name' => 'to_date',
+            'description' => 'To Date',
+            'size' => 'medium',
+            'data_type' => 'date',
+            'is_required' => true,
+            'is_visible' => true,
+            'is_create_field' => true,
+            'is_edit_field' => true,
+            'is_view_field' => true,
+            'is_list_field' => true,
+            'is_form_field' => true,
+            'is_relationship_field' => false,),
         'name' => array('name' => 'name',
             'description' => 'Name',
             'size' => 'large',
@@ -110,10 +165,10 @@ class PurchaseAgreementInspectionCPT {
             'is_list_field' => true,
             'is_form_field' => true,
             'is_relationship_field' => false,),
-        'inspection_date' => array('name' => 'inspection_date',
-            'description' => 'Inspection Date',
-            'size' => 'medium',
-            'data_type' => 'date',
+        'alloc_cost' => array('name' => 'alloc_cost',
+            'description' => 'Allocated Cost',
+            'size' => 'large',
+            'data_type' => 'money',
             'is_required' => true,
             'is_visible' => true,
             'is_create_field' => true,
@@ -142,9 +197,9 @@ class PurchaseAgreementInspectionCPT {
             'data_type' => 'sb_businessunit',
             'is_required' => true,
             'is_visible' => false,
-            'is_create_field' => false,
+            'is_create_field' => true,
             'is_edit_field' => false,
-            'is_view_field' => false,
+            'is_view_field' => true,
             'is_list_field' => false,
             'is_form_field' => false,
             'is_relationship_field' => true,),
@@ -166,20 +221,20 @@ class PurchaseAgreementInspectionCPT {
      */
     public static function register_custom_post_type()
     {
-       register_post_type('sb_agrmntinspection', 
+       register_post_type('sb_paassign', 
             array(
-                'label' => 'Purchase Agreement Inspection',
+                'label' => 'Party Asset Assignment',
                 'labels' => array(
                 'add_new'           => 'Add New',
-                'add_new_item'      => 'Add New Purchase Agreement Inspection',
-                'edit_item'         => 'Edit Purchase Agreement Inspection',
-                'new_item'          => 'New Purchase Agreement Inspection',
-                'view_item'         => 'View Purchase Agreement Inspection',
-                'search_items'      => 'Search Purchase Agreement Inspection',
-                'not_found'         => 'No Purchase Agreement Inspection Found ',
+                'add_new_item'      => 'Add New Party Asset Assignment',
+                'edit_item'         => 'Edit Party Asset Assignment',
+                'new_item'          => 'New Party Asset Assignment',
+                'view_item'         => 'View Party Asset Assignment',
+                'search_items'      => 'Search Party Asset Assignment',
+                'not_found'         => 'No Party Asset Assignment Found ',
                 'not_found_in_trash'=> 'Not Found in Trash',
                 ),
-                'description' => 'Reusable Purchase Agreement Inspection',
+                'description' => 'Reusable Party Asset Assignment',
                 'public' => true,
                 'show_ui' => true,
                 'menu_position' => 5,
@@ -199,7 +254,7 @@ class PurchaseAgreementInspectionCPT {
   ------------------------------------------------------------------------------*/
     public static function save_custom_fields( $post_id, $post) 
     {
-        if ( $post->post_type == 'sb_agrmntinspection') 
+        if ( $post->post_type == 'sb_paassign') 
         {
             // The 2nd arg here is important because there are multiple nonces on the page
             if ( !empty($_POST))// && check_admin_referer('update_custom_content_fields','custom_content_fields_nonce') )
@@ -213,34 +268,49 @@ class PurchaseAgreementInspectionCPT {
         return $field['value'];
     }
 
-    public static function sb_agrmntinspection_table_head($defaults){
-        $defaults['pai_agreement']  = 'Purchase Agreement';
-        $defaults['pai_inspection']  = 'Inspection';
-        $defaults['name']  = 'name';
-        $defaults['inspection_date']  = 'Inspection Date';
+    public static function sb_paassign_table_head($defaults){
+        $defaults['pas_asset']  = 'Asset';
+        $defaults['party']  = 'Party';
+        $defaults['status']  = 'Status';
+        $defaults['from_date']  = 'From Date';
+        $defaults['to_date']  = 'To Date';
+        $defaults['name']  = 'Name';
+        $defaults['alloc_cost']  = 'Allocated Cost';
         $defaults['description']  = 'Description';
         return $defaults;
     }
 
-    public static function sb_agrmntinspection_table_content($column_name, $post_id){
+    public static function sb_paassign_table_content($column_name, $post_id){
         if ($column_name == 'entity_code') {
             $field_value = get_post_meta($post_id, 'entity_code', true );
             echo $field_value;
         }
-        if ($column_name == 'pai_agreement') {
-            $field_value = get_post_meta($post_id, 'pai_agreement', true );
+        if ($column_name == 'pas_asset') {
+            $field_value = get_post_meta($post_id, 'pas_asset', true );
             echo $field_value;
         }
-        if ($column_name == 'pai_inspection') {
-            $field_value = get_post_meta($post_id, 'pai_inspection', true );
+        if ($column_name == 'party') {
+            $field_value = get_post_meta($post_id, 'party', true );
+            echo $field_value;
+        }
+        if ($column_name == 'status') {
+            $field_value = get_post_meta($post_id, 'status', true );
+            echo $field_value;
+        }
+        if ($column_name == 'from_date') {
+            $field_value = get_post_meta($post_id, 'from_date', true );
+            echo $field_value;
+        }
+        if ($column_name == 'to_date') {
+            $field_value = get_post_meta($post_id, 'to_date', true );
             echo $field_value;
         }
         if ($column_name == 'name') {
             $field_value = get_post_meta($post_id, 'name', true );
             echo $field_value;
         }
-        if ($column_name == 'inspection_date') {
-            $field_value = get_post_meta($post_id, 'inspection_date', true );
+        if ($column_name == 'alloc_cost') {
+            $field_value = get_post_meta($post_id, 'alloc_cost', true );
             echo $field_value;
         }
         if ($column_name == 'description') {

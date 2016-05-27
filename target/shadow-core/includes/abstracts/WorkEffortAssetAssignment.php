@@ -2,10 +2,10 @@
 
 use \WeDevs\ORM\Eloquent\Model as Model;
 
-class PurchaseAgreementInspection extends Model {
+class WorkEffortAssetAssignment extends Model {
 
     public $primaryKey = 'id';
-    public $table = 'purchaseagreementinspection';
+    public $table = 'workeffortassetassignment';
     /**
      * Indicates if the model should be timestamped.
      *
@@ -16,15 +16,23 @@ class PurchaseAgreementInspection extends Model {
     /**
      * 
      */
-    public function pai_agreement()
+    public function weaa_asset()
     {
-        return $this->belongsTo('PurchaseAgreement');
+        return $this->belongsTo('Asset');
     }
     /**
      * 
      */
-    public function pai_inspection()
+    public function workeffort()
     {
+        return $this->belongsTo('WorkEffort');
+    }
+    /**
+     * 
+     */
+    public function status()
+    {
+        return $this->belongsTo('WorkEffortAssetAssignmentStatus');
     }
     /**
      * 

@@ -1,8 +1,8 @@
 DROP TABLE IF EXISTS workeffortdeliverable;
-DROP TABLE IF EXISTS partyfixedassetassignment;
-DROP TABLE IF EXISTS partyfixedassetassignmentstatus;
-DROP TABLE IF EXISTS workeffortfixedassetassignment;
-DROP TABLE IF EXISTS workeffortfixedassignmentstatus;
+DROP TABLE IF EXISTS partyassetassignment;
+DROP TABLE IF EXISTS partyfassetassignmentstatus;
+DROP TABLE IF EXISTS workeffortassetassignment;
+DROP TABLE IF EXISTS workeffortassetassignmentstatus;
 DROP TABLE IF EXISTS workeffortinventoryassignment;
 DROP TABLE IF EXISTS workeffortassignmentrate;
 DROP TABLE IF EXISTS partyrate;
@@ -15,7 +15,6 @@ DROP TABLE IF EXISTS workeffortroletype;
 DROP TABLE IF EXISTS workeffortassociation;
 DROP TABLE IF EXISTS workeffortassociationtype;
 DROP TABLE IF EXISTS workrequirementfulfillment;
-DROP TABLE IF EXISTS purchaseagreementinspection;
 DROP TABLE IF EXISTS workeffort;
 DROP TABLE IF EXISTS workeffortstatus;
 DROP TABLE IF EXISTS workeffortpurposetype;
@@ -179,10 +178,6 @@ DROP TABLE IF EXISTS agreementcategory;
 DROP TABLE IF EXISTS parkingslot;
 DROP TABLE IF EXISTS parkingslottypecharge;
 DROP TABLE IF EXISTS parkingslottype;
-DROP TABLE IF EXISTS facilitycharge;
-DROP TABLE IF EXISTS facility;
-DROP TABLE IF EXISTS facilitytype;
-DROP TABLE IF EXISTS facilitycategory;
 DROP TABLE IF EXISTS unitcharge;
 DROP TABLE IF EXISTS unit;
 DROP TABLE IF EXISTS unittypecharge;
@@ -224,6 +219,10 @@ DROP TABLE IF EXISTS zonetype;
 DROP TABLE IF EXISTS property;
 DROP TABLE IF EXISTS propertystatus;
 DROP TABLE IF EXISTS propertytype;
+DROP TABLE IF EXISTS facilitycharge;
+DROP TABLE IF EXISTS facility;
+DROP TABLE IF EXISTS facilitytype;
+DROP TABLE IF EXISTS facilitycategory;
 DROP TABLE IF EXISTS utility;
 DROP TABLE IF EXISTS utilitytype;
 DROP TABLE IF EXISTS unitofmeasure;
@@ -656,6 +655,52 @@ CREATE TABLE utility  (
 	PRIMARY KEY( id )
 );
 
+CREATE TABLE facilitycategory  ( 
+	id   	int(11) AUTO_INCREMENT NOT NULL,
+	entity_code   		varchar(35) NULL,
+	name   		varchar(35) NOT NULL,
+	description   		varchar(255) NOT NULL,
+	PRIMARY KEY( id )
+);
+
+CREATE TABLE facilitytype  ( 
+	id   	int(11) AUTO_INCREMENT NOT NULL,
+	entity_code   		varchar(35) NULL,
+   	ft_category   int(11) NOT NULL,
+	name   		varchar(35) NOT NULL,
+	description   		varchar(255) NOT NULL,
+ 	FOREIGN KEY (ft_category) REFERENCES facilitycategory (id), 
+	PRIMARY KEY( id )
+);
+
+CREATE TABLE facility  ( 
+	id   	int(11) AUTO_INCREMENT NOT NULL,
+	entity_code   		varchar(35) NULL,
+   	f_facility   int(11) NULL,
+   	f_type   int(11) NOT NULL,
+	name   		varchar(35) NOT NULL,
+	description   		varchar(255) NOT NULL,
+   	business_unit   int(11) NOT NULL,
+ 	FOREIGN KEY (f_facility) REFERENCES facility (id), 
+ 	FOREIGN KEY (f_type) REFERENCES facilitytype (id), 
+ 	FOREIGN KEY (business_unit) REFERENCES businessunit (id), 
+	PRIMARY KEY( id )
+);
+
+CREATE TABLE facilitycharge  ( 
+	id   	int(11) AUTO_INCREMENT NOT NULL,
+	entity_code   		varchar(35) NULL,
+   	fc_facility   int(11) NOT NULL,
+   	fc_charge   int(11) NOT NULL,
+	name   		varchar(35) NOT NULL,
+	description   		varchar(255) NOT NULL,
+   	business_unit   int(11) NOT NULL,
+ 	FOREIGN KEY (fc_facility) REFERENCES facility (id), 
+ 	FOREIGN KEY (fc_charge) REFERENCES charge (id), 
+ 	FOREIGN KEY (business_unit) REFERENCES businessunit (id), 
+	PRIMARY KEY( id )
+);
+
 CREATE TABLE propertytype  ( 
 	id   	int(11) AUTO_INCREMENT NOT NULL,
 	entity_code   		varchar(35) NULL,
@@ -676,6 +721,7 @@ CREATE TABLE property  (
 	id   	int(11) AUTO_INCREMENT NOT NULL,
 	entity_code   		varchar(35) NULL,
    	p_party   int(11) NOT NULL,
+   	p_facility   int(11) NOT NULL,
    	party   int(11) NULL,
    	p_type   int(11) NOT NULL,
    	status   int(11) NOT NULL,
@@ -690,6 +736,7 @@ CREATE TABLE property  (
 	description   		varchar(255) NOT NULL,
    	business_unit   int(11) NOT NULL,
  	FOREIGN KEY (p_party) REFERENCES party (id), 
+ 	FOREIGN KEY (p_facility) REFERENCES facility (id), 
  	FOREIGN KEY (party) REFERENCES party (id), 
  	FOREIGN KEY (p_type) REFERENCES propertytype (id), 
  	FOREIGN KEY (status) REFERENCES propertystatus (id), 
@@ -1192,52 +1239,6 @@ CREATE TABLE unitcharge  (
    	business_unit   int(11) NOT NULL,
  	FOREIGN KEY (uc_unit) REFERENCES unit (id), 
  	FOREIGN KEY (uc_charge) REFERENCES charge (id), 
- 	FOREIGN KEY (business_unit) REFERENCES businessunit (id), 
-	PRIMARY KEY( id )
-);
-
-CREATE TABLE facilitycategory  ( 
-	id   	int(11) AUTO_INCREMENT NOT NULL,
-	entity_code   		varchar(35) NULL,
-	name   		varchar(35) NOT NULL,
-	description   		varchar(255) NOT NULL,
-	PRIMARY KEY( id )
-);
-
-CREATE TABLE facilitytype  ( 
-	id   	int(11) AUTO_INCREMENT NOT NULL,
-	entity_code   		varchar(35) NULL,
-   	ft_category   int(11) NOT NULL,
-	name   		varchar(35) NOT NULL,
-	description   		varchar(255) NOT NULL,
- 	FOREIGN KEY (ft_category) REFERENCES facilitycategory (id), 
-	PRIMARY KEY( id )
-);
-
-CREATE TABLE facility  ( 
-	id   	int(11) AUTO_INCREMENT NOT NULL,
-	entity_code   		varchar(35) NULL,
-   	f_property   int(11) NOT NULL,
-   	f_type   int(11) NOT NULL,
-	name   		varchar(35) NOT NULL,
-	description   		varchar(255) NOT NULL,
-   	business_unit   int(11) NOT NULL,
- 	FOREIGN KEY (f_property) REFERENCES property (id), 
- 	FOREIGN KEY (f_type) REFERENCES facilitytype (id), 
- 	FOREIGN KEY (business_unit) REFERENCES businessunit (id), 
-	PRIMARY KEY( id )
-);
-
-CREATE TABLE facilitycharge  ( 
-	id   	int(11) AUTO_INCREMENT NOT NULL,
-	entity_code   		varchar(35) NULL,
-   	fc_facility   int(11) NOT NULL,
-   	fc_charge   int(11) NOT NULL,
-	name   		varchar(35) NOT NULL,
-	description   		varchar(255) NOT NULL,
-   	business_unit   int(11) NOT NULL,
- 	FOREIGN KEY (fc_facility) REFERENCES facility (id), 
- 	FOREIGN KEY (fc_charge) REFERENCES charge (id), 
  	FOREIGN KEY (business_unit) REFERENCES businessunit (id), 
 	PRIMARY KEY( id )
 );
@@ -3369,7 +3370,7 @@ CREATE TABLE requirement  (
 	entity_code   		varchar(35) NULL,
    	r_type   int(11) NOT NULL,
    	deliverable   int(11) NOT NULL,
-   	pfasset   int(11) NOT NULL,
+   	r_asset   int(11) NOT NULL,
 	name   		varchar(35) NOT NULL,
 	create_date   		date NOT NULL,
 	require_date   		date NOT NULL,
@@ -3378,7 +3379,7 @@ CREATE TABLE requirement  (
    	business_unit   int(11) NOT NULL,
  	FOREIGN KEY (r_type) REFERENCES requirementtype (id), 
  	FOREIGN KEY (deliverable) REFERENCES deliverable (id), 
- 	FOREIGN KEY (pfasset) REFERENCES asset (id), 
+ 	FOREIGN KEY (r_asset) REFERENCES asset (id), 
  	FOREIGN KEY (business_unit) REFERENCES businessunit (id), 
 	PRIMARY KEY( id )
 );
@@ -3422,8 +3423,10 @@ CREATE TABLE workefforttype  (
 CREATE TABLE workeffortpurposetype  ( 
 	id   	int(11) AUTO_INCREMENT NOT NULL,
 	entity_code   		varchar(35) NULL,
+   	category   int(11) NOT NULL,
 	name   		varchar(35) NOT NULL,
 	description   		varchar(255) NOT NULL,
+ 	FOREIGN KEY (category) REFERENCES workeffortcategory (id), 
 	PRIMARY KEY( id )
 );
 
@@ -3441,7 +3444,7 @@ CREATE TABLE workeffort  (
    	we_redone_via   int(11) NULL,
    	type   int(11) NOT NULL,
    	wep_type   int(11) NOT NULL,
-   	we_property   int(11) NOT NULL,
+   	we_facility   int(11) NOT NULL,
 	name   		varchar(35) NOT NULL,
 	tot_dallowed   		decimal(38,0) NULL,
 	tot_hallowed   		INT(6) NOT NULL,
@@ -3458,22 +3461,8 @@ CREATE TABLE workeffort  (
  	FOREIGN KEY (we_redone_via) REFERENCES workeffort (id), 
  	FOREIGN KEY (type) REFERENCES workefforttype (id), 
  	FOREIGN KEY (wep_type) REFERENCES workeffortpurposetype (id), 
- 	FOREIGN KEY (we_property) REFERENCES property (id), 
+ 	FOREIGN KEY (we_facility) REFERENCES facility (id), 
  	FOREIGN KEY (status) REFERENCES workeffortstatus (id), 
- 	FOREIGN KEY (business_unit) REFERENCES businessunit (id), 
-	PRIMARY KEY( id )
-);
-
-CREATE TABLE purchaseagreementinspection  ( 
-	id   	int(11) AUTO_INCREMENT NOT NULL,
-	entity_code   		varchar(35) NULL,
-   	pai_agreement   int(11) NOT NULL,
-   	pai_inspection   int(11) NOT NULL,
-	name   		varchar(35) NOT NULL,
-	inspection_date   		date NOT NULL,
-	description   		varchar(255) NOT NULL,
-   	business_unit   int(11) NOT NULL,
- 	FOREIGN KEY (pai_agreement) REFERENCES purchaseagreement (id), 
  	FOREIGN KEY (business_unit) REFERENCES businessunit (id), 
 	PRIMARY KEY( id )
 );
@@ -3650,7 +3639,7 @@ CREATE TABLE workeffortinventoryassignment  (
 	PRIMARY KEY( id )
 );
 
-CREATE TABLE workeffortfixedassignmentstatus  ( 
+CREATE TABLE workeffortassetassignmentstatus  ( 
 	id   	int(11) AUTO_INCREMENT NOT NULL,
 	entity_code   		varchar(35) NULL,
 	name   		varchar(35) NOT NULL,
@@ -3660,10 +3649,10 @@ CREATE TABLE workeffortfixedassignmentstatus  (
 	PRIMARY KEY( id )
 );
 
-CREATE TABLE workeffortfixedassetassignment  ( 
+CREATE TABLE workeffortassetassignment  ( 
 	id   	int(11) AUTO_INCREMENT NOT NULL,
 	entity_code   		varchar(35) NULL,
-   	fixed_asset   int(11) NOT NULL,
+   	weaa_asset   int(11) NOT NULL,
    	workeffort   int(11) NOT NULL,
    	status   int(11) NOT NULL,
 	from_date   		date NOT NULL,
@@ -3672,14 +3661,14 @@ CREATE TABLE workeffortfixedassetassignment  (
 	alloc_cost   		decimal(38,0) NULL,
 	description   		varchar(255) NOT NULL,
    	business_unit   int(11) NOT NULL,
- 	FOREIGN KEY (fixed_asset) REFERENCES asset (id), 
+ 	FOREIGN KEY (weaa_asset) REFERENCES asset (id), 
  	FOREIGN KEY (workeffort) REFERENCES workeffort (id), 
- 	FOREIGN KEY (status) REFERENCES workeffortfixedassignmentstatus (id), 
+ 	FOREIGN KEY (status) REFERENCES workeffortassetassignmentstatus (id), 
  	FOREIGN KEY (business_unit) REFERENCES businessunit (id), 
 	PRIMARY KEY( id )
 );
 
-CREATE TABLE partyfixedassetassignmentstatus  ( 
+CREATE TABLE partyfassetassignmentstatus  ( 
 	id   	int(11) AUTO_INCREMENT NOT NULL,
 	entity_code   		varchar(35) NULL,
 	name   		varchar(35) NOT NULL,
@@ -3689,10 +3678,10 @@ CREATE TABLE partyfixedassetassignmentstatus  (
 	PRIMARY KEY( id )
 );
 
-CREATE TABLE partyfixedassetassignment  ( 
+CREATE TABLE partyassetassignment  ( 
 	id   	int(11) AUTO_INCREMENT NOT NULL,
 	entity_code   		varchar(35) NULL,
-   	fixed_asset   int(11) NOT NULL,
+   	pas_asset   int(11) NOT NULL,
    	party   int(11) NOT NULL,
    	status   int(11) NOT NULL,
 	from_date   		date NOT NULL,
@@ -3701,9 +3690,9 @@ CREATE TABLE partyfixedassetassignment  (
 	alloc_cost   		decimal(38,0) NULL,
 	description   		varchar(255) NOT NULL,
    	business_unit   int(11) NOT NULL,
- 	FOREIGN KEY (fixed_asset) REFERENCES asset (id), 
+ 	FOREIGN KEY (pas_asset) REFERENCES asset (id), 
  	FOREIGN KEY (party) REFERENCES party (id), 
- 	FOREIGN KEY (status) REFERENCES partyfixedassetassignmentstatus (id), 
+ 	FOREIGN KEY (status) REFERENCES partyfassetassignmentstatus (id), 
  	FOREIGN KEY (business_unit) REFERENCES businessunit (id), 
 	PRIMARY KEY( id )
 );

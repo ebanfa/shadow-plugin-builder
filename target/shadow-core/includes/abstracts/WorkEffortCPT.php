@@ -37,9 +37,9 @@ class WorkEffortCPT {
             'description' => 'The Purpose Type field',
             'type' => 'text',
         ),
-        array('name' => 'we_property',
-            'title' => 'Property',
-            'description' => 'The Property field',
+        array('name' => 'we_facility',
+            'title' => 'Facility',
+            'description' => 'The Facility field',
             'type' => 'text',
         ),
         array('name' => 'name',
@@ -169,12 +169,12 @@ class WorkEffortCPT {
             'is_list_field' => true,
             'is_form_field' => true,
             'is_relationship_field' => true,),
-        'we_property' => array('name' => 'we_property',
-            'description' => 'Property',
+        'we_facility' => array('name' => 'we_facility',
+            'description' => 'Facility',
             'size' => 'large',
-            'entity_name' => 'Property',
-            'entity_description' => 'Property',
-            'data_type' => 'sb_property',
+            'entity_name' => 'Facility',
+            'entity_description' => 'Facility',
+            'data_type' => 'sb_facility',
             'is_required' => true,
             'is_visible' => true,
             'is_create_field' => true,
@@ -875,12 +875,12 @@ class WorkEffortCPT {
                     'is_list_field' => true,
                     'is_form_field' => true,
                     'is_relationship_field' => true,),
-                'we_property' => array('name' => 'we_property',
-                    'description' => 'Property',
+                'we_facility' => array('name' => 'we_facility',
+                    'description' => 'Facility',
                     'size' => 'large',
-                    'entity_name' => 'Property',
-                    'entity_description' => 'Property',
-                    'data_type' => 'sb_property',
+                    'entity_name' => 'Facility',
+                    'entity_description' => 'Facility',
+                    'data_type' => 'sb_facility',
                     'is_required' => true,
                     'is_visible' => true,
                     'is_create_field' => true,
@@ -1196,7 +1196,7 @@ class WorkEffortCPT {
         $defaults['we_redone_via']  = 'Redone Via Work Effort';
         $defaults['type']  = 'Work Effort Type';
         $defaults['wep_type']  = 'Purpose Type';
-        $defaults['we_property']  = 'Property';
+        $defaults['we_facility']  = 'Facility';
         $defaults['name']  = 'name';
         $defaults['tot_dallowed']  = 'Total Dollars Allowed';
         $defaults['tot_hallowed']  = 'Total Hours Allowed';
@@ -1229,8 +1229,8 @@ class WorkEffortCPT {
             $field_value = get_post_meta($post_id, 'wep_type', true );
             echo $field_value;
         }
-        if ($column_name == 'we_property') {
-            $field_value = get_post_meta($post_id, 'we_property', true );
+        if ($column_name == 'we_facility') {
+            $field_value = get_post_meta($post_id, 'we_facility', true );
             echo $field_value;
         }
         if ($column_name == 'name') {

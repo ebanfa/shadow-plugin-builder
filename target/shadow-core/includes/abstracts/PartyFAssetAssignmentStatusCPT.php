@@ -1,10 +1,10 @@
 <?php 
 
-class WorkEffortFixedAssignmentStatusCPT {
+class PartyFAssetAssignmentStatusCPT {
 
     public static $prefix = ''; 
 
-    public static $post_name = 'sb_wefaastatus'; 
+    public static $post_name = 'sb_wepastatus'; 
     public static $is_global_entity = false; 
 
 
@@ -107,10 +107,10 @@ class WorkEffortFixedAssignmentStatusCPT {
      */
  public static $related_child_entities = array(
         'status' => array('name' => 'status',
-            'entity_name' => 'WorkEffortFixedAssetAssignment',
-            'data_type' => 'sb_wefaassign',
-            'artifact_name' => 'workeffortfixedassetassignment',
-            'entity_description' => 'Work Effort Fixed Asset Assignment',
+            'entity_name' => 'PartyAssetAssignment',
+            'data_type' => 'sb_paassign',
+            'artifact_name' => 'partyassetassignment',
+            'entity_description' => 'Party Asset Assignment',
             'is_relationship_field' => true,
             'fields' => array(
                 'entity_code' => array('name' => 'entity_code',
@@ -125,8 +125,8 @@ class WorkEffortFixedAssignmentStatusCPT {
                     'is_list_field' => false,
                     'is_form_field' => false,
                     'is_relationship_field' => false,),
-                'fixed_asset' => array('name' => 'fixed_asset',
-                    'description' => 'Fixed Asset',
+                'pas_asset' => array('name' => 'pas_asset',
+                    'description' => 'Asset',
                     'size' => 'large',
                     'entity_name' => 'Asset',
                     'entity_description' => 'Asset',
@@ -139,12 +139,12 @@ class WorkEffortFixedAssignmentStatusCPT {
                     'is_list_field' => true,
                     'is_form_field' => true,
                     'is_relationship_field' => true,),
-                'workeffort' => array('name' => 'workeffort',
-                    'description' => 'Work Effort',
+                'party' => array('name' => 'party',
+                    'description' => 'Party',
                     'size' => 'large',
-                    'entity_name' => 'WorkEffort',
-                    'entity_description' => 'Work Effort',
-                    'data_type' => 'sb_workeffort',
+                    'entity_name' => 'Party',
+                    'entity_description' => 'Party',
+                    'data_type' => 'sb_party',
                     'is_required' => true,
                     'is_visible' => true,
                     'is_create_field' => true,
@@ -156,9 +156,9 @@ class WorkEffortFixedAssignmentStatusCPT {
                 'status' => array('name' => 'status',
                     'description' => 'Status',
                     'size' => 'large',
-                    'entity_name' => 'WorkEffortFixedAssignmentStatus',
-                    'entity_description' => 'Work Effort Fixed Assignment Status',
-                    'data_type' => 'sb_wefaastatus',
+                    'entity_name' => 'PartyFAssetAssignmentStatus',
+                    'entity_description' => 'Party Asset Assignment Status',
+                    'data_type' => 'sb_wepastatus',
                     'is_required' => true,
                     'is_visible' => true,
                     'is_create_field' => true,
@@ -250,20 +250,20 @@ class WorkEffortFixedAssignmentStatusCPT {
      */
     public static function register_custom_post_type()
     {
-       register_post_type('sb_wefaastatus', 
+       register_post_type('sb_wepastatus', 
             array(
-                'label' => 'Work Effort Fixed Assignment Status',
+                'label' => 'Party Asset Assignment Status',
                 'labels' => array(
                 'add_new'           => 'Add New',
-                'add_new_item'      => 'Add New Work Effort Fixed Assignment Status',
-                'edit_item'         => 'Edit Work Effort Fixed Assignment Status',
-                'new_item'          => 'New Work Effort Fixed Assignment Status',
-                'view_item'         => 'View Work Effort Fixed Assignment Status',
-                'search_items'      => 'Search Work Effort Fixed Assignment Status',
-                'not_found'         => 'No Work Effort Fixed Assignment Status Found ',
+                'add_new_item'      => 'Add New Party Asset Assignment Status',
+                'edit_item'         => 'Edit Party Asset Assignment Status',
+                'new_item'          => 'New Party Asset Assignment Status',
+                'view_item'         => 'View Party Asset Assignment Status',
+                'search_items'      => 'Search Party Asset Assignment Status',
+                'not_found'         => 'No Party Asset Assignment Status Found ',
                 'not_found_in_trash'=> 'Not Found in Trash',
                 ),
-                'description' => 'Reusable Work Effort Fixed Assignment Status',
+                'description' => 'Reusable Party Asset Assignment Status',
                 'public' => true,
                 'show_ui' => true,
                 'menu_position' => 5,
@@ -283,7 +283,7 @@ class WorkEffortFixedAssignmentStatusCPT {
   ------------------------------------------------------------------------------*/
     public static function save_custom_fields( $post_id, $post) 
     {
-        if ( $post->post_type == 'sb_wefaastatus') 
+        if ( $post->post_type == 'sb_wepastatus') 
         {
             // The 2nd arg here is important because there are multiple nonces on the page
             if ( !empty($_POST))// && check_admin_referer('update_custom_content_fields','custom_content_fields_nonce') )
@@ -297,13 +297,13 @@ class WorkEffortFixedAssignmentStatusCPT {
         return $field['value'];
     }
 
-    public static function sb_wefaastatus_table_head($defaults){
+    public static function sb_wepastatus_table_head($defaults){
         $defaults['name']  = 'name';
         $defaults['description']  = 'Description';
         return $defaults;
     }
 
-    public static function sb_wefaastatus_table_content($column_name, $post_id){
+    public static function sb_wepastatus_table_content($column_name, $post_id){
         if ($column_name == 'entity_code') {
             $field_value = get_post_meta($post_id, 'entity_code', true );
             echo $field_value;

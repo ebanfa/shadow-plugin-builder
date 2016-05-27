@@ -52,9 +52,23 @@ class Asset extends Model {
     /**
      * 
      */
-    public function fixed_asset()
+    public function pas_asset()
     {
-        return $this->hasMany('PartyFixedAssetAssignment');
+        return $this->hasMany('PartyAssetAssignment');
+    }
+    /**
+     * 
+     */
+    public function weaa_asset()
+    {
+        return $this->hasMany('WorkEffortAssetAssignment');
+    }
+    /**
+     * 
+     */
+    public function r_asset()
+    {
+        return $this->hasMany('Requirement');
     }
     /**
      * 
@@ -62,13 +76,6 @@ class Asset extends Model {
     public function i_asset()
     {
         return $this->hasMany('InventoryItem');
-    }
-    /**
-     * 
-     */
-    public function pfasset()
-    {
-        return $this->hasMany('Requirement');
     }
 
 }

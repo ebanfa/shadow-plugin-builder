@@ -32,7 +32,7 @@ class RequirementCPT {
             'description' => 'The Deliverable field',
             'type' => 'text',
         ),
-        array('name' => 'pfasset',
+        array('name' => 'r_asset',
             'title' => 'Fixed Asset',
             'description' => 'The Fixed Asset field',
             'type' => 'text',
@@ -120,7 +120,7 @@ class RequirementCPT {
             'is_list_field' => true,
             'is_form_field' => true,
             'is_relationship_field' => true,),
-        'pfasset' => array('name' => 'pfasset',
+        'r_asset' => array('name' => 'r_asset',
             'description' => 'Fixed Asset',
             'size' => 'large',
             'entity_name' => 'Asset',
@@ -486,7 +486,7 @@ class RequirementCPT {
     public static function sb_requirement_table_head($defaults){
         $defaults['r_type']  = 'Requirement Type';
         $defaults['deliverable']  = 'Deliverable';
-        $defaults['pfasset']  = 'Fixed Asset';
+        $defaults['r_asset']  = 'Fixed Asset';
         $defaults['name']  = 'name';
         $defaults['create_date']  = 'Create Date';
         $defaults['require_date']  = 'Required By Date';
@@ -510,8 +510,8 @@ class RequirementCPT {
             $field_value = get_post_meta($post_id, 'deliverable', true );
             echo $field_value;
         }
-        if ($column_name == 'pfasset') {
-            $field_value = get_post_meta($post_id, 'pfasset', true );
+        if ($column_name == 'r_asset') {
+            $field_value = get_post_meta($post_id, 'r_asset', true );
             echo $field_value;
         }
         if ($column_name == 'name') {

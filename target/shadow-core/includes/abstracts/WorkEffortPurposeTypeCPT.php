@@ -22,6 +22,11 @@ class WorkEffortPurposeTypeCPT {
             'description' => 'The Code field',
             'type' => 'text',
         ),
+        array('name' => 'category',
+            'title' => 'Category',
+            'description' => 'The Category field',
+            'type' => 'text',
+        ),
         array('name' => 'name',
             'title' => 'Name',
             'description' => 'The Name field',
@@ -52,6 +57,20 @@ class WorkEffortPurposeTypeCPT {
             'is_list_field' => false,
             'is_form_field' => false,
             'is_relationship_field' => false,),
+        'category' => array('name' => 'category',
+            'description' => 'Category',
+            'size' => 'large',
+            'entity_name' => 'WorkEffortCategory',
+            'entity_description' => 'Work Effort Category',
+            'data_type' => 'sb_wetypecat',
+            'is_required' => true,
+            'is_visible' => true,
+            'is_create_field' => true,
+            'is_edit_field' => true,
+            'is_view_field' => false,
+            'is_list_field' => false,
+            'is_form_field' => true,
+            'is_relationship_field' => true,),
         'name' => array('name' => 'name',
             'description' => 'Name',
             'size' => 'large',
@@ -148,12 +167,12 @@ class WorkEffortPurposeTypeCPT {
                     'is_list_field' => true,
                     'is_form_field' => true,
                     'is_relationship_field' => true,),
-                'we_property' => array('name' => 'we_property',
-                    'description' => 'Property',
+                'we_facility' => array('name' => 'we_facility',
+                    'description' => 'Facility',
                     'size' => 'large',
-                    'entity_name' => 'Property',
-                    'entity_description' => 'Property',
-                    'data_type' => 'sb_property',
+                    'entity_name' => 'Facility',
+                    'entity_description' => 'Facility',
+                    'data_type' => 'sb_facility',
                     'is_required' => true,
                     'is_visible' => true,
                     'is_create_field' => true,
@@ -387,6 +406,10 @@ class WorkEffortPurposeTypeCPT {
     public static function sb_weptype_table_content($column_name, $post_id){
         if ($column_name == 'entity_code') {
             $field_value = get_post_meta($post_id, 'entity_code', true );
+            echo $field_value;
+        }
+        if ($column_name == 'category') {
+            $field_value = get_post_meta($post_id, 'category', true );
             echo $field_value;
         }
         if ($column_name == 'name') {

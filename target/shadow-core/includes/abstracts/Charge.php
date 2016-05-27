@@ -68,7 +68,7 @@ class Charge extends Model {
      */
     public function fc_charge()
     {
-        return $this->hasMany('FacilityCharge');
+        return $this->hasMany('FloorCharge');
     }
     /**
      * 

@@ -30,7 +30,7 @@ class Requirement extends Model {
     /**
      * 
      */
-    public function pfasset()
+    public function r_asset()
     {
         return $this->belongsTo('Asset');
     }

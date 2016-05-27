@@ -30,9 +30,9 @@ class WorkEffort extends Model {
     /**
      * 
      */
-    public function we_property()
+    public function we_facility()
     {
-        return $this->belongsTo('Property');
+        return $this->belongsTo('Facility');
     }
     /**
      * 

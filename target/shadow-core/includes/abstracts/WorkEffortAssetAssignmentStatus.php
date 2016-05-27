@@ -2,10 +2,10 @@
 
 use \WeDevs\ORM\Eloquent\Model as Model;
 
-class PartyFixedAssetAssignmentStatus extends Model {
+class WorkEffortAssetAssignmentStatus extends Model {
 
     public $primaryKey = 'id';
-    public $table = 'partyfixedassetassignmentstatus';
+    public $table = 'workeffortassetassignmentstatus';
     /**
      * Indicates if the model should be timestamped.
      *
@@ -26,7 +26,7 @@ class PartyFixedAssetAssignmentStatus extends Model {
      */
     public function status()
     {
-        return $this->hasMany('PartyFixedAssetAssignment');
+        return $this->hasMany('WorkEffortAssetAssignment');
     }
 
 }

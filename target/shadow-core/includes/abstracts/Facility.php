@@ -16,13 +16,6 @@ class Facility extends Model {
     /**
      * 
      */
-    public function f_property()
-    {
-        return $this->belongsTo('Property');
-    }
-    /**
-     * 
-     */
     public function f_type()
     {
         return $this->belongsTo('FacilityType');
@@ -38,9 +31,30 @@ class Facility extends Model {
     /**
      * 
      */
+    public function we_facility()
+    {
+        return $this->hasMany('WorkEffort');
+    }
+    /**
+     * 
+     */
+    public function f_facility()
+    {
+        return $this->hasMany('Facility');
+    }
+    /**
+     * 
+     */
     public function fc_facility()
     {
         return $this->hasMany('FacilityCharge');
+    }
+    /**
+     * 
+     */
+    public function p_facility()
+    {
+        return $this->hasMany('Property');
     }
 
 }

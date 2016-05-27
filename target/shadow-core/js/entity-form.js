@@ -1667,6 +1667,202 @@ jQuery(document).ready(function ($)
         });
     });
 
+    $('#sb_facilitycat_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_facilitytype_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_facility_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_facharge_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
     $('#sb_proptype_form').bootstrapValidator().on('success.form.bv', function (e)
     {
         e.preventDefault();
@@ -3628,202 +3824,6 @@ jQuery(document).ready(function ($)
     });
 
     $('#sb_unitcharge_form').bootstrapValidator().on('success.form.bv', function (e)
-    {
-        e.preventDefault();
-        var formData = new FormData(), params = $(e.target).serializeArray();
-        // Copy other params from the form into the formData
-        $.each(params, function(i, val) {
-            formData.append(val.name, val.value);
-        });
-        // As required by wordpress
-        formData.append('action', 'create_entity_ajax');
-        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
-        // Make the Ajax call
-        $.ajax({
-            url: '../wp-admin/admin-ajax.php',
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            type: 'POST',
-            success: function(responseData) {
-                if (responseData.success) {
-
-                    swal({   
-                        title: "Great Job!",   
-                        text: "The data operation completed successfully",   
-                        type: "success",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    }, function(){  
-                        var view_options = '';
-                        if($('#view_options').length) { 
-                            view_options = $('#view_options').val(); 
-                        }
-                        window.location=responseData.data.message + view_options;
-                    });
-                }
-                else {
-                    swal({   
-                        title: "Oops!",   
-                        text: responseData.data.message,   
-                        type: "warning",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    });
-                }
-            }
-        });
-    });
-
-    $('#sb_facilitycat_form').bootstrapValidator().on('success.form.bv', function (e)
-    {
-        e.preventDefault();
-        var formData = new FormData(), params = $(e.target).serializeArray();
-        // Copy other params from the form into the formData
-        $.each(params, function(i, val) {
-            formData.append(val.name, val.value);
-        });
-        // As required by wordpress
-        formData.append('action', 'create_entity_ajax');
-        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
-        // Make the Ajax call
-        $.ajax({
-            url: '../wp-admin/admin-ajax.php',
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            type: 'POST',
-            success: function(responseData) {
-                if (responseData.success) {
-
-                    swal({   
-                        title: "Great Job!",   
-                        text: "The data operation completed successfully",   
-                        type: "success",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    }, function(){  
-                        var view_options = '';
-                        if($('#view_options').length) { 
-                            view_options = $('#view_options').val(); 
-                        }
-                        window.location=responseData.data.message + view_options;
-                    });
-                }
-                else {
-                    swal({   
-                        title: "Oops!",   
-                        text: responseData.data.message,   
-                        type: "warning",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    });
-                }
-            }
-        });
-    });
-
-    $('#sb_facilitytype_form').bootstrapValidator().on('success.form.bv', function (e)
-    {
-        e.preventDefault();
-        var formData = new FormData(), params = $(e.target).serializeArray();
-        // Copy other params from the form into the formData
-        $.each(params, function(i, val) {
-            formData.append(val.name, val.value);
-        });
-        // As required by wordpress
-        formData.append('action', 'create_entity_ajax');
-        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
-        // Make the Ajax call
-        $.ajax({
-            url: '../wp-admin/admin-ajax.php',
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            type: 'POST',
-            success: function(responseData) {
-                if (responseData.success) {
-
-                    swal({   
-                        title: "Great Job!",   
-                        text: "The data operation completed successfully",   
-                        type: "success",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    }, function(){  
-                        var view_options = '';
-                        if($('#view_options').length) { 
-                            view_options = $('#view_options').val(); 
-                        }
-                        window.location=responseData.data.message + view_options;
-                    });
-                }
-                else {
-                    swal({   
-                        title: "Oops!",   
-                        text: responseData.data.message,   
-                        type: "warning",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    });
-                }
-            }
-        });
-    });
-
-    $('#sb_facility_form').bootstrapValidator().on('success.form.bv', function (e)
-    {
-        e.preventDefault();
-        var formData = new FormData(), params = $(e.target).serializeArray();
-        // Copy other params from the form into the formData
-        $.each(params, function(i, val) {
-            formData.append(val.name, val.value);
-        });
-        // As required by wordpress
-        formData.append('action', 'create_entity_ajax');
-        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
-        // Make the Ajax call
-        $.ajax({
-            url: '../wp-admin/admin-ajax.php',
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            type: 'POST',
-            success: function(responseData) {
-                if (responseData.success) {
-
-                    swal({   
-                        title: "Great Job!",   
-                        text: "The data operation completed successfully",   
-                        type: "success",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    }, function(){  
-                        var view_options = '';
-                        if($('#view_options').length) { 
-                            view_options = $('#view_options').val(); 
-                        }
-                        window.location=responseData.data.message + view_options;
-                    });
-                }
-                else {
-                    swal({   
-                        title: "Oops!",   
-                        text: responseData.data.message,   
-                        type: "warning",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    });
-                }
-            }
-        });
-    });
-
-    $('#sb_facharge_form').bootstrapValidator().on('success.form.bv', function (e)
     {
         e.preventDefault();
         var formData = new FormData(), params = $(e.target).serializeArray();
@@ -11859,55 +11859,6 @@ jQuery(document).ready(function ($)
         });
     });
 
-    $('#sb_agrmntinspection_form').bootstrapValidator().on('success.form.bv', function (e)
-    {
-        e.preventDefault();
-        var formData = new FormData(), params = $(e.target).serializeArray();
-        // Copy other params from the form into the formData
-        $.each(params, function(i, val) {
-            formData.append(val.name, val.value);
-        });
-        // As required by wordpress
-        formData.append('action', 'create_entity_ajax');
-        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
-        // Make the Ajax call
-        $.ajax({
-            url: '../wp-admin/admin-ajax.php',
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            type: 'POST',
-            success: function(responseData) {
-                if (responseData.success) {
-
-                    swal({   
-                        title: "Great Job!",   
-                        text: "The data operation completed successfully",   
-                        type: "success",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    }, function(){  
-                        var view_options = '';
-                        if($('#view_options').length) { 
-                            view_options = $('#view_options').val(); 
-                        }
-                        window.location=responseData.data.message + view_options;
-                    });
-                }
-                else {
-                    swal({   
-                        title: "Oops!",   
-                        text: responseData.data.message,   
-                        type: "warning",   
-                        showCancelButton: false,   
-                        closeOnConfirm: true 
-                    });
-                }
-            }
-        });
-    });
-
     $('#sb_wrfulfillment_form').bootstrapValidator().on('success.form.bv', function (e)
     {
         e.preventDefault();
@@ -12496,7 +12447,7 @@ jQuery(document).ready(function ($)
         });
     });
 
-    $('#sb_wefaastatus_form').bootstrapValidator().on('success.form.bv', function (e)
+    $('#sb_weaastatus_form').bootstrapValidator().on('success.form.bv', function (e)
     {
         e.preventDefault();
         var formData = new FormData(), params = $(e.target).serializeArray();
@@ -12545,7 +12496,7 @@ jQuery(document).ready(function ($)
         });
     });
 
-    $('#sb_wefaassign_form').bootstrapValidator().on('success.form.bv', function (e)
+    $('#sb_weaassign_form').bootstrapValidator().on('success.form.bv', function (e)
     {
         e.preventDefault();
         var formData = new FormData(), params = $(e.target).serializeArray();
@@ -12643,7 +12594,7 @@ jQuery(document).ready(function ($)
         });
     });
 
-    $('#sb_pfaassign_form').bootstrapValidator().on('success.form.bv', function (e)
+    $('#sb_paassign_form').bootstrapValidator().on('success.form.bv', function (e)
     {
         e.preventDefault();
         var formData = new FormData(), params = $(e.target).serializeArray();

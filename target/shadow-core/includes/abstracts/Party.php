@@ -166,7 +166,7 @@ class Party extends Model {
      */
     public function party()
     {
-        return $this->hasMany('PartyFixedAssetAssignment');
+        return $this->hasMany('PartyAssetAssignment');
     }
     /**
      * 

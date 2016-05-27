@@ -63,13 +63,6 @@ class PurchaseAgreement extends Model {
     {
         return $this->hasMany('SettlementData');
     }
-    /**
-     * 
-     */
-    public function pai_agreement()
-    {
-        return $this->hasMany('PurchaseAgreementInspection');
-    }
 
 }
 

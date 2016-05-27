@@ -23,6 +23,13 @@ class Property extends Model {
     /**
      * 
      */
+    public function p_facility()
+    {
+        return $this->belongsTo('Facility');
+    }
+    /**
+     * 
+     */
     public function party()
     {
         return $this->belongsTo('Party');
@@ -94,13 +101,6 @@ class Property extends Model {
     /**
      * 
      */
-    public function f_property()
-    {
-        return $this->hasMany('Facility');
-    }
-    /**
-     * 
-     */
     public function i_property()
     {
         return $this->hasMany('Improvement');
@@ -132,13 +132,6 @@ class Property extends Model {
     public function u_property()
     {
         return $this->hasMany('Unit');
-    }
-    /**
-     * 
-     */
-    public function we_property()
-    {
-        return $this->hasMany('WorkEffort');
     }
     /**
      * 

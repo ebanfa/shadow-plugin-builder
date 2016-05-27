@@ -153,7 +153,7 @@ class RequirementTypeCPT {
                     'is_list_field' => true,
                     'is_form_field' => true,
                     'is_relationship_field' => true,),
-                'pfasset' => array('name' => 'pfasset',
+                'r_asset' => array('name' => 'r_asset',
                     'description' => 'Fixed Asset',
                     'size' => 'large',
                     'entity_name' => 'Asset',

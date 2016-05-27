@@ -29,26 +29,26 @@ class CreateWorkEffortView extends MultiEntityCreateView {
      */
     function get_default_tabs() {
         return array(
-            'buildings' => array(
-                'tab_type' => 'multi-select',
-                'description' => 'Buildings',
-                'model' => EntityAPI::get_model('building'),
-                'artifact_name' => 'building',
-                'type_instances' => EntityAPI::find_by_criteria('buildingtype', array()),
+            'people' => array(
+                'tab_type' => 'multi-create',
+                'description' => 'People',
+                'model' => EntityAPI::get_model('workeffortpartyassignment'),
+                'artifact_name' => 'workeffortpartyassignment',
+                'type_instances' => array(),
             ),
-            'facility' => array(
-                'tab_type' => 'multi-select',
-                'description' => 'Facilities',
-                'model' => EntityAPI::get_model('facility'),
-                'artifact_name' => 'facility',
-                'type_instances' => EntityAPI::find_by_criteria('facilitytype', array()),
+            'inventory' => array(
+                'tab_type' => 'multi-create',
+                'description' => 'Inventory Items',
+                'model' => EntityAPI::get_model('workeffortinventoryassignment'),
+                'artifact_name' => 'workeffortinventoryassignment',
+                'type_instances' => array(),
             ) ,
-            'units' => array(
-                'tab_type' => 'multi-select',
-                'description' => 'Units',
-                'model' => EntityAPI::get_model('unit'),
-                'artifact_name' => 'unit',
-                'type_instances' => EntityAPI::find_by_criteria('unittype', array()),
+            'assets' => array(
+                'tab_type' => 'multi-create',
+                'description' => 'Assets',
+                'model' => EntityAPI::get_model('workeffortassetassignment'),
+                'artifact_name' => 'workeffortassetassignment',
+                'type_instances' => array(),
             ) ,
         );
     }
