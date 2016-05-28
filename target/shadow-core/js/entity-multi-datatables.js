@@ -2667,24 +2667,22 @@ $(document).ready(function (){
 
       
    });
-   var sb_partyaddress_rows_selected = [];
-   var sb_partyaddressTable =  $('#sb_partyaddress-multi-list-table').DataTable({
+   var sb_cmechtype_rows_selected = [];
+   var sb_cmechtypeTable =  $('#sb_cmechtype-multi-list-table').DataTable({
         "ajax": {
             'type': 'POST',
             'url': shadowcore_ajax_script.ajaxurl,
             'data': function(d){
                d.action = 'find_entity_ajax';
-               d.form = $("#sb_partyaddress-multi-list-form").serializeArray();
+               d.form = $("#sb_cmechtype-multi-list-form").serializeArray();
             },
         },
         columns: [
             { data: "id" }, 
             { data: "name" },
 
-            { data: "address_2" },
+            { data: "description" },
 
-
-            { data: "location_txt" },
         ],
         columnDefs: [
             {
@@ -2693,7 +2691,7 @@ $(document).ready(function (){
                 'orderable': false,
                 'className': 'dt-body-center',
                 'render': function (data, type, row){
-                    return '<input id="partyaddress_' + row.id + '" type="checkbox" value="' + row.id + '" data-dependent-instance-name="' + row.name + '">';
+                    return '<input id="contactmechanismtype_' + row.id + '" type="checkbox" value="' + row.id + '" data-dependent-instance-name="' + row.name + '">';
                 },
             },
             {
@@ -2702,10 +2700,10 @@ $(document).ready(function (){
                 // this case `data: 0`.
                 "render": function ( data, type, row ) {
                     var parent_params = '';
-                    if($('#partyaddress_parent_params').length) {
-                        parent_params = parent_params + $('#partyaddress_parent_params').val(); 
+                    if($('#contactmechanismtype_parent_params').length) {
+                        parent_params = parent_params + $('#contactmechanismtype_parent_params').val(); 
                     }
-                    return '<a class="data-table-link" href="' + shadowcore_base_url.baseUrl + 'artifact=partyaddress&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="partyaddress" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                    return '<a class="data-table-link" href="' + shadowcore_base_url.baseUrl + 'artifact=contactmechanismtype&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="contactmechanismtype" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
                 },
                 "targets": 1
             }
@@ -2716,7 +2714,7 @@ $(document).ready(function (){
          var rowId = data[0];
 
          // If row ID is in the list of selected row IDs
-         if($.inArray(rowId, sb_partyaddress_rows_selected) !== -1){
+         if($.inArray(rowId, sb_cmechtype_rows_selected) !== -1){
             $(row).find('input[type="checkbox"]').prop('checked', true);
             $(row).addClass('selected');
          }
@@ -2724,22 +2722,22 @@ $(document).ready(function (){
     });
 
    // Handle click on checkbox
-   $('#sb_partyaddress-multi-list-table tbody').on('click', 'input[type="checkbox"]', function(e){
+   $('#sb_cmechtype-multi-list-table tbody').on('click', 'input[type="checkbox"]', function(e){
       var $row = $(this).closest('tr');
       // Get row data
-      var data = sb_partyaddressTable.row($row).data();
+      var data = sb_cmechtypeTable.row($row).data();
       // Get row ID
       var rowId = $(this).val();
       // Determine whether row ID is in the list of selected row IDs 
-      var index = $.inArray(rowId, sb_partyaddress_rows_selected);
+      var index = $.inArray(rowId, sb_cmechtype_rows_selected);
       console.log('This is index:' + index);
       // If checkbox is checked and row ID is not in list of selected row IDs
       if(this.checked && index === -1){
          console.log('This is checked and index:' + index);
-         sb_partyaddress_rows_selected.push(rowId);
+         sb_cmechtype_rows_selected.push(rowId);
       // Otherwise, if checkbox is not checked and row ID is in list of selected row IDs
       } else if (!this.checked && index !== -1){
-         sb_partyaddress_rows_selected.splice(index, 1);
+         sb_cmechtype_rows_selected.splice(index, 1);
          console.log('This is not checked and index:' + index);
       }
       if(this.checked){
@@ -2748,42 +2746,42 @@ $(document).ready(function (){
          $row.css('background-color', 'rgba(255, 152, 0, 0)');
       }
       // Update state of "Select all" control
-      updateDataTableSelectAllCtrl(sb_partyaddressTable);
+      updateDataTableSelectAllCtrl(sb_cmechtypeTable);
       // Prevent click event from propagating to parent
       e.stopPropagation();
    });
 
    // Handle click on table cells with checkboxes
-   $('#sb_partyaddress-multi-list-table').on('click', 'tbody td, thead th:first-child', function(e){
+   $('#sb_cmechtype-multi-list-table').on('click', 'tbody td, thead th:first-child', function(e){
       $(this).parent().find('input[type="checkbox"]').trigger('click');
    });
 
    // Handle click on "Select all" control
-   $('thead input[name="select_all"]', sb_partyaddressTable.table().container()).on('click', function(e){
+   $('thead input[name="select_all"]', sb_cmechtypeTable.table().container()).on('click', function(e){
       if(this.checked){
-         $('#sb_partyaddress-multi-list-table tbody input[type="checkbox"]:not(:checked)').trigger('click');
+         $('#sb_cmechtype-multi-list-table tbody input[type="checkbox"]:not(:checked)').trigger('click');
       } else {
-         $('#sb_partyaddress-multi-list-table tbody input[type="checkbox"]:checked').trigger('click');
+         $('#sb_cmechtype-multi-list-table tbody input[type="checkbox"]:checked').trigger('click');
       }
       // Prevent click event from propagating to parent
       e.stopPropagation();
    });
 
    // Handle table draw event
-   sb_partyaddressTable.on('draw', function(){
+   sb_cmechtypeTable.on('draw', function(){
       // Update state of "Select all" control
-      updateDataTableSelectAllCtrl(sb_partyaddressTable);
+      updateDataTableSelectAllCtrl(sb_cmechtypeTable);
    });
 
    /* Add all check rows in the data table */
-   $('body').on('click', '#add-selected-partyaddress-list-btn', function(e){
+   $('body').on('click', '#add-selected-contactmechanismtype-list-btn', function(e){
       e.preventDefault();
       var page_artifact_form = $('#main-entity-post-name').val();
       // Iterate over all selected checkboxes
       var idExists = false;
-      $.each(sb_partyaddress_rows_selected, function(index, rowId){
+      $.each(sb_cmechtype_rows_selected, function(index, rowId){
 
-        $.each($('input[name="partyaddress_id[]"]'), function(indexx){ 
+        $.each($('input[name="contactmechanismtype_id[]"]'), function(indexx){ 
             var valueToAdd = $(this).val();
             if(valueToAdd === rowId){
               idExists = true;
@@ -2796,28 +2794,28 @@ $(document).ready(function (){
            $('#' + page_artifact_form).append(
                $('<input>')
                   .attr('type', 'hidden')
-                  .attr('name', 'partyaddress_id[]')
+                  .attr('name', 'contactmechanismtype_id[]')
                   .val(rowId)
            );
            // Get the value of the name column. Every entity data table has name and description columns
-           var dependentInstanceName = $('#partyaddress_' + rowId).data('dependent-instance-name');
+           var dependentInstanceName = $('#contactmechanismtype_' + rowId).data('dependent-instance-name');
            // Add an entry into the visual list of select instances
-           $('#partyaddress_dependent_list_box').append($(
-                '<div id="partyaddress_list_item_' + rowId + '"> ' + 
-                    '<span data-entity-name="partyaddress" ' + 
-                        'data-entity-id="' + rowId + '" class="badge partyaddress_dependent_list_item" ' + 
+           $('#contactmechanismtype_dependent_list_box').append($(
+                '<div id="contactmechanismtype_list_item_' + rowId + '"> ' + 
+                    '<span data-entity-name="contactmechanismtype" ' + 
+                        'data-entity-id="' + rowId + '" class="badge contactmechanismtype_dependent_list_item" ' + 
                         'style="cursor: pointer; cursor: hand; background-color: red">X</span>' + dependentInstanceName + 
                 '</div>').attr('class', 'list-group-item'));
         }
       });
    });
     // Handle click on table cells with checkboxes
-   $('#partyaddress_dependent_list_box').on('click', '.partyaddress_dependent_list_item', function(e){
+   $('#contactmechanismtype_dependent_list_box').on('click', '.contactmechanismtype_dependent_list_item', function(e){
       var entityId = $(this).data('entity-id');
       var entityName = $(this).data('entity-name');
       var page_artifact_form = $('#main-entity-post-name').val();
       // first remove the hidden form field and then the list box item
-      var existingIds = $('#' + page_artifact_form).find('input[name="partyaddress_id[]"]');
+      var existingIds = $('#' + page_artifact_form).find('input[name="contactmechanismtype_id[]"]');
       $.each(existingIds, function(index, rowId){ 
         if($(rowId).val() == entityId) {
           $(rowId).remove();
@@ -2825,7 +2823,659 @@ $(document).ready(function (){
 
       });
       // then remove the list box item
-      $('#partyaddress_dependent_list_box').find('#partyaddress_list_item_' + entityId).remove();
+      $('#contactmechanismtype_dependent_list_box').find('#contactmechanismtype_list_item_' + entityId).remove();
+
+      
+   });
+   var sb_contactmech_rows_selected = [];
+   var sb_contactmechTable =  $('#sb_contactmech-multi-list-table').DataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': shadowcore_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.form = $("#sb_contactmech-multi-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+            { data: "name" },
+
+            { data: "address_1" },
+
+            { data: "address_2" },
+
+            { data: "area_code" },
+
+            { data: "contact_number" },
+
+            { data: "country_code" },
+
+            { data: "eaddress_string" },
+
+            { data: "description" },
+
+        ],
+        columnDefs: [
+            {
+                'targets': 0,
+                'searchable': false,
+                'orderable': false,
+                'className': 'dt-body-center',
+                'render': function (data, type, row){
+                    return '<input id="contactmechanism_' + row.id + '" type="checkbox" value="' + row.id + '" data-dependent-instance-name="' + row.name + '">';
+                },
+            },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#contactmechanism_parent_params').length) {
+                        parent_params = parent_params + $('#contactmechanism_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + shadowcore_base_url.baseUrl + 'artifact=contactmechanism&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="contactmechanism" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ],
+        'order': [[1, 'asc']],
+        'rowCallback': function(row, data, dataIndex){
+         // Get row ID
+         var rowId = data[0];
+
+         // If row ID is in the list of selected row IDs
+         if($.inArray(rowId, sb_contactmech_rows_selected) !== -1){
+            $(row).find('input[type="checkbox"]').prop('checked', true);
+            $(row).addClass('selected');
+         }
+        }
+    });
+
+   // Handle click on checkbox
+   $('#sb_contactmech-multi-list-table tbody').on('click', 'input[type="checkbox"]', function(e){
+      var $row = $(this).closest('tr');
+      // Get row data
+      var data = sb_contactmechTable.row($row).data();
+      // Get row ID
+      var rowId = $(this).val();
+      // Determine whether row ID is in the list of selected row IDs 
+      var index = $.inArray(rowId, sb_contactmech_rows_selected);
+      console.log('This is index:' + index);
+      // If checkbox is checked and row ID is not in list of selected row IDs
+      if(this.checked && index === -1){
+         console.log('This is checked and index:' + index);
+         sb_contactmech_rows_selected.push(rowId);
+      // Otherwise, if checkbox is not checked and row ID is in list of selected row IDs
+      } else if (!this.checked && index !== -1){
+         sb_contactmech_rows_selected.splice(index, 1);
+         console.log('This is not checked and index:' + index);
+      }
+      if(this.checked){
+         $row.css('background-color', 'rgba(255, 152, 0, 0.5)');
+      } else {
+         $row.css('background-color', 'rgba(255, 152, 0, 0)');
+      }
+      // Update state of "Select all" control
+      updateDataTableSelectAllCtrl(sb_contactmechTable);
+      // Prevent click event from propagating to parent
+      e.stopPropagation();
+   });
+
+   // Handle click on table cells with checkboxes
+   $('#sb_contactmech-multi-list-table').on('click', 'tbody td, thead th:first-child', function(e){
+      $(this).parent().find('input[type="checkbox"]').trigger('click');
+   });
+
+   // Handle click on "Select all" control
+   $('thead input[name="select_all"]', sb_contactmechTable.table().container()).on('click', function(e){
+      if(this.checked){
+         $('#sb_contactmech-multi-list-table tbody input[type="checkbox"]:not(:checked)').trigger('click');
+      } else {
+         $('#sb_contactmech-multi-list-table tbody input[type="checkbox"]:checked').trigger('click');
+      }
+      // Prevent click event from propagating to parent
+      e.stopPropagation();
+   });
+
+   // Handle table draw event
+   sb_contactmechTable.on('draw', function(){
+      // Update state of "Select all" control
+      updateDataTableSelectAllCtrl(sb_contactmechTable);
+   });
+
+   /* Add all check rows in the data table */
+   $('body').on('click', '#add-selected-contactmechanism-list-btn', function(e){
+      e.preventDefault();
+      var page_artifact_form = $('#main-entity-post-name').val();
+      // Iterate over all selected checkboxes
+      var idExists = false;
+      $.each(sb_contactmech_rows_selected, function(index, rowId){
+
+        $.each($('input[name="contactmechanism_id[]"]'), function(indexx){ 
+            var valueToAdd = $(this).val();
+            if(valueToAdd === rowId){
+              idExists = true;
+            }
+
+        });
+        if(!idExists){
+          // Add the id of the selected row as a hidden input in the 
+          // main form 
+           $('#' + page_artifact_form).append(
+               $('<input>')
+                  .attr('type', 'hidden')
+                  .attr('name', 'contactmechanism_id[]')
+                  .val(rowId)
+           );
+           // Get the value of the name column. Every entity data table has name and description columns
+           var dependentInstanceName = $('#contactmechanism_' + rowId).data('dependent-instance-name');
+           // Add an entry into the visual list of select instances
+           $('#contactmechanism_dependent_list_box').append($(
+                '<div id="contactmechanism_list_item_' + rowId + '"> ' + 
+                    '<span data-entity-name="contactmechanism" ' + 
+                        'data-entity-id="' + rowId + '" class="badge contactmechanism_dependent_list_item" ' + 
+                        'style="cursor: pointer; cursor: hand; background-color: red">X</span>' + dependentInstanceName + 
+                '</div>').attr('class', 'list-group-item'));
+        }
+      });
+   });
+    // Handle click on table cells with checkboxes
+   $('#contactmechanism_dependent_list_box').on('click', '.contactmechanism_dependent_list_item', function(e){
+      var entityId = $(this).data('entity-id');
+      var entityName = $(this).data('entity-name');
+      var page_artifact_form = $('#main-entity-post-name').val();
+      // first remove the hidden form field and then the list box item
+      var existingIds = $('#' + page_artifact_form).find('input[name="contactmechanism_id[]"]');
+      $.each(existingIds, function(index, rowId){ 
+        if($(rowId).val() == entityId) {
+          $(rowId).remove();
+        }
+
+      });
+      // then remove the list box item
+      $('#contactmechanism_dependent_list_box').find('#contactmechanism_list_item_' + entityId).remove();
+
+      
+   });
+   var sb_pcmpurposetype_rows_selected = [];
+   var sb_pcmpurposetypeTable =  $('#sb_pcmpurposetype-multi-list-table').DataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': shadowcore_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.form = $("#sb_pcmpurposetype-multi-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+            { data: "name" },
+
+            { data: "description" },
+
+        ],
+        columnDefs: [
+            {
+                'targets': 0,
+                'searchable': false,
+                'orderable': false,
+                'className': 'dt-body-center',
+                'render': function (data, type, row){
+                    return '<input id="partycontactmechanismpurposetype_' + row.id + '" type="checkbox" value="' + row.id + '" data-dependent-instance-name="' + row.name + '">';
+                },
+            },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#partycontactmechanismpurposetype_parent_params').length) {
+                        parent_params = parent_params + $('#partycontactmechanismpurposetype_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + shadowcore_base_url.baseUrl + 'artifact=partycontactmechanismpurposetype&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="partycontactmechanismpurposetype" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ],
+        'order': [[1, 'asc']],
+        'rowCallback': function(row, data, dataIndex){
+         // Get row ID
+         var rowId = data[0];
+
+         // If row ID is in the list of selected row IDs
+         if($.inArray(rowId, sb_pcmpurposetype_rows_selected) !== -1){
+            $(row).find('input[type="checkbox"]').prop('checked', true);
+            $(row).addClass('selected');
+         }
+        }
+    });
+
+   // Handle click on checkbox
+   $('#sb_pcmpurposetype-multi-list-table tbody').on('click', 'input[type="checkbox"]', function(e){
+      var $row = $(this).closest('tr');
+      // Get row data
+      var data = sb_pcmpurposetypeTable.row($row).data();
+      // Get row ID
+      var rowId = $(this).val();
+      // Determine whether row ID is in the list of selected row IDs 
+      var index = $.inArray(rowId, sb_pcmpurposetype_rows_selected);
+      console.log('This is index:' + index);
+      // If checkbox is checked and row ID is not in list of selected row IDs
+      if(this.checked && index === -1){
+         console.log('This is checked and index:' + index);
+         sb_pcmpurposetype_rows_selected.push(rowId);
+      // Otherwise, if checkbox is not checked and row ID is in list of selected row IDs
+      } else if (!this.checked && index !== -1){
+         sb_pcmpurposetype_rows_selected.splice(index, 1);
+         console.log('This is not checked and index:' + index);
+      }
+      if(this.checked){
+         $row.css('background-color', 'rgba(255, 152, 0, 0.5)');
+      } else {
+         $row.css('background-color', 'rgba(255, 152, 0, 0)');
+      }
+      // Update state of "Select all" control
+      updateDataTableSelectAllCtrl(sb_pcmpurposetypeTable);
+      // Prevent click event from propagating to parent
+      e.stopPropagation();
+   });
+
+   // Handle click on table cells with checkboxes
+   $('#sb_pcmpurposetype-multi-list-table').on('click', 'tbody td, thead th:first-child', function(e){
+      $(this).parent().find('input[type="checkbox"]').trigger('click');
+   });
+
+   // Handle click on "Select all" control
+   $('thead input[name="select_all"]', sb_pcmpurposetypeTable.table().container()).on('click', function(e){
+      if(this.checked){
+         $('#sb_pcmpurposetype-multi-list-table tbody input[type="checkbox"]:not(:checked)').trigger('click');
+      } else {
+         $('#sb_pcmpurposetype-multi-list-table tbody input[type="checkbox"]:checked').trigger('click');
+      }
+      // Prevent click event from propagating to parent
+      e.stopPropagation();
+   });
+
+   // Handle table draw event
+   sb_pcmpurposetypeTable.on('draw', function(){
+      // Update state of "Select all" control
+      updateDataTableSelectAllCtrl(sb_pcmpurposetypeTable);
+   });
+
+   /* Add all check rows in the data table */
+   $('body').on('click', '#add-selected-partycontactmechanismpurposetype-list-btn', function(e){
+      e.preventDefault();
+      var page_artifact_form = $('#main-entity-post-name').val();
+      // Iterate over all selected checkboxes
+      var idExists = false;
+      $.each(sb_pcmpurposetype_rows_selected, function(index, rowId){
+
+        $.each($('input[name="partycontactmechanismpurposetype_id[]"]'), function(indexx){ 
+            var valueToAdd = $(this).val();
+            if(valueToAdd === rowId){
+              idExists = true;
+            }
+
+        });
+        if(!idExists){
+          // Add the id of the selected row as a hidden input in the 
+          // main form 
+           $('#' + page_artifact_form).append(
+               $('<input>')
+                  .attr('type', 'hidden')
+                  .attr('name', 'partycontactmechanismpurposetype_id[]')
+                  .val(rowId)
+           );
+           // Get the value of the name column. Every entity data table has name and description columns
+           var dependentInstanceName = $('#partycontactmechanismpurposetype_' + rowId).data('dependent-instance-name');
+           // Add an entry into the visual list of select instances
+           $('#partycontactmechanismpurposetype_dependent_list_box').append($(
+                '<div id="partycontactmechanismpurposetype_list_item_' + rowId + '"> ' + 
+                    '<span data-entity-name="partycontactmechanismpurposetype" ' + 
+                        'data-entity-id="' + rowId + '" class="badge partycontactmechanismpurposetype_dependent_list_item" ' + 
+                        'style="cursor: pointer; cursor: hand; background-color: red">X</span>' + dependentInstanceName + 
+                '</div>').attr('class', 'list-group-item'));
+        }
+      });
+   });
+    // Handle click on table cells with checkboxes
+   $('#partycontactmechanismpurposetype_dependent_list_box').on('click', '.partycontactmechanismpurposetype_dependent_list_item', function(e){
+      var entityId = $(this).data('entity-id');
+      var entityName = $(this).data('entity-name');
+      var page_artifact_form = $('#main-entity-post-name').val();
+      // first remove the hidden form field and then the list box item
+      var existingIds = $('#' + page_artifact_form).find('input[name="partycontactmechanismpurposetype_id[]"]');
+      $.each(existingIds, function(index, rowId){ 
+        if($(rowId).val() == entityId) {
+          $(rowId).remove();
+        }
+
+      });
+      // then remove the list box item
+      $('#partycontactmechanismpurposetype_dependent_list_box').find('#partycontactmechanismpurposetype_list_item_' + entityId).remove();
+
+      
+   });
+   var sb_partycmech_rows_selected = [];
+   var sb_partycmechTable =  $('#sb_partycmech-multi-list-table').DataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': shadowcore_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.form = $("#sb_partycmech-multi-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+            { data: "name" },
+
+            { data: "description" },
+
+        ],
+        columnDefs: [
+            {
+                'targets': 0,
+                'searchable': false,
+                'orderable': false,
+                'className': 'dt-body-center',
+                'render': function (data, type, row){
+                    return '<input id="partycontactmechanism_' + row.id + '" type="checkbox" value="' + row.id + '" data-dependent-instance-name="' + row.name + '">';
+                },
+            },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#partycontactmechanism_parent_params').length) {
+                        parent_params = parent_params + $('#partycontactmechanism_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + shadowcore_base_url.baseUrl + 'artifact=partycontactmechanism&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="partycontactmechanism" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ],
+        'order': [[1, 'asc']],
+        'rowCallback': function(row, data, dataIndex){
+         // Get row ID
+         var rowId = data[0];
+
+         // If row ID is in the list of selected row IDs
+         if($.inArray(rowId, sb_partycmech_rows_selected) !== -1){
+            $(row).find('input[type="checkbox"]').prop('checked', true);
+            $(row).addClass('selected');
+         }
+        }
+    });
+
+   // Handle click on checkbox
+   $('#sb_partycmech-multi-list-table tbody').on('click', 'input[type="checkbox"]', function(e){
+      var $row = $(this).closest('tr');
+      // Get row data
+      var data = sb_partycmechTable.row($row).data();
+      // Get row ID
+      var rowId = $(this).val();
+      // Determine whether row ID is in the list of selected row IDs 
+      var index = $.inArray(rowId, sb_partycmech_rows_selected);
+      console.log('This is index:' + index);
+      // If checkbox is checked and row ID is not in list of selected row IDs
+      if(this.checked && index === -1){
+         console.log('This is checked and index:' + index);
+         sb_partycmech_rows_selected.push(rowId);
+      // Otherwise, if checkbox is not checked and row ID is in list of selected row IDs
+      } else if (!this.checked && index !== -1){
+         sb_partycmech_rows_selected.splice(index, 1);
+         console.log('This is not checked and index:' + index);
+      }
+      if(this.checked){
+         $row.css('background-color', 'rgba(255, 152, 0, 0.5)');
+      } else {
+         $row.css('background-color', 'rgba(255, 152, 0, 0)');
+      }
+      // Update state of "Select all" control
+      updateDataTableSelectAllCtrl(sb_partycmechTable);
+      // Prevent click event from propagating to parent
+      e.stopPropagation();
+   });
+
+   // Handle click on table cells with checkboxes
+   $('#sb_partycmech-multi-list-table').on('click', 'tbody td, thead th:first-child', function(e){
+      $(this).parent().find('input[type="checkbox"]').trigger('click');
+   });
+
+   // Handle click on "Select all" control
+   $('thead input[name="select_all"]', sb_partycmechTable.table().container()).on('click', function(e){
+      if(this.checked){
+         $('#sb_partycmech-multi-list-table tbody input[type="checkbox"]:not(:checked)').trigger('click');
+      } else {
+         $('#sb_partycmech-multi-list-table tbody input[type="checkbox"]:checked').trigger('click');
+      }
+      // Prevent click event from propagating to parent
+      e.stopPropagation();
+   });
+
+   // Handle table draw event
+   sb_partycmechTable.on('draw', function(){
+      // Update state of "Select all" control
+      updateDataTableSelectAllCtrl(sb_partycmechTable);
+   });
+
+   /* Add all check rows in the data table */
+   $('body').on('click', '#add-selected-partycontactmechanism-list-btn', function(e){
+      e.preventDefault();
+      var page_artifact_form = $('#main-entity-post-name').val();
+      // Iterate over all selected checkboxes
+      var idExists = false;
+      $.each(sb_partycmech_rows_selected, function(index, rowId){
+
+        $.each($('input[name="partycontactmechanism_id[]"]'), function(indexx){ 
+            var valueToAdd = $(this).val();
+            if(valueToAdd === rowId){
+              idExists = true;
+            }
+
+        });
+        if(!idExists){
+          // Add the id of the selected row as a hidden input in the 
+          // main form 
+           $('#' + page_artifact_form).append(
+               $('<input>')
+                  .attr('type', 'hidden')
+                  .attr('name', 'partycontactmechanism_id[]')
+                  .val(rowId)
+           );
+           // Get the value of the name column. Every entity data table has name and description columns
+           var dependentInstanceName = $('#partycontactmechanism_' + rowId).data('dependent-instance-name');
+           // Add an entry into the visual list of select instances
+           $('#partycontactmechanism_dependent_list_box').append($(
+                '<div id="partycontactmechanism_list_item_' + rowId + '"> ' + 
+                    '<span data-entity-name="partycontactmechanism" ' + 
+                        'data-entity-id="' + rowId + '" class="badge partycontactmechanism_dependent_list_item" ' + 
+                        'style="cursor: pointer; cursor: hand; background-color: red">X</span>' + dependentInstanceName + 
+                '</div>').attr('class', 'list-group-item'));
+        }
+      });
+   });
+    // Handle click on table cells with checkboxes
+   $('#partycontactmechanism_dependent_list_box').on('click', '.partycontactmechanism_dependent_list_item', function(e){
+      var entityId = $(this).data('entity-id');
+      var entityName = $(this).data('entity-name');
+      var page_artifact_form = $('#main-entity-post-name').val();
+      // first remove the hidden form field and then the list box item
+      var existingIds = $('#' + page_artifact_form).find('input[name="partycontactmechanism_id[]"]');
+      $.each(existingIds, function(index, rowId){ 
+        if($(rowId).val() == entityId) {
+          $(rowId).remove();
+        }
+
+      });
+      // then remove the list box item
+      $('#partycontactmechanism_dependent_list_box').find('#partycontactmechanism_list_item_' + entityId).remove();
+
+      
+   });
+   var sb_pcmpurpose_rows_selected = [];
+   var sb_pcmpurposeTable =  $('#sb_pcmpurpose-multi-list-table').DataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': shadowcore_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.form = $("#sb_pcmpurpose-multi-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+            { data: "name" },
+
+            { data: "description" },
+
+        ],
+        columnDefs: [
+            {
+                'targets': 0,
+                'searchable': false,
+                'orderable': false,
+                'className': 'dt-body-center',
+                'render': function (data, type, row){
+                    return '<input id="partycontactmechanismpurpose_' + row.id + '" type="checkbox" value="' + row.id + '" data-dependent-instance-name="' + row.name + '">';
+                },
+            },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#partycontactmechanismpurpose_parent_params').length) {
+                        parent_params = parent_params + $('#partycontactmechanismpurpose_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + shadowcore_base_url.baseUrl + 'artifact=partycontactmechanismpurpose&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="partycontactmechanismpurpose" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ],
+        'order': [[1, 'asc']],
+        'rowCallback': function(row, data, dataIndex){
+         // Get row ID
+         var rowId = data[0];
+
+         // If row ID is in the list of selected row IDs
+         if($.inArray(rowId, sb_pcmpurpose_rows_selected) !== -1){
+            $(row).find('input[type="checkbox"]').prop('checked', true);
+            $(row).addClass('selected');
+         }
+        }
+    });
+
+   // Handle click on checkbox
+   $('#sb_pcmpurpose-multi-list-table tbody').on('click', 'input[type="checkbox"]', function(e){
+      var $row = $(this).closest('tr');
+      // Get row data
+      var data = sb_pcmpurposeTable.row($row).data();
+      // Get row ID
+      var rowId = $(this).val();
+      // Determine whether row ID is in the list of selected row IDs 
+      var index = $.inArray(rowId, sb_pcmpurpose_rows_selected);
+      console.log('This is index:' + index);
+      // If checkbox is checked and row ID is not in list of selected row IDs
+      if(this.checked && index === -1){
+         console.log('This is checked and index:' + index);
+         sb_pcmpurpose_rows_selected.push(rowId);
+      // Otherwise, if checkbox is not checked and row ID is in list of selected row IDs
+      } else if (!this.checked && index !== -1){
+         sb_pcmpurpose_rows_selected.splice(index, 1);
+         console.log('This is not checked and index:' + index);
+      }
+      if(this.checked){
+         $row.css('background-color', 'rgba(255, 152, 0, 0.5)');
+      } else {
+         $row.css('background-color', 'rgba(255, 152, 0, 0)');
+      }
+      // Update state of "Select all" control
+      updateDataTableSelectAllCtrl(sb_pcmpurposeTable);
+      // Prevent click event from propagating to parent
+      e.stopPropagation();
+   });
+
+   // Handle click on table cells with checkboxes
+   $('#sb_pcmpurpose-multi-list-table').on('click', 'tbody td, thead th:first-child', function(e){
+      $(this).parent().find('input[type="checkbox"]').trigger('click');
+   });
+
+   // Handle click on "Select all" control
+   $('thead input[name="select_all"]', sb_pcmpurposeTable.table().container()).on('click', function(e){
+      if(this.checked){
+         $('#sb_pcmpurpose-multi-list-table tbody input[type="checkbox"]:not(:checked)').trigger('click');
+      } else {
+         $('#sb_pcmpurpose-multi-list-table tbody input[type="checkbox"]:checked').trigger('click');
+      }
+      // Prevent click event from propagating to parent
+      e.stopPropagation();
+   });
+
+   // Handle table draw event
+   sb_pcmpurposeTable.on('draw', function(){
+      // Update state of "Select all" control
+      updateDataTableSelectAllCtrl(sb_pcmpurposeTable);
+   });
+
+   /* Add all check rows in the data table */
+   $('body').on('click', '#add-selected-partycontactmechanismpurpose-list-btn', function(e){
+      e.preventDefault();
+      var page_artifact_form = $('#main-entity-post-name').val();
+      // Iterate over all selected checkboxes
+      var idExists = false;
+      $.each(sb_pcmpurpose_rows_selected, function(index, rowId){
+
+        $.each($('input[name="partycontactmechanismpurpose_id[]"]'), function(indexx){ 
+            var valueToAdd = $(this).val();
+            if(valueToAdd === rowId){
+              idExists = true;
+            }
+
+        });
+        if(!idExists){
+          // Add the id of the selected row as a hidden input in the 
+          // main form 
+           $('#' + page_artifact_form).append(
+               $('<input>')
+                  .attr('type', 'hidden')
+                  .attr('name', 'partycontactmechanismpurpose_id[]')
+                  .val(rowId)
+           );
+           // Get the value of the name column. Every entity data table has name and description columns
+           var dependentInstanceName = $('#partycontactmechanismpurpose_' + rowId).data('dependent-instance-name');
+           // Add an entry into the visual list of select instances
+           $('#partycontactmechanismpurpose_dependent_list_box').append($(
+                '<div id="partycontactmechanismpurpose_list_item_' + rowId + '"> ' + 
+                    '<span data-entity-name="partycontactmechanismpurpose" ' + 
+                        'data-entity-id="' + rowId + '" class="badge partycontactmechanismpurpose_dependent_list_item" ' + 
+                        'style="cursor: pointer; cursor: hand; background-color: red">X</span>' + dependentInstanceName + 
+                '</div>').attr('class', 'list-group-item'));
+        }
+      });
+   });
+    // Handle click on table cells with checkboxes
+   $('#partycontactmechanismpurpose_dependent_list_box').on('click', '.partycontactmechanismpurpose_dependent_list_item', function(e){
+      var entityId = $(this).data('entity-id');
+      var entityName = $(this).data('entity-name');
+      var page_artifact_form = $('#main-entity-post-name').val();
+      // first remove the hidden form field and then the list box item
+      var existingIds = $('#' + page_artifact_form).find('input[name="partycontactmechanismpurpose_id[]"]');
+      $.each(existingIds, function(index, rowId){ 
+        if($(rowId).val() == entityId) {
+          $(rowId).remove();
+        }
+
+      });
+      // then remove the list box item
+      $('#partycontactmechanismpurpose_dependent_list_box').find('#partycontactmechanismpurpose_list_item_' + entityId).remove();
 
       
    });
@@ -5772,7 +6422,7 @@ $(document).ready(function (){
         columns: [
             { data: "id" }, 
 
-            { data: "ft_category_txt" },
+            { data: "category_txt" },
             { data: "name" },
 
             { data: "description" },
@@ -5939,6 +6589,8 @@ $(document).ready(function (){
             { data: "f_type_txt" },
             { data: "name" },
 
+            { data: "sq_footage" },
+
             { data: "description" },
 
         ],
@@ -6082,6 +6734,170 @@ $(document).ready(function (){
       });
       // then remove the list box item
       $('#facility_dependent_list_box').find('#facility_list_item_' + entityId).remove();
+
+      
+   });
+   var sb_facilityrole_rows_selected = [];
+   var sb_facilityroleTable =  $('#sb_facilityrole-multi-list-table').DataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': shadowcore_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.form = $("#sb_facilityrole-multi-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+
+            { data: "fr_facility_txt" },
+
+            { data: "fr_partyrole_txt" },
+            { data: "name" },
+
+            { data: "description" },
+
+        ],
+        columnDefs: [
+            {
+                'targets': 0,
+                'searchable': false,
+                'orderable': false,
+                'className': 'dt-body-center',
+                'render': function (data, type, row){
+                    return '<input id="facilityrole_' + row.id + '" type="checkbox" value="' + row.id + '" data-dependent-instance-name="' + row.name + '">';
+                },
+            },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#facilityrole_parent_params').length) {
+                        parent_params = parent_params + $('#facilityrole_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + shadowcore_base_url.baseUrl + 'artifact=facilityrole&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="facilityrole" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ],
+        'order': [[1, 'asc']],
+        'rowCallback': function(row, data, dataIndex){
+         // Get row ID
+         var rowId = data[0];
+
+         // If row ID is in the list of selected row IDs
+         if($.inArray(rowId, sb_facilityrole_rows_selected) !== -1){
+            $(row).find('input[type="checkbox"]').prop('checked', true);
+            $(row).addClass('selected');
+         }
+        }
+    });
+
+   // Handle click on checkbox
+   $('#sb_facilityrole-multi-list-table tbody').on('click', 'input[type="checkbox"]', function(e){
+      var $row = $(this).closest('tr');
+      // Get row data
+      var data = sb_facilityroleTable.row($row).data();
+      // Get row ID
+      var rowId = $(this).val();
+      // Determine whether row ID is in the list of selected row IDs 
+      var index = $.inArray(rowId, sb_facilityrole_rows_selected);
+      console.log('This is index:' + index);
+      // If checkbox is checked and row ID is not in list of selected row IDs
+      if(this.checked && index === -1){
+         console.log('This is checked and index:' + index);
+         sb_facilityrole_rows_selected.push(rowId);
+      // Otherwise, if checkbox is not checked and row ID is in list of selected row IDs
+      } else if (!this.checked && index !== -1){
+         sb_facilityrole_rows_selected.splice(index, 1);
+         console.log('This is not checked and index:' + index);
+      }
+      if(this.checked){
+         $row.css('background-color', 'rgba(255, 152, 0, 0.5)');
+      } else {
+         $row.css('background-color', 'rgba(255, 152, 0, 0)');
+      }
+      // Update state of "Select all" control
+      updateDataTableSelectAllCtrl(sb_facilityroleTable);
+      // Prevent click event from propagating to parent
+      e.stopPropagation();
+   });
+
+   // Handle click on table cells with checkboxes
+   $('#sb_facilityrole-multi-list-table').on('click', 'tbody td, thead th:first-child', function(e){
+      $(this).parent().find('input[type="checkbox"]').trigger('click');
+   });
+
+   // Handle click on "Select all" control
+   $('thead input[name="select_all"]', sb_facilityroleTable.table().container()).on('click', function(e){
+      if(this.checked){
+         $('#sb_facilityrole-multi-list-table tbody input[type="checkbox"]:not(:checked)').trigger('click');
+      } else {
+         $('#sb_facilityrole-multi-list-table tbody input[type="checkbox"]:checked').trigger('click');
+      }
+      // Prevent click event from propagating to parent
+      e.stopPropagation();
+   });
+
+   // Handle table draw event
+   sb_facilityroleTable.on('draw', function(){
+      // Update state of "Select all" control
+      updateDataTableSelectAllCtrl(sb_facilityroleTable);
+   });
+
+   /* Add all check rows in the data table */
+   $('body').on('click', '#add-selected-facilityrole-list-btn', function(e){
+      e.preventDefault();
+      var page_artifact_form = $('#main-entity-post-name').val();
+      // Iterate over all selected checkboxes
+      var idExists = false;
+      $.each(sb_facilityrole_rows_selected, function(index, rowId){
+
+        $.each($('input[name="facilityrole_id[]"]'), function(indexx){ 
+            var valueToAdd = $(this).val();
+            if(valueToAdd === rowId){
+              idExists = true;
+            }
+
+        });
+        if(!idExists){
+          // Add the id of the selected row as a hidden input in the 
+          // main form 
+           $('#' + page_artifact_form).append(
+               $('<input>')
+                  .attr('type', 'hidden')
+                  .attr('name', 'facilityrole_id[]')
+                  .val(rowId)
+           );
+           // Get the value of the name column. Every entity data table has name and description columns
+           var dependentInstanceName = $('#facilityrole_' + rowId).data('dependent-instance-name');
+           // Add an entry into the visual list of select instances
+           $('#facilityrole_dependent_list_box').append($(
+                '<div id="facilityrole_list_item_' + rowId + '"> ' + 
+                    '<span data-entity-name="facilityrole" ' + 
+                        'data-entity-id="' + rowId + '" class="badge facilityrole_dependent_list_item" ' + 
+                        'style="cursor: pointer; cursor: hand; background-color: red">X</span>' + dependentInstanceName + 
+                '</div>').attr('class', 'list-group-item'));
+        }
+      });
+   });
+    // Handle click on table cells with checkboxes
+   $('#facilityrole_dependent_list_box').on('click', '.facilityrole_dependent_list_item', function(e){
+      var entityId = $(this).data('entity-id');
+      var entityName = $(this).data('entity-name');
+      var page_artifact_form = $('#main-entity-post-name').val();
+      // first remove the hidden form field and then the list box item
+      var existingIds = $('#' + page_artifact_form).find('input[name="facilityrole_id[]"]');
+      $.each(existingIds, function(index, rowId){ 
+        if($(rowId).val() == entityId) {
+          $(rowId).remove();
+        }
+
+      });
+      // then remove the list box item
+      $('#facilityrole_dependent_list_box').find('#facilityrole_list_item_' + entityId).remove();
 
       
    });

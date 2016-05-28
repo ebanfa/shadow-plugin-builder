@@ -101,6 +101,13 @@ class PartyRole extends Model {
     /**
      * 
      */
+    public function fr_partyrole()
+    {
+        return $this->hasMany('FacilityRole');
+    }
+    /**
+     * 
+     */
     public function ps_staff()
     {
         return $this->hasMany('PropertyStaff');

@@ -712,16 +712,34 @@
 				<target>/wordpress/page?page_action=list&amp;artifact=currency</target>
 			</menu>
 			<menu>
+				<name>businessinfo</name>
+				<displayName>Business Information</displayName>
+				<description>Business Information</description>
+				<active>N</active>
+				<cssClass>zmdi zmdi-account-circle zmdi-hc-fw</cssClass>
+				<targetType>entity</targetType>
+				<target>/wordpress/page?artifact=business&amp;page_action=list</target>
+			</menu>
+			<menu>
+				<name>businessunits</name>
+				<displayName>Business Units</displayName>
+				<description>Business Units</description>
+				<active>N</active>
+				<cssClass>zmdi zmdi-account-circle zmdi-hc-fw</cssClass>
+				<targetType>entity</targetType>
+				<target>/wordpress/page?artifact=businessunit&amp;page_action=list</target>
+			</menu>
+			<menu>
 				<name>businessusers</name>
 				<displayName>Business Users</displayName>
 				<description>Business Users</description>
 				<active>N</active>
-				<cssClass>zmdi zmdi-account-circle zmdi-hc-fw</cssClass>
+				<cssClass>zmdi zmdi-account-box-o zmdi-hc-fw</cssClass>
 				<targetType>entity</targetType>
 				<target>/wordpress/page?artifact=party&amp;page_action=list&amp;role=business_user</target>
 			</menu>
 			<menu>
-				<name>businessusers</name>
+				<name>invites</name>
 				<displayName>User Invites</displayName>
 				<description>User Invites</description>
 				<active>N</active>
@@ -2386,9 +2404,64 @@
 		</entity>
 
 		<entity>
-			<name>PartyAddress</name>
-			<postName>sb_partyaddress</postName>
-			<description>Party Address</description>
+			<name>ContactMechanismType</name>
+			<postName>sb_cmechtype</postName>
+			<description>Contact Mechanism Type</description>
+			<global>Y</global>
+			<field>
+				<name>entity_code</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>N</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>alphanumeric</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Code</description>
+				<displayName>Code</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>name</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>name</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Name</description>
+				<displayName>name</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>description</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text-lg</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Description</description>
+				<displayName>Description</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+		</entity>
+
+		<entity>
+			<name>ContactMechanism</name>
+			<postName>sb_contactmech</postName>
+			<description>Contact Mechanism</description>
 			<global>Y</global>
 			<field>
 				<name>entity_code</name>
@@ -2407,7 +2480,7 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
-				<name>party</name>
+				<name>cm_type</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
@@ -2415,27 +2488,11 @@
 				<editField>Y</editField>
 				<viewField>N</viewField>
 				<listField>N</listField>
-				<dataType>sb_party</dataType>
+				<dataType>sb_cmechtype</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
-				<description>Party</description>
-				<displayName>Party</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
-				<name>business_unit</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>N</editField>
-				<viewField>Y</viewField>
-				<listField>N</listField>
-				<dataType>sb_businessunit</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Business Unit</description>
-				<displayName>Business Unit</displayName>
+				<description>Type</description>
+				<displayName>Type</displayName>
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
@@ -2455,10 +2512,10 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
-				<name>address_2</name>
+				<name>address_1</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
-				<required>Y</required>
+				<required>N</required>
 				<createField>Y</createField>
 				<editField>Y</editField>
 				<viewField>Y</viewField>
@@ -2471,7 +2528,87 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
-				<name>location</name>
+				<name>address_2</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>N</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Line 2</description>
+				<displayName>Line 2</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>area_code</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>N</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>number</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Area Code</description>
+				<displayName>Area Code</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>contact_number</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>N</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>number</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Contact Number</description>
+				<displayName>Contact Number</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>country_code</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>N</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>number</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Country Code</description>
+				<displayName>Country Code</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>eaddress_string</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>N</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>number</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Address</description>
+				<displayName>Address</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>description</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
@@ -2479,15 +2616,291 @@
 				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
-				<dataType>sb_location</dataType>
+				<dataType>text-lg</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
-				<description>Location</description>
-				<displayName>Location</displayName>
+				<description>Description</description>
+				<displayName>Description</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>N</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
 				<relationshipField>Y</relationshipField>
 			</field>
 		</entity>
 
+		<entity>
+			<name>PartyContactMechanismPurposeType</name>
+			<postName>sb_pcmpurposetype</postName>
+			<description>Party Contact Mechanism Purpose Type</description>
+			<global>Y</global>
+			<field>
+				<name>entity_code</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>N</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>alphanumeric</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Code</description>
+				<displayName>Code</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>name</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>name</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Name</description>
+				<displayName>name</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>description</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text-lg</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Description</description>
+				<displayName>Description</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+		</entity>
+
+		<entity>
+			<name>PartyContactMechanism</name>
+			<postName>sb_partycmech</postName>
+			<description>Party Contact Mechanism</description>
+            <global>N</global>
+			<field>
+				<name>entity_code</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>N</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>alphanumeric</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Code</description>
+				<displayName>Code</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>party</name>
+				<isVisible>Y</isVisible>
+			    <isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>sb_party</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Party</description>
+				<displayName>Party</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>contact_mech</name>
+				<isVisible>Y</isVisible>
+			    <isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>sb_contactmech</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Contact Mechanism</description>
+				<displayName>Contact Mechanism</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>name</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>name</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Name</description>
+				<displayName>name</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>description</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text-lg</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Description</description>
+				<displayName>Description</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>N</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+		</entity>
+
+		<entity>
+			<name>PartyContactMechanismPurpose</name>
+			<postName>sb_pcmpurpose</postName>
+			<description>Party Contact Mechanism Purpose</description>
+            <global>N</global>
+			<field>
+				<name>entity_code</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>N</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>alphanumeric</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Code</description>
+				<displayName>Code</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>type</name>
+				<isVisible>Y</isVisible>
+			    <isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>sb_pcmpurposetype</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Purpose Type</description>
+				<displayName>Purpose Type</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>pcontact_mech</name>
+				<isVisible>Y</isVisible>
+			    <isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>sb_partycmech</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Party Contact Mechanism</description>
+				<displayName>Party Contact Mechanism</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>name</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>name</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Name</description>
+				<displayName>name</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>description</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text-lg</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Description</description>
+				<displayName>Description</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>N</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+		</entity>
 		<entity>
 			<name>PartyFiles</name>
 			<postName>sb_partyfiles</postName>
@@ -3954,61 +4367,6 @@
 			</field>
 		</entity>
 
-		<!-- <entity>
-			<name>PropertyCategory</name>
-			<postName>sb_propcat</postName>
-			<description>Property Category</description>
-			<global>Y</global>
-			<field>
-				<name>entity_code</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
-				<required>N</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>alphanumeric</dataType>
-				<size>medium</size>
-				<dataColumn>true</dataColumn>
-				<description>Code</description>
-				<displayName>Code</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>name</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>name</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Name</description>
-				<displayName>name</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>description</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>text-lg</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Description</description>
-				<displayName>Description</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-		</entity> -->
-
 		<entity>
 			<name>FacilityCategory</name>
 			<postName>sb_facilitycat</postName>
@@ -4086,7 +4444,7 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
-				<name>ft_category</name>
+				<name>category</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
@@ -4097,8 +4455,24 @@
 				<dataType>sb_facilitycat</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
-				<description>Facility Category</description>
-				<displayName>Facility Category</displayName>
+				<description>Category</description>
+				<displayName>Category</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>business_category</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>sb_businesscat</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Category</description>
+				<displayName>Business Category</displayName>
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>

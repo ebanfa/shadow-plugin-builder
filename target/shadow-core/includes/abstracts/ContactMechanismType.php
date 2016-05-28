@@ -2,10 +2,10 @@
 
 use \WeDevs\ORM\Eloquent\Model as Model;
 
-class FacilityCategory extends Model {
+class ContactMechanismType extends Model {
 
     public $primaryKey = 'id';
-    public $table = 'facilitycategory';
+    public $table = 'contactmechanismtype';
     /**
      * Indicates if the model should be timestamped.
      *
@@ -17,9 +17,9 @@ class FacilityCategory extends Model {
     /**
      * 
      */
-    public function category()
+    public function cm_type()
     {
-        return $this->hasMany('FacilityType');
+        return $this->hasMany('ContactMechanism');
     }
 
 }

@@ -1,11 +1,11 @@
 <?php 
 
-class PartyAddressCPT {
+class FacilityRoleCPT {
 
     public static $prefix = ''; 
 
-    public static $post_name = 'sb_partyaddress'; 
-    public static $is_global_entity = true; 
+    public static $post_name = 'sb_facilityrole'; 
+    public static $is_global_entity = false; 
 
 
     public static $is_virtual_entity = false; 
@@ -22,29 +22,29 @@ class PartyAddressCPT {
             'description' => 'The Code field',
             'type' => 'text',
         ),
-        array('name' => 'party',
-            'title' => 'Party',
-            'description' => 'The Party field',
+        array('name' => 'fr_facility',
+            'title' => 'Facility',
+            'description' => 'The Facility field',
+            'type' => 'text',
+        ),
+        array('name' => 'fr_partyrole',
+            'title' => 'Party Role',
+            'description' => 'The Party Role field',
+            'type' => 'text',
+        ),
+        array('name' => 'name',
+            'title' => 'Name',
+            'description' => 'The Name field',
+            'type' => 'text',
+        ),
+        array('name' => 'description',
+            'title' => 'Description',
+            'description' => 'The Description field',
             'type' => 'text',
         ),
         array('name' => 'business_unit',
             'title' => 'Business Unit',
             'description' => 'The Business Unit field',
-            'type' => 'text',
-        ),
-        array('name' => 'name',
-            'title' => 'Line 1',
-            'description' => 'The Line 1 field',
-            'type' => 'text',
-        ),
-        array('name' => 'address_2',
-            'title' => 'Line 2',
-            'description' => 'The Line 2 field',
-            'type' => 'text',
-        ),
-        array('name' => 'location',
-            'title' => 'Location',
-            'description' => 'The Location field',
             'type' => 'text',
         ),
     );
@@ -59,28 +59,66 @@ class PartyAddressCPT {
             'description' => 'Code',
             'size' => 'medium',
             'data_type' => 'alphanumeric',
-            'is_required' => true,
-            'is_visible' => true,
+            'is_required' => false,
+            'is_visible' => false,
             'is_create_field' => false,
             'is_edit_field' => false,
             'is_view_field' => false,
             'is_list_field' => false,
             'is_form_field' => false,
             'is_relationship_field' => false,),
-        'party' => array('name' => 'party',
-            'description' => 'Party',
+        'fr_facility' => array('name' => 'fr_facility',
+            'description' => 'Facility',
             'size' => 'large',
-            'entity_name' => 'Party',
-            'entity_description' => 'Party',
-            'data_type' => 'sb_party',
+            'entity_name' => 'Facility',
+            'entity_description' => 'Facility',
+            'data_type' => 'sb_facility',
             'is_required' => true,
             'is_visible' => true,
             'is_create_field' => true,
             'is_edit_field' => true,
-            'is_view_field' => false,
-            'is_list_field' => false,
+            'is_view_field' => true,
+            'is_list_field' => true,
             'is_form_field' => true,
             'is_relationship_field' => true,),
+        'fr_partyrole' => array('name' => 'fr_partyrole',
+            'description' => 'Party Role',
+            'size' => 'large',
+            'entity_name' => 'PartyRole',
+            'entity_description' => 'Party Role',
+            'data_type' => 'sb_partyrole',
+            'is_required' => true,
+            'is_visible' => true,
+            'is_create_field' => true,
+            'is_edit_field' => true,
+            'is_view_field' => true,
+            'is_list_field' => true,
+            'is_form_field' => true,
+            'is_relationship_field' => true,),
+        'name' => array('name' => 'name',
+            'description' => 'Name',
+            'size' => 'large',
+            'data_type' => 'name',
+            'is_required' => true,
+            'is_visible' => true,
+            'is_create_field' => true,
+            'is_edit_field' => true,
+            'is_view_field' => true,
+            'is_list_field' => true,
+            'is_form_field' => true,
+            'is_relationship_field' => false,),
+        'description' => array('name' => 'description',
+            'description' => 'Description',
+            'size' => 'large',
+            'data_type' => 'text-lg',
+            'is_required' => true,
+            'is_visible' => true,
+            'is_create_field' => true,
+            'is_edit_field' => true,
+            'is_view_field' => true,
+            'is_list_field' => true,
+            'is_form_field' => true,
+            'is_relationship_field' => false,),
         'business_unit' => array('name' => 'business_unit',
             'description' => 'Business Unit',
             'size' => 'large',
@@ -89,49 +127,11 @@ class PartyAddressCPT {
             'data_type' => 'sb_businessunit',
             'is_required' => true,
             'is_visible' => false,
-            'is_create_field' => true,
+            'is_create_field' => false,
             'is_edit_field' => false,
-            'is_view_field' => true,
+            'is_view_field' => false,
             'is_list_field' => false,
             'is_form_field' => false,
-            'is_relationship_field' => true,),
-        'name' => array('name' => 'name',
-            'description' => 'Line 1',
-            'size' => 'large',
-            'data_type' => 'text',
-            'is_required' => true,
-            'is_visible' => true,
-            'is_create_field' => true,
-            'is_edit_field' => true,
-            'is_view_field' => true,
-            'is_list_field' => true,
-            'is_form_field' => true,
-            'is_relationship_field' => false,),
-        'address_2' => array('name' => 'address_2',
-            'description' => 'Line 2',
-            'size' => 'large',
-            'data_type' => 'text',
-            'is_required' => true,
-            'is_visible' => true,
-            'is_create_field' => true,
-            'is_edit_field' => true,
-            'is_view_field' => true,
-            'is_list_field' => true,
-            'is_form_field' => true,
-            'is_relationship_field' => false,),
-        'location' => array('name' => 'location',
-            'description' => 'Location',
-            'size' => 'large',
-            'entity_name' => 'Location',
-            'entity_description' => 'Location',
-            'data_type' => 'sb_location',
-            'is_required' => true,
-            'is_visible' => true,
-            'is_create_field' => true,
-            'is_edit_field' => true,
-            'is_view_field' => true,
-            'is_list_field' => true,
-            'is_form_field' => true,
             'is_relationship_field' => true,),
    );
 
@@ -151,20 +151,20 @@ class PartyAddressCPT {
      */
     public static function register_custom_post_type()
     {
-       register_post_type('sb_partyaddress', 
+       register_post_type('sb_facilityrole', 
             array(
-                'label' => 'Party Address',
+                'label' => 'Facility Role',
                 'labels' => array(
                 'add_new'           => 'Add New',
-                'add_new_item'      => 'Add New Party Address',
-                'edit_item'         => 'Edit Party Address',
-                'new_item'          => 'New Party Address',
-                'view_item'         => 'View Party Address',
-                'search_items'      => 'Search Party Address',
-                'not_found'         => 'No Party Address Found ',
+                'add_new_item'      => 'Add New Facility Role',
+                'edit_item'         => 'Edit Facility Role',
+                'new_item'          => 'New Facility Role',
+                'view_item'         => 'View Facility Role',
+                'search_items'      => 'Search Facility Role',
+                'not_found'         => 'No Facility Role Found ',
                 'not_found_in_trash'=> 'Not Found in Trash',
                 ),
-                'description' => 'Reusable Party Address',
+                'description' => 'Reusable Facility Role',
                 'public' => true,
                 'show_ui' => true,
                 'menu_position' => 5,
@@ -184,7 +184,7 @@ class PartyAddressCPT {
   ------------------------------------------------------------------------------*/
     public static function save_custom_fields( $post_id, $post) 
     {
-        if ( $post->post_type == 'sb_partyaddress') 
+        if ( $post->post_type == 'sb_facilityrole') 
         {
             // The 2nd arg here is important because there are multiple nonces on the page
             if ( !empty($_POST))// && check_admin_referer('update_custom_content_fields','custom_content_fields_nonce') )
@@ -198,36 +198,37 @@ class PartyAddressCPT {
         return $field['value'];
     }
 
-    public static function sb_partyaddress_table_head($defaults){
-        $defaults['name']  = 'Line 2';
-        $defaults['address_2']  = 'Line 2';
-        $defaults['location']  = 'Location';
+    public static function sb_facilityrole_table_head($defaults){
+        $defaults['fr_facility']  = 'Facility';
+        $defaults['fr_partyrole']  = 'Party Role';
+        $defaults['name']  = 'name';
+        $defaults['description']  = 'Description';
         return $defaults;
     }
 
-    public static function sb_partyaddress_table_content($column_name, $post_id){
+    public static function sb_facilityrole_table_content($column_name, $post_id){
         if ($column_name == 'entity_code') {
             $field_value = get_post_meta($post_id, 'entity_code', true );
             echo $field_value;
         }
-        if ($column_name == 'party') {
-            $field_value = get_post_meta($post_id, 'party', true );
+        if ($column_name == 'fr_facility') {
+            $field_value = get_post_meta($post_id, 'fr_facility', true );
             echo $field_value;
         }
-        if ($column_name == 'business_unit') {
-            $field_value = get_post_meta($post_id, 'business_unit', true );
+        if ($column_name == 'fr_partyrole') {
+            $field_value = get_post_meta($post_id, 'fr_partyrole', true );
             echo $field_value;
         }
         if ($column_name == 'name') {
             $field_value = get_post_meta($post_id, 'name', true );
             echo $field_value;
         }
-        if ($column_name == 'address_2') {
-            $field_value = get_post_meta($post_id, 'address_2', true );
+        if ($column_name == 'description') {
+            $field_value = get_post_meta($post_id, 'description', true );
             echo $field_value;
         }
-        if ($column_name == 'location') {
-            $field_value = get_post_meta($post_id, 'location', true );
+        if ($column_name == 'business_unit') {
+            $field_value = get_post_meta($post_id, 'business_unit', true );
             echo $field_value;
         }
     }

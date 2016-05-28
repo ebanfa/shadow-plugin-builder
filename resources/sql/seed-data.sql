@@ -11,7 +11,6 @@ INSERT INTO location (location_type, entity_code, name, description) VALUES (1, 
 INSERT INTO location (location_type, location, entity_code, name, description) VALUES (2, 1, 'NAIROBI', 'Nairobi', 'Nairobi');
 INSERT INTO location (location_type, location, entity_code, name, description) VALUES (3, 2, 'NBO', 'Nairobi', 'Nairobi');
 
-
 /* Insert statement for Party Category */
 INSERT INTO partycategory (id, entity_code, name, description) VALUES (1, 'ORGANIZATION', 'Organization', 'Organizational party');
 INSERT INTO partycategory (id, entity_code, name, description) VALUES (2, 'INDIVIDUAL', 'Individual', 'Individual party');
@@ -38,6 +37,21 @@ INSERT INTO userinvitestatus (entity_code, name, description) VALUES ('SENT', 'S
 INSERT INTO userinvitestatus (entity_code, name, description) VALUES ('ACCEPTED', 'Accepted', 'Accepted');
 INSERT INTO userinvitestatus (entity_code, name, description) VALUES ('REJECTED', 'Rejected', 'Rejected');
 
+/* Insert statement for Business Category */
+INSERT INTO businesscategory (id, entity_code, name, description) VALUES (1, 'BUSINESS', 'Business', 'Business');
+INSERT INTO businesscategory (id, entity_code, name, description) VALUES (2, 'PROPERTY', 'Property', 'Property');
+
+/* Insert statement for Facility Category */
+INSERT INTO facilitycategory (id, entity_code, name, description) VALUES (1, 'PROPERTY', 'Property', 'Property');
+
+/* Insert statement for Facility Type */
+INSERT INTO facilitytype (category, business_category, entity_code, name, description) VALUES (1, 2, 'PROPERTY', 'Property', 'Property');
+INSERT INTO facilitytype (category, business_category, entity_code, name, description) VALUES (1, 2, 'BUILDING', 'Building', 'Building');
+INSERT INTO facilitytype (category, business_category, entity_code, name, description) VALUES (1, 2, 'ROOM', 'Room', 'Room');
+INSERT INTO facilitytype (category, business_category, entity_code, name, description) VALUES (1, 2, 'FLOOR', 'Floor', 'Floor');
+INSERT INTO facilitytype (category, business_category, entity_code, name, description) VALUES (1, 2, 'OFFICE', 'Office', 'Office');
+INSERT INTO facilitytype (category, business_category, entity_code, name, description) VALUES (1, 2, 'WAREHOUSE', 'Warehouse', 'Warehouse');
+
 /* Insert statement for Property Type */
 INSERT INTO propertytype (entity_code, name, description) VALUES ('COMMERCIAL', 'Commercial Property', 'Commercial Property');
 INSERT INTO propertytype (entity_code, name, description) VALUES ('INDUSTRIAL', 'Industrial Property', 'Industrial Property');
@@ -54,11 +68,6 @@ INSERT INTO allocationunit (entity_code, name, description) VALUES ('APARTMENT_U
 
 /* Insert statement for Template Type */
 INSERT INTO templatetype (id, entity_code, name, description) VALUES (1, 'INVOICE_TEMPLATE', 'Invoice Template', 'Invoice Template');
-
-/* Insert statement for Invoice Category */
-INSERT INTO businesscategory (id, entity_code, name, description) VALUES (1, 'BUSINESS', 'Business', 'Business');
-/* Insert statement for Invoice Category */
-INSERT INTO businesscategory (id, entity_code, name, description) VALUES (2, 'PROPERTY', 'Property', 'Property');
 
 /* Insert statement for Invoice Type */
 INSERT INTO invoicetype (business_category, entity_code, name, description) VALUES (2, 'RENT', 'Rent Invoice', 'Rent Invoice');
@@ -95,7 +104,9 @@ INSERT INTO workefforttype (category, business_category, entity_code, name, desc
 INSERT INTO workeffortstatus (entity_code, name, description) VALUES ('PENDING', 'Pending', 'Pending');
 
 /* Insert statement for Work Effort Purchase Type */
-INSERT INTO workeffortpurposetype (entity_code, name, description) VALUES ('DEFAULT', 'Default', 'Default');
+INSERT INTO workeffortpurposetype (category, entity_code, name, description) VALUES (1, 'INSPECTION', 'Inspection', 'Inspection');
+INSERT INTO workeffortpurposetype (category, entity_code, name, description) VALUES (2, 'MAINTENANCE', 'Maintenance & Repairs', 'Maintenance & Repairs');
+INSERT INTO workeffortpurposetype (category, entity_code, name, description) VALUES (3, 'IMPROVEMENT', 'Improvement', 'Improvement');
 
 /* Insert statement for Work Effort Category */
 INSERT INTO agreementcategory (id, entity_code, name, description) VALUES (1, 'RENT', 'Rent Agreement', 'Rent Agreement');

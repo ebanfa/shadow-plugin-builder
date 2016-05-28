@@ -38,6 +38,13 @@ class Facility extends Model {
     /**
      * 
      */
+    public function fr_facility()
+    {
+        return $this->hasMany('FacilityRole');
+    }
+    /**
+     * 
+     */
     public function f_facility()
     {
         return $this->hasMany('Facility');

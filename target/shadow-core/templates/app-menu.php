@@ -119,7 +119,9 @@ if (is_user_logged_in()) {
             <a href=""><i class="md zmdi zmdi-labels zmdi-hc-fw"></i> Business Settings</a>
             <ul>
 				<li><a href="/wordpress/page?page_action=list&artifact=currency"><i class="md zmdi zmdi-money-box zmdi-hc-fw"></i> Currencies</a></li>
-				<li><a href="/wordpress/page?artifact=party&page_action=list&role=business_user"><i class="md zmdi zmdi-account-circle zmdi-hc-fw"></i> Business Users</a></li>
+				<li><a href="/wordpress/page?artifact=business&page_action=list"><i class="md zmdi zmdi-account-circle zmdi-hc-fw"></i> Business Information</a></li>
+				<li><a href="/wordpress/page?artifact=businessunit&page_action=list"><i class="md zmdi zmdi-account-circle zmdi-hc-fw"></i> Business Units</a></li>
+				<li><a href="/wordpress/page?artifact=party&page_action=list&role=business_user"><i class="md zmdi zmdi-account-box-o zmdi-hc-fw"></i> Business Users</a></li>
 				<li><a href="/wordpress/page?artifact=userinvite&page_action=list"><i class="md zmdi zmdi-account-circle zmdi-hc-fw"></i> User Invites</a></li>
             </ul>
         </li>

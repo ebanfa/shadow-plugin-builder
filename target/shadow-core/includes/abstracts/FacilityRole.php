@@ -2,10 +2,10 @@
 
 use \WeDevs\ORM\Eloquent\Model as Model;
 
-class FacilityType extends Model {
+class FacilityRole extends Model {
 
     public $primaryKey = 'id';
-    public $table = 'facilitytype';
+    public $table = 'facilityrole';
     /**
      * Indicates if the model should be timestamped.
      *
@@ -16,25 +16,25 @@ class FacilityType extends Model {
     /**
      * 
      */
-    public function category()
+    public function fr_facility()
     {
-        return $this->belongsTo('FacilityCategory');
+        return $this->belongsTo('Facility');
     }
     /**
      * 
      */
-    public function business_category()
+    public function fr_partyrole()
     {
-        return $this->belongsTo('BusinessCategory');
+        return $this->belongsTo('PartyRole');
+    }
+    /**
+     * 
+     */
+    public function business_unit()
+    {
+        return $this->belongsTo('BusinessUnit');
     }
 
-    /**
-     * 
-     */
-    public function f_type()
-    {
-        return $this->hasMany('Facility');
-    }
 
 }
 

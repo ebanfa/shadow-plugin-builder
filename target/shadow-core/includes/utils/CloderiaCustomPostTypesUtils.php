@@ -15,7 +15,7 @@ class CloderiaCustomPostTypesUtils {
 	public static $prefix = ''; 
 
 	// Which types of content do we want to standardize?
-	public static $content_types_array = array('sb_currency','sb_loctype','sb_location','sb_business','sb_businessunit','sb_partycat','sb_partytype','sb_roletype','sb_party','sb_partyrole','sb_reltype','sb_relstatus','sb_partyrel','sb_partygroup','sb_person','sb_partyprofile','sb_partyaddress','sb_partyfiles','sb_invitestatus','sb_userinvite','sb_businesscat','sb_chargetype','sb_chargefreq','sb_charge','sb_expensetype','sb_expensefreq','sb_expense','sb_liabcat','sb_liabtype','sb_liability','sb_dmethod','sb_uom','sb_utilitytype','sb_utility','sb_facilitycat','sb_facilitytype','sb_facility','sb_facharge','sb_proptype','sb_propstatus','sb_property','sb_zonetype','sb_zoningdata','sb_mortgagetype','sb_mortgage','sb_laccessibility','sb_ltopography','sb_landtype','sb_soiltype','sb_lshape','sb_land','sb_plottype','sb_plot','sb_improvetype','sb_improvement','sb_proputility','sb_pcharge','sb_assetcat','sb_assettype','sb_asset','sb_inventype','sb_inventory','sb_invitemtype','sb_inventoryitem','sb_propstaff','sb_propfiles','sb_buildingtype','sb_buildtypropty','sb_allocunit','sb_building','sb_bcharge','sb_buildfiles','sb_floortype','sb_floor','sb_fcharge','sb_unittype','sb_utypecharge','sb_unit','sb_unitcharge','sb_pslottype','sb_pstypecharge','sb_pslot','sb_agreecat','sb_agreetype','sb_agreetypecharge','sb_termtype','sb_term','sb_agreement','sb_purchaseagrmnt','sb_settlementdata','sb_settledataloan','sb_agrmntitemtype','sb_agreementitem','sb_servicetype','sb_service','sb_agreeservice','sb_agreeunit','sb_agreecharge','sb_agreeterm','sb_chargeinagrmt','sb_rentstatus','sb_rent','sb_assmttype','sb_assessment','sb_sdtype','sb_salesdata','sb_sditemtype','sb_salesdataitem','sb_cdtype','sb_costdata','sb_cditemtype','sb_cditemdata','sb_idtype','sb_incomedata','sb_idetype','sb_idexpense','sb_billaccount','sb_accttxntype','sb_accttxnstatus','sb_accttransaction','sb_fundmeth','sb_templatetype','sb_template','sb_invoicetype','sb_invoicestatus','sb_invoice','sb_invoicerole','sb_invoiceitemtype','sb_invoiceitem','sb_invoiceterm','sb_pordertype','sb_porderstatus','sb_porder','sb_porole','sb_poitemtype','sb_porderitem','sb_porderterm','sb_paymenttype','sb_paymethtype','sb_payment','sb_payapp','sb_receipttype','sb_disbursetype','sb_receipt','sb_disbursement','sb_periodtype','sb_acctperiod','sb_coaacctstruct','sb_coaacctsegtype','sb_coaasegval','sb_coaacctseg','sb_coastatus','sb_coa','sb_glaccttype','sb_glaccount','sb_buglaccount','sb_buglaccountbal','sb_coaaseginst','sb_feventtype','sb_fevent','sb_txntype','sb_transaction','sb_txndetail','sb_feventtxntype','sb_txntypeacct','sb_budgettype','sb_budgetstatus','sb_budget','sb_bitemtype','sb_budgetitem','sb_budgetrole','sb_stperiod','sb_brrtype','sb_budgetreview','sb_brevision','sb_budgetrevimpact','sb_budgetscenario','sb_bscenariorule','sb_bscenarioapp','sb_pballocation','sb_glbudgetxref','sb_disputetype','sb_disputestatus','sb_dispute','sb_disputeitem','sb_conversation','sb_message','sb_messagesfiles','sb_notifytype','sb_notifystatus','sb_notifylevel','sb_notification','sb_pclasstype','sb_ptypeclass','sb_positiontype','sb_pstatus','sb_resptype','sb_validresp','sb_position','sb_posresp','sb_pfulfillment','sb_preportstruct','sb_ratetype','sb_paygrade','sb_salarystep','sb_ptyperate','sb_payhistory','sb_benefittype','sb_partybenefit','sb_deductiontype','sb_deduction','sb_prpreference','sb_empappstatus','sb_empappsrctype','sb_empapplication','sb_qualtype','sb_skilltype','sb_tctype','sb_ptraining','sb_resume','sb_partyskill','sb_partyqual','sb_perfnoteype','sb_perfnote','sb_perfreview','sb_ratingtype','sb_previtemtype','sb_perfreviewitem','sb_terminationtype','sb_termreason','sb_ucstatus','sb_uempclaim','sb_delivertype','sb_deliverable','sb_requiretype','sb_requirement','sb_requirerole','sb_wetypecat','sb_wetype','sb_weptype','sb_westatus','sb_workeffort','sb_wrfulfillment','sb_weatype','sb_weassociation','sb_wertype','sb_wepatyassign','sb_timesheet','sb_tsrtype','sb_tsrole','sb_timeentry','sb_partyrate','sb_wearate','sb_weiassign','sb_weaastatus','sb_weaassign','sb_wepastatus','sb_paassign','sb_wedeliverable',);
+	public static $content_types_array = array('sb_currency','sb_loctype','sb_location','sb_business','sb_businessunit','sb_partycat','sb_partytype','sb_roletype','sb_party','sb_partyrole','sb_reltype','sb_relstatus','sb_partyrel','sb_partygroup','sb_person','sb_partyprofile','sb_cmechtype','sb_contactmech','sb_pcmpurposetype','sb_partycmech','sb_pcmpurpose','sb_partyfiles','sb_invitestatus','sb_userinvite','sb_businesscat','sb_chargetype','sb_chargefreq','sb_charge','sb_expensetype','sb_expensefreq','sb_expense','sb_liabcat','sb_liabtype','sb_liability','sb_dmethod','sb_uom','sb_utilitytype','sb_utility','sb_facilitycat','sb_facilitytype','sb_facility','sb_facilityrole','sb_facharge','sb_proptype','sb_propstatus','sb_property','sb_zonetype','sb_zoningdata','sb_mortgagetype','sb_mortgage','sb_laccessibility','sb_ltopography','sb_landtype','sb_soiltype','sb_lshape','sb_land','sb_plottype','sb_plot','sb_improvetype','sb_improvement','sb_proputility','sb_pcharge','sb_assetcat','sb_assettype','sb_asset','sb_inventype','sb_inventory','sb_invitemtype','sb_inventoryitem','sb_propstaff','sb_propfiles','sb_buildingtype','sb_buildtypropty','sb_allocunit','sb_building','sb_bcharge','sb_buildfiles','sb_floortype','sb_floor','sb_fcharge','sb_unittype','sb_utypecharge','sb_unit','sb_unitcharge','sb_pslottype','sb_pstypecharge','sb_pslot','sb_agreecat','sb_agreetype','sb_agreetypecharge','sb_termtype','sb_term','sb_agreement','sb_purchaseagrmnt','sb_settlementdata','sb_settledataloan','sb_agrmntitemtype','sb_agreementitem','sb_servicetype','sb_service','sb_agreeservice','sb_agreeunit','sb_agreecharge','sb_agreeterm','sb_chargeinagrmt','sb_rentstatus','sb_rent','sb_assmttype','sb_assessment','sb_sdtype','sb_salesdata','sb_sditemtype','sb_salesdataitem','sb_cdtype','sb_costdata','sb_cditemtype','sb_cditemdata','sb_idtype','sb_incomedata','sb_idetype','sb_idexpense','sb_billaccount','sb_accttxntype','sb_accttxnstatus','sb_accttransaction','sb_fundmeth','sb_templatetype','sb_template','sb_invoicetype','sb_invoicestatus','sb_invoice','sb_invoicerole','sb_invoiceitemtype','sb_invoiceitem','sb_invoiceterm','sb_pordertype','sb_porderstatus','sb_porder','sb_porole','sb_poitemtype','sb_porderitem','sb_porderterm','sb_paymenttype','sb_paymethtype','sb_payment','sb_payapp','sb_receipttype','sb_disbursetype','sb_receipt','sb_disbursement','sb_periodtype','sb_acctperiod','sb_coaacctstruct','sb_coaacctsegtype','sb_coaasegval','sb_coaacctseg','sb_coastatus','sb_coa','sb_glaccttype','sb_glaccount','sb_buglaccount','sb_buglaccountbal','sb_coaaseginst','sb_feventtype','sb_fevent','sb_txntype','sb_transaction','sb_txndetail','sb_feventtxntype','sb_txntypeacct','sb_budgettype','sb_budgetstatus','sb_budget','sb_bitemtype','sb_budgetitem','sb_budgetrole','sb_stperiod','sb_brrtype','sb_budgetreview','sb_brevision','sb_budgetrevimpact','sb_budgetscenario','sb_bscenariorule','sb_bscenarioapp','sb_pballocation','sb_glbudgetxref','sb_disputetype','sb_disputestatus','sb_dispute','sb_disputeitem','sb_conversation','sb_message','sb_messagesfiles','sb_notifytype','sb_notifystatus','sb_notifylevel','sb_notification','sb_pclasstype','sb_ptypeclass','sb_positiontype','sb_pstatus','sb_resptype','sb_validresp','sb_position','sb_posresp','sb_pfulfillment','sb_preportstruct','sb_ratetype','sb_paygrade','sb_salarystep','sb_ptyperate','sb_payhistory','sb_benefittype','sb_partybenefit','sb_deductiontype','sb_deduction','sb_prpreference','sb_empappstatus','sb_empappsrctype','sb_empapplication','sb_qualtype','sb_skilltype','sb_tctype','sb_ptraining','sb_resume','sb_partyskill','sb_partyqual','sb_perfnoteype','sb_perfnote','sb_perfreview','sb_ratingtype','sb_previtemtype','sb_perfreviewitem','sb_terminationtype','sb_termreason','sb_ucstatus','sb_uempclaim','sb_delivertype','sb_deliverable','sb_requiretype','sb_requirement','sb_requirerole','sb_wetypecat','sb_wetype','sb_weptype','sb_westatus','sb_workeffort','sb_wrfulfillment','sb_weatype','sb_weassociation','sb_wertype','sb_wepatyassign','sb_timesheet','sb_tsrtype','sb_tsrole','sb_timeentry','sb_partyrate','sb_wearate','sb_weiassign','sb_weaastatus','sb_weaassign','sb_wepastatus','sb_paassign','sb_wedeliverable',);
 
 	/**
 	 * Register the custom post type so it shows up in menus
@@ -38,7 +38,11 @@ class CloderiaCustomPostTypesUtils {
         PartyGroupCPT::register_custom_post_type();
         PersonCPT::register_custom_post_type();
         PartyProfileCPT::register_custom_post_type();
-        PartyAddressCPT::register_custom_post_type();
+        ContactMechanismTypeCPT::register_custom_post_type();
+        ContactMechanismCPT::register_custom_post_type();
+        PartyContactMechanismPurposeTypeCPT::register_custom_post_type();
+        PartyContactMechanismCPT::register_custom_post_type();
+        PartyContactMechanismPurposeCPT::register_custom_post_type();
         PartyFilesCPT::register_custom_post_type();
         UserInviteStatusCPT::register_custom_post_type();
         UserInviteCPT::register_custom_post_type();
@@ -59,6 +63,7 @@ class CloderiaCustomPostTypesUtils {
         FacilityCategoryCPT::register_custom_post_type();
         FacilityTypeCPT::register_custom_post_type();
         FacilityCPT::register_custom_post_type();
+        FacilityRoleCPT::register_custom_post_type();
         FacilityChargeCPT::register_custom_post_type();
         PropertyTypeCPT::register_custom_post_type();
         PropertyStatusCPT::register_custom_post_type();
@@ -341,8 +346,20 @@ class CloderiaCustomPostTypesUtils {
 			case 'sb_partyprofile':
 				PartyProfileCPT::save_custom_fields($post_id, $post);
 				break;
-			case 'sb_partyaddress':
-				PartyAddressCPT::save_custom_fields($post_id, $post);
+			case 'sb_cmechtype':
+				ContactMechanismTypeCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_contactmech':
+				ContactMechanismCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_pcmpurposetype':
+				PartyContactMechanismPurposeTypeCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_partycmech':
+				PartyContactMechanismCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_pcmpurpose':
+				PartyContactMechanismPurposeCPT::save_custom_fields($post_id, $post);
 				break;
 			case 'sb_partyfiles':
 				PartyFilesCPT::save_custom_fields($post_id, $post);
@@ -403,6 +420,9 @@ class CloderiaCustomPostTypesUtils {
 				break;
 			case 'sb_facility':
 				FacilityCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_facilityrole':
+				FacilityRoleCPT::save_custom_fields($post_id, $post);
 				break;
 			case 'sb_facharge':
 				FacilityChargeCPT::save_custom_fields($post_id, $post);

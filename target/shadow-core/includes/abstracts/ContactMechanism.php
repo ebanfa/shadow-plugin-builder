@@ -2,10 +2,10 @@
 
 use \WeDevs\ORM\Eloquent\Model as Model;
 
-class PartyAddress extends Model {
+class ContactMechanism extends Model {
 
     public $primaryKey = 'id';
-    public $table = 'partyaddress';
+    public $table = 'contactmechanism';
     /**
      * Indicates if the model should be timestamped.
      *
@@ -16,9 +16,9 @@ class PartyAddress extends Model {
     /**
      * 
      */
-    public function party()
+    public function cm_type()
     {
-        return $this->belongsTo('Party');
+        return $this->belongsTo('ContactMechanismType');
     }
     /**
      * 
@@ -27,14 +27,14 @@ class PartyAddress extends Model {
     {
         return $this->belongsTo('BusinessUnit');
     }
+
     /**
      * 
      */
-    public function location()
+    public function contact_mech()
     {
-        return $this->belongsTo('Location');
+        return $this->hasMany('PartyContactMechanism');
     }
-
 
 }
 

@@ -689,24 +689,22 @@ jQuery(document).ready(function($)
     var baseUrl = shadowcore_base_url.baseUrl;
 
     
-    $('#sb_partyaddress-table').dataTable({
+    $('#sb_cmechtype-table').dataTable({
         "ajax": {
             'type': 'POST',
             'url': shadowcore_ajax_script.ajaxurl,
             'data': function(d){
                d.action = 'find_entity_ajax';
-               d.artifact = 'partyaddress';
-               d.form = $("#sb_partyaddress-list-form").serializeArray();
+               d.artifact = 'contactmechanismtype';
+               d.form = $("#sb_cmechtype-list-form").serializeArray();
             },
         },
         columns: [
             { data: "id" }, 
                 { data: "name" },
 
-                { data: "address_2" },
+                { data: "description" },
 
-
-                { data: "location_txt" },
         ],
         columnDefs: [
             { "visible": false,  "targets": 0 },
@@ -716,10 +714,174 @@ jQuery(document).ready(function($)
                 // this case `data: 0`.
                 "render": function ( data, type, row ) {
                     var parent_params = '';
-                    if($('#partyaddress_parent_params').length) {
-                        parent_params = parent_params + $('#partyaddress_parent_params').val(); 
+                    if($('#contactmechanismtype_parent_params').length) {
+                        parent_params = parent_params + $('#contactmechanismtype_parent_params').val(); 
                     }
-                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=partyaddress&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="partyaddress" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=contactmechanismtype&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="contactmechanismtype" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = shadowcore_base_url.baseUrl;
+
+    
+    $('#sb_contactmech-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': shadowcore_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'contactmechanism';
+               d.form = $("#sb_contactmech-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+                { data: "name" },
+
+                { data: "address_1" },
+
+                { data: "address_2" },
+
+                { data: "area_code" },
+
+                { data: "contact_number" },
+
+                { data: "country_code" },
+
+                { data: "eaddress_string" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#contactmechanism_parent_params').length) {
+                        parent_params = parent_params + $('#contactmechanism_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=contactmechanism&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="contactmechanism" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = shadowcore_base_url.baseUrl;
+
+    
+    $('#sb_pcmpurposetype-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': shadowcore_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'partycontactmechanismpurposetype';
+               d.form = $("#sb_pcmpurposetype-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+                { data: "name" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#partycontactmechanismpurposetype_parent_params').length) {
+                        parent_params = parent_params + $('#partycontactmechanismpurposetype_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=partycontactmechanismpurposetype&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="partycontactmechanismpurposetype" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = shadowcore_base_url.baseUrl;
+
+    
+    $('#sb_partycmech-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': shadowcore_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'partycontactmechanism';
+               d.form = $("#sb_partycmech-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+                { data: "name" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#partycontactmechanism_parent_params').length) {
+                        parent_params = parent_params + $('#partycontactmechanism_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=partycontactmechanism&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="partycontactmechanism" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = shadowcore_base_url.baseUrl;
+
+    
+    $('#sb_pcmpurpose-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': shadowcore_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'partycontactmechanismpurpose';
+               d.form = $("#sb_pcmpurpose-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+                { data: "name" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#partycontactmechanismpurpose_parent_params').length) {
+                        parent_params = parent_params + $('#partycontactmechanismpurpose_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=partycontactmechanismpurpose&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="partycontactmechanismpurpose" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
                 },
                 "targets": 1
             }
@@ -1476,7 +1638,7 @@ jQuery(document).ready(function($)
         columns: [
             { data: "id" }, 
 
-                { data: "ft_category_txt" },
+                { data: "category_txt" },
                 { data: "name" },
 
                 { data: "description" },
@@ -1521,6 +1683,8 @@ jQuery(document).ready(function($)
                 { data: "f_type_txt" },
                 { data: "name" },
 
+                { data: "sq_footage" },
+
                 { data: "description" },
 
         ],
@@ -1536,6 +1700,48 @@ jQuery(document).ready(function($)
                         parent_params = parent_params + $('#facility_parent_params').val(); 
                     }
                     return '<a class="data-table-link" href="' + baseUrl + 'artifact=facility&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="facility" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = shadowcore_base_url.baseUrl;
+
+    
+    $('#sb_facilityrole-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': shadowcore_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'facilityrole';
+               d.form = $("#sb_facilityrole-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+
+                { data: "fr_facility_txt" },
+
+                { data: "fr_partyrole_txt" },
+                { data: "name" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#facilityrole_parent_params').length) {
+                        parent_params = parent_params + $('#facilityrole_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=facilityrole&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="facilityrole" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
                 },
                 "targets": 1
             }

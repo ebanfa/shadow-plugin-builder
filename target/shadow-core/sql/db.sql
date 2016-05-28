@@ -220,6 +220,7 @@ DROP TABLE IF EXISTS property;
 DROP TABLE IF EXISTS propertystatus;
 DROP TABLE IF EXISTS propertytype;
 DROP TABLE IF EXISTS facilitycharge;
+DROP TABLE IF EXISTS facilityrole;
 DROP TABLE IF EXISTS facility;
 DROP TABLE IF EXISTS facilitytype;
 DROP TABLE IF EXISTS facilitycategory;
@@ -240,7 +241,11 @@ DROP TABLE IF EXISTS businesscategory;
 DROP TABLE IF EXISTS userinvite;
 DROP TABLE IF EXISTS userinvitestatus;
 DROP TABLE IF EXISTS partyfiles;
-DROP TABLE IF EXISTS partyaddress;
+DROP TABLE IF EXISTS partycontactmechanismpurpose;
+DROP TABLE IF EXISTS partycontactmechanism;
+DROP TABLE IF EXISTS partycontactmechanismpurposetype;
+DROP TABLE IF EXISTS contactmechanism;
+DROP TABLE IF EXISTS contactmechanismtype;
 DROP TABLE IF EXISTS partyprofile;
 DROP TABLE IF EXISTS person;
 DROP TABLE IF EXISTS partygroup;
@@ -453,17 +458,65 @@ CREATE TABLE partyprofile  (
 	PRIMARY KEY( id )
 );
 
-CREATE TABLE partyaddress  ( 
+CREATE TABLE contactmechanismtype  ( 
+	id   	int(11) AUTO_INCREMENT NOT NULL,
+	entity_code   		varchar(35) NULL,
+	name   		varchar(35) NOT NULL,
+	description   		varchar(255) NOT NULL,
+	PRIMARY KEY( id )
+);
+
+CREATE TABLE contactmechanism  ( 
 	id   	int(11) AUTO_INCREMENT NOT NULL,
 	entity_code   		varchar(35) NOT NULL,
-   	party   int(11) NOT NULL,
-   	business_unit   int(11) NOT NULL,
+   	cm_type   int(11) NOT NULL,
 	name   		varchar(35) NOT NULL,
-	address_2   		varchar(35) NOT NULL,
-   	location   int(11) NOT NULL,
- 	FOREIGN KEY (party) REFERENCES party (id), 
+	address_1   		varchar(35) NULL,
+	address_2   		varchar(35) NULL,
+	area_code   		INT(6) NULL,
+	contact_number   		INT(6) NULL,
+	country_code   		INT(6) NULL,
+	eaddress_string   		INT(6) NULL,
+	description   		varchar(255) NOT NULL,
+   	business_unit   int(11) NOT NULL,
+ 	FOREIGN KEY (cm_type) REFERENCES contactmechanismtype (id), 
  	FOREIGN KEY (business_unit) REFERENCES businessunit (id), 
- 	FOREIGN KEY (location) REFERENCES location (id), 
+	PRIMARY KEY( id )
+);
+
+CREATE TABLE partycontactmechanismpurposetype  ( 
+	id   	int(11) AUTO_INCREMENT NOT NULL,
+	entity_code   		varchar(35) NULL,
+	name   		varchar(35) NOT NULL,
+	description   		varchar(255) NOT NULL,
+	PRIMARY KEY( id )
+);
+
+CREATE TABLE partycontactmechanism  ( 
+	id   	int(11) AUTO_INCREMENT NOT NULL,
+	entity_code   		varchar(35) NULL,
+   	party   int(11) NOT NULL,
+   	contact_mech   int(11) NOT NULL,
+	name   		varchar(35) NOT NULL,
+	description   		varchar(255) NOT NULL,
+   	business_unit   int(11) NOT NULL,
+ 	FOREIGN KEY (party) REFERENCES party (id), 
+ 	FOREIGN KEY (contact_mech) REFERENCES contactmechanism (id), 
+ 	FOREIGN KEY (business_unit) REFERENCES businessunit (id), 
+	PRIMARY KEY( id )
+);
+
+CREATE TABLE partycontactmechanismpurpose  ( 
+	id   	int(11) AUTO_INCREMENT NOT NULL,
+	entity_code   		varchar(35) NULL,
+   	type   int(11) NOT NULL,
+   	pcontact_mech   int(11) NOT NULL,
+	name   		varchar(35) NOT NULL,
+	description   		varchar(255) NOT NULL,
+   	business_unit   int(11) NOT NULL,
+ 	FOREIGN KEY (type) REFERENCES partycontactmechanismpurposetype (id), 
+ 	FOREIGN KEY (pcontact_mech) REFERENCES partycontactmechanism (id), 
+ 	FOREIGN KEY (business_unit) REFERENCES businessunit (id), 
 	PRIMARY KEY( id )
 );
 
@@ -666,10 +719,12 @@ CREATE TABLE facilitycategory  (
 CREATE TABLE facilitytype  ( 
 	id   	int(11) AUTO_INCREMENT NOT NULL,
 	entity_code   		varchar(35) NULL,
-   	ft_category   int(11) NOT NULL,
+   	category   int(11) NOT NULL,
+   	business_category   int(11) NOT NULL,
 	name   		varchar(35) NOT NULL,
 	description   		varchar(255) NOT NULL,
- 	FOREIGN KEY (ft_category) REFERENCES facilitycategory (id), 
+ 	FOREIGN KEY (category) REFERENCES facilitycategory (id), 
+ 	FOREIGN KEY (business_category) REFERENCES businesscategory (id), 
 	PRIMARY KEY( id )
 );
 
@@ -679,10 +734,25 @@ CREATE TABLE facility  (
    	f_facility   int(11) NULL,
    	f_type   int(11) NOT NULL,
 	name   		varchar(35) NOT NULL,
+	sq_footage   		INT(6) NOT NULL,
 	description   		varchar(255) NOT NULL,
    	business_unit   int(11) NOT NULL,
  	FOREIGN KEY (f_facility) REFERENCES facility (id), 
  	FOREIGN KEY (f_type) REFERENCES facilitytype (id), 
+ 	FOREIGN KEY (business_unit) REFERENCES businessunit (id), 
+	PRIMARY KEY( id )
+);
+
+CREATE TABLE facilityrole  ( 
+	id   	int(11) AUTO_INCREMENT NOT NULL,
+	entity_code   		varchar(35) NULL,
+   	fr_facility   int(11) NOT NULL,
+   	fr_partyrole   int(11) NOT NULL,
+	name   		varchar(35) NOT NULL,
+	description   		varchar(255) NOT NULL,
+   	business_unit   int(11) NOT NULL,
+ 	FOREIGN KEY (fr_facility) REFERENCES facility (id), 
+ 	FOREIGN KEY (fr_partyrole) REFERENCES partyrole (id), 
  	FOREIGN KEY (business_unit) REFERENCES businessunit (id), 
 	PRIMARY KEY( id )
 );

@@ -51,8 +51,16 @@ class CloderiaMenuUtils {
 	 		self::admin_menu_slug . '_show_sb_person', 'CloderiaMenuUtils::render_sb_person');
 	 	add_submenu_page( self::admin_menu_slug , 'Party Profile', 'Party Profile', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_partyprofile', 'CloderiaMenuUtils::render_sb_partyprofile');
-	 	add_submenu_page( self::admin_menu_slug , 'Party Address', 'Party Address', 'manage_options', 
-	 		self::admin_menu_slug . '_show_sb_partyaddress', 'CloderiaMenuUtils::render_sb_partyaddress');
+	 	add_submenu_page( self::admin_menu_slug , 'Contact Mechanism Type', 'Contact Mechanism Type', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_cmechtype', 'CloderiaMenuUtils::render_sb_cmechtype');
+	 	add_submenu_page( self::admin_menu_slug , 'Contact Mechanism', 'Contact Mechanism', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_contactmech', 'CloderiaMenuUtils::render_sb_contactmech');
+	 	add_submenu_page( self::admin_menu_slug , 'Party Contact Mechanism Purpose Type', 'Party Contact Mechanism Purpose Type', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_pcmpurposetype', 'CloderiaMenuUtils::render_sb_pcmpurposetype');
+	 	add_submenu_page( self::admin_menu_slug , 'Party Contact Mechanism', 'Party Contact Mechanism', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_partycmech', 'CloderiaMenuUtils::render_sb_partycmech');
+	 	add_submenu_page( self::admin_menu_slug , 'Party Contact Mechanism Purpose', 'Party Contact Mechanism Purpose', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_pcmpurpose', 'CloderiaMenuUtils::render_sb_pcmpurpose');
 	 	add_submenu_page( self::admin_menu_slug , 'Party Files', 'Party Files', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_partyfiles', 'CloderiaMenuUtils::render_sb_partyfiles');
 	 	add_submenu_page( self::admin_menu_slug , 'User Invite Status', 'User Invite Status', 'manage_options', 
@@ -93,6 +101,8 @@ class CloderiaMenuUtils {
 	 		self::admin_menu_slug . '_show_sb_facilitytype', 'CloderiaMenuUtils::render_sb_facilitytype');
 	 	add_submenu_page( self::admin_menu_slug , 'Facility', 'Facility', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_facility', 'CloderiaMenuUtils::render_sb_facility');
+	 	add_submenu_page( self::admin_menu_slug , 'Facility Role', 'Facility Role', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_facilityrole', 'CloderiaMenuUtils::render_sb_facilityrole');
 	 	add_submenu_page( self::admin_menu_slug , 'Facility Charge', 'Facility Charge', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_facharge', 'CloderiaMenuUtils::render_sb_facharge');
 	 	add_submenu_page( self::admin_menu_slug , 'Property Type', 'Property Type', 'manage_options', 
@@ -559,7 +569,11 @@ class CloderiaMenuUtils {
        remove_menu_page( 'edit.php?post_type=sb_partygroup');
        remove_menu_page( 'edit.php?post_type=sb_person');
        remove_menu_page( 'edit.php?post_type=sb_partyprofile');
-       remove_menu_page( 'edit.php?post_type=sb_partyaddress');
+       remove_menu_page( 'edit.php?post_type=sb_cmechtype');
+       remove_menu_page( 'edit.php?post_type=sb_contactmech');
+       remove_menu_page( 'edit.php?post_type=sb_pcmpurposetype');
+       remove_menu_page( 'edit.php?post_type=sb_partycmech');
+       remove_menu_page( 'edit.php?post_type=sb_pcmpurpose');
        remove_menu_page( 'edit.php?post_type=sb_partyfiles');
        remove_menu_page( 'edit.php?post_type=sb_invitestatus');
        remove_menu_page( 'edit.php?post_type=sb_userinvite');
@@ -580,6 +594,7 @@ class CloderiaMenuUtils {
        remove_menu_page( 'edit.php?post_type=sb_facilitycat');
        remove_menu_page( 'edit.php?post_type=sb_facilitytype');
        remove_menu_page( 'edit.php?post_type=sb_facility');
+       remove_menu_page( 'edit.php?post_type=sb_facilityrole');
        remove_menu_page( 'edit.php?post_type=sb_facharge');
        remove_menu_page( 'edit.php?post_type=sb_proptype');
        remove_menu_page( 'edit.php?post_type=sb_propstatus');
@@ -1010,9 +1025,49 @@ class CloderiaMenuUtils {
     /**
 	 * Create Orders post-type sub menu
 	 */
-	public static function render_sb_partyaddress()
+	public static function render_sb_cmechtype()
 	{
-		$url = admin_url().'edit.php?post_type=sb_partyaddress';
+		$url = admin_url().'edit.php?post_type=sb_cmechtype';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_contactmech()
+	{
+		$url = admin_url().'edit.php?post_type=sb_contactmech';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_pcmpurposetype()
+	{
+		$url = admin_url().'edit.php?post_type=sb_pcmpurposetype';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_partycmech()
+	{
+		$url = admin_url().'edit.php?post_type=sb_partycmech';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_pcmpurpose()
+	{
+		$url = admin_url().'edit.php?post_type=sb_pcmpurpose';
 		?>
 	 	<script>location.href='<?php echo $url;?>';</script>
 		<?php
@@ -1213,6 +1268,16 @@ class CloderiaMenuUtils {
 	public static function render_sb_facility()
 	{
 		$url = admin_url().'edit.php?post_type=sb_facility';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_facilityrole()
+	{
+		$url = admin_url().'edit.php?post_type=sb_facilityrole';
 		?>
 	 	<script>location.href='<?php echo $url;?>';</script>
 		<?php
