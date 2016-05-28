@@ -653,6 +653,7 @@ class ShadowCore {
         include_once('includes/view/party/PartyViewFilter.php');
         include_once('includes/view/partygroup/CreatePartyGroupView.php');
         include_once('includes/view/person/CreatePersonView.php');
+        include_once('includes/view/partyprofile/SinglePartyProfileView.php');
         include_once('includes/view/partyprofile/ListPartyProfileView.php');
         include_once('includes/view/liability/LiabilityViewFilter.php');
         include_once('includes/view/property/CreatePropertyView.php');

@@ -4,10 +4,13 @@
     if (!defined('ABSPATH')) {
         exit; // Exit if accessed directly
     }
-
     $view = $_REQUEST['page_info']['view'];
     $model = $view->get_model();
+    $tabs = $view->get_tabs();
 
+    
+    $parent_param = '';
+    if(isset($_REQUEST['parent_param'])) $parent_param = urldecode($_REQUEST['parent_param']);
 
 ?>
 <div class="card" id="profile-main">
@@ -168,10 +171,3 @@
     </div>
 </div>
 
-<script type="text/javascript">
-    
-    $('#delete-entity-btn').click(function(e){
-        e.preventDefault();
-        
-    });
-</script>

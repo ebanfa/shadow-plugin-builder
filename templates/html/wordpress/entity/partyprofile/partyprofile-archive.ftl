@@ -14,7 +14,7 @@
     <div class="pm-overview c-overflow">
         <div class="pmo-pic">
             <div class="p-relative">
-                <a href="profile-about.html">
+                <a data-toggle="modal" href="#modalWider">
                     <img class="img-responsive" src="<?php echo get_stylesheet_directory_uri(); ?>/images/profile-pics/profile-pic-2.jpg" alt=""> 
                 </a>
                 
@@ -31,76 +31,19 @@
                 </div>
                 
                 <a href="profile-about.html" class="pmop-edit">
-                    <i class="zmdi zmdi-camera"></i> <span class="hidden-xs">Update Profile Picture</span>
+                    <i class="zmdi zmdi-plus"></i> <span class="hidden-xs">Update Profile</span>
                 </a>
             </div>
             
-            
+           
             <div class="pmo-stat">
                 <h2 class="m-0 c-white">1562</h2>
                 Total Connections
             </div>
-        </div>
-        
-        <div class="pmo-block pmo-contact hidden-xs">
-            <h2>Contact</h2>
-            
-            <ul>
-                <li><i class="zmdi zmdi-phone"></i> 00971 12345678 9</li>
-                <li><i class="zmdi zmdi-email"></i> malinda-h@gmail.com</li>
-                <li><i class="zmdi zmdi-facebook-box"></i> malinda.hollaway</li>
-                <li><i class="zmdi zmdi-twitter"></i> @malinda (twitter.com/malinda)</li>
-                <li>
-                    <i class="zmdi zmdi-pin"></i>
-                    <address class="m-b-0 ng-binding">
-                        44-46 Morningside Road,<br>
-                        Edinburgh,<br>
-                        Scotland
-                    </address>
-                </li>
-            </ul>
-        </div>
-        
-        <div class="pmo-block pmo-items hidden-xs">
-            <h2>Connections</h2>
-            
-            <div class="pmob-body">
-                <div class="row">
-                    <a href="profile-about.html" class="col-xs-2">
-                        <img class="img-circle" src="<?php echo get_stylesheet_directory_uri(); ?>/images/profile-pics/1.jpg" alt="">
-                    </a>
-                    <a href="profile-about.html" class="col-xs-2">
-                        <img class="img-circle" src="<?php echo get_stylesheet_directory_uri(); ?>/images/profile-pics/2.jpg" alt="">
-                    </a>
-                    <a href="profile-about.html" class="col-xs-2">
-                        <img class="img-circle" src="<?php echo get_stylesheet_directory_uri(); ?>/images/profile-pics/3.jpg" alt="">
-                    </a>
-                    <a href="profile-about.html" class="col-xs-2">
-                        <img class="img-circle" src="<?php echo get_stylesheet_directory_uri(); ?>/images/profile-pics/4.jpg" alt="">
-                    </a>
-                    <a href="profile-about.html" class="col-xs-2">
-                        <img class="img-circle" src="<?php echo get_stylesheet_directory_uri(); ?>/images/profile-pics/5.jpg" alt="">
-                    </a>
-                    <a href="profile-about.html" class="col-xs-2">
-                        <img class="img-circle" src="<?php echo get_stylesheet_directory_uri(); ?>/images/profile-pics/6.jpg" alt="">
-                    </a>
-                    <a href="profile-about.html" class="col-xs-2">
-                        <img class="img-circle" src="<?php echo get_stylesheet_directory_uri(); ?>/images/profile-pics/7.jpg" alt="">
-                    </a>
-                    <a href="profile-about.html" class="col-xs-2">
-                        <img class="img-circle" src="<?php echo get_stylesheet_directory_uri(); ?>/images/profile-pics/8.jpg" alt="">
-                    </a>
-                    <a href="profile-about.html" class="col-xs-2">
-                        <img class="img-circle" src="<?php echo get_stylesheet_directory_uri(); ?>/images/profile-pics/1.jpg" alt="">
-                    </a>
-                    <a href="profile-about.html" class="col-xs-2">
-                        <img class="img-circle" src="<?php echo get_stylesheet_directory_uri(); ?>/images/profile-pics/2.jpg" alt="">
-                    </a>
-                    <a href="profile-about.html" class="col-xs-2">
-                        <img class="img-circle" src="<?php echo get_stylesheet_directory_uri(); ?>/images/profile-pics/3.jpg" alt="">
-                    </a>
-                    <a href="profile-about.html" class="col-xs-2">
-                        <img class="img-circle" src="<?php echo get_stylesheet_directory_uri(); ?>/images/profile-pics/4.jpg" alt="">
+            <div class="pmo-block pmo-contact hidden-xs">
+                 <div class="btn-demo m-t-10">
+                    <a href="<?php echo $view->get_edit_url(); ?>" class="btn btn-primary btn-block waves-effect">
+                       <?php _e('Edit', 'framework') ?>
                     </a>
                 </div>
             </div>
@@ -117,46 +60,13 @@
         
         <div class="tab-content p-20">
             <div role="tabpanel" class="tab-pane animated fadeIn in active" id="tab-0">
-                <div class="pmb-block">
-                    <div class="pmbb-header">
-                        <h2><i class="zmdi zmdi-equalizer m-r-5"></i> Summary</h2>
-                        
-                        <ul class="actions">
-                            <li class="dropdown">
-                                <a href="profile-about.html" data-toggle="dropdown">
-                                    <i class="zmdi zmdi-more-vert"></i>
-                                </a>
-                                
-                                <ul class="dropdown-menu dropdown-menu-right">
-                                    <li>
-                                        <a data-pmb-action="edit" href="profile-about.html">Edit</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="pmbb-body p-l-30">
-                        <div class="pmbb-view">
-                            Sed eu est vulputate, fringilla ligula ac, maximus arcu. Donec sed felis vel magna mattis ornare ut non turpis. Sed id arcu elit. Sed nec sagittis tortor. Mauris ante urna, ornare sit amet mollis eu, aliquet ac ligula. Nullam dolor metus, suscipit ac imperdiet nec, consectetur sed ex. Sed cursus porttitor leo.
-                        </div>
-                        
-                        <div class="pmbb-edit">
-                            <div class="fg-line">
-                                <textarea class="form-control" rows="5" placeholder="Summary...">Sed eu est vulputate, fringilla ligula ac, maximus arcu. Donec sed felis vel magna mattis ornare ut non turpis. Sed id arcu elit. Sed nec sagittis tortor. Mauris ante urna, ornare sit amet mollis eu, aliquet ac ligula. Nullam dolor metus, suscipit ac imperdiet nec, consectetur sed ex. Sed cursus porttitor leo.</textarea>
-                            </div>
-                            <div class="m-t-10">
-                                <button class="btn btn-primary btn-sm">Save</button>
-                                <button data-pmb-action="reset" class="btn btn-link btn-sm">Cancel</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
                 
                 <div class="pmb-block">
                     <div class="pmbb-header">
                         <h2><i class="zmdi zmdi-account m-r-5"></i> Basic Information</h2>
                         
-                        <ul class="actions">
+                        <!-- <ul class="actions">
                             <li class="dropdown">
                                 <a href="profile-about.html" data-toggle="dropdown">
                                     <i class="zmdi zmdi-more-vert"></i>
@@ -168,156 +78,32 @@
                                     </li>
                                 </ul>
                             </li>
-                        </ul>
+                        </ul> -->
                     </div>
                     <div class="pmbb-body p-l-30">
                         <div class="pmbb-view">
                             <dl class="dl-horizontal">
                                 <dt>Full Name</dt>
-                                <dd>Mallinda Hollaway</dd>
+                                <dd><?php echo $model['name']; ?></dd>
                             </dl>
                             <dl class="dl-horizontal">
-                                <dt>Gender</dt>
-                                <dd>Female</dd>
+                                <dt>Display Name</dt>
+                                <dd><?php echo $model['display_name']; ?></dd>
                             </dl>
                             <dl class="dl-horizontal">
-                                <dt>Birthday</dt>
-                                <dd>June 23, 1990</dd>
+                                <dt>Business Unit</dt>
+                                <dd><?php echo $model['default_unit_txt']; ?></dd>
                             </dl>
-                            <dl class="dl-horizontal">
-                                <dt>Martial Status</dt>
-                                <dd>Single</dd>
-                            </dl>
-                        </div>
-                        
-                        <div class="pmbb-edit">
-                            <dl class="dl-horizontal">
-                                <dt class="p-t-10">Full Name</dt>
-                                <dd>
-                                    <div class="fg-line">
-                                        <input type="text" class="form-control" placeholder="eg. Mallinda Hollaway">
-                                    </div>
-                                    
-                                </dd>
-                            </dl>
-                            <dl class="dl-horizontal">
-                                <dt class="p-t-10">Gender</dt>
-                                <dd>
-                                    <div class="fg-line">
-                                        <select class="form-control">
-                                            <option>Male</option>
-                                            <option>Female</option>
-                                            <option>Other</option>
-                                        </select>
-                                    </div>
-                                </dd>
-                            </dl>
-                            <dl class="dl-horizontal">
-                                <dt class="p-t-10">Birthday</dt>
-                                <dd>
-                                    <div class="dtp-container dropdown fg-line">
-                                        <input type='text' class="form-control date-picker" data-toggle="dropdown" placeholder="Click here...">
-                                    </div>
-                                </dd>
-                            </dl>
-                            <dl class="dl-horizontal">
-                                <dt class="p-t-10">Martial Status</dt>
-                                <dd>
-                                    <div class="fg-line">
-                                        <select class="form-control">
-                                            <option>Single</option>
-                                            <option>Married</option>
-                                            <option>Other</option>
-                                        </select>
-                                    </div>
-                                </dd>
-                            </dl>
-                            
-                            <div class="m-t-30">
-                                <button class="btn btn-primary btn-sm">Save</button>
-                                <button data-pmb-action="reset" class="btn btn-link btn-sm">Cancel</button>
-                            </div>
                         </div>
                     </div>
                 </div>
-           
-            
                 <div class="pmb-block">
                     <div class="pmbb-header">
-                        <h2><i class="zmdi zmdi-phone m-r-5"></i> Contact Information</h2>
-                        
-                        <ul class="actions">
-                            <li class="dropdown">
-                                <a href="profile-about.html" data-toggle="dropdown">
-                                    <i class="zmdi zmdi-more-vert"></i>
-                                </a>
-                                
-                                <ul class="dropdown-menu dropdown-menu-right">
-                                    <li>
-                                        <a data-pmb-action="edit" href="profile-about.html">Edit</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
+                        <h2><i class="zmdi zmdi-equalizer m-r-5"></i> Summary</h2>
                     </div>
                     <div class="pmbb-body p-l-30">
                         <div class="pmbb-view">
-                            <dl class="dl-horizontal">
-                                <dt>Mobile Phone</dt>
-                                <dd>00971 12345678 9</dd>
-                            </dl>
-                            <dl class="dl-horizontal">
-                                <dt>Email Address</dt>
-                                <dd>malinda.h@gmail.com</dd>
-                            </dl>
-                            <dl class="dl-horizontal">
-                                <dt>Twitter</dt>
-                                <dd>@malinda</dd>
-                            </dl>
-                            <dl class="dl-horizontal">
-                                <dt>Skype</dt>
-                                <dd>malinda.hollaway</dd>
-                            </dl>
-                        </div>
-                        
-                        <div class="pmbb-edit">
-                            <dl class="dl-horizontal">
-                                <dt class="p-t-10">Mobile Phone</dt>
-                                <dd>
-                                    <div class="fg-line">
-                                        <input type="text" class="form-control" placeholder="eg. 00971 12345678 9">
-                                    </div>
-                                </dd>
-                            </dl>
-                            <dl class="dl-horizontal">
-                                <dt class="p-t-10">Email Address</dt>
-                                <dd>
-                                    <div class="fg-line">
-                                        <input type="email" class="form-control" placeholder="eg. malinda.h@gmail.com">
-                                    </div>
-                                </dd>
-                            </dl>
-                            <dl class="dl-horizontal">
-                                <dt class="p-t-10">Twitter</dt>
-                                <dd>
-                                    <div class="fg-line">
-                                        <input type="text" class="form-control" placeholder="eg. @malinda">
-                                    </div>
-                                </dd>
-                            </dl>
-                            <dl class="dl-horizontal">
-                                <dt class="p-t-10">Skype</dt>
-                                <dd>
-                                    <div class="fg-line">
-                                        <input type="text" class="form-control" placeholder="eg. malinda.hollaway">
-                                    </div>
-                                </dd>
-                            </dl>
-                            
-                            <div class="m-t-30">
-                                <button class="btn btn-primary btn-sm">Save</button>
-                                <button data-pmb-action="reset" class="btn btn-link btn-sm">Cancel</button>
-                            </div>
+                            <?php echo $model['description']; ?>
                         </div>
                     </div>
                 </div>
@@ -365,4 +151,27 @@
         
     </div>
 </div>
+<div class="modal fade" id="modalWider" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sodales orci ante, sed ornare eros vestibulum ut. Ut accumsan vitae eros sit amet tristique. Nullam scelerisque nunc enim, non dignissim nibh faucibus ullamcorper. Fusce pulvinar libero vel ligula iaculis ullamcorper. Integer dapibus, mi ac tempor varius, purus nibh mattis erat, vitae porta nunc nisi non tellus. Vivamus mollis ante non massa egestas fringilla. Vestibulum egestas consectetur nunc at ultricies. Morbi quis consectetur nunc.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-link">Save changes</button>
+                <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 
+<script type="text/javascript">
+    
+    $('#delete-entity-btn').click(function(e){
+        e.preventDefault();
+        
+    });
+</script>

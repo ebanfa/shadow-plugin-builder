@@ -2517,12 +2517,14 @@ $(document).ready(function (){
             { data: "party_txt" },
 
             { data: "default_unit_txt" },
-
-            { data: "business_unit_txt" },
             { data: "name" },
 
             { data: "display_name" },
 
+            { data: "description" },
+
+
+            { data: "business_unit_txt" },
         ],
         columnDefs: [
             {

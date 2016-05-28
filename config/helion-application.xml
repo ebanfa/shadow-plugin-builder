@@ -2298,7 +2298,9 @@
 			<postName>sb_partyprofile</postName>
 			<description>Party Profile</description>
 			<global>N</global>
+			<viewPageTemplate>html/wordpress/entity/partyprofile/partyprofile-single.ftl</viewPageTemplate>
 			<listPageTemplate>html/wordpress/entity/partyprofile/partyprofile-archive.ftl</listPageTemplate>
+			<singleViewTemplate>views/wordpress/partyprofile/single-partyprofile-view.ftl</singleViewTemplate>
 			<listViewTemplate>views/wordpress/partyprofile/list-partyprofile.ftl</listViewTemplate>
 			<!-- <apiTemplate>services/wordpress/partyprofile/partyprofile-service-api.ftl</apiTemplate> -->
 			<field>
@@ -2350,22 +2352,6 @@
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
-				<name>business_unit</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>N</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>sb_businessunit</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Business Unit</description>
-				<displayName>Business Unit</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
 				<name>name</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
@@ -2412,6 +2398,38 @@
 				<description>Date Created</description>
 				<displayName>Date Created</displayName>
 				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>description</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>test-lg</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Description</description>
+				<displayName>Description</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>business_unit</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_businessunit</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Business Unit</description>
+				<displayName>Business Unit</displayName>
+				<relationshipField>Y</relationshipField>
 			</field>
 		</entity>
 

@@ -32,11 +32,6 @@ class PartyProfileCPT {
             'description' => 'The Default Business Unit field',
             'type' => 'text',
         ),
-        array('name' => 'business_unit',
-            'title' => 'Business Unit',
-            'description' => 'The Business Unit field',
-            'type' => 'text',
-        ),
         array('name' => 'name',
             'title' => 'Name',
             'description' => 'The Name field',
@@ -50,6 +45,16 @@ class PartyProfileCPT {
         array('name' => 'date_created',
             'title' => 'Date Created',
             'description' => 'The Date Created field',
+            'type' => 'text',
+        ),
+        array('name' => 'description',
+            'title' => 'Description',
+            'description' => 'The Description field',
+            'type' => 'text',
+        ),
+        array('name' => 'business_unit',
+            'title' => 'Business Unit',
+            'description' => 'The Business Unit field',
             'type' => 'text',
         ),
     );
@@ -100,20 +105,6 @@ class PartyProfileCPT {
             'is_list_field' => true,
             'is_form_field' => true,
             'is_relationship_field' => true,),
-        'business_unit' => array('name' => 'business_unit',
-            'description' => 'Business Unit',
-            'size' => 'large',
-            'entity_name' => 'BusinessUnit',
-            'entity_description' => 'Business Unit',
-            'data_type' => 'sb_businessunit',
-            'is_required' => true,
-            'is_visible' => false,
-            'is_create_field' => true,
-            'is_edit_field' => false,
-            'is_view_field' => true,
-            'is_list_field' => true,
-            'is_form_field' => false,
-            'is_relationship_field' => true,),
         'name' => array('name' => 'name',
             'description' => 'Name',
             'size' => 'large',
@@ -150,6 +141,32 @@ class PartyProfileCPT {
             'is_list_field' => false,
             'is_form_field' => false,
             'is_relationship_field' => false,),
+        'description' => array('name' => 'description',
+            'description' => 'Description',
+            'size' => 'large',
+            'data_type' => 'test-lg',
+            'is_required' => true,
+            'is_visible' => true,
+            'is_create_field' => true,
+            'is_edit_field' => true,
+            'is_view_field' => true,
+            'is_list_field' => true,
+            'is_form_field' => true,
+            'is_relationship_field' => false,),
+        'business_unit' => array('name' => 'business_unit',
+            'description' => 'Business Unit',
+            'size' => 'large',
+            'entity_name' => 'BusinessUnit',
+            'entity_description' => 'Business Unit',
+            'data_type' => 'sb_businessunit',
+            'is_required' => true,
+            'is_visible' => false,
+            'is_create_field' => true,
+            'is_edit_field' => false,
+            'is_view_field' => true,
+            'is_list_field' => true,
+            'is_form_field' => false,
+            'is_relationship_field' => true,),
    );
 
     /**
@@ -218,9 +235,10 @@ class PartyProfileCPT {
     public static function sb_partyprofile_table_head($defaults){
         $defaults['party']  = 'Party';
         $defaults['default_unit']  = 'Default Business Unit';
-        $defaults['business_unit']  = 'Business Unit';
         $defaults['name']  = 'name';
         $defaults['display_name']  = 'Balance';
+        $defaults['description']  = 'Description';
+        $defaults['business_unit']  = 'Business Unit';
         return $defaults;
     }
 
@@ -237,10 +255,6 @@ class PartyProfileCPT {
             $field_value = get_post_meta($post_id, 'default_unit', true );
             echo $field_value;
         }
-        if ($column_name == 'business_unit') {
-            $field_value = get_post_meta($post_id, 'business_unit', true );
-            echo $field_value;
-        }
         if ($column_name == 'name') {
             $field_value = get_post_meta($post_id, 'name', true );
             echo $field_value;
@@ -251,6 +265,14 @@ class PartyProfileCPT {
         }
         if ($column_name == 'date_created') {
             $field_value = get_post_meta($post_id, 'date_created', true );
+            echo $field_value;
+        }
+        if ($column_name == 'description') {
+            $field_value = get_post_meta($post_id, 'description', true );
+            echo $field_value;
+        }
+        if ($column_name == 'business_unit') {
+            $field_value = get_post_meta($post_id, 'business_unit', true );
             echo $field_value;
         }
     }

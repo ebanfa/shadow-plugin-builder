@@ -196,7 +196,7 @@ class EntityPersistenceAPI {
             }
         }
 
-        if (!$entity_data['is_global_entity'] && !current_user_can('administrator')) {
+        if (!$entity_data['is_global_entity'] && !current_user_can('administrator') && ($entity_data['entity_name'] != 'BusinessUnit')) {
             // Filter the results for non admin users
             $business_unit = BusinessUnitAPI::get_current_user_business_unit();
             if(isset($business_unit['id'])) {
@@ -245,7 +245,7 @@ class EntityPersistenceAPI {
             }
         }
 
-        if (!$entity_data['is_global_entity'] && !current_user_can('administrator')) {
+        if (!$entity_data['is_global_entity'] && !current_user_can('administrator') && ($entity_data['entity_name'] != 'BusinessUnit')) {
             // Filter the results for non admin users
             $business_unit = BusinessUnitAPI::get_current_user_business_unit();
             if(isset($business_unit['id'])) {
