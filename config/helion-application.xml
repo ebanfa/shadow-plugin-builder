@@ -2299,6 +2299,7 @@
 			<description>Party Profile</description>
 			<global>N</global>
 			<listPageTemplate>html/wordpress/entity/partyprofile/partyprofile-archive.ftl</listPageTemplate>
+			<listViewTemplate>views/wordpress/partyprofile/list-partyprofile.ftl</listViewTemplate>
 			<!-- <apiTemplate>services/wordpress/partyprofile/partyprofile-service-api.ftl</apiTemplate> -->
 			<field>
 				<name>entity_code</name>
@@ -21104,6 +21105,7 @@
 			<description>Conversation</description>
 			<global>Y</global>
 			<listPageTemplate>html/wordpress/entity/conversation/conversation-archive.ftl</listPageTemplate>
+			<listViewTemplate>views/wordpress/conversation/list-conversation.ftl</listViewTemplate>
             <!-- 
 			<apiTemplate>services/wordpress/conversation/conversation-service-api.ftl</apiTemplate> -->
 			<field>

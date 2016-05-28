@@ -401,7 +401,7 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 			if(entity.getListViewTemplate() != null){
 				String entityViewOutputDir = includeViewOutputDir + entityName.toLowerCase() + "/";
 				this.createDirectoryIfNeeded(entityViewOutputDir);
-				this.generateArtifact(module, entity, entity.getSingleViewTemplate() , entityViewOutputDir + "List" + entityName + "View.php");
+				this.generateArtifact(module, entity, entity.getListViewTemplate() , entityViewOutputDir + "List" + entityName + "View.php");
 			} 
 		}
 		this.generateArtifact(module, null, "views/wordpress/dashboard/dashboard-view-php.ftl" , includeViewOutputDir +  "DashboardView.php");

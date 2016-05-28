@@ -653,6 +653,7 @@ class ShadowCore {
         include_once('includes/view/party/PartyViewFilter.php');
         include_once('includes/view/partygroup/CreatePartyGroupView.php');
         include_once('includes/view/person/CreatePersonView.php');
+        include_once('includes/view/partyprofile/ListPartyProfileView.php');
         include_once('includes/view/liability/LiabilityViewFilter.php');
         include_once('includes/view/property/CreatePropertyView.php');
         include_once('includes/view/property/PropertyViewFilter.php');
@@ -681,6 +682,7 @@ class ShadowCore {
         include_once('includes/view/financialeventtype/CreateFinancialEventTypeView.php');
         include_once('includes/view/transactiontype/CreateTransactionTypeView.php');
         include_once('includes/view/budget/CreateBudgetView.php');
+        include_once('includes/view/conversation/ListConversationView.php');
         include_once('includes/view/notification/SingleNotificationView.php');
         include_once('includes/view/workeffort/CreateWorkEffortView.php');
         include_once('includes/view/workeffort/WorkEffortViewFilter.php');

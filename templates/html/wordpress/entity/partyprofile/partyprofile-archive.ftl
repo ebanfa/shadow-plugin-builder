@@ -110,8 +110,8 @@
     <div class="pm-body clearfix">
         <ul class="tab-nav tn-justified"  role="tablist">
             <li class="active waves-effect"><a href="#tab-0" aria-controls="tab-0" role="tab" data-toggle="tab">About</a></li>
-            <li class="waves-effect"><a href="#tab-1" aria-controls="tab-0" role="tab" data-toggle="tab">Timeline</a></li>
-            <li class="waves-effect"><a href="#tab-2" aria-controls="tab-0" role="tab" data-toggle="tab">Tasks</a></li>
+           <!--  <li class="waves-effect"><a href="#tab-1" aria-controls="tab-0" role="tab" data-toggle="tab">Timeline</a></li>
+            <li class="waves-effect"><a href="#tab-2" aria-controls="tab-0" role="tab" data-toggle="tab">Tasks</a></li> -->
             <!-- <li class="waves-effect"><a href="profile-connections.html">Connections</a></li> -->
         </ul>
         
