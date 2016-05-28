@@ -93,13 +93,14 @@ INSERT INTO purchaseorderitemtype (entity_code, name, description) VALUES ('SERV
 INSERT INTO workeffortcategory (id, entity_code, name, description) VALUES (1, 'INSPECTION', 'Inspection', 'Inspection');
 INSERT INTO workeffortcategory (id, entity_code, name, description) VALUES (2, 'MAINTENANCE', 'Maintenance & Repairs', 'Maintenance & Repairs');
 INSERT INTO workeffortcategory (id, entity_code, name, description) VALUES (3, 'IMPROVEMENT', 'Improvement', 'Improvement');
+INSERT INTO workeffortcategory (id, entity_code, name, description) VALUES (4, 'WORKFLOW', 'Workflow', 'Workflow');
 
 /* Insert statement for Work Effort Type */
 INSERT INTO workefforttype (category, business_category, entity_code, name, description) VALUES (1, 2, 'EXTERNAL', 'External Inspection', 'External Inspection');
 INSERT INTO workefforttype (category, business_category, entity_code, name, description) VALUES (1, 2, 'INTERNAL', 'Internal Inspection', 'Internal Inspection');
 INSERT INTO workefforttype (category, business_category, entity_code, name, description) VALUES (2, 2, 'PREVENTATIVE', 'Preventative', 'Preventative');
 INSERT INTO workefforttype (category, business_category, entity_code, name, description) VALUES (3, 2, 'PAINTING', 'Painting', 'Painting');
-
+INSERT INTO workefforttype (category, business_category, entity_code, name, description) VALUES (4, 1, 'TASK', 'Task', 'Task');
 /* Insert statement for Work Effort Status */
 INSERT INTO workeffortstatus (entity_code, name, description) VALUES ('PENDING', 'Pending', 'Pending');
 

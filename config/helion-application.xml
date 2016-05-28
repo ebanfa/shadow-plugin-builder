@@ -91,7 +91,8 @@
 				<displayName>Properties</displayName>
 				<description>Properties</description>
 				<active>N</active>
-				<cssClass>zmdi zmdi-city zmdi-hc-fw</cssClass>
+				<cssClass>md-mail</cssClass>
+				<!-- <cssClass>zmdi zmdi-city zmdi-hc-fw</cssClass> -->
 				<targetType>entity</targetType>
 				<target>/wordpress/page?page_action=list&amp;artifact=property</target>
 			</menu>
@@ -293,7 +294,7 @@
 			</menu>
 		</menuGroup> -->
 
-		<menuGroup>
+		<!-- <menuGroup>
 			<name>accounting</name>
 			<displayName>Accounting</displayName>
 			<description>Accounting</description>
@@ -406,7 +407,7 @@
 				<targetType>entity</targetType>
 				<target>/wordpress/page?page_action=list&amp;artifact=glbudgetxref</target>
 			</menu>
-		</menuGroup>
+		</menuGroup> -->
 
 		<menuGroup>
 			<name>business</name>
@@ -479,7 +480,7 @@
 			</menu>
 		</menuGroup>
 
-		<menuGroup>
+		<!-- <menuGroup>
 			<name>financialreports</name>
 			<displayName>Financial Reports</displayName>
 			<description>Financial Reports</description>
@@ -694,7 +695,7 @@
 				<target>/wordpress/page?artifact=vacantunits</target>
 			</menu>
 
-		</menuGroup>
+		</menuGroup> -->
 
 		<menuGroup>
 			<name>businesssettings</name>
@@ -763,6 +764,15 @@
 				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
 				<target>/wordpress/page?page_action=list&amp;artifact=partyprofile</target>
+			</menu>
+			<menu>
+				<name>tasks</name>
+				<displayName>Tasks</displayName>
+				<description>Tasks</description>
+				<active>N</active>
+				<cssClass>md-mail</cssClass>
+				<targetType>entity</targetType>
+				<target>/wordpress/page?page_action=list&amp;artifact=workeffort&amp;bcat=business&amp;cat=workflow</target>
 			</menu>
 			<menu>
 				<name>conversations</name>
@@ -2288,6 +2298,7 @@
 			<postName>sb_partyprofile</postName>
 			<description>Party Profile</description>
 			<global>N</global>
+			<listPageTemplate>html/wordpress/entity/partyprofile/partyprofile-archive.ftl</listPageTemplate>
 			<!-- <apiTemplate>services/wordpress/partyprofile/partyprofile-service-api.ftl</apiTemplate> -->
 			<field>
 				<name>entity_code</name>

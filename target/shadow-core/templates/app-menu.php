@@ -28,7 +28,7 @@ if (is_user_logged_in()) {
 		<li class="sub-menu">
             <a href=""><i class="md zmdi zmdi-city-alt zmdi-hc-fw"></i> Property</a>
             <ul>
-				<li><a href="/wordpress/page?page_action=list&artifact=property"><i class="md zmdi zmdi-city zmdi-hc-fw"></i> Properties</a></li>
+				<li><a href="/wordpress/page?page_action=list&artifact=property"><i class="md md-mail"></i> Properties</a></li>
 				<li><a href="/wordpress/page?page_action=list&artifact=invoice&bcat=property"><i class="md md-mail"></i> Invoices</a></li>
 				<li><a href="/wordpress/page?page_action=list&artifact=purchaseorder&bcat=property"><i class="md md-mail"></i> Purchase Orders</a></li>
 				<li><a href="/wordpress/page?page_action=list&artifact=receipt&bcat=property"><i class="md md-mail"></i> Receipts</a></li>
@@ -53,27 +53,6 @@ if (is_user_logged_in()) {
             </ul>
         </li>
 		<li class="sub-menu">
-            <a href=""><i class="md zmdi zmdi-money zmdi-hc-fw"></i> Accounting</a>
-            <ul>
-				<li><a href="/wordpress/page?page_action=list&artifact=accountingperiod"><i class="md md-mail"></i> Accounting Periods</a></li>
-				<li><a href="/wordpress/page?page_action=list&artifact=coaaccountsegmenttype"><i class="md md-mail"></i> Acccount Segment Types</a></li>
-				<li><a href="/wordpress/page?page_action=list&artifact=coaaccountstructure"><i class="md md-mail"></i> Acccount Structure</a></li>
-				<li><a href="/wordpress/page?page_action=list&artifact=chartofaccounts"><i class="md md-mail"></i> Chart Of Accounts</a></li>
-				<li><a href="/wordpress/page?page_action=list&artifact=glaccount"><i class="md md-mail"></i> General Ledger</a></li>
-				<li><a href="/wordpress/page?page_action=list&artifact=glaccounttype"><i class="md md-mail"></i> GL Account Types</a></li>
-				<li><a href="/wordpress/page?page_action=list&artifact=transactiontype"><i class="md md-mail"></i> Transaction Types</a></li>
-				<li><a href="/wordpress/page?page_action=list&artifact=transactiondetail"><i class="md md-mail"></i> Transactions</a></li>
-            </ul>
-        </li>
-		<li class="sub-menu">
-            <a href=""><i class="md zmdi zmdi-money-box zmdi-hc-fw"></i> Budgeting</a>
-            <ul>
-				<li><a href="/wordpress/page?page_action=list&artifact=budget"><i class="md md-mail"></i> Budgets</a></li>
-				<li><a href="/wordpress/page?page_action=list&artifact=budgetreview"><i class="md md-mail"></i> Budget Reviews</a></li>
-				<li><a href="/wordpress/page?page_action=list&artifact=glbudgetxref"><i class="md md-mail"></i> GL Budget Xref</a></li>
-            </ul>
-        </li>
-		<li class="sub-menu">
             <a href=""><i class="md zmdi zmdi-labels zmdi-hc-fw"></i> Business</a>
             <ul>
 				<li><a href="/wordpress/page?page_action=list&artifact=invoice&bcat=business"><i class="md md-mail"></i> Invoices</a></li>
@@ -83,36 +62,6 @@ if (is_user_logged_in()) {
 				<li><a href="/wordpress/page?page_action=list&artifact=asset&bcat=business"><i class="md md-mail"></i> Assets</a></li>
 				<li><a href="/wordpress/page?page_action=list&artifact=inventory&bcat=business"><i class="md md-mail"></i> Inventory</a></li>
 				<li><a href="/wordpress/page?page_action=list&artifact=liability&bcat=business"><i class="md md-mail"></i> Liabilities</a></li>
-            </ul>
-        </li>
-		<li class="sub-menu">
-            <a href=""><i class="md zmdi zmdi-chart zmdi-hc-fw"></i> Financial Reports</a>
-            <ul>
-				<li><a href="/wordpress/page?artifact=balancesheet"><i class="md md-business"></i> Balance Sheet</a></li>
-				<li><a href="/wordpress/page?artifact=balancesheetconsolidated"><i class="md md-business"></i> Balance Sheet Consolidated</a></li>
-				<li><a href="/wordpress/page?artifact=generalledger"><i class="md md-business"></i> General Ledger</a></li>
-				<li><a href="/wordpress/page?artifact=generalledgerconsolidated"><i class="md md-business"></i> General Ledger Consolidated</a></li>
-				<li><a href="/wordpress/page?artifact=incomestatement"><i class="md md-business"></i> Income Statement</a></li>
-				<li><a href="/wordpress/page?artifact=incomestatementconsolidated"><i class="md md-business"></i> Income Statement Consolidated</a></li>
-				<li><a href="/wordpress/page?artifact=incomestatementdetailed"><i class="md md-business"></i> Income Statement Detailed</a></li>
-				<li><a href="/wordpress/page?artifact=rentalownerendingbalance"><i class="md md-business"></i> Rental Owner Ending Balance</a></li>
-				<li><a href="/wordpress/page?artifact=rentalownerstatement"><i class="md md-business"></i> Rental Owner Statement</a></li>
-				<li><a href="/wordpress/page?artifact=propertystatement"><i class="md md-business"></i> Property Statement</a></li>
-				<li><a href="/wordpress/page?artifact=trialbalance"><i class="md md-business"></i> Trial Balance</a></li>
-				<li><a href="/wordpress/page?artifact=trialbalanceconsolidated"><i class="md md-business"></i> Trial Balance Consolidated</a></li>
-            </ul>
-        </li>
-		<li class="sub-menu">
-            <a href=""><i class="md zmdi zmdi-collection-text zmdi-hc-fw"></i> Rent Reports</a>
-            <ul>
-				<li><a href="/wordpress/page?artifact=currenttenants"><i class="md md-business"></i> Current Tenants</a></li>
-				<li><a href="/wordpress/page?artifact=delinquenttenants"><i class="md md-business"></i> Delinquent Tenants</a></li>
-				<li><a href="/wordpress/page?artifact=rentexpiration"><i class="md md-business"></i> Rent Expiration</a></li>
-				<li><a href="/wordpress/page?artifact=rentpaid"><i class="md md-business"></i> Rent Paid</a></li>
-				<li><a href="/wordpress/page?artifact=rentreports"><i class="md md-business"></i> Tenant Statement</a></li>
-				<li><a href="/wordpress/page?artifact=unitlisting"><i class="md md-business"></i> Unit Listing</a></li>
-				<li><a href="/wordpress/page?artifact=occupiedunits"><i class="md md-business"></i> Occupied Units</a></li>
-				<li><a href="/wordpress/page?artifact=vacantunits"><i class="md md-business"></i> Vacant Units</a></li>
             </ul>
         </li>
 		<li class="sub-menu">
@@ -129,6 +78,7 @@ if (is_user_logged_in()) {
             <a href=""><i class="md zmdi zmdi-settings zmdi-hc-fw"></i> My Settings</a>
             <ul>
 				<li><a href="/wordpress/page?page_action=list&artifact=partyprofile"><i class="md md-person"></i> Profile</a></li>
+				<li><a href="/wordpress/page?page_action=list&artifact=workeffort&bcat=business&cat=workflow"><i class="md md-mail"></i> Tasks</a></li>
 				<li><a href="/wordpress/page?page_action=list&artifact=conversation"><i class="md md-person"></i> Inbox</a></li>
 				<li><a href="<?php echo wp_logout_url(home_url()); ?>"><i class="md md-input"></i> Sign Out</a></li>
             </ul>
