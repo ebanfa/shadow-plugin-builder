@@ -128,9 +128,19 @@ class EntityPersistenceAPI {
             $result_data = EntityAPIUtils::entity_to_data($entity_data, $entity, false);
             if(!$entity_data['is_global_entity'] && !current_user_can('administrator')) {
                 $current_business_unit = BusinessUnitAPI::get_current_user_business_unit();
+
                 if(isset($current_business_unit['id'])) {
-                    if($result_data['business_unit'] == $current_business_unit['id']) {
-                        array_push($search_results, $result_data);
+                    // If the entity has a business_unit field
+                    if(isset($result_data['business_unit'])) {
+                        if($result_data['business_unit'] == $current_business_unit['id']) {
+                            array_push($search_results, $result_data);
+                        }
+                    }
+                    // Business unit is not global but has no business_unit field
+                    elseif ($result_data['entity_name'] == 'BusinessUnit') {
+                         if($result_data['business'] == $current_business_unit['business']) {
+                            array_push($search_results, $result_data);
+                        }
                     }
                 }
             }

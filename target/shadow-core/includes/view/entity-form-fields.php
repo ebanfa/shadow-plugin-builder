@@ -289,9 +289,9 @@
 
             $is_visible = true;
             $view_model = ViewUtils::get_current_view_model();
-            if($view_model['entity_name'] == $field['entity_name'])
-                $is_visible = false;
-
+            /*if($view_model['entity_name'] == $field['entity_name'])
+                //$is_visible = false;
+*/
             if($show_relationship_popup && $is_visible) { 
                 if(isset($field['has_options'])) {  ?>
 

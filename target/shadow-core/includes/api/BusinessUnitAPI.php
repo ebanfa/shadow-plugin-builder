@@ -13,7 +13,11 @@ class BusinessUnitAPI {
      *
      */
     public static function do_create_entity($entity_data){
-     return EntityAPI::do_create_entity($entity_data);
+        $current_businessunit_data = self::get_current_user_business_unit();
+        if(isset($current_businessunit_data['id'])) {
+            $entity_data['business'] = $current_businessunit_data['business'];
+        }
+        return EntityAPI::do_create_entity($entity_data);
     }
 
     /**

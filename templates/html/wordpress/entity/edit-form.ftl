@@ -19,6 +19,17 @@
         data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
 
         <?php do_entity_form_fields($view, false, true) ; ?>
+
+        <?php 
+            $view_options = '';
+            foreach ($view->get_form_fields() as $field) { 
+                if(isset($field['view_criteria'])) { 
+                    foreach ($field['view_criteria'] as $criteria_name => $criteria_value) { 
+                        $view_options = $view_options . '&' . $criteria_name . '=' . $criteria_value;
+                    }
+                }
+            } 
+        ?>
         
         <div class="btn-demo m-t-10">   
             <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
@@ -39,3 +50,33 @@
 </form>
 <!-- Put this out side the form to prevent illegal nested forms -->
 <?php do_action('shadowbanker_render_related_entity_field_modals'); ?>
+<script type="text/javascript">
+    
+    jQuery(document).ready(function($)
+    {
+        $('body').on('click', '.data-table-link', function(e){
+            e.preventDefault();
+
+            var currentRelatedFieldName = $('#current-related-field').val();
+            var currentRelatedInstanceId = $(this).data('related-instance-id');
+            var currentRelatedInstanceName = $(this).data('related-instance-name');               
+            var currentRelatedArtifactName = $(this).data('related-artifact-name');
+            // Set the value of the hidden relationship field. 
+            $('#current-relationship-field-id').val(currentRelatedInstanceId);
+            $('#current-relationship-field-name').val(currentRelatedFieldName);
+            $('#' + currentRelatedFieldName).val(currentRelatedInstanceId);
+            $('#' + currentRelatedFieldName + '_txt').val(currentRelatedInstanceName);
+            
+            $('.modal').modal('hide');
+        });
+
+        $('body').on('click', '.related-field-search-link', function(e){
+            e.preventDefault();
+            var currentRelatedFieldName = $(this).data('related-field-name');
+            $('#current-related-field').val(currentRelatedFieldName);
+            $('#' + currentRelatedFieldName + '_modal').modal('show');
+
+            
+        });
+    });
+</script>

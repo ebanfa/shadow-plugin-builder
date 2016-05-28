@@ -1220,22 +1220,6 @@
 				<displayName>Address Line 2</displayName>
 				<relationshipField>N</relationshipField>
 			</field>
-			<!-- <field>
-				<name>location</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>sb_location</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Location</description>
-				<displayName>Location</displayName>
-				<relationshipField>Y</relationshipField>
-			</field> -->
 			<field>
 				<name>description</name>
 				<isVisible>Y</isVisible>
