@@ -823,6 +823,7 @@
 			<postName>sb_currency</postName>
 			<description>Currency</description>
 			<global>Y</global>
+			<viewFilterTemplate>views/wordpress/global-entity-view-filter.ftl</viewFilterTemplate>
 			<field>
 				<name>entity_code</name>
 				<isVisible>Y</isVisible>
@@ -1036,6 +1037,7 @@
 			<postName>sb_business</postName>
 			<description>Business</description>
 			<global>Y</global>
+			<viewFilterTemplate>views/wordpress/global-entity-view-filter.ftl</viewFilterTemplate>
 			<field>
 				<name>entity_code</name>
 				<isVisible>Y</isVisible>

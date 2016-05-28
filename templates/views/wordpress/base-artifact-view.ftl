@@ -113,13 +113,10 @@ class ArtifactView {
      * 
      */
     public function get_action_links() {
-        $action_links = array();
+        $action_links = $this->get_view_action_links();
         $action_links_filter = 'shadowbanker_' . $this->artifact . '_action_links';
         if(has_filter($action_links_filter)) {
             $action_links = apply_filters($action_links_filter, $this, $action_links );
-        }
-        else{
-            $action_links = $this->get_view_action_links();
         }
         return $action_links; 
     }

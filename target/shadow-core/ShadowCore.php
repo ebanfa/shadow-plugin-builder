@@ -649,6 +649,8 @@ class ShadowCore {
         include_once('includes/view/MultiEntityCreateView.php');
         include_once('includes/view/CategorizedViewFilter.php');
         include_once('includes/view/ParamCategorizedViewFilter.php');
+        include_once('includes/view/currency/CurrencyViewFilter.php');
+        include_once('includes/view/business/BusinessViewFilter.php');
         include_once('includes/view/party/SinglePartyView.php');
         include_once('includes/view/party/PartyViewFilter.php');
         include_once('includes/view/partygroup/CreatePartyGroupView.php');
@@ -794,6 +796,8 @@ class ShadowCore {
         /*add_action('wp_logout', 'ShadowCore::redirect_logout_url');*/
         FormFieldFilter::init_hooks();
 
+        CurrencyViewFilter::init_hooks();
+        BusinessViewFilter::init_hooks();
         PartyViewFilter::init_hooks();
         LiabilityViewFilter::init_hooks();
         PropertyViewFilter::init_hooks();
