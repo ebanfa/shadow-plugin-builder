@@ -7,6 +7,10 @@
 
     $view = $_REQUEST['page_info']['view'];
     $model = $view->get_model();
+    $tabs = $view->get_tabs();
+
+    $parent_param = '';
+    if(isset($_REQUEST['parent_param'])) $parent_param = urldecode($_REQUEST['parent_param']);
 
 
 ?>
@@ -15,7 +19,7 @@
         <div class="pmo-pic">
             <div class="p-relative">
                 <a data-toggle="modal" href="#modalWider">
-                    <img class="img-responsive" src="<?php echo get_stylesheet_directory_uri(); ?>/images/profile-pics/profile-pic-2.jpg" alt=""> 
+                    <img class="img-responsive" src="<?php echo get_stylesheet_directory_uri(); ?>/images/business.png" alt=""> 
                 </a>
                 
                 <div class="dropdown pmop-message">
@@ -52,16 +56,21 @@
     
     <div class="pm-body clearfix">
         <ul class="tab-nav tn-justified"  role="tablist">
-            <li class="active waves-effect"><a href="#tab-0" aria-controls="tab-0" role="tab" data-toggle="tab">About</a></li>
-           <!--  <li class="waves-effect"><a href="#tab-1" aria-controls="tab-0" role="tab" data-toggle="tab">Timeline</a></li>
-            <li class="waves-effect"><a href="#tab-2" aria-controls="tab-0" role="tab" data-toggle="tab">Tasks</a></li> -->
-            <!-- <li class="waves-effect"><a href="profile-connections.html">Connections</a></li> -->
+            <li class="active waves-effect">
+                <a href="#tab-0" aria-controls="tab-0" role="tab" data-toggle="tab">
+                    <?php echo $model['entity_description']; ?>
+                </a>
+            </li>
+            <?php  $count = 1; foreach ($tabs as $tab) {  ?>
+            <li>
+                <a href="#tab-<?php echo $count; ?>" aria-controls="tab-<?php echo $count; ?>" role="tab" data-toggle="tab"> <?php echo $tab['description']; ?></a>
+            </li>
+            <?php  $count++; } ?>
         </ul>
         
         <div class="tab-content p-20">
+        
             <div role="tabpanel" class="tab-pane animated fadeIn in active" id="tab-0">
-
-                
                 <div class="pmb-block">
                     <div class="pmbb-header">
                         <h2><i class="zmdi zmdi-account m-r-5"></i> Basic Information</h2>
@@ -129,19 +138,46 @@
                         </ul>
                     </div>
                     <div class="pmbb-body p-l-30">
-                        <div class="pmbb-view">
-                            Sed eu est vulputate, fringilla ligula ac, maximus arcu. Donec sed felis vel magna mattis ornare ut non turpis. Sed id arcu elit. Sed nec sagittis tortor. Mauris ante urna, ornare sit amet mollis eu, aliquet ac ligula. Nullam dolor metus, suscipit ac imperdiet nec, consectetur sed ex. Sed cursus porttitor leo.
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover" width="100%" cellspacing="0">
+                                <tbody>
+                                    <tr>
+                                    <?php foreach ($model['entity_fields'] as $field_name => $field) { if($field['is_view_field']) {  ?>
+                                        <th><?php echo $field['description']; ?></th>
+                                    <?php } } ?>
+                                    </tr>
+
+                                    <tr>
+                    <?php foreach ($model['entity_fields'] as $field) { if($field['is_view_field'] && !$field['is_relationship_field']) {  ?>
+                                        <td><?php echo $model[$field['name']]; ?></td>
+                        <?php } if ($field['is_view_field'] && $field['is_relationship_field']) { ?>
+                                        <td><?php echo $model[$field['name'] . '_txt']; ?></td>
+                    <?php } } ?>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
-                        
-                        <div class="pmbb-edit">
-                            <div class="fg-line">
-                                <textarea class="form-control" rows="5" placeholder="Summary...">Sed eu est vulputate, fringilla ligula ac, maximus arcu. Donec sed felis vel magna mattis ornare ut non turpis. Sed id arcu elit. Sed nec sagittis tortor. Mauris ante urna, ornare sit amet mollis eu, aliquet ac ligula. Nullam dolor metus, suscipit ac imperdiet nec, consectetur sed ex. Sed cursus porttitor leo.</textarea>
-                            </div>
-                            <div class="m-t-10">
-                                <button class="btn btn-primary btn-sm">Save</button>
-                                <button data-pmb-action="reset" class="btn btn-link btn-sm">Cancel</button>
-                            </div>
+                        <div class="btn-demo m-t-10">
+                            <a href="<?php echo $view->get_edit_url(); ?>" class="btn btn-primary waves-effect">
+                               <?php _e('Edit', 'framework') ?>
+                            </a>
+                            <form id="delete-entity-form" style="display:none" action=""  method="POST">
+                                <input type="hidden" name="id" value="<?php echo $model['id']; ?>">
+                                <input type="hidden" name="artifact" value="<?php echo $view->get_artifact_name(); ?>">
+                                <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
+                                <input type="hidden" name="submitted" id="submitted" value="true" />
+                            </form>
+                            <a id="delete-entity-btn" href="<?php echo $view->get_delete_url(); ?>" class="btn btn-warning waves-effect">
+                               <?php _e('Delete', 'framework') ?>
+                            </a>
+                            <?php if(!is_null($view->get_parent_artifact_name())) { ?>
+                            <a href="<?php echo EntityActionProcessor::get_base_url() . 'artifact=' . $view->get_parent_artifact_name() . '&id=' . $view->get_parent_id() . $view->get_parent_param(); ?>&page_action=view" 
+                               class="btn btn-primary waves-effect">
+                               <?php _e('Done', 'framework') ?>
+                            </a>
+                            <?php } ?>
                         </div>
+
                     </div>
                 </div>
             </div>

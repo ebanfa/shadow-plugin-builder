@@ -21,8 +21,12 @@ class SinglePartyView extends SingleEntityView {
      */
     public function process_model() {
         parent::process_model();
-        
-        
+        if($this->model['party_type_code'] == 'INDIVIDUAL') {
+            $this->model['image'] = 'female.png';
+        }
+        else {
+            $this->model['image'] = 'business.png';
+        }
     }
 
     /**
@@ -33,7 +37,7 @@ class SinglePartyView extends SingleEntityView {
             return parent::get_tabs();
         }
         $role = sanitize_text_field($_REQUEST['role']);
-        if($role == 'client') return $this->process_client_view(); 
+        if($role == 'landlord') return $this->process_client_view(); 
         if($role == 'tenant') return $this->process_tenant_view(); 
         if($role == 'prospective_tenant') return $this->process_prospectivetenant_view(); 
         if($role == 'service_provider') return $this->process_serviceprovider_view(); 
@@ -52,14 +56,6 @@ class SinglePartyView extends SingleEntityView {
                 'description' => 'Property',
                 'model' => EntityAPI::get_model('property'),
                 'artifact_name' => 'property',
-                'type_instances' =>  array(),
-            ),
-            array(
-                'tab_type' => 'entity-list',
-                'name' => 'managementagreement',
-                'description' => 'Management Agreement',
-                'model' => EntityAPI::get_model('managementagreement'),
-                'artifact_name' => 'managementagreement',
                 'type_instances' =>  array(),
             ),
             array(
@@ -231,6 +227,36 @@ class SinglePartyView extends SingleEntityView {
         }
         // execute default render operation
         return EntityActionProcessor::get_base_url() . 'artifact=' . $this->get_artifact_name() . '&id=' . $this->model['id'] . $this->get_parent_url() . '&page_action=delete' . $role_param;
+    }
+
+    /**
+     * Render this view
+     */
+    public function render() {
+        $custom_render_action = 'shadowbanker_render_' . $this->page_action .'_' . $this->artifact . '_view';
+
+        if(isset($_REQUEST['page_info'])) {
+            
+            do_action('shadowbanker_before_main_content');
+
+           // do_action('shadowbanker_before_artifact_content');
+
+            if(has_action($custom_render_action)) {
+                // action exists so execute it
+                do_action($custom_render_action);
+            } else {
+                // action has not been registered
+                // execute default render operation
+                //do_action('shadowbanker_render_'. $this->page_action . '_entity_view');
+                $this->render_impl();
+             }
+
+            //do_action('shadowbanker_after_artifact_content');
+
+            do_action('shadowbanker_after_main_content');
+
+           
+        }
     }
 }
 

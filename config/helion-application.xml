@@ -1444,8 +1444,8 @@
 			<postName>sb_party</postName>
 			<description>Party</description>
 			<global>N</global>
-			<!-- <viewPageTemplate>html/wordpress/entity/party/party-single.ftl</viewPageTemplate>
-			<listPageTemplate>html/wordpress/entity/party/party-list.ftl</listPageTemplate> -->
+			<viewPageTemplate>html/wordpress/entity/party/party-single.ftl</viewPageTemplate>
+			<!-- <listPageTemplate>html/wordpress/entity/party/party-list.ftl</listPageTemplate> -->
 			<createPageTemplate>html/wordpress/entity/party/party-create-form.ftl</createPageTemplate>
 			<editPageTemplate>html/wordpress/entity/party/party-edit-form.ftl</editPageTemplate>
 			<viewFilterTemplate>views/wordpress/party/party-view-filter.ftl</viewFilterTemplate>

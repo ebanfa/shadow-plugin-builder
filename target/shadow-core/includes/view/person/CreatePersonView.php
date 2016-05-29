@@ -23,7 +23,7 @@ class CreatePersonView extends MultiEntityCreateView {
     function get_tabs() {
         if(isset($_REQUEST['role'])) {
             $role = sanitize_text_field($_REQUEST['role']);
-            if($role == 'client') return self::get_client_tabs();
+            if($role == 'landlord') return self::get_client_tabs();
             if($role == 'tenant') return self::get_tenant_tabs();
             if($role == 'prospective_tenant') return self::get_prospectivetenant_tabs();
             if($role == 'property_personnel') return self::get_propertypersonnel_tabs();
@@ -110,6 +110,13 @@ class CreatePersonView extends MultiEntityCreateView {
                 'artifact_name' => 'partyaddress',
                 'type_instances' => array(),
             ),
+            /*'images' => array(
+                'tab_type' => 'multi-create',
+                'description' => 'Images & Files',
+                'model' => EntityAPI::get_model('partyfiles'),
+                'artifact_name' => 'partyfiles',
+                'type_instances' => array(),
+            ),*/
         );
     }
 

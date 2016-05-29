@@ -23,6 +23,30 @@ class SinglePartyProfileView extends SingleEntityView {
     	}
     }
 
+    /**
+     * Process the load the model for this artifact
+     */
+    public function process_model() {
+        $party_data = PartyAPI::get_current_user_party();
+        $artifact_data = ArtifactUtils::$artifacts[$this->artifact];
+
+        if(isset($_REQUEST['id'])) {
+            $this->model = EntityAPI::get_by_id($this->get_artifact_name(), sanitize_text_field($_REQUEST['id']));
+            if(isset($party_data['id']))
+                $this->model['user_name'] = $party_data['user_name'];
+            $tabs = $this->get_tabs();
+        }
+        else {
+            if(isset($party_data['id'])) {
+                $profile_data = EntityAPI::get_by_field($this->get_artifact_name(), 'party', $party_data['id']);
+                if (isset($profile_data['id'])) 
+                    $this->model = $profile_data;
+                $this->model['user_name'] = $party_data['user_name'];
+                $tabs = $this->get_tabs();
+            }
+        }
+    }
+
    /**
      * Render this view
      */
