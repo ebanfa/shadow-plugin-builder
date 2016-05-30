@@ -2123,8 +2123,7 @@
 			<postName>sb_person</postName>
 			<description>Person</description>
 			<global>N</global>
-			<!-- <viewFilterTemplate>views/wordpress/party/party-view-filter.ftl</viewFilterTemplate> -->
-			<!-- <viewFilterTemplate>views/wordpress/person/person-view-filter.ftl</viewFilterTemplate> -->
+			<viewFilterTemplate>views/wordpress/person/person-view-filter.ftl</viewFilterTemplate>
 			<!-- <createPageTemplate>html/wordpress/entity/person/person-create-form.ftl</createPageTemplate> -->
 			<editPageTemplate>html/wordpress/entity/person/person-edit-form.ftl</editPageTemplate>
 			<createViewTemplate>views/wordpress/person/create-entity-view.ftl</createViewTemplate>

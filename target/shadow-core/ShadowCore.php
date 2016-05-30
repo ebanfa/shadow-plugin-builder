@@ -655,6 +655,7 @@ class ShadowCore {
         include_once('includes/view/party/PartyViewFilter.php');
         include_once('includes/view/partygroup/CreatePartyGroupView.php');
         include_once('includes/view/person/CreatePersonView.php');
+        include_once('includes/view/person/PersonViewFilter.php');
         include_once('includes/view/partyprofile/SinglePartyProfileView.php');
         include_once('includes/view/partyprofile/ListPartyProfileView.php');
         include_once('includes/view/liability/LiabilityViewFilter.php');
@@ -799,6 +800,7 @@ class ShadowCore {
         CurrencyViewFilter::init_hooks();
         BusinessViewFilter::init_hooks();
         PartyViewFilter::init_hooks();
+        PersonViewFilter::init_hooks();
         LiabilityViewFilter::init_hooks();
         PropertyViewFilter::init_hooks();
         AssetViewFilter::init_hooks();
