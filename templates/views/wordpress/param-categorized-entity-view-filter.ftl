@@ -174,7 +174,7 @@ class ParamCategorizedViewFilter extends ViewFilter {
             }
             $action_links['list_entity_link'] = array('name' => 'View All', 
                 'link' => EntityActionProcessor::get_base_url() . 'artifact=' . $model['entity_artifact_name'] . '&page_action=list&cat=' . strtolower($category_data['entity_code']) . 
-                    'bcat=' . strtolower($business_category_data['entity_code']));
+                    '&bcat=' . strtolower($business_category_data['entity_code']));
         }
         return $action_links;
     }

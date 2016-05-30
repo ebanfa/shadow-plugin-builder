@@ -8,7 +8,7 @@ if (!defined('ABSPATH')) {
 }
 
 
-class WorkEffortViewFilter extends ParamCategorizedViewFilter {
+class ${entity.name}ViewFilter extends ParamCategorizedViewFilter {
 
    
     public static $purpose_type_field = 'wep_type';
@@ -17,9 +17,9 @@ class WorkEffortViewFilter extends ParamCategorizedViewFilter {
      *
      */
     public static function init_hooks() { 
-        add_filter('shadowbanker_workeffort_view_title', array('WorkEffortViewFilter', 'filter_view_title'), 10, 2);
-        add_filter('shadowbanker_workeffort_form_fields', array('WorkEffortViewFilter', 'filter_form_fields'), 10, 2);
-        add_filter('shadowbanker_workeffort_action_links', array('WorkEffortViewFilter', 'filter_view_action_links'), 10, 2);
+        add_filter('shadowbanker_${entity.name?lower_case}_view_title', array('${entity.name}ViewFilter', 'filter_view_title'), 10, 2);
+        add_filter('shadowbanker_${entity.name?lower_case}_form_fields', array('${entity.name}ViewFilter', 'filter_form_fields'), 10, 2);
+        add_filter('shadowbanker_${entity.name?lower_case}_action_links', array('${entity.name}ViewFilter', 'filter_view_action_links'), 10, 2);
     }
 
     /**

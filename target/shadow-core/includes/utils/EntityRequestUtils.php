@@ -133,9 +133,12 @@ class EntityRequestUtils {
                     }
                 }
 
+                CloderiaLogUtils::shadow_log('Doing global');
                 foreach($entity_data['entity_fields'] as $field_name => $field_data){
-                    if(isset($_POST[$field_data['name']]))
+                    if(isset($_POST[$field_data['name']])){
+                        CloderiaLogUtils::shadow_log('Doing global1');
                         $criteria_data[$field_data['name']] = sanitize_text_field($_POST[$field_data['name']]);
+                    }
                 }
             }
             else {

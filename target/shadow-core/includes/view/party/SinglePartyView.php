@@ -22,7 +22,13 @@ class SinglePartyView extends SingleEntityView {
     public function process_model() {
         parent::process_model();
         if($this->model['party_type_code'] == 'INDIVIDUAL') {
-            $this->model['image'] = 'female.png';
+            $person_data = EntityAPI::get_by_field('person', 'party', $this->model['id']);
+            if(isset($person_data['id'])) {
+                if($person_data['gender'] == 'M')
+                    $this->model['image'] = 'user.png';
+                else
+                    $this->model['image'] = 'female.png';
+            }
         }
         else {
             $this->model['image'] = 'business.png';

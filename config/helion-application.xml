@@ -27204,7 +27204,7 @@
 			<postName>sb_workeffort</postName>
 			<description>Work Effort</description>
 			<global>N</global>
-			<viewFilterTemplate>views/wordpress/param-categorized-child-entity-view-filter.ftl</viewFilterTemplate>
+			<viewFilterTemplate>views/wordpress/workeffort/workeffort-view-filter.ftl</viewFilterTemplate>
 			<createViewTemplate>views/wordpress/workeffort/create-entity-view.ftl</createViewTemplate>
 			<apiTemplate>api/wordpress/workeffort/workeffort-service-api.ftl</apiTemplate>
 			<field>
@@ -27228,10 +27228,10 @@
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>N</required>
-				<createField>Y</createField>
+				<createField>N</createField>
 				<editField>Y</editField>
 				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<listField>N</listField>
 				<dataType>sb_workeffort</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
@@ -27311,7 +27311,7 @@
 				<createField>Y</createField>
 				<editField>Y</editField>
 				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<listField>N</listField>
 				<dataType>money</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
@@ -27327,7 +27327,7 @@
 				<createField>Y</createField>
 				<editField>Y</editField>
 				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<listField>N</listField>
 				<dataType>number</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
@@ -27343,7 +27343,7 @@
 				<createField>Y</createField>
 				<editField>Y</editField>
 				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<listField>N</listField>
 				<dataType>number</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
@@ -27356,10 +27356,10 @@
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
-				<createField>Y</createField>
+				<createField>N</createField>
 				<editField>Y</editField>
 				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<listField>N</listField>
 				<dataType>number</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
@@ -27375,7 +27375,7 @@
 				<createField>Y</createField>
 				<editField>Y</editField>
 				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<listField>N</listField>
 				<dataType>date</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
@@ -27391,7 +27391,7 @@
 				<createField>Y</createField>
 				<editField>Y</editField>
 				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<listField>N</listField>
 				<dataType>date</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
@@ -27404,10 +27404,10 @@
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
-				<createField>Y</createField>
+				<createField>N</createField>
 				<editField>Y</editField>
 				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<listField>N</listField>
 				<dataType>date</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
@@ -27420,10 +27420,10 @@
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
-				<createField>Y</createField>
+				<createField>N</createField>
 				<editField>Y</editField>
 				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<listField>N</listField>
 				<dataType>date</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
@@ -27471,7 +27471,7 @@
 				<createField>Y</createField>
 				<editField>Y</editField>
 				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<listField>N</listField>
 				<dataType>text-lg</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>

@@ -40580,8 +40580,6 @@ $(document).ready(function (){
         columns: [
             { data: "id" }, 
 
-            { data: "we_redone_via_txt" },
-
             { data: "type_txt" },
 
             { data: "wep_type_txt" },
@@ -40589,28 +40587,10 @@ $(document).ready(function (){
             { data: "we_facility_txt" },
             { data: "name" },
 
-            { data: "tot_dallowed" },
-
-            { data: "tot_hallowed" },
-
-            { data: "est_hours" },
-
-            { data: "act_hours" },
-
-            { data: "sched_start_date" },
-
-            { data: "sched_end_date" },
-
-            { data: "act_start_date" },
-
-            { data: "act_end_date" },
-
             { data: "description" },
 
 
             { data: "status_txt" },
-            { data: "special_terms" },
-
         ],
         columnDefs: [
             {

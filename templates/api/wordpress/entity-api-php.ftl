@@ -93,6 +93,8 @@ class EntityAPI {
     public static function do_find_entity_impl($entity_data) {
         $artifact_name = $entity_data['entity_artifact_name'];
         $criteria_data = EntityRequestUtils::build_criteria_from_form_data($entity_data);
+        CloderiaLogUtils::shadow_log('Finding by criteria');
+        CloderiaLogUtils::shadow_log($criteria_data);
         return EntityPersistenceAPI::find_by_criteria($entity_data, $criteria_data);
     }
 
