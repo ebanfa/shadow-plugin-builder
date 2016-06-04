@@ -401,6 +401,8 @@ class CloderiaMenuUtils {
 	 		self::admin_menu_slug . '_show_sb_disputeitem', 'CloderiaMenuUtils::render_sb_disputeitem');
 	 	add_submenu_page( self::admin_menu_slug , 'Conversation', 'Conversation', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_conversation', 'CloderiaMenuUtils::render_sb_conversation');
+	 	add_submenu_page( self::admin_menu_slug , 'Conversation User', 'Conversation User', 'manage_options', 
+	 		self::admin_menu_slug . '_show_sb_conuser', 'CloderiaMenuUtils::render_sb_conuser');
 	 	add_submenu_page( self::admin_menu_slug , 'Message', 'Message', 'manage_options', 
 	 		self::admin_menu_slug . '_show_sb_message', 'CloderiaMenuUtils::render_sb_message');
 	 	add_submenu_page( self::admin_menu_slug , 'Message Files', 'Message Files', 'manage_options', 
@@ -744,6 +746,7 @@ class CloderiaMenuUtils {
        remove_menu_page( 'edit.php?post_type=sb_dispute');
        remove_menu_page( 'edit.php?post_type=sb_disputeitem');
        remove_menu_page( 'edit.php?post_type=sb_conversation');
+       remove_menu_page( 'edit.php?post_type=sb_conuser');
        remove_menu_page( 'edit.php?post_type=sb_message');
        remove_menu_page( 'edit.php?post_type=sb_messagesfiles');
        remove_menu_page( 'edit.php?post_type=sb_notifytype');
@@ -2768,6 +2771,16 @@ class CloderiaMenuUtils {
 	public static function render_sb_conversation()
 	{
 		$url = admin_url().'edit.php?post_type=sb_conversation';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_conuser()
+	{
+		$url = admin_url().'edit.php?post_type=sb_conuser';
 		?>
 	 	<script>location.href='<?php echo $url;?>';</script>
 		<?php

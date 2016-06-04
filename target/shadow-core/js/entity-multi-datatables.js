@@ -31255,10 +31255,6 @@ $(document).ready(function (){
         },
         columns: [
             { data: "id" }, 
-
-            { data: "owner_txt" },
-
-            { data: "counter_party_txt" },
             { data: "name" },
 
             { data: "description" },
@@ -31404,6 +31400,172 @@ $(document).ready(function (){
       });
       // then remove the list box item
       $('#conversation_dependent_list_box').find('#conversation_list_item_' + entityId).remove();
+
+      
+   });
+   var sb_conuser_rows_selected = [];
+   var sb_conuserTable =  $('#sb_conuser-multi-list-table').DataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': shadowcore_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.form = $("#sb_conuser-multi-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+
+            { data: "conversation_txt" },
+
+            { data: "con_user_txt" },
+            { data: "name" },
+
+            { data: "create_date" },
+
+            { data: "description" },
+
+        ],
+        columnDefs: [
+            {
+                'targets': 0,
+                'searchable': false,
+                'orderable': false,
+                'className': 'dt-body-center',
+                'render': function (data, type, row){
+                    return '<input id="conversationuser_' + row.id + '" type="checkbox" value="' + row.id + '" data-dependent-instance-name="' + row.name + '">';
+                },
+            },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#conversationuser_parent_params').length) {
+                        parent_params = parent_params + $('#conversationuser_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + shadowcore_base_url.baseUrl + 'artifact=conversationuser&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="conversationuser" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ],
+        'order': [[1, 'asc']],
+        'rowCallback': function(row, data, dataIndex){
+         // Get row ID
+         var rowId = data[0];
+
+         // If row ID is in the list of selected row IDs
+         if($.inArray(rowId, sb_conuser_rows_selected) !== -1){
+            $(row).find('input[type="checkbox"]').prop('checked', true);
+            $(row).addClass('selected');
+         }
+        }
+    });
+
+   // Handle click on checkbox
+   $('#sb_conuser-multi-list-table tbody').on('click', 'input[type="checkbox"]', function(e){
+      var $row = $(this).closest('tr');
+      // Get row data
+      var data = sb_conuserTable.row($row).data();
+      // Get row ID
+      var rowId = $(this).val();
+      // Determine whether row ID is in the list of selected row IDs 
+      var index = $.inArray(rowId, sb_conuser_rows_selected);
+      console.log('This is index:' + index);
+      // If checkbox is checked and row ID is not in list of selected row IDs
+      if(this.checked && index === -1){
+         console.log('This is checked and index:' + index);
+         sb_conuser_rows_selected.push(rowId);
+      // Otherwise, if checkbox is not checked and row ID is in list of selected row IDs
+      } else if (!this.checked && index !== -1){
+         sb_conuser_rows_selected.splice(index, 1);
+         console.log('This is not checked and index:' + index);
+      }
+      if(this.checked){
+         $row.css('background-color', 'rgba(255, 152, 0, 0.5)');
+      } else {
+         $row.css('background-color', 'rgba(255, 152, 0, 0)');
+      }
+      // Update state of "Select all" control
+      updateDataTableSelectAllCtrl(sb_conuserTable);
+      // Prevent click event from propagating to parent
+      e.stopPropagation();
+   });
+
+   // Handle click on table cells with checkboxes
+   $('#sb_conuser-multi-list-table').on('click', 'tbody td, thead th:first-child', function(e){
+      $(this).parent().find('input[type="checkbox"]').trigger('click');
+   });
+
+   // Handle click on "Select all" control
+   $('thead input[name="select_all"]', sb_conuserTable.table().container()).on('click', function(e){
+      if(this.checked){
+         $('#sb_conuser-multi-list-table tbody input[type="checkbox"]:not(:checked)').trigger('click');
+      } else {
+         $('#sb_conuser-multi-list-table tbody input[type="checkbox"]:checked').trigger('click');
+      }
+      // Prevent click event from propagating to parent
+      e.stopPropagation();
+   });
+
+   // Handle table draw event
+   sb_conuserTable.on('draw', function(){
+      // Update state of "Select all" control
+      updateDataTableSelectAllCtrl(sb_conuserTable);
+   });
+
+   /* Add all check rows in the data table */
+   $('body').on('click', '#add-selected-conversationuser-list-btn', function(e){
+      e.preventDefault();
+      var page_artifact_form = $('#main-entity-post-name').val();
+      // Iterate over all selected checkboxes
+      var idExists = false;
+      $.each(sb_conuser_rows_selected, function(index, rowId){
+
+        $.each($('input[name="conversationuser_id[]"]'), function(indexx){ 
+            var valueToAdd = $(this).val();
+            if(valueToAdd === rowId){
+              idExists = true;
+            }
+
+        });
+        if(!idExists){
+          // Add the id of the selected row as a hidden input in the 
+          // main form 
+           $('#' + page_artifact_form).append(
+               $('<input>')
+                  .attr('type', 'hidden')
+                  .attr('name', 'conversationuser_id[]')
+                  .val(rowId)
+           );
+           // Get the value of the name column. Every entity data table has name and description columns
+           var dependentInstanceName = $('#conversationuser_' + rowId).data('dependent-instance-name');
+           // Add an entry into the visual list of select instances
+           $('#conversationuser_dependent_list_box').append($(
+                '<div id="conversationuser_list_item_' + rowId + '"> ' + 
+                    '<span data-entity-name="conversationuser" ' + 
+                        'data-entity-id="' + rowId + '" class="badge conversationuser_dependent_list_item" ' + 
+                        'style="cursor: pointer; cursor: hand; background-color: red">X</span>' + dependentInstanceName + 
+                '</div>').attr('class', 'list-group-item'));
+        }
+      });
+   });
+    // Handle click on table cells with checkboxes
+   $('#conversationuser_dependent_list_box').on('click', '.conversationuser_dependent_list_item', function(e){
+      var entityId = $(this).data('entity-id');
+      var entityName = $(this).data('entity-name');
+      var page_artifact_form = $('#main-entity-post-name').val();
+      // first remove the hidden form field and then the list box item
+      var existingIds = $('#' + page_artifact_form).find('input[name="conversationuser_id[]"]');
+      $.each(existingIds, function(index, rowId){ 
+        if($(rowId).val() == entityId) {
+          $(rowId).remove();
+        }
+
+      });
+      // then remove the list box item
+      $('#conversationuser_dependent_list_box').find('#conversationuser_list_item_' + entityId).remove();
 
       
    });

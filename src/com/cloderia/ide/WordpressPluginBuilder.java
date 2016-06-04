@@ -507,6 +507,8 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 		}
 		this.generateArtifact(module, null, 
 			"js/wordpress/entity-form-js.ftl" , this.pluginDir + "js/entity-form.js");
+		this.generateArtifact(module, null, 
+			"js/wordpress/conversation-js.ftl" , this.pluginDir + "js/conversate.js");
 	}
 
 

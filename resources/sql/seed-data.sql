@@ -52,7 +52,7 @@ INSERT INTO facilitytype (category, business_category, entity_code, name, descri
 INSERT INTO facilitytype (category, business_category, entity_code, name, description) VALUES (1, 2, 'OFFICE', 'Office', 'Office');
 INSERT INTO facilitytype (category, business_category, entity_code, name, description) VALUES (1, 2, 'WAREHOUSE', 'Warehouse', 'Warehouse');
 
-INSERT INTO facility (f_type, entity_code, name, sq_footage, description, business_unit) VALUES (1, 'WAREHOUSE1', 'Warehouse', 34, 'Warehouse', 1);
+##INSERT INTO facility (f_type, entity_code, name, sq_footage, description, business_unit) VALUES (1, 'WAREHOUSE1', 'Warehouse', 34, 'Warehouse', 1);
 
 /* Insert statement for Property Type */
 INSERT INTO propertytype (entity_code, name, description) VALUES ('COMMERCIAL', 'Commercial Property', 'Commercial Property');

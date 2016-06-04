@@ -71,6 +71,7 @@ DROP TABLE IF EXISTS notificationstatus;
 DROP TABLE IF EXISTS notificationtype;
 DROP TABLE IF EXISTS messagefiles;
 DROP TABLE IF EXISTS message;
+DROP TABLE IF EXISTS conversationuser;
 DROP TABLE IF EXISTS conversation;
 DROP TABLE IF EXISTS disputeitem;
 DROP TABLE IF EXISTS dispute;
@@ -2757,12 +2758,21 @@ CREATE TABLE disputeitem  (
 CREATE TABLE conversation  ( 
 	id   	int(11) AUTO_INCREMENT NOT NULL,
 	entity_code   		varchar(35) NOT NULL,
-   	owner   int(11) NOT NULL,
-   	counter_party   int(11) NOT NULL,
 	name   		varchar(35) NOT NULL,
 	description   		varchar(255) NOT NULL,
- 	FOREIGN KEY (owner) REFERENCES party (id), 
- 	FOREIGN KEY (counter_party) REFERENCES party (id), 
+	PRIMARY KEY( id )
+);
+
+CREATE TABLE conversationuser  ( 
+	id   	int(11) AUTO_INCREMENT NOT NULL,
+	entity_code   		varchar(35) NOT NULL,
+   	conversation   int(11) NOT NULL,
+   	con_user   int(11) NOT NULL,
+	name   		varchar(35) NOT NULL,
+	create_date   		date NULL,
+	description   		varchar(255) NOT NULL,
+ 	FOREIGN KEY (conversation) REFERENCES conversation (id), 
+ 	FOREIGN KEY (con_user) REFERENCES party (id), 
 	PRIMARY KEY( id )
 );
 

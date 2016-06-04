@@ -8049,10 +8049,6 @@ jQuery(document).ready(function($)
         },
         columns: [
             { data: "id" }, 
-
-                { data: "owner_txt" },
-
-                { data: "counter_party_txt" },
                 { data: "name" },
 
                 { data: "description" },
@@ -8070,6 +8066,50 @@ jQuery(document).ready(function($)
                         parent_params = parent_params + $('#conversation_parent_params').val(); 
                     }
                     return '<a class="data-table-link" href="' + baseUrl + 'artifact=conversation&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="conversation" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = shadowcore_base_url.baseUrl;
+
+    
+    $('#sb_conuser-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': shadowcore_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'conversationuser';
+               d.form = $("#sb_conuser-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+
+                { data: "conversation_txt" },
+
+                { data: "con_user_txt" },
+                { data: "name" },
+
+                { data: "create_date" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#conversationuser_parent_params').length) {
+                        parent_params = parent_params + $('#conversationuser_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=conversationuser&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="conversationuser" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
                 },
                 "targets": 1
             }

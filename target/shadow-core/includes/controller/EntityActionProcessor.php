@@ -32,6 +32,12 @@ class EntityActionProcessor {
 
         add_action('wp_ajax_delete_entity_ajax', 'EntityActionProcessor::delete_entity_ajax');
         add_action('wp_ajax_nopriv_delete_entity_ajax', 'EntityActionProcessor::delete_entity_ajax');
+
+        add_action('wp_ajax_get_conversations_ajax', 'EntityActionProcessor::get_conversations_ajax');
+        add_action('wp_ajax_nopriv_get_conversations_ajax', 'EntityActionProcessor::get_conversations_ajax');
+
+        add_action('wp_ajax_send_message_ajax', 'EntityActionProcessor::send_message_ajax');
+        add_action('wp_ajax_nopriv_send_message_ajax', 'EntityActionProcessor::send_message_ajax');
     }
 
     /**
@@ -159,6 +165,20 @@ class EntityActionProcessor {
         $entity_data = self::do_before_ajax_delete();
         $entity_data = EntityAPI::do_delete_entity($entity_data);
         self::do_after_ajax_delete($entity_data);
+    }  
+
+    /**
+     *
+     */
+    public static function get_conversations_ajax() {
+        wp_send_json_success(ConversationAPI::get_current_user_conversations());
+    }
+
+    /**
+     *
+     */
+    public static function send_message_ajax() {
+        wp_send_json_success(ConversationAPI::get_current_user_conversations());
     }
 
     /**

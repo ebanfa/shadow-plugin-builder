@@ -207,6 +207,7 @@ class ArtifactUtils {
         'dispute' => array('name' => 'Dispute', 'description' => 'Dispute', 'artifact_type' => 'entity', 'data_type' => 'sb_dispute'),
         'disputeitem' => array('name' => 'DisputeItem', 'description' => 'Dispute Item', 'artifact_type' => 'entity', 'data_type' => 'sb_disputeitem'),
         'conversation' => array('name' => 'Conversation', 'description' => 'Conversation', 'artifact_type' => 'entity', 'data_type' => 'sb_conversation'),
+        'conversationuser' => array('name' => 'ConversationUser', 'description' => 'Conversation User', 'artifact_type' => 'entity', 'data_type' => 'sb_conuser'),
         'message' => array('name' => 'Message', 'description' => 'Message', 'artifact_type' => 'entity', 'data_type' => 'sb_message'),
         'messagefiles' => array('name' => 'MessageFiles', 'description' => 'Message Files', 'artifact_type' => 'entity', 'data_type' => 'sb_messagesfiles'),
         'notificationtype' => array('name' => 'NotificationType', 'description' => 'Notification Type', 'artifact_type' => 'entity', 'data_type' => 'sb_notifytype'),

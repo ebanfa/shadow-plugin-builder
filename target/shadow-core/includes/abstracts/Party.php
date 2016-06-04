@@ -59,6 +59,13 @@ class Party extends Model {
     /**
      * 
      */
+    public function con_user()
+    {
+        return $this->hasMany('ConversationUser');
+    }
+    /**
+     * 
+     */
     public function from_party()
     {
         return $this->hasMany('Transaction');

@@ -22,16 +22,6 @@ class ConversationCPT {
             'description' => 'The Code field',
             'type' => 'text',
         ),
-        array('name' => 'owner',
-            'title' => 'Owner',
-            'description' => 'The Owner field',
-            'type' => 'text',
-        ),
-        array('name' => 'counter_party',
-            'title' => 'Counter Party',
-            'description' => 'The Counter Party field',
-            'type' => 'text',
-        ),
         array('name' => 'name',
             'title' => 'Name',
             'description' => 'The Name field',
@@ -62,34 +52,6 @@ class ConversationCPT {
             'is_list_field' => false,
             'is_form_field' => false,
             'is_relationship_field' => false,),
-        'owner' => array('name' => 'owner',
-            'description' => 'Owner',
-            'size' => 'large',
-            'entity_name' => 'Party',
-            'entity_description' => 'Party',
-            'data_type' => 'sb_party',
-            'is_required' => true,
-            'is_visible' => true,
-            'is_create_field' => true,
-            'is_edit_field' => true,
-            'is_view_field' => true,
-            'is_list_field' => true,
-            'is_form_field' => true,
-            'is_relationship_field' => true,),
-        'counter_party' => array('name' => 'counter_party',
-            'description' => 'Counter Party',
-            'size' => 'large',
-            'entity_name' => 'Party',
-            'entity_description' => 'Party',
-            'data_type' => 'sb_party',
-            'is_required' => true,
-            'is_visible' => true,
-            'is_create_field' => true,
-            'is_edit_field' => true,
-            'is_view_field' => true,
-            'is_list_field' => true,
-            'is_form_field' => true,
-            'is_relationship_field' => true,),
         'name' => array('name' => 'name',
             'description' => 'Name',
             'size' => 'large',
@@ -279,8 +241,6 @@ class ConversationCPT {
     }
 
     public static function sb_conversation_table_head($defaults){
-        $defaults['owner']  = 'Owner';
-        $defaults['counter_party']  = 'Counter';
         $defaults['name']  = 'name';
         $defaults['description']  = 'Description';
         return $defaults;
@@ -289,14 +249,6 @@ class ConversationCPT {
     public static function sb_conversation_table_content($column_name, $post_id){
         if ($column_name == 'entity_code') {
             $field_value = get_post_meta($post_id, 'entity_code', true );
-            echo $field_value;
-        }
-        if ($column_name == 'owner') {
-            $field_value = get_post_meta($post_id, 'owner', true );
-            echo $field_value;
-        }
-        if ($column_name == 'counter_party') {
-            $field_value = get_post_meta($post_id, 'counter_party', true );
             echo $field_value;
         }
         if ($column_name == 'name') {

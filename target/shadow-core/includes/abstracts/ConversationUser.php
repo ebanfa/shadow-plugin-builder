@@ -2,10 +2,10 @@
 
 use \WeDevs\ORM\Eloquent\Model as Model;
 
-class Conversation extends Model {
+class ConversationUser extends Model {
 
     public $primaryKey = 'id';
-    public $table = 'conversation';
+    public $table = 'conversationuser';
     /**
      * Indicates if the model should be timestamped.
      *
@@ -13,14 +13,21 @@ class Conversation extends Model {
      */
     public $timestamps = false;
 
-
     /**
      * 
      */
     public function conversation()
     {
-        return $this->hasMany('Message');
+        return $this->belongsTo('Conversation');
     }
+    /**
+     * 
+     */
+    public function con_user()
+    {
+        return $this->belongsTo('Party');
+    }
+
 
 }
 

@@ -454,6 +454,8 @@ class ShadowCore {
         include_once('includes/abstracts/DisputeItem.php');
         include_once('includes/abstracts/ConversationCPT.php');
         include_once('includes/abstracts/Conversation.php');
+        include_once('includes/abstracts/ConversationUserCPT.php');
+        include_once('includes/abstracts/ConversationUser.php');
         include_once('includes/abstracts/MessageCPT.php');
         include_once('includes/abstracts/Message.php');
         include_once('includes/abstracts/MessageFilesCPT.php');
@@ -627,6 +629,7 @@ class ShadowCore {
         include_once('includes/api/GLAccountTypeAPI.php');
         include_once('includes/api/FinancialEventTypeAPI.php');
         include_once('includes/api/TransactionTypeAPI.php');
+        include_once('includes/api/ConversationAPI.php');
         include_once('includes/api/NotificationAPI.php');
         include_once('includes/api/WorkEffortAPI.php');
         
@@ -1201,6 +1204,8 @@ class ShadowCore {
         add_action('manage_sb_disputeitem_posts_custom_column', 'DisputeItemCPT::sb_disputeitem_table_content', 10, 2);
         add_filter('manage_sb_conversation_posts_columns', 'ConversationCPT::sb_conversation_table_head');
         add_action('manage_sb_conversation_posts_custom_column', 'ConversationCPT::sb_conversation_table_content', 10, 2);
+        add_filter('manage_sb_conuser_posts_columns', 'ConversationUserCPT::sb_conuser_table_head');
+        add_action('manage_sb_conuser_posts_custom_column', 'ConversationUserCPT::sb_conuser_table_content', 10, 2);
         add_filter('manage_sb_message_posts_columns', 'MessageCPT::sb_message_table_head');
         add_action('manage_sb_message_posts_custom_column', 'MessageCPT::sb_message_table_content', 10, 2);
         add_filter('manage_sb_messagesfiles_posts_columns', 'MessageFilesCPT::sb_messagesfiles_table_head');
@@ -1373,15 +1378,15 @@ class ShadowCore {
 
         wp_register_script('input_mask_js', plugins_url('/js/jquery.mask.min.js', __FILE__), array('jquery'), true);
         wp_register_script('jstree_js', plugins_url('/js/jstree.min.js', __FILE__), array('jquery'), true);
-        wp_register_script('conversations_js', plugins_url('/js/conversation-messages.js', __FILE__), array('jquery'), true);
+        wp_register_script('conversate_js', plugins_url('/js/conversate.js', __FILE__), array('jquery'), true);
 
         wp_enqueue_script('jquery_form_js');
-        //wp_enqueue_script('bootstrap_js');
         wp_enqueue_script('bootstrap_validator_js');
         wp_enqueue_script('bootstrap_tabdrop_js');
         wp_enqueue_script('datatables_core_js');
         wp_enqueue_script('datatables_bootstrap_js');
-        wp_enqueue_script('cp_init');
+        //wp_enqueue_script('cp_init');
+        wp_enqueue_script('conversate_js');
 
         // Enqueue data tables js for view pages
         if(isset($_REQUEST['page_action'])) {
@@ -1401,6 +1406,7 @@ class ShadowCore {
         //wp_localize_script('conversations_js', 'shadowcore_ajax_script', array('ajaxurl' => admin_url('admin-ajax.php')));
         wp_localize_script('entity_datasource_js', 'shadowcore_ajax_script', array('ajaxurl' => admin_url('admin-ajax.php')));
          wp_localize_script('entity_datasource_js', 'shadowcore_base_url', array('baseUrl' => EntityActionProcessor::get_base_url()));
+        wp_localize_script('conversate_js', 'shadowcore_ajax_script', array('ajaxurl' => admin_url('admin-ajax.php')));
     }
 
     /**

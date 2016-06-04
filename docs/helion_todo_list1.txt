@@ -1,0 +1,28 @@
+
+Get a list of all conversations for user
+Get all users of conversations
+Get all conversations with messages
+Send message to user within conversation
+Send message to user with attachment within conversation
+Check for new messages
+
+Add business user
+Add user to business role
+Add role to business user
+Send invite email
+Implement invite sign up form
+Add gender to sign up form
+
+Create task
+Get all user task
+Assign users to task
+Mark task as complete
+Add comment to task
+
+Get all notifications for user
+View notification
+Mark notification as viewed
+
+Get all online users
+
+Implement global search

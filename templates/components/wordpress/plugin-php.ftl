@@ -166,6 +166,7 @@ class ${application.name} {
         add_action('template_redirect', 'CloderiaAdminAPI::do_ajax_setup');
 
         EntityActionProcessor::init_hooks();
+        ConversationAPI::init_hooks();
         //ChartOfAccountsAPI::init_hooks();
         //Order related Ajax functions
         #add_action('wp_ajax_do_content_order_ajax', 'CloderiaOrdersAPI::do_content_order_ajax');
@@ -265,15 +266,15 @@ class ${application.name} {
 
         wp_register_script('input_mask_js', plugins_url('/js/jquery.mask.min.js', __FILE__), array('jquery'), true);
         wp_register_script('jstree_js', plugins_url('/js/jstree.min.js', __FILE__), array('jquery'), true);
-        wp_register_script('conversations_js', plugins_url('/js/conversation-messages.js', __FILE__), array('jquery'), true);
+        wp_register_script('conversate_js', plugins_url('/js/conversate.js', __FILE__), array('jquery'), true);
 
         wp_enqueue_script('jquery_form_js');
-        //wp_enqueue_script('bootstrap_js');
         wp_enqueue_script('bootstrap_validator_js');
         wp_enqueue_script('bootstrap_tabdrop_js');
         wp_enqueue_script('datatables_core_js');
         wp_enqueue_script('datatables_bootstrap_js');
-        wp_enqueue_script('cp_init');
+        //wp_enqueue_script('cp_init');
+        wp_enqueue_script('conversate_js');
 
         // Enqueue data tables js for view pages
         if(isset($_REQUEST['page_action'])) {
@@ -293,6 +294,7 @@ class ${application.name} {
         //wp_localize_script('conversations_js', '${application.name?lower_case}_ajax_script', array('ajaxurl' => admin_url('admin-ajax.php')));
         wp_localize_script('entity_datasource_js', '${application.name?lower_case}_ajax_script', array('ajaxurl' => admin_url('admin-ajax.php')));
          wp_localize_script('entity_datasource_js', '${application.name?lower_case}_base_url', array('baseUrl' => EntityActionProcessor::get_base_url()));
+        wp_localize_script('conversate_js', '${application.name?lower_case}_ajax_script', array('ajaxurl' => admin_url('admin-ajax.php')));
     }
 
     /**
