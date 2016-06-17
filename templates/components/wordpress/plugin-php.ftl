@@ -273,7 +273,7 @@ class ${application.name} {
         wp_enqueue_script('bootstrap_tabdrop_js');
         wp_enqueue_script('datatables_core_js');
         wp_enqueue_script('datatables_bootstrap_js');
-        //wp_enqueue_script('cp_init');
+        wp_enqueue_script('cp_init');
         wp_enqueue_script('conversate_js');
 
         // Enqueue data tables js for view pages

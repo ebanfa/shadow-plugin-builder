@@ -12,6 +12,7 @@ import javax.xml.bind.annotation.XmlElement;
 public class Field {
 
 	private String name;
+	private String javaName;
 	private String dataType;
 	private String size;
 	private String isVisible;
@@ -245,6 +246,20 @@ public class Field {
 	@XmlElement
 	public void setRelationshipField(String relationshipField) {
 		this.relationshipField = relationshipField;
+	}
+
+	/**
+	 * @return the javaName
+	 */
+	public String getJavaName() {
+		return javaName;
+	}
+
+	/**
+	 * @param javaName the javaName to set
+	 */
+	public void setJavaName(String javaName) {
+		this.javaName = javaName;
 	}
 
 }

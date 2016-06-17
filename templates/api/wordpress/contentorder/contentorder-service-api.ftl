@@ -13,31 +13,34 @@ class ContentOrderAPI  {
      *
      */
     public static function do_create_entity($entity_data){
-        CloderiaLogUtils::shadow_log('Loading order user');
+        $party_data = array();
         $user = get_user_by('login', $entity_data['email']);
         if($user) { 
-            CloderiaLogUtils::shadow_log('User is valid....looking for party');
-            $party_data = PartyAPI::get_user_party($user);
+            $party_data = EntityAPI::get_by_field('party', 'user_name', $user->user_login);;
             if(!isset($party_data['id'])) {
-                CloderiaLogUtils::shadow_log('Party is valid....');
-                CloderiaUserAPI::create_shadow_user($user_data);
+                $user_data = self::build_signup_data_from_entity($entity_data);
+                $party_data = CloderiaUserAPI::create_shadow_user($user_data);
             }
         }
         else {
             // Create the user and signin
-            CloderiaLogUtils::shadow_log('No user creating new one');
-            $party_data = CloderiaUserAPI::do_create_content_user($entity_data);
-            CloderiaLogUtils::shadow_log($party_data);
-            $signin_results = ContentUserLoginAPI::do_signin_user($party_data['user_name'], $party_data['password']);
-
-            if ($signin_results['hasErrors']) wp_send_json_error(array('message' => $signin_results['message']));
+            if(isset($entity_data['email'])) {
+                $party_data = CloderiaUserAPI::do_create_content_user($entity_data);
+                $signin_results = ContentUserLoginAPI::do_signin_user($party_data['user_name'], $party_data['password']);
+                if ($signin_results['hasErrors']) wp_send_json_error(array('message' => $signin_results['message']));
+            }
         }
         // Create the content order
-        $entity_data = self::do_create_content_order($entity_data);
-        // Send out the order created email
-        self::send_order_created_email($entity_data);
-        // Process login redirect
-        if (!is_user_logged_in()) $entity_data = ContentOrderAPI::process_login_redirect($entity_data) ;
+        if(isset($party_data['id'])) {
+            $entity_data['party'] = $party_data['id'];
+            $entity_data['business_unit'] = $party_data['business_unit'];
+            $entity_data = self::do_create_content_order($entity_data);
+            // Send out the order created email
+            self::send_order_created_email($entity_data);
+            // Process login redirect
+            if (!is_user_logged_in()) $entity_data = ContentOrderAPI::process_login_redirect($entity_data) ;
+        }
+
         return $entity_data;
         
     }
@@ -85,25 +88,16 @@ class ContentOrderAPI  {
     public static function send_order_created_email($entity_data) 
     {   
         // Find the user
-        CloderiaLogUtils::shadow_log('Loading user....');
         $user = get_user_by('login', $entity_data['email'] );
         if($user) {
-            CloderiaLogUtils::shadow_log('User is valid....');
             // Get the user data context {username, password etc}
             $data_context = self::get_order_data_context($entity_data);
 
-            CloderiaLogUtils::shadow_log('Got context...');
-            CloderiaLogUtils::shadow_log($data_context);
             //update_user_meta($user->ID, 'userDataContext', implode("|", $data_context));
             // 2. Send mail to user,
             CloderiaUserAPI::send_email($data_context, $user->user_login, 'order-created-subject.tpl', 'order-created-message.tpl', array());
             // 3 Send mail to the admin
-            CloderiaLogUtils::shadow_log('Sending email to....' . get_option('cp_notify_orders'));
             CloderiaUserAPI::send_email($data_context, get_option('cp_notify_orders'), 'order-created-subject.tpl', 'order-created-message.tpl', array());
-        }
-        else {
-
-            CloderiaLogUtils::shadow_log('User is invalid....');
         }
     }
 
@@ -209,5 +203,34 @@ class ContentOrderAPI  {
         }
         return $order_data;
     }
+
+    /*
+ *
+ */
+function build_signup_data_from_entity($entity_data) {
+
+    $user_name = $entity_data['email'];
+    $password = EntityStringUtils::get_token(8);
+    $first_name = $entity_data['email'];
+    $last_name = $entity_data['email'];
+    $user_type = 'INDIVIDUAL';
+    // Split the username at the @ sign
+    $account_name = $user_name;
+    $split_username = explode('@', $account_name);
+    if (!empty($split_username)) {
+        $account_name = ucfirst($split_username[0]);
+    }
+    $user_data = array();
+    $user_data['user_login'] = $user_name;
+    $user_data['user_pass'] = $password;
+    $user_data['first_name'] = $first_name;
+    $user_data['last_name'] = $last_name;
+    $user_data['display_name'] = $account_name;
+    $user_data['user_email'] = $user_name;
+    $user_data['description'] = '';
+    $user_data['role'] = $user_type;
+    $user_data['business_name'] = $account_name;
+    return $user_data;
+}
 
 }

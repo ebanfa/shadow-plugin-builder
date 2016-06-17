@@ -8,7 +8,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.xml.bind.JAXBContext;
@@ -17,6 +19,7 @@ import javax.xml.bind.Unmarshaller;
 
 import com.cloderia.ide.app.Application;
 import com.cloderia.ide.app.Entity;
+import com.cloderia.ide.app.Field;
 import com.cloderia.ide.app.Module;
 
 import freemarker.template.Configuration;
@@ -32,10 +35,11 @@ import freemarker.template.Version;
  */
 public class ErraiAppBuilder extends ApplicationBuilder {
 
-	private static final String CLIENT_DIR = "/com/cloderia/shadowbanker/client/";
+	private static final String CLIENT_DIR = "/com/cloderia/helion/client/";
 	private static final String UI_DIR = CLIENT_DIR + "local/ui/";
 	private static final String SHARED_DIR = CLIENT_DIR + "shared/";
-	private static final String SERVER_DIR = "/com/cloderia/shadowbanker/server/";
+	private static final String MODEL_DIR = SHARED_DIR + "model/";
+	private static final String SERVER_DIR = "/com/cloderia/helion/server/";
 	private String config;
 	private Application application;
 	private Configuration configuration;
@@ -150,14 +154,71 @@ public class ErraiAppBuilder extends ApplicationBuilder {
 	public void buildModules(Application application) {
 		for (Module module : application.getModules()) {
 			System.out.println(module);
-			doHTMLFiles(module);
-			doComponents(module);
+			processFields(module);
+			processRelatedChildEntities(module);
+			//doHTMLFiles(module);
+			//doComponents(module);
 			doEndPoints(module);
 			doServices(module);
+			doEntities(module);
 		}
 	}
 
+	private void processFields(Module module) {
+		List<Entity> entitiesInModule = module.getEntities();
+		// Loop through all the entities in the module
+		for(Entity entity : module.getEntities()){
+			List<Field> fieldsInEntity = entity.getFields();
+			// Process the fields in the entity
+			for(Field field : fieldsInEntity){
+				// Only process relationship fields
+				String javaName = "";
+				String fieldName = field.getName();
+				if(fieldName.contains("_")){
+					String[] nameParts = fieldName.split("_");
+					for (int i = 0; i < nameParts.length; i++) {
+						String part = nameParts[i];
+						if(i != 0) {
+							part = part.substring(0, 1).toUpperCase() + part.substring(1);
+						}
+						javaName = javaName.concat(part);
+					}
+				}
+				else {
+					javaName = fieldName;
+				}
+				field.setJavaName(javaName);
+			}
+		}
+		module.setEntities(entitiesInModule);
+	}
 	
+	private void processRelatedChildEntities(Module module) {
+		List<Entity> entitiesInModule = module.getEntities();
+		List<Entity> cloneOfEntitiesInModule = new ArrayList(entitiesInModule);
+		// Loop through all the entities in the module
+		for(Entity entity : module.getEntities()){
+			List<Field> fieldsInEntity = entity.getFields();
+			// Process the fields in the entity
+			for(Field field : fieldsInEntity){
+				// Only process relationship fields
+				if(field.getRelationshipField().equals("Y")){
+					String targetEntityPostName = field.getDataType();
+					
+					for(Entity item: cloneOfEntitiesInModule){
+						if(item.getPostName().equals(targetEntityPostName)) {
+							String fieldName = field.getName(); //+ UUID.randomUUID().toString();
+							//item.getRelatedChildFields().put(fieldName, field);
+							item.getRelatedChildEntities().put(fieldName, entity);
+						}
+
+					}
+				}
+
+			}
+		}
+		module.setEntities(cloneOfEntitiesInModule);
+	}
 
 	private void doHTMLFiles(Module module) {
 		// Create directory structure
@@ -169,19 +230,19 @@ public class ErraiAppBuilder extends ApplicationBuilder {
 			String entityDir = htmlFilesDirs + "/" + entity.getName().toLowerCase();
 			this.createDirectoryIfNeeded(entityDir);
 			// Generate the create HTML pages
-			this.generateArtifact(module, entity, "html/create-entity.ftl" , 
+			this.generateArtifact(module, entity, "html/errai/create-entity.ftl" , 
 					entityDir + "/create-" + entity.getName().toLowerCase() + ".html");
 			// Generate the edit HTML pages
-			this.generateArtifact(module, entity, "html/edit-entity.ftl" , 
+			this.generateArtifact(module, entity, "html/errai/edit-entity.ftl" , 
 					entityDir + "/edit-" + entity.getName().toLowerCase() + ".html");
 			// Generate the list HTML pages
-			this.generateArtifact(module, entity, "html/list-entity.ftl" , 
+			this.generateArtifact(module, entity, "html/errai/list-entity.ftl" , 
 					entityDir + "/list-" + entity.getName().toLowerCase() + ".html");
 			// Generate the view HTML pages
-			this.generateArtifact(module, entity, "html/view-entity.ftl" , 
+			this.generateArtifact(module, entity, "html/errai/view-entity.ftl" , 
 					entityDir + "/view-" + entity.getName().toLowerCase() + ".html");
 			// Generate the list item HTML pages
-			this.generateArtifact(module, entity, "html/entity-list-item.ftl" , 
+			this.generateArtifact(module, entity, "html/errai/entity-list-item.ftl" , 
 					entityDir + "/" + entity.getName().toLowerCase() + "-list-item.html");
 		}
 	}
@@ -196,19 +257,19 @@ public class ErraiAppBuilder extends ApplicationBuilder {
 			String entityDir = htmlFilesDirs + "/" + entity.getName().toLowerCase();
 			this.createDirectoryIfNeeded(entityDir);
 			// Generate the create java file
-			this.generateArtifact(module, entity, "components/create-entity.ftl" , 
+			this.generateArtifact(module, entity, "components/errai/create-entity.ftl" , 
 					entityDir + "/Create" + entity.getName() + "Page.java");
 			// Generate the edit  java file
-			this.generateArtifact(module, entity, "components/edit-entity.ftl" , 
+			this.generateArtifact(module, entity, "components/errai/edit-entity.ftl" , 
 					entityDir + "/Edit" + entity.getName() + "Page.java");
 			// Generate the list  java file
-			this.generateArtifact(module, entity, "components/list-entity.ftl" , 
+			this.generateArtifact(module, entity, "components/errai/list-entity.ftl" , 
 					entityDir + "/List" + entity.getName() + "Page.java");
 			// Generate the view  java file
-			this.generateArtifact(module, entity, "components/view-entity.ftl" , 
+			this.generateArtifact(module, entity, "components/errai/view-entity.ftl" , 
 					entityDir + "/View" + entity.getName() + "Page.java");
 			// Generate the list item  java file
-			this.generateArtifact(module, entity, "components/entity-list-item.ftl" , 
+			this.generateArtifact(module, entity, "components/errai/entity-list-item.ftl" , 
 					entityDir + "/" + entity.getName() + "ListItemWidget.java");
 		}
 	}
@@ -225,10 +286,10 @@ public class ErraiAppBuilder extends ApplicationBuilder {
 		this.createDirectoryIfNeeded(endpointImplFilesDirs + "endpoint");
 		for(Entity entity: module.getEntities()) {
 			// Generate the create java file
-			this.generateArtifact(module, entity, "endpoints/interface.ftl" , 
+			this.generateArtifact(module, entity, "endpoints/errai/interface.ftl" , 
 					endpointFilesDirs + "/endpoint/" + entity.getName() + "EndPoint.java");
 			// Generate the edit  java file
-			this.generateArtifact(module, entity, "endpoints/implementation.ftl" , 
+			this.generateArtifact(module, entity, "endpoints/errai/implementation.ftl" , 
 					endpointImplFilesDirs + "/endpoint/" + entity.getName() + "EndPointImpl.java");
 			
 		}
@@ -246,11 +307,23 @@ public class ErraiAppBuilder extends ApplicationBuilder {
 		this.createDirectoryIfNeeded(serviceImplFilesDirs + "service");
 		for(Entity entity: module.getEntities()) {
 			// Generate the create java file
-			this.generateArtifact(module, entity, "services/interface.ftl" , 
+			this.generateArtifact(module, entity, "services/errai/interface.ftl" , 
 					serviceFilesDirs + "/service/" + entity.getName() + "Service.java");
 			// Generate the edit  java file
-			this.generateArtifact(module, entity, "services/implementation.ftl" , 
+			this.generateArtifact(module, entity, "services/errai/implementation.ftl" , 
 					serviceImplFilesDirs + "/service/" + entity.getName() + "ServiceImpl.java");
+		}
+	}
+	
+	private void doEntities(Module module) {
+		// Create directory structure
+		String moduleDir = application.getGenerateSourcesDir() + module.getName();
+		String modelDirs = moduleDir + ErraiAppBuilder.MODEL_DIR;
+		this.createDirectoryIfNeeded(modelDirs);
+		for(Entity entity: module.getEntities()) {
+			// Generate the create java file
+			this.generateArtifact(module, entity, "entities/errai/entity.ftl" , 
+					modelDirs + entity.getName() + ".java");
 		}
 	}
 	

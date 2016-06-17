@@ -56,7 +56,7 @@
     
     <div class="pm-body clearfix">
         <div class="c-overflow">
-            <ul class="tab-nav tn-justified"  role="tablist" style="overflow: visible;">
+            <ul class="tab-nav"  role="tablist" style="padding-left: 40px; overflow: visible;">
                 <li class="active waves-effect">
                     <a href="#tab-0" aria-controls="tab-0" role="tab" data-toggle="tab">
                         <?php echo $model['entity_description']; ?>

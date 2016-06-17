@@ -294,7 +294,7 @@
 			</menu>
 		</menuGroup> -->
 
-		<!-- <menuGroup>
+		<menuGroup>
 			<name>accounting</name>
 			<displayName>Accounting</displayName>
 			<description>Accounting</description>
@@ -407,7 +407,7 @@
 				<targetType>entity</targetType>
 				<target>/wordpress/page?page_action=list&amp;artifact=glbudgetxref</target>
 			</menu>
-		</menuGroup> -->
+		</menuGroup>
 
 		<menuGroup>
 			<name>business</name>
@@ -480,7 +480,7 @@
 			</menu>
 		</menuGroup>
 
-		<!-- <menuGroup>
+		<menuGroup>
 			<name>financialreports</name>
 			<displayName>Financial Reports</displayName>
 			<description>Financial Reports</description>
@@ -695,7 +695,7 @@
 				<target>/wordpress/page?artifact=vacantunits</target>
 			</menu>
 
-		</menuGroup> -->
+		</menuGroup>
 
 		<menuGroup>
 			<name>businesssettings</name>

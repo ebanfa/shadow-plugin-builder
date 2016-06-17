@@ -39,18 +39,25 @@ class CloderiaUserAPI {
         $party_data = array();
         // Validate the passed in data
         if(self::validate_user_data($user_data)) {
+            CloderiaLogUtils::shadow_log('Got context1...');
             // 1. Create the default business for the party
             $business_data = self::create_default_user_business($user_data);
+            CloderiaLogUtils::shadow_log('Got context2...');
             // 2. Create the default buisness unit for the party
             $businessunit_data = self::create_default_user_businessunit($business_data);
+            CloderiaLogUtils::shadow_log('Got context3...');
             // 3. Create the party
             $party_data = self::create_party($user_data, $businessunit_data);
+            CloderiaLogUtils::shadow_log('Got context4...');
             // 4. Create the person entity for the party
             $person_data = self::create_party_person($party_data);
+            CloderiaLogUtils::shadow_log('Got context5...');
             // 5. Create the default party role
             $partyprofile_data = self::create_party_profile($party_data);
+            CloderiaLogUtils::shadow_log('Got context6...');
             // 6. Create the profile for the user
             $partyrole_data = self::create_default_party_role($party_data);
+            CloderiaLogUtils::shadow_log('Got context7...');
             // 7. Create the chart of accounts entity
             //$chartofaccounts_data = CloderiaUserAPI::create_default_party_chartofaccounts($businessunit_data, $partyrole_data);
             // 8. Send the user successully created email
@@ -104,23 +111,35 @@ class CloderiaUserAPI {
      */
     public static function create_party($user_data, $businessunit_data) {
         // Get the default party type (INDIVIDUAL)
+        CloderiaLogUtils::shadow_log('create_party1...');
         $party_type = EntityAPI::get_by_code('partytype', get_option('cp_default_partytype'));
+        CloderiaLogUtils::shadow_log('create_party2...');
         if(isset($party_type['id']) && isset($businessunit_data['id'])) {
+            CloderiaLogUtils::shadow_log('create_party3...');
             $entity_data = EntityAPIUtils::init_entity_data('party');
+            CloderiaLogUtils::shadow_log('create_party4...');
             $entity_data['edit_mode'] = true;
             $entity_data['has_errors'] = false;
             $entity_data['party_type'] = $party_type['id'];
+            CloderiaLogUtils::shadow_log('create_party5...');
             $entity_data['password'] = $user_data['user_pass'];
+            CloderiaLogUtils::shadow_log('create_party6...');
             $entity_data['user_name'] = $user_data['user_login'];
+            CloderiaLogUtils::shadow_log('create_party7...');
             $entity_data['business_unit'] = $businessunit_data['id'];
+            CloderiaLogUtils::shadow_log('create_party8...');
             $entity_data['name'] = $user_data['first_name'] . ' ' . $user_data['last_name'];
+            CloderiaLogUtils::shadow_log('create_party9...');
             $entity_data['description'] = $user_data['first_name'] . ' ' . $user_data['last_name'];
             // These two fields are not persistent fields, we just use the to hold the
             // data for first and last name
             $entity_data['first_name'] = $user_data['first_name'];
+            CloderiaLogUtils::shadow_log('create_party10...');
             $entity_data['last_name'] = $user_data['last_name'];
+            CloderiaLogUtils::shadow_log('create_party11...');
             // Create the party and return the results of the process
             $entity_data = EntityAPI::create_entity($entity_data);
+            CloderiaLogUtils::shadow_log('create_party12...');
             return $entity_data;
 
         }

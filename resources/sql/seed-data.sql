@@ -31,15 +31,17 @@ INSERT INTO roletype (entity_code, name, description) VALUES ('SERVICE_PROVIDER'
 INSERT INTO roletype (entity_code, name, description) VALUES ('PROSPECTIVE_TENANT', 'Prospective Tenant', 'Prospective Tenant');
 INSERT INTO roletype (entity_code, name, description) VALUES ('PROPERTY_PERSONNEL', 'Property Personnel', 'Property Personnel');
 
+
+/* Insert statement for Business Category */
+INSERT INTO businesscategory (id, entity_code, name, description) VALUES (1, 'BUSINESS', 'Business', 'Business');
+INSERT INTO businesscategory (id, entity_code, name, description) VALUES (2, 'PROPERTY', 'Property', 'Property');
+
+
 /* Insert statement for User Invite Status */
 INSERT INTO userinvitestatus (entity_code, name, description) VALUES ('PENDING', 'Pending', 'Pending');
 INSERT INTO userinvitestatus (entity_code, name, description) VALUES ('SENT', 'Sent', 'Sent');
 INSERT INTO userinvitestatus (entity_code, name, description) VALUES ('ACCEPTED', 'Accepted', 'Accepted');
 INSERT INTO userinvitestatus (entity_code, name, description) VALUES ('REJECTED', 'Rejected', 'Rejected');
-
-/* Insert statement for Business Category */
-INSERT INTO businesscategory (id, entity_code, name, description) VALUES (1, 'BUSINESS', 'Business', 'Business');
-INSERT INTO businesscategory (id, entity_code, name, description) VALUES (2, 'PROPERTY', 'Property', 'Property');
 
 /* Insert statement for Facility Category */
 INSERT INTO facilitycategory (id, entity_code, name, description) VALUES (1, 'PROPERTY', 'Property', 'Property');

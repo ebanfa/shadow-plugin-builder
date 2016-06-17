@@ -163,7 +163,7 @@
      * Calculates the cost of an order.
      */
     BlitzDocument.doOrderFormCalculation = function () {
-        var orderForm = document.getElementById('contact');
+        var orderForm = document.getElementById('contactForm');
         var orderCostPerPage = 0;
         var orderTotalCost = 0;
         var single = orderForm.o_interval.checked;
@@ -344,27 +344,27 @@
     function doUrgencyCost(urgency) {
 
         document.getElementById("urgency_txt").value = urgency.options[urgency.selectedIndex].text;
-        if (urgency.options[urgency.selectedIndex].value == 6) {
+        if (urgency.options[urgency.selectedIndex].value == 2) {
             return 3.00
-        } else if (urgency.options[urgency.selectedIndex].value == 7) {
+        } else if (urgency.options[urgency.selectedIndex].value == 3) {
             return 2.60
-        } else if (urgency.options[urgency.selectedIndex].value == 8) {
+        } else if (urgency.options[urgency.selectedIndex].value == 4) {
             return 2.20
-        } else if (urgency.options[urgency.selectedIndex].value == 9) {
+        } else if (urgency.options[urgency.selectedIndex].value == 5) {
             return 1.90
-        } else if (urgency.options[urgency.selectedIndex].value == 10) {
+        } else if (urgency.options[urgency.selectedIndex].value == 6) {
             return 1.75
-        } else if (urgency.options[urgency.selectedIndex].value == 11) {
+        } else if (urgency.options[urgency.selectedIndex].value == 7) {
             return 1.65
-        } else if (urgency.options[urgency.selectedIndex].value == 12) {
+        } else if (urgency.options[urgency.selectedIndex].value == 8) {
             return 1.40
-        } else if (urgency.options[urgency.selectedIndex].value == 13) {
+        } else if (urgency.options[urgency.selectedIndex].value == 9) {
             return 1.15
-        } else if (urgency.options[urgency.selectedIndex].value == 14) {
+        } else if (urgency.options[urgency.selectedIndex].value == 10) {
             return 1.15
-        } else if (urgency.options[urgency.selectedIndex].value == 15) {
+        } else if (urgency.options[urgency.selectedIndex].value == 11) {
             return 1.15
-        } else if (urgency.options[urgency.selectedIndex].value == 16) {
+        } else if (urgency.options[urgency.selectedIndex].value == 1) {
             return 3.50
         }
     }

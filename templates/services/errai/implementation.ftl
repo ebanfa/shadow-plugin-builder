@@ -1,14 +1,14 @@
 /**
  * 
  */
-package com.cloderia.${application.packageName}.server.service;
+package com.cloderia.helion.server.service;
 
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 
-import com.cloderia.${application.packageName}.client.shared.model.${entity.name};
-import com.cloderia.${application.packageName}.client.shared.service.${entity.name}Service;
+import com.cloderia.helion.client.shared.model.${entity.name};
+import com.cloderia.helion.client.shared.service.${entity.name}Service;
 
 /**
  * @author Edward Banfa

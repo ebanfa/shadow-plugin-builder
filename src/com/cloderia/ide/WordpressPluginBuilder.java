@@ -73,8 +73,8 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 		this.appName = pluginName.substring(0, 1).toUpperCase() + pluginName.substring(1);
 		this.templatesDir = baseDir + "templates/";
 		
-		this.config = baseDir + "config/helion-application.xml";
-		//this.config = baseDir + "config/essaysite-application.xml";
+		//this.config = baseDir + "config/helion-application.xml";
+		this.config = baseDir + "config/essaysite-application.xml";
 		//this.config = baseDir + "config/business-site-application.xml";
 	}
 
@@ -173,6 +173,7 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 			//System.out.println(module);
 			processRelatedChildEntities(module);
 			processVirtualEntities(module) ;
+			//processFields(module) ;
 			doComponents(module);
 			doSQL(module);
 			doEnities(module);
@@ -214,6 +215,8 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 		}
 		module.setEntities(cloneOfEntitiesInModule);
 	}
+	
+	
 
 	private void processVirtualEntities(Module module) {
 		List<Entity> entitiesInModule = module.getEntities();

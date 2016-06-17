@@ -1,9 +1,9 @@
 /**
  * 
  */
-package com.cloderia.${application.packageName}.client.shared.service;
+package com.cloderia.helion.client.shared.service;
 
-import com.cloderia.${application.packageName}.client.shared.model.${entity.name};
+import com.cloderia.helion.client.shared.model.${entity.name};
 
 /**
  * @author Edward Banfa

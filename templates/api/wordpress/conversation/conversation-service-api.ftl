@@ -68,12 +68,12 @@ class ConversationAPI {
         $party_data = PartyAPI::get_current_user_party();
         if(isset($party_data['id'])) {
             // Find all conversation users for the current party
-            $conversation_user_list = EntityAPI::find_by_criteria(array('con_user' => $party_data['id']));
+            $conversation_user_list = EntityAPI::find_by_criteria('conversationuser', array('con_user' => $party_data['id']));
             // For each conversation user get the parent conversation
             foreach ($conversation_user_list as $con_user) {
-                $conversation_data = EntityAPI::get_by_id($con_user['conversation']);
+                $conversation_data = EntityAPI::get_by_id('conversation', $con_user['conversation']);
                 // For each conversation get the messages that have the current party as send or receiver 
-                $messages_list = EntityAPI::find_by_criteria(array('conversation' => $conversation_data['id']));
+                $messages_list = EntityAPI::find_by_criteria('message', array('conversation' => $conversation_data['id']));
                 foreach ($messages_list as $message_data) {
                    if($message_data['owner'] == $party_data['id'] || 
                     $message_data['counter_party'] == $party_data['id']) {
@@ -85,7 +85,7 @@ class ConversationAPI {
             }
         }
         // build json objects for each conversation along with the user's messages
-        return $conversations_list;
+        wp_send_json_success($conversations_list);
     }
 
     /**

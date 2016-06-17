@@ -4,9 +4,9 @@
 package com.cloderia.ide.app;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.HashMap;
 
 import javax.xml.bind.annotation.XmlElement;
 
@@ -35,6 +35,7 @@ public class Entity {
 	private String relatedEntityFieldName;
 	private List<Field> fields = new ArrayList<Field>();
 	private List<Field> virtualFields = new ArrayList<Field>();
+	private Map<String, Field> relatedChildFields = new HashMap<String, Field>();
 	private Map<String, Entity> relatedChildEntities = new HashMap<String, Entity>();
 
 	/**
@@ -339,6 +340,20 @@ public class Entity {
 	@XmlElement
 	public void setListPageTemplate(String listPageTemplate) {
 		this.listPageTemplate = listPageTemplate;
+	}
+
+	/**
+	 * @return the relatedChildFields
+	 */
+	public Map<String, Field> getRelatedChildFields() {
+		return relatedChildFields;
+	}
+
+	/**
+	 * @param relatedChildFields the relatedChildFields to set
+	 */
+	public void setRelatedChildFields(Map<String, Field> relatedChildFields) {
+		this.relatedChildFields = relatedChildFields;
 	}
 
 }

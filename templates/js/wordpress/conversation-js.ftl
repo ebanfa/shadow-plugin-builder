@@ -18,7 +18,7 @@
 
     function getConversations() {
         var formData = new FormData();
-        formData.append('action', 'get_conversations_ajax');
+        formData.append('action', 'do_current_user_conversations_ajax');
         
         $.ajax({
             url: shadowcore_ajax_script.ajaxurl,
