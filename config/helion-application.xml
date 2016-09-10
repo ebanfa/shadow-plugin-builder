@@ -2607,7 +2607,7 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
-				<name>eaddress_string</name>
+				<name>address_string</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>N</required>

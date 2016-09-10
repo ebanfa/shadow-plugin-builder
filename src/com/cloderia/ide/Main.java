@@ -25,8 +25,8 @@ public class Main {
 			String baseDir = args[0];
 			String pluginName = args[1]; 
 
-			//Builder builder = new WordpressPluginBuilder(pluginName, baseDir);
-			Builder builder = new ErraiAppBuilder("/home/adrian/Projects/shadow-plugin-builder/config/essaysite-application.xml");
+			Builder builder = new WordpressPluginBuilder(pluginName, baseDir);
+			//Builder builder = new WordpressPluginBuilder("/home/adrian/Projects/shadow-plugin-builder/config/essaysite-application.xml");
 
 			//Builder builder = new WordpressPluginBuilder(
 			//	"/home/adrian/Projects/shadow-plugin-builder/config/application.xml", 

@@ -66,15 +66,15 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 	 */
 	public WordpressPluginBuilder(String pluginName, String baseDir) {
 		super();
-		System.out.println("Start Wordpress Plugin Builder v1.0.0");
+		System.out.println("Start Wordpress Plugin Builder v1.0.0 for app " + pluginName);
 		this.pluginName = pluginName;
 		this.targetDir = baseDir + "target/";
 		this.pluginDir = this.targetDir + this.pluginName + "/";
 		this.appName = pluginName.substring(0, 1).toUpperCase() + pluginName.substring(1);
-		this.templatesDir = baseDir + "templates/";
-		
+		this.templatesDir = baseDir + "templates/" + this.pluginName + "/";
+		System.out.println("Using templates dir: " + this.templatesDir);
 		//this.config = baseDir + "config/helion-application.xml";
-		this.config = baseDir + "config/essaysite-application.xml";
+		this.config = baseDir + "config/wpcommerce-application.xml";
 		//this.config = baseDir + "config/business-site-application.xml";
 	}
 
