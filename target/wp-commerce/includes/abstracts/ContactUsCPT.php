@@ -22,11 +22,6 @@ class ContactUsCPT {
             'description' => 'The Code field',
             'type' => 'text',
         ),
-        array('name' => 'subject',
-            'title' => 'Subject',
-            'description' => 'The Subject field',
-            'type' => 'text',
-        ),
         array('name' => 'name',
             'title' => 'Name',
             'description' => 'The Name field',
@@ -35,16 +30,6 @@ class ContactUsCPT {
         array('name' => 'email',
             'title' => 'Email',
             'description' => 'The Email field',
-            'type' => 'text',
-        ),
-        array('name' => 'b_name',
-            'title' => 'Business Name',
-            'description' => 'The Business Name field',
-            'type' => 'text',
-        ),
-        array('name' => 'message',
-            'title' => 'Message',
-            'description' => 'The Message field',
             'type' => 'text',
         ),
         array('name' => 'description',
@@ -72,18 +57,6 @@ class ContactUsCPT {
             'is_list_field' => false,
             'is_form_field' => true,
             'is_relationship_field' => false,),
-        'subject' => array('name' => 'subject',
-            'description' => 'Subject',
-            'size' => 'medium',
-            'data_type' => 'text',
-            'is_required' => true,
-            'is_visible' => true,
-            'is_create_field' => true,
-            'is_edit_field' => true,
-            'is_view_field' => true,
-            'is_list_field' => true,
-            'is_form_field' => true,
-            'is_relationship_field' => false,),
         'name' => array('name' => 'name',
             'description' => 'Name',
             'size' => 'large',
@@ -98,30 +71,6 @@ class ContactUsCPT {
             'is_relationship_field' => false,),
         'email' => array('name' => 'email',
             'description' => 'Email',
-            'size' => 'large',
-            'data_type' => 'name',
-            'is_required' => true,
-            'is_visible' => true,
-            'is_create_field' => true,
-            'is_edit_field' => true,
-            'is_view_field' => true,
-            'is_list_field' => true,
-            'is_form_field' => true,
-            'is_relationship_field' => false,),
-        'b_name' => array('name' => 'b_name',
-            'description' => 'Business Name',
-            'size' => 'large',
-            'data_type' => 'name',
-            'is_required' => true,
-            'is_visible' => true,
-            'is_create_field' => true,
-            'is_edit_field' => true,
-            'is_view_field' => true,
-            'is_list_field' => true,
-            'is_form_field' => true,
-            'is_relationship_field' => false,),
-        'message' => array('name' => 'message',
-            'description' => 'Message',
             'size' => 'large',
             'data_type' => 'name',
             'is_required' => true,
@@ -210,11 +159,8 @@ class ContactUsCPT {
     }
 
     public static function sb_contactus_table_head($defaults){
-        $defaults['subject']  = 'Subject';
         $defaults['name']  = 'Name';
         $defaults['email']  = 'Email';
-        $defaults['b_name']  = 'Business Name';
-        $defaults['message']  = 'Message';
         return $defaults;
     }
 
@@ -223,24 +169,12 @@ class ContactUsCPT {
             $field_value = get_post_meta($post_id, 'entity_code', true );
             echo $field_value;
         }
-        if ($column_name == 'subject') {
-            $field_value = get_post_meta($post_id, 'subject', true );
-            echo $field_value;
-        }
         if ($column_name == 'name') {
             $field_value = get_post_meta($post_id, 'name', true );
             echo $field_value;
         }
         if ($column_name == 'email') {
             $field_value = get_post_meta($post_id, 'email', true );
-            echo $field_value;
-        }
-        if ($column_name == 'b_name') {
-            $field_value = get_post_meta($post_id, 'b_name', true );
-            echo $field_value;
-        }
-        if ($column_name == 'message') {
-            $field_value = get_post_meta($post_id, 'message', true );
             echo $field_value;
         }
         if ($column_name == 'description') {

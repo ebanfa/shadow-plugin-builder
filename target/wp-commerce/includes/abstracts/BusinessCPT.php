@@ -37,6 +37,11 @@ class BusinessCPT {
             'description' => 'The Name field',
             'type' => 'text',
         ),
+        array('name' => 'pin',
+            'title' => 'Pin',
+            'description' => 'The Pin field',
+            'type' => 'text',
+        ),
         array('name' => 'description',
             'title' => 'Description',
             'description' => 'The Description field',
@@ -100,6 +105,18 @@ class BusinessCPT {
             'is_list_field' => true,
             'is_form_field' => true,
             'is_relationship_field' => false,),
+        'pin' => array('name' => 'pin',
+            'description' => 'Pin',
+            'size' => 'large',
+            'data_type' => 'number',
+            'is_required' => true,
+            'is_visible' => true,
+            'is_create_field' => true,
+            'is_edit_field' => true,
+            'is_view_field' => true,
+            'is_list_field' => true,
+            'is_form_field' => true,
+            'is_relationship_field' => false,),
         'description' => array('name' => 'description',
             'description' => 'Description',
             'size' => 'large',
@@ -142,13 +159,25 @@ class BusinessCPT {
                     'is_list_field' => false,
                     'is_form_field' => false,
                     'is_relationship_field' => false,),
-                'parent_unit' => array('name' => 'parent_unit',
-                    'description' => 'Parent Business Unit',
+                'name' => array('name' => 'name',
+                    'description' => 'Name',
                     'size' => 'large',
-                    'entity_name' => 'BusinessUnit',
-                    'entity_description' => 'Business Unit',
-                    'data_type' => 'sb_businessunit',
-                    'is_required' => false,
+                    'data_type' => 'name',
+                    'is_required' => true,
+                    'is_visible' => true,
+                    'is_create_field' => true,
+                    'is_edit_field' => true,
+                    'is_view_field' => true,
+                    'is_list_field' => true,
+                    'is_form_field' => true,
+                    'is_relationship_field' => false,),
+                'business' => array('name' => 'business',
+                    'description' => 'Parent Business',
+                    'size' => 'large',
+                    'entity_name' => 'Business',
+                    'entity_description' => 'Business',
+                    'data_type' => 'sb_business',
+                    'is_required' => true,
                     'is_visible' => true,
                     'is_create_field' => true,
                     'is_edit_field' => true,
@@ -170,18 +199,6 @@ class BusinessCPT {
                     'is_list_field' => true,
                     'is_form_field' => true,
                     'is_relationship_field' => true,),
-                'name' => array('name' => 'name',
-                    'description' => 'Name',
-                    'size' => 'large',
-                    'data_type' => 'name',
-                    'is_required' => true,
-                    'is_visible' => true,
-                    'is_create_field' => true,
-                    'is_edit_field' => true,
-                    'is_view_field' => true,
-                    'is_list_field' => true,
-                    'is_form_field' => true,
-                    'is_relationship_field' => false,),
                 'address_1' => array('name' => 'address_1',
                     'description' => 'Address Line 1',
                     'size' => 'large',
@@ -218,20 +235,6 @@ class BusinessCPT {
                     'is_list_field' => true,
                     'is_form_field' => true,
                     'is_relationship_field' => false,),
-                'business' => array('name' => 'business',
-                    'description' => 'Parent Business',
-                    'size' => 'large',
-                    'entity_name' => 'Business',
-                    'entity_description' => 'Business',
-                    'data_type' => 'sb_business',
-                    'is_required' => false,
-                    'is_visible' => true,
-                    'is_create_field' => false,
-                    'is_edit_field' => false,
-                    'is_view_field' => false,
-                    'is_list_field' => false,
-                    'is_form_field' => true,
-                    'is_relationship_field' => true,),
             ),
         ),
    );
@@ -292,6 +295,7 @@ class BusinessCPT {
         $defaults['entity_code']  = 'Code';
         $defaults['currency']  = 'Currency';
         $defaults['name']  = 'Name';
+        $defaults['pin']  = 'Pin';
         $defaults['description']  = 'Description';
         return $defaults;
     }
@@ -311,6 +315,10 @@ class BusinessCPT {
         }
         if ($column_name == 'name') {
             $field_value = get_post_meta($post_id, 'name', true );
+            echo $field_value;
+        }
+        if ($column_name == 'pin') {
+            $field_value = get_post_meta($post_id, 'pin', true );
             echo $field_value;
         }
         if ($column_name == 'description') {

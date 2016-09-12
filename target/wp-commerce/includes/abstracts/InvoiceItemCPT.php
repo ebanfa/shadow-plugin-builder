@@ -27,7 +27,12 @@ class InvoiceItemCPT {
             'description' => 'The Invoice field',
             'type' => 'text',
         ),
-        array('name' => 'item_type',
+        array('name' => 'ii_status',
+            'title' => 'Status',
+            'description' => 'The Status field',
+            'type' => 'text',
+        ),
+        array('name' => 'ii_type',
             'title' => 'Item Type',
             'description' => 'The Item Type field',
             'type' => 'text',
@@ -91,7 +96,21 @@ class InvoiceItemCPT {
             'is_list_field' => false,
             'is_form_field' => true,
             'is_relationship_field' => true,),
-        'item_type' => array('name' => 'item_type',
+        'ii_status' => array('name' => 'ii_status',
+            'description' => 'Status',
+            'size' => 'large',
+            'entity_name' => 'InvoiceItemStatus',
+            'entity_description' => 'Invoice Item Status',
+            'data_type' => 'sb_invoiceitemstatus',
+            'is_required' => true,
+            'is_visible' => true,
+            'is_create_field' => true,
+            'is_edit_field' => true,
+            'is_view_field' => false,
+            'is_list_field' => false,
+            'is_form_field' => true,
+            'is_relationship_field' => true,),
+        'ii_type' => array('name' => 'ii_type',
             'description' => 'Item Type',
             'size' => 'large',
             'entity_name' => 'InvoiceItemType',
@@ -249,8 +268,12 @@ class InvoiceItemCPT {
             $field_value = get_post_meta($post_id, 'ii_invoice', true );
             echo $field_value;
         }
-        if ($column_name == 'item_type') {
-            $field_value = get_post_meta($post_id, 'item_type', true );
+        if ($column_name == 'ii_status') {
+            $field_value = get_post_meta($post_id, 'ii_status', true );
+            echo $field_value;
+        }
+        if ($column_name == 'ii_type') {
+            $field_value = get_post_meta($post_id, 'ii_type', true );
             echo $field_value;
         }
         if ($column_name == 'name') {

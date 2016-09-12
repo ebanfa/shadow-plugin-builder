@@ -139,8 +139,10 @@
                         'type':'POST',
                         'datatype':'json',
                         'data': function(d){
-                            d.action = 'find_entity_ajax';
+                            d.action = 'find_child_entities_ajax';
+                            d.parent_id = '<?php echo $model['id']; ?>';
                             d.artifact = '<?php echo $child_artifact_name; ?>';
+                            d.parent_field_name = '<?php echo $child_field_name; ?>';
                         },
                     },
                     'columns': [

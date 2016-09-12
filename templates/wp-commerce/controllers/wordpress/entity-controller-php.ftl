@@ -25,6 +25,9 @@ class EntityActionProcessor {
         add_action('wp_ajax_find_entity_ajax', 'EntityActionProcessor::find_entity_ajax');
         add_action('wp_ajax_nopriv_find_entity_ajax', 'EntityActionProcessor::find_entity_ajax');
         
+        add_action('wp_ajax_find_child_entities_ajax', 'EntityActionProcessor::find_child_entities_ajax');
+        add_action('wp_ajax_nopriv_find_child_entities_ajax', 'EntityActionProcessor::find_child_entities_ajax');
+        
         add_action('wp_ajax_find_all_ajax', 'EntityActionProcessor::find_all_ajax');
         add_action('wp_ajax_nopriv_find_all_ajax', 'EntityActionProcessor::find_all_ajax');
 
@@ -45,6 +48,9 @@ class EntityActionProcessor {
 
         add_action('wp_ajax_upload_product_images_file_ajax', 'EntityActionProcessor::upload_product_images_file_ajax');
         add_action('wp_ajax_nopriv_upload_product_images_file_ajax', 'EntityActionProcessor::upload_product_images_file_ajax');
+
+        add_action('wp_ajax_add_to_customer_cart_ajax', 'EntityActionProcessor::add_to_customer_cart_ajax');
+        add_action('wp_ajax_nopriv_add_to_customer_cart_ajax', 'EntityActionProcessor::add_to_customer_cart_ajax');
 
     }
 
@@ -126,6 +132,20 @@ class EntityActionProcessor {
         $entity_data = self::do_before_ajax_find();
         $search_results = EntityAPI::find_entity($entity_data);
         self::do_after_ajax_find($entity_data, $search_results);
+    }
+
+    /**
+     *
+     */
+    public static function find_child_entities_ajax() {
+        if(!isset($_POST['artifact']) || !isset($_POST['parent_id']) || !isset($_POST['parent_field_name'])) return array();
+
+        $parent_id = EntityRequestUtils::get_query_string_field('parent_id');
+        $artifact_name = EntityRequestUtils::get_query_string_field('artifact');
+        $parent_field_name = EntityRequestUtils::get_query_string_field('parent_field_name');
+
+        $search_results = EntityAPI::find_by_criteria($artifact_name, array($parent_field_name => $parent_id));
+        self::do_after_ajax_find(EntityAPIUtils::init_entity_data($artifact_name), $search_results);
     }
 
     /**
@@ -279,6 +299,25 @@ class EntityActionProcessor {
         // Run post edit hooks
         self::do_after_ajax_edit($entity_data);
     }
+    
+    /**
+     *
+     */
+    public static function add_to_customer_cart_ajax() {
+        // Ensure we have a valid form
+        if(!EntityRequestUtils::is_valid_form() || !isset($_POST['edit_mode']) || !isset($_POST['id']) || empty($_FILES))
+        {
+            wp_send_json_error(array('message' => "Invalid artifact operation!"));
+        }
 
+        $artifact_name = EntityRequestUtils::get_artifact_name();
+        $entity_data = EntityAPIUtils::init_entity_data($artifact_name);
+        $entity_data['id'] = sanitize_text_field($_POST['id']);
+        //$entity_data['order_status'] = sanitize_text_field($_POST['order_status']);
+        // Create the entity of we have no errors
+        if(!$entity_data['has_errors']) $entity_data = ProductImageAPI::do_upload_images($entity_data, 'product_images');
+        // Run post edit hooks
+        self::do_after_ajax_edit($entity_data);
+    }
 
 }

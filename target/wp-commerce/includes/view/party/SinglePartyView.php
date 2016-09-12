@@ -45,6 +45,7 @@ class SinglePartyView extends SingleEntityView {
         $role = sanitize_text_field($_REQUEST['role']);
         if($role == 'customer') return $this->process_customer_view(); 
         if($role == 'supplier') return $this->process_supplier_view(); 
+        if($role == 'employee') return $this->process_employee_view(); 
     }
 
     /**
@@ -68,6 +69,23 @@ class SinglePartyView extends SingleEntityView {
      * 
      */
     public function process_supplier_view() {
+        $tabs = array(
+            array(
+                'tab_type' => 'entity-list',
+                'name' => 'address',
+                'description' => 'Address',
+                'model' => EntityAPI::get_model('contactmechanism'),
+                'artifact_name' => 'contactmechanism',
+                'type_instances' =>  array(),
+            )
+        );
+        return $tabs;
+    }
+    
+    /**
+     * 
+     */
+    public function process_employee_view() {
         $tabs = array(
             array(
                 'tab_type' => 'entity-list',

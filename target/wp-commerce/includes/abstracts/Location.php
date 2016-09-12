@@ -24,13 +24,6 @@ class Location extends Model {
     /**
      * 
      */
-    public function facility_loc()
-    {
-        return $this->hasMany('Facility');
-    }
-    /**
-     * 
-     */
     public function location()
     {
         return $this->hasMany('Location');

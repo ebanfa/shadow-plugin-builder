@@ -66,9 +66,23 @@ class Invoice extends Model {
     /**
      * 
      */
+    public function invoice()
+    {
+        return $this->hasMany('Transaction');
+    }
+    /**
+     * 
+     */
     public function it_invoice()
     {
         return $this->hasMany('InvoiceTerm');
+    }
+    /**
+     * 
+     */
+    public function payment_invoice()
+    {
+        return $this->hasMany('Payment');
     }
 
 }

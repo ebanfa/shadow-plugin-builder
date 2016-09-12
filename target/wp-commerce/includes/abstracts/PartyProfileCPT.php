@@ -38,8 +38,8 @@ class PartyProfileCPT {
             'type' => 'text',
         ),
         array('name' => 'display_name',
-            'title' => 'Balance',
-            'description' => 'The Balance field',
+            'title' => 'Display Name',
+            'description' => 'The Display Name field',
             'type' => 'text',
         ),
         array('name' => 'date_created',
@@ -118,7 +118,7 @@ class PartyProfileCPT {
             'is_form_field' => true,
             'is_relationship_field' => false,),
         'display_name' => array('name' => 'display_name',
-            'description' => 'Balance',
+            'description' => 'Display Name',
             'size' => 'large',
             'data_type' => 'name',
             'is_required' => true,
@@ -144,7 +144,7 @@ class PartyProfileCPT {
         'description' => array('name' => 'description',
             'description' => 'Description',
             'size' => 'large',
-            'data_type' => 'test-lg',
+            'data_type' => 'text-lg',
             'is_required' => true,
             'is_visible' => true,
             'is_create_field' => true,
@@ -236,7 +236,7 @@ class PartyProfileCPT {
         $defaults['party']  = 'Party';
         $defaults['default_unit']  = 'Default Business Unit';
         $defaults['name']  = 'Name';
-        $defaults['display_name']  = 'Balance';
+        $defaults['display_name']  = 'Display Name';
         $defaults['description']  = 'Description';
         $defaults['business_unit']  = 'Business Unit';
         return $defaults;

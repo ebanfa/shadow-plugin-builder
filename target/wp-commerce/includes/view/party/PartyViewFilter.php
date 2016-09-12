@@ -92,7 +92,7 @@ class PartyViewFilter extends ViewFilter {
             $action_links['create_person_link'] = array('name' => 'Add New Person', 
                 'link' => EntityActionProcessor::get_base_url() . 'page_action=create&artifact=person' . $party_role_param);
             // Add Organization link
-            if($role != 'business_user')
+            if($role != 'business_user' && $role != 'employee')
                 $action_links['create_organization_link'] = array('name' => 'Add New Organization', 
                     'link' => EntityActionProcessor::get_base_url() . 'page_action=create&artifact=partygroup' . $party_role_param);
         }
@@ -124,6 +124,9 @@ class PartyViewFilter extends ViewFilter {
                 $role_field['name'] = 'role';
                 $role_field['data_type'] = 'hidden';
                 $role_field['is_relationship_field'] = false;
+                $role_field['is_edit_field'] = true;
+                $role_field['is_create_field'] = true;
+                $role_field['is_form_field']  = true;
                 $role_field['value'] = sanitize_text_field($_REQUEST['role']);
                 $form_fields['role'] = $role_field;
             }

@@ -1,5 +1,32 @@
+DROP TABLE IF EXISTS bankaccount;
+DROP TABLE IF EXISTS bankaccounttype;
+DROP TABLE IF EXISTS txntypeaccount;
+DROP TABLE IF EXISTS feventtxntype;
+DROP TABLE IF EXISTS transactiondetail;
+DROP TABLE IF EXISTS transaction;
+DROP TABLE IF EXISTS transactionstatus;
+DROP TABLE IF EXISTS transactiontype;
+DROP TABLE IF EXISTS financialevent;
+DROP TABLE IF EXISTS financialeventtype;
+DROP TABLE IF EXISTS coaaccountsegmentinstance;
+DROP TABLE IF EXISTS businessunitglaccountbalance;
+DROP TABLE IF EXISTS businessunitglaccount;
+DROP TABLE IF EXISTS glaccount;
+DROP TABLE IF EXISTS glaccounttype;
+DROP TABLE IF EXISTS chartofaccounts;
+DROP TABLE IF EXISTS coastatus;
+DROP TABLE IF EXISTS coaaccountsegment;
+DROP TABLE IF EXISTS coaaccountsegmenttypevalue;
+DROP TABLE IF EXISTS coaaccountsegmenttype;
+DROP TABLE IF EXISTS coaaccountstructure;
+DROP TABLE IF EXISTS accountingperiod;
+DROP TABLE IF EXISTS periodtype;
+DROP TABLE IF EXISTS payment;
+DROP TABLE IF EXISTS paymentmethod;
+DROP TABLE IF EXISTS paymenttype;
 DROP TABLE IF EXISTS invoiceterm;
 DROP TABLE IF EXISTS invoiceitem;
+DROP TABLE IF EXISTS invoiceitemstatus;
 DROP TABLE IF EXISTS invoiceitemtype;
 DROP TABLE IF EXISTS invoicerole;
 DROP TABLE IF EXISTS invoice;
@@ -52,7 +79,12 @@ DROP TABLE IF EXISTS messagefiles;
 DROP TABLE IF EXISTS message;
 DROP TABLE IF EXISTS conversationuser;
 DROP TABLE IF EXISTS conversation;
+DROP TABLE IF EXISTS accounttransaction;
+DROP TABLE IF EXISTS accounttransactionstatus;
+DROP TABLE IF EXISTS accounttransactiontype;
 DROP TABLE IF EXISTS billingaccount;
+DROP TABLE IF EXISTS socialmediaaccount;
+DROP TABLE IF EXISTS socialmediaaccounttype;
 DROP TABLE IF EXISTS partycontactmechanismpurpose;
 DROP TABLE IF EXISTS partycontactmechanism;
 DROP TABLE IF EXISTS partycontactmechanismpurposetype;
@@ -111,6 +143,7 @@ CREATE TABLE business  (
    	currency   int(11) NOT NULL,
 	user_name   		varchar(35) NOT NULL,
 	name   		varchar(35) NOT NULL,
+	pin   		INT(6) NOT NULL,
 	description   		varchar(255) NOT NULL,
  	FOREIGN KEY (currency) REFERENCES currency (id), 
 	PRIMARY KEY( id )
@@ -119,16 +152,14 @@ CREATE TABLE business  (
 CREATE TABLE businessunit  ( 
 	id   	int(11) AUTO_INCREMENT NOT NULL,
 	entity_code   		varchar(35) NULL,
-   	parent_unit   int(11) NULL,
-   	currency   int(11) NULL,
 	name   		varchar(35) NOT NULL,
+   	business   int(11) NOT NULL,
+   	currency   int(11) NULL,
 	address_1   		varchar(35) NOT NULL,
 	address_2   		varchar(35) NOT NULL,
 	description   		varchar(255) NOT NULL,
-   	business   int(11) NULL,
- 	FOREIGN KEY (parent_unit) REFERENCES businessunit (id), 
- 	FOREIGN KEY (currency) REFERENCES currency (id), 
  	FOREIGN KEY (business) REFERENCES business (id), 
+ 	FOREIGN KEY (currency) REFERENCES currency (id), 
 	PRIMARY KEY( id )
 );
 
@@ -263,6 +294,7 @@ CREATE TABLE partyprofile  (
 	name   		varchar(35) NOT NULL,
 	display_name   		varchar(35) NOT NULL,
 	date_created   		date NULL,
+	description   		varchar(255) NOT NULL,
    	business_unit   int(11) NOT NULL,
  	FOREIGN KEY (party) REFERENCES party (id), 
  	FOREIGN KEY (default_unit) REFERENCES businessunit (id), 
@@ -332,6 +364,29 @@ CREATE TABLE partycontactmechanismpurpose  (
 	PRIMARY KEY( id )
 );
 
+CREATE TABLE socialmediaaccounttype  ( 
+	id   	int(11) AUTO_INCREMENT NOT NULL,
+	entity_code   		varchar(35) NULL,
+	name   		varchar(35) NOT NULL,
+	description   		varchar(255) NOT NULL,
+	PRIMARY KEY( id )
+);
+
+CREATE TABLE socialmediaaccount  ( 
+	id   	int(11) AUTO_INCREMENT NOT NULL,
+	entity_code   		varchar(35) NOT NULL,
+   	soc_account_type   int(11) NOT NULL,
+   	soc_party   int(11) NOT NULL,
+	name   		varchar(35) NOT NULL,
+	user_name   		varchar(35) NOT NULL,
+	description   		varchar(255) NOT NULL,
+   	business_unit   int(11) NOT NULL,
+ 	FOREIGN KEY (soc_account_type) REFERENCES socialmediaaccounttype (id), 
+ 	FOREIGN KEY (soc_party) REFERENCES party (id), 
+ 	FOREIGN KEY (business_unit) REFERENCES businessunit (id), 
+	PRIMARY KEY( id )
+);
+
 CREATE TABLE billingaccount  ( 
 	id   	int(11) AUTO_INCREMENT NOT NULL,
 	entity_code   		varchar(35) NOT NULL,
@@ -342,6 +397,40 @@ CREATE TABLE billingaccount  (
 	description   		varchar(255) NOT NULL,
    	business_unit   int(11) NOT NULL,
  	FOREIGN KEY (party) REFERENCES party (id), 
+ 	FOREIGN KEY (business_unit) REFERENCES businessunit (id), 
+	PRIMARY KEY( id )
+);
+
+CREATE TABLE accounttransactiontype  ( 
+	id   	int(11) AUTO_INCREMENT NOT NULL,
+	entity_code   		varchar(35) NOT NULL,
+	name   		varchar(35) NOT NULL,
+	description   		varchar(255) NOT NULL,
+	PRIMARY KEY( id )
+);
+
+CREATE TABLE accounttransactionstatus  ( 
+	id   	int(11) AUTO_INCREMENT NOT NULL,
+	entity_code   		varchar(35) NOT NULL,
+	name   		varchar(35) NOT NULL,
+	description   		varchar(255) NOT NULL,
+	PRIMARY KEY( id )
+);
+
+CREATE TABLE accounttransaction  ( 
+	id   	int(11) AUTO_INCREMENT NOT NULL,
+	entity_code   		varchar(35) NOT NULL,
+   	acct_txn_type   int(11) NOT NULL,
+   	transaction_status   int(11) NOT NULL,
+	name   		varchar(35) NOT NULL,
+	txn_date   		date NOT NULL,
+   	account   int(11) NOT NULL,
+   	amount   int(11) NULL,
+	description   		varchar(255) NOT NULL,
+   	business_unit   int(11) NOT NULL,
+ 	FOREIGN KEY (acct_txn_type) REFERENCES accounttransactiontype (id), 
+ 	FOREIGN KEY (transaction_status) REFERENCES accounttransactionstatus (id), 
+ 	FOREIGN KEY (account) REFERENCES billingaccount (id), 
  	FOREIGN KEY (business_unit) REFERENCES businessunit (id), 
 	PRIMARY KEY( id )
 );
@@ -441,11 +530,8 @@ CREATE TABLE notification  (
 CREATE TABLE contactus  ( 
 	id   	int(11) AUTO_INCREMENT NOT NULL,
 	entity_code   		varchar(35) NOT NULL,
-	subject   		varchar(35) NOT NULL,
 	name   		varchar(35) NOT NULL,
 	email   		varchar(35) NOT NULL,
-	b_name   		varchar(35) NOT NULL,
-	message   		varchar(35) NOT NULL,
 	description   		varchar(255) NOT NULL,
 	PRIMARY KEY( id )
 );
@@ -718,11 +804,9 @@ CREATE TABLE facility  (
 	id   	int(11) AUTO_INCREMENT NOT NULL,
 	entity_code   		varchar(35) NOT NULL,
    	facility_type   int(11) NOT NULL,
-   	facility_loc   int(11) NOT NULL,
 	name   		varchar(35) NOT NULL,
 	description   		varchar(255) NOT NULL,
  	FOREIGN KEY (facility_type) REFERENCES facilitytype (id), 
- 	FOREIGN KEY (facility_loc) REFERENCES location (id), 
 	PRIMARY KEY( id )
 );
 
@@ -777,6 +861,7 @@ CREATE TABLE inventoryitem  (
    	item_product   int(11) NOT NULL,
    	item_status   int(11) NOT NULL,
 	name   		varchar(35) NOT NULL,
+	quantity   		INT(6) NOT NULL,
 	description   		varchar(255) NOT NULL,
  	FOREIGN KEY (item_type) REFERENCES inventoryitemtype (id), 
  	FOREIGN KEY (item_product) REFERENCES product (id), 
@@ -910,18 +995,28 @@ CREATE TABLE invoiceitemtype  (
 	PRIMARY KEY( id )
 );
 
+CREATE TABLE invoiceitemstatus  ( 
+	id   	int(11) AUTO_INCREMENT NOT NULL,
+	entity_code   		varchar(35) NOT NULL,
+	name   		varchar(35) NOT NULL,
+	description   		varchar(255) NOT NULL,
+	PRIMARY KEY( id )
+);
+
 CREATE TABLE invoiceitem  ( 
 	id   	int(11) AUTO_INCREMENT NOT NULL,
 	entity_code   		varchar(35) NOT NULL,
    	ii_invoice   int(11) NOT NULL,
-   	item_type   int(11) NOT NULL,
+   	ii_status   int(11) NOT NULL,
+   	ii_type   int(11) NOT NULL,
 	name   		varchar(35) NOT NULL,
 	quantity   		INT(6) NOT NULL,
 	unit_price   		decimal(38,0) NULL,
 	description   		varchar(255) NOT NULL,
    	business_unit   int(11) NOT NULL,
  	FOREIGN KEY (ii_invoice) REFERENCES invoice (id), 
- 	FOREIGN KEY (item_type) REFERENCES invoiceitemtype (id), 
+ 	FOREIGN KEY (ii_status) REFERENCES invoiceitemstatus (id), 
+ 	FOREIGN KEY (ii_type) REFERENCES invoiceitemtype (id), 
  	FOREIGN KEY (business_unit) REFERENCES businessunit (id), 
 	PRIMARY KEY( id )
 );
@@ -939,5 +1034,370 @@ CREATE TABLE invoiceterm  (
    	business_unit   int(11) NOT NULL,
  	FOREIGN KEY (it_invoice) REFERENCES invoice (id), 
  	FOREIGN KEY (business_unit) REFERENCES businessunit (id), 
+	PRIMARY KEY( id )
+);
+
+CREATE TABLE paymenttype  ( 
+	id   	int(11) AUTO_INCREMENT NOT NULL,
+	entity_code   		varchar(35) NOT NULL,
+	name   		varchar(35) NOT NULL,
+	description   		varchar(255) NOT NULL,
+	PRIMARY KEY( id )
+);
+
+CREATE TABLE paymentmethod  ( 
+	id   	int(11) AUTO_INCREMENT NOT NULL,
+	entity_code   		varchar(35) NOT NULL,
+	name   		varchar(35) NOT NULL,
+	description   		varchar(255) NOT NULL,
+	PRIMARY KEY( id )
+);
+
+CREATE TABLE payment  ( 
+	id   	int(11) AUTO_INCREMENT NOT NULL,
+	entity_code   		varchar(35) NULL,
+   	p_type   int(11) NOT NULL,
+   	p_methtype   int(11) NOT NULL,
+   	payment_from   int(11) NOT NULL,
+   	payment_to   int(11) NOT NULL,
+   	payment_account   int(11) NOT NULL,
+   	payment_invoice   int(11) NOT NULL,
+	name   		varchar(35) NOT NULL,
+	amount   		decimal(38,0) NULL,
+	effective_date   		date NOT NULL,
+	description   		varchar(255) NOT NULL,
+   	business_unit   int(11) NOT NULL,
+ 	FOREIGN KEY (p_type) REFERENCES paymenttype (id), 
+ 	FOREIGN KEY (p_methtype) REFERENCES paymentmethod (id), 
+ 	FOREIGN KEY (payment_from) REFERENCES party (id), 
+ 	FOREIGN KEY (payment_to) REFERENCES party (id), 
+ 	FOREIGN KEY (payment_account) REFERENCES billingaccount (id), 
+ 	FOREIGN KEY (payment_invoice) REFERENCES invoice (id), 
+ 	FOREIGN KEY (business_unit) REFERENCES businessunit (id), 
+	PRIMARY KEY( id )
+);
+
+CREATE TABLE periodtype  ( 
+	id   	int(11) AUTO_INCREMENT NOT NULL,
+	entity_code   		varchar(35) NOT NULL,
+	name   		varchar(35) NOT NULL,
+	description   		varchar(255) NOT NULL,
+	PRIMARY KEY( id )
+);
+
+CREATE TABLE accountingperiod  ( 
+	id   	int(11) AUTO_INCREMENT NOT NULL,
+	entity_code   		varchar(35) NOT NULL,
+   	parent_period   int(11) NOT NULL,
+   	ap_type   int(11) NOT NULL,
+	name   		varchar(35) NOT NULL,
+	period_no   		INT(6) NOT NULL,
+	active_fg   		char(1) NOT NULL,
+	from_date   		date NOT NULL,
+	to_date   		date NOT NULL,
+	description   		varchar(255) NOT NULL,
+   	business_unit   int(11) NOT NULL,
+ 	FOREIGN KEY (parent_period) REFERENCES accountingperiod (id), 
+ 	FOREIGN KEY (ap_type) REFERENCES periodtype (id), 
+ 	FOREIGN KEY (business_unit) REFERENCES businessunit (id), 
+	PRIMARY KEY( id )
+);
+
+CREATE TABLE coaaccountstructure  ( 
+	id   	int(11) AUTO_INCREMENT NOT NULL,
+	entity_code   		varchar(35) NOT NULL,
+	name   		varchar(35) NOT NULL,
+	seg_separator   		varchar(35) NOT NULL,
+	description   		varchar(255) NOT NULL,
+   	business_unit   int(11) NOT NULL,
+ 	FOREIGN KEY (business_unit) REFERENCES businessunit (id), 
+	PRIMARY KEY( id )
+);
+
+CREATE TABLE coaaccountsegmenttype  ( 
+	id   	int(11) AUTO_INCREMENT NOT NULL,
+	entity_code   		varchar(35) NOT NULL,
+	name   		varchar(35) NOT NULL,
+	mask   		varchar(35) NOT NULL,
+	has_val_src   		char(1) NULL,
+	val_provider   		varchar(35) NOT NULL,
+	description   		varchar(255) NOT NULL,
+   	business_unit   int(11) NOT NULL,
+ 	FOREIGN KEY (business_unit) REFERENCES businessunit (id), 
+	PRIMARY KEY( id )
+);
+
+CREATE TABLE coaaccountsegmenttypevalue  ( 
+	id   	int(11) AUTO_INCREMENT NOT NULL,
+	entity_code   		varchar(35) NOT NULL,
+   	v_segtype   int(11) NOT NULL,
+	name   		varchar(35) NOT NULL,
+	description   		varchar(255) NOT NULL,
+   	business_unit   int(11) NOT NULL,
+ 	FOREIGN KEY (v_segtype) REFERENCES coaaccountsegmenttype (id), 
+ 	FOREIGN KEY (business_unit) REFERENCES businessunit (id), 
+	PRIMARY KEY( id )
+);
+
+CREATE TABLE coaaccountsegment  ( 
+	id   	int(11) AUTO_INCREMENT NOT NULL,
+	entity_code   		varchar(35) NOT NULL,
+   	seg_type   int(11) NOT NULL,
+   	seg_acctstruct   int(11) NOT NULL,
+	name   		varchar(35) NOT NULL,
+	seg_sequence   		INT(6) NOT NULL,
+	description   		varchar(255) NOT NULL,
+   	business_unit   int(11) NOT NULL,
+ 	FOREIGN KEY (seg_type) REFERENCES coaaccountsegmenttype (id), 
+ 	FOREIGN KEY (seg_acctstruct) REFERENCES coaaccountstructure (id), 
+ 	FOREIGN KEY (business_unit) REFERENCES businessunit (id), 
+	PRIMARY KEY( id )
+);
+
+CREATE TABLE coastatus  ( 
+	id   	int(11) AUTO_INCREMENT NOT NULL,
+	entity_code   		varchar(35) NOT NULL,
+	name   		varchar(35) NOT NULL,
+	description   		varchar(255) NOT NULL,
+   	business_unit   int(11) NOT NULL,
+ 	FOREIGN KEY (business_unit) REFERENCES businessunit (id), 
+	PRIMARY KEY( id )
+);
+
+CREATE TABLE chartofaccounts  ( 
+	id   	int(11) AUTO_INCREMENT NOT NULL,
+	entity_code   		varchar(35) NOT NULL,
+   	org_unit   int(11) NOT NULL,
+   	acct_structure   int(11) NOT NULL,
+	name   		varchar(35) NOT NULL,
+	from_date   		date NOT NULL,
+	to_date   		date NOT NULL,
+   	status   int(11) NOT NULL,
+	description   		varchar(255) NOT NULL,
+   	business_unit   int(11) NOT NULL,
+ 	FOREIGN KEY (org_unit) REFERENCES businessunit (id), 
+ 	FOREIGN KEY (acct_structure) REFERENCES coaaccountstructure (id), 
+ 	FOREIGN KEY (status) REFERENCES coastatus (id), 
+ 	FOREIGN KEY (business_unit) REFERENCES businessunit (id), 
+	PRIMARY KEY( id )
+);
+
+CREATE TABLE glaccounttype  ( 
+	id   	int(11) AUTO_INCREMENT NOT NULL,
+	entity_code   		varchar(35) NOT NULL,
+	name   		varchar(35) NOT NULL,
+	description   		varchar(255) NOT NULL,
+	PRIMARY KEY( id )
+);
+
+CREATE TABLE glaccount  ( 
+	id   	int(11) AUTO_INCREMENT NOT NULL,
+	entity_code   		varchar(35) NOT NULL,
+	account_no   		varchar(35) NOT NULL,
+   	glacct_type   int(11) NOT NULL,
+	name   		varchar(35) NOT NULL,
+	description   		varchar(255) NOT NULL,
+   	business_unit   int(11) NOT NULL,
+ 	FOREIGN KEY (glacct_type) REFERENCES glaccounttype (id), 
+ 	FOREIGN KEY (business_unit) REFERENCES businessunit (id), 
+	PRIMARY KEY( id )
+);
+
+CREATE TABLE businessunitglaccount  ( 
+	id   	int(11) AUTO_INCREMENT NOT NULL,
+	entity_code   		varchar(35) NOT NULL,
+   	parent_buglacct   int(11) NOT NULL,
+   	glaccount   int(11) NOT NULL,
+   	internal_org   int(11) NOT NULL,
+	name   		varchar(35) NOT NULL,
+	from_date   		date NOT NULL,
+	to_date   		date NOT NULL,
+	description   		varchar(255) NOT NULL,
+   	business_unit   int(11) NOT NULL,
+ 	FOREIGN KEY (parent_buglacct) REFERENCES businessunitglaccount (id), 
+ 	FOREIGN KEY (glaccount) REFERENCES glaccount (id), 
+ 	FOREIGN KEY (internal_org) REFERENCES businessunit (id), 
+ 	FOREIGN KEY (business_unit) REFERENCES businessunit (id), 
+	PRIMARY KEY( id )
+);
+
+CREATE TABLE businessunitglaccountbalance  ( 
+	id   	int(11) AUTO_INCREMENT NOT NULL,
+	entity_code   		varchar(35) NOT NULL,
+   	buglaccount   int(11) NOT NULL,
+   	internal_org   int(11) NOT NULL,
+   	acctng_period   int(11) NOT NULL,
+	name   		varchar(35) NOT NULL,
+	balance   		decimal(38,0) NULL,
+	description   		varchar(255) NOT NULL,
+   	business_unit   int(11) NOT NULL,
+ 	FOREIGN KEY (buglaccount) REFERENCES businessunitglaccount (id), 
+ 	FOREIGN KEY (internal_org) REFERENCES businessunit (id), 
+ 	FOREIGN KEY (acctng_period) REFERENCES accountingperiod (id), 
+ 	FOREIGN KEY (business_unit) REFERENCES businessunit (id), 
+	PRIMARY KEY( id )
+);
+
+CREATE TABLE coaaccountsegmentinstance  ( 
+	id   	int(11) AUTO_INCREMENT NOT NULL,
+	entity_code   		varchar(35) NOT NULL,
+   	coa   int(11) NOT NULL,
+   	acct_segment   int(11) NOT NULL,
+   	parent_instance   int(11) NOT NULL,
+	name   		varchar(35) NOT NULL,
+	is_account   		char(1) NOT NULL,
+   	casi_buglaccount   int(11) NOT NULL,
+	description   		varchar(255) NOT NULL,
+   	business_unit   int(11) NOT NULL,
+ 	FOREIGN KEY (coa) REFERENCES chartofaccounts (id), 
+ 	FOREIGN KEY (acct_segment) REFERENCES coaaccountsegment (id), 
+ 	FOREIGN KEY (parent_instance) REFERENCES coaaccountsegmentinstance (id), 
+ 	FOREIGN KEY (casi_buglaccount) REFERENCES businessunitglaccount (id), 
+ 	FOREIGN KEY (business_unit) REFERENCES businessunit (id), 
+	PRIMARY KEY( id )
+);
+
+CREATE TABLE financialeventtype  ( 
+	id   	int(11) AUTO_INCREMENT NOT NULL,
+	entity_code   		varchar(35) NOT NULL,
+	name   		varchar(35) NOT NULL,
+	description   		varchar(255) NOT NULL,
+   	business_unit   int(11) NOT NULL,
+ 	FOREIGN KEY (business_unit) REFERENCES businessunit (id), 
+	PRIMARY KEY( id )
+);
+
+CREATE TABLE financialevent  ( 
+	id   	int(11) AUTO_INCREMENT NOT NULL,
+	entity_code   		varchar(35) NOT NULL,
+   	event_type   int(11) NOT NULL,
+	name   		varchar(35) NOT NULL,
+	amount   		decimal(38,0) NULL,
+	event_date   		date NOT NULL,
+   	internal_org   int(11) NULL,
+   	from_party   int(11) NULL,
+   	to_party   int(11) NULL,
+   	payment   int(11) NULL,
+   	invoice   int(11) NULL,
+	description   		varchar(255) NOT NULL,
+   	business_unit   int(11) NOT NULL,
+ 	FOREIGN KEY (event_type) REFERENCES financialeventtype (id), 
+ 	FOREIGN KEY (internal_org) REFERENCES businessunit (id), 
+ 	FOREIGN KEY (from_party) REFERENCES party (id), 
+ 	FOREIGN KEY (to_party) REFERENCES party (id), 
+ 	FOREIGN KEY (payment) REFERENCES payment (id), 
+ 	FOREIGN KEY (invoice) REFERENCES invoice (id), 
+ 	FOREIGN KEY (business_unit) REFERENCES businessunit (id), 
+	PRIMARY KEY( id )
+);
+
+CREATE TABLE transactiontype  ( 
+	id   	int(11) AUTO_INCREMENT NOT NULL,
+	entity_code   		varchar(35) NOT NULL,
+   	parent_type   int(11) NULL,
+	name   		varchar(35) NOT NULL,
+	description   		varchar(255) NOT NULL,
+ 	FOREIGN KEY (parent_type) REFERENCES transactiontype (id), 
+	PRIMARY KEY( id )
+);
+
+CREATE TABLE transactionstatus  ( 
+	id   	int(11) AUTO_INCREMENT NOT NULL,
+	entity_code   		varchar(35) NOT NULL,
+	name   		varchar(35) NOT NULL,
+	description   		varchar(255) NOT NULL,
+	PRIMARY KEY( id )
+);
+
+CREATE TABLE transaction  ( 
+	id   	int(11) AUTO_INCREMENT NOT NULL,
+	entity_code   		varchar(35) NOT NULL,
+   	gl_txn_type   int(11) NOT NULL,
+   	gl_txn_status   int(11) NOT NULL,
+	name   		varchar(35) NOT NULL,
+	txn_date   		date NOT NULL,
+	entry_date   		date NOT NULL,
+   	internal_org   int(11) NULL,
+   	from_party   int(11) NULL,
+   	to_party   int(11) NULL,
+   	payment   int(11) NULL,
+   	invoice   int(11) NULL,
+   	porder   int(11) NULL,
+	description   		varchar(255) NOT NULL,
+   	business_unit   int(11) NOT NULL,
+ 	FOREIGN KEY (gl_txn_type) REFERENCES transactiontype (id), 
+ 	FOREIGN KEY (gl_txn_status) REFERENCES transactionstatus (id), 
+ 	FOREIGN KEY (internal_org) REFERENCES businessunit (id), 
+ 	FOREIGN KEY (from_party) REFERENCES party (id), 
+ 	FOREIGN KEY (to_party) REFERENCES party (id), 
+ 	FOREIGN KEY (payment) REFERENCES payment (id), 
+ 	FOREIGN KEY (invoice) REFERENCES invoice (id), 
+ 	FOREIGN KEY (business_unit) REFERENCES businessunit (id), 
+	PRIMARY KEY( id )
+);
+
+CREATE TABLE transactiondetail  ( 
+	id   	int(11) AUTO_INCREMENT NOT NULL,
+	entity_code   		varchar(35) NOT NULL,
+   	txn_detail   int(11) NULL,
+   	transaction   int(11) NOT NULL,
+   	td_buglaccount   int(11) NOT NULL,
+	name   		varchar(35) NOT NULL,
+	dbcr_fg   		char(1) NOT NULL,
+	amount   		varchar(255) NOT NULL,
+	description   		varchar(255) NOT NULL,
+   	business_unit   int(11) NOT NULL,
+ 	FOREIGN KEY (txn_detail) REFERENCES transactiondetail (id), 
+ 	FOREIGN KEY (transaction) REFERENCES transaction (id), 
+ 	FOREIGN KEY (td_buglaccount) REFERENCES businessunitglaccount (id), 
+ 	FOREIGN KEY (business_unit) REFERENCES businessunit (id), 
+	PRIMARY KEY( id )
+);
+
+CREATE TABLE feventtxntype  ( 
+	id   	int(11) AUTO_INCREMENT NOT NULL,
+	entity_code   		varchar(35) NOT NULL,
+   	fevent_type   int(11) NOT NULL,
+   	fetxn_type   int(11) NOT NULL,
+	name   		varchar(35) NOT NULL,
+	description   		varchar(255) NOT NULL,
+   	business_unit   int(11) NOT NULL,
+ 	FOREIGN KEY (fevent_type) REFERENCES financialeventtype (id), 
+ 	FOREIGN KEY (fetxn_type) REFERENCES transactiontype (id), 
+ 	FOREIGN KEY (business_unit) REFERENCES businessunit (id), 
+	PRIMARY KEY( id )
+);
+
+CREATE TABLE txntypeaccount  ( 
+	id   	int(11) AUTO_INCREMENT NOT NULL,
+	entity_code   		varchar(35) NOT NULL,
+   	tta_txn_type   int(11) NOT NULL,
+   	tta_account   int(11) NOT NULL,
+	name   		varchar(35) NOT NULL,
+	db_cr_fg   		char(1) NOT NULL,
+	description   		varchar(255) NOT NULL,
+   	business_unit   int(11) NOT NULL,
+ 	FOREIGN KEY (tta_txn_type) REFERENCES transactiontype (id), 
+ 	FOREIGN KEY (tta_account) REFERENCES glaccount (id), 
+ 	FOREIGN KEY (business_unit) REFERENCES businessunit (id), 
+	PRIMARY KEY( id )
+);
+
+CREATE TABLE bankaccounttype  ( 
+	id   	int(11) AUTO_INCREMENT NOT NULL,
+	entity_code   		varchar(35) NOT NULL,
+	name   		varchar(35) NOT NULL,
+	description   		varchar(255) NOT NULL,
+	PRIMARY KEY( id )
+);
+
+CREATE TABLE bankaccount  ( 
+	id   	int(11) AUTO_INCREMENT NOT NULL,
+	entity_code   		varchar(35) NOT NULL,
+   	bank_account_type   int(11) NOT NULL,
+	name   		varchar(35) NOT NULL,
+	bank_account_balance   		varchar(35) NOT NULL,
+	description   		varchar(255) NOT NULL,
+ 	FOREIGN KEY (bank_account_type) REFERENCES bankaccounttype (id), 
 	PRIMARY KEY( id )
 );

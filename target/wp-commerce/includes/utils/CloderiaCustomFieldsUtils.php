@@ -7,7 +7,7 @@ class CloderiaCustomFieldsUtils
 	public static $prefix = ''; 
 	public static $page = 'custom-content';
 	// Which types of content do we want to standardize?
-	public static $content_types_array = array('sb_currency','sb_loctype','sb_location','sb_business','sb_businessunit','sb_partycat','sb_partytype','sb_roletype','sb_party','sb_partyrole','sb_reltype','sb_relstatus','sb_partyrel','sb_partygroup','sb_person','sb_partyprofile','sb_cmechtype','sb_contactmech','sb_pcmpurposetype','sb_partycmech','sb_pcmpurpose','sb_billaccount','sb_conversation','sb_conuser','sb_message','sb_messagesfiles','sb_notifytype','sb_notifystatus','sb_notifylevel','sb_notification','sb_contactus','sb_uom','sb_uomconversion','sb_prodcat','sb_prodclass','sb_prodtype','sb_product','sb_prodclasslink','sb_prodcatimage','sb_prodtyimage','sb_prodimage','sb_prodfeatcat','sb_prodfeattype','sb_prodfeature','sb_featappltype','sb_featappl','sb_featinttype','sb_featinteraction','sb_pricecomptype','sb_pricecomp','sb_costcomptype','sb_costcomp','sb_supprating','sb_supppref','sb_prodsupplier','sb_facilitytype','sb_facility','sb_containertype','sb_container','sb_lot','sb_invitemtype','sb_invitemstat','sb_inventoryitem','sb_prodordertype','sb_prodorderstatus','sb_prodorder','sb_prodorderitype','sb_prodorderistatus','sb_prodorderitem','sb_invoicetype','sb_invoicestatus','sb_invoice','sb_invoicerole','sb_invoiceitemtype','sb_invoiceitem','sb_invoiceterm',);
+	public static $content_types_array = array('sb_currency','sb_loctype','sb_location','sb_business','sb_businessunit','sb_partycat','sb_partytype','sb_roletype','sb_party','sb_partyrole','sb_reltype','sb_relstatus','sb_partyrel','sb_partygroup','sb_person','sb_partyprofile','sb_cmechtype','sb_contactmech','sb_pcmpurposetype','sb_partycmech','sb_pcmpurpose','sb_socmediaccttype','sb_socmediaacct','sb_billaccount','sb_accttxntype','sb_accttxnstatus','sb_accttransaction','sb_conversation','sb_conuser','sb_message','sb_messagesfiles','sb_notifytype','sb_notifystatus','sb_notifylevel','sb_notification','sb_contactus','sb_uom','sb_uomconversion','sb_prodcat','sb_prodclass','sb_prodtype','sb_product','sb_prodclasslink','sb_prodcatimage','sb_prodtyimage','sb_prodimage','sb_prodfeatcat','sb_prodfeattype','sb_prodfeature','sb_featappltype','sb_featappl','sb_featinttype','sb_featinteraction','sb_pricecomptype','sb_pricecomp','sb_costcomptype','sb_costcomp','sb_supprating','sb_supppref','sb_prodsupplier','sb_facilitytype','sb_facility','sb_containertype','sb_container','sb_lot','sb_invitemtype','sb_invitemstat','sb_inventoryitem','sb_prodordertype','sb_prodorderstatus','sb_prodorder','sb_prodorderitype','sb_prodorderistatus','sb_prodorderitem','sb_invoicetype','sb_invoicestatus','sb_invoice','sb_invoicerole','sb_invoiceitemtype','sb_invoiceitemstatus','sb_invoiceitem','sb_invoiceterm','sb_paymenttype','sb_paymethod','sb_payment','sb_periodtype','sb_acctperiod','sb_coaacctstruct','sb_coaacctsegtype','sb_coaasegval','sb_coaacctseg','sb_coastatus','sb_coa','sb_glaccttype','sb_glaccount','sb_buglaccount','sb_buglaccountbal','sb_coaaseginst','sb_feventtype','sb_fevent','sb_txntype','sb_txnstatus','sb_transaction','sb_txndetail','sb_feventtxntype','sb_txntypeacct','sb_bankaccttype','sb_bankaccount',);
 
 	/*------------------------------------------------------------------------------
 	SYNOPSIS: prints the value of a custom field from the current post.
@@ -142,8 +142,23 @@ class CloderiaCustomFieldsUtils
         case 'sb_pcmpurpose':
 				$custom_fields = PartyContactMechanismPurposeCPT::$custom_fields;
 				break;
+        case 'sb_socmediaccttype':
+				$custom_fields = SocialMediaAccountTypeCPT::$custom_fields;
+				break;
+        case 'sb_socmediaacct':
+				$custom_fields = SocialMediaAccountCPT::$custom_fields;
+				break;
         case 'sb_billaccount':
 				$custom_fields = BillingAccountCPT::$custom_fields;
+				break;
+        case 'sb_accttxntype':
+				$custom_fields = AccountTransactionTypeCPT::$custom_fields;
+				break;
+        case 'sb_accttxnstatus':
+				$custom_fields = AccountTransactionStatusCPT::$custom_fields;
+				break;
+        case 'sb_accttransaction':
+				$custom_fields = AccountTransactionCPT::$custom_fields;
 				break;
         case 'sb_conversation':
 				$custom_fields = ConversationCPT::$custom_fields;
@@ -301,11 +316,92 @@ class CloderiaCustomFieldsUtils
         case 'sb_invoiceitemtype':
 				$custom_fields = InvoiceItemTypeCPT::$custom_fields;
 				break;
+        case 'sb_invoiceitemstatus':
+				$custom_fields = InvoiceItemStatusCPT::$custom_fields;
+				break;
         case 'sb_invoiceitem':
 				$custom_fields = InvoiceItemCPT::$custom_fields;
 				break;
         case 'sb_invoiceterm':
 				$custom_fields = InvoiceTermCPT::$custom_fields;
+				break;
+        case 'sb_paymenttype':
+				$custom_fields = PaymentTypeCPT::$custom_fields;
+				break;
+        case 'sb_paymethod':
+				$custom_fields = PaymentMethodCPT::$custom_fields;
+				break;
+        case 'sb_payment':
+				$custom_fields = PaymentCPT::$custom_fields;
+				break;
+        case 'sb_periodtype':
+				$custom_fields = PeriodTypeCPT::$custom_fields;
+				break;
+        case 'sb_acctperiod':
+				$custom_fields = AccountingPeriodCPT::$custom_fields;
+				break;
+        case 'sb_coaacctstruct':
+				$custom_fields = COAAccountStructureCPT::$custom_fields;
+				break;
+        case 'sb_coaacctsegtype':
+				$custom_fields = COAAccountSegmentTypeCPT::$custom_fields;
+				break;
+        case 'sb_coaasegval':
+				$custom_fields = COAAccountSegmentTypeValueCPT::$custom_fields;
+				break;
+        case 'sb_coaacctseg':
+				$custom_fields = COAAccountSegmentCPT::$custom_fields;
+				break;
+        case 'sb_coastatus':
+				$custom_fields = COAStatusCPT::$custom_fields;
+				break;
+        case 'sb_coa':
+				$custom_fields = ChartOfAccountsCPT::$custom_fields;
+				break;
+        case 'sb_glaccttype':
+				$custom_fields = GLAccountTypeCPT::$custom_fields;
+				break;
+        case 'sb_glaccount':
+				$custom_fields = GLAccountCPT::$custom_fields;
+				break;
+        case 'sb_buglaccount':
+				$custom_fields = BusinessUnitGLAccountCPT::$custom_fields;
+				break;
+        case 'sb_buglaccountbal':
+				$custom_fields = BusinessUnitGLAccountBalanceCPT::$custom_fields;
+				break;
+        case 'sb_coaaseginst':
+				$custom_fields = COAAccountSegmentInstanceCPT::$custom_fields;
+				break;
+        case 'sb_feventtype':
+				$custom_fields = FinancialEventTypeCPT::$custom_fields;
+				break;
+        case 'sb_fevent':
+				$custom_fields = FinancialEventCPT::$custom_fields;
+				break;
+        case 'sb_txntype':
+				$custom_fields = TransactionTypeCPT::$custom_fields;
+				break;
+        case 'sb_txnstatus':
+				$custom_fields = TransactionStatusCPT::$custom_fields;
+				break;
+        case 'sb_transaction':
+				$custom_fields = TransactionCPT::$custom_fields;
+				break;
+        case 'sb_txndetail':
+				$custom_fields = TransactionDetailCPT::$custom_fields;
+				break;
+        case 'sb_feventtxntype':
+				$custom_fields = FEventTxnTypeCPT::$custom_fields;
+				break;
+        case 'sb_txntypeacct':
+				$custom_fields = TxnTypeAccountCPT::$custom_fields;
+				break;
+        case 'sb_bankaccttype':
+				$custom_fields = BankAccountTypeCPT::$custom_fields;
+				break;
+        case 'sb_bankaccount':
+				$custom_fields = BankAccountCPT::$custom_fields;
 				break;
 			default:
 				;
@@ -381,8 +477,23 @@ class CloderiaCustomFieldsUtils
         case 'sb_pcmpurpose':
 				$field_value = PartyContactMechanismPurposeCPT::get_field_value($content_type, $post_id, $field);
 				break;
+        case 'sb_socmediaccttype':
+				$field_value = SocialMediaAccountTypeCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_socmediaacct':
+				$field_value = SocialMediaAccountCPT::get_field_value($content_type, $post_id, $field);
+				break;
         case 'sb_billaccount':
 				$field_value = BillingAccountCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_accttxntype':
+				$field_value = AccountTransactionTypeCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_accttxnstatus':
+				$field_value = AccountTransactionStatusCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_accttransaction':
+				$field_value = AccountTransactionCPT::get_field_value($content_type, $post_id, $field);
 				break;
         case 'sb_conversation':
 				$field_value = ConversationCPT::get_field_value($content_type, $post_id, $field);
@@ -540,11 +651,92 @@ class CloderiaCustomFieldsUtils
         case 'sb_invoiceitemtype':
 				$field_value = InvoiceItemTypeCPT::get_field_value($content_type, $post_id, $field);
 				break;
+        case 'sb_invoiceitemstatus':
+				$field_value = InvoiceItemStatusCPT::get_field_value($content_type, $post_id, $field);
+				break;
         case 'sb_invoiceitem':
 				$field_value = InvoiceItemCPT::get_field_value($content_type, $post_id, $field);
 				break;
         case 'sb_invoiceterm':
 				$field_value = InvoiceTermCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_paymenttype':
+				$field_value = PaymentTypeCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_paymethod':
+				$field_value = PaymentMethodCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_payment':
+				$field_value = PaymentCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_periodtype':
+				$field_value = PeriodTypeCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_acctperiod':
+				$field_value = AccountingPeriodCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_coaacctstruct':
+				$field_value = COAAccountStructureCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_coaacctsegtype':
+				$field_value = COAAccountSegmentTypeCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_coaasegval':
+				$field_value = COAAccountSegmentTypeValueCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_coaacctseg':
+				$field_value = COAAccountSegmentCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_coastatus':
+				$field_value = COAStatusCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_coa':
+				$field_value = ChartOfAccountsCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_glaccttype':
+				$field_value = GLAccountTypeCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_glaccount':
+				$field_value = GLAccountCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_buglaccount':
+				$field_value = BusinessUnitGLAccountCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_buglaccountbal':
+				$field_value = BusinessUnitGLAccountBalanceCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_coaaseginst':
+				$field_value = COAAccountSegmentInstanceCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_feventtype':
+				$field_value = FinancialEventTypeCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_fevent':
+				$field_value = FinancialEventCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_txntype':
+				$field_value = TransactionTypeCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_txnstatus':
+				$field_value = TransactionStatusCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_transaction':
+				$field_value = TransactionCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_txndetail':
+				$field_value = TransactionDetailCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_feventtxntype':
+				$field_value = FEventTxnTypeCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_txntypeacct':
+				$field_value = TxnTypeAccountCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_bankaccttype':
+				$field_value = BankAccountTypeCPT::get_field_value($content_type, $post_id, $field);
+				break;
+        case 'sb_bankaccount':
+				$field_value = BankAccountCPT::get_field_value($content_type, $post_id, $field);
 				break;
 			default:
 				$field_value =  $field['value'];

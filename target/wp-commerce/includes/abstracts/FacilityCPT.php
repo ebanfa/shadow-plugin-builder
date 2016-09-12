@@ -27,11 +27,6 @@ class FacilityCPT {
             'description' => 'The Type field',
             'type' => 'text',
         ),
-        array('name' => 'facility_loc',
-            'title' => 'Location',
-            'description' => 'The Location field',
-            'type' => 'text',
-        ),
         array('name' => 'name',
             'title' => 'Name',
             'description' => 'The Name field',
@@ -68,20 +63,6 @@ class FacilityCPT {
             'entity_name' => 'FacilityType',
             'entity_description' => 'Facility Type',
             'data_type' => 'sb_facilitytype',
-            'is_required' => true,
-            'is_visible' => true,
-            'is_create_field' => true,
-            'is_edit_field' => true,
-            'is_view_field' => true,
-            'is_list_field' => true,
-            'is_form_field' => true,
-            'is_relationship_field' => true,),
-        'facility_loc' => array('name' => 'facility_loc',
-            'description' => 'Location',
-            'size' => 'large',
-            'entity_name' => 'Location',
-            'entity_description' => 'Location',
-            'data_type' => 'sb_location',
             'is_required' => true,
             'is_visible' => true,
             'is_create_field' => true,
@@ -255,7 +236,6 @@ class FacilityCPT {
     public static function sb_facility_table_head($defaults){
         $defaults['entity_code']  = 'Code';
         $defaults['facility_type']  = 'Type';
-        $defaults['facility_loc']  = 'Location';
         $defaults['name']  = 'Name';
         $defaults['description']  = 'Description';
         return $defaults;
@@ -268,10 +248,6 @@ class FacilityCPT {
         }
         if ($column_name == 'facility_type') {
             $field_value = get_post_meta($post_id, 'facility_type', true );
-            echo $field_value;
-        }
-        if ($column_name == 'facility_loc') {
-            $field_value = get_post_meta($post_id, 'facility_loc', true );
             echo $field_value;
         }
         if ($column_name == 'name') {

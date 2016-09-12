@@ -17,7 +17,7 @@ class InvoiceItemType extends Model {
     /**
      * 
      */
-    public function item_type()
+    public function ii_type()
     {
         return $this->hasMany('InvoiceItem');
     }

@@ -24,6 +24,8 @@ INSERT INTO roletype (entity_code, name, description) VALUES ('BUSINESS_USER', '
 INSERT INTO roletype (entity_code, name, description) VALUES ('BUSINESS_OWNER', 'Business Owner', 'Business Owner');
 INSERT INTO roletype (entity_code, name, description) VALUES ('CUSTOMER', 'Customer', 'Customer');
 INSERT INTO roletype (entity_code, name, description) VALUES ('SUPPLIER', 'Supplier', 'Supplier');
+INSERT INTO roletype (entity_code, name, description) VALUES ('EMPLOYEE', 'Employee', 'Employee');
+
 
 /* Insert statement for Product Category */
 INSERT INTO productcategory (id, entity_code, name, description) VALUES (1, 'FABRICS', 'Fabrics', 'Fabrics');

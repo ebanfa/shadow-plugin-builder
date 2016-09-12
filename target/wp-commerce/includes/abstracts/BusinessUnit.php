@@ -16,18 +16,32 @@ class BusinessUnit extends Model {
     /**
      * 
      */
-    public function currency()
-    {
-        return $this->belongsTo('Currency');
-    }
-    /**
-     * 
-     */
     public function business()
     {
         return $this->belongsTo('Business');
     }
+    /**
+     * 
+     */
+    public function currency()
+    {
+        return $this->belongsTo('Currency');
+    }
 
+    /**
+     * 
+     */
+    public function org_unit()
+    {
+        return $this->hasMany('ChartOfAccounts');
+    }
+    /**
+     * 
+     */
+    public function internal_org()
+    {
+        return $this->hasMany('Transaction');
+    }
     /**
      * 
      */
@@ -47,7 +61,7 @@ class BusinessUnit extends Model {
      */
     public function business_unit()
     {
-        return $this->hasMany('InvoiceTerm');
+        return $this->hasMany('TxnTypeAccount');
     }
 
 }

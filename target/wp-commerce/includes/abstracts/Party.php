@@ -38,13 +38,6 @@ class Party extends Model {
     /**
      * 
      */
-    public function supplier_of_prod()
-    {
-        return $this->hasMany('ProductSupplier');
-    }
-    /**
-     * 
-     */
     public function con_user()
     {
         return $this->hasMany('ConversationUser');
@@ -52,9 +45,51 @@ class Party extends Model {
     /**
      * 
      */
+    public function from_party()
+    {
+        return $this->hasMany('Transaction');
+    }
+    /**
+     * 
+     */
+    public function supplier_of_prod()
+    {
+        return $this->hasMany('ProductSupplier');
+    }
+    /**
+     * 
+     */
+    public function to_party()
+    {
+        return $this->hasMany('Transaction');
+    }
+    /**
+     * 
+     */
+    public function soc_party()
+    {
+        return $this->hasMany('SocialMediaAccount');
+    }
+    /**
+     * 
+     */
+    public function payment_to()
+    {
+        return $this->hasMany('Payment');
+    }
+    /**
+     * 
+     */
     public function counter_party()
     {
         return $this->hasMany('Message');
+    }
+    /**
+     * 
+     */
+    public function payment_from()
+    {
+        return $this->hasMany('Payment');
     }
     /**
      * 

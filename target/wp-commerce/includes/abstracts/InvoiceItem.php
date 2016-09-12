@@ -23,7 +23,14 @@ class InvoiceItem extends Model {
     /**
      * 
      */
-    public function item_type()
+    public function ii_status()
+    {
+        return $this->belongsTo('InvoiceItemStatus');
+    }
+    /**
+     * 
+     */
+    public function ii_type()
     {
         return $this->belongsTo('InvoiceItemType');
     }

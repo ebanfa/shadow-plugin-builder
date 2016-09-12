@@ -42,6 +42,11 @@ class InventoryItemCPT {
             'description' => 'The Name field',
             'type' => 'text',
         ),
+        array('name' => 'quantity',
+            'title' => 'Quantity',
+            'description' => 'The Quantity field',
+            'type' => 'text',
+        ),
         array('name' => 'description',
             'title' => 'Description',
             'description' => 'The Description field',
@@ -121,6 +126,18 @@ class InventoryItemCPT {
             'is_list_field' => true,
             'is_form_field' => true,
             'is_relationship_field' => false,),
+        'quantity' => array('name' => 'quantity',
+            'description' => 'Quantity',
+            'size' => 'large',
+            'data_type' => 'number',
+            'is_required' => true,
+            'is_visible' => true,
+            'is_create_field' => true,
+            'is_edit_field' => true,
+            'is_view_field' => true,
+            'is_list_field' => true,
+            'is_form_field' => true,
+            'is_relationship_field' => false,),
         'description' => array('name' => 'description',
             'description' => 'Description',
             'size' => 'large',
@@ -130,7 +147,7 @@ class InventoryItemCPT {
             'is_create_field' => true,
             'is_edit_field' => true,
             'is_view_field' => true,
-            'is_list_field' => true,
+            'is_list_field' => false,
             'is_form_field' => true,
             'is_relationship_field' => false,),
    );
@@ -204,7 +221,7 @@ class InventoryItemCPT {
         $defaults['item_product']  = 'Product';
         $defaults['item_status']  = 'Status';
         $defaults['name']  = 'Name';
-        $defaults['description']  = 'Description';
+        $defaults['quantity']  = 'Quantity';
         return $defaults;
     }
 
@@ -227,6 +244,10 @@ class InventoryItemCPT {
         }
         if ($column_name == 'name') {
             $field_value = get_post_meta($post_id, 'name', true );
+            echo $field_value;
+        }
+        if ($column_name == 'quantity') {
+            $field_value = get_post_meta($post_id, 'quantity', true );
             echo $field_value;
         }
         if ($column_name == 'description') {

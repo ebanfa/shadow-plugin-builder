@@ -25,6 +25,7 @@ class CreatePersonView extends MultiEntityCreateView {
             $role = sanitize_text_field($_REQUEST['role']);
             if($role == 'customer') return self::get_customer_tabs();
             if($role == 'supplier') return self::get_supplier_tabs();
+            if($role == 'employee') return self::get_employee_tabs();
         }
         else {
             return array(
@@ -51,6 +52,14 @@ class CreatePersonView extends MultiEntityCreateView {
      *
      */
     function get_supplier_tabs() {
+        $default_tabs = self::get_default_tabs();
+        return $default_tabs;
+    }
+    
+    /**
+     *
+     */
+    function get_employee_tabs() {
         $default_tabs = self::get_default_tabs();
         return $default_tabs;
     }

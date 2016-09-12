@@ -46,7 +46,12 @@ class CloderiaMenuUtils {
        remove_menu_page( 'edit.php?post_type=sb_pcmpurposetype');
        remove_menu_page( 'edit.php?post_type=sb_partycmech');
        remove_menu_page( 'edit.php?post_type=sb_pcmpurpose');
+       remove_menu_page( 'edit.php?post_type=sb_socmediaccttype');
+       remove_menu_page( 'edit.php?post_type=sb_socmediaacct');
        remove_menu_page( 'edit.php?post_type=sb_billaccount');
+       remove_menu_page( 'edit.php?post_type=sb_accttxntype');
+       remove_menu_page( 'edit.php?post_type=sb_accttxnstatus');
+       remove_menu_page( 'edit.php?post_type=sb_accttransaction');
        remove_menu_page( 'edit.php?post_type=sb_conversation');
        remove_menu_page( 'edit.php?post_type=sb_conuser');
        remove_menu_page( 'edit.php?post_type=sb_message');
@@ -99,8 +104,35 @@ class CloderiaMenuUtils {
        remove_menu_page( 'edit.php?post_type=sb_invoice');
        remove_menu_page( 'edit.php?post_type=sb_invoicerole');
        remove_menu_page( 'edit.php?post_type=sb_invoiceitemtype');
+       remove_menu_page( 'edit.php?post_type=sb_invoiceitemstatus');
        remove_menu_page( 'edit.php?post_type=sb_invoiceitem');
        remove_menu_page( 'edit.php?post_type=sb_invoiceterm');
+       remove_menu_page( 'edit.php?post_type=sb_paymenttype');
+       remove_menu_page( 'edit.php?post_type=sb_paymethod');
+       remove_menu_page( 'edit.php?post_type=sb_payment');
+       remove_menu_page( 'edit.php?post_type=sb_periodtype');
+       remove_menu_page( 'edit.php?post_type=sb_acctperiod');
+       remove_menu_page( 'edit.php?post_type=sb_coaacctstruct');
+       remove_menu_page( 'edit.php?post_type=sb_coaacctsegtype');
+       remove_menu_page( 'edit.php?post_type=sb_coaasegval');
+       remove_menu_page( 'edit.php?post_type=sb_coaacctseg');
+       remove_menu_page( 'edit.php?post_type=sb_coastatus');
+       remove_menu_page( 'edit.php?post_type=sb_coa');
+       remove_menu_page( 'edit.php?post_type=sb_glaccttype');
+       remove_menu_page( 'edit.php?post_type=sb_glaccount');
+       remove_menu_page( 'edit.php?post_type=sb_buglaccount');
+       remove_menu_page( 'edit.php?post_type=sb_buglaccountbal');
+       remove_menu_page( 'edit.php?post_type=sb_coaaseginst');
+       remove_menu_page( 'edit.php?post_type=sb_feventtype');
+       remove_menu_page( 'edit.php?post_type=sb_fevent');
+       remove_menu_page( 'edit.php?post_type=sb_txntype');
+       remove_menu_page( 'edit.php?post_type=sb_txnstatus');
+       remove_menu_page( 'edit.php?post_type=sb_transaction');
+       remove_menu_page( 'edit.php?post_type=sb_txndetail');
+       remove_menu_page( 'edit.php?post_type=sb_feventtxntype');
+       remove_menu_page( 'edit.php?post_type=sb_txntypeacct');
+       remove_menu_page( 'edit.php?post_type=sb_bankaccttype');
+       remove_menu_page( 'edit.php?post_type=sb_bankaccount');
 	}
 
 	/**
@@ -359,9 +391,59 @@ class CloderiaMenuUtils {
     /**
 	 * Create Orders post-type sub menu
 	 */
+	public static function render_sb_socmediaccttype()
+	{
+		$url = admin_url().'edit.php?post_type=sb_socmediaccttype';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_socmediaacct()
+	{
+		$url = admin_url().'edit.php?post_type=sb_socmediaacct';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
 	public static function render_sb_billaccount()
 	{
 		$url = admin_url().'edit.php?post_type=sb_billaccount';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_accttxntype()
+	{
+		$url = admin_url().'edit.php?post_type=sb_accttxntype';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_accttxnstatus()
+	{
+		$url = admin_url().'edit.php?post_type=sb_accttxnstatus';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_accttransaction()
+	{
+		$url = admin_url().'edit.php?post_type=sb_accttransaction';
 		?>
 	 	<script>location.href='<?php echo $url;?>';</script>
 		<?php
@@ -889,6 +971,16 @@ class CloderiaMenuUtils {
     /**
 	 * Create Orders post-type sub menu
 	 */
+	public static function render_sb_invoiceitemstatus()
+	{
+		$url = admin_url().'edit.php?post_type=sb_invoiceitemstatus';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
 	public static function render_sb_invoiceitem()
 	{
 		$url = admin_url().'edit.php?post_type=sb_invoiceitem';
@@ -902,6 +994,266 @@ class CloderiaMenuUtils {
 	public static function render_sb_invoiceterm()
 	{
 		$url = admin_url().'edit.php?post_type=sb_invoiceterm';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_paymenttype()
+	{
+		$url = admin_url().'edit.php?post_type=sb_paymenttype';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_paymethod()
+	{
+		$url = admin_url().'edit.php?post_type=sb_paymethod';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_payment()
+	{
+		$url = admin_url().'edit.php?post_type=sb_payment';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_periodtype()
+	{
+		$url = admin_url().'edit.php?post_type=sb_periodtype';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_acctperiod()
+	{
+		$url = admin_url().'edit.php?post_type=sb_acctperiod';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_coaacctstruct()
+	{
+		$url = admin_url().'edit.php?post_type=sb_coaacctstruct';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_coaacctsegtype()
+	{
+		$url = admin_url().'edit.php?post_type=sb_coaacctsegtype';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_coaasegval()
+	{
+		$url = admin_url().'edit.php?post_type=sb_coaasegval';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_coaacctseg()
+	{
+		$url = admin_url().'edit.php?post_type=sb_coaacctseg';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_coastatus()
+	{
+		$url = admin_url().'edit.php?post_type=sb_coastatus';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_coa()
+	{
+		$url = admin_url().'edit.php?post_type=sb_coa';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_glaccttype()
+	{
+		$url = admin_url().'edit.php?post_type=sb_glaccttype';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_glaccount()
+	{
+		$url = admin_url().'edit.php?post_type=sb_glaccount';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_buglaccount()
+	{
+		$url = admin_url().'edit.php?post_type=sb_buglaccount';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_buglaccountbal()
+	{
+		$url = admin_url().'edit.php?post_type=sb_buglaccountbal';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_coaaseginst()
+	{
+		$url = admin_url().'edit.php?post_type=sb_coaaseginst';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_feventtype()
+	{
+		$url = admin_url().'edit.php?post_type=sb_feventtype';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_fevent()
+	{
+		$url = admin_url().'edit.php?post_type=sb_fevent';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_txntype()
+	{
+		$url = admin_url().'edit.php?post_type=sb_txntype';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_txnstatus()
+	{
+		$url = admin_url().'edit.php?post_type=sb_txnstatus';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_transaction()
+	{
+		$url = admin_url().'edit.php?post_type=sb_transaction';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_txndetail()
+	{
+		$url = admin_url().'edit.php?post_type=sb_txndetail';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_feventtxntype()
+	{
+		$url = admin_url().'edit.php?post_type=sb_feventtxntype';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_txntypeacct()
+	{
+		$url = admin_url().'edit.php?post_type=sb_txntypeacct';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_bankaccttype()
+	{
+		$url = admin_url().'edit.php?post_type=sb_bankaccttype';
+		?>
+	 	<script>location.href='<?php echo $url;?>';</script>
+		<?php
+	}
+    /**
+	 * Create Orders post-type sub menu
+	 */
+	public static function render_sb_bankaccount()
+	{
+		$url = admin_url().'edit.php?post_type=sb_bankaccount';
 		?>
 	 	<script>location.href='<?php echo $url;?>';</script>
 		<?php

@@ -1030,7 +1030,252 @@ jQuery(document).ready(function ($)
         });
     });
 
+    $('#sb_socmediaccttype_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_socmediaacct_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
     $('#sb_billaccount_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_accttxntype_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_accttxnstatus_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_accttransaction_form').bootstrapValidator().on('success.form.bv', function (e)
     {
         e.preventDefault();
         var formData = new FormData(), params = $(e.target).serializeArray();
@@ -3627,6 +3872,55 @@ jQuery(document).ready(function ($)
         });
     });
 
+    $('#sb_invoiceitemstatus_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
     $('#sb_invoiceitem_form').bootstrapValidator().on('success.form.bv', function (e)
     {
         e.preventDefault();
@@ -3677,6 +3971,1280 @@ jQuery(document).ready(function ($)
     });
 
     $('#sb_invoiceterm_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_paymenttype_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_paymethod_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_payment_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_periodtype_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_acctperiod_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_coaacctstruct_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_coaacctsegtype_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_coaasegval_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_coaacctseg_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_coastatus_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_coa_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_glaccttype_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_glaccount_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_buglaccount_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_buglaccountbal_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_coaaseginst_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_feventtype_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_fevent_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_txntype_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_txnstatus_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_transaction_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_txndetail_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_feventtxntype_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_txntypeacct_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_bankaccttype_form').bootstrapValidator().on('success.form.bv', function (e)
+    {
+        e.preventDefault();
+        var formData = new FormData(), params = $(e.target).serializeArray();
+        // Copy other params from the form into the formData
+        $.each(params, function(i, val) {
+            formData.append(val.name, val.value);
+        });
+        // As required by wordpress
+        formData.append('action', 'create_entity_ajax');
+        swal({title: "Please wait!", text: "Your request is being processed", showConfirmButton: false });
+        // Make the Ajax call
+        $.ajax({
+            url: '../wp-admin/admin-ajax.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(responseData) {
+                if (responseData.success) {
+
+                    swal({   
+                        title: "Great Job!",   
+                        text: "The data operation completed successfully",   
+                        type: "success",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    }, function(){  
+                        var view_options = '';
+                        if($('#view_options').length) { 
+                            view_options = $('#view_options').val(); 
+                        }
+                        window.location=responseData.data.message + view_options;
+                    });
+                }
+                else {
+                    swal({   
+                        title: "Oops!",   
+                        text: responseData.data.message,   
+                        type: "warning",   
+                        showCancelButton: false,   
+                        closeOnConfirm: true 
+                    });
+                }
+            }
+        });
+    });
+
+    $('#sb_bankaccount_form').bootstrapValidator().on('success.form.bv', function (e)
     {
         e.preventDefault();
         var formData = new FormData(), params = $(e.target).serializeArray();

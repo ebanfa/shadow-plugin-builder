@@ -313,7 +313,6 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 		for(Entity entity: entitiesInModule) {
 
 			if (entity.getIsVirtual() != null) {		
-				//System.out.println(">>>>>>>>>>>>>>>>>>>>>>Found virtual entity:" + entity.getName() + " with parent" + entity.getParentName());		
 				this.generateArtifact(module, entity, 
 					"entities/wordpress/entity.ftl" , this.pluginDir + "includes/abstracts/" + entity.getName() + "CPT.php");this.generateArtifact(module, entity, 
 					"entities/wordpress/model.ftl" , this.pluginDir + "includes/abstracts/" + entity.getName() + ".php");
@@ -329,6 +328,7 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 
 	private void doSQL(Module module) {
 		this.generateArtifact(module, null, "entities/wordpress/db.ftl", this.pluginDir + "sql/db.sql");
+		this.generateArtifact(module, null, "entities/wordpress/all_entities.ftl", this.pluginDir + "sql/all_entities.txt");
 	}
 
 	private void doAPI(Module module) {

@@ -35,6 +35,20 @@ class BillingAccount extends Model {
     {
         return $this->hasMany('Invoice');
     }
+    /**
+     * 
+     */
+    public function payment_account()
+    {
+        return $this->hasMany('Payment');
+    }
+    /**
+     * 
+     */
+    public function account()
+    {
+        return $this->hasMany('AccountTransaction');
+    }
 
 }
 

@@ -121,12 +121,12 @@ class EntityPersistenceAPI {
         CloderiaLogUtils::shadow_log($query->toSql());
         CloderiaLogUtils::shadow_log($query->getBindings());
         $entities = $query->get();
-        CloderiaLogUtils::shadow_log('Found ' . count($entities) . ' entities');
+        CloderiaLogUtils::shadow_log('Found >>>>>>>>>>>>.' . count($entities) . ' ' . $entity_data['entity_name'] . ' entities');
         // Force filter the results to ensure only data from current business unit is 
         // visible
         foreach ($entities as $key => $entity) {
             $result_data = EntityAPIUtils::entity_to_data($entity_data, $entity, false);
-            if(!$entity_data['is_global_entity'] && !current_user_can('administrator')) {
+            /*if(!$entity_data['is_global_entity'] && !current_user_can('administrator')) {
                 $current_business_unit = BusinessUnitAPI::get_current_user_business_unit();
 
                 if(isset($current_business_unit['id'])) {
@@ -146,7 +146,8 @@ class EntityPersistenceAPI {
             }
             else {
                 array_push($search_results, $result_data);
-            }
+            }*/
+            array_push($search_results, $result_data);
         }
         return $search_results;
     }

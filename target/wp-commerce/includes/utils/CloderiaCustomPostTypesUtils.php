@@ -15,7 +15,7 @@ class CloderiaCustomPostTypesUtils {
 	public static $prefix = ''; 
 
 	// Which types of content do we want to standardize?
-	public static $content_types_array = array('sb_currency','sb_loctype','sb_location','sb_business','sb_businessunit','sb_partycat','sb_partytype','sb_roletype','sb_party','sb_partyrole','sb_reltype','sb_relstatus','sb_partyrel','sb_partygroup','sb_person','sb_partyprofile','sb_cmechtype','sb_contactmech','sb_pcmpurposetype','sb_partycmech','sb_pcmpurpose','sb_billaccount','sb_conversation','sb_conuser','sb_message','sb_messagesfiles','sb_notifytype','sb_notifystatus','sb_notifylevel','sb_notification','sb_contactus','sb_uom','sb_uomconversion','sb_prodcat','sb_prodclass','sb_prodtype','sb_product','sb_prodclasslink','sb_prodcatimage','sb_prodtyimage','sb_prodimage','sb_prodfeatcat','sb_prodfeattype','sb_prodfeature','sb_featappltype','sb_featappl','sb_featinttype','sb_featinteraction','sb_pricecomptype','sb_pricecomp','sb_costcomptype','sb_costcomp','sb_supprating','sb_supppref','sb_prodsupplier','sb_facilitytype','sb_facility','sb_containertype','sb_container','sb_lot','sb_invitemtype','sb_invitemstat','sb_inventoryitem','sb_prodordertype','sb_prodorderstatus','sb_prodorder','sb_prodorderitype','sb_prodorderistatus','sb_prodorderitem','sb_invoicetype','sb_invoicestatus','sb_invoice','sb_invoicerole','sb_invoiceitemtype','sb_invoiceitem','sb_invoiceterm',);
+	public static $content_types_array = array('sb_currency','sb_loctype','sb_location','sb_business','sb_businessunit','sb_partycat','sb_partytype','sb_roletype','sb_party','sb_partyrole','sb_reltype','sb_relstatus','sb_partyrel','sb_partygroup','sb_person','sb_partyprofile','sb_cmechtype','sb_contactmech','sb_pcmpurposetype','sb_partycmech','sb_pcmpurpose','sb_socmediaccttype','sb_socmediaacct','sb_billaccount','sb_accttxntype','sb_accttxnstatus','sb_accttransaction','sb_conversation','sb_conuser','sb_message','sb_messagesfiles','sb_notifytype','sb_notifystatus','sb_notifylevel','sb_notification','sb_contactus','sb_uom','sb_uomconversion','sb_prodcat','sb_prodclass','sb_prodtype','sb_product','sb_prodclasslink','sb_prodcatimage','sb_prodtyimage','sb_prodimage','sb_prodfeatcat','sb_prodfeattype','sb_prodfeature','sb_featappltype','sb_featappl','sb_featinttype','sb_featinteraction','sb_pricecomptype','sb_pricecomp','sb_costcomptype','sb_costcomp','sb_supprating','sb_supppref','sb_prodsupplier','sb_facilitytype','sb_facility','sb_containertype','sb_container','sb_lot','sb_invitemtype','sb_invitemstat','sb_inventoryitem','sb_prodordertype','sb_prodorderstatus','sb_prodorder','sb_prodorderitype','sb_prodorderistatus','sb_prodorderitem','sb_invoicetype','sb_invoicestatus','sb_invoice','sb_invoicerole','sb_invoiceitemtype','sb_invoiceitemstatus','sb_invoiceitem','sb_invoiceterm','sb_paymenttype','sb_paymethod','sb_payment','sb_periodtype','sb_acctperiod','sb_coaacctstruct','sb_coaacctsegtype','sb_coaasegval','sb_coaacctseg','sb_coastatus','sb_coa','sb_glaccttype','sb_glaccount','sb_buglaccount','sb_buglaccountbal','sb_coaaseginst','sb_feventtype','sb_fevent','sb_txntype','sb_txnstatus','sb_transaction','sb_txndetail','sb_feventtxntype','sb_txntypeacct','sb_bankaccttype','sb_bankaccount',);
 
 	/**
 	 * Register the custom post type so it shows up in menus
@@ -43,7 +43,12 @@ class CloderiaCustomPostTypesUtils {
         PartyContactMechanismPurposeTypeCPT::register_custom_post_type();
         PartyContactMechanismCPT::register_custom_post_type();
         PartyContactMechanismPurposeCPT::register_custom_post_type();
+        SocialMediaAccountTypeCPT::register_custom_post_type();
+        SocialMediaAccountCPT::register_custom_post_type();
         BillingAccountCPT::register_custom_post_type();
+        AccountTransactionTypeCPT::register_custom_post_type();
+        AccountTransactionStatusCPT::register_custom_post_type();
+        AccountTransactionCPT::register_custom_post_type();
         ConversationCPT::register_custom_post_type();
         ConversationUserCPT::register_custom_post_type();
         MessageCPT::register_custom_post_type();
@@ -96,8 +101,35 @@ class CloderiaCustomPostTypesUtils {
         InvoiceCPT::register_custom_post_type();
         InvoiceRoleCPT::register_custom_post_type();
         InvoiceItemTypeCPT::register_custom_post_type();
+        InvoiceItemStatusCPT::register_custom_post_type();
         InvoiceItemCPT::register_custom_post_type();
         InvoiceTermCPT::register_custom_post_type();
+        PaymentTypeCPT::register_custom_post_type();
+        PaymentMethodCPT::register_custom_post_type();
+        PaymentCPT::register_custom_post_type();
+        PeriodTypeCPT::register_custom_post_type();
+        AccountingPeriodCPT::register_custom_post_type();
+        COAAccountStructureCPT::register_custom_post_type();
+        COAAccountSegmentTypeCPT::register_custom_post_type();
+        COAAccountSegmentTypeValueCPT::register_custom_post_type();
+        COAAccountSegmentCPT::register_custom_post_type();
+        COAStatusCPT::register_custom_post_type();
+        ChartOfAccountsCPT::register_custom_post_type();
+        GLAccountTypeCPT::register_custom_post_type();
+        GLAccountCPT::register_custom_post_type();
+        BusinessUnitGLAccountCPT::register_custom_post_type();
+        BusinessUnitGLAccountBalanceCPT::register_custom_post_type();
+        COAAccountSegmentInstanceCPT::register_custom_post_type();
+        FinancialEventTypeCPT::register_custom_post_type();
+        FinancialEventCPT::register_custom_post_type();
+        TransactionTypeCPT::register_custom_post_type();
+        TransactionStatusCPT::register_custom_post_type();
+        TransactionCPT::register_custom_post_type();
+        TransactionDetailCPT::register_custom_post_type();
+        FEventTxnTypeCPT::register_custom_post_type();
+        TxnTypeAccountCPT::register_custom_post_type();
+        BankAccountTypeCPT::register_custom_post_type();
+        BankAccountCPT::register_custom_post_type();
 	}
 
 	/*------------------------------------------------------------------------------
@@ -173,8 +205,23 @@ class CloderiaCustomPostTypesUtils {
 			case 'sb_pcmpurpose':
 				PartyContactMechanismPurposeCPT::save_custom_fields($post_id, $post);
 				break;
+			case 'sb_socmediaccttype':
+				SocialMediaAccountTypeCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_socmediaacct':
+				SocialMediaAccountCPT::save_custom_fields($post_id, $post);
+				break;
 			case 'sb_billaccount':
 				BillingAccountCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_accttxntype':
+				AccountTransactionTypeCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_accttxnstatus':
+				AccountTransactionStatusCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_accttransaction':
+				AccountTransactionCPT::save_custom_fields($post_id, $post);
 				break;
 			case 'sb_conversation':
 				ConversationCPT::save_custom_fields($post_id, $post);
@@ -332,11 +379,92 @@ class CloderiaCustomPostTypesUtils {
 			case 'sb_invoiceitemtype':
 				InvoiceItemTypeCPT::save_custom_fields($post_id, $post);
 				break;
+			case 'sb_invoiceitemstatus':
+				InvoiceItemStatusCPT::save_custom_fields($post_id, $post);
+				break;
 			case 'sb_invoiceitem':
 				InvoiceItemCPT::save_custom_fields($post_id, $post);
 				break;
 			case 'sb_invoiceterm':
 				InvoiceTermCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_paymenttype':
+				PaymentTypeCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_paymethod':
+				PaymentMethodCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_payment':
+				PaymentCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_periodtype':
+				PeriodTypeCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_acctperiod':
+				AccountingPeriodCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_coaacctstruct':
+				COAAccountStructureCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_coaacctsegtype':
+				COAAccountSegmentTypeCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_coaasegval':
+				COAAccountSegmentTypeValueCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_coaacctseg':
+				COAAccountSegmentCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_coastatus':
+				COAStatusCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_coa':
+				ChartOfAccountsCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_glaccttype':
+				GLAccountTypeCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_glaccount':
+				GLAccountCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_buglaccount':
+				BusinessUnitGLAccountCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_buglaccountbal':
+				BusinessUnitGLAccountBalanceCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_coaaseginst':
+				COAAccountSegmentInstanceCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_feventtype':
+				FinancialEventTypeCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_fevent':
+				FinancialEventCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_txntype':
+				TransactionTypeCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_txnstatus':
+				TransactionStatusCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_transaction':
+				TransactionCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_txndetail':
+				TransactionDetailCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_feventtxntype':
+				FEventTxnTypeCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_txntypeacct':
+				TxnTypeAccountCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_bankaccttype':
+				BankAccountTypeCPT::save_custom_fields($post_id, $post);
+				break;
+			case 'sb_bankaccount':
+				BankAccountCPT::save_custom_fields($post_id, $post);
 				break;
 			default:
 				;

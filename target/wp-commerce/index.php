@@ -39,7 +39,7 @@ add_filter('wp_mail_from_name', 'new_mail_from_name');
 add_filter('wp_mail_content_type', 'set_html_content_type' );
 
 function new_mail_from($old) {
- return get_option('cp_notify_loans');
+ return get_option('cp_notify_accounts');
 }
 
 function new_mail_from_name($old) {

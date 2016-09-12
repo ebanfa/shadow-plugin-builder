@@ -149,6 +149,8 @@ jQuery(document).ready(function($)
                 { data: "currency_txt" },
                 { data: "name" },
 
+                { data: "pin" },
+
                 { data: "description" },
 
         ],
@@ -185,10 +187,10 @@ jQuery(document).ready(function($)
         },
         columns: [
             { data: "id" }, 
-
-                { data: "currency_txt" },
                 { data: "name" },
 
+
+                { data: "currency_txt" },
                 { data: "address_1" },
 
                 { data: "address_2" },
@@ -893,6 +895,88 @@ jQuery(document).ready(function($)
     var baseUrl = wpcommerce_base_url.baseUrl;
 
     
+    $('#sb_socmediaccttype-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': wpcommerce_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'socialmediaaccounttype';
+               d.form = $("#sb_socmediaccttype-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+                { data: "name" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#socialmediaaccounttype_parent_params').length) {
+                        parent_params = parent_params + $('#socialmediaaccounttype_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=socialmediaaccounttype&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="socialmediaaccounttype" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = wpcommerce_base_url.baseUrl;
+
+    
+    $('#sb_socmediaacct-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': wpcommerce_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'socialmediaaccount';
+               d.form = $("#sb_socmediaacct-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+
+                { data: "soc_account_type_txt" },
+
+                { data: "soc_party_txt" },
+                { data: "name" },
+
+                { data: "user_name" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#socialmediaaccount_parent_params').length) {
+                        parent_params = parent_params + $('#socialmediaaccount_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=socialmediaaccount&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="socialmediaaccount" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = wpcommerce_base_url.baseUrl;
+
+    
     $('#sb_billaccount-table').dataTable({
         "ajax": {
             'type': 'POST',
@@ -924,6 +1008,134 @@ jQuery(document).ready(function($)
                         parent_params = parent_params + $('#billingaccount_parent_params').val(); 
                     }
                     return '<a class="data-table-link" href="' + baseUrl + 'artifact=billingaccount&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="billingaccount" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = wpcommerce_base_url.baseUrl;
+
+    
+    $('#sb_accttxntype-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': wpcommerce_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'accounttransactiontype';
+               d.form = $("#sb_accttxntype-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+                { data: "entity_code" },
+
+                { data: "name" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#accounttransactiontype_parent_params').length) {
+                        parent_params = parent_params + $('#accounttransactiontype_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=accounttransactiontype&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="accounttransactiontype" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = wpcommerce_base_url.baseUrl;
+
+    
+    $('#sb_accttxnstatus-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': wpcommerce_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'accounttransactionstatus';
+               d.form = $("#sb_accttxnstatus-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+                { data: "entity_code" },
+
+                { data: "name" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#accounttransactionstatus_parent_params').length) {
+                        parent_params = parent_params + $('#accounttransactionstatus_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=accounttransactionstatus&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="accounttransactionstatus" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = wpcommerce_base_url.baseUrl;
+
+    
+    $('#sb_accttransaction-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': wpcommerce_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'accounttransaction';
+               d.form = $("#sb_accttransaction-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+
+                { data: "acct_txn_type_txt" },
+
+                { data: "transaction_status_txt" },
+                { data: "name" },
+
+                { data: "txn_date" },
+
+
+                { data: "account_txt" },
+
+                { data: "amount_txt" },
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#accounttransaction_parent_params').length) {
+                        parent_params = parent_params + $('#accounttransaction_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=accounttransaction&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="accounttransaction" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
                 },
                 "targets": 1
             }
@@ -1283,15 +1495,9 @@ jQuery(document).ready(function($)
         },
         columns: [
             { data: "id" }, 
-                { data: "subject" },
-
                 { data: "name" },
 
                 { data: "email" },
-
-                { data: "b_name" },
-
-                { data: "message" },
 
         ],
         columnDefs: [
@@ -2407,8 +2613,6 @@ jQuery(document).ready(function($)
 
 
                 { data: "facility_type_txt" },
-
-                { data: "facility_loc_txt" },
                 { data: "name" },
 
                 { data: "description" },
@@ -2661,7 +2865,7 @@ jQuery(document).ready(function($)
                 { data: "item_status_txt" },
                 { data: "name" },
 
-                { data: "description" },
+                { data: "quantity" },
 
         ],
         columnDefs: [
@@ -3038,16 +3242,10 @@ jQuery(document).ready(function($)
                 { data: "entity_code" },
 
 
-                { data: "owner_role_txt" },
-
                 { data: "bill_acct_txt" },
                 { data: "name" },
 
                 { data: "amount" },
-
-                { data: "description" },
-
-                { data: "message" },
 
 
                 { data: "business_unit_txt" },
@@ -3149,6 +3347,44 @@ jQuery(document).ready(function($)
     var baseUrl = wpcommerce_base_url.baseUrl;
 
     
+    $('#sb_invoiceitemstatus-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': wpcommerce_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'invoiceitemstatus';
+               d.form = $("#sb_invoiceitemstatus-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+                { data: "name" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#invoiceitemstatus_parent_params').length) {
+                        parent_params = parent_params + $('#invoiceitemstatus_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=invoiceitemstatus&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="invoiceitemstatus" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = wpcommerce_base_url.baseUrl;
+
+    
     $('#sb_invoiceitem-table').dataTable({
         "ajax": {
             'type': 'POST',
@@ -3230,6 +3466,1134 @@ jQuery(document).ready(function($)
                         parent_params = parent_params + $('#invoiceterm_parent_params').val(); 
                     }
                     return '<a class="data-table-link" href="' + baseUrl + 'artifact=invoiceterm&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="invoiceterm" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = wpcommerce_base_url.baseUrl;
+
+    
+    $('#sb_paymenttype-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': wpcommerce_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'paymenttype';
+               d.form = $("#sb_paymenttype-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+                { data: "name" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#paymenttype_parent_params').length) {
+                        parent_params = parent_params + $('#paymenttype_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=paymenttype&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="paymenttype" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = wpcommerce_base_url.baseUrl;
+
+    
+    $('#sb_paymethod-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': wpcommerce_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'paymentmethod';
+               d.form = $("#sb_paymethod-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+                { data: "name" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#paymentmethod_parent_params').length) {
+                        parent_params = parent_params + $('#paymentmethod_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=paymentmethod&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="paymentmethod" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = wpcommerce_base_url.baseUrl;
+
+    
+    $('#sb_payment-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': wpcommerce_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'payment';
+               d.form = $("#sb_payment-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+
+                { data: "p_type_txt" },
+
+                { data: "p_methtype_txt" },
+
+                { data: "payment_from_txt" },
+
+                { data: "payment_to_txt" },
+
+                { data: "payment_account_txt" },
+
+                { data: "payment_invoice_txt" },
+                { data: "name" },
+
+                { data: "amount" },
+
+                { data: "effective_date" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#payment_parent_params').length) {
+                        parent_params = parent_params + $('#payment_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=payment&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="payment" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = wpcommerce_base_url.baseUrl;
+
+    
+    $('#sb_periodtype-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': wpcommerce_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'periodtype';
+               d.form = $("#sb_periodtype-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+                { data: "name" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#periodtype_parent_params').length) {
+                        parent_params = parent_params + $('#periodtype_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=periodtype&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="periodtype" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = wpcommerce_base_url.baseUrl;
+
+    
+    $('#sb_acctperiod-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': wpcommerce_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'accountingperiod';
+               d.form = $("#sb_acctperiod-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+
+                { data: "parent_period_txt" },
+
+                { data: "ap_type_txt" },
+                { data: "name" },
+
+                { data: "period_no" },
+
+                { data: "active_fg" },
+
+                { data: "from_date" },
+
+                { data: "to_date" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#accountingperiod_parent_params').length) {
+                        parent_params = parent_params + $('#accountingperiod_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=accountingperiod&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="accountingperiod" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = wpcommerce_base_url.baseUrl;
+
+    
+    $('#sb_coaacctstruct-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': wpcommerce_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'coaaccountstructure';
+               d.form = $("#sb_coaacctstruct-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+                { data: "name" },
+
+                { data: "seg_separator" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#coaaccountstructure_parent_params').length) {
+                        parent_params = parent_params + $('#coaaccountstructure_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=coaaccountstructure&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="coaaccountstructure" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = wpcommerce_base_url.baseUrl;
+
+    
+    $('#sb_coaacctsegtype-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': wpcommerce_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'coaaccountsegmenttype';
+               d.form = $("#sb_coaacctsegtype-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+                { data: "entity_code" },
+
+                { data: "name" },
+
+                { data: "mask" },
+
+                { data: "has_val_src" },
+
+                { data: "val_provider" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#coaaccountsegmenttype_parent_params').length) {
+                        parent_params = parent_params + $('#coaaccountsegmenttype_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=coaaccountsegmenttype&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="coaaccountsegmenttype" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = wpcommerce_base_url.baseUrl;
+
+    
+    $('#sb_coaasegval-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': wpcommerce_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'coaaccountsegmenttypevalue';
+               d.form = $("#sb_coaasegval-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+
+                { data: "v_segtype_txt" },
+                { data: "name" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#coaaccountsegmenttypevalue_parent_params').length) {
+                        parent_params = parent_params + $('#coaaccountsegmenttypevalue_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=coaaccountsegmenttypevalue&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="coaaccountsegmenttypevalue" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = wpcommerce_base_url.baseUrl;
+
+    
+    $('#sb_coaacctseg-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': wpcommerce_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'coaaccountsegment';
+               d.form = $("#sb_coaacctseg-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+
+                { data: "seg_type_txt" },
+
+                { data: "seg_acctstruct_txt" },
+                { data: "name" },
+
+                { data: "seg_sequence" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#coaaccountsegment_parent_params').length) {
+                        parent_params = parent_params + $('#coaaccountsegment_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=coaaccountsegment&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="coaaccountsegment" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = wpcommerce_base_url.baseUrl;
+
+    
+    $('#sb_coastatus-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': wpcommerce_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'coastatus';
+               d.form = $("#sb_coastatus-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+                { data: "name" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#coastatus_parent_params').length) {
+                        parent_params = parent_params + $('#coastatus_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=coastatus&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="coastatus" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = wpcommerce_base_url.baseUrl;
+
+    
+    $('#sb_coa-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': wpcommerce_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'chartofaccounts';
+               d.form = $("#sb_coa-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+
+                { data: "org_unit_txt" },
+
+                { data: "acct_structure_txt" },
+                { data: "name" },
+
+                { data: "from_date" },
+
+                { data: "to_date" },
+
+
+                { data: "status_txt" },
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#chartofaccounts_parent_params').length) {
+                        parent_params = parent_params + $('#chartofaccounts_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=chartofaccounts&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="chartofaccounts" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = wpcommerce_base_url.baseUrl;
+
+    
+    $('#sb_glaccttype-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': wpcommerce_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'glaccounttype';
+               d.form = $("#sb_glaccttype-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+                { data: "entity_code" },
+
+                { data: "name" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#glaccounttype_parent_params').length) {
+                        parent_params = parent_params + $('#glaccounttype_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=glaccounttype&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="glaccounttype" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = wpcommerce_base_url.baseUrl;
+
+    
+    $('#sb_glaccount-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': wpcommerce_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'glaccount';
+               d.form = $("#sb_glaccount-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+                { data: "entity_code" },
+
+                { data: "account_no" },
+
+
+                { data: "glacct_type_txt" },
+                { data: "name" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#glaccount_parent_params').length) {
+                        parent_params = parent_params + $('#glaccount_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=glaccount&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="glaccount" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = wpcommerce_base_url.baseUrl;
+
+    
+    $('#sb_buglaccount-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': wpcommerce_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'businessunitglaccount';
+               d.form = $("#sb_buglaccount-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+
+                { data: "parent_buglacct_txt" },
+
+                { data: "glaccount_txt" },
+
+                { data: "internal_org_txt" },
+                { data: "name" },
+
+                { data: "from_date" },
+
+                { data: "to_date" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#businessunitglaccount_parent_params').length) {
+                        parent_params = parent_params + $('#businessunitglaccount_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=businessunitglaccount&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="businessunitglaccount" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = wpcommerce_base_url.baseUrl;
+
+    
+    $('#sb_buglaccountbal-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': wpcommerce_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'businessunitglaccountbalance';
+               d.form = $("#sb_buglaccountbal-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+
+                { data: "buglaccount_txt" },
+
+                { data: "internal_org_txt" },
+
+                { data: "acctng_period_txt" },
+                { data: "name" },
+
+                { data: "balance" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#businessunitglaccountbalance_parent_params').length) {
+                        parent_params = parent_params + $('#businessunitglaccountbalance_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=businessunitglaccountbalance&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="businessunitglaccountbalance" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = wpcommerce_base_url.baseUrl;
+
+    
+    $('#sb_coaaseginst-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': wpcommerce_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'coaaccountsegmentinstance';
+               d.form = $("#sb_coaaseginst-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+
+                { data: "coa_txt" },
+
+                { data: "acct_segment_txt" },
+
+                { data: "parent_instance_txt" },
+                { data: "name" },
+
+                { data: "is_account" },
+
+
+                { data: "casi_buglaccount_txt" },
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#coaaccountsegmentinstance_parent_params').length) {
+                        parent_params = parent_params + $('#coaaccountsegmentinstance_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=coaaccountsegmentinstance&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="coaaccountsegmentinstance" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = wpcommerce_base_url.baseUrl;
+
+    
+    $('#sb_feventtype-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': wpcommerce_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'financialeventtype';
+               d.form = $("#sb_feventtype-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+                { data: "entity_code" },
+
+                { data: "name" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#financialeventtype_parent_params').length) {
+                        parent_params = parent_params + $('#financialeventtype_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=financialeventtype&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="financialeventtype" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = wpcommerce_base_url.baseUrl;
+
+    
+    $('#sb_fevent-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': wpcommerce_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'financialevent';
+               d.form = $("#sb_fevent-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+
+                { data: "event_type_txt" },
+                { data: "name" },
+
+                { data: "amount" },
+
+                { data: "event_date" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#financialevent_parent_params').length) {
+                        parent_params = parent_params + $('#financialevent_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=financialevent&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="financialevent" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = wpcommerce_base_url.baseUrl;
+
+    
+    $('#sb_txntype-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': wpcommerce_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'transactiontype';
+               d.form = $("#sb_txntype-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+                { data: "entity_code" },
+
+
+                { data: "parent_type_txt" },
+                { data: "name" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#transactiontype_parent_params').length) {
+                        parent_params = parent_params + $('#transactiontype_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=transactiontype&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="transactiontype" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = wpcommerce_base_url.baseUrl;
+
+    
+    $('#sb_txnstatus-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': wpcommerce_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'transactionstatus';
+               d.form = $("#sb_txnstatus-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+                { data: "entity_code" },
+
+                { data: "name" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#transactionstatus_parent_params').length) {
+                        parent_params = parent_params + $('#transactionstatus_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=transactionstatus&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="transactionstatus" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = wpcommerce_base_url.baseUrl;
+
+    
+    $('#sb_transaction-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': wpcommerce_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'transaction';
+               d.form = $("#sb_transaction-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+
+                { data: "gl_txn_type_txt" },
+
+                { data: "gl_txn_status_txt" },
+                { data: "name" },
+
+                { data: "txn_date" },
+
+                { data: "entry_date" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#transaction_parent_params').length) {
+                        parent_params = parent_params + $('#transaction_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=transaction&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="transaction" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = wpcommerce_base_url.baseUrl;
+
+    
+    $('#sb_txndetail-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': wpcommerce_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'transactiondetail';
+               d.form = $("#sb_txndetail-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+
+                { data: "transaction_txt" },
+
+                { data: "td_buglaccount_txt" },
+                { data: "name" },
+
+                { data: "dbcr_fg" },
+
+                { data: "amount" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#transactiondetail_parent_params').length) {
+                        parent_params = parent_params + $('#transactiondetail_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=transactiondetail&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="transactiondetail" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = wpcommerce_base_url.baseUrl;
+
+    
+    $('#sb_feventtxntype-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': wpcommerce_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'feventtxntype';
+               d.form = $("#sb_feventtxntype-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+
+                { data: "fevent_type_txt" },
+
+                { data: "fetxn_type_txt" },
+                { data: "name" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#feventtxntype_parent_params').length) {
+                        parent_params = parent_params + $('#feventtxntype_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=feventtxntype&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="feventtxntype" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = wpcommerce_base_url.baseUrl;
+
+    
+    $('#sb_txntypeacct-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': wpcommerce_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'txntypeaccount';
+               d.form = $("#sb_txntypeacct-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+
+                { data: "tta_txn_type_txt" },
+
+                { data: "tta_account_txt" },
+                { data: "name" },
+
+                { data: "db_cr_fg" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#txntypeaccount_parent_params').length) {
+                        parent_params = parent_params + $('#txntypeaccount_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=txntypeaccount&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="txntypeaccount" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = wpcommerce_base_url.baseUrl;
+
+    
+    $('#sb_bankaccttype-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': wpcommerce_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'bankaccounttype';
+               d.form = $("#sb_bankaccttype-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+                { data: "entity_code" },
+
+                { data: "name" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#bankaccounttype_parent_params').length) {
+                        parent_params = parent_params + $('#bankaccounttype_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=bankaccounttype&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="bankaccounttype" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                },
+                "targets": 1
+            }
+        ]
+    });
+
+    var baseUrl = wpcommerce_base_url.baseUrl;
+
+    
+    $('#sb_bankaccount-table').dataTable({
+        "ajax": {
+            'type': 'POST',
+            'url': wpcommerce_ajax_script.ajaxurl,
+            'data': function(d){
+               d.action = 'find_entity_ajax';
+               d.artifact = 'bankaccount';
+               d.form = $("#sb_bankaccount-list-form").serializeArray();
+            },
+        },
+        columns: [
+            { data: "id" }, 
+                { data: "entity_code" },
+
+
+                { data: "bank_account_type_txt" },
+                { data: "name" },
+
+                { data: "bank_account_balance" },
+
+                { data: "description" },
+
+        ],
+        columnDefs: [
+            { "visible": false,  "targets": 0 },
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    var parent_params = '';
+                    if($('#bankaccount_parent_params').length) {
+                        parent_params = parent_params + $('#bankaccount_parent_params').val(); 
+                    }
+                    return '<a class="data-table-link" href="' + baseUrl + 'artifact=bankaccount&id=' + row.id + '&page_action=view' + parent_params + '" data-related-artifact-name="bankaccount" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
                 },
                 "targets": 1
             }

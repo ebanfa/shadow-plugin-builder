@@ -210,14 +210,9 @@ img {
                         <td>
                           <div class='contentEditableContainer contentTextEditable'>
                             <div class='contentEditable' style='text-align: center;'>
-                              <h2 style="color: #fff; font-size: 20px;">New loan application [+email+], </h2>
+                              <h2 style="color: #fff; font-size: 20px;">New contact request from [+email+], </h2>
                               <br>
-                              <p style="color: #fff;">Business Name: [+b_name+]</p>
-                              <p style="color: #fff;">Phone: [+b_phone+]</p>
-                              <p style="color: #fff;">Amount: [+ln_amt+]</p>
-                              <p style="color: #fff;">Industry: [+industry+]</p>
-                              <p style="color: #fff;">Country: [+country+]</p>
-                              <p style="color: #fff;">Description: [+description+]</p>
+                              <p style="color: #fff;">[+description+]</p>
                             </div>
                           </div>
                         </td>

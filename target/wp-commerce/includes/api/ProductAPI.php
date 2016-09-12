@@ -43,4 +43,29 @@ class ProductAPI {
     }
 
 
+    /**
+     *
+     */
+    public static function load_product_data($product_code){
+        $product_data = EntityAPI::get_by_code('product', $product_code);
+        // Load the product images
+        $product_data['content_files'] = EntityAPI::find_by_criteria('productimage', array('product' =>  $product_data['id']));
+        // Process the pricing of the product
+        $product_price = 0;
+        $price_components = EntityAPI::find_by_criteria('pricecomponent', array('component_prod' =>  $product_data['id']));
+        foreach ($price_components as $component) {
+           $product_price = $product_price + $component['component_price'];
+        }
+        $product_data['price'] = $product_price;
+        // Process the inventory availability for the product
+        $item_count = 0;
+        $inventory_items = EntityAPI::find_by_criteria('inventoryitem', array('item_product' =>  $product_data['id']));
+        foreach ($inventory_items as $inventory_item) {
+           $item_count = $item_count + $inventory_item['quantity'];
+        }
+        $product_data['item_count'] = $item_count;
+        return $product_data;
+    }
+
+
 }

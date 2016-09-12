@@ -20,13 +20,6 @@ class Facility extends Model {
     {
         return $this->belongsTo('FacilityType');
     }
-    /**
-     * 
-     */
-    public function facility_loc()
-    {
-        return $this->belongsTo('Location');
-    }
 
     /**
      * 
