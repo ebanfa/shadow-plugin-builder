@@ -19,7 +19,7 @@ if (!defined('ABSPATH')) {
                     <div class="clearfix">
                         <div class="chart stats-bar"></div>
                         <div class="count">
-                            <small>Number Of Properties</small>
+                            <small>No Of Customers</small>
                             <h2><?php //echo $dashboard_stats['property_count'];?></h2>
                         </div>
                     </div>
@@ -31,7 +31,7 @@ if (!defined('ABSPATH')) {
                     <div class="clearfix">
                         <div class="chart stats-bar-2"></div>
                         <div class="count">
-                            <small>Number Of Tenants</small>
+                            <small>No Of Products</small>
                             <h2><?php //echo $dashboard_stats['tenants_count'];?></h2>
                         </div>
                     </div>
@@ -43,7 +43,7 @@ if (!defined('ABSPATH')) {
                     <div class="clearfix">
                         <div class="chart stats-line"></div>
                         <div class="count">
-                            <small>Lease Agreements Value</small>
+                            <small>No Of Orders</small>
                             <h2><?php //echo get_option('cp_currency_symbol');?>  <?php //echo $dashboard_stats['lease_agreements_value'];?></h2>
                         </div>
                     </div>
@@ -55,7 +55,7 @@ if (!defined('ABSPATH')) {
                     <div class="clearfix">
                         <div class="chart stats-line-2"></div>
                         <div class="count">
-                            <small>Monthly Rent Income</small>
+                            <small>Total Inventory</small>
                             <h2><?php //echo $dashboard_stats['current_monthly_rent_income'];?></h2>
                         </div>
                     </div>
@@ -66,7 +66,7 @@ if (!defined('ABSPATH')) {
 
 <div class="card">
         <div class="card-header">
-            <h2>Property Performance Statistics </h2>
+            <h2>Product Performance Statistics </h2>
             
             <ul class="actions">
                 <li>

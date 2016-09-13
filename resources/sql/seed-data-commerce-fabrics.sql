@@ -33,10 +33,7 @@ INSERT INTO roletype (entity_code, name, description) VALUES ('SUPPLIER', 'Suppl
 INSERT INTO roletype (entity_code, name, description) VALUES ('EMPLOYEE', 'Employee', 'Employee');
 
 /* Insert statement for Party */
-INSERT INTO party (party_type, entity_code, name, user_name, description, business_unit) VALUES (2, 'ADMINISTRATOR', 'Administrator', 'admin@africanfabricanddesigns.com', 'Organizational party', 1);
-
-/* Insert statement for Party */
-INSERT INTO party (party_type, entity_code, name, user_name, description, business_unit) VALUES (2, 'ADMINISTRATOR', 'Administrator', 'admin@africanfabricanddesigns.com', 'Organizational party', 1);
+INSERT INTO party (party_type, entity_code, name, user_name, description, business_unit) VALUES (1, 2, 'ADMINISTRATOR', 'Administrator', 'admin@africanfabricanddesigns.com', 'Organizational party', 1);
 
 /* Insert statement for Party Role */
 INSERT INTO partyrole (party, role, parent_unit, entity_code, name, description, business_unit) VALUES (1, 1, 1, 'ADMINISTRATOR', 'Administrator', 'Administrator', 1);
