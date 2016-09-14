@@ -171,9 +171,9 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 	public void buildModules(Application application) {
 		for (Module module : application.getModules()) {
 			//System.out.println(module);
+			processFields(module) ;
 			processRelatedChildEntities(module);
 			processVirtualEntities(module) ;
-			//processFields(module) ;
 			doComponents(module);
 			doSQL(module);
 			doEnities(module);
@@ -188,6 +188,21 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 			doMenuHTML(application);
 		}
 		
+	}
+
+	private void processFields(Module module) {
+		for(Entity entity : module.getEntities()){
+			List<Field> fieldsInEntity = entity.getFields();
+			// Process the fields in the entity
+			for(Field field : fieldsInEntity){
+				// Set the nick name to the field name if
+				// field does not have a nick name
+				if(field.getNickName() == null){
+					field.setNickName(field.getName());
+				}
+
+			}
+		}
 	}
 
 	private void processRelatedChildEntities(Module module) {

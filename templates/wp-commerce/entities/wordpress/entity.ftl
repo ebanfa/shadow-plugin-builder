@@ -44,6 +44,7 @@ class ${entity.name}CPT {
 <#list entity.fields as field>
         '${field.name}' => array('name' => '${field.name}',
             'description' => '${field.description}',
+            'nick_name' => '${field.nickName}',
             'size' => '${field.size}',
         <#list module.entities as modEntity>
             <#if field.dataType == modEntity.postName>

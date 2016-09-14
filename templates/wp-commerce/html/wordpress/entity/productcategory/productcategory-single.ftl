@@ -239,7 +239,7 @@ $(function () {
     /*var url = window.location.hostname === 'blueimp.github.io' ?
                 '//jquery-file-upload.appspot.com/' : 'server/php/';*/
     $('#fileupload').fileupload({
-        url: shadowcore_ajax_script.ajaxurl,
+        url: ${application.name?lower_case}_ajax_script.ajaxurl,
         dataType: 'json',
         done: function (e, data) {
             $.each(data.result.files, function (index, file) {

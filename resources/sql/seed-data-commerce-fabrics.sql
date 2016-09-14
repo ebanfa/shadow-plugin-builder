@@ -15,7 +15,7 @@ INSERT INTO location (location_type, location, entity_code, name, description) V
 INSERT INTO business (id, currency, entity_code, name, user_name, pin, description) VALUES (1, 1, 'AFAD', 'African Fabric & Designs', 'admin@africanfabricanddesigns.com', '0000000', 'African Fabric & Designs');
 
 /* Insert statement for Business Unit */
-INSERT INTO businessunit (id, business, currency, entity_code, name, address_1, address_2, description) VALUES (1, 1, 1, 'HQ', 'Head Office', 'Shop No. 26 Adams arcade mini mall', 'Opposite Shell Petrol station along Suna road, (Right after Iran Medical Clinic)', 'Head Office');
+INSERT INTO businessunit (id, business, currency, entity_code, name, address_1, address_2, description) VALUES (1, 1, 1, 'DEFAULT', 'Head Office', 'Shop No. 26 Adams arcade mini mall', 'Opposite Shell Petrol station along Suna road, (Right after Iran Medical Clinic)', 'Head Office');
 
 /* Insert statement for Party Category */
 INSERT INTO partycategory (id, entity_code, name, description) VALUES (1, 'ORGANIZATION', 'Organization', 'Organizational party');
@@ -33,7 +33,7 @@ INSERT INTO roletype (entity_code, name, description) VALUES ('SUPPLIER', 'Suppl
 INSERT INTO roletype (entity_code, name, description) VALUES ('EMPLOYEE', 'Employee', 'Employee');
 
 /* Insert statement for Party */
-INSERT INTO party (party_type, entity_code, name, user_name, description, business_unit) VALUES (1, 2, 'ADMINISTRATOR', 'Administrator', 'admin@africanfabricanddesigns.com', 'Organizational party', 1);
+INSERT INTO party (id, party_type, entity_code, name, user_name, description, business_unit) VALUES (1, 2, 'ADMINISTRATOR', 'Administrator', 'admin@africanfabricanddesigns.com', 'Organizational party', 1);
 
 /* Insert statement for Party Role */
 INSERT INTO partyrole (party, role, parent_unit, entity_code, name, description, business_unit) VALUES (1, 1, 1, 'ADMINISTRATOR', 'Administrator', 'Administrator', 1);
@@ -89,6 +89,12 @@ INSERT INTO facility (id, facility_type, entity_code, name, description) VALUES 
 
 /* Insert statement for Container Type */
 INSERT INTO containertype (id, entity_code, name, description) VALUES (1, 'SHELF', 'Shelf', 'Shelf');
+
+/* Insert statement for Container  */
+INSERT INTO container (id, container_type, container_facility, entity_code, name, description) VALUES (1, 1, 1, 'DEFAULT', 'Shelf', 'Shelf');
+
+/* Insert statement for Lot */
+INSERT INTO lot (id, entity_code, name, description) VALUES (1, 'DEFAULT_LOT', 'Default Lot', 'Default Lot');
 
 /* Insert statement for Inventory Item Type */
 INSERT INTO inventoryitemtype (id, entity_code, name, description) VALUES (1, 'SERIALIZED_INVENTORY_ITEM', 'Serialized', 'Serialized');

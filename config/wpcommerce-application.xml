@@ -164,7 +164,9 @@
 				<active>N</active>
 				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
-				<target>/wordpress/page?artifact=productorder&amp;page_action=list&amp;role=customer</target>
+				<target>
+					/wordpress/page?artifact=productorder&amp;page_action=list&amp;criteria_name=type&amp;criteria_value=sales_order
+				</target>
 			</menu>
 			<menu>
 				<name>purchaseorders</name>
@@ -173,16 +175,20 @@
 				<active>N</active>
 				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
-				<target>/wordpress/page?artifact=productorder&amp;page_action=list&amp;role=supplier</target>
+				<target>
+					/wordpress/page?artifact=productorder&amp;page_action=list&amp;criteria_name=type&amp;criteria_value=purchase_order
+				</target>
 			</menu>
-			<menu>
+			<!-- <menu>
 				<name>customerinvoice</name>
 				<displayName>Customer Invoices</displayName>
 				<description>Customer Invoices</description>
 				<active>N</active>
 				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
-				<target>/wordpress/page?artifact=invoice&amp;page_action=list&amp;role=customer</target>
+				<target>
+					/wordpress/page?artifact=invoice&amp;page_action=list&amp;criteria_name=type&amp;criteria_value=sales_invoice
+				</target>
 			</menu>
 			<menu>
 				<name>supplierinvoice</name>
@@ -191,8 +197,10 @@
 				<active>N</active>
 				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
-				<target>/wordpress/page?artifact=invoice&amp;page_action=list&amp;role=supplier</target>
-			</menu>
+				<target>
+					/wordpress/page?artifact=invoice&amp;page_action=list&amp;criteria_name=type&amp;criteria_value=purchase_invoice
+				</target>
+			</menu> -->
 			<menu>
 				<name>receipts</name>
 				<displayName>Receipts</displayName>
@@ -200,7 +208,9 @@
 				<active>N</active>
 				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
-				<target>/wordpress/page?artifact=payment&amp;page_action=list&amp;role=customer</target>
+				<target>
+					/wordpress/page?artifact=payment&amp;page_action=list&amp;criteria_name=type&amp;criteria_value=receipt
+				</target>
 			</menu>
 			<menu>
 				<name>disbursements</name>
@@ -209,7 +219,9 @@
 				<active>N</active>
 				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
-				<target>/wordpress/page?artifact=payment&amp;page_action=list&amp;role=supplier</target>
+				<target>
+					/wordpress/page?artifact=payment&amp;page_action=list&amp;criteria_name=type&amp;criteria_value=disbursement
+				</target>
 			</menu>
 		</menuGroup>
 
@@ -226,7 +238,9 @@
 				<active>N</active>
 				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
-				<target>/wordpress/page?artifact=accounttransaction&amp;page_action=list&amp;role=customer</target>
+				<target>
+					/wordpress/page?artifact=accounttransaction&amp;page_action=list&amp;criteria_name=type&amp;criteria_value=sale
+				</target>
 			</menu>
 			<menu>
 				<name>expenses</name>
@@ -235,9 +249,11 @@
 				<active>N</active>
 				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
-				<target>/wordpress/page?artifact=accounttransaction&amp;page_action=list&amp;role=supplier</target>
+				<target>
+					/wordpress/page?artifact=accounttransaction&amp;page_action=list&amp;criteria_name=type&amp;criteria_value=purchase
+				</target>
 			</menu>
-			<menu>
+			<!-- <menu>
 				<name>journal</name>
 				<displayName>Journal</displayName>
 				<description>Journal</description>
@@ -263,7 +279,7 @@
 				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
 				<target>/wordpress/page?artifact=bankaccount&amp;page_action=list</target>
-			</menu>
+			</menu> -->
 		</menuGroup>
 
 		<menuGroup>
@@ -1046,7 +1062,7 @@
 			<name>Party</name>
 			<postName>sb_party</postName>
 			<description>Party</description>
-			<global>N</global>
+			<global>Y</global>
 			<viewPageTemplate>html/wordpress/entity/party/party-single.ftl</viewPageTemplate>
 			<!-- <listPageTemplate>html/wordpress/entity/party/party-list.ftl</listPageTemplate> -->
 			<createPageTemplate>html/wordpress/entity/party/party-create-form.ftl</createPageTemplate>
@@ -1158,7 +1174,7 @@
 			<name>PartyRole</name>
 			<postName>sb_partyrole</postName>
 			<description>Party Role</description>
-			<global>N</global>
+			<global>Y</global>
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
@@ -2967,12 +2983,13 @@
 			</field>
 			<field>
 				<name>acct_txn_type</name>
+				<nickName>type</nickName>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
-				<createField>N</createField>
+				<createField>Y</createField>
 				<editField>N</editField>
-				<viewField>N</viewField>
+				<viewField>Y</viewField>
 				<listField>Y</listField>
 				<dataType>sb_accttxntype</dataType>
 				<size>large</size>
@@ -2984,7 +3001,7 @@
 			<field>
 				<name>transaction_status</name>
 				<isVisible>Y</isVisible>
-				<isFormField>N</isFormField>
+				<isFormField>Y</isFormField>
 				<required>Y</required>
 				<createField>Y</createField>
 				<editField>N</editField>
@@ -3018,7 +3035,7 @@
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
-				<createField>N</createField>
+				<createField>Y</createField>
 				<editField>N</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
@@ -3048,18 +3065,18 @@
 			<field>
 				<name>amount</name>
 				<isVisible>Y</isVisible>
-				<isFormField>N</isFormField>
-				<required>N</required>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
 				<createField>Y</createField>
 				<editField>N</editField>
-				<viewField>N</viewField>
+				<viewField>Y</viewField>
 				<listField>Y</listField>
-				<dataType>sb_amount</dataType>
+				<dataType>money</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
 				<description>Amount</description>
 				<displayName>Amount</displayName>
-				<relationshipField>Y</relationshipField>
+				<relationshipField>N</relationshipField>
 			</field>
 			<field>
 				<name>description</name>
@@ -5342,16 +5359,16 @@
 			<name>PriceComponent</name>
 			<postName>sb_pricecomp</postName>
 			<description>Price Component</description>
-			<global>Y</global> 
+			<global>Y</global>
 			<field>
 				<name>entity_code</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
 				<dataType>alphanumeric</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
@@ -6032,13 +6049,13 @@
 			<global>Y</global> 
 			<field>
 				<name>entity_code</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
 				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
 				<dataType>alphanumeric</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
@@ -6347,6 +6364,54 @@
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
+				<name>item_facility</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_facility</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Facility</description>
+				<displayName>Facility</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>item_container</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_container</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Storage Container</description>
+				<displayName>Storage Container</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>item_lot</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_lot</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Lot</description>
+				<displayName>Lot</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
 				<name>name</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
@@ -6530,6 +6595,7 @@
 			</field>
 			<field>
 				<name>prod_order_type</name>
+				<nickName>type</nickName>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
@@ -6546,6 +6612,7 @@
 			</field>
 			<field>
 				<name>prod_order_status</name>
+				<nickName>status</nickName>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
@@ -6562,6 +6629,7 @@
 			</field>
 			<field>
 				<name>place_by_party</name>
+				<nickName>from_party</nickName>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
@@ -6578,6 +6646,7 @@
 			</field>
 			<field>
 				<name>taken_by_party</name>
+				<nickName>to_party</nickName>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
@@ -6874,7 +6943,7 @@
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
-				<createField>N</createField>
+				<createField>Y</createField>
 				<editField>N</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
@@ -7070,7 +7139,8 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
-				<name>type</name>
+				<name>invoice_type</name>
+				<nickName>type</nickName>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
@@ -7879,6 +7949,7 @@
 			</field>
 			<field>
 				<name>p_type</name>
+				<nickName>type</nickName>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>

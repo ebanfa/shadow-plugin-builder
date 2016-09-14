@@ -12,6 +12,7 @@ import javax.xml.bind.annotation.XmlElement;
 public class Field {
 
 	private String name;
+	private String nickName;
 	private String javaName;
 	private String dataType;
 	private String size;
@@ -48,6 +49,21 @@ public class Field {
 	@XmlElement
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	/**
+	 * @return the nickName
+	 */
+	public String getNickName() {
+		return nickName;
+	}
+
+	/**
+	 * @param nickName the nickName to set
+	 */
+	@XmlElement
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
 	}
 
 	/**
