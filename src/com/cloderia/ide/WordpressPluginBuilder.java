@@ -20,6 +20,7 @@ import javax.xml.bind.Unmarshaller;
 
 import com.cloderia.ide.app.Application;
 import com.cloderia.ide.app.Entity;
+import com.cloderia.ide.app.Api;
 import com.cloderia.ide.app.Field;
 import com.cloderia.ide.app.Page;
 import com.cloderia.ide.app.Module;
@@ -178,6 +179,7 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 			doSQL(module);
 			doEnities(module);
 			doAPI(module);
+			doModuleAPI(module);
 			doUtilities(module);
 			doServices(module);
 			doControllers(module);
@@ -376,6 +378,12 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 			"utils/wordpress/menu-utils-php.ftl", includeUtilOutputDir + "CloderiaMenuUtils.php");
 		this.generateArtifact(module, null, 
 			"utils/wordpress/template-functions-php.ftl", includeUtilOutputDir + "CloderiaTemplateFunctions.php");
+	}
+
+	private void doModuleAPI(Module module) {
+		for(Api api: module.getApis()) {
+			this.generateArtifact(module, null, api.getApiTemplate() , api.getApiFileName());
+		}
 	}
 
 	private void doServices(Module module) {

@@ -85,6 +85,9 @@ class ${application.name} {
         include_once('includes/api/${entity.name}API.php');
         </#if>
 </#list>
+<#list module.apis as api>
+        include_once('includes/api/${api.name}.php');
+</#list>
         
         include_once('includes/api/EntityPersistenceAPI.php');
         // Entity Controller

@@ -16,6 +16,7 @@ public class Module {
 	
 	String name;
 		
+	List<Api> apis = new ArrayList<Api>();
 	List<Page> pages = new ArrayList<Page>();
 	List<Entity> entities = new ArrayList<Entity>();
 
@@ -39,6 +40,21 @@ public class Module {
 	@XmlElement
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	/**
+	 * @return the apis
+	 */
+	public List<Api> getApis() {
+		return apis;
+	}
+
+	/**
+	 * @param apis the apis to set
+	 */
+	@XmlElement(name="api")
+	public void setApis(List<Api> apis) {
+		this.apis = apis;
 	}
 
 	/**

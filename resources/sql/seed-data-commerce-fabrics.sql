@@ -1,5 +1,6 @@
 /* Insert statement for Currency */
-INSERT INTO currency (id, entity_code, symbol, name, description) VALUES (1, 'USD', '$', 'US Dollar', 'US Dollar');
+INSERT INTO currency (id, entity_code, symbol, name, description) VALUES (1, 'KSH', 'Ksh', 'Kenyan Shillings', 'Kenyan Shillings');
+INSERT INTO currency (id, entity_code, symbol, name, description) VALUES (2, 'USD', '$', 'US Dollar', 'US Dollar');
 
 /* Insert statement for Location Type */
 INSERT INTO locationtype (id, entity_code, name, description) VALUES (1, 'COUNTRY', 'Country', 'Country');
@@ -46,6 +47,7 @@ INSERT INTO partyprofile (party, default_unit, entity_code, name, display_name, 
 INSERT INTO productcategory (id, entity_code, name, description) VALUES (1, 'FABRICS', 'Fabrics', 'Fabrics');
 INSERT INTO productcategory (id, entity_code, name, description) VALUES (2, 'WOMEN', 'Women', 'Women');
 INSERT INTO productcategory (id, entity_code, name, description) VALUES (3, 'MEN', 'Men', 'Men');
+INSERT INTO productcategory (id, entity_code, name, description) VALUES (4, 'ACCESSORIES', 'Accessories', 'Accessories');
 
 /* Insert statement for Product Type */
 INSERT INTO producttype (id, prod_cat, entity_code, name, description) VALUES (1, 1, 'KITENGE_ANKARA', 'Kitenge/Ankara', 'Kitenge/Ankara');
@@ -109,15 +111,16 @@ INSERT INTO productordertype (id, entity_code, name, description) VALUES (1, 'SA
 INSERT INTO productordertype (id, entity_code, name, description) VALUES (2, 'PURCHASE_ORDER', 'Purchase Order', 'Purchase Order');
 
 /* Insert statement for Product Order Status */
-INSERT INTO productorderstatus (id, entity_code, name, description) VALUES (1, 'ACTIVE', 'Active', 'Active');
+INSERT INTO productorderstatus (id, entity_code, name, description) VALUES (1, 'PENDING', 'Pending', 'Pending');
 INSERT INTO productorderstatus (id, entity_code, name, description) VALUES (2, 'CONFIRMED', 'Confirmed', 'Confirmed');
+INSERT INTO productorderstatus (id, entity_code, name, description) VALUES (3, 'COMPLETED', 'Completed', 'Completed');
 
 /* Insert statement for Product Order Item Type */
 INSERT INTO productorderitemtype (id, entity_code, name, description) VALUES (1, 'SALES_ORDER_ITEM', 'Sales Order Item', 'Sales Order Item');
 INSERT INTO productorderitemtype (id, entity_code, name, description) VALUES (2, 'PURCHASE_ORDER_ITEM', 'Purchase Order Item', 'Purchase Order Item');
 
 /* Insert statement for Product Order Item Status */
-INSERT INTO productorderitemstatus (id, entity_code, name, description) VALUES (1, 'ACTIVE', 'Active', 'Active');
+INSERT INTO productorderitemstatus (id, entity_code, name, description) VALUES (1, 'PENDING', 'Pending', 'Pending');
 INSERT INTO productorderitemstatus (id, entity_code, name, description) VALUES (2, 'CONFIRMED', 'Confirmed', 'Confirmed');
 
 /* Insert statement for Invoice Type */
@@ -126,7 +129,9 @@ INSERT INTO invoicetype (id, entity_code, name, description) VALUES (2, 'PURCHAS
 
 /* Insert statement for Invoice Status */
 INSERT INTO invoicestatus (id, entity_code, name, description) VALUES (1, 'ACTIVE', 'Active', 'Active');
-INSERT INTO invoicestatus (id, entity_code, name, description) VALUES (2, 'CONFIRMED', 'Confirmed', 'Confirmed');
+INSERT INTO invoicestatus (id, entity_code, name, description) VALUES (2, 'OUTSTANDING', 'Outstanding', 'Outstanding');
+INSERT INTO invoicestatus (id, entity_code, name, description) VALUES (3, 'PARTIAL_PAYMENT', 'Partial Payment', 'Partial Payment');
+INSERT INTO invoicestatus (id, entity_code, name, description) VALUES (4, 'PAID', 'Paid', 'Paid');
 
 /* Insert statement for Invoice Item Type */
 INSERT INTO invoiceitemtype (id, entity_code, name, description) VALUES (1, 'SALES_INVOICE_ITEM', 'Sales Invoice Item', 'Sales Invoice Item');
@@ -134,7 +139,9 @@ INSERT INTO invoiceitemtype (id, entity_code, name, description) VALUES (2, 'PUR
 
 /* Insert statement for Product Order Item Status */
 INSERT INTO invoiceitemstatus (id, entity_code, name, description) VALUES (1, 'ACTIVE', 'Active', 'Active');
-INSERT INTO invoiceitemstatus (id, entity_code, name, description) VALUES (2, 'CONFIRMED', 'Confirmed', 'Confirmed');
+INSERT INTO invoiceitemstatus (id, entity_code, name, description) VALUES (2, 'OUTSTANDING', 'Outstanding', 'Outstanding');
+INSERT INTO invoiceitemstatus (id, entity_code, name, description) VALUES (3, 'PAID', 'Paid', 'Paid');
+
 
 /* Insert statement for Payment Type */
 INSERT INTO paymenttype (id, entity_code, name, description) VALUES (1, 'DISBURSEMENT', 'Disbursement', 'Disbursement');
@@ -150,3 +157,10 @@ INSERT INTO accounttransactiontype (id, entity_code, name, description) VALUES (
 /* Insert statement for Account Transaction Status */
 INSERT INTO accounttransactionstatus (id, entity_code, name, description) VALUES (1, 'PENDING', 'Pending', 'Pending');
 INSERT INTO accounttransactionstatus (id, entity_code, name, description) VALUES (2, 'COMPLETED', 'Completed', 'Completed');
+
+
+INSERT INTO product (id, prod_type, entity_code, name, description) VALUES (1, 1, 'DEMO', 'Demo Product', 'Demo Product');
+
+INSERT INTO inventoryitem (id, item_type, item_product, item_status, item_facility, item_container, item_lot, entity_code, name, quantity, description) VALUES (1, 1, 1, 1, 1, 1, 1, 'DEMO_ITEM', 'Demo Item', 5, 'Demo Item');
+
+INSERT INTO pricecomponent (id, component_type, component_prod, entity_code, name, component_price, description) VALUES (1, 1, 1, 'BASE_PRICE', 'Demo Price Component', 100, 'Demo Price Component');

@@ -18,6 +18,7 @@ public class MenuGroup {
 	private String name;
 	private String displayName;
 	private String description;
+	private String admin;
 	private String type;
 	private String active;
 	private String cssClass;
@@ -80,6 +81,21 @@ public class MenuGroup {
 	}
 
 	/**
+	 * @return the admin
+	 */
+	public String getAdmin() {
+		return admin;
+	}
+
+	/**
+	 * @param type the type to set
+	 */
+	@XmlElement
+	public void setAdmin(String admin) {
+		this.admin = admin;
+	}
+
+	/**
 	 * @return the type
 	 */
 	public String getType() {
@@ -93,6 +109,7 @@ public class MenuGroup {
 	public void setType(String type) {
 		this.type = type;
 	}
+
 
 	/**
 	 * @param active the active to set
