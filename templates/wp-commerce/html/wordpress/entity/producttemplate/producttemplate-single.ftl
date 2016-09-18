@@ -12,6 +12,7 @@
     $parent_param = '';
     if(isset($_REQUEST['parent_param'])) $parent_param = urldecode($_REQUEST['parent_param']);
     $content_files = EntityAPI::find_by_criteria('productimage', array('product' =>  $model['id']));
+    $products = EntityAPI::find_by_criteria('product', array('prod_template' =>  $model['id']));
 
 
     wp_register_style('bootstrap_css', get_stylesheet_directory_uri() . '/css/bootstrap.css');
@@ -110,18 +111,26 @@
                     </tr>
                 </thead><!-- /table header -->  
                 <tbody>
-                    <?php if(!empty($content_files)) { foreach ($content_files as $content_file) { ?>
+
+                    <?php if(!empty($products)) { foreach ($products as $product) { ?>
+                    <?php 
+                        $child_artifact_name = 'product';
+                        $child_field_name = 'prod_template';
+                        $child_parent_url = '&parent_id=' . $model['id'] . '&parent_artifact=' . $view->get_artifact_name() . '&parent_field=' . $child_field_name;
+                    ?>
                     <tr>
                         <td>
-                            <a href="<?php echo $content_file['image_url']; ?>" class="product-name">
-                                <?php echo $content_file['name']; ?>
+                            <a href="<?php echo EntityActionProcessor::get_base_url() ;?>artifact=<?php echo $child_artifact_name; ?>&page_action=view&parent_id=<?php echo $model['id']; ?>&parent_artifact=<?php echo $view->get_artifact_name(); ?>&parent_field=<?php echo $child_field_name; ?>" class="product-name">
+                                <?php echo $product['name']; ?>
                             </a>
                         </td>
-                        <td class="cart-price"><?php echo $content_file['image_size']; ?></td>
+                        <td class="cart-price">
+                            <?php echo $product['prod_type_txt']; ?>
+                        </td>
                     </tr>
                     <?php   }  } else { ?>
                     <tr>
-                        <td> No files uploaded </td>
+                        <td> No products defined for this template </td>
                         <td class="cart-price"></td>
                     </tr>
                     <?php } ?>
@@ -373,6 +382,7 @@ $(function () {
     $('#quick-create-btn').fileupload({
         url: ${application.name?lower_case}_ajax_script.ajaxurl,
         dataType: 'json',
+        singleFileUploads: false,
         done: function (e, data) {
             $.each(data.result.files, function (index, file) {
                 $('<p/>').text(file.name).appendTo('#files');

@@ -787,6 +787,54 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
+				<name>tel_no</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Telephone</description>
+				<displayName>Telephone</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>account_notify_email</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>alphanumeric</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>New Accounts Email</description>
+				<displayName>New Accounts Email</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>orders_notify_email</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>alphanumeric</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>New Orders Email</description>
+				<displayName>New Orders Email</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
 				<name>description</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
@@ -1722,7 +1770,7 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
-				<name>party</name>
+				<name>partygroup_party</name>
 				<isVisible>N</isVisible>
 				<isFormField>N</isFormField>
 				<required>Y</required>
@@ -1850,7 +1898,7 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
-				<name>party</name>
+				<name>person_party</name>
 				<isVisible>N</isVisible>
 				<isFormField>N</isFormField>
 				<required>Y</required>
@@ -4493,6 +4541,22 @@
 				<dataColumn>true</dataColumn>
 				<description>Type</description>
 				<displayName>Type</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>prod_template</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>N</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_producttmpl</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Template</description>
+				<displayName>Template</displayName>
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
