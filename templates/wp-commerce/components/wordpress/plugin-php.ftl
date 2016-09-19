@@ -182,9 +182,8 @@ class ${application.name} {
 
 
     public function init_backend_hooks() {
-        add_action('cloderia_create_shadow_user', 'CloderiaUserAPI::create_shadow_user', 10, 1);
-        add_action('cloderia_user_reset_password', 'CloderiaUserAPI::create_shadow_user', 10, 1);
-        add_action('shadowbanker_notify_user', 'NotificationAPI::do_notification', 10, 1);
+        add_action('cloderia_create_individual', 'CloderiaUserAPI::create_person', 10, 1);
+        add_action('cloderia_wp_commerce_invoice_created', 'AccountTransactionAPI::do_invoice_created', 10, 1);
     }
 
     /**

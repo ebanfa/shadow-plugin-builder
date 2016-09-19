@@ -151,8 +151,9 @@ INSERT INTO paymenttype (id, entity_code, name, description) VALUES (2, 'RECEIPT
 INSERT INTO paymentmethod (id, entity_code, name, description) VALUES (1, 'CASH', 'Cash', 'Cash');
 
 /* Insert statement for Account Transaction Type */
-INSERT INTO accounttransactiontype (id, entity_code, name, description) VALUES (1, 'SALE', 'Sale', 'Sale');
-INSERT INTO accounttransactiontype (id, entity_code, name, description) VALUES (2, 'PURCHASE', 'Purchase', 'Purchase');
+INSERT INTO accounttransactiontype (id, entity_code, name, description) VALUES (1, 'CASH_SALE', 'Cash Sale', 'Cash Sale');
+INSERT INTO accounttransactiontype (id, entity_code, name, description) VALUES (2, 'SALE_ON_INVOICE', 'Sale on Invoice', 'Sale on Invoice');
+INSERT INTO accounttransactiontype (id, entity_code, name, description) VALUES (3, 'PURCHASE', 'Purchase', 'Purchase');
 
 /* Insert statement for Account Transaction Status */
 INSERT INTO accounttransactionstatus (id, entity_code, name, description) VALUES (1, 'PENDING', 'Pending', 'Pending');

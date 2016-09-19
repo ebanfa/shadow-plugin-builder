@@ -1305,6 +1305,7 @@
 			<postName>sb_partyrole</postName>
 			<description>Party Role</description>
 			<global>Y</global>
+			<apiTemplate>api/wordpress/partyrole/partyrole-service-api.ftl</apiTemplate>
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
@@ -3095,7 +3096,7 @@
 			<postName>sb_accttransaction</postName>
 			<description>Account Transaction</description>
 			<global>Y</global>
-			<!-- <viewFilterTemplate>views/wordpress/accounttransaction/accounttransaction-view-filter.ftl</viewFilterTemplate> -->
+			<apiTemplate>api/wordpress/accounttransaction/accounttransaction-service-api.ftl</apiTemplate>
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
@@ -3203,6 +3204,22 @@
 				<viewField>Y</viewField>
 				<listField>Y</listField>
 				<dataType>money</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Amount</description>
+				<displayName>Amount</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>db_cr_fg</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
 				<description>Amount</description>
@@ -8281,6 +8298,7 @@
 			<postName>sb_payment</postName>
 			<description>Payment</description>
 			<global>Y</global>
+			<apiTemplate>api/wordpress/payment/payment-service-api.ftl</apiTemplate>
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
