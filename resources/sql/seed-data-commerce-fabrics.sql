@@ -82,30 +82,6 @@ INSERT INTO productfeaturetype(id, feature_category, entity_code, name, descript
 /* Insert statement for Product Feature */
 INSERT INTO productfeature(id, feature_type, entity_code, name, description) VALUES (1, 1, 'SIX_YARDS', '6-Yards', '6-Yards');
 
-/* Insert statement for Facility Type */
-INSERT INTO facilitytype (id, entity_code, name, description) VALUES (1, 'WAREHOUSE', 'Warehouse', 'Warehouse');
-INSERT INTO facilitytype (id, entity_code, name, description) VALUES (2, 'STORE', 'Store', 'Store');
-
-/* Insert statement for Facility */
-INSERT INTO facility (id, facility_type, entity_code, name, description) VALUES (1, 2, 'MAIN_STORE', 'Main Store', 'Main Store');
-
-/* Insert statement for Container Type */
-INSERT INTO containertype (id, entity_code, name, description) VALUES (1, 'SHELF', 'Shelf', 'Shelf');
-
-/* Insert statement for Container  */
-INSERT INTO container (id, container_type, container_facility, entity_code, name, description) VALUES (1, 1, 1, 'DEFAULT', 'Shelf', 'Shelf');
-
-/* Insert statement for Lot */
-INSERT INTO lot (id, entity_code, name, description) VALUES (1, 'DEFAULT_LOT', 'Default Lot', 'Default Lot');
-
-/* Insert statement for Inventory Item Type */
-INSERT INTO inventoryitemtype (id, entity_code, name, description) VALUES (1, 'SERIALIZED_INVENTORY_ITEM', 'Serialized', 'Serialized');
-INSERT INTO inventoryitemtype (id, entity_code, name, description) VALUES (2, 'NON_SERIALIZED_INVENTORY_ITEM', 'Non Serialized', 'Non Serialized');
-
-/* Insert statement for Inventory Item Type */
-INSERT INTO inventoryitemstatus (id, entity_code, name, description) VALUES (1, 'GOOD', 'Good', 'Good');
-INSERT INTO inventoryitemstatus (id, entity_code, name, description) VALUES (2, 'DEFECTIVE', 'Defective', 'Defective');
-
 /* Insert statement for Product Order Type */
 INSERT INTO productordertype (id, entity_code, name, description) VALUES (1, 'SALES_ORDER', 'Sales Order', 'Sales Order');
 INSERT INTO productordertype (id, entity_code, name, description) VALUES (2, 'PURCHASE_ORDER', 'Purchase Order', 'Purchase Order');
@@ -142,6 +118,42 @@ INSERT INTO invoiceitemstatus (id, entity_code, name, description) VALUES (1, 'A
 INSERT INTO invoiceitemstatus (id, entity_code, name, description) VALUES (2, 'OUTSTANDING', 'Outstanding', 'Outstanding');
 INSERT INTO invoiceitemstatus (id, entity_code, name, description) VALUES (3, 'PAID', 'Paid', 'Paid');
 
+/* Insert statement for Facility Type */
+INSERT INTO facilitytype (id, entity_code, name, description) VALUES (1, 'WAREHOUSE', 'Warehouse', 'Warehouse');
+INSERT INTO facilitytype (id, entity_code, name, description) VALUES (2, 'STORE', 'Store', 'Store');
+
+/* Insert statement for Facility */
+INSERT INTO facility (id, facility_type, entity_code, name, description) VALUES (1, 2, 'MAIN_STORE', 'Main Store', 'Main Store');
+
+/* Insert statement for Container Type */
+INSERT INTO containertype (id, entity_code, name, description) VALUES (1, 'SHELF', 'Shelf', 'Shelf');
+
+/* Insert statement for Container  */
+INSERT INTO container (id, container_type, container_facility, entity_code, name, description) VALUES (1, 1, 1, 'DEFAULT', 'Shelf', 'Shelf');
+
+/* Insert statement for Lot */
+INSERT INTO lot (id, entity_code, name, description) VALUES (1, 'DEFAULT_LOT', 'Default Lot', 'Default Lot');
+
+/* Insert statement for Inventory Item Type */
+INSERT INTO inventoryitemtype (id, entity_code, name, description) VALUES (1, 'SERIALIZED_INVENTORY_ITEM', 'Serialized', 'Serialized');
+INSERT INTO inventoryitemtype (id, entity_code, name, description) VALUES (2, 'NON_SERIALIZED_INVENTORY_ITEM', 'Non Serialized', 'Non Serialized');
+
+/* Insert statement for Inventory Item Type */
+INSERT INTO inventoryitemstatus (id, entity_code, name, description) VALUES (1, 'GOOD', 'Good', 'Good');
+INSERT INTO inventoryitemstatus (id, entity_code, name, description) VALUES (2, 'DEFECTIVE', 'Defective', 'Defective');
+
+/* Insert statement for Shipment Category Type */
+INSERT INTO shipmentcategory (id, entity_code, name, description) VALUES (1, 'OUTGOING', 'Outgoing Shipment', 'Outgoing Shipment');
+INSERT INTO shipmentcategory (id, entity_code, name, description) VALUES (2, 'INCOMING', 'Incoming Shipment', 'Incoming Shipment');
+
+/* Insert statement for Shipment Category Type */
+INSERT INTO shipmenttype (id, shipment_category, entity_code, name, description) VALUES (1, 1, 'CUSTOMER_SHIPMENT', 'Customer Shipment', 'Customer Shipment');
+INSERT INTO shipmentcategory (id, shipment_category, entity_code, name, description) VALUES (2, 2, 'PURCHASE_SHIPMENT', 'Purchase Shipment', 'Purchase Shipment');
+
+/* Insert statement for Shipment Status */
+INSERT INTO shipmentstatus (id, entity_code, name, description) VALUES (1, 'SHIPPED', 'Shipped', 'Shipped');
+INSERT INTO shipmentstatus (id, entity_code, name, description) VALUES (2, 'IN_TRANSIT', 'In Transit', 'In Transit');
+INSERT INTO shipmentstatus (id, entity_code, name, description) VALUES (3, 'DELIVERED', 'Delivered', 'Delivered');
 
 /* Insert statement for Payment Type */
 INSERT INTO paymenttype (id, entity_code, name, description) VALUES (1, 'DISBURSEMENT', 'Disbursement', 'Disbursement');
