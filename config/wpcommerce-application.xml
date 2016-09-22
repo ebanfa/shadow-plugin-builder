@@ -120,6 +120,59 @@
 		</menuGroup>
 
 		<menuGroup>
+			<name>productorders</name>
+			<displayName>Orders</displayName>
+			<description>Orders</description>
+			<admin>Y</admin>
+			<type>group</type>
+			<cssClass>zmdi zmdi-collection-text</cssClass>
+			<menu>
+				<name>salesorders</name>
+				<displayName>Sales Orders</displayName>
+				<description>Sales Orders</description>
+				<active>N</active>
+				<cssClass>md-person</cssClass>
+				<targetType>entity</targetType>
+				<target>
+					/wordpress/page?artifact=productorder&amp;page_action=list&amp;criteria_name=type&amp;criteria_value=sales_order
+				</target>
+			</menu>
+			<menu>
+				<name>purchaseorders</name>
+				<displayName>Purchase Orders</displayName>
+				<description>Purchase Orders</description>
+				<active>N</active>
+				<cssClass>md-person</cssClass>
+				<targetType>entity</targetType>
+				<target>
+					/wordpress/page?artifact=productorder&amp;page_action=list&amp;criteria_name=type&amp;criteria_value=purchase_order
+				</target>
+			</menu>
+			<menu>
+				<name>customerinvoice</name>
+				<displayName>Customer Invoices</displayName>
+				<description>Customer Invoices</description>
+				<active>N</active>
+				<cssClass>md-person</cssClass>
+				<targetType>entity</targetType>
+				<target>
+					/wordpress/page?artifact=invoice&amp;page_action=list&amp;criteria_name=type&amp;criteria_value=sales_invoice
+				</target>
+			</menu>
+			<menu>
+				<name>supplierinvoice</name>
+				<displayName>Supplier Invoices</displayName>
+				<description>Supplier Invoices</description>
+				<active>N</active>
+				<cssClass>md-person</cssClass>
+				<targetType>entity</targetType>
+				<target>
+					/wordpress/page?artifact=invoice&amp;page_action=list&amp;criteria_name=type&amp;criteria_value=purchase_invoice
+				</target>
+			</menu>
+		</menuGroup>
+
+		<menuGroup>
 			<name>inventory</name>
 			<displayName>Inventory Management</displayName>
 			<description>Inventory Management</description>
@@ -165,78 +218,34 @@
 		</menuGroup>
 
 		<menuGroup>
-			<name>productorders</name>
-			<displayName>Orders</displayName>
-			<description>Orders</description>
+			<name>shipments</name>
+			<displayName>Shipments</displayName>
+			<description>Shipments</description>
 			<admin>Y</admin>
 			<type>group</type>
 			<cssClass>zmdi zmdi-truck</cssClass>
 			<menu>
-				<name>salesorders</name>
-				<displayName>Sales Orders</displayName>
-				<description>Sales Orders</description>
+				<name>incoming</name>
+				<displayName>Incoming Shipments</displayName>
+				<description>Incoming Shipments</description>
 				<active>N</active>
 				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
 				<target>
-					/wordpress/page?artifact=productorder&amp;page_action=list&amp;criteria_name=type&amp;criteria_value=sales_order
+					/wordpress/page?artifact=shipment&amp;page_action=list&amp;criteria_name=type&amp;criteria_value=purchase_shipment
 				</target>
 			</menu>
 			<menu>
-				<name>purchaseorders</name>
-				<displayName>Purchase Orders</displayName>
-				<description>Purchase Orders</description>
+				<name>outgoingshipments</name>
+				<displayName>Outgoing Shipments</displayName>
+				<description>Outgoing Shipments</description>
 				<active>N</active>
 				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
 				<target>
-					/wordpress/page?artifact=productorder&amp;page_action=list&amp;criteria_name=type&amp;criteria_value=purchase_order
+					/wordpress/page?artifact=shipment&amp;page_action=list&amp;criteria_name=type&amp;criteria_value=customer_shipment
 				</target>
 			</menu>
-			<menu>
-				<name>customerinvoice</name>
-				<displayName>Customer Invoices</displayName>
-				<description>Customer Invoices</description>
-				<active>N</active>
-				<cssClass>md-person</cssClass>
-				<targetType>entity</targetType>
-				<target>
-					/wordpress/page?artifact=invoice&amp;page_action=list&amp;criteria_name=type&amp;criteria_value=sales_invoice
-				</target>
-			</menu>
-			<menu>
-				<name>supplierinvoice</name>
-				<displayName>Supplier Invoices</displayName>
-				<description>Supplier Invoices</description>
-				<active>N</active>
-				<cssClass>md-person</cssClass>
-				<targetType>entity</targetType>
-				<target>
-					/wordpress/page?artifact=invoice&amp;page_action=list&amp;criteria_name=type&amp;criteria_value=purchase_invoice
-				</target>
-			</menu>
-			<!-- <menu>
-				<name>receipts</name>
-				<displayName>Receipts</displayName>
-				<description>Receipts</description>
-				<active>N</active>
-				<cssClass>md-person</cssClass>
-				<targetType>entity</targetType>
-				<target>
-					/wordpress/page?artifact=payment&amp;page_action=list&amp;criteria_name=type&amp;criteria_value=receipt
-				</target>
-			</menu>
-			<menu>
-				<name>disbursements</name>
-				<displayName>Disbursements</displayName>
-				<description>Disbursements</description>
-				<active>N</active>
-				<cssClass>md-person</cssClass>
-				<targetType>entity</targetType>
-				<target>
-					/wordpress/page?artifact=payment&amp;page_action=list&amp;criteria_name=type&amp;criteria_value=disbursement
-				</target>
-			</menu> -->
 		</menuGroup>
 
 		<menuGroup>
@@ -268,15 +277,6 @@
 					/wordpress/page?artifact=accounttransaction&amp;page_action=list&amp;criteria_name=type&amp;criteria_value=purchase
 				</target>
 			</menu>
-			<!-- <menu>
-				<name>journal</name>
-				<displayName>Journal</displayName>
-				<description>Journal</description>
-				<active>N</active>
-				<cssClass>md-person</cssClass>
-				<targetType>entity</targetType>
-				<target>/wordpress/page?artifact=transactiondetail&amp;page_action=list</target>
-			</menu>
 			<menu>
 				<name>chartofaccounts</name>
 				<displayName>Chart Of Accounts</displayName>
@@ -284,17 +284,21 @@
 				<active>N</active>
 				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
-				<target>/wordpress/page?artifact=chartofaccounts&amp;page_action=list</target>
+				<target>
+					/wordpress/page?artifact=glaccount&amp;page_action=list
+				</target>
 			</menu>
 			<menu>
-				<name>bankaccounts</name>
-				<displayName>Bank Accounts</displayName>
-				<description>Bank Accounts</description>
+				<name>journalentries</name>
+				<displayName>Journal Entries</displayName>
+				<description>Journal Entries</description>
 				<active>N</active>
 				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
-				<target>/wordpress/page?artifact=bankaccount&amp;page_action=list</target>
-			</menu> -->
+				<target>
+					/wordpress/page?artifact=glaccounttxn&amp;page_action=list
+				</target>
+			</menu>
 		</menuGroup>
 
 		<menuGroup>
@@ -8566,6 +8570,8 @@
 			<postName>sb_shipment</postName>
 			<description>Shipment</description>
 			<global>Y</global> 
+			<createViewTemplate>views/wordpress/shipment/create-entity-view.ftl</createViewTemplate>
+			<apiTemplate>api/wordpress/shipment/shipment-service-api.ftl</apiTemplate>
 			<field>
 				<name>entity_code</name>
 				<isVisible>Y</isVisible>
@@ -8584,6 +8590,7 @@
 			</field>
 			<field>
 				<name>shipment_type</name>
+				<nickName>type</nickName>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
@@ -9289,7 +9296,6 @@
 			</field>
 			<field>
 				<name>receipt_package</name>
-				<nickName>type</nickName>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
@@ -10250,9 +10256,9 @@
 		</entity>
 
 		<entity>
-			<name>PeriodType</name>
-			<postName>sb_periodtype</postName>
-			<description>Period Type</description>
+			<name>GLAccountCategory</name>
+			<postName>sb_glacctcat</postName>
+			<description>Account Category</description>
 			<global>Y</global>
 			<field>
 				<name>entity_code</name>
@@ -10301,840 +10307,45 @@
 				<description>Description</description>
 				<displayName>Description</displayName>
 				<relationshipField>N</relationshipField>
-			</field>
-		</entity>
-
-		<entity>
-			<name>AccountingPeriod</name>
-			<postName>sb_acctperiod</postName>
-			<description>Accounting Period</description>
-			<global>Y</global>
-			<field>
-				<name>entity_code</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
-				<required>Y</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>alphanumeric</dataType>
-				<size>medium</size>
-				<dataColumn>true</dataColumn>
-				<description>Code</description>
-				<displayName>Code</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>parent_period</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>sb_acctperiod</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Parent Accounting Period</description>
-				<displayName>Parent Accounting Period</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
-				<name>ap_type</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>sb_periodtype</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Period Type</description>
-				<displayName>Period Type</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
-				<name>name</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>name</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Name</description>
-				<displayName>name</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>period_no</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>number</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Period Number</description>
-				<displayName>Period Number</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>active_fg</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>flag</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Is Active</description>
-				<displayName>Is Active</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>from_date</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>date</dataType>
-				<size>medium</size>
-				<dataColumn>true</dataColumn>
-				<description>From Date</description>
-				<displayName>From Date</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>to_date</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>date</dataType>
-				<size>medium</size>
-				<dataColumn>true</dataColumn>
-				<description>To Date</description>
-				<displayName>To Date</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>description</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>text-lg</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Description</description>
-				<displayName>Description</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>business_unit</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
-				<required>Y</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>sb_businessunit</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Business Unit</description>
-				<displayName>Business Unit</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-		</entity>
-
-		<entity>
-			<name>COAAccountStructure</name>
-			<postName>sb_coaacctstruct</postName>
-			<description>COA Account Structure</description>
-			<global>Y</global>
-			<!-- <createViewTemplate>views/wordpress/coaaccountstructure/create-entity-view.ftl</createViewTemplate>
-			<apiTemplate>api/wordpress/coaaccountstructure/coaaccountstructure-service-api.ftl</apiTemplate>  -->
-			<field>
-				<name>entity_code</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
-				<required>Y</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>alphanumeric</dataType>
-				<size>medium</size>
-				<dataColumn>true</dataColumn>
-				<description>Code</description>
-				<displayName>Code</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>name</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>name</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Name</description>
-				<displayName>name</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>seg_separator</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>text</dataType>
-				<size>medium</size>
-				<dataColumn>true</dataColumn>
-				<description>Segment Separator</description>
-				<displayName>Segment Separator</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>description</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>text-lg</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Description</description>
-				<displayName>Description</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>business_unit</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
-				<required>Y</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>sb_businessunit</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Business Unit</description>
-				<displayName>Business Unit</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-		</entity>
-
-		<entity>
-			<name>COAAccountSegmentType</name>
-			<postName>sb_coaacctsegtype</postName>
-			<description>COA Account Segement Type</description>
-			<global>Y</global>
-			<!-- <viewFilterTemplate>views/wordpress/coaaccountsegmenttype/coaaccountsegmenttype-view-filter.ftl</viewFilterTemplate>
-			<createViewTemplate>views/wordpress/coaaccountsegmenttype/create-entity-view.ftl</createViewTemplate>
-			<apiTemplate>api/wordpress/coaaccountsegmenttype/coaaccountsegmenttype-service-api.ftl</apiTemplate>  -->
-			<field>
-				<name>entity_code</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>alphanumeric</dataType>
-				<size>medium</size>
-				<dataColumn>true</dataColumn>
-				<description>Code</description>
-				<displayName>Code</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>name</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>name</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Name</description>
-				<displayName>name</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>mask</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>alphanumeric</dataType>
-				<size>medium</size>
-				<dataColumn>true</dataColumn>
-				<description>Mask</description>
-				<displayName>Mask</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>has_val_src</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>N</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>flag</dataType>
-				<size>medium</size>
-				<dataColumn>true</dataColumn>
-				<description>Has Value Source</description>
-				<displayName>Has Value Source</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>val_provider</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>option</dataType>
-				<size>medium</size>
-				<dataColumn>true</dataColumn>
-				<description>Value Provider</description>
-				<displayName>Value Provider</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>description</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>text-lg</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Description</description>
-				<displayName>Description</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>business_unit</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
-				<required>Y</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>sb_businessunit</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Business Unit</description>
-				<displayName>Business Unit</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-		</entity>
-
-		<entity>
-			<name>COAAccountSegmentTypeValue</name>
-			<postName>sb_coaasegval</postName>
-			<description>COA Account Segment Type Value</description>
-			<global>Y</global>
-			<field>
-				<name>entity_code</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
-				<required>Y</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>alphanumeric</dataType>
-				<size>medium</size>
-				<dataColumn>true</dataColumn>
-				<description>Code</description>
-				<displayName>Code</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>v_segtype</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>sb_coaacctsegtype</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Segment Type</description>
-				<displayName>Segment Type</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
-				<name>name</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>name</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Value</description>
-				<displayName>Value</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>description</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>text-lg</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Description</description>
-				<displayName>Description</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>business_unit</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
-				<required>Y</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>sb_businessunit</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Business Unit</description>
-				<displayName>Business Unit</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-		</entity>
-
-		<entity>
-			<name>COAAccountSegment</name>
-			<postName>sb_coaacctseg</postName>
-			<description>COA Account Segment</description>
-			<global>Y</global>
-			<field>
-				<name>entity_code</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
-				<required>Y</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>alphanumeric</dataType>
-				<size>medium</size>
-				<dataColumn>true</dataColumn>
-				<description>Code</description>
-				<displayName>Code</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>seg_type</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>sb_coaacctsegtype</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Segment Type</description>
-				<displayName>Segment Type</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
-				<name>seg_acctstruct</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>sb_coaacctstruct</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Account Structure</description>
-				<displayName>Account Structure</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
-				<name>name</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>name</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Name</description>
-				<displayName>name</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>seg_sequence</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>number</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Sequence No</description>
-				<displayName>Sequence No</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>description</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>text-lg</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Description</description>
-				<displayName>Description</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>business_unit</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
-				<required>Y</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>sb_businessunit</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Business Unit</description>
-				<displayName>Business Unit</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-		</entity>
-
-		<entity>
-			<name>COAStatus</name>
-			<postName>sb_coastatus</postName>
-			<description>COA Status</description>
-			<global>Y</global>
-			<field>
-				<name>entity_code</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
-				<required>Y</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>alphanumeric</dataType>
-				<size>medium</size>
-				<dataColumn>true</dataColumn>
-				<description>Code</description>
-				<displayName>Code</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>name</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>name</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Name</description>
-				<displayName>name</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>description</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>text-lg</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Description</description>
-				<displayName>Description</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>business_unit</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
-				<required>Y</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>sb_businessunit</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Business Unit</description>
-				<displayName>Business Unit</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-		</entity>
-
-		<entity>
-			<name>ChartOfAccounts</name>
-			<postName>sb_coa</postName>
-			<description>Chart Of Accounts</description>
-			<global>Y</global>
-			<!-- <viewPageTemplate>html/wordpress/entity/chartofaccounts/chartofaccounts-single.ftl</viewPageTemplate>
-			<singleViewTemplate>views/wordpress/chartofaccounts/single-chartofaccounts-view.ftl</singleViewTemplate>
-			<apiTemplate>api/wordpress/chartofaccounts/chartofaccounts-service-api.ftl</apiTemplate>  -->
-			<field>
-				<name>entity_code</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
-				<required>Y</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>alphanumeric</dataType>
-				<size>medium</size>
-				<dataColumn>true</dataColumn>
-				<description>Code</description>
-				<displayName>Code</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>org_unit</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>sb_businessunit</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Organizational Unit</description>
-				<displayName>Organizational Unit</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
-				<name>acct_structure</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>sb_coaacctstruct</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Account Structure</description>
-				<displayName>Account Structure</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
-				<name>name</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>name</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Name</description>
-				<displayName>name</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>from_date</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>date</dataType>
-				<size>medium</size>
-				<dataColumn>true</dataColumn>
-				<description>From Date</description>
-				<displayName>From Date</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>to_date</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>date</dataType>
-				<size>medium</size>
-				<dataColumn>true</dataColumn>
-				<description>To Date</description>
-				<displayName>To Date</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>status</name>
-				<isVisible>Y</isVisible>
-				<isFormField>N</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>N</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>sb_coastatus</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Status</description>
-				<displayName>Status</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
-				<name>description</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>text-lg</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Description</description>
-				<displayName>Description</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>business_unit</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
-				<required>Y</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>sb_businessunit</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Business Unit</description>
-				<displayName>Business Unit</displayName>
-				<relationshipField>Y</relationshipField>
 			</field>
 		</entity>
 
 		<entity>
 			<name>GLAccountType</name>
 			<postName>sb_glaccttype</postName>
-			<description>GL Account Type</description>
+			<description>Account Type</description>
 			<global>Y</global>
-			<!-- <createViewTemplate>views/wordpress/glaccounttype/create-entity-view.ftl</createViewTemplate>
-			<apiTemplate>api/wordpress/glaccounttype/glaccounttype-service-api.ftl</apiTemplate>  -->
 			<field>
 				<name>entity_code</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
 				<createField>Y</createField>
-				<editField>N</editField>
+				<editField>Y</editField>
 				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<listField>N</listField>
 				<dataType>alphanumeric</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
 				<description>Code</description>
 				<displayName>Code</displayName>
 				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>gl_account_cat</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_glacctcat</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Type</description>
+				<displayName>Type</displayName>
+				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
 				<name>name</name>
@@ -11172,8 +10383,8 @@
 
 		<entity>
 			<name>GLAccount</name>
-			<postName>sb_glaccount</postName>
-			<description>GL Account</description>
+			<postName>sb_glacct</postName>
+			<description>Account</description>
 			<global>Y</global>
 			<field>
 				<name>entity_code</name>
@@ -11181,9 +10392,9 @@
 				<isFormField>Y</isFormField>
 				<required>Y</required>
 				<createField>Y</createField>
-				<editField>N</editField>
+				<editField>Y</editField>
 				<viewField>Y</viewField>
-				<listField>Y</listField>
+				<listField>N</listField>
 				<dataType>alphanumeric</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
@@ -11192,7 +10403,7 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
-				<name>account_no</name>
+				<name>name</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
@@ -11200,15 +10411,15 @@
 				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
-				<dataType>alphanumeric</dataType>
-				<size>medium</size>
+				<dataType>name</dataType>
+				<size>large</size>
 				<dataColumn>true</dataColumn>
-				<description>Account No</description>
-				<displayName>Account No</displayName>
+				<description>Name</description>
+				<displayName>name</displayName>
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
-				<name>glacct_type</name>
+				<name>gl_account_type</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
@@ -11219,295 +10430,9 @@
 				<dataType>sb_glaccttype</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
-				<description>GL Account Type</description>
-				<displayName>GL Account Type</displayName>
+				<description>Type</description>
+				<displayName>Type</displayName>
 				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
-				<name>name</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>name</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Name</description>
-				<displayName>name</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>description</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>text-lg</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Description</description>
-				<displayName>Description</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>business_unit</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
-				<required>Y</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>sb_businessunit</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Business Unit</description>
-				<displayName>Business Unit</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-		</entity>
-
-		<entity>
-			<name>BusinessUnitGLAccount</name>
-			<postName>sb_buglaccount</postName>
-			<description>Business Unit GL Account</description>
-			<global>Y</global>
-			<field>
-				<name>entity_code</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
-				<required>Y</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>alphanumeric</dataType>
-				<size>medium</size>
-				<dataColumn>true</dataColumn>
-				<description>Code</description>
-				<displayName>Code</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>parent_buglacct</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>sb_buglaccount</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Parent BU GL Account</description>
-				<displayName>Parent Bu GL Account</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
-				<name>glaccount</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>sb_glaccount</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>GL Account</description>
-				<displayName>GL Account</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
-				<name>internal_org</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>sb_businessunit</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Internal Organization</description>
-				<displayName>Internal Organization</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
-				<name>name</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>name</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Name</description>
-				<displayName>name</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>from_date</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>date</dataType>
-				<size>medium</size>
-				<dataColumn>true</dataColumn>
-				<description>From Date</description>
-				<displayName>From Date</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>to_date</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>date</dataType>
-				<size>medium</size>
-				<dataColumn>true</dataColumn>
-				<description>To Date</description>
-				<displayName>To Date</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>description</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>text-lg</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Description</description>
-				<displayName>Description</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>business_unit</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
-				<required>Y</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>sb_businessunit</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Business Unit</description>
-				<displayName>Business Unit</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-		</entity>
-
-		<entity>
-			<name>BusinessUnitGLAccountBalance</name>
-			<postName>sb_buglaccountbal</postName>
-			<description>Business Unit GL Account Balance</description>
-			<global>Y</global>
-			<field>
-				<name>entity_code</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
-				<required>Y</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>alphanumeric</dataType>
-				<size>medium</size>
-				<dataColumn>true</dataColumn>
-				<description>Code</description>
-				<displayName>Code</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>buglaccount</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>sb_buglaccount</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>BU GL Account</description>
-				<displayName>BU GL Account</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
-				<name>internal_org</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>sb_businessunit</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Internal Organization</description>
-				<displayName>Internal Organization</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
-				<name>acctng_period</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>sb_acctperiod</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Accounting Period</description>
-				<displayName>Accounting Period</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
-				<name>name</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>name</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Name</description>
-				<displayName>name</displayName>
-				<relationshipField>N</relationshipField>
 			</field>
 			<field>
 				<name>balance</name>
@@ -11519,14 +10444,14 @@
 				<viewField>Y</viewField>
 				<listField>Y</listField>
 				<dataType>money</dataType>
-				<size>medium</size>
+				<size>large</size>
 				<dataColumn>true</dataColumn>
 				<description>Balance</description>
 				<displayName>Balance</displayName>
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
-				<name>description</name>
+				<name>last_updated_date</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
@@ -11534,147 +10459,12 @@
 				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
-				<dataType>text-lg</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Description</description>
-				<displayName>Description</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>business_unit</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
-				<required>Y</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>sb_businessunit</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Business Unit</description>
-				<displayName>Business Unit</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-		</entity>
-
-		<entity>
-			<name>COAAccountSegmentInstance</name>
-			<postName>sb_coaaseginst</postName>
-			<description>COA Account Segment Instance</description>
-			<global>Y</global>
-			<field>
-				<name>entity_code</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
-				<required>Y</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>alphanumeric</dataType>
+				<dataType>date</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
-				<description>Code</description>
-				<displayName>Code</displayName>
+				<description>Last Modified Date</description>
+				<displayName>Last Modified Date</displayName>
 				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>coa</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>sb_coa</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Chart Of Accounts</description>
-				<displayName>Chart Of Accounts</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
-				<name>acct_segment</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>sb_coaacctseg</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Account Segment</description>
-				<displayName>Account Segment</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
-				<name>parent_instance</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>sb_coaaseginst</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Parent</description>
-				<displayName>Parent</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
-				<name>name</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>name</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Name</description>
-				<displayName>name</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>is_account</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>flag</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Is Account</description>
-				<displayName>Is Account</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>casi_buglaccount</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>sb_buglaccount</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>BU GL Account</description>
-				<displayName>BU GL Account</displayName>
-				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
 				<name>description</name>
@@ -11692,32 +10482,13 @@
 				<displayName>Description</displayName>
 				<relationshipField>N</relationshipField>
 			</field>
-			<field>
-				<name>business_unit</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
-				<required>Y</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>sb_businessunit</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Business Unit</description>
-				<displayName>Business Unit</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
 		</entity>
 
-		
 		<entity>
-			<name>FinancialEventType</name>
-			<postName>sb_feventtype</postName>
-			<description>Financial Event Type</description>
+			<name>GLAccountTxnType</name>
+			<postName>sb_glaccttxntype</postName>
+			<description>Transaction Type</description>
 			<global>Y</global>
-			<!-- <createViewTemplate>views/wordpress/financialeventtype/create-entity-view.ftl</createViewTemplate>
-			<apiTemplate>api/wordpress/financialeventtype/financialeventtype-service-api.ftl</apiTemplate> -->
 			<field>
 				<name>entity_code</name>
 				<isVisible>Y</isVisible>
@@ -11766,38 +10537,24 @@
 				<displayName>Description</displayName>
 				<relationshipField>N</relationshipField>
 			</field>
-			<field>
-				<name>business_unit</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
-				<required>Y</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>sb_businessunit</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Business Unit</description>
-				<displayName>Business Unit</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
 		</entity>
 
 		<entity>
-			<name>FinancialEvent</name>
-			<postName>sb_fevent</postName>
-			<description>Financial EVent</description>
+			<name>GLAccountTxn</name>
+			<postName>sb_glaccttxn</postName>
+			<description>Account Transaction</description>
 			<global>Y</global>
+			<createViewTemplate>views/wordpress/glaccounttxn/create-entity-view.ftl</createViewTemplate>
+			<apiTemplate>api/wordpress/glaccounttxn/glaccounttxn-service-api.ftl</apiTemplate>
 			<field>
 				<name>entity_code</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
 				<required>Y</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
 				<dataType>alphanumeric</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
@@ -11806,7 +10563,7 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
-				<name>event_type</name>
+				<name>gl_acct_txn_type</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
@@ -11814,11 +10571,114 @@
 				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
-				<dataType>sb_feventtype</dataType>
+				<dataType>sb_glaccttxntype</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
-				<description>Financial Event Type</description>
-				<displayName>Financial Event Type</displayName>
+				<description>Type</description>
+				<displayName>Type</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>name</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>name</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Name</description>
+				<displayName>name</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>effective_date</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>date</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Posted Date</description>
+				<displayName>Posted Date</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>total</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>money</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Total</description>
+				<displayName>Total</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>description</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text-lg</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Description</description>
+				<displayName>Description</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+		</entity>
+
+		<entity>
+			<name>GLAccountTxnDetail</name>
+			<postName>sb_glaccttxndetail</postName>
+			<description>Account Transaction Detail</description>
+			<global>Y</global>
+			<field>
+				<name>entity_code</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>alphanumeric</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Code</description>
+				<displayName>Code</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>gl_acct_txn</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_glaccttxn</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Transaction</description>
+				<displayName>Transaction</displayName>
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
@@ -11854,7 +10714,23 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
-				<name>event_date</name>
+				<name>debit_credit_fg</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Debit Credit Flag</description>
+				<displayName>Debit Credit Flag</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>effective_date</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>Y</required>
@@ -11865,89 +10741,9 @@
 				<dataType>date</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
-				<description>Event Date</description>
-				<displayName>Event Date</displayName>
+				<description>Posted Date</description>
+				<displayName>Posted Date</displayName>
 				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>internal_org</name>
-				<isVisible>Y</isVisible>
-				<isFormField>N</isFormField>
-				<required>N</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>sb_businessunit</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Internal Organization</description>
-				<displayName>Internal Organization</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
-				<name>from_party</name>
-				<isVisible>Y</isVisible>
-				<isFormField>N</isFormField>
-				<required>N</required>
-				<createField>Y</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>sb_party</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>From Party</description>
-				<displayName>From Party</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
-				<name>to_party</name>
-				<isVisible>Y</isVisible>
-				<isFormField>N</isFormField>
-				<required>N</required>
-				<createField>Y</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>sb_party</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>To Party</description>
-				<displayName>To Party</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
-				<name>payment</name>
-				<isVisible>Y</isVisible>
-				<isFormField>N</isFormField>
-				<required>N</required>
-				<createField>Y</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>sb_payment</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>To Payment</description>
-				<displayName>To Payment</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
-				<name>invoice</name>
-				<isVisible>Y</isVisible>
-				<isFormField>N</isFormField>
-				<required>N</required>
-				<createField>Y</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>sb_invoice</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Invoice</description>
-				<displayName>Invoice</displayName>
-				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
 				<name>description</name>
@@ -11964,759 +10760,9 @@
 				<description>Description</description>
 				<displayName>Description</displayName>
 				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>business_unit</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
-				<required>Y</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>sb_businessunit</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Business Unit</description>
-				<displayName>Business Unit</displayName>
-				<relationshipField>Y</relationshipField>
 			</field>
 		</entity>
 		
-		<entity>
-			<name>TransactionType</name>
-			<postName>sb_txntype</postName>
-			<description>Transaction Type</description>
-			<global>Y</global>
-			<!-- <createViewTemplate>views/wordpress/transactiontype/create-entity-view.ftl</createViewTemplate>
-			<apiTemplate>api/wordpress/transactiontype/transactiontype-service-api.ftl</apiTemplate> -->
-			<field>
-				<name>entity_code</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>alphanumeric</dataType>
-				<size>medium</size>
-				<dataColumn>true</dataColumn>
-				<description>Code</description>
-				<displayName>Code</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>parent_type</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>N</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>sb_txntype</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Parent Transaction Type</description>
-				<displayName>Parent Transaction Type</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
-				<name>name</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>name</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Name</description>
-				<displayName>name</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>description</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>text-lg</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Description</description>
-				<displayName>Description</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-		</entity>
-
-		<entity>
-			<name>TransactionStatus</name>
-			<postName>sb_txnstatus</postName>
-			<description>Transaction Status</description>
-			<global>Y</global>
-			<!-- <createViewTemplate>views/wordpress/transactiontype/create-entity-view.ftl</createViewTemplate>
-			<apiTemplate>api/wordpress/transactiontype/transactiontype-service-api.ftl</apiTemplate> -->
-			<field>
-				<name>entity_code</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>alphanumeric</dataType>
-				<size>medium</size>
-				<dataColumn>true</dataColumn>
-				<description>Code</description>
-				<displayName>Code</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>name</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>name</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Name</description>
-				<displayName>name</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>description</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>text-lg</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Description</description>
-				<displayName>Description</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-		</entity>
-
-		<entity>
-			<name>Transaction</name>
-			<postName>sb_transaction</postName>
-			<description>Transaction</description>
-			<global>Y</global>
-			<field>
-				<name>entity_code</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
-				<required>Y</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>alphanumeric</dataType>
-				<size>medium</size>
-				<dataColumn>true</dataColumn>
-				<description>Code</description>
-				<displayName>Code</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>gl_txn_type</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>sb_txntype</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Type</description>
-				<displayName>Type</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
-				<name>gl_txn_status</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>sb_txnstatus</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Status</description>
-				<displayName>Status</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
-				<name>name</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>name</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Name</description>
-				<displayName>name</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>txn_date</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>date</dataType>
-				<size>medium</size>
-				<dataColumn>true</dataColumn>
-				<description>Transaction Date</description>
-				<displayName>Transaction Date</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>entry_date</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>date</dataType>
-				<size>medium</size>
-				<dataColumn>true</dataColumn>
-				<description>Entry Date</description>
-				<displayName>Entry Date</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>internal_org</name>
-				<isVisible>Y</isVisible>
-				<isFormField>N</isFormField>
-				<required>N</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>sb_businessunit</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Internal Organization</description>
-				<displayName>Internal Organization</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
-				<name>from_party</name>
-				<isVisible>Y</isVisible>
-				<isFormField>N</isFormField>
-				<required>N</required>
-				<createField>Y</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>sb_party</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>From Party</description>
-				<displayName>From Party</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
-				<name>to_party</name>
-				<isVisible>Y</isVisible>
-				<isFormField>N</isFormField>
-				<required>N</required>
-				<createField>Y</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>sb_party</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>To Party</description>
-				<displayName>To Party</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
-				<name>payment</name>
-				<isVisible>Y</isVisible>
-				<isFormField>N</isFormField>
-				<required>N</required>
-				<createField>Y</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>sb_payment</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Payment</description>
-				<displayName>Payment</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
-				<name>invoice</name>
-				<isVisible>Y</isVisible>
-				<isFormField>N</isFormField>
-				<required>N</required>
-				<createField>Y</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>sb_invoice</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Invoice</description>
-				<displayName>Invoice</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
-				<name>porder</name>
-				<isVisible>Y</isVisible>
-				<isFormField>N</isFormField>
-				<required>N</required>
-				<createField>Y</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>sb_porder</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Purchase Order</description>
-				<displayName>Purchase Order</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
-				<name>description</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>text-lg</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Description</description>
-				<displayName>Description</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>business_unit</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
-				<required>Y</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>sb_businessunit</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Business Unit</description>
-				<displayName>Business Unit</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-		</entity>
-
-		<entity>
-			<name>TransactionDetail</name>
-			<postName>sb_txndetail</postName>
-			<description>Transaction Detail</description>
-			<global>Y</global>
-			<field>
-				<name>entity_code</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
-				<required>Y</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>alphanumeric</dataType>
-				<size>medium</size>
-				<dataColumn>true</dataColumn>
-				<description>Code</description>
-				<displayName>Code</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>txn_detail</name>
-				<isVisible>Y</isVisible>
-				<isFormField>N</isFormField>
-				<required>N</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>sb_txndetail</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Associated Transaction Detail</description>
-				<displayName>Associated Transaction Detail</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
-				<name>transaction</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>sb_transaction</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Transaction</description>
-				<displayName>Transaction</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
-				<name>td_buglaccount</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>sb_buglaccount</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Business Unit GL Account</description>
-				<displayName>Business Unit GL Account</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
-				<name>name</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>name</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Name</description>
-				<displayName>name</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>dbcr_fg</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>flag</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Debit Credit Flag</description>
-				<displayName>Debit Credit Flag</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>amount</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>text-lg</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Amount</description>
-				<displayName>Amount</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>description</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>text-lg</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Description</description>
-				<displayName>Description</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>business_unit</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
-				<required>Y</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>sb_businessunit</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Business Unit</description>
-				<displayName>Business Unit</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-		</entity>
-
-		<entity>
-			<name>FEventTxnType</name>
-			<postName>sb_feventtxntype</postName>
-			<description>Financial Event Transaction Type</description>
-			<global>Y</global>
-			<field>
-				<name>entity_code</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
-				<required>Y</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>alphanumeric</dataType>
-				<size>medium</size>
-				<dataColumn>true</dataColumn>
-				<description>Code</description>
-				<displayName>Code</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>fevent_type</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>sb_feventtype</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Financial Event Type</description>
-				<displayName>Financial Event Type</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
-				<name>fetxn_type</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>sb_txntype</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Transaction Type</description>
-				<displayName>Transaction Type</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
-				<name>name</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>name</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Name</description>
-				<displayName>name</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>description</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>text-lg</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Description</description>
-				<displayName>Description</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>business_unit</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
-				<required>Y</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>sb_businessunit</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Business Unit</description>
-				<displayName>Business Unit</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-		</entity>
-
-		<entity>
-			<name>TxnTypeAccount</name>
-			<postName>sb_txntypeacct</postName>
-			<description>Transaction Type GL Account</description>
-			<global>Y</global>
-			<field>
-				<name>entity_code</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
-				<required>Y</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>alphanumeric</dataType>
-				<size>medium</size>
-				<dataColumn>true</dataColumn>
-				<description>Code</description>
-				<displayName>Code</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>tta_txn_type</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>sb_txntype</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Transaction Type</description>
-				<displayName>Transaction Type</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
-				<name>tta_account</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>sb_glaccount</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>GL Account</description>
-				<displayName>GL Account</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
-				<name>name</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>name</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Name</description>
-				<displayName>name</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>db_cr_fg</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>flag</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Debit Credit Flag</description>
-				<displayName>Debit Credit Flag</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>description</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>text-lg</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Description</description>
-				<displayName>Description</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>business_unit</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
-				<required>Y</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>sb_businessunit</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Business Unit</description>
-				<displayName>Business Unit</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-		</entity>
-
 		<entity>
 			<name>BankAccountType</name>
 			<postName>sb_bankaccttype</postName>

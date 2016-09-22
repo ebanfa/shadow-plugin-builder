@@ -75,7 +75,8 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 		this.templatesDir = baseDir + "templates/" + this.pluginName + "/";
 		System.out.println("Using templates dir: " + this.templatesDir);
 		//this.config = baseDir + "config/helion-application.xml";
-		this.config = baseDir + "config/wpcommerce-application.xml";
+		//this.config = baseDir + "config/wpcommerce-application.xml";
+		//this.config = baseDir + "config/wp-cargo-master.xml";
 		//this.config = baseDir + "config/business-site-application.xml";
 	}
 

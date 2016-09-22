@@ -148,7 +148,7 @@ INSERT INTO shipmentcategory (id, entity_code, name, description) VALUES (2, 'IN
 
 /* Insert statement for Shipment Category Type */
 INSERT INTO shipmenttype (id, shipment_category, entity_code, name, description) VALUES (1, 1, 'CUSTOMER_SHIPMENT', 'Customer Shipment', 'Customer Shipment');
-INSERT INTO shipmentcategory (id, shipment_category, entity_code, name, description) VALUES (2, 2, 'PURCHASE_SHIPMENT', 'Purchase Shipment', 'Purchase Shipment');
+INSERT INTO shipmenttype (id, shipment_category, entity_code, name, description) VALUES (2, 2, 'PURCHASE_SHIPMENT', 'Purchase Shipment', 'Purchase Shipment');
 
 /* Insert statement for Shipment Status */
 INSERT INTO shipmentstatus (id, entity_code, name, description) VALUES (1, 'SHIPPED', 'Shipped', 'Shipped');
@@ -170,6 +170,51 @@ INSERT INTO accounttransactiontype (id, entity_code, name, description) VALUES (
 /* Insert statement for Account Transaction Status */
 INSERT INTO accounttransactionstatus (id, entity_code, name, description) VALUES (1, 'PENDING', 'Pending', 'Pending');
 INSERT INTO accounttransactionstatus (id, entity_code, name, description) VALUES (2, 'COMPLETED', 'Completed', 'Completed');
+
+
+/* Insert statement for Account Category */
+INSERT INTO glaccountcategory (id, entity_code, name, description) VALUES (1, 'ASSETS', 'Assets', 'Assets');
+INSERT INTO glaccountcategory (id, entity_code, name, description) VALUES (2, 'LIABILITIES', 'Liabilities', 'Liabilities');
+INSERT INTO glaccountcategory (id, entity_code, name, description) VALUES (3, 'EXPENSES', 'Expenses', 'Expenses');
+INSERT INTO glaccountcategory (id, entity_code, name, description) VALUES (4, 'INCOME', 'Income', 'Income');
+INSERT INTO glaccountcategory (id, entity_code, name, description) VALUES (5, 'EQUITY', 'Equity', 'Equity');
+
+/* Insert statement for Account Type (assets) */
+INSERT INTO glaccounttype (id, gl_account_cat, entity_code, name, description) VALUES (1, 1, 'CURRENT_ASSET', 'Current Asset', 'Current Asset');
+INSERT INTO glaccounttype (id, gl_account_cat, entity_code, name, description) VALUES (2, 1, 'INVENTORY', 'Inventory', 'Inventory');
+INSERT INTO glaccounttype (id, gl_account_cat, entity_code, name, description) VALUES (3, 1, 'FIXED_ASSET', 'Fixed Asset', 'Fixed Asset');
+INSERT INTO glaccounttype (id, gl_account_cat, entity_code, name, description) VALUES (4, 1, 'BANK_CASH', 'Bank & Cash', 'Bank & Cash');
+/* Insert statement for Account Type (liabilities) */
+INSERT INTO glaccounttype (id, gl_account_cat, entity_code, name, description) VALUES (5, 2, 'CURRENT_LIABILITY', 'Current Liability', 'Current Liability');
+INSERT INTO glaccounttype (id, gl_account_cat, entity_code, name, description) VALUES (6, 2, 'NON_CURRENT_LIABILITY', 'Non-current Liability', 'Non-current Liability');
+/* Insert statement for Account Type (expenses) */
+INSERT INTO glaccounttype (id, gl_account_cat, entity_code, name, description) VALUES (7, 3, 'DIRECT_COSTS', 'Direct Costs', 'Direct Costs');
+INSERT INTO glaccounttype (id, gl_account_cat, entity_code, name, description) VALUES (8, 3, 'EXPENSE', 'Expense', 'Expense');
+INSERT INTO glaccounttype (id, gl_account_cat, entity_code, name, description) VALUES (9, 3, 'DEPRECIATION', 'Depreciation', 'Depreciation');
+/* Insert statement for Account Type (revenue) */
+INSERT INTO glaccounttype (id, gl_account_cat, entity_code, name, description) VALUES (10, 4, 'REVENUE', 'Revenue', 'Revenue');
+/* Insert statement for Account Type (equity) */
+INSERT INTO glaccounttype (id, gl_account_cat, entity_code, name, description) VALUES (11, 5, 'EQUITY', 'Equity', 'Equity');
+
+/* Insert statement for Account(equity) */
+INSERT INTO glaccount (id, gl_account_type, entity_code, name, balance, last_updated_date, description) VALUES (1, 1, 'ACCT_RECEIVABLE', 'Accounts Receivable', 0.00, '2016-01-01', 'Accounts Receivable');
+INSERT INTO glaccount (id, gl_account_type, entity_code, name, balance, last_updated_date, description) VALUES (2, 2, 'INVENTORY', 'Inventory', 0.00, '2016-01-01', 'Inventory');
+INSERT INTO glaccount (id, gl_account_type, entity_code, name, balance, last_updated_date, description) VALUES (3, 3, 'OFFICE_EQUIPMENT', 'Office Equipment', 0.00, '2016-01-01', 'Office Equipment');
+INSERT INTO glaccount (id, gl_account_type, entity_code, name, balance, last_updated_date, description) VALUES (4, 4, 'PETTY_CASH', 'Petty Cash', 0.00, '2016-01-01', 'Petty Cash');
+INSERT INTO glaccount (id, gl_account_type, entity_code, name, balance, last_updated_date, description) VALUES (5, 4, 'SAVINGS', 'Savings Account', 0.00, '2016-01-01', 'Savings Account');
+INSERT INTO glaccount (id, gl_account_type, entity_code, name, balance, last_updated_date, description) VALUES (6, 5, 'ACCT_PAYABLE', 'Accounts Payable', 0.00, '2016-01-01', 'Accounts Payable');
+INSERT INTO glaccount (id, gl_account_type, entity_code, name, balance, last_updated_date, description) VALUES (7, 6, 'LOAN', 'Loan', 0.00, '2016-01-01', 'Loan');
+INSERT INTO glaccount (id, gl_account_type, entity_code, name, balance, last_updated_date, description) VALUES (8, 7, 'COGS', 'Costs of Goods Sold', 0.00, '2016-01-01', 'Costs of Goods Sold');
+INSERT INTO glaccount (id, gl_account_type, entity_code, name, balance, last_updated_date, description) VALUES (9, 8, 'ADVERTISING', 'Advertising', 0.00, '2016-01-01', 'Advertising');
+INSERT INTO glaccount (id, gl_account_type, entity_code, name, balance, last_updated_date, description) VALUES (10, 8, 'UTILITIES', 'Utilities', 0.00, '2016-01-01', 'Utilities');
+INSERT INTO glaccount (id, gl_account_type, entity_code, name, balance, last_updated_date, description) VALUES (11, 8, 'RENT', 'Rent', 0.00, '2016-01-01', 'Rent');
+INSERT INTO glaccount (id, gl_account_type, entity_code, name, balance, last_updated_date, description) VALUES (12, 8, 'WAGES', 'Wages & Salaries', 0.00, '2016-01-01', 'Wages & Salaries');
+INSERT INTO glaccount (id, gl_account_type, entity_code, name, balance, last_updated_date, description) VALUES (13, 10, 'SALES', 'Sales', 0.00, '2016-01-01', 'Sales');
+INSERT INTO glaccount (id, gl_account_type, entity_code, name, balance, last_updated_date, description) VALUES (14, 10, 'SALES', 'Other Revenue', 0.00, '2016-01-01', 'Other Revenue');
+INSERT INTO glaccount (id, gl_account_type, entity_code, name, balance, last_updated_date, description) VALUES (15, 10, 'INTEREST_INCOME', 'Interest Income', 0.00, '2016-01-01', 'Interest Income');
+INSERT INTO glaccount (id, gl_account_type, entity_code, name, balance, last_updated_date, description) VALUES (16, 11, 'OWNERS_CONTRIB', 'Owners Contribution', 0.00, '2016-01-01', 'Owners Contribution');
+INSERT INTO glaccount (id, gl_account_type, entity_code, name, balance, last_updated_date, description) VALUES (17, 11, 'OWNERS_DRAW', 'Owners Draw', 0.00, '2016-01-01', 'Owners Draw');
+INSERT INTO glaccount (id, gl_account_type, entity_code, name, balance, last_updated_date, description) VALUES (18, 11, 'RETAINED_EARNINGS', 'Retained Earnings', 0.00, '2016-01-01', 'Retained Earnings');
 
 
 INSERT INTO product (id, prod_type, entity_code, name, description) VALUES (1, 1, 'DEMO', 'Demo Product', 'Demo Product');
