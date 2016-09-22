@@ -4,7 +4,7 @@
 # Use > 0 to consume one or more arguments per pass in the loop (e.g.
 # some arguments don't have a corresponding value to go with it such
 # as in the --default example).
-#./os_wp_config.sh -a helion -d www.certifiedacademicwriters.com -p 555aec5e04382ecded500002d@helion-certifiedcloud.rhcloud.com -s 55aec5e04382ecded500002e@55aec5e04382ecded500002e-certifiedcloud.rhcloud.com -u certifiedacademicessaywriters@gmail.com
+#./shadow-builder.sh -n wp-commerce -t target -c config/wp-commerce.xml
 while [[ $# > 0 ]]
 do
 key="$1"
@@ -16,6 +16,10 @@ case $key in
     ;;
     -t|--target)
     TARGET="$2"
+    shift # past argument
+    ;;
+    -c|--config)
+    CONFIG="$2"
     shift # past argument
     ;;
     *)
@@ -72,7 +76,7 @@ generate_code() {
     echo "Compiling java sources"
     javac -d bin -sourcepath src -cp lib/freemarker.jar src/com/cloderia/ide/Main.java
     echo "Starting code generator"
-    java -cp lib/freemarker.jar:bin com.cloderia.ide.Main $(pwd)/ $PLUGIN_NAME 
+    java -cp lib/freemarker.jar:bin com.cloderia.ide.Main $(pwd)/ $PLUGIN_NAME $CONFIG
 }
 
 create_archive(){

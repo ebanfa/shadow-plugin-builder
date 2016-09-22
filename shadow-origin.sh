@@ -11,6 +11,6 @@ git add .
 
 git status
 
-git commit -m "Shadow origin Primerose"
+git commit -m "Shadow Origin Maxim Gorky"
 
 git push -u origin master

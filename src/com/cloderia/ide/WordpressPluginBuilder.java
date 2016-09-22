@@ -65,7 +65,7 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 	/**
 	 * @param config
 	 */
-	public WordpressPluginBuilder(String pluginName, String baseDir) {
+	public WordpressPluginBuilder(String pluginName, String baseDir, String configFile) {
 		super();
 		System.out.println("Start Wordpress Plugin Builder v1.0.0 for app " + pluginName);
 		this.pluginName = pluginName;
@@ -74,7 +74,7 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 		this.appName = pluginName.substring(0, 1).toUpperCase() + pluginName.substring(1);
 		this.templatesDir = baseDir + "templates/" + this.pluginName + "/";
 		System.out.println("Using templates dir: " + this.templatesDir);
-		//this.config = baseDir + "config/helion-application.xml";
+		this.config = baseDir + configFile;
 		//this.config = baseDir + "config/wpcommerce-application.xml";
 		//this.config = baseDir + "config/wp-cargo-master.xml";
 		//this.config = baseDir + "config/business-site-application.xml";
