@@ -299,7 +299,7 @@ class PartyAPI {
      * Get the party of the user with the provided id
      */
     public static function is_portal_admin($party_data){
-        if($party_data['user_name'] == 'admin@africanfabricanddesigns.com')
+        if($party_data['user_name'] == 'admin@southernstar.com')
             return true;
         return false;
     }

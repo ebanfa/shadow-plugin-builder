@@ -13,7 +13,7 @@ INSERT INTO location (location_type, location, entity_code, name, description) V
 INSERT INTO location (location_type, location, entity_code, name, description) VALUES (3, 2, 'NBO', 'Nairobi', 'Nairobi');
 
 /* Insert statement for Business */
-INSERT INTO business (id, currency, entity_code, name, user_name, pin, tel_no, account_notify_email, orders_notify_email, description) VALUES (1, 1, 'AFAD', 'African Fabric & Designs', 'admin@africanfabricanddesigns.com', '0000000', '254 0710 660 524', 'accounts@africanfabricanddesigns.com', 'info@africanfabricanddesigns.com', 'African Fabric & Designs');
+INSERT INTO business (id, currency, entity_code, name, user_name, pin, tel_no, account_notify_email, orders_notify_email, description) VALUES (1, 1, 'AFAD', 'African Fabric & Designs', 'admin@southernstar.com', '0000000', '254 0710 660 524', 'accounts@southernstar.com', 'info@southernstar.com', 'African Fabric & Designs');
 
 /* Insert statement for Business Unit */
 INSERT INTO businessunit (id, business, currency, entity_code, name, address_1, address_2, description) VALUES (1, 1, 1, 'DEFAULT', 'Head Office', 'Shop No. 26 Adams arcade mini mall', 'Opposite Shell Petrol station along Suna road, (Right after Iran Medical Clinic)', 'Head Office');
@@ -34,7 +34,7 @@ INSERT INTO roletype (entity_code, name, description) VALUES ('SUPPLIER', 'Suppl
 INSERT INTO roletype (entity_code, name, description) VALUES ('EMPLOYEE', 'Employee', 'Employee');
 
 /* Insert statement for Party */
-INSERT INTO party (id, party_type, entity_code, name, user_name, description, business_unit) VALUES (1, 2, 'ADMINISTRATOR', 'Administrator', 'admin@africanfabricanddesigns.com', 'Organizational party', 1);
+INSERT INTO party (id, party_type, entity_code, name, user_name, description, business_unit) VALUES (1, 2, 'ADMINISTRATOR', 'Administrator', 'admin@southernstar.com', 'Organizational party', 1);
 
 /* Insert statement for Party Role */
 INSERT INTO partyrole (party, role, parent_unit, entity_code, name, description, business_unit) VALUES (1, 1, 1, 'ADMINISTRATOR', 'Administrator', 'Administrator', 1);

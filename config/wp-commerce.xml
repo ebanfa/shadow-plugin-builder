@@ -1012,7 +1012,7 @@
 				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
-				<dataType>alphanumeric</dataType>
+				<dataType>email</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
 				<description>New Accounts Email</description>
@@ -1028,11 +1028,43 @@
 				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
-				<dataType>alphanumeric</dataType>
+				<dataType>email</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
 				<description>New Orders Email</description>
 				<displayName>New Orders Email</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>address_1</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Address Line 1</description>
+				<displayName>Address Line 1</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>address_2</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Address Line 2</description>
+				<displayName>Address Line 2</displayName>
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
@@ -4746,6 +4778,22 @@
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
+				<name>name</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>name</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Name</description>
+				<displayName>Name</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
 				<name>prod_type</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
@@ -4776,22 +4824,6 @@
 				<description>Template</description>
 				<displayName>Template</displayName>
 				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
-				<name>name</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>name</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Name</description>
-				<displayName>Name</displayName>
-				<relationshipField>N</relationshipField>
 			</field>
 			<field>
 				<name>description</name>
@@ -5266,6 +5298,61 @@
 		</entity>
 
 		<entity>
+			<name>DisplayType</name>
+			<postName>sb_displaytype</postName>
+			<description>Display Type</description>
+			<global>Y</global> 
+			<field>
+				<name>entity_code</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>alphanumeric</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Code</description>
+				<displayName>Code</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>name</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>name</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Name</description>
+				<displayName>Name</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>description</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text-lg</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Description</description>
+				<displayName>Description</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+		</entity>
+
+		<entity>
 			<name>ProductFeatureType</name>
 			<postName>sb_prodfeattype</postName>
 			<description>Product Feature Type</description>
@@ -5300,6 +5387,22 @@
 				<dataColumn>true</dataColumn>
 				<description>Category</description>
 				<displayName>Category</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>display_type</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_displaytype</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Display Type</description>
+				<displayName>Display Type</displayName>
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
@@ -5458,6 +5561,141 @@
 				<dataColumn>true</dataColumn>
 				<description>Name</description>
 				<displayName>Name</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>description</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text-lg</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Description</description>
+				<displayName>Description</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+		</entity>
+
+		<entity>
+			<name>ProductTypeFeatureApplicability</name>
+			<postName>sb_ptypefeatappl</postName>
+			<description>Product Type Feature Applicability</description>
+			<global>Y</global> 
+			<field>
+				<name>entity_code</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>N</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>alphanumeric</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Code</description>
+				<displayName>Code</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>applicability_type</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_featappltype</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Type</description>
+				<displayName>Type</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>appl_prod_type</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_product</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Product Type</description>
+				<displayName>Product Type </displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>appl_feat</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_prodfeature</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Feature</description>
+				<displayName>Feature</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>name</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>name</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Name</description>
+				<displayName>Name</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>from_date</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>N</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>date</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>From Date</description>
+				<displayName>From Date</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>to_date</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>N</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>date</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>To Date</description>
+				<displayName>To Date</displayName>
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>
@@ -6778,6 +7016,22 @@
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
+				<name>ordered_with_item</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>N</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_prodorderitem</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Ordered With</description>
+				<displayName>Ordered With</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
 				<name>order_item_status</name>
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
@@ -6791,6 +7045,38 @@
 				<dataColumn>true</dataColumn>
 				<description>Status</description>
 				<displayName>Status</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>order_item_product</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>N</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_product</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Product</description>
+				<displayName>Product</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>order_item_feature</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>N</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_prodfeature</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Product Feature</description>
+				<displayName>Product Feature</displayName>
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>

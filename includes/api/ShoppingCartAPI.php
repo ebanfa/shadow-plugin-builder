@@ -26,14 +26,31 @@ class ShoppingCartAPI {
     }
 
     /**
+     * Get the current shopping cart, or create on if does not exist
+     */
+    public static function get_shopping_cart() {
+        global $wp_session;
+        if(isset($wp_session['shopping_cart'])) return $wp_session['shopping_cart'];
+        // Load the currency
+        $currency_data = BusinessAPI::get_default_currency();
+        if(!isset($currency_data['id'])) {
+            $shopping_cart_data = EntityAPIUtils::init_error($shopping_cart_data, 'Default currency not configured');
+        }
+        else {
+            $shopping_cart_data = array('items' => array());
+            $shopping_cart_data['sub_total'] = 0.00;
+            $shopping_cart_data['currency'] = $currency_data['symbol'];
+            $wp_session['shopping_cart'] = $shopping_cart_data;
+        }
+    }
+
+    /**
      *
      */
     public static function add_to_shopping_cart($item_data){
         global $wp_session;
-        if(!isset($wp_session['shopping_cart'])) $wp_session['shopping_cart'] = array('items' => array());
-
         $id = $item_data['id'];
-        $shopping_cart = $wp_session['shopping_cart'];
+        $shopping_cart = self::get_shopping_cart();
         // Load the currency
         $currency_data = BusinessAPI::get_default_currency();
         if(!isset($currency_data['id']))

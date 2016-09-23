@@ -9,16 +9,16 @@ CREATE TABLE ${entity.name?lower_case}  (
  <#list entity.fields as field>
  	<#if field.relationshipField == "N">
 	    <#if field.dataType == "name">
-	${field.name}   		varchar(35) <#if field.required == "Y">NOT NULL<#else>NULL</#if>,
+	${field.name}   		varchar(70) <#if field.required == "Y">NOT NULL<#else>NULL</#if>,
 	    </#if>
 	    <#if field.dataType == "email">
-	${field.name}   		varchar(35) <#if field.required == "Y">NOT NULL<#else>NULL</#if>,
+	${field.name}   		varchar(70) <#if field.required == "Y">NOT NULL<#else>NULL</#if>,
 	    </#if>
 	    <#if field.dataType == "text-lg">
 	${field.name}   		varchar(255) <#if field.required == "Y">NOT NULL<#else>NULL</#if>,
 	    </#if>
 	    <#if field.dataType == "text">
-	${field.name}   		varchar(35) <#if field.required == "Y">NOT NULL<#else>NULL</#if>,
+	${field.name}   		varchar(70) <#if field.required == "Y">NOT NULL<#else>NULL</#if>,
 	    </#if>
 	    <#if field.dataType == "alphanumeric">
 	${field.name}   		varchar(35) <#if field.required == "Y">NOT NULL<#else>NULL</#if>,

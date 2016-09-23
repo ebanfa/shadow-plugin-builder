@@ -339,15 +339,12 @@ class EntityActionProcessor {
             // Load the pricing information for the product
             $entity_data = ProductAPI::load_product_data($entity_data['entity_code']);
 
-            $price = $entity_data['price'];
-            $quantity = sanitize_text_field($_POST['product-quantity']);
-
             $item_data = array(
                 'id' => $entity_data['id'], 
                 'code' => $entity_data['entity_code'],
                 'name' => $entity_data['name'],
                 'price' => $entity_data['price'],
-                'quantity' => $quantity
+                'quantity' => sanitize_text_field($_POST['quantity'])
             );
             $item_data = ShoppingCartAPI::add_to_shopping_cart($item_data);
         }

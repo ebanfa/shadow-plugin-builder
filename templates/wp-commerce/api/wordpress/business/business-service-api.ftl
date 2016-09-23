@@ -25,7 +25,7 @@ class BusinessAPI {
     }
 
     /**
-     * Get current user business role
+     * Get the default currency
      */
     public static function get_default_currency(){
        $currency_data = EntityAPI::get_by_id('currency', 1);
@@ -34,5 +34,14 @@ class BusinessAPI {
         return $currency_data;
     }
 
+    /**
+     * Get the default business
+     */
+    public static function get_default_business(){
+       $business_data = EntityAPI::get_by_code('business', 'DEFAULT');
+       if(!isset($business_data['id']))
+            return EntityAPIUtils::init_error($business_data, 'Default business not configured');
+        return $business_data;
+    }
 
 }
