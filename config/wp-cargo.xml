@@ -114,6 +114,11 @@
 			<apiFileName>includes/api/CargoTrackingAPI.php</apiFileName>
 			<apiTemplate>api/wordpress/shipment/cargo-tracking-service-api.ftl</apiTemplate>
 		</api>
+		<api>
+			<name>DepositTrackingAPI</name>
+			<apiFileName>includes/api/DepositTrackingAPI.php</apiFileName>
+			<apiTemplate>api/wordpress/shipment/deposit-tracking-service-api.ftl</apiTemplate>
+		</api>
 		<!-- Module API's -->
 		<!-- <api>
 			<name>SalesOrderAPI</name>
@@ -4620,7 +4625,7 @@
 				<editField>Y</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>
-				<dataType>sb_packagetype</dataType>
+				<dataType>sb_package</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
 				<description>Package</description>
@@ -4836,9 +4841,9 @@
 		</entity>
 
 		<entity>
-			<name>Deposit</name>
-			<postName>sb_deposit</postName>
-			<description>Deposit</description>
+			<name>DepositStatus</name>
+			<postName>sb_depositstatus</postName>
+			<description>Deposit Status</description>
 			<global>Y</global>
 			<field>
 				<name>entity_code</name>
@@ -4849,6 +4854,61 @@
 				<editField>N</editField>
 				<viewField>N</viewField>
 				<listField>N</listField>
+				<dataType>alphanumeric</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Code</description>
+				<displayName>Code</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>name</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>name</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Name</description>
+				<displayName>Name</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>description</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text-lg</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Description</description>
+				<displayName>Description</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+		</entity>
+
+		<entity>
+			<name>Deposit</name>
+			<postName>sb_deposit</postName>
+			<description>Deposit</description>
+			<global>Y</global>
+			<field>
+				<name>entity_code</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
 				<dataType>alphanumeric</dataType>
 				<size>medium</size>
 				<dataColumn>true</dataColumn>
@@ -4870,6 +4930,22 @@
 				<dataColumn>true</dataColumn>
 				<description>Type</description>
 				<displayName>Type</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>deposit_status</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_depositstatus</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Status</description>
+				<displayName>Status</displayName>
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
@@ -4902,6 +4978,22 @@
 				<dataColumn>true</dataColumn>
 				<description>Name</description>
 				<displayName>Name</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>arrival_date</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>date</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Arrival Date</description>
+				<displayName>Arrival Date</displayName>
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>

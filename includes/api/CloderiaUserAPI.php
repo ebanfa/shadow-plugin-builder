@@ -46,10 +46,11 @@ class CloderiaUserAPI {
         $entity_data['email'] = $user_data['user_email'];
         $entity_data['last_name'] = $user_data['last_name'];
         $entity_data['first_name'] = $user_data['first_name'];
-        $entity_data['role'] = PartyAPI::$cust_role_type_code;
+        $entity_data['role'] = $user_data['user_role'];
         $entity_data['name'] = PersonAPI::do_process_party_name($user_data['first_name'], $user_data['last_name']);
-
         $entity_data = PartyAPI::do_create_individual($entity_data);
+        // This is required when sending emails for account creation notification
+        $entity_data['user_data'] = $user_data;
         return $entity_data;
     }
 
@@ -78,10 +79,10 @@ class CloderiaUserAPI {
         $user = get_user_by('login', $user_data['user_login'] );
         if($user) {
             // Get the user data context {username, password etc}
-            $data_context = self::get_user_data_context($user);
+            $data_context = self::get_user_data_context($user_data);
             //update_user_meta($user->ID, 'userDataContext', implode("|", $data_context));
             // 2. Send mail to user,
-            self::send_email($data_context, $user->user_login, 'site-account-created-subject.tpl', 'site-account-created-message.tpl', array());
+            self::send_email($data_context, $user_data['user_login'], 'site-account-created-subject.tpl', 'site-account-created-message.tpl', array());
             // 3 Send mail to the admin
             self::send_email($data_context, get_option('cp_notify_accounts'), 'site-account-created-subject.tpl', 'site-account-created-message.tpl', array());
         }
@@ -107,12 +108,12 @@ class CloderiaUserAPI {
     /**
      * 
      */
-    public static function get_user_data_context($user)
+    public static function get_user_data_context($user_data)
     {
-        $data_context = array('user_name' => $user->user_login, 'password' => $user->user_pass,
-            'first_name' => $user->first_name, 'last_name' => $user->last_name);
-        $data_context['email'] = $user->user_login;
-        $data_context['display_name'] = get_user_meta($user->ID, 'display_name', true);
+        $data_context = array('user_name' => $user_data['user_login'], 'password' => $user_data['user_pass'],
+            'first_name' => $user_data['first_name'], 'last_name' => $user_data['last_name']);
+        $data_context['email'] = $user_data['user_login'];
+        $data_context['display_name'] = $user_data['display_name'];
         $data_context['site_url'] = get_site_url();
         $data_context['site_name'] = get_bloginfo('name');
         $data_context['site_descriptions'] = get_bloginfo('descriptions');

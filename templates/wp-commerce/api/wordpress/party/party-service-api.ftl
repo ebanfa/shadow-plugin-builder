@@ -299,9 +299,15 @@ class PartyAPI {
      * Get the party of the user with the provided id
      */
     public static function is_portal_admin($party_data){
-        if($party_data['user_name'] == 'admin@africanfabricanddesigns.com')
-            return true;
+        if($party_data['entity_code'] == 'ADMINISTRATOR') return true;
         return false;
+    }
+
+    /**
+     * Get the party of the user with the provided id
+     */
+    public static function is_current_user_portal_admin() {
+        return self::is_portal_admin(self::get_current_user_party());
     }
 
     /**

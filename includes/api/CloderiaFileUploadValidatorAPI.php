@@ -14,14 +14,18 @@ class ContentFileUploadValidatorAPI {
      */
     public static function validate_file_upload($file_upload_param) {
         $count = 0;
-        $max_file_size = 20000000;
+        $max_file_size = 200000000;
         $validation_errors = array();
 
         if (!empty($_FILES)) {
             foreach ($_FILES[$file_upload_param]['name'] as $filename) {
                 if ($_FILES[$file_upload_param]['tmp_name'][$count] != '') {
                     // Setup the array of supported file types. In this case, it's just PDF.
-                    $supported_types = array('image/jpeg', 'image/png', 'image/gif');
+                    $supported_types = array('image/jpeg', 
+                        'image/png', 'image/gif', 'application/pdf',
+                        'application/vnd.ms-excel', 'application/msword',
+                        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+                        'application/vnd.openxmlformats-officedocument.wordprocessingml.document');
                     // Get the file type of the upload
                     $arr_file_type = wp_check_filetype(basename($_FILES[$file_upload_param]['name'][$count]));
                     $uploaded_type = $arr_file_type['type'];

@@ -74,10 +74,20 @@ INSERT INTO uom (id, entity_code, name, uom_abbr, description) VALUES (1, 'EACH'
 
 /* Insert statement for Product Feature Category */
 INSERT INTO productfeaturecategory (id, entity_code, name, description) VALUES (1, 'DIMENESION', 'Dimensions', 'Dimensions');
+INSERT INTO productfeaturecategory (id, entity_code, name, description) VALUES (2, 'APPEARANCE', 'Appearance', 'Appearance');
+
+/* Insert statement for Product Feature Display Type */
+INSERT INTO displaytype(id, entity_code, name, description) VALUES (1, 'SELECT', 'Select', 'Select');
 
 /* Insert statement for Product Feature Type */
-INSERT INTO productfeaturetype(id, feature_category, entity_code, name, description) VALUES (1, 1, 'SIZE', 'Size', 'Size');
-INSERT INTO productfeaturetype(id, feature_category, entity_code, name, description) VALUES (2, 1, 'DIMENESION', 'Dimension', 'Dimension');
+INSERT INTO productfeaturetype(id, feature_category, display_type, entity_code, name, description) VALUES (1, 1, 1, 'SIZE', 'Size', 'Size');
+INSERT INTO productfeaturetype(id, feature_category, display_type, entity_code, name, description) VALUES (2, 1, 1, 'DIMENESION', 'Dimension', 'Dimension');
+INSERT INTO productfeaturetype(id, feature_category, display_type, entity_code, name, description) VALUES (3, 2, 1, 'COLOR', 'Color', 'Color');
+
+/* Insert statement for Feature Applicability Type */
+INSERT INTO featureapplicabilitytype(id, entity_code, name, description) VALUES (1, 'STANDARD', 'Standard', 'Standard');
+INSERT INTO featureapplicabilitytype(id, entity_code, name, description) VALUES (2, 'REQUIRED', 'Required', 'Required');
+INSERT INTO featureapplicabilitytype(id, entity_code, name, description) VALUES (3, 'OPTIONAL', 'Optional', 'Optional');
 
 /* Insert statement for Product Feature */
 INSERT INTO productfeature(id, feature_type, entity_code, name, description) VALUES (1, 1, 'SIX_YARDS', '6-Yards', '6-Yards');

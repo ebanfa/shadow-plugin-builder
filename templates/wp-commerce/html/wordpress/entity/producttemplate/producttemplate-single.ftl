@@ -17,7 +17,6 @@
 
     wp_register_style('bootstrap_css', get_stylesheet_directory_uri() . '/css/bootstrap.css');
     wp_register_style('fileupload_css', get_stylesheet_directory_uri() . '/css/portal/jquery.fileupload.css');
-    //wp_enqueue_style('bootstrap_css');
     wp_enqueue_style('fileupload_css');
 
     wp_register_script('widget_js', get_stylesheet_directory_uri() . '/js/portal/jquery.ui.widget.js', array('jquery'), true);
@@ -120,7 +119,7 @@
                     ?>
                     <tr>
                         <td>
-                            <a href="<?php echo EntityActionProcessor::get_base_url() ;?>artifact=<?php echo $child_artifact_name; ?>&page_action=view&parent_id=<?php echo $model['id']; ?>&parent_artifact=<?php echo $view->get_artifact_name(); ?>&parent_field=<?php echo $child_field_name; ?>" class="product-name">
+                            <a href="<?php echo EntityActionProcessor::get_base_url() ;?>artifact=<?php echo $child_artifact_name; ?>&page_action=view&id=<?php echo $product['id']; ?>&parent_id=<?php echo $model['id']; ?>&parent_artifact=<?php echo $view->get_artifact_name(); ?>&parent_field=<?php echo $child_field_name; ?>" class="product-name">
                                 <?php echo $product['name']; ?>
                             </a>
                         </td>

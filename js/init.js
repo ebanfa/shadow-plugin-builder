@@ -163,7 +163,7 @@
      * Calculates the cost of an order.
      */
     BlitzDocument.doOrderFormCalculation = function () {
-        var orderForm = document.getElementById('contactForm');
+        var orderForm = document.getElementById('order-form');
         var orderCostPerPage = 0;
         var orderTotalCost = 0;
         var single = orderForm.o_interval.checked;

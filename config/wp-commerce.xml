@@ -21,6 +21,18 @@
 		</menuGroup>
 
 		<menuGroup>
+			<name>user_dashboard</name>
+			<displayName>Dashboard</displayName>
+			<description>Dashboard</description>
+			<admin>N</admin>
+			<type>menu</type>
+			<active>N</active>
+			<cssClass>zmdi zmdi-home</cssClass>
+			<targetType>page</targetType>
+			<target>/wordpress/page?artifact=userdashboard&amp;page_action=view</target>
+		</menuGroup>
+
+		<menuGroup>
 			<name>peoples</name>
 			<displayName>People &amp; Organizations</displayName>
 			<description>People &amp; Organizations</description>

@@ -1,6 +1,6 @@
 <div class="wrap">
 	<?php screen_icon(); ?>
-	<h2>WP Commerce Admin Settings</h2>
+	<h2>Admin Settings</h2>
 	<?php if(isset($msg)) print $msg; ?>
 	<h3><label for="shortcode_name">Admin Credentials</label></h3>
 	<form action="" method="post" id="essay_orders_form">
@@ -10,7 +10,15 @@
 					<label for="cp_paypal">PayPal URL</label>
 				</th>
 				<td>
-					<input id="cp_paypal" name="cp_paypal" type="text" size="50" value="<?php echo get_option('cp_paypal_url');?>" />
+					<select id="cp_paypal" name="cp_paypal" >
+						<?php $selected_url = get_option('cp_paypal_url');?>
+						<option value="https://www.paypal.com/cgi-bin/webscr" <?php if ($selected_url == "https://www.paypal.com/cgi-bin/webscr") echo "selected='selected'";?>>
+							PayPal Live
+						</option>
+						<option value="https://www.sandbox.paypal.com/cgi-bin/webscr" <?php if ($selected_url == "https://www.sandbox.paypal.com/cgi-bin/webscr") echo "selected='selected'";?>>
+							PayPal Sandbox
+						</option>
+					</select>
 				</td>
 			</tr>	
 			<tr>
@@ -20,10 +28,10 @@
 				<td>
 					<input id="cp_paypal_id" name="cp_paypal_id" type="text" size="50" value="<?php echo get_option('cp_paypal_id');?>" />
 				</td>
-			</tr>	
+			</tr>
 			<tr>
 				<th scope="row">
-					<label for="cp_notify_orders">Notify Email Orders</label>		
+					<label for="cp_notify_orders">Orders Notification Email</label>
 				</th>
 				<td>
 					<input id="cp_notify_orders" name="cp_notify_orders" type="text" size="50" value="<?php echo get_option('cp_notify_orders');?>" />
@@ -31,7 +39,7 @@
 			</tr>	
 			<tr>
 				<th scope="row">
-					<label for="cp_notify_accounts">Notify Email Accounts</label>		
+					<label for="cp_notify_accounts">New Accounts Notification Email</label>
 				</th>
 				<td>
 					<input id="cp_notify_accounts" name="cp_notify_accounts" type="text" size="50" value="<?php echo get_option('cp_notify_accounts');?>" />
@@ -47,18 +55,26 @@
 			</tr>	
 			<tr>
 				<th scope="row">
-					<label for="cp_currency_symbol">Default Currency</label>	
+					<label for="cp_default_portal_header_color">Portal Header Color</label>	
 				</th>
-				<td>
-					<input id="cp_default_currency" name="cp_default_currency" type="text" size="50" value="<?php echo get_option('cp_default_currency');?>" />
+				<td>	
+					<input id="cp_default_portal_header_color" name="cp_default_portal_header_color" type="text" size="50" value="<?php echo get_option('cp_default_portal_header_color');?>" />
 				</td>
 			</tr>	
 			<tr>
 				<th scope="row">
-					<label for="cp_default_partytype">Default Party Type</label>	
+					<label for="cp_default_portal_menu_image">Portal Menu Image Url</label>	
 				</th>
 				<td>	
-					<input id="cp_default_partytype" name="cp_default_partytype" type="text" size="50" value="<?php echo get_option('cp_default_partytype');?>" />
+					<input id="cp_default_portal_menu_image" name="cp_default_portal_menu_image" type="text" size="50" value="<?php echo get_option('cp_default_portal_menu_image');?>" />
+				</td>
+			</tr>	
+			<tr>
+				<th scope="row">
+					<label for="cp_default_guest_user_name">Guest User Name</label>	
+				</th>
+				<td>	
+					<input id="cp_default_guest_user_name" name="cp_default_guest_user_name" type="text" size="50" value="<?php echo get_option('cp_default_guest_user_name');?>" />
 				</td>
 			</tr>	
 			<tr>

@@ -1,0 +1,1 @@
+[+site_name+] New user account created for [+display_name+].

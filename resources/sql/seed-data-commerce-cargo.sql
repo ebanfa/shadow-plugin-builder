@@ -61,6 +61,15 @@ INSERT INTO country (entity_code, name, description) VALUES ('UK', 'United Kingd
 INSERT INTO facilitytype (entity_code, name, description) VALUES ('AIRPORT', 'Airport', 'Airport');
 INSERT INTO facilitytype (entity_code, name, description) VALUES ('SEAPORT', 'Seaport', 'Seaport');
 
+/* Insert statement for Package Category */
+INSERT INTO packagecategory (entity_code, name, description) VALUES ('LIQUID', 'Liquid', 'Liquid');
+INSERT INTO packagecategory (entity_code, name, description) VALUES ('BULK_GOODS ', 'Bulk Goods', 'Bulk Goods');
+INSERT INTO packagecategory (entity_code, name, description) VALUES ('PALLETIZED: ', 'Palletized', 'Palletized');
+
+/* Insert statement for Package Type */
+INSERT INTO packagetype (package_category, entity_code, name, description) VALUES (2, 'BULK_LARGE', 'Bulk, solid, large particles', 'Bulk, solid, large particles');
+INSERT INTO packagetype (package_category, entity_code, name, description) VALUES (2, 'BULK_GRAINS ', 'Bulk, solid, granular particles (grains)', ' 	Bulk, solid, granular particles (grains)');
+
 /* Insert statement for Shipment Type */
 INSERT INTO shipmenttype (entity_code, name, description) VALUES ('AIR', 'Air', 'Air');
 INSERT INTO shipmenttype (entity_code, name, description) VALUES ('SEA', 'Sea', 'Sea');
@@ -71,3 +80,13 @@ INSERT INTO shipmentstatus (entity_code, name, description) VALUES ('SCHEDULED',
 INSERT INTO shipmentstatus (entity_code, name, description) VALUES ('SHIPPED', 'Shipped', 'Shipped');
 INSERT INTO shipmentstatus (entity_code, name, description) VALUES ('IN_TRANSIT', 'In transit', 'In transit');
 INSERT INTO shipmentstatus (entity_code, name, description) VALUES ('RECEIVED', 'Received', 'Received');
+
+/* Insert statement for Deposit Category */
+INSERT INTO depositcategory (id, entity_code, name, description) VALUES (1, 'DEFAULT', 'Default', 'Default');
+
+/* Insert statement for Deposit Type */
+INSERT INTO deposittype (deposit_category, entity_code, name, description) VALUES (1, 'ON_DEPOSIT', 'On Deposit', 'On Deposit');
+INSERT INTO deposittype (deposit_category, entity_code, name, description) VALUES (1, 'CUSTODY', 'Custody', 'Custody');
+
+/* Insert statement for Deposit Status */
+INSERT INTO depositstatus (entity_code, name, description) VALUES ('RECEIVED', 'Received', 'Received');

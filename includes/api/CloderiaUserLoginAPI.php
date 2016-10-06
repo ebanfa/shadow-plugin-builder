@@ -22,7 +22,7 @@ class ContentUserLoginAPI {
 	    // Attempt to sign the user in
 	    $login_results = self::do_signin_user($username, $password);
 
-	    if ($login_results['hasErrors']) {
+	    if ($login_results['has_errors']) {
 	    	
 	        wp_send_json_error(array('message' => $login_results['message']));
 	    }
@@ -44,7 +44,7 @@ class ContentUserLoginAPI {
 
 	        // Create the content user
 	        $signin_results = ContentUserAPI::create_and_signin_user($user_request_data);
-	        if ($signin_results['hasErrors']) {
+	        if ($signin_results['has_errors']) {
 	            wp_send_json_error(array('message' => $signin_results['message']));
 	        }
 	        $content_user = $signin_results['content_user'];
@@ -87,7 +87,7 @@ class ContentUserLoginAPI {
 	    $user_verify = wp_signon($login_data, true);
 
 	    if (is_wp_error($user_verify)) {
-	        return array('hasErrors' => true,
+	        return array('has_errors' => true,
 	            'message' => "Invalid username or password. Please try again.");
 	    } else {
 	        wp_set_current_user($user_verify->ID);
@@ -105,7 +105,7 @@ class ContentUserLoginAPI {
 	                $content_user['redirect_url'] = site_url() . '/content-creator';
 	            }
 	        }*/
-	        return array('hasErrors' => false, 'content_user' => $content_user);
+	        return array('has_errors' => false, 'content_user' => $content_user);
 	    }
 	}
 
@@ -114,11 +114,10 @@ class ContentUserLoginAPI {
      */
     public static function build_signup_data($entity_data) {
 
-        $password = EntityStringUtils::get_token(8);
         $user_name = sanitize_text_field($entity_data['email']);
-
-        if(!isset($entity_data['first_name'])) $entity_data['first_name'] = $entity_data['email'];
+        if(!isset($entity_data['user_pass'])) $password = EntityStringUtils::get_token(8);
         if(!isset($entity_data['last_name'])) $entity_data['last_name'] = $entity_data['email'];
+        if(!isset($entity_data['first_name'])) $entity_data['first_name'] = $entity_data['email'];
         // Split the username at the @ sign
         $account_name = $user_name;
         $split_username = explode('@', $account_name);
@@ -134,6 +133,7 @@ class ContentUserLoginAPI {
         $user_data['first_name'] = $entity_data['first_name'];
         $user_data['last_name'] = $entity_data['last_name'];
         $user_data['business_name'] = $entity_data['first_name'] . ' ' . $entity_data['last_name'];
+        if(isset($entity_data['role'])) $user_data['role'] = $entity_data['role'];
         return $user_data;
     }
     

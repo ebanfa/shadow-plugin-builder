@@ -390,7 +390,7 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 	private void doServices(Module module) {
 		String includeServiceOutputDir = this.pluginDir + "includes/service/";
 		this.generateArtifact(module, null, 
-					"services/wordpress/dashboard-service-php.ftl" , includeServiceOutputDir +  "DashboardService.php");;
+					"services/wordpress/dashboard-service-php.ftl" , includeServiceOutputDir +  "AdminDashboardService.php");;
 		this.generateArtifact(module, null, 
 					"services/wordpress/transaction-service-php.ftl" , includeServiceOutputDir +  "TransactionService.php");
 	}
@@ -432,6 +432,7 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 			} 
 		}
 		this.generateArtifact(module, null, "views/wordpress/dashboard/dashboard-view-php.ftl" , includeViewOutputDir +  "DashboardView.php");
+		this.generateArtifact(module, null, "views/wordpress/question/post-question-view-php.ftl" , includeViewOutputDir +  "QuestionView.php");
 		this.generateArtifact(module, null, "views/wordpress/create-multi-entity.ftl" , includeViewOutputDir +  "MultiEntityCreateView.php");
 		this.generateArtifact(module, null, "views/wordpress/view-filter-php.ftl" , includeViewOutputDir +  "ViewFilter.php");
 		this.generateArtifact(module, null, "views/wordpress/base-artifact-view.ftl" , includeViewOutputDir +  "ArtifactView.php");

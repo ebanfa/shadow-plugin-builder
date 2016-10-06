@@ -17,19 +17,25 @@ class ContentFileAPI {
         $entity_data['files_uploaded'] = array();
         $current_user = wp_get_current_user();
 
-        $validation_errors = ContentFileUploadValidatorAPI::validate_file_upload($file_upload_param);
+        CloderiaLogUtils::shadow_log('>>>>>>>>>>>>>>>>>Received file from content file api:' . $file_upload_param);
+
+        /*$validation_errors = ContentFileUploadValidatorAPI::validate_file_upload($file_upload_param);
         if(!empty($validation_errors)) {
             $entity_data['has_errors'] = true;
             foreach ($validation_errors['file_upload_error_msg'] as $key => $value) {
               $entity_data['message'] = $value;
+              CLoderiaLogUtils::shadow_log($entity_data['message']);
             }
             return $entity_data;
         }
-
+*/
         if (!empty($_FILES)) {
 
             foreach ($_FILES[$file_upload_param]['name'] as $filename) {
+                CloderiaLogUtils::shadow_log('>>>>>>>>>>>>>>>>>Looping file:' . $filename);
+                CloderiaLogUtils::shadow_log($_FILES[$file_upload_param]['tmp_name']);
                 if ($_FILES[$file_upload_param]['tmp_name'][$count] != '') {
+                    CLoderiaLogUtils::shadow_log('>>>>>>>>>>>>>am here');
                     // Use the WordPress API to upload the file
                     $upload = wp_upload_bits($_FILES[$file_upload_param]['name'][$count], null, file_get_contents($_FILES[$file_upload_param]['tmp_name'][$count]));
                     if (isset($upload['error']) && $upload['error'] != 0) {
@@ -56,29 +62,15 @@ class ContentFileAPI {
                         // Insert the order into the database
                         $post_id = wp_insert_post($post_information);
 
-                        /*update_post_meta($post_id, 'cf_name', $file_obj['file_name']);
-                        update_post_meta($post_id, 'cf_file_code', $file_obj['file_code']);
-                        update_post_meta($post_id, 'cf_file_url', $file_obj['file_url']);
-                        update_post_meta($post_id, 'cf_file_size', $file_obj['file_size']);
-                        update_post_meta($post_id, 'cf_user_name', $file_obj['file_owner']);
-                        update_post_meta($post_id, 'cf_created_date', $file_obj['file_created_date']);
-                        update_post_meta($post_id, 'cf_file_type', $file_obj['file_type']);
-                        update_post_meta($post_id, 'cf_mime_type', $file_obj['file_mime_type']);
-                        update_post_meta($post_id, 'cf_file_description', $file_obj['file_description']);*/
+                        if($entity_data['entity_artifact_name'] == 'party') {
+                            $image_entity_data = EntityAPIUtils::init_entity_data('partyimage');
+                            $image_entity_data['file_party'] = $entity_data['id'];
+                            self::save_image($entity_data, $image_entity_data, $file_obj);
+                        }
 
-                        if($entity_data['entity_artifact_name'] == 'productcategory') {
-                            $image_entity_data = EntityAPIUtils::init_entity_data('productcategoryimage');
-                            $image_entity_data['prod_cat_image'] = $entity_data['id'];
-                            self::save_image($entity_data, $image_entity_data, $file_obj);
-                        }
-                        if($entity_data['entity_artifact_name'] == 'producttype') {
-                            $image_entity_data = EntityAPIUtils::init_entity_data('producttypeimage');
-                            $image_entity_data['prod_ty_image'] = $entity_data['id'];
-                            self::save_image($entity_data, $image_entity_data, $file_obj);
-                        }
-                        if($entity_data['entity_artifact_name'] == 'product') {
-                            $image_entity_data = EntityAPIUtils::init_entity_data('productimage');
-                            $image_entity_data['product'] = $entity_data['id'];
+                        if($entity_data['entity_artifact_name'] == 'contentorder') {
+                            $image_entity_data = EntityAPIUtils::init_entity_data('contentorderfile');
+                            $image_entity_data['file_content_order'] = $entity_data['id'];
                             self::save_image($entity_data, $image_entity_data, $file_obj);
                         }
                         array_push($entity_data['files_uploaded'], $file_obj);
@@ -93,8 +85,8 @@ class ContentFileAPI {
     public static function save_image($entity_data, $image_entity_data, $file_obj) {
         $image_entity_data['edit_mode'] = true;
         $image_entity_data['name'] = $file_obj['file_name'];
-        $image_entity_data['image_url'] = $file_obj['file_url'];
-        $image_entity_data['image_size'] = $file_obj['file_size'];
+        $image_entity_data['file_url'] = $file_obj['file_url'];
+        $image_entity_data['file_size'] = $file_obj['file_size'];
         $image_entity_data['description'] = $file_obj['file_name'];
         EntityAPI::do_create_entity($image_entity_data);
     }
