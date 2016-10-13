@@ -57,14 +57,13 @@ build_plugin_directory () {
 
 copy_resources(){
     echo "Copying resources"
-    cp includes/api/* $TARGET/$PLUGIN_NAME/includes/api
-    cp -rf vendor/ $TARGET/$PLUGIN_NAME/
-    cp includes/utils/* $TARGET/$PLUGIN_NAME/includes/utils
-    cp includes/font/* $TARGET/$PLUGIN_NAME/includes/font
-    cp includes/service/* $TARGET/$PLUGIN_NAME/includes/service
-    cp templates/$PLUGIN_NAME/emails/* $TARGET/$PLUGIN_NAME/email_templates
-    cp includes/fpdf.php $TARGET/$PLUGIN_NAME/includes
     cp -r js/* $TARGET/$PLUGIN_NAME/js
+    cp -rf vendor/ $TARGET/$PLUGIN_NAME/
+    cp includes/api/* $TARGET/$PLUGIN_NAME/includes/api
+    cp includes/view/* $TARGET/$PLUGIN_NAME/includes/view
+    cp includes/utils/* $TARGET/$PLUGIN_NAME/includes/utils
+    cp includes/controller/* $TARGET/$PLUGIN_NAME/includes/controller
+    cp templates/$PLUGIN_NAME/emails/* $TARGET/$PLUGIN_NAME/email_templates
 }
 
 delete_existing_project(){ 

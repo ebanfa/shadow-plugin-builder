@@ -134,7 +134,7 @@
                             </div>
                             <div class="col-md-4">
                                 <?php if(!is_null($view->get_parent_artifact_name())) { ?>
-                                <a href="<?php echo EntityActionProcessor::get_base_url() . 'artifact=' . $view->get_parent_artifact_name() . '&id=' . $view->get_parent_id() . $view->get_parent_param(); ?>&page_action=view" 
+                                <a href="<?php echo ArtficatAjaxRequestProcessorUtils::get_base_url() . 'artifact=' . $view->get_parent_artifact_name() . '&id=' . $view->get_parent_id() . $view->get_parent_param(); ?>&page_action=view" 
                                    class="btn btn-primary btn-block waves-effect">
                                    <?php _e('Done', 'framework') ?>
                                 </a>

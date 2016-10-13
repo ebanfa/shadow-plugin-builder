@@ -22,7 +22,21 @@
     $view = $_REQUEST['page_info']['view'];
     $model = $view->get_model();
     $tabs = $view->get_tabs();
+    $out_standing_amount = $model['total'];
+    // Get the payment status object
+    $is_pending_payment = true;
+    $pay_status_data = EntityAPI::get_by_id('paymentstatus', $model['payment_status']);
+    if(isset($pay_status_data['id'])) {
+        if($pay_status_data['entity_code'] != ContentOrderAPI::$pay_status_not_paid) $is_pending_payment = false;
+    }
 
+    if($is_pending_payment) $out_standing_amount = (doubleval(50) / doubleval(100)) * doubleval($model['total']); 
+    //
+    $is_fully_paid = false;
+    $order_status_data = EntityAPI::get_by_id('contentorderstatus', $model['order_status']);
+    if(isset($order_status_data['id'])) {
+        if($order_status_data['entity_code'] == ContentOrderAPI::$order_status_completed) $is_fully_paid = false;
+    }
     
     $parent_param = '';
     if(isset($_REQUEST['parent_param'])) $parent_param = urldecode($_REQUEST['parent_param']);
@@ -31,16 +45,23 @@
 
 ?>
 <div class="c-overflow">
+    <?php if($is_pending_payment) {?>
     <div class="alert alert-success alert-dismissible" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
-        Well done! You successfully read this important alert message.
+        Your order has been received, please make a down payment of 50% ($<?php echo intval($out_standing_amount); ?>) to get your work started. The balance will be paid once the work has been completed.
     </div>
+    <?php } ?>
     <ul class="tab-nav" role="tablist" style="overflow: visible;">
         <li class="active">
             <a href="#tab-0" aria-controls="tab-0" role="tab" data-toggle="tab">
                 Order Details
+            </a>
+        </li>
+        <li>
+            <a href="#tab-question" aria-controls="tab-instructions" role="tab" data-toggle="tab">
+                Question
             </a>
         </li>
         <li>
@@ -105,11 +126,51 @@
                <?php _e('Delete', 'framework') ?>
             </a>
             <?php if(!is_null($view->get_parent_artifact_name())) { ?>
-            <a href="<?php echo EntityActionProcessor::get_base_url() . 'artifact=' . $view->get_parent_artifact_name() . '&id=' . $view->get_parent_id(); ?>&page_action=view<?php echo $view->get_parent_param(); ?>" 
+            <a href="<?php echo ArtficatAjaxRequestProcessorUtils::get_base_url() . 'artifact=' . $view->get_parent_artifact_name() . '&id=' . $view->get_parent_id(); ?>&page_action=view<?php echo $view->get_parent_param(); ?>" 
                class="btn btn-primary waves-effect">
                <?php _e('Done', 'framework') ?>
             </a>
             <?php } ?>
+            <form id="paypal-form" style="display:none" 
+                action="<?php echo get_option('cp_paypal_url'); ?>" method="post" target="_top">
+                    <input type="hidden" name="cmd" value="_xclick">
+                    <input type="hidden" name="business" value="<?php echo get_option('cp_paypal_id'); ?>">
+                    <input type="hidden" name="lc" value="US">
+                    <input type="hidden" name="invoice" id="invoice" value="<?php echo $model['entity_code']; ?>">
+                    <input type="hidden" name="item_name" value="<?php echo $model['name']; ?>">
+                    <input type="hidden" name="amount" value="<?php echo $out_standing_amount; ?>">
+                    <input type="hidden" name="currency_code" value="USD">
+                    <input type="hidden" name="button_subtype" value="services">
+                    <input type="hidden" name="no_note" value="0">
+                    <input type="hidden" name="cn" value="Add special instructions to the seller:">
+                    <input type="hidden" name="no_shipping" value="1">
+                    <input type="hidden" name="rm" value="1">
+                    <input type="hidden" name="return" value="<?php echo get_option('cp_paypal_return'); ?>">
+                    <input type="hidden" name="cancel_return" value="<?php echo get_option('cp_paypal_cancel'); ?>">
+                    <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHosted">
+                    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                    <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+            </form>
+            <?php if(!$is_fully_paid){ ?>
+
+                <a id="pay-invoice-btn" href="<?php echo $view->get_edit_url(); ?>" class="btn btn-primary waves-effect pull-right">
+                   <?php _e('Make Down Payment', 'framework') ?>
+                </a>
+            <?php } ?>
+        </div>
+    </div>
+
+    <div role="tabpanel" class="tab-pane animated fadeIn" id="tab-question">
+        <div class="table-responsive m-t-20 m-b-20">
+            <?php 
+                if (!isset($model['post_question'])) {
+                    echo 'No associated question';
+                }
+                else {
+                    $post_data = get_post($model['post_question']);
+                    echo $post_data->post_content;
+                }
+            ?>
         </div>
     </div>
 
@@ -196,7 +257,7 @@
             ?>
             <div class="btn-demo m-t-10">
                 <a id="create-<?php echo $child_artifact_name; ?>-btn" 
-                    href="<?php echo EntityActionProcessor::get_base_url() ;?>artifact=<?php echo $child_artifact_name; ?>&page_action=create&parent_id=<?php echo $model['id']; ?>&parent_artifact=<?php echo $view->get_artifact_name(); ?>&parent_field=<?php echo $child_field_name; ?>" 
+                    href="<?php echo ArtficatAjaxRequestProcessorUtils::get_base_url() ;?>artifact=<?php echo $child_artifact_name; ?>&page_action=create&parent_id=<?php echo $model['id']; ?>&parent_artifact=<?php echo $view->get_artifact_name(); ?>&parent_field=<?php echo $child_field_name; ?>" 
                     class="btn btn-success waves-effect">
                    <?php _e('Add ' . $child_entity_description, 'framework') ?>
                 </a>
@@ -255,7 +316,7 @@
                                 if($('#additional_seach_options').length) { additional_seach_options = $('#additional_seach_options').val(); }
 
                                 
-                                return '<a class="data-table-link" href="' + '<?php echo EntityActionProcessor::get_base_url(); ?>' + 'artifact=<?php echo strtolower($tab['model']['entity_name']); ?>&id=' + row.id + '&page_action=view' +  additional_seach_options +'&parent_id=<?php echo $model['id']; ?>&parent_artifact=<?php echo $view->get_artifact_name(); ?>&parent_field=<?php echo $child_field_name; ?>" data-related-artifact-name="<?php echo strtolower($tab['model']['entity_name']); ?>" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                                return '<a class="data-table-link" href="' + '<?php echo ArtficatAjaxRequestProcessorUtils::get_base_url(); ?>' + 'artifact=<?php echo strtolower($tab['model']['entity_name']); ?>&id=' + row.id + '&page_action=view' +  additional_seach_options +'&parent_id=<?php echo $model['id']; ?>&parent_artifact=<?php echo $view->get_artifact_name(); ?>&parent_field=<?php echo $child_field_name; ?>" data-related-artifact-name="<?php echo strtolower($tab['model']['entity_name']); ?>" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
                             },
                             "targets": 1
                         }
@@ -367,6 +428,16 @@ $('#delete-entity-btn').click(function(e){
         });
         
     });
+});
+
+$('#pay-invoice-btn').click(function (e)
+{
+    console.log('Hello 1')
+    e.preventDefault();
+    console.log('Hello 2')
+    $('#paypal-form').submit();
+    console.log('Hello 3')
+
 });
 
 $('#upload-file-btn').click(function(e){

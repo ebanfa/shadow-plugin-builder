@@ -1,6 +1,6 @@
 <?php
 
-class CloderiaCustomPostTypesUtils {
+class CustomPostTypesUtils {
 
 	/*
 	This prefix helps ensure unique keys in the $_POST array. It is used only to 
@@ -67,7 +67,7 @@ class CloderiaCustomPostTypesUtils {
 		foreach ($content_types_array as $content_type) {
 			add_meta_box( 'my-custom-fields'
 				, 'Custom Fields'
-				, 'CloderiaCustomPostTypesUtils::print_custom_fields'
+				, 'CustomPostTypesUtils::print_custom_fields'
 				, $content_type
 				, 'normal'
 				, 'high'

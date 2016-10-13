@@ -13,10 +13,10 @@ INSERT INTO location (location_type, location, entity_code, name, description) V
 INSERT INTO location (location_type, location, entity_code, name, description) VALUES (3, 2, 'NBO', 'Nairobi', 'Nairobi');
 
 /* Insert statement for Business */
-INSERT INTO business (id, currency, entity_code, name, user_name, pin, tel_no, account_notify_email, orders_notify_email, description) VALUES (1, 1, 'AFAD', 'African Fabric & Designs', 'admin@dubaikenyabank.com', '0000000', '254 0710 660 524', 'accounts@dubaikenyabank.com', 'info@dubaikenyabank.com', 'African Fabric & Designs');
+INSERT INTO business (id, currency, entity_code, name, user_name, pin, tel_no, account_notify_email, orders_notify_email, description) VALUES (1, 1, 'AFAD', 'Diamond Trust Bank', 'admin@dtbafricaonline.com', '0000000', '254 0710 660 524', 'accounts@dtbafricaonline.com', 'info@dtbafricaonline.com', 'Diamond Trust Bank');
 
 /* Insert statement for Business Unit */
-INSERT INTO businessunit (id, business, currency, entity_code, name, address_1, address_2, description) VALUES (1, 1, 1, 'DEFAULT', 'Head Office', 'Shop No. 26 Adams arcade mini mall', 'Opposite Shell Petrol station along Suna road, (Right after Iran Medical Clinic)', 'Head Office');
+INSERT INTO businessunit (id, business, currency, entity_code, name, address_1, address_2, description) VALUES (1, 1, 1, 'DEFAULT', 'Head Office', '', '', 'Head Office');
 
 /* Insert statement for Party Category */
 INSERT INTO partycategory (id, entity_code, name, description) VALUES (1, 'ORGANIZATION', 'Organization', 'Organizational party');
@@ -34,7 +34,7 @@ INSERT INTO roletype (entity_code, name, description) VALUES ('SUPPLIER', 'Suppl
 INSERT INTO roletype (entity_code, name, description) VALUES ('EMPLOYEE', 'Employee', 'Employee');
 
 /* Insert statement for Party */
-INSERT INTO party (id, party_type, entity_code, name, user_name, description, business_unit) VALUES (1, 2, 'ADMINISTRATOR', 'Administrator', 'admin@dubaikenyabank.com', 'Organizational party', 1);
+INSERT INTO party (id, party_type, entity_code, name, user_name, description, business_unit) VALUES (1, 2, 'ADMINISTRATOR', 'Administrator', 'admin@dtbafricaonline.com', 'Organizational party', 1);
 
 /* Insert statement for Party Role */
 INSERT INTO partyrole (party, role, parent_unit, entity_code, name, description, business_unit) VALUES (1, 1, 1, 'ADMINISTRATOR', 'Administrator', 'Administrator', 1);
@@ -69,7 +69,23 @@ INSERT INTO producttype (id, product_category, entity_code, name, description) V
 INSERT INTO producttype (id, product_category, entity_code, name, description) VALUES (5, 1, 'LINE_OF_CREDIT', 'Line Of Credit', 'Line Of Credit');
 INSERT INTO producttype (id, product_category, entity_code, name, description) VALUES (6, 1, 'STARTUP_LOAN', 'Franchise Startup Loan', 'Franchise Startup Loan');
 INSERT INTO producttype (id, product_category, entity_code, name, description) VALUES (7, 1, 'INVENTORY_LOAN', 'Inventory Loan', 'Inventory Loan');
-INSERT INTO producttype (id, product_category, entity_code, name, description) VALUES (8, 2, 'TRANSACTIONAL_ACCOUNT', 'Transactional Account', 'Transactional Account');
+INSERT INTO producttype (id, product_category, entity_code, name, description) VALUES (8, 2, 'OFFSHORE_DEPOSIT_ACCOUNT', 'Offshore Deposit Account', 'Offshore Deposit Account');
+
+/* Insert statement for Account Type */
+INSERT INTO accountcategory (id, entity_code, name, description) VALUES (1, 'LOAN_ACCOUNT', 'Loan Account', 'Loan Account');
+INSERT INTO accountcategory (id, entity_code, name, description) VALUES (2, 'DEPOSIT_ACCOUNT', 'Deposit Account', 'Deposit Account');
+
+
+INSERT INTO accounttype (id, account_category, entity_code, name, description) VALUES (1, 1, 'LOAN_ACCOUNT', 'Loan Account', 'Loan Account');
+INSERT INTO accounttype (id, account_category, entity_code, name, description) VALUES (2, 2, 'OFFSHORE_DEPOSIT_ACCOUNT', 'Offshore Deposit Account', 'Offshore Deposit Account');
+
+/* Insert statement for Account Status */
+INSERT INTO accountstatus (id, entity_code, name, description) VALUES (1, 'PENDING', 'Pending', 'Pending');
+INSERT INTO accountstatus (id, entity_code, name, description) VALUES (2, 'ACTIVE', 'Active', 'Active');
+
+/* Insert statement for Account Transaction Type */
+INSERT INTO accounttransactiontype (id, entity_code, name, description) VALUES (1, 'CREDIT', 'Credit', 'Credit');
+INSERT INTO accounttransactiontype (id, entity_code, name, description) VALUES (2, 'DEBIT', 'Debit', 'Debit');
 
 /* Insert statement for Business Structure */
 INSERT INTO businessstructure (id, entity_code, name, description) VALUES (1, 'SOLE_P', 'Sole Proprietorship', 'Sole Proprietorship');
@@ -109,22 +125,12 @@ INSERT INTO industrytype (id, entity_code, name, description) VALUES (21, 'OPT',
 INSERT INTO industrytype (id, entity_code, name, description) VALUES (22, 'PAINT', 'Painting / Handyman Services / Home Repair', 'Painting / Handyman Services / Home Repair');
 INSERT INTO industrytype (id, entity_code, name, description) VALUES (23, 'PHYSICIAN', 'Physicians', 'Physicians');
 INSERT INTO industrytype (id, entity_code, name, description) VALUES (24, 'RESTAURANT', 'Restaurants / Bars', 'Restaurants / Bars');
-INSERT INTO industrytype (id, entity_code, name, description) VALUES (25, 'RETAILER', 'Retailer-Offline (Consumer Goods)', 'Retailer-Offline (Consumer Goods)');
+INSERT INTO industrytype (id, entity_code, name, description) VALUES (25, 'RETAILER', 'Retailer-Offline (Consumer Goods)', 'Retailer-Offline (Consumer Goods)');
 INSERT INTO industrytype (id, entity_code, name, description) VALUES (26, 'RETAILER_OFFLINE', 'Retailer-Online (Consumer Goods)', 'Retailer-Online (Consumer Goods)');
 INSERT INTO industrytype (id, entity_code, name, description) VALUES (27, 'TAXI', 'Taxis / Delivery Services / Limousine Services', 'Taxis / Delivery Services / Limousine Services');
 INSERT INTO industrytype (id, entity_code, name, description) VALUES (28, 'TRUCK', 'Trucking / Transportation', 'Trucking / Transportation');
-INSERT INTO industrytype (id, entity_code, name, description) VALUES (29, 'VET', 'Veterinarians​', 'Veterinarians​');
 INSERT INTO industrytype (id, entity_code, name, description) VALUES (30, 'OTHER', 'Other', 'Other');
 
-
-/* Insert statement for Account Type */
-INSERT INTO accounttype (id, entity_code, name, description) VALUES (1, 'LOAN_ACCOUNT', 'Loan Account', 'Loan Account');
-INSERT INTO accounttype (id, entity_code, name, description) VALUES (2, 'DEPOSIT_ACCOUNT', 'Deposit Account', 'Deposit Account');
-INSERT INTO accounttype (id, entity_code, name, description) VALUES (2, 'OFFSHORE_DEPOSIT_ACCOUNT', 'Offshore Deposit Account', 'Offshore Deposit Account');
-
-/* Insert statement for Account Transaction Type */
-INSERT INTO accounttransactiontype (id, entity_code, name, description) VALUES (1, 'CREDIT', 'Credit', 'Credit');
-INSERT INTO accounttransactiontype (id, entity_code, name, description) VALUES (2, 'DEBIT', 'Debit', 'Debit');
 
 
 

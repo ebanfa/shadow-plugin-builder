@@ -1,5 +1,5 @@
 <?php
-class CloderiaMenuUtils {
+class MenuUtils {
 
 	// Used to uniquely identify this plugin's menu page in the WP manager
 	const admin_menu_slug = '${pluginName}';
@@ -9,7 +9,7 @@ class CloderiaMenuUtils {
 	 */
 	public static function create_admin_menu()
 	{
-	 	add_menu_page('${application.description}', '${application.description}', 'manage_options',	self::admin_menu_slug, 'CloderiaMenuUtils::get_admin_page');
+	 	add_menu_page('${application.description}', '${application.description}', 'manage_options',	self::admin_menu_slug, 'MenuUtils::get_admin_page');
 	 	self::add_plugin_admin_submenus();
 	 	self::remove_toplevel_cpt_menus();
 	}

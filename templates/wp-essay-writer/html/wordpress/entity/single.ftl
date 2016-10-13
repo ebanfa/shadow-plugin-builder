@@ -72,7 +72,7 @@
                <?php _e('Delete', 'framework') ?>
             </a>
             <?php if(!is_null($view->get_parent_artifact_name())) { ?>
-            <a href="<?php echo EntityActionProcessor::get_base_url() . 'artifact=' . $view->get_parent_artifact_name() . '&id=' . $view->get_parent_id(); ?>&page_action=view<?php echo $view->get_parent_param(); ?>" 
+            <a href="<?php echo ArtficatAjaxRequestProcessorUtils::get_base_url() . 'artifact=' . $view->get_parent_artifact_name() . '&id=' . $view->get_parent_id(); ?>&page_action=view<?php echo $view->get_parent_param(); ?>" 
                class="btn btn-primary waves-effect">
                <?php _e('Done', 'framework') ?>
             </a>
@@ -110,7 +110,7 @@
             ?>
             <div class="btn-demo m-t-10">
                 <a id="create-<?php echo $child_artifact_name; ?>-btn" 
-                    href="<?php echo EntityActionProcessor::get_base_url() ;?>artifact=<?php echo $child_artifact_name; ?>&page_action=create&parent_id=<?php echo $model['id']; ?>&parent_artifact=<?php echo $view->get_artifact_name(); ?>&parent_field=<?php echo $child_field_name; ?>" 
+                    href="<?php echo ArtficatAjaxRequestProcessorUtils::get_base_url() ;?>artifact=<?php echo $child_artifact_name; ?>&page_action=create&parent_id=<?php echo $model['id']; ?>&parent_artifact=<?php echo $view->get_artifact_name(); ?>&parent_field=<?php echo $child_field_name; ?>" 
                     class="btn btn-success waves-effect">
                    <?php _e('Add ' . $child_entity_description, 'framework') ?>
                 </a>
@@ -169,7 +169,7 @@
                                 if($('#additional_seach_options').length) { additional_seach_options = $('#additional_seach_options').val(); }
 
                                 
-                                return '<a class="data-table-link" href="' + '<?php echo EntityActionProcessor::get_base_url(); ?>' + 'artifact=<?php echo strtolower($tab['model']['entity_name']); ?>&id=' + row.id + '&page_action=view' +  additional_seach_options +'&parent_id=<?php echo $model['id']; ?>&parent_artifact=<?php echo $view->get_artifact_name(); ?>&parent_field=<?php echo $child_field_name; ?>" data-related-artifact-name="<?php echo strtolower($tab['model']['entity_name']); ?>" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                                return '<a class="data-table-link" href="' + '<?php echo ArtficatAjaxRequestProcessorUtils::get_base_url(); ?>' + 'artifact=<?php echo strtolower($tab['model']['entity_name']); ?>&id=' + row.id + '&page_action=view' +  additional_seach_options +'&parent_id=<?php echo $model['id']; ?>&parent_artifact=<?php echo $view->get_artifact_name(); ?>&parent_field=<?php echo $child_field_name; ?>" data-related-artifact-name="<?php echo strtolower($tab['model']['entity_name']); ?>" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
                             },
                             "targets": 1
                         }

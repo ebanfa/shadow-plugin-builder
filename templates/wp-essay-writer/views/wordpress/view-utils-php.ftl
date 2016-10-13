@@ -101,10 +101,10 @@ class ViewUtils {
         $entity_action_link = '';
 
         if($link_type == self::$link_type_create)
-            $entity_action_link = EntityActionProcessor::get_base_url() . self::$base_create_path. $artifact;
+            $entity_action_link = ArtficatAjaxRequestProcessorUtils::get_base_url() . self::$base_create_path. $artifact;
 
         if($link_type == self::$link_type_list)
-            $entity_action_link = EntityActionProcessor::get_base_url() . self::$base_list_path. $artifact;
+            $entity_action_link = ArtficatAjaxRequestProcessorUtils::get_base_url() . self::$base_list_path. $artifact;
 
         if(isset($_REQUEST['criteria_name']) && isset($_REQUEST['criteria_value'])) {
             $entity_action_link = $entity_action_link . '&criteria_name='. sanitize_text_field($_REQUEST['criteria_name']);

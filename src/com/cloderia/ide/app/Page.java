@@ -21,6 +21,7 @@ public class Page {
 	private String apiTemplate;
 	private String pageTemplate;
 	private String viewTemplate;
+	private String ajaxRequestProcessorTemplate;
 
 	/**
 	 * 
@@ -63,7 +64,7 @@ public class Page {
 	 * @return the viewTemplate
 	 */
 	public String getViewTemplate() {
-		return pageTemplate;
+		return viewTemplate;
 	}
 
 	/**
@@ -103,6 +104,21 @@ public class Page {
 	@XmlElement
 	public void setApiTemplate(String apiTemplate) {
 		this.apiTemplate = apiTemplate;
+	}
+
+	/**
+	 * @return the ajaxRequestProcessorTemplate
+	 */
+	public String getAjaxRequestProcessorTemplate() {
+		return ajaxRequestProcessorTemplate;
+	}
+
+	/**
+	 * @param ajaxRequestProcessorTemplate the ajaxRequestProcessorTemplate to set
+	 */
+	@XmlElement
+	public void setAjaxRequestProcessorTemplate(String ajaxRequestProcessorTemplate) {
+		this.ajaxRequestProcessorTemplate = ajaxRequestProcessorTemplate;
 	}
 
 	/**

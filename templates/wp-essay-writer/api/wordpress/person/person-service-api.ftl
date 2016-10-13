@@ -17,8 +17,11 @@ class PersonAPI  {
         if(isset($_POST['role'])) $entity_data['role'] = sanitize_text_field($_POST['role']);
         if(isset($_POST['email'])) $entity_data['email'] = sanitize_text_field($_POST['email']);
 
-        if ($entity_data['edit_mode']) $entity_data = self::do_create_person($entity_data);
-        else  $entity_data = self::do_edit_person($entity_data);
+        if ($entity_data['edit_mode']) {
+            $entity_data = PartyAPI::do_create_individual($entity_data);
+        else $entity_data = self::do_edit_person($entity_data);
+        if($entity_data['has_errors']) 
+            return EntityAPIUtils::init_error($entity_data, $entity_data['message']);
 
         if(isset($_POST['role'])) {
             $entity_data['extra_url_params'] = array(
@@ -33,12 +36,7 @@ class PersonAPI  {
      */
     public static function do_create_person($entity_data) 
     {
-        $entity_data['name'] = self::do_process_party_name(
-            $entity_data['first_name'], $entity_data['last_name']);
-
-        $entity_data = PartyAPI::do_create_individual($entity_data);
-        if($entity_data['has_errors']) 
-            $entity_data = EntityAPIUtils::init_error($entity_data, $entity_data['message']);
+        
         return $entity_data;
     }
 

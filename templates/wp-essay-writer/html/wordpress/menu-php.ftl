@@ -6,6 +6,7 @@
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
+
 if (is_user_logged_in()) {
 
         $current_user_party = PartyAPI::get_current_user_party();
@@ -68,6 +69,71 @@ if (is_user_logged_in()) {
 	?>
 	</ul>
 
-<?php do_action('shadowbanker_after_app_menu'); } else { do_action('shadowbanker_before_app_menu'); ?>
-	<ul class="main-menu"></ul>
-<?php do_action('shadowbanker_after_app_menu'); } ?>
+<?php 
+		do_action('shadowbanker_after_app_menu'); 
+
+	} else { 
+
+		do_action('shadowbanker_before_app_menu'); 
+?>
+<div class="card" style="margin-bottom: 10px;">
+    <div class="card-header">
+        <h2>How it works</h2>
+    </div>
+
+    <div class="list-group">
+        <a class="list-group-item media" href="#">
+            <div class="media-body">
+                <div class="lgi-heading">Post a question.</div>
+            </div>
+        </a>
+        <a class="list-group-item media" href="#">
+            <div class="media-body">
+                <div class="lgi-heading">Make a 50% down payment.</div>
+            </div>
+        </a>
+        <a class="list-group-item media" href="#">
+            <div class="media-body">
+                <div class="lgi-heading">Get a tutors help on your question.</div>
+            </div>
+        </a>
+        <a class="list-group-item media" href="#">
+            <div class="media-body">
+                <div class="lgi-heading">Complete the payment to get your answer delivered.</div>
+            </div>
+        </a>
+    </div>
+</div>
+
+
+<div class="card" style="margin-bottom: 10px;">
+    <div class="card-body card-padding">
+        <a class="btn btn-primary btn-lg btn-block" href="<?php echo get_site_url();?>/signin">Sign In/Sign Up</a>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h2>Need quick tutor help?</h2>
+    </div>
+
+    <div class="list-group">
+    
+        <a class="list-group-item media" href="mailto:orders@premiumacademicessays.com">
+            <div class="media-body">
+                <div class="lgi-heading">Send the details of your question to:</div>
+                <small class="lgi-text">orders@premiumacademicessays.com</small>
+            </div>
+        </a>
+    
+        <a class="list-group-item media" href="mailto:support@premiumacademicessays.com">
+            <div class="media-body">
+                <div class="lgi-heading">Or contact us through:</div>
+                <small class="lgi-text">support@premiumacademicessays.com</small>
+            </div>
+        </a>
+    </div>
+</div>
+<?php 
+		do_action('shadowbanker_after_app_menu'); } 
+?>

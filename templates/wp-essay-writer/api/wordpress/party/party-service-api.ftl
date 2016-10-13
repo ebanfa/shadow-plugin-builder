@@ -47,7 +47,7 @@ class PartyAPI {
         $party_data['edit_mode'] = true;
         $party_data['name'] = $entity_data['name'];
         $party_data['user_name'] = $entity_data['email'];
-        $party_data['description'] = $entity_data['name'];
+        $party_data['description'] = $entity_data['description'];
         
         $business_unit = BusinessUnitAPI::get_default_business_unit();
         $party_type = EntityAPI::get_by_code('partytype', self::$individual_party_type);

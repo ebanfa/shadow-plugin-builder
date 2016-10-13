@@ -13,7 +13,7 @@ INSERT INTO location (location_type, location, entity_code, name, description) V
 INSERT INTO location (location_type, location, entity_code, name, description) VALUES (3, 2, 'NBO', 'Nairobi', 'Nairobi');
 
 /* Insert statement for Business */
-INSERT INTO business (id, currency, entity_code, name, user_name, pin, tel_no, account_notify_email, orders_notify_email, description) VALUES (1, 1, 'PAE', 'Premium Academic Essays', 'admin@premiumacademicessays.com', '0000000', '254 00000000', 'accounts@premiumacademicessays.com', 'info@premiumacademicessays.com', 'Premium Academic Essays');
+INSERT INTO business (id, currency, entity_code, name, user_name, pin, tel_no, account_notify_email, orders_notify_email, description) VALUES (1, 1, 'PAE', 'Certified Academic Writers', 'admin@customacademicwriters.com', '0000000', '254 00000000', 'accounts@customacademicwriters.com', 'info@customacademicwriters.com', 'Certified Academic Writers');
 
 /* Insert statement for Business Unit */
 INSERT INTO businessunit (id, business, currency, entity_code, name, address_1, address_2, description) VALUES (1, 1, 1, 'DEFAULT', 'Head Office', '', '', 'Head Office');
@@ -34,7 +34,7 @@ INSERT INTO roletype (entity_code, name, description) VALUES ('TUTOR', 'Tutor', 
 INSERT INTO roletype (entity_code, name, description) VALUES ('EMPLOYEE', 'Employee', 'Employee');
 
 /* Insert statement for Party */
-INSERT INTO party (id, party_type, entity_code, name, user_name, description, business_unit) VALUES (1, 2, 'ADMINISTRATOR', 'Administrator', 'admin@premiumacademicessays.com', 'Organizational party', 1);
+INSERT INTO party (id, party_type, entity_code, name, user_name, description, business_unit) VALUES (1, 2, 'ADMINISTRATOR', 'Administrator', 'admin@customacademicwriters.com', 'Organizational party', 1);
 
 /* Insert statement for Party Role */
 INSERT INTO partyrole (party, role, parent_unit, entity_code, name, description, business_unit) VALUES (1, 1, 1, 'ADMINISTRATOR', 'Administrator', 'Administrator', 1);
@@ -69,7 +69,6 @@ INSERT INTO contentorderstatus VALUES(7, 'REVIEW_COMPLETED', 'Review Completed',
 INSERT INTO paymentstatus VALUES(1, 'NOT_PAID', 'Payment Pending', 'Payment Pending');
 INSERT INTO paymentstatus VALUES(2, 'PARTIAL_PAYMENT', 'Partial Payment', 'Partial Payment');
 INSERT INTO paymentstatus VALUES(3, 'COMPLETED', 'Payment Completed', 'Payment Completed');
-INSERT INTO paymentstatus VALUES(4, 'REFUNDED', 'Refunded', 'Refunded');
 
 
 /* Insert statement for Academic Level */

@@ -183,7 +183,7 @@
             ?>
             <div class="btn-demo m-t-10">
                 <a id="create-<?php echo $child_artifact_name; ?>-btn" 
-                    href="<?php echo EntityActionProcessor::get_base_url() ;?>artifact=<?php echo $child_artifact_name; ?>&page_action=create<?php echo $child_parent_url; ?>" 
+                    href="<?php echo ArtficatAjaxRequestProcessorUtils::get_base_url() ;?>artifact=<?php echo $child_artifact_name; ?>&page_action=create<?php echo $child_parent_url; ?>" 
                     class="btn btn-success waves-effect">
                    <?php _e('Add ' . $child_entity_description, 'framework') ?>
                 </a>
@@ -242,7 +242,7 @@
                                 if($('#additional_seach_options').length) { additional_seach_options = $('#additional_seach_options').val(); }
 
                                 
-                                return '<a class="data-table-link" href="' + '<?php echo EntityActionProcessor::get_base_url(); ?>' + 'artifact=<?php echo strtolower($tab['model']['entity_name']); ?>&id=' + row.id + '&page_action=view' +  additional_seach_options +'&parent_id=<?php echo $model['id']; ?>&parent_artifact=<?php echo $view->get_artifact_name(); ?>&parent_field=<?php echo $child_field_name; ?>" data-related-artifact-name="<?php echo strtolower($tab['model']['entity_name']); ?>" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                                return '<a class="data-table-link" href="' + '<?php echo ArtficatAjaxRequestProcessorUtils::get_base_url(); ?>' + 'artifact=<?php echo strtolower($tab['model']['entity_name']); ?>&id=' + row.id + '&page_action=view' +  additional_seach_options +'&parent_id=<?php echo $model['id']; ?>&parent_artifact=<?php echo $view->get_artifact_name(); ?>&parent_field=<?php echo $child_field_name; ?>" data-related-artifact-name="<?php echo strtolower($tab['model']['entity_name']); ?>" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
                             },
                             "targets": 1
                         }
@@ -309,7 +309,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button id="upload-image-btn" type="button" class="btn btn-primary" data-dismiss="modal">Done</button>
+                <button id="upload-file-btn" type="button" class="btn btn-primary" data-dismiss="modal">Done</button>
             </div>
         </div>
     </div>
@@ -354,6 +354,11 @@ $('#delete-entity-btn').click(function(e){
         
     });
 });
+
+$('#upload-file-btn').click(function(e){
+    location.reload();
+});
+
 </script>
 
 <script>

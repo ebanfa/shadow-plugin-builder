@@ -182,8 +182,7 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 			doAPI(module);
 			doModuleAPI(module);
 			doUtilities(module);
-			doServices(module);
-			doControllers(module);
+			doRequestProcessors(module);
 			doViews(module);
 			doEntityHTML(module);
 			doEntityJSFiles(module);
@@ -364,41 +363,46 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 		this.generateArtifact(module, null, 
 			"api/wordpress/entity-api-php.ftl", includeApiOutputDir +  "EntityAPI.php");
 		this.generateArtifact(module, null, 
-			"api/wordpress/ui-display-php.ftl", includeApiOutputDir + "CloderiaUIDisplayAPI.php");
-		this.generateArtifact(module, null, 
-			"api/wordpress/page-controller-php.ftl", includeApiOutputDir + "ArtifactRequestProcessor.php");
+			"api/wordpress/ui-display-php.ftl", includeApiOutputDir + "UIDisplayAPI.php");
 		this.generateArtifact(module, null, 
 			"api/wordpress/entity-persistence-api.ftl", includeApiOutputDir +  "EntityPersistenceAPI.php");
 
 		// Utility classes
 		this.generateArtifact(module, null, 
-			"utils/wordpress/custom-fields-php.ftl", includeUtilOutputDir + "CloderiaCustomFieldsUtils.php");
+			"utils/wordpress/custom-fields-php.ftl", includeUtilOutputDir + "CustomFieldsUtils.php");
 		this.generateArtifact(module, null, 
-			"utils/wordpress/custom-post-php.ftl", includeUtilOutputDir + "CloderiaCustomPostTypesUtils.php");
+			"utils/wordpress/custom-post-php.ftl", includeUtilOutputDir + "CustomPostTypesUtils.php");
 		this.generateArtifact(module, null, 
-			"utils/wordpress/menu-utils-php.ftl", includeUtilOutputDir + "CloderiaMenuUtils.php");
+			"utils/wordpress/menu-utils-php.ftl", includeUtilOutputDir + "MenuUtils.php");
 		this.generateArtifact(module, null, 
-			"utils/wordpress/template-functions-php.ftl", includeUtilOutputDir + "CloderiaTemplateFunctions.php");
+			"utils/wordpress/template-functions-php.ftl", includeUtilOutputDir + "TemplateFunctions.php");
 	}
 
 	private void doModuleAPI(Module module) {
 		for(Api api: module.getApis()) {
-			this.generateArtifact(module, null, api.getApiTemplate() , api.getApiFileName());
+			this.generateArtifact(module, null, api.getApiTemplate() , this.pluginDir + api.getApiFileName());
 		}
 	}
 
-	private void doServices(Module module) {
-		String includeServiceOutputDir = this.pluginDir + "includes/service/";
-		this.generateArtifact(module, null, 
-					"services/wordpress/dashboard-service-php.ftl" , includeServiceOutputDir +  "AdminDashboardService.php");;
-		this.generateArtifact(module, null, 
-					"services/wordpress/transaction-service-php.ftl" , includeServiceOutputDir +  "TransactionService.php");
-	}
-
-	private void doControllers(Module module) {
+	private void doRequestProcessors(Module module) {
 		String includeControllerOutputDir = this.pluginDir + "includes/controller/";
+
+		for(Page page: module.getPages()) {
+			if(page.getAjaxRequestProcessorTemplate() != null)
+				this.generatePageArtifact(module, page, 
+					page.getAjaxRequestProcessorTemplate() , includeControllerOutputDir + page.getName() + "AjaxRequestProcessor.php");
+			
+		}
+
+		for(Entity entity: module.getEntities()) {
+			if(entity.getAjaxRequestProcessorTemplate() != null)
+				this.generateArtifact(module, entity, 
+					entity.getAjaxRequestProcessorTemplate() , includeControllerOutputDir + entity.getName() + "AjaxRequestProcessor.php");
+		}
+		/*this.generateArtifact(module, null, 
+					"controllers/wordpress/request-processor-php.ftl" , includeControllerOutputDir +  "ArtifactRequestProcessor.php");
 		this.generateArtifact(module, null, 
-					"controllers/wordpress/entity-controller-php.ftl" , includeControllerOutputDir +  "EntityActionProcessor.php");
+					"controllers/wordpress/ajax-request-processor-php.ftl" , includeControllerOutputDir +  "ArtifactAjaxRequestProcessor.php");*/
 	}
 
 	private void doViews(Module module) {
@@ -431,8 +435,8 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 				this.generateArtifact(module, entity, entity.getListViewTemplate() , entityViewOutputDir + "List" + entityName + "View.php");
 			} 
 		}
-		this.generateArtifact(module, null, "views/wordpress/dashboard/dashboard-view-php.ftl" , includeViewOutputDir +  "DashboardView.php");
-		this.generateArtifact(module, null, "views/wordpress/question/post-question-view-php.ftl" , includeViewOutputDir +  "QuestionView.php");
+		//this.generateArtifact(module, null, "views/wordpress/dashboard/dashboard-view-php.ftl" , includeViewOutputDir +  "DashboardView.php");
+		//this.generateArtifact(module, null, "views/wordpress/question/post-question-view-php.ftl" , includeViewOutputDir +  "QuestionView.php");
 		this.generateArtifact(module, null, "views/wordpress/create-multi-entity.ftl" , includeViewOutputDir +  "MultiEntityCreateView.php");
 		this.generateArtifact(module, null, "views/wordpress/view-filter-php.ftl" , includeViewOutputDir +  "ViewFilter.php");
 		this.generateArtifact(module, null, "views/wordpress/base-artifact-view.ftl" , includeViewOutputDir +  "ArtifactView.php");
@@ -444,7 +448,7 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 		this.generateArtifact(module, null, "views/wordpress/categorized-entity-view-filter.ftl" , includeViewOutputDir +  "CategorizedViewFilter.php");
 		this.generateArtifact(module, null, "views/wordpress/param-categorized-entity-view-filter.ftl" , includeViewOutputDir +  "ParamCategorizedViewFilter.php");
 		this.generateArtifact(module, null, "views/wordpress/form-field-filter.ftl" , includeViewOutputDir +  "FormFieldFilter.php");
-		this.generateArtifact(module, null, "views/wordpress/view-utils-php.ftl" , includeViewOutputDir +  "ViewUtils.php");
+		//this.generateArtifact(module, null, "views/wordpress/view-utils-php.ftl" , includeViewOutputDir +  "ViewUtils.php");
 		this.generateArtifact(module, null, "views/wordpress/entity-form-fields.ftl" , includeViewOutputDir +  "entity-form-fields.php");
 	}
 
@@ -515,7 +519,6 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 		this.generateArtifact(module, null, "html/wordpress/entity/artifact-wrapper-end.ftl" , entityOutputDir + "artifact-wrapper-end.php");
 		this.generateArtifact(module, null, "html/wordpress/entity/artifact-wrapper-start.ftl" , entityOutputDir + "artifact-wrapper-start.php");
 		// Menu Bar
-		this.generateArtifact(module, null, "html/wordpress/chat-bar-php.ftl" , outputDir + "chat-bar.php");
 		this.generateArtifact(module, null, "html/wordpress/menu-php.ftl" , outputDir + "app-menu.php");
 		this.generateArtifact(module, null, "html/wordpress/menu-start-php.ftl" , outputDir + "app-menu-start.php");
 		this.generateArtifact(module, null, "html/wordpress/menu-end-php.ftl" , outputDir + "app-menu-end.php");
@@ -545,28 +548,21 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 		String pageOutputDir = outputDir + "page/";
 		String jsOutputDir = this.pluginDir + "js/";
 		String includeApiOutputDir = this.pluginDir + "includes/api/";
+		String includeViewOutputDir = this.pluginDir + "includes/view/";
 
 		for(Page page: module.getPages()) {
 
 			String pageName = page.getName();
-			String artifactName = page.getName().toLowerCase();
 			String jsTemplate = page.getJsTemplate();
 			String apiTemplate = page.getApiTemplate();
 			String pageTemplate = page.getPageTemplate();
 			String viewTemplate = page.getViewTemplate();
+			String artifactName = page.getName().toLowerCase();
 			
-			if(pageTemplate != null) {
-				this.generatePageArtifact(module, page, pageTemplate , pageOutputDir + artifactName + ".php");
-			}
-			if(jsTemplate != null) {
-				this.generatePageArtifact(module, page, jsTemplate , jsOutputDir + artifactName + ".js");
-			}
-			if(viewTemplate != null) {
-				this.generatePageArtifact(module, page, viewTemplate , pageOutputDir + pageName + "View.php");
-			}
-			if(apiTemplate != null) {
-				this.generatePageArtifact(module, page, apiTemplate , includeApiOutputDir + pageName + "API.php");
-			}
+			if(jsTemplate != null) this.generatePageArtifact(module, page, jsTemplate , jsOutputDir + artifactName + ".js");
+			if(pageTemplate != null) this.generatePageArtifact(module, page, pageTemplate , pageOutputDir + artifactName + ".php");
+			if(apiTemplate != null) this.generatePageArtifact(module, page, apiTemplate , includeApiOutputDir + pageName + "API.php");
+			if(viewTemplate != null) this.generatePageArtifact(module, page, viewTemplate , includeViewOutputDir + pageName + "View.php");
 		}
 	}
 
@@ -574,7 +570,6 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 	private void generateArtifact(Module module, Entity entity, String tmplFile,
 			String outFile) {
 		try {
-                        //System.out.println("Generating artifact for entity" + " using template file:" + tmplFile);
 			Template template = configuration.getTemplate(tmplFile);
 			FileOutputStream fos = new FileOutputStream(outFile);
 			Writer out = new OutputStreamWriter(fos);

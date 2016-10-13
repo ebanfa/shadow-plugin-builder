@@ -32,6 +32,7 @@ public class Entity {
 	private String listPageTemplate;
 	private String viewPageTemplate;
 	private String apiTemplate;
+	private String ajaxRequestProcessorTemplate;
 	private String relatedEntityFieldName;
 	private List<Field> fields = new ArrayList<Field>();
 	private List<Field> virtualFields = new ArrayList<Field>();
@@ -120,7 +121,6 @@ public class Entity {
 		this.listViewTemplate = listViewTemplate;
 	}
 
-	
 	/**
 	 * @return the apiTemplate
 	 */
@@ -134,6 +134,21 @@ public class Entity {
 	@XmlElement
 	public void setApiTemplate(String apiTemplate) {
 		this.apiTemplate = apiTemplate;
+	}
+
+	/**
+	 * @return the ajaxRequestProcessorTemplate
+	 */
+	public String getAjaxRequestProcessorTemplate() {
+		return ajaxRequestProcessorTemplate;
+	}
+
+	/**
+	 * @param ajaxRequestProcessorTemplate the ajaxRequestProcessorTemplate to set
+	 */
+	@XmlElement
+	public void setAjaxRequestProcessorTemplate(String ajaxRequestProcessorTemplate) {
+		this.ajaxRequestProcessorTemplate = ajaxRequestProcessorTemplate;
 	}
 
 	/**

@@ -31,15 +31,9 @@ class ${application.name} {
     protected static $_instance = null;
 
     /**
-     * The date format string
-     * @since 0.0.1
-     */
-    public static $date_format = 'M j, Y, H:i';
-
-    /**
-     * Main CloderiaPort Instance
+     * Main Instance
      *
-     * Ensures only one instance of CloderiaPort is loaded or can be loaded.
+     * Ensures only one instance is loaded or can be loaded.
      *
      * @since 0.0.1
      * @static
@@ -53,7 +47,7 @@ class ${application.name} {
     }
 
     /**
-     * CloderiaPort Constructor.
+     * Constructor.
      */
     public function __construct() {
         $this->includes();
@@ -71,6 +65,36 @@ class ${application.name} {
      * Include all required files
      */
     public function includes() {
+        // Framework API
+        include_once('includes/api/AdminAPI.php');
+        include_once('includes/api/SecurityAPI.php');
+        include_once('includes/api/UIDisplayAPI.php');
+        include_once('includes/controller/ArtifactRequestProcessor.php');
+        include_once('includes/controller/ArtifactAjaxRequestProcessor.php');
+
+        // Party API
+        include_once('includes/api/PartyAPI.php');
+        include_once('includes/api/PersonAPI.php');
+        include_once('includes/api/PartyGroupAPI.php');
+        include_once('includes/api/UserAPI.php');
+        include_once('includes/api/UserPartyAPI.php');
+        include_once('includes/api/UserLoginAPI.php');
+        // File management API
+        include_once('includes/api/FileAPI.php');
+        include_once('includes/api/FileUploadValidatorAPI.php');
+        // Utility Classes
+        include_once('includes/utils/LogUtils.php');
+        include_once('includes/utils/UserUtils.php');
+        include_once('includes/utils/MenuUtils.php');
+        include_once('includes/utils/DateUtils.php');
+        include_once('includes/utils/ArtifactUtils.php');
+        include_once('includes/utils/EntityAPIUtils.php');
+        include_once('includes/utils/EntityStringUtils.php');
+        include_once('includes/utils/EntityRequestUtils.php');
+        include_once('includes/utils/CustomFieldsUtils.php');
+        include_once('includes/utils/CustomPostTypesUtils.php');
+        include_once('includes/utils/TemplateFunctions.php');
+        include_once('includes/utils/ArtifactAjaxRequestProcessorUtils.php');
         // Model
 <#list module.entities as entity>
         include_once('includes/abstracts/${entity.name}CPT.php');
@@ -91,8 +115,7 @@ class ${application.name} {
         
         include_once('includes/api/EntityPersistenceAPI.php');
         // Entity Controller
-        include_once('includes/controller/EntityActionProcessor.php');
-
+        //include_once('includes/controller/EntityActionProcessor.php');
 
         // Entity View and view controllers
         include_once('includes/view/ViewUtils.php');
@@ -109,6 +132,11 @@ class ${application.name} {
         include_once('includes/view/MultiEntityCreateView.php');
         include_once('includes/view/CategorizedViewFilter.php');
         include_once('includes/view/ParamCategorizedViewFilter.php');
+<#list module.pages as page>
+    <#if page.viewTemplate ??>
+        include_once('includes/view/${page.name}View.php');
+    </#if>
+</#list>
 <#list module.entities as entity>
         <#if entity.createViewTemplate ??>
         include_once('includes/view/${entity.name?lower_case}/Create${entity.name}View.php');
@@ -126,35 +154,6 @@ class ${application.name} {
 
         include_once('includes/view/entity-form-fields.php');
 
-        // Framework API
-        include_once('includes/api/CloderiaFileAPI.php');
-        include_once('includes/api/CloderiaUserAPI.php');
-        include_once('includes/api/ArtifactRequestProcessor.php');
-        include_once('includes/api/CloderiaAdminAPI.php');
-        include_once('includes/api/CloderiaSecurityAPI.php');
-        include_once('includes/api/CloderiaUserLoginAPI.php');
-        include_once('includes/api/CloderiaUIDisplayAPI.php');
-        include_once('includes/api/CloderiaFileUploadValidatorAPI.php');
-        // Services
-        include_once('includes/service/AdminDashboardService.php');
-        include_once('includes/service/TransactionService.php');
-        // Utility Classes
-        include_once('includes/utils/EntityStringUtils.php');
-        include_once('includes/utils/EntityRequestUtils.php');
-        include_once('includes/utils/EntityAPIUtils.php');
-        include_once('includes/utils/ArtifactUtils.php');
-
-        include_once('includes/utils/CloderiaLogUtils.php');
-        include_once('includes/utils/CloderiaUserUtils.php');
-        include_once('includes/utils/CloderiaCustomFieldsUtils.php');
-        include_once('includes/utils/CloderiaCustomPostTypesUtils.php');
-        include_once('includes/utils/CloderiaMenuUtils.php');
-        include_once('includes/utils/CloderiaDateUtils.php');
-        include_once('includes/utils/CloderiaTemplateFunctions.php');
-        include_once('includes/fpdf.php');
-        include_once('includes/font/courier.php');
-        include_once('includes/font/courierb.php');
-
     }
     
     /**
@@ -166,25 +165,15 @@ class ${application.name} {
     }
     
     public function init_ajax_hooks() {
+        ArtifactAjaxRequestProcessor::init_hooks();
+
         // Setup Ajax
-        add_action('template_redirect', 'CloderiaAdminAPI::do_ajax_setup');
-
-        EntityActionProcessor::init_hooks();
-        ConversationAPI::init_hooks();
-        //ChartOfAccountsAPI::init_hooks();
-        //Order related Ajax functions
-        #add_action('wp_ajax_do_content_order_ajax', 'CloderiaOrdersAPI::do_content_order_ajax');
-        #add_action('wp_ajax_nopriv_do_content_order_ajax', 'CloderiaOrdersAPI::do_content_order_ajax');
-        //User profile related Ajax functions
-        #add_action('wp_ajax_find_user_orders_ajax', 'CloderiaOrdersAPI::find_user_orders_ajax');
-        #add_action('wp_ajax_nopriv_find_user_orders_ajax', 'CloderiaOrdersAPI::find_user_orders_ajax');
-
+        add_action('template_redirect', 'AdminAPI::do_ajax_setup');
     }
 
 
     public function init_backend_hooks() {
-        add_action('cloderia_create_individual', 'CloderiaUserAPI::create_person', 10, 1);
-        add_action('cloderia_wp_commerce_invoice_created', 'AccountTransactionAPI::do_invoice_created', 10, 1);
+        add_action('cloderia_create_individual', 'UserAPI::create_person', 10, 1);
     }
 
     /**
@@ -192,63 +181,49 @@ class ${application.name} {
      */
     public function init_template_hooks() {
         // UI display actions
-        add_action('shadowbanker_before_main_content', 'CloderiaUIDisplayAPI::before_main_content', 10);
-        add_action('shadowbanker_after_main_content', 'CloderiaUIDisplayAPI::after_main_content', 10);
+        add_action('shadowbanker_before_main_content', 'UIDisplayAPI::before_main_content', 10);
+        add_action('shadowbanker_after_main_content', 'UIDisplayAPI::after_main_content', 10);
         // Menu UI display actions
-        add_action('shadowbanker_show_app_menu', 'CloderiaUIDisplayAPI::display_app_menu', 10);
-        add_action('shadowbanker_before_app_menu', 'CloderiaUIDisplayAPI::before_app_menu', 10);
-        add_action('shadowbanker_after_app_menu', 'CloderiaUIDisplayAPI::after_app_menu', 10);
+        add_action('shadowbanker_show_app_menu', 'UIDisplayAPI::display_app_menu', 10);
+        add_action('shadowbanker_before_app_menu', 'UIDisplayAPI::before_app_menu', 10);
+        add_action('shadowbanker_after_app_menu', 'UIDisplayAPI::after_app_menu', 10);
         // Chat bar display icons
-        add_action('shadowbanker_show_chat_bar', 'CloderiaUIDisplayAPI::display_chat_bar', 10);
+        add_action('shadowbanker_show_chat_bar', 'UIDisplayAPI::display_chat_bar', 10);
 
-        add_action('shadowbanker_render_create_entity_view', 'CloderiaUIDisplayAPI::render_create_form', 10);
-        add_action('shadowbanker_render_edit_entity_view', 'CloderiaUIDisplayAPI::render_edit_form', 10);
-        add_action('shadowbanker_render_view_entity_view', 'CloderiaUIDisplayAPI::render_single', 10);
-        add_action('shadowbanker_render_list_entity_view', 'CloderiaUIDisplayAPI::render_list', 10);
-        add_action('shadowbanker_render_entity_form_fields', 'CloderiaUIDisplayAPI::render_entity_form_fields', 10);
-        add_action('shadowbanker_render_related_entity_field_modals', 'CloderiaUIDisplayAPI::render_related_entity_field_modals', 10);
-        add_action('shadowbanker_render_multi_entity_create_view', 'CloderiaUIDisplayAPI::render_multi_entity_create_view', 10);
+        add_action('shadowbanker_render_create_entity_view', 'UIDisplayAPI::render_create_form', 10);
+        add_action('shadowbanker_render_edit_entity_view', 'UIDisplayAPI::render_edit_form', 10);
+        add_action('shadowbanker_render_view_entity_view', 'UIDisplayAPI::render_single', 10);
+        add_action('shadowbanker_render_list_entity_view', 'UIDisplayAPI::render_list', 10);
+        add_action('shadowbanker_render_entity_form_fields', 'UIDisplayAPI::render_entity_form_fields', 10);
+        add_action('shadowbanker_render_related_entity_field_modals', 'UIDisplayAPI::render_related_entity_field_modals', 10);
+        add_action('shadowbanker_render_multi_entity_create_view', 'UIDisplayAPI::render_multi_entity_create_view', 10);
 
-        add_action('shadowbanker_before_entity_form_field', 'CloderiaUIDisplayAPI::before_entity_form_field', 10);
-        add_action('shadowbanker_after_entity_form_field', 'CloderiaUIDisplayAPI::after_entity_form_field', 10);
+        add_action('shadowbanker_before_entity_form_field', 'UIDisplayAPI::before_entity_form_field', 10);
+        add_action('shadowbanker_after_entity_form_field', 'UIDisplayAPI::after_entity_form_field', 10);
         
-        add_action('shadowbanker_display_notifications_items', 'CloderiaUIDisplayAPI::show_notification_items', 10);
-        add_action('shadowbanker_render_dashboard_view', 'CloderiaUIDisplayAPI::render_dashboard_view', 10);
-        //add_action('showdow_banker_display_user_conversations', 'CloderiaUIDisplayAPI::show_user_conversations', 10); 
-        //add_action('showdow_banker_display_latest_user_conversation', 'CloderiaUIDisplayAPI::show_latest_user_conversation', 10);
+        add_action('shadowbanker_display_notifications_items', 'UIDisplayAPI::show_notification_items', 10);
+        add_action('shadowbanker_render_dashboard_view', 'UIDisplayAPI::render_dashboard_view', 10);
+        //add_action('showdow_banker_display_user_conversations', 'UIDisplayAPI::show_user_conversations', 10); 
+        //add_action('showdow_banker_display_latest_user_conversation', 'UIDisplayAPI::show_latest_user_conversation', 10);
 
         // Page display functions
         add_action('shadowbanker_process_page_request', 'ArtifactRequestProcessor::process_artifact_request', 10);
 
         // Entity page display actions
-        add_action('shadowbanker_before_artifact_content', 'CloderiaUIDisplayAPI::before_artifact_content', 10);
-        add_action('shadowbanker_the_artifact_content', 'CloderiaUIDisplayAPI::the_artifact_content', 10, 1);
-        add_action('shadowbanker_after_artifact_content', 'CloderiaUIDisplayAPI::after_artifact_content', 10);
+        add_action('shadowbanker_before_artifact_content', 'UIDisplayAPI::before_artifact_content', 10);
+        add_action('shadowbanker_the_artifact_content', 'UIDisplayAPI::the_artifact_content', 10, 1);
+        add_action('shadowbanker_after_artifact_content', 'UIDisplayAPI::after_artifact_content', 10);
         
-        // Remove admin bar for non admin users
-        //add_action('after_setup_theme', 'CloderiaAdminAPI::do_remove_admin_bar');
-        /*add_action('wp_logout', '${application.name}::redirect_logout_url');*/
         FormFieldFilter::init_hooks();
-
 <#list module.entities as entity>
         <#if entity.viewFilterTemplate ??>
         ${entity.name}ViewFilter::init_hooks();
         </#if>
 </#list>
-
     }
 
     public function init_admin_template_hooks(){
-<#list module.entities as entity>
-        add_filter('manage_${entity.postName}_posts_columns', '${entity.name}CPT::${entity.postName}_table_head');
-        add_action('manage_${entity.postName}_posts_custom_column', '${entity.name}CPT::${entity.postName}_table_content', 10, 2);
-</#list>
-        //add_shortcode('show_single_entity', array('CloderiaUIDisplayAPI', 'display_single_entity'));
     }
-
-    /*public static function redirect_logout_url(){
-         wp_redirect(home_url());
-    }*/
 
     /**
      * Enqueue the necessary scripts
@@ -268,8 +243,6 @@ class ${application.name} {
         wp_register_script('wizard_js', plugins_url('/js/vendors/bootstrap-wizard/jquery.bootstrap.wizard.min.js', __FILE__), array('jquery'), true);
 
         wp_register_script('input_mask_js', plugins_url('/js/jquery.mask.min.js', __FILE__), array('jquery'), true);
-        wp_register_script('jstree_js', plugins_url('/js/jstree.min.js', __FILE__), array('jquery'), true);
-        wp_register_script('conversate_js', plugins_url('/js/conversate.js', __FILE__), array('jquery'), true);
 
         wp_enqueue_script('jquery_form_js');
         wp_enqueue_script('bootstrap_validator_js');
@@ -277,7 +250,6 @@ class ${application.name} {
         wp_enqueue_script('datatables_core_js');
         wp_enqueue_script('datatables_bootstrap_js');
         wp_enqueue_script('cp_init');
-        wp_enqueue_script('conversate_js');
 
         // Enqueue data tables js for view pages
         if(isset($_REQUEST['page_action'])) {
@@ -287,17 +259,11 @@ class ${application.name} {
                 wp_enqueue_script('entity_multi_datatables_js');
             }
         }
-
-        wp_enqueue_script('jstree_js');
         wp_enqueue_script('input_mask_js');
-        //wp_enqueue_script('datetimepicker_js');
         wp_enqueue_script('wizard_js');
-        //wp_enqueue_script('conversations_js');
         
-        //wp_localize_script('conversations_js', '${application.name?lower_case}_ajax_script', array('ajaxurl' => admin_url('admin-ajax.php')));
         wp_localize_script('entity_datasource_js', '${application.name?lower_case}_ajax_script', array('ajaxurl' => admin_url('admin-ajax.php')));
-         wp_localize_script('entity_datasource_js', '${application.name?lower_case}_base_url', array('baseUrl' => EntityActionProcessor::get_base_url()));
-        wp_localize_script('conversate_js', '${application.name?lower_case}_ajax_script', array('ajaxurl' => admin_url('admin-ajax.php')));
+         wp_localize_script('entity_datasource_js', '${application.name?lower_case}_base_url', array('baseUrl' => ArtficatAjaxRequestProcessorUtils::get_base_url()));
     }
 
     /**

@@ -51,7 +51,7 @@
                 <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
                 <input type="hidden" name="submitted" id="submitted" value="true" />
             </form>
-            <a id="generate-coa-btn" href="<?php echo EntityActionProcessor::get_base_url() . 'artifact=' . $view->get_parent_artifact_name() . '&id=' . $view->get_parent_id() . $view->get_parent_param(); ?>&page_action=view" 
+            <a id="generate-coa-btn" href="<?php echo ArtficatAjaxRequestProcessorUtils::get_base_url() . 'artifact=' . $view->get_parent_artifact_name() . '&id=' . $view->get_parent_id() . $view->get_parent_param(); ?>&page_action=view" 
                class="btn btn-primary waves-effect">
                <?php _e('Generate COA', 'framework') ?>
             </a>
@@ -67,7 +67,7 @@
             <?php } ?>
 
             <?php if(!is_null($view->get_parent_artifact_name())) { ?>
-            <a href="<?php echo EntityActionProcessor::get_base_url() . 'artifact=' . $view->get_parent_artifact_name() . '&id=' . $view->get_parent_id() . $view->get_parent_param(); ?>&page_action=view" 
+            <a href="<?php echo ArtficatAjaxRequestProcessorUtils::get_base_url() . 'artifact=' . $view->get_parent_artifact_name() . '&id=' . $view->get_parent_id() . $view->get_parent_param(); ?>&page_action=view" 
                class="btn btn-primary waves-effect">
                <?php _e('Done', 'framework') ?>
             </a>
@@ -105,7 +105,7 @@
             ?>
             <div class="btn-demo m-t-10">
                 <a id="create-<?php echo $child_artifact_name; ?>-btn" 
-                    href="<?php echo EntityActionProcessor::get_base_url() ;?>artifact=<?php echo $child_artifact_name; ?>&page_action=create&parent_id=<?php echo $model['id']; ?>&parent_artifact=<?php echo $view->get_artifact_name(); ?>&parent_field=<?php echo $child_field_name; ?>" 
+                    href="<?php echo ArtficatAjaxRequestProcessorUtils::get_base_url() ;?>artifact=<?php echo $child_artifact_name; ?>&page_action=create&parent_id=<?php echo $model['id']; ?>&parent_artifact=<?php echo $view->get_artifact_name(); ?>&parent_field=<?php echo $child_field_name; ?>" 
                     class="btn btn-success waves-effect">
                    <?php _e('Add ' . $child_entity_description, 'framework') ?>
                 </a>

@@ -1,1 +1,0 @@
-[+display_name+], Your application for credit is being reviewed

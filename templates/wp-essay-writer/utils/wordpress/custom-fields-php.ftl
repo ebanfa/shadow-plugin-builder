@@ -2,7 +2,7 @@
 /*------------------------------------------------------------------------------
 These are helper functions
 ------------------------------------------------------------------------------*/
-class CloderiaCustomFieldsUtils
+class CustomFieldsUtils
 {
 	public static $prefix = ''; 
 	public static $page = 'custom-content';
