@@ -1,0 +1,1 @@
+[+display_name+], your order details have been updated

@@ -1,1 +1,1 @@
-New Contact Request account from [+email+].
+[+site_name+] account created for [+display_name+].

@@ -61,11 +61,13 @@ class MenuUtils {
 		{
 			update_option( 'cp_paypal_url', stripslashes($_POST['cp_paypal']) );
 			update_option( 'cp_paypal_id', stripslashes($_POST['cp_paypal_id']) );
+			update_option( 'cp_price_factor', stripslashes($_POST['cp_price_factor']) );
 			update_option( 'cp_notify_orders', stripslashes($_POST['cp_notify_orders']) );
 			update_option( 'cp_notify_accounts', stripslashes($_POST['cp_notify_accounts']) );
 			update_option( 'cp_site_domain', stripslashes($_POST['cp_site_domain']) );
 			/*
 			update_option( 'cp_default_currency', stripslashes($_POST['cp_default_currency']) );*/
+			update_option( 'cp_default_portal_home_url', stripslashes($_POST['cp_default_portal_home_url']) );
 			update_option( 'cp_default_portal_header_color', stripslashes($_POST['cp_default_portal_header_color']) );
 			update_option( 'cp_default_portal_menu_image', stripslashes($_POST['cp_default_portal_menu_image']) );
 			update_option( 'cp_default_guest_user_name', stripslashes($_POST['cp_default_guest_user_name']) );

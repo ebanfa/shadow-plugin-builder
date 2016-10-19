@@ -160,7 +160,7 @@ img {
                         <td valign="middle" style='vertical-align: middle;'>
                           <div class='contentEditableContainer contentTextEditable'>
                             <div class='contentEditable' style='text-align: left;font-weight: light; color:#555555;font-size:14px;line-height: 16px;font-family: "Helvetica Neue Light",Helvetica,Arial,sans-serif;;'>
-                              <a target='_blank' href="[CLIENTS.WEBSITE]" style='color:#444444'><strong></strong></a>
+                              <a target='_blank' href="[CLIENTS.WEBSITE]" style='color:#444444'><strong>Username: [+user_name+]</strong></a>
                             </div>
                           </div>
                         </td>
@@ -168,7 +168,7 @@ img {
                         <td valign="middle" style='vertical-align: middle;' width='150'>
                           <div class='contentEditableContainer contentTextEditable'>
                             <div class='contentEditable' style='text-align: right;'>
-                              <a target='_blank' href="[SHOWEMAIL]" class='link1' ><strong></strong></a>
+                              <a target='_blank' href="[SHOWEMAIL]" class='link1' ><strong>[+site_email+]</strong></a>
                             </div>
                           </div>
                         </td>
@@ -184,36 +184,35 @@ img {
         
 <!-- =============== END HEADER =============== -->
 <!-- =============== START BODY =============== -->
-            <!-- <div class='movableContent'>
+            <div class='movableContent'>
               <table width="580" border="0" cellspacing="0" cellpadding="0" align="center">
                 <tr><td height='10'></td></tr>
                 <tr>
                   <td>
                     <div class='contentEditableContainer contentImageEditable'>
-                      <div class='contentEditable' style="background:#8BC34A; text-align: center;">
-                        <img src="[+site_stylesheet_uri+]/images/email/email-logo.jpg" alt="" width='580' height='221' data-default="placeholder" data-max-width="580">
+                      <div class='contentEditable' style="text-align: center;">
+                        <img src="[+site_stylesheet_uri+]/images/email/email-logo.jpg" alt="Logo" width='580' height='221' data-default="placeholder" data-max-width="580">
                       </div>
                     </div>
                   </td>
                 </tr>
               </table>  
-            </div> -->
+            </div>
 
             <div class='movableContent'>
               <table width="608" border="0" cellspacing="0" cellpadding="0" align="center">
                 <tr><td height='40'></td></tr>
                 <tr>
-                  <td style='background: none repeat scroll 0% 0% #B5D6BF; border: 1px solid #EEEEEE; border-radius:6px;-moz-border-radius:6px;-webkit-border-radius:6px'>
+                  <td style='background: none repeat scroll 0% 0% #4285F4; border: 1px solid #EEEEEE; border-radius:6px;-moz-border-radius:6px;-webkit-border-radius:6px'>
                     <table width="600" border="0" cellspacing="0" cellpadding="0" align="center">
                       <tr><td height='25'></td></tr>
                       <tr>
                         <td>
                           <div class='contentEditableContainer contentTextEditable'>
                             <div class='contentEditable' style='text-align: center;'>
-                              <h2 style="color: #fff; font-size: 20px;">New contact request [+email+], </h2>
+                              <h2 style="color: #fff; font-size: 20px;">Welcome [+display_name+],</h2>
                               <br>
-                              <p style="color: #fff;">Business Name: [+b_name+]</p>
-                              <p style="color: #fff;">[+message+]</p>
+                              <p style="color: #fff;">Your account has been created and you are ready to get started</p>
                             </div>
                           </div>
                         </td>
@@ -225,7 +224,34 @@ img {
               </table>  
             </div>
 
-            
+            <div class='movableContent'>
+              <table width="580" border="0" cellspacing="0" cellpadding="0" align="center">
+                <tr><td height='40'></td></tr>
+                <tr>
+                  <td style='background:#F6F6F6; border-radius:6px;-moz-border-radius:6px;-webkit-border-radius:6px'>
+                    <table width="480" border="0" cellspacing="0" cellpadding="0" align="center">
+                      <tr><td height='25'></td></tr>
+                      <tr>
+                        <td>
+                          <div class='contentEditableContainer contentTextEditable'>
+                            <div class='contentEditable' style='text-align: center;'>
+                              <h2 style="font-size: 20px;">Let's Go</h2>
+                              <br>
+                              <p>Simply click the button below to log into your account. Your username is [+user_name+], and your current password is [+password+]
+                              </p>
+                              <br><br>
+                              <a target='_blank' href="[+site_url+]/signin" class='link3' style='color:#555555; border:1px solid #cccccc; padding:10px 18px; border-radius:3px; -moz-border-radius:3px; -webkit-border-radius:3px; background:#ffffff;'>Signin Now</a>
+                              <br>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr><td height='24'></td></tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>  
+            </div>
 
             
 
@@ -242,7 +268,11 @@ img {
                         <td>
                           <div class='contentEditableContainer contentTextEditable'>
                             <div class='contentEditable' style='text-align: center;color:#AAAAAA;'>
-                             
+                              <p>
+                              <strong>[+site_name+]</strong> <br/>
+                              <a href="[+site_url+]"><strong>[+site_url+]</strong></a> <br/>
+                              <a href="mailto:[+site_email+]"><strong>[+site_email+]</strong></a> <br/>
+                              </p>
                             </div>
                           </div>
                         </td>
@@ -265,7 +295,7 @@ img {
                         <td width='40'>
                           <div class='contentEditableContainer contentFacebookEditable'>
                             <div class='contentEditable' style='text-align: center;color:#AAAAAA;'>
-                              <img src="[+site_stylesheet_uri+]/images/email/facebook.png" alt="facebook" width='40' height='40' data-max-width="40" data-customIcon="true" >
+                              <img src="[+site_stylesheet_uri+]/images/emails/facebook.png" alt="facebook" width='40' height='40' data-max-width="40" data-customIcon="true" >
                             </div>
                           </div>
                         </td>
@@ -273,7 +303,7 @@ img {
                         <td width='40'>
                           <div class='contentEditableContainer contentTwitterEditable'>
                             <div class='contentEditable' style='text-align: center;color:#AAAAAA;'>
-                              <img src="[+site_stylesheet_uri+]/images/email/twitter.png" alt="twitter" width='40' height='40' data-max-width="40" data-customIcon="true">
+                              <img src="[+site_stylesheet_uri+]/images/emails/twitter.png" alt="twitter" width='40' height='40' data-max-width="40" data-customIcon="true">
                             </div>
                           </div>
                         </td>
@@ -281,7 +311,7 @@ img {
                         <td width='40'>
                           <div class='contentEditableContainer contentImageEditable'>
                             <div class='contentEditable' style='text-align: center;color:#AAAAAA;'>
-                              <img src="[+site_stylesheet_uri+]/images/email/red.png" alt="Pinterest" width='40' height='40' data-max-width="40">
+                              <img src="[+site_stylesheet_uri+]/images/emails/googleplus.png" alt="Pinterest" width='40' height='40' data-max-width="40">
                             </div>
                           </div>
                         </td>
@@ -289,7 +319,7 @@ img {
                         <td width='40'>
                           <div class='contentEditableContainer contentImageEditable'>
                             <div class='contentEditable' style='text-align: center;color:#AAAAAA;'>
-                              <img src="[+site_stylesheet_uri+]/images/email/blue.png" alt="Social media" width='40' height='40' data-max-width="40">
+                              <img src="[+site_stylesheet_uri+]/images/emails/linkedin.png" alt="Social media" width='40' height='40' data-max-width="40">
                             </div>
                           </div>
                         </td>

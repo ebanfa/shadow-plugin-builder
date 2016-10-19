@@ -9,7 +9,7 @@ if (!defined('ABSPATH')) {
 
 if (is_user_logged_in()) {
 
-        $current_user_party = PartyAPI::get_current_user_party();
+        $current_user_party = UserPartyAPI::get_current_user_party();
 
         $menu_groups = array(<#list menuBar.menuGroups as group>
         	'${group.name}' => array(
@@ -28,10 +28,10 @@ if (is_user_logged_in()) {
         	),</#list>
         );
         foreach ($menu_groups as $key => $group) {
-        	if($group['is_admin']  && !PartyAPI::is_portal_admin($current_user_party))
+        	if($group['is_admin']  && !UserPartyAPI::is_portal_admin($current_user_party))
         		unset($menu_groups[$key]);
 
-        	if(!$group['is_admin']  && PartyAPI::is_portal_admin($current_user_party))
+        	if(!$group['is_admin']  && UserPartyAPI::is_portal_admin($current_user_party))
         		unset($menu_groups[$key]);
         }
 ?>

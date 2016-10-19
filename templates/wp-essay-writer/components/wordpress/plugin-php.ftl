@@ -67,16 +67,18 @@ class ${application.name} {
     public function includes() {
         // Framework API
         include_once('includes/api/AdminAPI.php');
+        include_once('includes/api/MailAPI.php');
         include_once('includes/api/SecurityAPI.php');
         include_once('includes/api/UIDisplayAPI.php');
         include_once('includes/controller/ArtifactRequestProcessor.php');
         include_once('includes/controller/ArtifactAjaxRequestProcessor.php');
-
         // Party API
         include_once('includes/api/PartyAPI.php');
+        include_once('includes/api/PartyEditAPI.php');
+        include_once('includes/api/PartyCreateAPI.php');
         include_once('includes/api/PersonAPI.php');
         include_once('includes/api/PartyGroupAPI.php');
-        include_once('includes/api/UserAPI.php');
+        include_once('includes/api/ContentUserAPI.php');
         include_once('includes/api/UserPartyAPI.php');
         include_once('includes/api/UserLoginAPI.php');
         // File management API
@@ -112,10 +114,18 @@ class ${application.name} {
 <#list module.apis as api>
         include_once('includes/api/${api.name}.php');
 </#list>
+<#list module.pages as page>
+    <#if page.ajaxRequestProcessorTemplate ??>
+        include_once('includes/controller/${page.name}AjaxRequestProcessor.php');
+    </#if>
+</#list>
+<#list module.entities as entity>
+        <#if entity.ajaxRequestProcessorTemplate ??>
+        include_once('includes/controller/${entity.name}AjaxRequestProcessor.php');
+        </#if>
+</#list>
         
         include_once('includes/api/EntityPersistenceAPI.php');
-        // Entity Controller
-        //include_once('includes/controller/EntityActionProcessor.php');
 
         // Entity View and view controllers
         include_once('includes/view/ViewUtils.php');
@@ -124,6 +134,11 @@ class ${application.name} {
         include_once('includes/view/DashboardView.php');
         include_once('includes/view/QuestionView.php');
         include_once('includes/view/ViewFilter.php');
+
+        include_once('includes/view/ArtifactListView.php');
+        include_once('includes/view/ArtifactEditorView.php');
+        include_once('includes/view/ArtifactDisplayView.php');
+
         include_once('includes/view/CreateEntityView.php');
         include_once('includes/view/EditEntityView.php');
         include_once('includes/view/SingleEntityView.php');
@@ -135,6 +150,9 @@ class ${application.name} {
 <#list module.pages as page>
     <#if page.viewTemplate ??>
         include_once('includes/view/${page.name}View.php');
+    </#if>
+    <#if page.viewFilterTemplate ??>
+    include_once('includes/view/${page.name}ViewFilter.php');
     </#if>
 </#list>
 <#list module.entities as entity>
@@ -166,13 +184,13 @@ class ${application.name} {
     
     public function init_ajax_hooks() {
         ArtifactAjaxRequestProcessor::init_hooks();
-
         // Setup Ajax
         add_action('template_redirect', 'AdminAPI::do_ajax_setup');
     }
 
 
     public function init_backend_hooks() {
+        add_action('paypal-web_accept', 'IPNListenerAPI::do_web_accept', 1);
         add_action('cloderia_create_individual', 'UserAPI::create_person', 10, 1);
     }
 
@@ -215,10 +233,16 @@ class ${application.name} {
         add_action('shadowbanker_after_artifact_content', 'UIDisplayAPI::after_artifact_content', 10);
         
         FormFieldFilter::init_hooks();
+
+<#list module.pages as page>
+    <#if page.viewFilterTemplate ??>
+        ${page.name}ViewFilter::init_hooks();
+    </#if>
+</#list>
 <#list module.entities as entity>
-        <#if entity.viewFilterTemplate ??>
+    <#if entity.viewFilterTemplate ??>
         ${entity.name}ViewFilter::init_hooks();
-        </#if>
+    </#if>
 </#list>
     }
 
@@ -272,6 +296,14 @@ class ${application.name} {
      */
     public static function plugin_path() {
         return untrailingslashit(plugin_dir_path(__FILE__));
+    }
+
+    /**
+     * Get the plugin path.
+     * @return string
+     */
+    public static function plugin_url() {
+        return untrailingslashit(plugins_url( '' , __FILE__ ));
     }
 
     /**

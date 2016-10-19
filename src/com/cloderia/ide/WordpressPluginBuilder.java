@@ -360,12 +360,10 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 			
 		}
 
-		this.generateArtifact(module, null, 
-			"api/wordpress/entity-api-php.ftl", includeApiOutputDir +  "EntityAPI.php");
-		this.generateArtifact(module, null, 
-			"api/wordpress/ui-display-php.ftl", includeApiOutputDir + "UIDisplayAPI.php");
-		this.generateArtifact(module, null, 
-			"api/wordpress/entity-persistence-api.ftl", includeApiOutputDir +  "EntityPersistenceAPI.php");
+		this.generateArtifact(module, null, "api/wordpress/admin-api-php.ftl", includeApiOutputDir +  "AdminAPI.php");
+		this.generateArtifact(module, null, "api/wordpress/entity-api-php.ftl", includeApiOutputDir +  "EntityAPI.php");
+		this.generateArtifact(module, null, "api/wordpress/ui-display-php.ftl", includeApiOutputDir + "UIDisplayAPI.php");
+		this.generateArtifact(module, null, "api/wordpress/entity-persistence-api.ftl", includeApiOutputDir +  "EntityPersistenceAPI.php");
 
 		// Utility classes
 		this.generateArtifact(module, null, 
@@ -557,12 +555,14 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 			String apiTemplate = page.getApiTemplate();
 			String pageTemplate = page.getPageTemplate();
 			String viewTemplate = page.getViewTemplate();
+			String viewFilterTemplate = page.getViewFilterTemplate();
 			String artifactName = page.getName().toLowerCase();
 			
 			if(jsTemplate != null) this.generatePageArtifact(module, page, jsTemplate , jsOutputDir + artifactName + ".js");
 			if(pageTemplate != null) this.generatePageArtifact(module, page, pageTemplate , pageOutputDir + artifactName + ".php");
 			if(apiTemplate != null) this.generatePageArtifact(module, page, apiTemplate , includeApiOutputDir + pageName + "API.php");
 			if(viewTemplate != null) this.generatePageArtifact(module, page, viewTemplate , includeViewOutputDir + pageName + "View.php");
+			if(viewFilterTemplate != null) this.generatePageArtifact(module, page, viewFilterTemplate , includeViewOutputDir + pageName + "ViewFilter.php");
 		}
 	}
 

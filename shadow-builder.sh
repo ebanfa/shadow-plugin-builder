@@ -59,6 +59,7 @@ copy_resources(){
     echo "Copying resources"
     cp -r js/* $TARGET/$PLUGIN_NAME/js
     cp -rf vendor/ $TARGET/$PLUGIN_NAME/
+    cp images/* $TARGET/$PLUGIN_NAME/images
     cp includes/api/* $TARGET/$PLUGIN_NAME/includes/api
     cp includes/view/* $TARGET/$PLUGIN_NAME/includes/view
     cp includes/utils/* $TARGET/$PLUGIN_NAME/includes/utils

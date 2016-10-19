@@ -2,21 +2,8 @@
 INSERT INTO currency (id, entity_code, symbol, name, description) VALUES (1, 'KSH', 'Ksh', 'Kenyan Shillings', 'Kenyan Shillings');
 INSERT INTO currency (id, entity_code, symbol, name, description) VALUES (2, 'USD', '$', 'US Dollar', 'US Dollar');
 
-/* Insert statement for Location Type */
-INSERT INTO locationtype (id, entity_code, name, description) VALUES (1, 'COUNTRY', 'Country', 'Country');
-INSERT INTO locationtype (id, entity_code, name, description) VALUES (2, 'STATE', 'State', 'State');
-INSERT INTO locationtype (id, entity_code, name, description) VALUES (3, 'CITY', 'City', 'City');
-
-/* Insert statement for Location */
-INSERT INTO location (location_type, entity_code, name, description) VALUES (1, 'KENYA', 'Kenya', 'Kenya');
-INSERT INTO location (location_type, location, entity_code, name, description) VALUES (2, 1, 'NAIROBI', 'Nairobi', 'Nairobi');
-INSERT INTO location (location_type, location, entity_code, name, description) VALUES (3, 2, 'NBO', 'Nairobi', 'Nairobi');
-
 /* Insert statement for Business */
-INSERT INTO business (id, currency, entity_code, name, user_name, pin, tel_no, account_notify_email, orders_notify_email, description) VALUES (1, 1, 'PAE', 'Certified Academic Writers', 'admin@customacademicwriters.com', '0000000', '254 00000000', 'accounts@customacademicwriters.com', 'info@customacademicwriters.com', 'Certified Academic Writers');
-
-/* Insert statement for Business Unit */
-INSERT INTO businessunit (id, business, currency, entity_code, name, address_1, address_2, description) VALUES (1, 1, 1, 'DEFAULT', 'Head Office', '', '', 'Head Office');
+INSERT INTO business (id, currency, entity_code, name, user_name, pin, tel_no, account_notify_email, orders_notify_email, description) VALUES (1, 1, 'PAE', 'Premium Academic Essays', 'admin@premiumacademicessays.com', '0000000', '254 00000000', 'accounts@premiumacademicessays.com', 'info@premiumacademicessays.com', 'Premium Academic Essays');
 
 /* Insert statement for Party Category */
 INSERT INTO partycategory (id, entity_code, name, description) VALUES (1, 'ORGANIZATION', 'Organization', 'Organizational party');
@@ -34,24 +21,14 @@ INSERT INTO roletype (entity_code, name, description) VALUES ('TUTOR', 'Tutor', 
 INSERT INTO roletype (entity_code, name, description) VALUES ('EMPLOYEE', 'Employee', 'Employee');
 
 /* Insert statement for Party */
-INSERT INTO party (id, party_type, entity_code, name, user_name, description, business_unit) VALUES (1, 2, 'ADMINISTRATOR', 'Administrator', 'admin@customacademicwriters.com', 'Organizational party', 1);
+INSERT INTO party (id, party_type, entity_code, name, user_name, description) VALUES (1, 2, 'ADMINISTRATOR', 'Administrator', 'admin@premiumacademicessays.com', 'Organizational party');
 
 /* Insert statement for Party Role */
-INSERT INTO partyrole (party, role, parent_unit, entity_code, name, description, business_unit) VALUES (1, 1, 1, 'ADMINISTRATOR', 'Administrator', 'Administrator', 1);
-INSERT INTO partyrole (party, role, parent_unit, entity_code, name, description, business_unit) VALUES (1, 5, 1, 'ADMIN_EMPLOYEE', 'Administrator Employee', 'Administrator Employee', 1);
+INSERT INTO partyrole (party_role_party, party_role_type, entity_code, name, description) VALUES (1, 1, 'ADMINISTRATOR', 'Administrator', 'Administrator');
+INSERT INTO partyrole (party_role_party, party_role_type, entity_code, name, description) VALUES (1, 5, 'ADMIN_EMPLOYEE', 'Administrator Employee', 'Administrator Employee');
 
 /* Insert statement for Party Profile */
-INSERT INTO partyprofile (party, default_unit, entity_code, name, display_name, date_created, description, business_unit) VALUES (1, 1, 'ADMINISTRATOR', 'Administrator', 'Administrator', '2000-01-01', 'Organizational party', 1);
-
-/* Insert statement for Content Category */
-INSERT INTO contentcategory VALUES(1, 'POST', 'Post', 'Post');
-INSERT INTO contentcategory VALUES(2, 'DOCUMENT', 'Document', 'Document');
-
-/* Insert statement for Content Type */
-INSERT INTO contenttype (id, content_category, entity_code, name, description) VALUES(1, 1, 'QUESTIONS', 'Questions', 'Question');
-INSERT INTO contenttype (id, content_category, entity_code, name, description) VALUES(2, 2, 'ORDER_DOCUMENT', 'Order Document', 'Order Document');
-INSERT INTO contenttype (id, content_category, entity_code, name, description) VALUES(3, 2, 'POST_ATTACHMENTS', 'Post Attachments', 'Post Attachments');
-INSERT INTO contenttype (id, content_category, entity_code, name, description) VALUES(4, 2, 'ORDER_ATTACHMENTS', 'Order Attachments', 'Order Attachments');
+INSERT INTO partyprofile (profile_party, entity_code, name, display_name, date_created, description) VALUES (1, 'ADMINISTRATOR', 'Administrator', 'Administrator', '2000-01-01', 'Organizational party');
 
 /* Insert statement for Content Order Type */
 INSERT INTO contentordertype VALUES(1, 'ACADEMIC_PAPER_ORDER', 'Academic Paper Order', 'Academic Paper Order');
@@ -70,6 +47,13 @@ INSERT INTO paymentstatus VALUES(1, 'NOT_PAID', 'Payment Pending', 'Payment Pend
 INSERT INTO paymentstatus VALUES(2, 'PARTIAL_PAYMENT', 'Partial Payment', 'Partial Payment');
 INSERT INTO paymentstatus VALUES(3, 'COMPLETED', 'Payment Completed', 'Payment Completed');
 
+/* Insert statement for Transaction type */
+INSERT INTO accounttransactiontype VALUES(1, 'CLIENT_PAYMENT', 'Client Payment', 'Client Payment');
+
+/* Insert statement for Transaction Status */
+INSERT INTO accounttransactionstatus VALUES(1, 'PENDING', 'Pending', 'Pending');
+INSERT INTO accounttransactionstatus VALUES(2, 'COMPLETED', 'Completed', 'Completed');
+
 
 /* Insert statement for Academic Level */
 INSERT INTO academiclevel VALUES(1, '1', 'High School', 'High School');
@@ -77,45 +61,63 @@ INSERT INTO academiclevel VALUES(2, '2', 'Undergraduate', 'Undergraduate');
 INSERT INTO academiclevel VALUES(3, '3', 'Master', 'Master');
 INSERT INTO academiclevel VALUES(4, '4', 'Ph. D.', 'Ph. D.');
 
-/* Insert statement for Document Type */
-INSERT INTO documenttype VALUES(1, '1', 'Essay', 'Essay');
-INSERT INTO documenttype VALUES(2, '2', 'Term Paper', 'Term Paper');
-INSERT INTO documenttype VALUES(3, '3', 'Research Paper', 'Research Paper');
-INSERT INTO documenttype VALUES(4, '4', 'Coursework', 'Coursework');
-INSERT INTO documenttype VALUES(5, '5', 'Book Report', 'Book Report');
-INSERT INTO documenttype VALUES(6, '6', 'Book Review', 'Book Review');
-INSERT INTO documenttype VALUES(7, '7', 'Movie Review', 'Movie Review');
-INSERT INTO documenttype VALUES(8, '8', 'Dissertation', 'Dissertation');
-INSERT INTO documenttype VALUES(9, '9', 'Thesis', 'Thesis');
-INSERT INTO documenttype VALUES(10, '10', 'Thesis Proposal', 'Thesis Proposal');
-INSERT INTO documenttype VALUES(11, '11', 'Research Proposal', 'Research Proposal');
-INSERT INTO documenttype VALUES(12, '12', 'Dissertation Chapter - Abstract', 'Dissertation Chapter - Abstract');
-INSERT INTO documenttype VALUES(13, '13', 'Dissertation Chapter - Introduction', 'Dissertation Chapter - Introduction Chapter');
-INSERT INTO documenttype VALUES(14, '14', 'Dissertation Chapter - Literature R', 'Dissertation Chapter - Literature Review');
-INSERT INTO documenttype VALUES(15, '15', 'Dissertation Chapter - Methodology', 'Dissertation Chapter - Methodology');
-INSERT INTO documenttype VALUES(16, '16', 'Dissertation Chapter - Results', 'Dissertation Chapter - Results');
-INSERT INTO documenttype VALUES(17, '17', 'Dissertation Chapter - Discussion', 'Dissertation Chapter - Discussion');
-INSERT INTO documenttype VALUES(18, '18', 'Dissertation Services - Editing', 'Dissertation Services - Editing');
-INSERT INTO documenttype VALUES(19, '19', 'Dissertation Services - Proofreadin', 'Dissertation Services - Proofreading');
-INSERT INTO documenttype VALUES(20, '20', 'Formatting', 'Formatting');
-INSERT INTO documenttype VALUES(21, '21', 'Admission Services - Admission Essa', 'Admission Services - Admission Essay');
-INSERT INTO documenttype VALUES(22, '22', 'Admission Services - Scholarship Es', 'Admission Services - Scholarship Essay');
-INSERT INTO documenttype VALUES(23, '23', 'Admission Services - Personal State', 'Admission Services - Personal Statement');
-INSERT INTO documenttype VALUES(24, '24', 'Admission Services - Editing', 'Admission Services - Editing');
-INSERT INTO documenttype VALUES(25, '25', 'Editing', 'Editing');
-INSERT INTO documenttype VALUES(26, '26', 'Proofreading', 'Proofreading');
-INSERT INTO documenttype VALUES(27, '27', 'Case Study', 'Case Study');
-INSERT INTO documenttype VALUES(28, '28', 'Lab Report', 'Lab Report');
-INSERT INTO documenttype VALUES(29, '29', 'Speech Presentation', 'Speech Presentation');
-INSERT INTO documenttype VALUES(30, '30', 'Math Problem', 'Math Problem');
-INSERT INTO documenttype VALUES(31, '31', 'Article', 'Article');
-INSERT INTO documenttype VALUES(32, '32', 'Article Critique', 'Article Critique');
-INSERT INTO documenttype VALUES(33, '33', 'Annotated Bibliography', 'Annotated Bibliography');
-INSERT INTO documenttype VALUES(34, '34', 'Reaction Paper', 'Reaction Paper');
-INSERT INTO documenttype VALUES(35, '35', 'PowerPoint Presentation', 'PowerPoint Presentation');
-INSERT INTO documenttype VALUES(36, '36', 'Statistics Project', 'Statistics Project');
-INSERT INTO documenttype VALUES(37, '37', 'Multiple Choice Questions (None-Tim', 'Multiple Choice Questions (None-Time-Framed)');
-INSERT INTO documenttype VALUES(38, '38', 'Other (Not listed)', 'Other (Not listed)');
+/* Insert statement for Content Classification Type */
+INSERT INTO classificationtype VALUES(1, 'ACADEMIC_LEVEL', 'Academic Level', 'Academic Level');
+
+/* Insert statement for Content Classification */
+INSERT INTO classification (id, class_type, entity_code, name, description) VALUES(1, 1, 'HIGH_SCHOOL', 'High School', 'High School');
+INSERT INTO classification (id, class_type, entity_code, name, description) VALUES(2, 1, 'UNDERGRADUATE', 'Undergraduate', 'Undergraduate');
+INSERT INTO classification (id, class_type, entity_code, name, description) VALUES(3, 1, 'MASTER', 'Master', 'Master');
+INSERT INTO classification (id, class_type, entity_code, name, description) VALUES(4, 1, 'PHD', 'Ph. D.', 'Ph. D.');
+
+/* Insert statement for Content Category */
+INSERT INTO contentcategory VALUES(1, 'POST', 'Post', 'Post');
+INSERT INTO contentcategory VALUES(2, 'DOCUMENT', 'Document', 'Document');
+INSERT INTO contentcategory VALUES(3, 'FLASH_CARDS', 'Flash Cards', 'Flash Cards');
+INSERT INTO contentcategory VALUES(4, 'NOTES', 'Notes', 'Notes');
+
+/* Insert statement for Content Type */
+INSERT INTO contenttype (id, content_category, entity_code, name, description) VALUES(1, 2, '1', 'Essay', 'Essay');
+INSERT INTO contenttype (id, content_category, entity_code, name, description) VALUES(2, 2, '2', 'Term Paper', 'Term Paper');
+INSERT INTO contenttype (id, content_category, entity_code, name, description) VALUES(3, 2, '3', 'Research Paper', 'Research Paper');
+INSERT INTO contenttype (id, content_category, entity_code, name, description) VALUES(4, 2, '4', 'Coursework', 'Coursework');
+INSERT INTO contenttype (id, content_category, entity_code, name, description) VALUES(5, 2, '5', 'Book Report', 'Book Report');
+INSERT INTO contenttype (id, content_category, entity_code, name, description) VALUES(6, 2, '6', 'Book Review', 'Book Review');
+INSERT INTO contenttype (id, content_category, entity_code, name, description) VALUES(7, 2, '7', 'Movie Review', 'Movie Review');
+INSERT INTO contenttype (id, content_category, entity_code, name, description) VALUES(8, 2, '8', 'Dissertation', 'Dissertation');
+INSERT INTO contenttype (id, content_category, entity_code, name, description) VALUES(9, 2, '9', 'Thesis', 'Thesis');
+INSERT INTO contenttype (id, content_category, entity_code, name, description) VALUES(10, 2, '10', 'Thesis Proposal', 'Thesis Proposal');
+INSERT INTO contenttype (id, content_category, entity_code, name, description) VALUES(11, 2, '11', 'Research Proposal', 'Research Proposal');
+INSERT INTO contenttype (id, content_category, entity_code, name, description) VALUES(12, 2, '12', 'Dissertation Chapter - Abstract', 'Dissertation Chapter - Abstract');
+INSERT INTO contenttype (id, content_category, entity_code, name, description) VALUES(13, 2, '13', 'Dissertation Chapter - Introduction', 'Dissertation Chapter - Introduction Chapter');
+INSERT INTO contenttype (id, content_category, entity_code, name, description) VALUES(14, 2, '14', 'Dissertation Chapter - Literature R', 'Dissertation Chapter - Literature Review');
+INSERT INTO contenttype (id, content_category, entity_code, name, description) VALUES(15, 2, '15', 'Dissertation Chapter - Methodology', 'Dissertation Chapter - Methodology');
+INSERT INTO contenttype (id, content_category, entity_code, name, description) VALUES(16, 2, '16', 'Dissertation Chapter - Results', 'Dissertation Chapter - Results');
+INSERT INTO contenttype (id, content_category, entity_code, name, description) VALUES(17, 2, '17', 'Dissertation Chapter - Discussion', 'Dissertation Chapter - Discussion');
+INSERT INTO contenttype (id, content_category, entity_code, name, description) VALUES(18, 2, '18', 'Dissertation Services - Editing', 'Dissertation Services - Editing');
+INSERT INTO contenttype (id, content_category, entity_code, name, description) VALUES(19, 2, '19', 'Dissertation Services - Proofreadin', 'Dissertation Services - Proofreading');
+INSERT INTO contenttype (id, content_category, entity_code, name, description) VALUES(20, 2, '20', 'Formatting', 'Formatting');
+INSERT INTO contenttype (id, content_category, entity_code, name, description) VALUES(21, 2, '21', 'Admission Services - Admission Essa', 'Admission Services - Admission Essay');
+INSERT INTO contenttype (id, content_category, entity_code, name, description) VALUES(22, 2, '22', 'Admission Services - Scholarship Es', 'Admission Services - Scholarship Essay');
+INSERT INTO contenttype (id, content_category, entity_code, name, description) VALUES(23, 2, '23', 'Admission Services - Personal State', 'Admission Services - Personal Statement');
+INSERT INTO contenttype (id, content_category, entity_code, name, description) VALUES(24, 2, '24', 'Admission Services - Editing', 'Admission Services - Editing');
+INSERT INTO contenttype (id, content_category, entity_code, name, description) VALUES(25, 2, '25', 'Editing', 'Editing');
+INSERT INTO contenttype (id, content_category, entity_code, name, description) VALUES(26, 2, '26', 'Proofreading', 'Proofreading');
+INSERT INTO contenttype (id, content_category, entity_code, name, description) VALUES(27, 2, '27', 'Case Study', 'Case Study');
+INSERT INTO contenttype (id, content_category, entity_code, name, description) VALUES(28, 2, '28', 'Lab Report', 'Lab Report');
+INSERT INTO contenttype (id, content_category, entity_code, name, description) VALUES(29, 2, '29', 'Speech Presentation', 'Speech Presentation');
+INSERT INTO contenttype (id, content_category, entity_code, name, description) VALUES(30, 2, '30', 'Math Problem', 'Math Problem');
+INSERT INTO contenttype (id, content_category, entity_code, name, description) VALUES(31, 2, '31', 'Article', 'Article');
+INSERT INTO contenttype (id, content_category, entity_code, name, description) VALUES(32, 2, '32', 'Article Critique', 'Article Critique');
+INSERT INTO contenttype (id, content_category, entity_code, name, description) VALUES(33, 2, '33', 'Annotated Bibliography', 'Annotated Bibliography');
+INSERT INTO contenttype (id, content_category, entity_code, name, description) VALUES(34, 2, '34', 'Reaction Paper', 'Reaction Paper');
+INSERT INTO contenttype (id, content_category, entity_code, name, description) VALUES(35, 2, '35', 'PowerPoint Presentation', 'PowerPoint Presentation');
+INSERT INTO contenttype (id, content_category, entity_code, name, description) VALUES(36, 2, '36', 'Statistics Project', 'Statistics Project');
+INSERT INTO contenttype (id, content_category, entity_code, name, description) VALUES(37, 2, '37', 'Multiple Choice Questions (None-Tim', 'Multiple Choice Questions (None-Time-Framed)');
+INSERT INTO contenttype (id, content_category, entity_code, name, description) VALUES(38, 2, '38', 'Other (Not listed)', 'Other (Not listed)');
+INSERT INTO contenttype (id, content_category, entity_code, name, description) VALUES(39, 1, '39', 'Questions', 'Question');
+INSERT INTO contenttype (id, content_category, entity_code, name, description) VALUES(40, 3, '40', 'Flash Cards', 'Flash Cards');
+INSERT INTO contenttype (id, content_category, entity_code, name, description) VALUES(41, 4, '41', 'Notes', 'Notes');
 
 /* Insert statement for Number of Pages */
 INSERT INTO noofpages VALUES(1, '1', '1 page(s) / 275 words', '1 page(s) / 275 words');
@@ -320,92 +322,99 @@ INSERT INTO noofpages VALUES(199, '199', '199 page(s) / 54725 words', '199 page(
 INSERT INTO noofpages VALUES(200, '200', '200 page(s) / 55000 words', '200 page(s) / 55000 words');
 
 /* Insert statement for Subject Area */
-INSERT INTO subjectarea VALUES(2, '2', 'Literature', 'Literature');
-INSERT INTO subjectarea VALUES(3, '3', 'English Literature', 'English Literature');
-INSERT INTO subjectarea VALUES(4, '4', 'American Literature', 'American Literature');
-INSERT INTO subjectarea VALUES(5, '5', 'Antique Literature', 'Antique Literature');
-INSERT INTO subjectarea VALUES(6, '6', 'Asian Literature', 'Asian Literature');
-INSERT INTO subjectarea VALUES(7, '7', 'Linguistics', 'Linguistics');
-INSERT INTO subjectarea VALUES(9, '9', 'English', 'English');
-INSERT INTO subjectarea VALUES(10, '10', 'Art', 'Art');
-INSERT INTO subjectarea VALUES(11, '11', 'Paintings', 'Paintings');
-INSERT INTO subjectarea VALUES(12, '12', 'Architecture', 'Architecture');
-INSERT INTO subjectarea VALUES(13, '13', 'Drama', 'Drama');
-INSERT INTO subjectarea VALUES(14, '14', 'Theatre', 'Theatre');
-INSERT INTO subjectarea VALUES(15, '15', 'Dance', 'Dance');
-INSERT INTO subjectarea VALUES(16, '16', 'Movies', 'Movies');
-INSERT INTO subjectarea VALUES(17, '17', 'Design Analysis', 'Design Analysis');
-INSERT INTO subjectarea VALUES(18, '18', 'Music', 'Music');
-INSERT INTO subjectarea VALUES(21, '21', 'Psychology', 'Psychology');
-INSERT INTO subjectarea VALUES(22, '22', 'Sociology', 'Sociology');
-INSERT INTO subjectarea VALUES(24, '24', 'Ethics', 'Ethics');
-INSERT INTO subjectarea VALUES(28, '28', 'Philosophy', 'Philosophy');
-INSERT INTO subjectarea VALUES(29, '29', 'Political Science', 'Political Science');
-INSERT INTO subjectarea VALUES(36, '36', 'History', 'History');
-INSERT INTO subjectarea VALUES(37, '37', 'American History', 'American History');
-INSERT INTO subjectarea VALUES(38, '38', 'African-American Studies', 'African-American Studies');
-INSERT INTO subjectarea VALUES(39, '39', 'Native-American Studies', 'Native-American Studies');
-INSERT INTO subjectarea VALUES(40, '40', 'Latin-American Studies', 'Latin-American Studies');
-INSERT INTO subjectarea VALUES(41, '41', 'Canadian Studies', 'Canadian Studies');
-INSERT INTO subjectarea VALUES(42, '42', 'Asian Studies', 'Asian Studies');
-INSERT INTO subjectarea VALUES(43, '43', 'West European Studies', 'West European Studies');
-INSERT INTO subjectarea VALUES(44, '44', 'East European Studies', 'East European Studies');
-INSERT INTO subjectarea VALUES(45, '45', 'Holocaust', 'Holocaust');
-INSERT INTO subjectarea VALUES(47, '47', 'Law', 'Law');
-INSERT INTO subjectarea VALUES(48, '48', 'Legal Issues', 'Legal Issues');
-INSERT INTO subjectarea VALUES(49, '49', 'Criminology', 'Criminology');
-INSERT INTO subjectarea VALUES(51, '51', 'Mathematics', 'Mathematics');
-INSERT INTO subjectarea VALUES(52, '52', 'Business', 'Business');
-INSERT INTO subjectarea VALUES(53, '53', 'Economics', 'Economics');
-INSERT INTO subjectarea VALUES(54, '54', 'Management', 'Management');
-INSERT INTO subjectarea VALUES(56, '56', 'Marketing', 'Marketing');
-INSERT INTO subjectarea VALUES(57, '57', 'Investment', 'Investment');
-INSERT INTO subjectarea VALUES(58, '58', 'Company Analysis', 'Company Analysis');
-INSERT INTO subjectarea VALUES(59, '59', 'Finance', 'Finance');
-INSERT INTO subjectarea VALUES(60, '60', 'Accounting', 'Accounting');
-INSERT INTO subjectarea VALUES(61, '61', 'Case Study', 'Case Study');
-INSERT INTO subjectarea VALUES(62, '62', 'E-Commerce', 'E-Commerce');
-INSERT INTO subjectarea VALUES(63, '63', 'Logistics', 'Logistics');
-INSERT INTO subjectarea VALUES(64, '64', 'Trade', 'Trade');
-INSERT INTO subjectarea VALUES(65, '65', 'Technology', 'Technology');
-INSERT INTO subjectarea VALUES(67, '67', 'Engineering', 'Engineering');
-INSERT INTO subjectarea VALUES(70, '70', 'Aviation', 'Aviation');
-INSERT INTO subjectarea VALUES(71, '71', 'Aeronautics', 'Aeronautics');
-INSERT INTO subjectarea VALUES(72, '72', 'Computer Science', 'Computer Science');
-INSERT INTO subjectarea VALUES(73, '73', 'Internet', 'Internet');
-INSERT INTO subjectarea VALUES(75, '75', 'IT Management', 'IT Management');
-INSERT INTO subjectarea VALUES(77, '77', 'Web Design', 'Web Design');
-INSERT INTO subjectarea VALUES(78, '78', 'Nature', 'Nature');
-INSERT INTO subjectarea VALUES(79, '79', 'Geography', 'Geography');
-INSERT INTO subjectarea VALUES(80, '80', 'Geology', 'Geology');
-INSERT INTO subjectarea VALUES(83, '83', 'Environmental Issues', 'Environmental Issues');
-INSERT INTO subjectarea VALUES(85, '85', 'Agricultural Studies', 'Agricultural Studies');
-INSERT INTO subjectarea VALUES(86, '86', 'Astronomy', 'Astronomy');
-INSERT INTO subjectarea VALUES(87, '87', 'Education', 'Education');
-INSERT INTO subjectarea VALUES(88, '88', 'Pedagogy', 'Pedagogy');
-INSERT INTO subjectarea VALUES(89, '89', 'Education Theories', 'Education Theories');
-INSERT INTO subjectarea VALUES(90, '90', 'Teacher''s Career', 'Teacher''s Career');
-INSERT INTO subjectarea VALUES(93, '93', 'Application Essay', 'Application Essay');
-INSERT INTO subjectarea VALUES(94, '94', 'Medicine and Health', 'Medicine and Health');
-INSERT INTO subjectarea VALUES(95, '95', 'Nutrition', 'Nutrition');
-INSERT INTO subjectarea VALUES(96, '96', 'Sport', 'Sport');
-INSERT INTO subjectarea VALUES(97, '97', 'Healthcare', 'Healthcare');
-INSERT INTO subjectarea VALUES(99, '99', 'Alternative Medicine', 'Alternative Medicine');
-INSERT INTO subjectarea VALUES(100, '100', 'Pharmacology', 'Pharmacology');
-INSERT INTO subjectarea VALUES(101, '101', 'Nursing', 'Nursing');
-INSERT INTO subjectarea VALUES(102, '102', 'Communications and Media', 'Communications and Media');
-INSERT INTO subjectarea VALUES(103, '103', 'Journalism', 'Journalism');
-INSERT INTO subjectarea VALUES(104, '104', 'Public Relations', 'Public Relations');
-INSERT INTO subjectarea VALUES(105, '105', 'Advertising', 'Advertising');
-INSERT INTO subjectarea VALUES(107, '107', 'Communication Strategies', 'Communication Strategies');
-INSERT INTO subjectarea VALUES(108, '108', 'Religion and Theology', 'Religion and Theology');
-INSERT INTO subjectarea VALUES(110, '110', 'Physics', 'Physics');
-INSERT INTO subjectarea VALUES(111, '111', 'Chemistry', 'Chemistry');
-INSERT INTO subjectarea VALUES(112, '112', 'Biology', 'Biology');
-INSERT INTO subjectarea VALUES(113, '113', 'Anthropology', 'Anthropology');
-INSERT INTO subjectarea VALUES(114, '114', 'Tourism', 'Tourism');
-INSERT INTO subjectarea VALUES(115, '115', 'Creative writing', 'Creative writing');
-INSERT INTO subjectarea VALUES(116, '116', 'Shakespeare Studies', 'Shakespeare Studies');
+INSERT INTO subjectarea VALUES(1, 'ARTS_HUMANITIES', 'Arts & Humanities', 'Arts & Humanities');
+INSERT INTO subjectarea VALUES(2, 'ENG_TECH', 'Engineering & Technology', 'Engineering & Technology');
+INSERT INTO subjectarea VALUES(3, 'MATHEMATICS', 'Mathematics', 'Mathematics');
+INSERT INTO subjectarea VALUES(4, 'SCIENCE', 'Science', 'Science');
+INSERT INTO subjectarea VALUES(5, 'SOCIAL_SCIENCE', 'Social Science', 'Social Science');
+
+/* Insert statement for Subject Area */
+INSERT INTO subject VALUES(2, 1, '2', 'Literature', 'Literature');
+INSERT INTO subject VALUES(3, 1, '3', 'English Literature', 'English Literature');
+INSERT INTO subject VALUES(4, 1, '4', 'American Literature', 'American Literature');
+INSERT INTO subject VALUES(5, 1, '5', 'Antique Literature', 'Antique Literature');
+INSERT INTO subject VALUES(6, 1, '6', 'Asian Literature', 'Asian Literature');
+INSERT INTO subject VALUES(7, 1, '7', 'Linguistics', 'Linguistics');
+INSERT INTO subject VALUES(9, 1, '9', 'English', 'English');
+INSERT INTO subject VALUES(10, 1, '10', 'Art', 'Art');
+INSERT INTO subject VALUES(11, 1, '11', 'Paintings', 'Paintings');
+INSERT INTO subject VALUES(12, 4, '12', 'Architecture', 'Architecture');
+INSERT INTO subject VALUES(13, 1, '13', 'Drama', 'Drama');
+INSERT INTO subject VALUES(14, 1, '14', 'Theatre', 'Theatre');
+INSERT INTO subject VALUES(15, 1, '15', 'Dance', 'Dance');
+INSERT INTO subject VALUES(16, 1, '16', 'Movies', 'Movies');
+INSERT INTO subject VALUES(17, 1, '17', 'Design Analysis', 'Design Analysis');
+INSERT INTO subject VALUES(18, 1, '18', 'Music', 'Music');
+INSERT INTO subject VALUES(21, 5, '21', 'Psychology', 'Psychology');
+INSERT INTO subject VALUES(22, 5, '22', 'Sociology', 'Sociology');
+INSERT INTO subject VALUES(24, 5, '24', 'Ethics', 'Ethics');
+INSERT INTO subject VALUES(28, 5, '28', 'Philosophy', 'Philosophy');
+INSERT INTO subject VALUES(29, 5, '29', 'Political Science', 'Political Science');
+INSERT INTO subject VALUES(36, 1, '36', 'History', 'History');
+INSERT INTO subject VALUES(37, 1, '37', 'American History', 'American History');
+INSERT INTO subject VALUES(38, 1, '38', 'African-American Studies', 'African-American Studies');
+INSERT INTO subject VALUES(39, 1, '39', 'Native-American Studies', 'Native-American Studies');
+INSERT INTO subject VALUES(40, 1, '40', 'Latin-American Studies', 'Latin-American Studies');
+INSERT INTO subject VALUES(41, 1, '41', 'Canadian Studies', 'Canadian Studies');
+INSERT INTO subject VALUES(42, 1, '42', 'Asian Studies', 'Asian Studies');
+INSERT INTO subject VALUES(43, 1, '43', 'West European Studies', 'West European Studies');
+INSERT INTO subject VALUES(44, 1, '44', 'East European Studies', 'East European Studies');
+INSERT INTO subject VALUES(45, 1, '45', 'Holocaust', 'Holocaust');
+INSERT INTO subject VALUES(47, 5, '47', 'Law', 'Law');
+INSERT INTO subject VALUES(48, 5, '48', 'Legal Issues', 'Legal Issues');
+INSERT INTO subject VALUES(49, 5, '49', 'Criminology', 'Criminology');
+INSERT INTO subject VALUES(51, 3, '51', 'Mathematics', 'Mathematics');
+INSERT INTO subject VALUES(52, 5, '52', 'Business', 'Business');
+INSERT INTO subject VALUES(53, 5, '53', 'Economics', 'Economics');
+INSERT INTO subject VALUES(54, 5, '54', 'Management', 'Management');
+INSERT INTO subject VALUES(56, 5, '56', 'Marketing', 'Marketing');
+INSERT INTO subject VALUES(57, 5, '57', 'Investment', 'Investment');
+INSERT INTO subject VALUES(58, 5, '58', 'Company Analysis', 'Company Analysis');
+INSERT INTO subject VALUES(59, 5, '59', 'Finance', 'Finance');
+INSERT INTO subject VALUES(60, 5, '60', 'Accounting', 'Accounting');
+INSERT INTO subject VALUES(61, 5, '61', 'Case Study', 'Case Study');
+INSERT INTO subject VALUES(62, 2, '62', 'E-Commerce', 'E-Commerce');
+INSERT INTO subject VALUES(63, 5, '63', 'Logistics', 'Logistics');
+INSERT INTO subject VALUES(64, 5, '64', 'Trade', 'Trade');
+INSERT INTO subject VALUES(65, 2, '65', 'Technology', 'Technology');
+INSERT INTO subject VALUES(67, 2, '67', 'Engineering', 'Engineering');
+INSERT INTO subject VALUES(70, 2, '70', 'Aviation', 'Aviation');
+INSERT INTO subject VALUES(71, 2, '71', 'Aeronautics', 'Aeronautics');
+INSERT INTO subject VALUES(72, 2, '72', 'Computer Science', 'Computer Science');
+INSERT INTO subject VALUES(73, 2, '73', 'Internet', 'Internet');
+INSERT INTO subject VALUES(75, 2, '75', 'IT Management', 'IT Management');
+INSERT INTO subject VALUES(77, 2, '77', 'Web Design', 'Web Design');
+INSERT INTO subject VALUES(78, 4, '78', 'Nature', 'Nature');
+INSERT INTO subject VALUES(79, 4, '79', 'Geography', 'Geography');
+INSERT INTO subject VALUES(80, 4, '80', 'Geology', 'Geology');
+INSERT INTO subject VALUES(83, 4, '83', 'Environmental Issues', 'Environmental Issues');
+INSERT INTO subject VALUES(85, 4, '85', 'Agricultural Studies', 'Agricultural Studies');
+INSERT INTO subject VALUES(86, 4, '86', 'Astronomy', 'Astronomy');
+INSERT INTO subject VALUES(87, 5, '87', 'Education', 'Education');
+INSERT INTO subject VALUES(88, 4, '88', 'Pedagogy', 'Pedagogy');
+INSERT INTO subject VALUES(89, 5, '89', 'Education Theories', 'Education Theories');
+INSERT INTO subject VALUES(90, 5, '90', 'Teacher''s Career', 'Teacher''s Career');
+INSERT INTO subject VALUES(93, 1, '93', 'Application Essay', 'Application Essay');
+INSERT INTO subject VALUES(94, 4, '94', 'Medicine and Health', 'Medicine and Health');
+INSERT INTO subject VALUES(95, 4, '95', 'Nutrition', 'Nutrition');
+INSERT INTO subject VALUES(96, 5, '96', 'Sport', 'Sport');
+INSERT INTO subject VALUES(97, 4, '97', 'Healthcare', 'Healthcare');
+INSERT INTO subject VALUES(99, 4, '99', 'Alternative Medicine', 'Alternative Medicine');
+INSERT INTO subject VALUES(100, 4, '100', 'Pharmacology', 'Pharmacology');
+INSERT INTO subject VALUES(101, 4, '101', 'Nursing', 'Nursing');
+INSERT INTO subject VALUES(102, 5, '102', 'Communications and Media', 'Communications and Media');
+INSERT INTO subject VALUES(103, 5, '103', 'Journalism', 'Journalism');
+INSERT INTO subject VALUES(104, 5, '104', 'Public Relations', 'Public Relations');
+INSERT INTO subject VALUES(105, 5, '105', 'Advertising', 'Advertising');
+INSERT INTO subject VALUES(107, 5, '107', 'Communication Strategies', 'Communication Strategies');
+INSERT INTO subject VALUES(108, 1, '108', 'Religion and Theology', 'Religion and Theology');
+INSERT INTO subject VALUES(110, 4, '110', 'Physics', 'Physics');
+INSERT INTO subject VALUES(111, 4, '111', 'Chemistry', 'Chemistry');
+INSERT INTO subject VALUES(112, 4, '112', 'Biology', 'Biology');
+INSERT INTO subject VALUES(113, 4, '113', 'Anthropology', 'Anthropology');
+INSERT INTO subject VALUES(114, 5, '114', 'Tourism', 'Tourism');
+INSERT INTO subject VALUES(115, 1, '115', 'Creative writing', 'Creative writing');
+INSERT INTO subject VALUES(116, 1, '116', 'Shakespeare Studies', 'Shakespeare Studies');
 
 /* Insert statement for Urgency */
 INSERT INTO urgency VALUES(1, '1', '6 hours', '6', 'H', '6 hours');
