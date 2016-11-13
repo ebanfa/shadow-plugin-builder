@@ -16,7 +16,7 @@
 			<active>N</active>
 			<cssClass>zmdi zmdi-trending-up</cssClass>
 			<targetType>page</targetType>
-			<target>/wordpress/page?artifact=businesssummary&amp;page_action=list</target>
+			<target>/portal/dashboard/list</target>
 		</menuGroup>
 		<menuGroup>
 			<name>peoples</name>
@@ -32,7 +32,7 @@
 				<active>N</active>
 				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
-				<target>/wordpress/page?artifact=studentlist&amp;page_action=list</target>
+				<target>/portal/party/list/student</target>
 			</menu>
 			<menu>
 				<name>tutors</name>
@@ -41,7 +41,7 @@
 				<active>N</active>
 				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
-				<target>/wordpress/page?artifact=tutorlist&amp;page_action=list</target>
+				<target>/portal/party/list/tutor</target>
 			</menu>
 		</menuGroup>
 
@@ -277,31 +277,249 @@
 	<module>
 		<name>core</name>
 
-		<!-- Pages These are considered as artifacts -->
+		<uiComponent>
+			<name>portal-header</name>
+			<className>PortalHeader</className>
+			<htmlTemplate>html/wordpress/uicomponent/portal-header-php.ftl</htmlTemplate>
+		</uiComponent>
+
+		<uiComponent>
+			<name>portal-footer</name>
+			<className>PortalFooter</className>
+			<htmlTemplate>html/wordpress/uicomponent/portal-footer-php.ftl</htmlTemplate>
+		</uiComponent>
+
+		<uiComponent>
+			<name>portal-menu</name>
+			<className>PortalMenu</className>
+			<htmlTemplate>html/wordpress/uicomponent/portal-menu-php.ftl</htmlTemplate>
+			<!-- <classTemplate>uicomponent/ui-component-php.ftl</classTemplate>
+			<uiComponentModel>uicomponent/menu-component-model-php.ftl</uiComponentModel> -->
+		</uiComponent>
+
+		<uiComponent>
+			<name>portal-menu-header</name>
+			<className>PortalMenuHeader</className>
+			<htmlTemplate>html/wordpress/uicomponent/portal-menu-header-php.ftl</htmlTemplate>
+			<classTemplate>uicomponent/ui-component-php.ftl</classTemplate>
+			<uiComponentModel>uicomponent/menu-header-component-model-php.ftl</uiComponentModel>
+		</uiComponent>
+
+		<uiComponent>
+			<name>portal-menu-main</name>
+			<className>PortalMenuMain</className>
+			<htmlTemplate>html/wordpress/uicomponent/portal-menu-main-php.ftl</htmlTemplate>
+			<classTemplate>uicomponent/ui-component-php.ftl</classTemplate>
+			<uiComponentModel>uicomponent/menu-main-component-model-php.ftl</uiComponentModel>
+		</uiComponent>
+
+		<uiComponent>
+			<name>dashboard-panel</name>
+			<className>DashboardPanel</className>
+			<htmlTemplate>html/wordpress/uicomponent/dashboard-panel-php.ftl</htmlTemplate>
+		</uiComponent>
+
+		<uiComponent>
+			<name>dashboard-metrics-table</name>
+			<className>DashboardMetricsTable</className>
+			<htmlTemplate>html/wordpress/uicomponent/dashboard-metrics-table-php.ftl</htmlTemplate>
+			<classTemplate>uicomponent/ui-component-php.ftl</classTemplate>
+			<uiComponentModel>uicomponent/dashboard-metrics-table-model-php.ftl</uiComponentModel>
+		</uiComponent>
+
+		<uiComponent>
+			<name>dashboard-metrics-chart</name>
+			<className>DashboardMetricsChart</className>
+			<htmlTemplate>html/wordpress/uicomponent/dashboard-metrics-chart-php.ftl</htmlTemplate>
+			<classTemplate>uicomponent/ui-component-php.ftl</classTemplate>
+			<uiComponentModel>uicomponent/dashboard-metrics-chart-model-php.ftl</uiComponentModel>
+		</uiComponent>
+
+		<uiComponent>
+			<name>page-block-header</name>
+			<className>PageBlockHeader</className>
+			<htmlTemplate>html/wordpress/uicomponent/page-block-header-php.ftl</htmlTemplate>
+		</uiComponent>
+
+		<uiComponent>
+			<name>artifact-block-header</name>
+			<className>ArtifactBlockHeader</className>
+			<htmlTemplate>html/wordpress/uicomponent/artifact-block-header-php.ftl</htmlTemplate>
+		</uiComponent>
+
+		<uiComponent>
+			<name>entity-list-block</name>
+			<className>EntityListBlock</className>
+			<htmlTemplate>html/wordpress/uicomponent/entity-list-block-php.ftl</htmlTemplate>
+		</uiComponent>
+
+		<uiComponent>
+			<name>entity-list-panel</name>
+			<className>EntityListPanel</className>
+			<htmlTemplate>html/wordpress/uicomponent/entity-list-panel-php.ftl</htmlTemplate>
+		</uiComponent>
+
+		<uiComponent>
+			<name>entity-create-block</name>
+			<className>EntityCreateBlock</className>
+			<htmlTemplate>html/wordpress/uicomponent/entity-create-block-php.ftl</htmlTemplate>
+		</uiComponent>
+
+		<uiComponent>
+			<name>entity-create-panel</name>
+			<className>EntityCreatePanel</className>
+			<htmlTemplate>html/wordpress/uicomponent/entity-create-panel-php.ftl</htmlTemplate>
+		</uiComponent>
+
+		<uiComponent>
+			<name>entity-edit-block</name>
+			<className>EntityEditBlock</className>
+			<htmlTemplate>html/wordpress/uicomponent/entity-edit-block-php.ftl</htmlTemplate>
+		</uiComponent>
+
+		<uiComponent>
+			<name>entity-edit-panel</name>
+			<className>EntityEditPanel</className>
+			<htmlTemplate>html/wordpress/uicomponent/entity-edit-panel-php.ftl</htmlTemplate>
+		</uiComponent>
+
+		<uiComponent>
+			<name>entity-view-block</name>
+			<className>EntityViewBlock</className>
+			<htmlTemplate>html/wordpress/uicomponent/entity-view-block-php.ftl</htmlTemplate>
+		</uiComponent>
+
+		<uiComponent>
+			<name>entity-view-panel</name>
+			<className>EntityViewPanel</className>
+			<htmlTemplate>html/wordpress/uicomponent/entity-view-panel-php.ftl</htmlTemplate>
+		</uiComponent>
+
+		<uiComponent>
+			<name>entity-form-panel</name>
+			<className>EntityFormPanel</className>
+			<htmlTemplate>html/wordpress/uicomponent/entity-form-panel-php.ftl</htmlTemplate>
+		</uiComponent>
+
+		<uiComponent>
+			<name>entity-form-fields-panel</name>
+			<className>EntityFormFieldsPanel</className>
+			<classTemplate>uicomponent/ui-entity-fields-component-php.ftl</classTemplate>
+			<uiComponentModel>uicomponent/ui-entity-fields-model-php.ftl</uiComponentModel>
+			<htmlTemplate>html/wordpress/uicomponent/entity-form-fields-panel-php.ftl</htmlTemplate>
+		</uiComponent>
+		<!-- Input fields -->
+		<uiComponent>
+			<name>ui-input-field-name</name>
+			<className>UIInputFieldName</className>
+			<htmlTemplate>html/wordpress/uicomponent/input-fields/ui-input-field-name.ftl</htmlTemplate>
+		</uiComponent>
+		<uiComponent>
+			<name>ui-input-field-email</name>
+			<className>UIInputFieldEmail</className>
+			<htmlTemplate>html/wordpress/uicomponent/input-fields/ui-input-field-email.ftl</htmlTemplate>
+		</uiComponent>
+		<uiComponent>
+			<name>ui-input-field-password</name>
+			<className>UIInputFieldPassword</className>
+			<htmlTemplate>html/wordpress/uicomponent/input-fields/ui-input-field-password.ftl</htmlTemplate>
+		</uiComponent>
+		<uiComponent>
+			<name>ui-input-field-text-lg</name>
+			<className>UIInputFieldTextLg</className>
+			<htmlTemplate>html/wordpress/uicomponent/input-fields/ui-input-field-text-lg.ftl</htmlTemplate>
+		</uiComponent>
+		<uiComponent>
+			<name>ui-input-field-text</name>
+			<className>UIInputFieldText</className>
+			<htmlTemplate>html/wordpress/uicomponent/input-fields/ui-input-field-text.ftl</htmlTemplate>
+		</uiComponent>
+		<uiComponent>
+			<name>ui-input-field-alphanumeric</name>
+			<className>UIInputFieldAlpha</className>
+			<htmlTemplate>html/wordpress/uicomponent/input-fields/ui-input-field-alphanumeric.ftl</htmlTemplate>
+		</uiComponent>
+		<uiComponent>
+			<name>ui-input-field-phone</name>
+			<className>UIInputFieldPhone</className>
+			<htmlTemplate>html/wordpress/uicomponent/input-fields/ui-input-field-phone.ftl</htmlTemplate>
+		</uiComponent>
+		<uiComponent>
+			<name>ui-input-field-number</name>
+			<className>UIInputFieldNumber</className>
+			<htmlTemplate>html/wordpress/uicomponent/input-fields/ui-input-field-number.ftl</htmlTemplate>
+		</uiComponent>
+		<uiComponent>
+			<name>ui-input-field-money</name>
+			<className>UIInputFieldMoney</className>
+			<htmlTemplate>html/wordpress/uicomponent/input-fields/ui-input-field-money.ftl</htmlTemplate>
+		</uiComponent>
+		<uiComponent>
+			<name>ui-input-field-flag</name>
+			<className>UIInputFieldFlag</className>
+			<htmlTemplate>html/wordpress/uicomponent/input-fields/ui-input-field-flag.ftl</htmlTemplate>
+		</uiComponent>
+		<uiComponent>
+			<name>ui-input-field-option</name>
+			<className>UIInputFieldOption</className>
+			<htmlTemplate>html/wordpress/uicomponent/input-fields/ui-input-field-option.ftl</htmlTemplate>
+		</uiComponent>
+		<uiComponent>
+			<name>ui-input-field-date</name>
+			<className>UIInputFieldDate</className>
+			<htmlTemplate>html/wordpress/uicomponent/input-fields/ui-input-field-date.ftl</htmlTemplate>
+		</uiComponent>
+		<uiComponent>
+			<name>ui-input-field-datetime</name>
+			<className>UIInputFieldDatetime</className>
+			<htmlTemplate>html/wordpress/uicomponent/input-fields/ui-input-field-datetime.ftl</htmlTemplate>
+		</uiComponent>
+		<uiComponent>
+			<name>ui-input-field-hidden</name>
+			<className>UIInputFieldHidden</className>
+			<htmlTemplate>html/wordpress/uicomponent/input-fields/ui-input-field-hidden.ftl</htmlTemplate>
+		</uiComponent>
+		<uiComponent>
+			<name>ui-input-field-relationship</name>
+			<className>UIInputFieldRelationship</className>
+			<htmlTemplate>html/wordpress/uicomponent/input-fields/ui-input-field-relationship.ftl</htmlTemplate>
+		</uiComponent>
+
+		<!-- <page>
+			<name>PortalErrorPage</name>
+			<displayName>Error Page</displayName>
+			<description>Error Page</description>
+			<pageTemplate>html/wordpress/page/portal-error-page-php.ftl</pageTemplate>
+			<viewTemplate>views/wordpress/portal-error-view-php.ftl</viewTemplate>
+		</page> -->
+
 		<page>
 			<name>Signin</name>
-			<displayName>Sign In</displayName>
-			<description>Sign In</description>
-			<pageTemplate>html/wordpress/page/signup/signin-page-php.ftl</pageTemplate>
-			<viewTemplate>views/wordpress/signup/signin-view-php.ftl</viewTemplate>
+			<displayName>Signin</displayName>
+			<description>Signin</description>
+			<pageTemplate>html/wordpress/page/signin/signin-page-php.ftl</pageTemplate>
+			<viewTemplate>views/wordpress/signin/signin-view-php.ftl</viewTemplate>
 			<ajaxRequestProcessorTemplate>controller/wordpress/signup/signin-ajax-request-processor.ftl</ajaxRequestProcessorTemplate>
 		</page>
+
 		<page>
 			<name>Signup</name>
-			<displayName>Sign Up</displayName>
-			<description>Sign Up</description>
-			<pageTemplate>html/wordpress/page/signup/signup-page-php.ftl</pageTemplate>
-			<viewTemplate>views/wordpress/signup/signup-view-php.ftl</viewTemplate>
+			<displayName>Signup</displayName>
+			<description>Signup</description>
+			<pageTemplate>html/wordpress/page/signin/signup-page-php.ftl</pageTemplate>
+			<viewTemplate>views/wordpress/signin/signup-view-php.ftl</viewTemplate>
 			<ajaxRequestProcessorTemplate>controller/wordpress/signup/signup-ajax-request-processor.ftl</ajaxRequestProcessorTemplate>
 		</page>
+
 		<page>
 			<name>Password</name>
-			<displayName>Password</displayName>
-			<description>Password</description>
-			<pageTemplate>html/wordpress/page/signup/password-page-php.ftl</pageTemplate>
-			<viewTemplate>views/wordpress/signup/password-view-php.ftl</viewTemplate>
+			<displayName>Signin</displayName>
+			<description>Signin</description>
+			<pageTemplate>html/wordpress/page/signin/password-page-php.ftl</pageTemplate>
+			<viewTemplate>views/wordpress/signin/password-view-php.ftl</viewTemplate>
 			<ajaxRequestProcessorTemplate>controller/wordpress/signup/password-ajax-request-processor.ftl</ajaxRequestProcessorTemplate>
 		</page>
+
 		<page>
 			<name>Dashboard</name>
 			<displayName>Dashboard</displayName>
@@ -309,106 +527,6 @@
 			<pageTemplate>html/wordpress/page/dashboard/dashboard-page-php.ftl</pageTemplate>
 			<viewTemplate>views/wordpress/dashboard/dashboard-view-php.ftl</viewTemplate>
 		</page>
-		<page>
-			<name>Question</name>
-			<displayName>Post Question</displayName>
-			<description>Post Question</description>
-			<pageTemplate>html/wordpress/page/question/post-question-page-php.ftl</pageTemplate>
-			<viewTemplate>views/wordpress/question/post-question-view-php.ftl</viewTemplate>
-		</page>
-		<page>
-			<name>AccountSummary</name>
-			<displayName>Account Summary</displayName>
-			<description>Account Summary</description>
-			<pageTemplate>html/wordpress/page/account/accountsummary-page-php.ftl</pageTemplate>
-			<viewTemplate>views/wordpress/account/accountsummary-view-php.ftl</viewTemplate>
-		</page>
-		<page>
-			<name>BusinessSummary</name>
-			<displayName>Business Summary</displayName>
-			<description>Business Summary</description>
-			<pageTemplate>html/wordpress/page/account/businesssummary-page-php.ftl</pageTemplate>
-			<viewTemplate>views/wordpress/account/businesssummary-view-php.ftl</viewTemplate>
-		</page>
-		<page>
-			<name>Profile</name>
-			<displayName>My Profile</displayName>
-			<description>My Profile</description>
-			<viewTemplate>views/wordpress/account/profile-view-php.ftl</viewTemplate>
-		</page>
-		<page>
-			<name>StudentList</name>
-			<displayName>Student List</displayName>
-			<description>Student List</description>
-			<pageTemplate>html/wordpress/page/student/studentlist-page-php.ftl</pageTemplate>
-			<viewTemplate>views/wordpress/student/studentlist-view-php.ftl</viewTemplate>
-			<viewFilterTemplate>views/wordpress/student/student-view-filter.ftl</viewFilterTemplate>
-		</page>
-		<page>
-			<name>StudentEditor</name>
-			<displayName>Student Editor</displayName>
-			<description>Student Editor</description>
-			<pageTemplate>html/wordpress/page/student/studenteditor-page-php.ftl</pageTemplate>
-			<viewTemplate>views/wordpress/student/studenteditor-view-php.ftl</viewTemplate>
-			<ajaxRequestProcessorTemplate>controller/wordpress/student/studenteditor-ajax-request-processor.ftl</ajaxRequestProcessorTemplate>
-		</page>
-		<page>
-			<name>StudentDisplay</name>
-			<displayName>Student Display</displayName>
-			<description>Student Display</description>
-			<pageTemplate>html/wordpress/page/student/studentdisplay-page-php.ftl</pageTemplate>
-			<viewTemplate>views/wordpress/student/studentdisplay-view-php.ftl</viewTemplate>
-			<ajaxRequestProcessorTemplate>controller/wordpress/student/studentdisplay-ajax-request-processor.ftl</ajaxRequestProcessorTemplate>
-		</page>
-		<page>
-			<name>TutorList</name>
-			<displayName>Tutor List</displayName>
-			<description>Tutor List</description>
-			<pageTemplate>html/wordpress/page/tutor/tutorlist-page-php.ftl</pageTemplate>
-			<viewTemplate>views/wordpress/tutor/tutorlist-view-php.ftl</viewTemplate>
-			<viewFilterTemplate>views/wordpress/tutor/tutor-view-filter.ftl</viewFilterTemplate>
-		</page>
-		<page>
-			<name>TutorEditor</name>
-			<displayName>Tutor Editor</displayName>
-			<description>Tutor Editor</description>
-			<pageTemplate>html/wordpress/page/tutor/tutoreditor-page-php.ftl</pageTemplate>
-			<viewTemplate>views/wordpress/tutor/tutoreditor-view-php.ftl</viewTemplate>
-			<ajaxRequestProcessorTemplate>controller/wordpress/tutor/tutoreditor-ajax-request-processor.ftl</ajaxRequestProcessorTemplate>
-		</page>
-		<page>
-			<name>TutorDisplay</name>
-			<displayName>Tutor Profile</displayName>
-			<description>Tutor Profile</description>
-			<pageTemplate>html/wordpress/page/tutor/tutordisplay-page-php.ftl</pageTemplate>
-			<viewTemplate>views/wordpress/tutor/tutordisplay-view-php.ftl</viewTemplate>
-			<ajaxRequestProcessorTemplate>controller/wordpress/tutor/tutordisplay-ajax-request-processor.ftl</ajaxRequestProcessorTemplate>
-		</page>
-		<!-- <page>
-			<name>ContentList</name>
-			<displayName>Content List</displayName>
-			<description>Content List</description>
-			<pageTemplate>html/wordpress/page/content/contentlist-page-php.ftl</pageTemplate>
-			<viewTemplate>views/wordpress/content/contentlist-view-php.ftl</viewTemplate>
-			<viewFilterTemplate>views/wordpress/content/content-view-filter.ftl</viewFilterTemplate>
-		</page>
-		<page>
-			<name>ContentEditor</name>
-			<displayName>Content Editor</displayName>
-			<description>Content Editor</description>
-			<pageTemplate>html/wordpress/page/content/contenteditor-page-php.ftl</pageTemplate>
-			<viewTemplate>views/wordpress/content/contenteditor-view-php.ftl</viewTemplate>
-			<ajaxRequestProcessorTemplate>controller/wordpress/content/contenteditor-ajax-request-processor.ftl</ajaxRequestProcessorTemplate>
-		</page>
-		<page>
-			<name>ContentEditor</name>
-			<displayName>Content Editor</displayName>
-			<description>Content Editor</description>
-			<pageTemplate>html/wordpress/page/content/contenteditor-page-php.ftl</pageTemplate>
-			<viewTemplate>views/wordpress/content/contenteditor-view-php.ftl</viewTemplate>
-			<ajaxRequestProcessorTemplate>controller/wordpress/content/contenteditor-ajax-request-processor.ftl</ajaxRequestProcessorTemplate>
-		</page> -->
-
 		<!-- These are application wide API not directly tied to any artifact -->
 
 		<api>
@@ -442,6 +560,11 @@
 			<apiTemplate>api/wordpress/party/rating-service-api.ftl</apiTemplate>
 		</api>
 		<api>
+			<name>QuestionAPI</name>
+			<apiFileName>includes/api/QuestionAPI.php</apiFileName>
+			<apiTemplate>api/wordpress/content/question-user-service-api.ftl</apiTemplate>
+		</api>
+		<api>
 			<name>ContentOrderUserAPI</name>
 			<apiFileName>includes/api/ContentOrderUserAPI.php</apiFileName>
 			<apiTemplate>api/wordpress/contentorder/contentorder-user-service-api.ftl</apiTemplate>
@@ -463,7 +586,7 @@
 			<postName>sb_currency</postName>
 			<description>Currency</description>
 			<global>Y</global>
-			<viewFilterTemplate>views/wordpress/global-entity-view-filter.ftl</viewFilterTemplate>
+			<!-- <viewFilterTemplate>views/wordpress/global-entity-view-filter.ftl</viewFilterTemplate> -->
 			<field>
 				<name>entity_code</name>
 				<isVisible>Y</isVisible>
@@ -590,7 +713,7 @@
 			<postName>sb_business</postName>
 			<description>Business</description>
 			<global>Y</global>
-			<viewFilterTemplate>views/wordpress/global-entity-view-filter.ftl</viewFilterTemplate>
+			<!-- <viewFilterTemplate>views/wordpress/global-entity-view-filter.ftl</viewFilterTemplate> -->
 			<apiTemplate>api/wordpress/business/business-service-api.ftl</apiTemplate>
 			<field>
 				<name>entity_code</name>
@@ -925,12 +1048,15 @@
 			<postName>sb_party</postName>
 			<description>Party</description>
 			<global>Y</global>
-			<viewPageTemplate>html/wordpress/entity/party/party-single.ftl</viewPageTemplate>
+			<listViewTemplate>views/wordpress/party/list-entity-view.ftl</listViewTemplate>
+			<listViewModelTemplate>views/wordpress/party/list-entity-view-model.ftl</listViewModelTemplate>
+			<listPageTemplate>html/wordpress/entity/party/list-entity-page-php.ftl</listPageTemplate>
+			<!-- <viewPageTemplate>html/wordpress/entity/party/party-single.ftl</viewPageTemplate>
 			<createPageTemplate>html/wordpress/entity/party/party-create-form.ftl</createPageTemplate>
 			<editPageTemplate>html/wordpress/entity/party/party-edit-form.ftl</editPageTemplate>
 			<viewFilterTemplate>views/wordpress/party/party-view-filter.ftl</viewFilterTemplate>
 			<viewPageTemplate>html/wordpress/entity/party/party-single.ftl</viewPageTemplate> 
-			<singleViewTemplate>views/wordpress/party/single-party-view.ftl</singleViewTemplate>
+			<singleViewTemplate>views/wordpress/party/single-party-view.ftl</singleViewTemplate> -->
 			<!-- <apiTemplate>api/wordpress/party/party-service-api.ftl</apiTemplate> -->
 			<field>
 				<name>entity_code</name>
@@ -1108,8 +1234,8 @@
 			<postName>sb_partygroup</postName>
 			<description>Party Group</description>
 			<global>Y</global>
-			<editPageTemplate>html/wordpress/entity/partygroup/partygroup-edit-form.ftl</editPageTemplate>
-			<createViewTemplate>views/wordpress/partygroup/create-entity-view.ftl</createViewTemplate>
+			<!-- <editPageTemplate>html/wordpress/entity/partygroup/partygroup-edit-form.ftl</editPageTemplate>
+			<createViewTemplate>views/wordpress/partygroup/create-entity-view.ftl</createViewTemplate> -->
 			<!-- <apiTemplate>api/wordpress/partygroup/partygroup-service-api.ftl</apiTemplate> -->
 			<field>
 				<name>entity_code</name>
@@ -1198,9 +1324,9 @@
 			<postName>sb_person</postName>
 			<description>Person</description>
 			<global>Y</global>
-			<viewFilterTemplate>views/wordpress/person/person-view-filter.ftl</viewFilterTemplate>
+			<!-- <viewFilterTemplate>views/wordpress/person/person-view-filter.ftl</viewFilterTemplate>
 			<editPageTemplate>html/wordpress/entity/person/person-edit-form.ftl</editPageTemplate>
-			<createViewTemplate>views/wordpress/person/create-entity-view.ftl</createViewTemplate>
+			<createViewTemplate>views/wordpress/person/create-entity-view.ftl</createViewTemplate> -->
 			<ajaxRequestProcessorTemplate>controller/wordpress/person/ajax-request-processor.ftl</ajaxRequestProcessorTemplate>
 			<field>
 				<name>entity_code</name>
@@ -1958,7 +2084,7 @@
 			<postName>sb_contactreq</postName>
 			<description>Contact Request</description>
 			<global>Y</global>
-			<!-- <apiTemplate>api/wordpress/contactus/contactus-service-api.ftl</apiTemplate> -->
+			<apiTemplate>api/wordpress/contactus/contactus-service-api.ftl</apiTemplate>
 			<field>
 				<name>entity_code</name>
 				<isVisible>Y</isVisible>
@@ -2045,93 +2171,6 @@
 				<description>Code</description>
 				<displayName>Code</displayName>
 				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>name</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>name</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Name</description>
-				<displayName>Name</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>description</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>text-lg</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Description</description>
-				<displayName>Description</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-		</entity>
-		
-		<entity>
-			<name>PartyQualification</name>
-			<postName>sb_partyqual</postName>
-			<description>Party Qualification</description>
-			<global>Y</global>
-			<field>
-				<name>entity_code</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
-				<required>Y</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>alphanumeric</dataType>
-				<size>medium</size>
-				<dataColumn>true</dataColumn>
-				<description>Code</description>
-				<displayName>Code</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>qualification_party</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>sb_party</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Party</description>
-				<displayName>Party</displayName>
-				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
-				<name>qualification_type</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>sb_qualtype</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Qualification Type</description>
-				<displayName>Qualification Type</displayName>
-				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
 				<name>name</name>
@@ -2425,8 +2464,9 @@
 			<postName>sb_subjectarea</postName>
 			<description>Subject Area</description>
 			<global>Y</global>
-			<listPageTemplate>html/wordpress/entity/subjectarea/subjectarea-list.ftl</listPageTemplate>
-			<listViewTemplate>views/wordpress/subjectarea/list-subjectarea-view.ftl</listViewTemplate>
+			<!-- <listPageTemplate>html/wordpress/entity/subjectarea/subjectarea-list.ftl</listPageTemplate>
+			<listViewTemplate>views/wordpress/subjectarea/list-subjectarea-view.ftl</listViewTemplate> -->
+			<apiTemplate>api/wordpress/subjectarea/subjectarea-service-api.ftl</apiTemplate>
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
@@ -2478,10 +2518,114 @@
 		</entity>
 
 		<entity>
+			<name>SubjectAreaImage</name>
+			<postName>sb_subareaimage</postName>
+			<description>Subject Area Image</description>
+			<global>Y</global>
+			<field>
+				<name>entity_code</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>N</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>alphanumeric</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Code</description>
+				<displayName>Code</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>file_subject_area</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_subjectarea</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Subject Area</description>
+				<displayName>Subject Area</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>name</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>name</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Name</description>
+				<displayName>Name</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>file_url</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text-lg</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>File URL</description>
+				<displayName>File URL</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>file_size</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>File Size</description>
+				<displayName>File Size</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>description</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text-lg</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Description</description>
+				<displayName>Description</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+		</entity>
+
+		<entity>
 			<name>Subject</name>
 			<postName>sb_subject</postName>
 			<description>Subject</description>
 			<global>Y</global>
+			<apiTemplate>api/wordpress/subject/subject-service-api.ftl</apiTemplate>
 			<field>
 				<name>parent_area</name>
 				<isVisible>Y</isVisible>
@@ -2547,11 +2691,185 @@
 				<relationshipField>N</relationshipField>
 			</field>
 		</entity>
-		
+
 		<entity>
-			<name>PartySubjectArea</name>
-			<postName>sb_partysubarea</postName>
-			<description>Party Subject Area</description>
+			<name>WritingStyle</name>
+			<postName>sb_writingstyle</postName>
+			<description>Writing Style</description>
+			<global>Y</global>
+			<field>
+				<name>entity_code</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>N</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>alphanumeric</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Code</description>
+				<displayName>Code</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>name</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>name</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Name</description>
+				<displayName>Name</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>description</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text-lg</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Description</description>
+				<displayName>Description</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+		</entity>
+
+		<entity>
+			<name>PartyEducation</name>
+			<postName>sb_partyeducation</postName>
+			<description>Party Education</description>
+			<global>Y</global>
+			<field>
+				<name>entity_code</name>
+				<isVisible>N</isVisible>
+				<isFormField>N</isFormField>
+				<required>Y</required>
+				<createField>N</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>alphanumeric</dataType>
+				<size>medium</size>
+				<dataColumn>true</dataColumn>
+				<description>Code</description>
+				<displayName>Code</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>education_party</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>N</editField>
+				<viewField>N</viewField>
+				<listField>N</listField>
+				<dataType>sb_party</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Party</description>
+				<displayName>Party</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>qualification_type</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_qualtype</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Qualification Type</description>
+				<displayName>Qualification Type</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>qualification_sub</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_subject</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Subject</description>
+				<displayName>Subject</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>name</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>name</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Name</description>
+				<displayName>Name</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>qualification_date</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>date</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Qualification Date</description>
+				<displayName>Qualification Date</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+			<field>
+				<name>description</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>text-lg</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Description</description>
+				<displayName>Description</displayName>
+				<relationshipField>N</relationshipField>
+			</field>
+		</entity>
+
+		<entity>
+			<name>PartySubject</name>
+			<postName>sb_partysubject</postName>
+			<description>Party Subject</description>
 			<global>Y</global>
 			<field>
 				<name>entity_code</name>
@@ -2600,61 +2918,6 @@
 				<description>Subject</description>
 				<displayName>Subject</displayName>
 				<relationshipField>Y</relationshipField>
-			</field>
-			<field>
-				<name>name</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>name</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Name</description>
-				<displayName>Name</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-			<field>
-				<name>description</name>
-				<isVisible>Y</isVisible>
-				<isFormField>Y</isFormField>
-				<required>Y</required>
-				<createField>Y</createField>
-				<editField>Y</editField>
-				<viewField>Y</viewField>
-				<listField>Y</listField>
-				<dataType>text-lg</dataType>
-				<size>large</size>
-				<dataColumn>true</dataColumn>
-				<description>Description</description>
-				<displayName>Description</displayName>
-				<relationshipField>N</relationshipField>
-			</field>
-		</entity>
-
-		<entity>
-			<name>WritingStyle</name>
-			<postName>sb_writingstyle</postName>
-			<description>Writing Style</description>
-			<global>Y</global>
-			<field>
-				<name>entity_code</name>
-				<isVisible>N</isVisible>
-				<isFormField>N</isFormField>
-				<required>N</required>
-				<createField>N</createField>
-				<editField>N</editField>
-				<viewField>N</viewField>
-				<listField>N</listField>
-				<dataType>alphanumeric</dataType>
-				<size>medium</size>
-				<dataColumn>true</dataColumn>
-				<description>Code</description>
-				<displayName>Code</displayName>
-				<relationshipField>N</relationshipField>
 			</field>
 			<field>
 				<name>name</name>
@@ -3066,8 +3329,8 @@
 			<postName>sb_content</postName>
 			<description>Content</description>
 			<global>Y</global>
-			<listPageTemplate>html/wordpress/entity/content/content-list.ftl</listPageTemplate>
-			<listViewTemplate>views/wordpress/content/list-content-view.ftl</listViewTemplate>
+			<!-- <listPageTemplate>html/wordpress/entity/content/content-list.ftl</listPageTemplate>
+			<listViewTemplate>views/wordpress/content/list-content-view.ftl</listViewTemplate> -->
 			<field>
 				<name>entity_code</name>
 				<isVisible>N</isVisible>
@@ -3098,6 +3361,38 @@
 				<dataColumn>true</dataColumn>
 				<description>Type</description>
 				<displayName>Type</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>content_party</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_party</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Owner</description>
+				<displayName>Owner</displayName>
+				<relationshipField>Y</relationshipField>
+			</field>
+			<field>
+				<name>content_tutor</name>
+				<isVisible>Y</isVisible>
+				<isFormField>Y</isFormField>
+				<required>Y</required>
+				<createField>Y</createField>
+				<editField>Y</editField>
+				<viewField>Y</viewField>
+				<listField>Y</listField>
+				<dataType>sb_party</dataType>
+				<size>large</size>
+				<dataColumn>true</dataColumn>
+				<description>Tutor</description>
+				<displayName>Tutor</displayName>
 				<relationshipField>Y</relationshipField>
 			</field>
 			<field>
@@ -3510,10 +3805,10 @@
 			<postName>sb_contentorder</postName>
 			<description>Content Order</description>
 			<global>Y</global>
-			<viewPageTemplate>html/wordpress/entity/contentorder/contentorder-single.ftl</viewPageTemplate>
+			<!-- <viewPageTemplate>html/wordpress/entity/contentorder/contentorder-single.ftl</viewPageTemplate>
 			<editPageTemplate>html/wordpress/entity/contentorder/contentorder-edit-form.ftl</editPageTemplate>
 			<createPageTemplate>html/wordpress/entity/contentorder/contentorder-create-form.ftl</createPageTemplate>
-			<singleViewTemplate>views/wordpress/contentorder/single-contentorder-view.ftl</singleViewTemplate>
+			<singleViewTemplate>views/wordpress/contentorder/single-contentorder-view.ftl</singleViewTemplate> -->
 			<apiTemplate>api/wordpress/contentorder/contentorder-service-api.ftl</apiTemplate>
 			<ajaxRequestProcessorTemplate>controller/wordpress/contentorder/ajax-request-processor.ftl</ajaxRequestProcessorTemplate>
 			<field>
@@ -3633,7 +3928,7 @@
 				<isVisible>Y</isVisible>
 				<isFormField>Y</isFormField>
 				<required>N</required>
-				<createField>N</createField>
+				<createField>Y</createField>
 				<editField>N</editField>
 				<viewField>Y</viewField>
 				<listField>Y</listField>

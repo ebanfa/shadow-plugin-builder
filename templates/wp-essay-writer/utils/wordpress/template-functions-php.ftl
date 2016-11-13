@@ -112,12 +112,11 @@ function cp_locate_template($template_name, $template_path = '', $default_path =
         $default_path = ${application.name}::plugin_path() . '/templates/';
     }
     // Look within passed path within the theme - this is priority
-    $template = locate_template(
-        array(
-            trailingslashit($template_path) . $template_name,
-            $template_name
-        )
-    );
+    //LogUtils::shadow_log('Looking for ' . $template_name . ' in ' . $template_path);
+    //$template = locate_template(array(trailingslashit($template_path) . $template_name, $template_name));
+    //$template = locate_plugin_template(array(trailingslashit($template_path) . $template_name));
+    $template = locate_plugin_template(array($template_name));
+    LogUtils::shadow_log('Using ' . $template );
     // Get default template
     if (!$template) {
         $template = $default_path . $template_name;
@@ -125,4 +124,35 @@ function cp_locate_template($template_name, $template_path = '', $default_path =
     // Return what we found
     //return apply_filters('woocommerce_locate_template', $template, $template_name, $template_path);
     return $template;
+}
+
+function locate_plugin_template($template_names, $load = false, $require_once = true )
+{
+    if ( !is_array($template_names) )
+        return '';
+   
+    $located = '';
+   
+    $this_plugin_dir = ${application.name}::plugin_path() . '/templates/';
+    LogUtils::shadow_log('Finding ' . $this_plugin_dir . $template_names[0]);
+   
+    foreach ( $template_names as $template_name ) {
+        if ( !$template_name )
+            continue;
+        if ( file_exists(STYLESHEETPATH . '/' . $template_name)) {
+            $located = STYLESHEETPATH . '/' . $template_name;
+            break;
+        } else if ( file_exists(TEMPLATEPATH . '/' . $template_name) ) {
+            $located = TEMPLATEPATH . '/' . $template_name;
+            break;
+        } else if ( file_exists( $this_plugin_dir .  $template_name) ) {
+            $located =  $this_plugin_dir . $template_name;
+            break;
+        }
+    }
+   
+    if ( $load && '' != $located )
+        load_template( $located, $require_once );
+   
+    return $located;
 }

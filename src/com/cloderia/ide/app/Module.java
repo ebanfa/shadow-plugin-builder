@@ -19,6 +19,7 @@ public class Module {
 	List<Api> apis = new ArrayList<Api>();
 	List<Page> pages = new ArrayList<Page>();
 	List<Entity> entities = new ArrayList<Entity>();
+	List<UIComponent> uiComponents = new ArrayList<UIComponent>();
 
 	/**
 	 * 
@@ -87,4 +88,18 @@ public class Module {
 		this.entities = entities;
 	}
 
+	/**
+	 * @return the components
+	 */
+	public List<UIComponent> getUiComponents() {
+		return uiComponents;
+	}
+
+	/**
+	 * @param components the components to set
+	 */
+	@XmlElement(name="uiComponent")
+	public void setUiComponents(List<UIComponent> uiComponents) {
+		this.uiComponents = uiComponents;
+	}
 }

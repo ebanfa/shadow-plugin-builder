@@ -25,10 +25,66 @@ class TutorDisplayAjaxRequestProcessor {
         $display_action = sanitize_text_field($_POST['display_action']);
         if($display_action == 'rate_tutor') return self::rate_tutor($tutor_data);
         if($display_action == 'update_password') return self::update_password($tutor_data);
+        if($display_action == 'add_tutor_subject') return self::add_tutor_subject($tutor_data);
         if($display_action == 'deactivate_account') return self::deactivate_account($tutor_data);
         if($display_action == 'update_profile_image') return self::update_profile_image($tutor_data);
+        if($display_action == 'add_tutor_education') return self::add_tutor_education($tutor_data);
+        if($display_action == 'post_tutor_question') return self::post_tutor_question($tutor_data);
         // Illegal operation
     	return EntityAPIUtils::init_error($tutor_data, 'Invalid display action specified');
+    }
+
+    /**
+     * 
+     */
+    public static function add_tutor_subject($tutor_data) {
+        if(!isset($_POST['tutor_subject'])) return EntityAPIUtils::init_error($tutor_data, 'No subjects selected');
+
+        foreach($_POST['tutor_subject'] as $tutor_subject_id){
+            $tutor_subject_data = TutorAPI::add_subject($tutor_data, $tutor_subject_id);
+            if(!isset($tutor_subject_data['id'])) 
+                return EntityAPIUtils::init_error($tutor_data, 'An error occured while adding subject to tutor');
+        }
+        return $tutor_data;
+    }
+
+    /**
+     * 
+     */
+    public static function post_tutor_question($tutor_data) {
+        if(!isset($_POST['subject']) || !isset($_POST['description']) || !isset($_POST['title'])) 
+            return EntityAPIUtils::init_error($tutor_data, 'Subject and description required');
+
+        $party_data = UserPartyAPI::get_current_user_party();
+
+        $question_data = array();
+        $question_data['owner'] = $party_data['id'];
+        $question_data['tutor'] = $tutor_data['id'];
+        $question_data['title'] = sanitize_text_field($_POST['title']);
+        $question_data['subject'] = sanitize_text_field($_POST['subject']);
+        $question_data['description'] = sanitize_text_field($_POST['description']);
+
+        $question_data = QuestionAPI::post_question($question_data);
+        if(!isset($question_data['id'])) 
+            return EntityAPIUtils::init_error($tutor_data, 'An error occured while posting your question');
+        return $tutor_data;
+    }
+
+    /**
+     * 
+     */
+    public static function add_tutor_education($tutor_data) {
+        // 1. Validate the provided data
+        if(!isset($_POST['qualification_type']) || !isset($_POST['subject']) ||
+            !isset($_POST['institution']) || !isset($_POST['graduation'])) 
+            return EntityAPIUtils::init_error($tutor_data, 'Qualification type, subject, institution and graduation date are required');
+        // 2. Extract the data
+        $education_data = array();
+        $education_data['subject'] = sanitize_text_field($_POST['subject']);
+        $education_data['graduation'] = sanitize_text_field($_POST['graduation']);
+        $education_data['institution'] = sanitize_text_field($_POST['institution']);
+        $education_data['qualification_type'] = sanitize_text_field($_POST['qualification_type']);
+        return TutorAPI::add_education($tutor_data, $education_data);
     }
 
     /**

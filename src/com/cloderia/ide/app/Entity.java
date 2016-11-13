@@ -27,6 +27,7 @@ public class Entity {
 	private String singleViewTemplate;
 	private String createViewTemplate;
 	private String listViewTemplate;
+	private String listViewModelTemplate;
 	private String createPageTemplate;
 	private String editPageTemplate;
 	private String listPageTemplate;
@@ -119,6 +120,21 @@ public class Entity {
 	@XmlElement
 	public void setListViewTemplate(String listViewTemplate) {
 		this.listViewTemplate = listViewTemplate;
+	}
+
+	/**
+	 * @return the listViewModelTemplate
+	 */
+	public String getListViewModelTemplate() {
+		return listViewModelTemplate;
+	}
+
+	/**
+	 * @param listViewModelTemplate the listViewModelTemplate to set
+	 */
+	@XmlElement
+	public void setListViewModelTemplate(String listViewModelTemplate) {
+		this.listViewModelTemplate = listViewModelTemplate;
 	}
 
 	/**

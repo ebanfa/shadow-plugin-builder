@@ -61,5 +61,5 @@ CREATE TABLE ${entity.name?lower_case}  (
     </#if>
 </#list> 
 	PRIMARY KEY( id )
-);
+)ENGINE=INNODB;
 </#list>

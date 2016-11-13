@@ -9,11 +9,41 @@ if (!defined('ABSPATH')) {
 
 class MenuAPI {
 
+    public static $menu_groups = array(<#list menuBar.menuGroups as group>
+        '${group.name}' => array(
+            'type' => '${group.type}',
+            <#if group.type == "menu">'target' => '${group.target}',</#if>
+            'is_admin' => <#if group.admin == "Y">true<#else>false</#if>,
+            'display_name' => '${group.displayName}',
+            'css_class' => '${group.cssClass}',
+            'items' => array(<#list group.menus as menu>
+                '${menu.name}' => array(
+                    'target' => '${menu.target}',
+                    'css_class' => '${menu.cssClass}',
+                    'display_name' => '${menu.displayName}',
+                ),</#list>
+            ),
+        ),</#list>
+    );
+
+
+    public static function get_menu_groups(){
+        //$user_groups = array();
+        $current_user_party = UserPartyAPI::get_current_user_party();
+        foreach (self::$menu_groups as $key => $group) {
+            if($group['is_admin']  && !UserPartyAPI::is_portal_admin($current_user_party))
+                unset(self::$menu_groups[$key]);
+
+            if(!$group['is_admin']  && UserPartyAPI::is_portal_admin($current_user_party))
+                unset(self::$menu_groups[$key]);
+        }
+        return self::$menu_groups;
+    }
 
     /**
      *
      */
-    public static function do_get_menu_header_data(){
+    public static function get_header_data(){
         $menu_header_data = array(
             'menu_image' => '',
             'user_name' => get_option('cp_default_guest_user_name'),
@@ -30,38 +60,5 @@ class MenuAPI {
             $menu_header_data['menu_image'] = 'background: transparent url(' . $menu_image . ') no-repeat scroll left top / 100% auto;';
 
         return $menu_header_data;
-    }
-
-    /**
-     * 
-     */
-    public static function do_get_rising_tutors(){
-        return array();
-    }
-
-    /**
-     *
-     */
-    public static function do_get_recent_orders(){
-        return array_slice(EntityAPI::find_by_criteria('contentorder', array()), 0, 5);
-    }
-
-    /**
-     *
-     */
-    public static function do_get_top_rated_tutors(){
-        $all_tutors = TutorAPI::find_all();
-        usort($all_tutors, array('BasicStatsAPI', 'do_rating_sort'));
-        return array_slice($all_tutors, 0, 5);
-    }
-
-    /**
-     *
-     */
-    public static function do_rating_sort($tutor_a, $tutor_b){
-        if ($tutor_a['rating'] == $tutor_b['rating']) {
-            return 0;
-        }
-        return ($tutor_a['rating'] < $tutor_b['rating']) ? -1 : 1;
     }
 }

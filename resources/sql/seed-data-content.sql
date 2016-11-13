@@ -3,7 +3,7 @@ INSERT INTO currency (id, entity_code, symbol, name, description) VALUES (1, 'KS
 INSERT INTO currency (id, entity_code, symbol, name, description) VALUES (2, 'USD', '$', 'US Dollar', 'US Dollar');
 
 /* Insert statement for Business */
-INSERT INTO business (id, currency, entity_code, name, user_name, pin, tel_no, account_notify_email, orders_notify_email, description) VALUES (1, 1, 'PAE', 'Premium Academic Essays', 'admin@premiumacademicessays.com', '0000000', '254 00000000', 'accounts@premiumacademicessays.com', 'info@premiumacademicessays.com', 'Premium Academic Essays');
+INSERT INTO business (id, currency, entity_code, name, user_name, pin, tel_no, account_notify_email, orders_notify_email, description) VALUES (1, 1, 'PAE', 'Essay Chartered', 'admin@essaychartered.com', '0000000', '254 00000000', 'accounts@essaychartered.com', 'info@essaychartered.com', 'Essay Chartered');
 
 /* Insert statement for Party Category */
 INSERT INTO partycategory (id, entity_code, name, description) VALUES (1, 'ORGANIZATION', 'Organization', 'Organizational party');
@@ -21,7 +21,7 @@ INSERT INTO roletype (entity_code, name, description) VALUES ('TUTOR', 'Tutor', 
 INSERT INTO roletype (entity_code, name, description) VALUES ('EMPLOYEE', 'Employee', 'Employee');
 
 /* Insert statement for Party */
-INSERT INTO party (id, party_type, entity_code, name, user_name, description) VALUES (1, 2, 'ADMINISTRATOR', 'Administrator', 'admin@premiumacademicessays.com', 'Organizational party');
+INSERT INTO party (id, party_type, entity_code, name, user_name, description) VALUES (1, 2, 'ADMINISTRATOR', 'Administrator', 'admin@essaychartered.com', 'Organizational party');
 
 /* Insert statement for Party Role */
 INSERT INTO partyrole (party_role_party, party_role_type, entity_code, name, description) VALUES (1, 1, 'ADMINISTRATOR', 'Administrator', 'Administrator');
@@ -63,6 +63,7 @@ INSERT INTO academiclevel VALUES(4, '4', 'Ph. D.', 'Ph. D.');
 
 /* Insert statement for Content Classification Type */
 INSERT INTO classificationtype VALUES(1, 'ACADEMIC_LEVEL', 'Academic Level', 'Academic Level');
+INSERT INTO classificationtype VALUES(2, 'SUBJECT', 'Subject', 'Subject');
 
 /* Insert statement for Content Classification */
 INSERT INTO classification (id, class_type, entity_code, name, description) VALUES(1, 1, 'HIGH_SCHOOL', 'High School', 'High School');
@@ -415,6 +416,14 @@ INSERT INTO subject VALUES(113, 4, '113', 'Anthropology', 'Anthropology');
 INSERT INTO subject VALUES(114, 5, '114', 'Tourism', 'Tourism');
 INSERT INTO subject VALUES(115, 1, '115', 'Creative writing', 'Creative writing');
 INSERT INTO subject VALUES(116, 1, '116', 'Shakespeare Studies', 'Shakespeare Studies');
+
+INSERT INTO subject VALUES(117, 3, '117', 'Algebra', 'Algebra');
+INSERT INTO subject VALUES(118, 3, '118', 'Calculus', 'Calculus');
+INSERT INTO subject VALUES(119, 3, '119', 'Statistics', 'Statistics');
+INSERT INTO subject VALUES(120, 3, '120', 'Geometry', 'Geometry');
+INSERT INTO subject VALUES(121, 3, '121', 'Numerical analysis', 'Numerical analysis');
+INSERT INTO subject VALUES(122, 3, '122', 'Probability', 'Probability');
+
 
 /* Insert statement for Urgency */
 INSERT INTO urgency VALUES(1, '1', '6 hours', '6', 'H', '6 hours');

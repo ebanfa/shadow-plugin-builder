@@ -37,11 +37,13 @@ build_plugin_directory () {
     mkdir $TARGET/$PLUGIN_NAME/js
     mkdir $TARGET/$PLUGIN_NAME/js/vendors
     mkdir $TARGET/$PLUGIN_NAME/css
+    mkdir $TARGET/$PLUGIN_NAME/fonts
     mkdir $TARGET/$PLUGIN_NAME/sql
     mkdir $TARGET/$PLUGIN_NAME/data
     mkdir $TARGET/$PLUGIN_NAME/images
     mkdir $TARGET/$PLUGIN_NAME/includes
     mkdir $TARGET/$PLUGIN_NAME/includes/view
+    mkdir $TARGET/$PLUGIN_NAME/includes/uicomponent
     mkdir $TARGET/$PLUGIN_NAME/includes/controller
     mkdir $TARGET/$PLUGIN_NAME/includes/service
     mkdir $TARGET/$PLUGIN_NAME/includes/api
@@ -52,18 +54,22 @@ build_plugin_directory () {
     mkdir $TARGET/$PLUGIN_NAME/templates
     mkdir $TARGET/$PLUGIN_NAME/templates/page
     mkdir $TARGET/$PLUGIN_NAME/templates/entity
+    mkdir $TARGET/$PLUGIN_NAME/templates/uicomponent
     mkdir $TARGET/$PLUGIN_NAME/email_templates
 }
 
 copy_resources(){
     echo "Copying resources"
     cp -r js/* $TARGET/$PLUGIN_NAME/js
+    cp -r css/* $TARGET/$PLUGIN_NAME/css
+    cp -r fonts/* $TARGET/$PLUGIN_NAME/fonts
     cp -rf vendor/ $TARGET/$PLUGIN_NAME/
     cp images/* $TARGET/$PLUGIN_NAME/images
     cp includes/api/* $TARGET/$PLUGIN_NAME/includes/api
     cp includes/view/* $TARGET/$PLUGIN_NAME/includes/view
     cp includes/utils/* $TARGET/$PLUGIN_NAME/includes/utils
     cp includes/controller/* $TARGET/$PLUGIN_NAME/includes/controller
+    cp includes/uicomponent/* $TARGET/$PLUGIN_NAME/includes/uicomponent
     cp templates/$PLUGIN_NAME/emails/* $TARGET/$PLUGIN_NAME/email_templates
 }
 
