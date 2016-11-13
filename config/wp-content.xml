@@ -59,7 +59,7 @@
 				<active>N</active>
 				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
-				<target>/wordpress/page?artifact=contentorder&amp;page_action=list</target>
+				<target>/portal/contentorder/list</target>
 			</menu>
 			<menu>
 				<name>transactions</name>
@@ -68,7 +68,7 @@
 				<active>N</active>
 				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
-				<target>/wordpress/page?artifact=accounttransaction&amp;page_action=list</target>
+				<target>/portal/accounttransaction/list</target>
 			</menu>
 			<menu>
 				<name>disputes</name>
@@ -77,7 +77,7 @@
 				<active>N</active>
 				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
-				<target>/wordpress/page?artifact=dispute&amp;page_action=list</target>
+				<target>/portal/dispute/list</target>
 			</menu>
 		</menuGroup>
 
@@ -90,7 +90,7 @@
 			<active>N</active>
 			<cssClass>zmdi zmdi-collection-text</cssClass>
 			<targetType>page</targetType>
-			<target>/wordpress/page?artifact=subjectarea&amp;page_action=list</target>
+			<target>/portal/subjectarea/list</target>
 		</menuGroup>
 
 		<menuGroup>
@@ -107,7 +107,7 @@
 				<active>N</active>
 				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
-				<target>/wordpress/page?artifact=academiclevel&amp;page_action=list</target>
+				<target>/portal/academiclevel/list</target>
 			</menu>
 			<menu>
 				<name>documenttypes</name>
@@ -116,7 +116,7 @@
 				<active>N</active>
 				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
-				<target>/wordpress/page?artifact=documenttype&amp;page_action=list</target>
+				<target>/portal/documenttype/list</target>
 			</menu>
 			<menu>
 				<name>numberofpages</name>
@@ -125,7 +125,7 @@
 				<active>N</active>
 				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
-				<target>/wordpress/page?artifact=noofpages&amp;page_action=list</target>
+				<target>/portal/noofpages/list</target>
 			</menu>
 			<menu>
 				<name>subjectareas</name>
@@ -134,7 +134,7 @@
 				<active>N</active>
 				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
-				<target>/wordpress/page?artifact=subjectarea&amp;page_action=list</target>
+				<target>/portal/subjectarea/list</target>
 			</menu>
 			<menu>
 				<name>urgencies</name>
@@ -143,7 +143,7 @@
 				<active>N</active>
 				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
-				<target>/wordpress/page?artifact=urgency&amp;page_action=list</target>
+				<target>/portal/urgency/list</target>
 			</menu>
 			<menu>
 				<name>writingstyles</name>
@@ -152,7 +152,7 @@
 				<active>N</active>
 				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
-				<target>/wordpress/page?artifact=writingstyle&amp;page_action=list</target>
+				<target>/portal/writingstyle/list</target>
 			</menu>
 		</menuGroup>
 
@@ -170,7 +170,7 @@
 				<active>N</active>
 				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
-				<target>/wordpress/page?artifact=business&amp;page_action=list</target>
+				<target>/portal/business/list</target>
 			</menu>
 			<!-- <menu>
 				<name>socialmedia</name>
@@ -192,7 +192,7 @@
 			<active>N</active>
 			<cssClass>zmdi zmdi-accounts-alt</cssClass>
 			<targetType>page</targetType>
-			<target>/wordpress/page?artifact=accountsummary&amp;page_action=list</target>
+			<target>/portal/accountsummary/list</target>
 		</menuGroup>
 		<menuGroup>
 			<name>myorders</name>
@@ -203,7 +203,7 @@
 			<active>N</active>
 			<cssClass>zmdi zmdi-folder-outline</cssClass>
 			<targetType>page</targetType>
-			<target>/wordpress/page?artifact=contentorder&amp;page_action=list</target>
+			<target>/portal/contentorder/list</target>
 		</menuGroup>
 		<menuGroup>
 			<name>mytransactions</name>
@@ -214,7 +214,7 @@
 			<active>N</active>
 			<cssClass>zmdi zmdi-money-box</cssClass>
 			<targetType>page</targetType>
-			<target>/wordpress/page?artifact=accounttransaction&amp;page_action=list</target>
+			<target>/portal/accounttransaction/list</target>
 		</menuGroup>
 		<menuGroup>
 			<name>blog</name>
@@ -247,7 +247,7 @@
 			<active>N</active>
 			<cssClass>zmdi zmdi-graduation-cap</cssClass>
 			<targetType>page</targetType>
-			<target>/wordpress/page?artifact=tutorlist&amp;page_action=list</target>
+			<target>/portal/party/list/tutor</target>
 		</menuGroup>
 		<menuGroup>
 			<name>disputes</name>
@@ -258,7 +258,7 @@
 			<active>N</active>
 			<cssClass>zmdi zmdi-close-circle</cssClass>
 			<targetType>page</targetType>
-			<target>/wordpress/page?artifact=dispute&amp;page_action=list</target>
+			<target>/portal/dispute/list</target>
 		</menuGroup>
 		<menuGroup>
 			<name>profile</name>
@@ -269,7 +269,7 @@
 			<active>N</active>
 			<cssClass>zmdi zmdi-settings</cssClass>
 			<targetType>page</targetType>
-			<target>/wordpress/page?artifact=profile&amp;page_action=list</target>
+			<target>/portal/profile/list</target>
 		</menuGroup>
 	</menuBar>
 
