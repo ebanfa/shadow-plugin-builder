@@ -1,0 +1,6 @@
+{
+    "require": {
+        "hashids/hashids": "^1.0",
+        "tareq1988/wp-eloquent": "dev-master"
+    }
+}

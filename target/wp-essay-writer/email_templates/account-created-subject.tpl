@@ -1,0 +1,1 @@
+[+site_name+] account created for [+email+].
