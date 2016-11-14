@@ -1,1 +1,0 @@
-[+site_name+] New contact request from [+email+].
