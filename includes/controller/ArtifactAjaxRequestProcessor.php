@@ -100,6 +100,8 @@ class ArtifactAjaxRequestProcessor {
         if(!isset($_POST['artifact']) || !isset($_POST['parent_id']) || !isset($_POST['parent_field_name'])) return array();
 
         $parent_id = EntityRequestUtils::get_query_string_field('parent_id');
+        // Decode the parent id
+        $parent_id = EntityStringUtils::decode_id($parent_id);
         $artifact_name = EntityRequestUtils::get_query_string_field('artifact');
         $parent_field_name = EntityRequestUtils::get_query_string_field('parent_field_name');
 
