@@ -116,7 +116,6 @@ function cp_locate_template($template_name, $template_path = '', $default_path =
     //$template = locate_template(array(trailingslashit($template_path) . $template_name, $template_name));
     //$template = locate_plugin_template(array(trailingslashit($template_path) . $template_name));
     $template = locate_plugin_template(array($template_name));
-    LogUtils::shadow_log('Using ' . $template );
     // Get default template
     if (!$template) {
         $template = $default_path . $template_name;
@@ -134,7 +133,6 @@ function locate_plugin_template($template_names, $load = false, $require_once = 
     $located = '';
    
     $this_plugin_dir = ${application.name}::plugin_path() . '/templates/';
-    LogUtils::shadow_log('Finding ' . $this_plugin_dir . $template_names[0]);
    
     foreach ( $template_names as $template_name ) {
         if ( !$template_name )
