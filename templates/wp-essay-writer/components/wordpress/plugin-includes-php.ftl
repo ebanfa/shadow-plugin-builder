@@ -113,8 +113,20 @@
     <#if entity.createViewTemplate ??>
     include_once('includes/view/${entity.name?lower_case}/Create${entity.name}Page.php');
     </#if>
+    <#if entity.createViewModelTemplate ??>
+    include_once('includes/view/${entity.name?lower_case}/Create${entity.name}PageModel.php');
+    </#if>
+    <#if entity.editViewTemplate ??>
+    include_once('includes/view/${entity.name?lower_case}/Edit${entity.name}Page.php');
+    </#if>
+    <#if entity.editViewModelTemplate ??>
+    include_once('includes/view/${entity.name?lower_case}/Edit${entity.name}PageModel.php');
+    </#if>
     <#if entity.singleViewTemplate ??>
     include_once('includes/view/${entity.name?lower_case}/View${entity.name}Page.php');
+    </#if>
+    <#if entity.singleViewModelTemplate ??>
+    include_once('includes/view/${entity.name?lower_case}/View${entity.name}PageModel.php');
     </#if>
     <#if entity.listViewTemplate ??>
     include_once('includes/view/${entity.name?lower_case}/List${entity.name}Page.php');

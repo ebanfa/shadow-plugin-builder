@@ -279,18 +279,21 @@
 
 		<uiComponent>
 			<name>portal-header</name>
+			<uiGroup>portal</uiGroup>
 			<className>PortalHeader</className>
 			<htmlTemplate>html/wordpress/uicomponent/portal-header-php.ftl</htmlTemplate>
 		</uiComponent>
 
 		<uiComponent>
 			<name>portal-footer</name>
+			<uiGroup>portal</uiGroup>
 			<className>PortalFooter</className>
 			<htmlTemplate>html/wordpress/uicomponent/portal-footer-php.ftl</htmlTemplate>
 		</uiComponent>
 
 		<uiComponent>
 			<name>portal-menu</name>
+			<uiGroup>portal</uiGroup>
 			<className>PortalMenu</className>
 			<htmlTemplate>html/wordpress/uicomponent/portal-menu-php.ftl</htmlTemplate>
 			<!-- <classTemplate>uicomponent/ui-component-php.ftl</classTemplate>
@@ -299,6 +302,7 @@
 
 		<uiComponent>
 			<name>portal-menu-header</name>
+			<uiGroup>portal</uiGroup>
 			<className>PortalMenuHeader</className>
 			<htmlTemplate>html/wordpress/uicomponent/portal-menu-header-php.ftl</htmlTemplate>
 			<classTemplate>uicomponent/ui-component-php.ftl</classTemplate>
@@ -307,6 +311,7 @@
 
 		<uiComponent>
 			<name>portal-menu-main</name>
+			<uiGroup>portal</uiGroup>
 			<className>PortalMenuMain</className>
 			<htmlTemplate>html/wordpress/uicomponent/portal-menu-main-php.ftl</htmlTemplate>
 			<classTemplate>uicomponent/ui-component-php.ftl</classTemplate>
@@ -315,12 +320,14 @@
 
 		<uiComponent>
 			<name>dashboard-panel</name>
+			<uiGroup>dashboard</uiGroup>
 			<className>DashboardPanel</className>
 			<htmlTemplate>html/wordpress/uicomponent/dashboard-panel-php.ftl</htmlTemplate>
 		</uiComponent>
 
 		<uiComponent>
 			<name>dashboard-metrics-table</name>
+			<uiGroup>dashboard</uiGroup>
 			<className>DashboardMetricsTable</className>
 			<htmlTemplate>html/wordpress/uicomponent/dashboard-metrics-table-php.ftl</htmlTemplate>
 			<classTemplate>uicomponent/ui-component-php.ftl</classTemplate>
@@ -329,6 +336,7 @@
 
 		<uiComponent>
 			<name>dashboard-metrics-chart</name>
+			<uiGroup>dashboard</uiGroup>
 			<className>DashboardMetricsChart</className>
 			<htmlTemplate>html/wordpress/uicomponent/dashboard-metrics-chart-php.ftl</htmlTemplate>
 			<classTemplate>uicomponent/ui-component-php.ftl</classTemplate>
@@ -337,150 +345,334 @@
 
 		<uiComponent>
 			<name>page-block-header</name>
+			<uiGroup>page</uiGroup>
 			<className>PageBlockHeader</className>
 			<htmlTemplate>html/wordpress/uicomponent/page-block-header-php.ftl</htmlTemplate>
 		</uiComponent>
 
 		<uiComponent>
 			<name>artifact-block-header</name>
+			<uiGroup>artifact</uiGroup>
 			<className>ArtifactBlockHeader</className>
 			<htmlTemplate>html/wordpress/uicomponent/artifact-block-header-php.ftl</htmlTemplate>
 		</uiComponent>
 
 		<uiComponent>
 			<name>entity-list-block</name>
+			<uiGroup>entity</uiGroup>
 			<className>EntityListBlock</className>
 			<htmlTemplate>html/wordpress/uicomponent/entity-list-block-php.ftl</htmlTemplate>
 		</uiComponent>
 
 		<uiComponent>
 			<name>entity-list-panel</name>
+			<uiGroup>entity</uiGroup>
 			<className>EntityListPanel</className>
 			<htmlTemplate>html/wordpress/uicomponent/entity-list-panel-php.ftl</htmlTemplate>
 		</uiComponent>
 
 		<uiComponent>
 			<name>entity-create-block</name>
+			<uiGroup>entity</uiGroup>
 			<className>EntityCreateBlock</className>
 			<htmlTemplate>html/wordpress/uicomponent/entity-create-block-php.ftl</htmlTemplate>
 		</uiComponent>
 
 		<uiComponent>
 			<name>entity-create-panel</name>
+			<uiGroup>entity</uiGroup>
 			<className>EntityCreatePanel</className>
 			<htmlTemplate>html/wordpress/uicomponent/entity-create-panel-php.ftl</htmlTemplate>
 		</uiComponent>
 
 		<uiComponent>
 			<name>entity-edit-block</name>
+			<uiGroup>entity</uiGroup>
 			<className>EntityEditBlock</className>
 			<htmlTemplate>html/wordpress/uicomponent/entity-edit-block-php.ftl</htmlTemplate>
 		</uiComponent>
 
 		<uiComponent>
 			<name>entity-edit-panel</name>
+			<uiGroup>entity</uiGroup>
 			<className>EntityEditPanel</className>
 			<htmlTemplate>html/wordpress/uicomponent/entity-edit-panel-php.ftl</htmlTemplate>
 		</uiComponent>
 
 		<uiComponent>
 			<name>entity-view-block</name>
+			<uiGroup>entity</uiGroup>
 			<className>EntityViewBlock</className>
 			<htmlTemplate>html/wordpress/uicomponent/entity-view-block-php.ftl</htmlTemplate>
 		</uiComponent>
 
 		<uiComponent>
 			<name>entity-view-panel</name>
+			<uiGroup>entity</uiGroup>
 			<className>EntityViewPanel</className>
 			<htmlTemplate>html/wordpress/uicomponent/entity-view-panel-php.ftl</htmlTemplate>
 		</uiComponent>
 
 		<uiComponent>
 			<name>entity-form-panel</name>
+			<uiGroup>entity</uiGroup>
 			<className>EntityFormPanel</className>
 			<htmlTemplate>html/wordpress/uicomponent/entity-form-panel-php.ftl</htmlTemplate>
 		</uiComponent>
 
 		<uiComponent>
 			<name>entity-form-fields-panel</name>
+			<uiGroup>entity</uiGroup>
 			<className>EntityFormFieldsPanel</className>
 			<classTemplate>uicomponent/ui-entity-fields-component-php.ftl</classTemplate>
 			<uiComponentModel>uicomponent/ui-entity-fields-model-php.ftl</uiComponentModel>
 			<htmlTemplate>html/wordpress/uicomponent/entity-form-fields-panel-php.ftl</htmlTemplate>
 		</uiComponent>
+
+		<uiComponent>
+			<name>related-fields-modals</name>
+			<uiGroup>entity</uiGroup>
+			<className>RelatedFieldsModals</className>
+			<htmlTemplate>html/wordpress/uicomponent/related-fields-modals-php.ftl</htmlTemplate>
+		</uiComponent>
+
+		<!-- Party components -->
+		<uiComponent>
+			<name>party-list-panel</name>
+			<uiGroup>party</uiGroup>
+			<className>PartyListPanel</className>
+			<htmlTemplate>html/wordpress/uicomponent/party/entity-list-panel-php.ftl</htmlTemplate>
+		</uiComponent>
+
+		<uiComponent>
+			<name>party-view-panel</name>
+			<uiGroup>party</uiGroup>
+			<className>PartyViewPanel</className>
+			<htmlTemplate>html/wordpress/uicomponent/party/entity-view-panel-php.ftl</htmlTemplate>
+		</uiComponent>
+
+		<uiComponent>
+			<name>profile-sidebar-panel</name>
+			<uiGroup>party</uiGroup>
+			<className>ProfileSidebarPanel</className>
+			<htmlTemplate>html/wordpress/uicomponent/party/profile-sidebar-panel-php.ftl</htmlTemplate>
+		</uiComponent>
+
+		<uiComponent>
+			<name>profile-main-panel</name>
+			<uiGroup>party</uiGroup>
+			<className>ProfileMainPanel</className>
+			<htmlTemplate>html/wordpress/uicomponent/party/profile-main-panel-php.ftl</htmlTemplate>
+		</uiComponent>
+
+		<uiComponent>
+			<name>profile-buttons-panel</name>
+			<uiGroup>party</uiGroup>
+			<className>ProfileBottonsPanel</className>
+			<htmlTemplate>html/wordpress/uicomponent/party/profile-buttons-panel-php.ftl</htmlTemplate>
+		</uiComponent>
+
+		<uiComponent>
+			<name>profile-education-panel</name>
+			<uiGroup>party</uiGroup>
+			<className>ProfileEducationPanel</className>
+			<htmlTemplate>html/wordpress/uicomponent/party/profile-education-panel-php.ftl</htmlTemplate>
+		</uiComponent>
+
+		<uiComponent>
+			<name>profile-subjects-panel</name>
+			<uiGroup>party</uiGroup>
+			<className>ProfileSubjectsPanel</className>
+			<htmlTemplate>html/wordpress/uicomponent/party/profile-subjects-panel-php.ftl</htmlTemplate>
+		</uiComponent>
+
+		<uiComponent>
+			<name>rate-party-modal</name>
+			<uiGroup>party</uiGroup>
+			<className>RatePartyPanel</className>
+			<htmlTemplate>html/wordpress/uicomponent/party/rate-party-modal-php.ftl</htmlTemplate>
+		</uiComponent>
+
+		<uiComponent>
+			<name>post-question-modal</name>
+			<uiGroup>party</uiGroup>
+			<className>PostQuestionModal</className>
+			<htmlTemplate>html/wordpress/uicomponent/party/post-question-modal-php.ftl</htmlTemplate>
+		</uiComponent>
+
+		<uiComponent>
+			<name>upload-image-modal</name>
+			<uiGroup>party</uiGroup>
+			<className>UploadImageModal</className>
+			<htmlTemplate>html/wordpress/uicomponent/party/upload-image-modal-php.ftl</htmlTemplate>
+		</uiComponent>
+
+		<uiComponent>
+			<name>update-password-modal</name>
+			<uiGroup>party</uiGroup>
+			<className>UpdatePasswordModal</className>
+			<htmlTemplate>html/wordpress/uicomponent/party/update-password-modal-php.ftl</htmlTemplate>
+		</uiComponent>
+
+		<uiComponent>
+			<name>party-education-modal</name>
+			<uiGroup>party</uiGroup>
+			<className>PartyEducationModal</className>
+			<htmlTemplate>html/wordpress/uicomponent/party/party-education-modal-php.ftl</htmlTemplate>
+		</uiComponent>
+
+		<uiComponent>
+			<name>party-subjects-modal</name>
+			<uiGroup>party</uiGroup>
+			<className>PartySubjectsModal</className>
+			<htmlTemplate>html/wordpress/uicomponent/party/party-subjects-modal-php.ftl</htmlTemplate>
+		</uiComponent>
+
+		<!-- Content Order -->
+		<uiComponent>
+			<name>contentorder-create-panel</name>
+			<uiGroup>contentorder</uiGroup>
+			<className>ContentOrderCreatePanel</className>
+			<htmlTemplate>html/wordpress/uicomponent/contentorder/contentorder-create-panel-php.ftl</htmlTemplate>
+		</uiComponent>
+
+		<uiComponent>
+			<name>contentorder-view-panel</name>
+			<uiGroup>contentorder</uiGroup>
+			<className>ContentOrderViewPanel</className>
+			<htmlTemplate>html/wordpress/uicomponent/contentorder/contentorder-view-panel-php.ftl</htmlTemplate>
+		</uiComponent>
+
+		<uiComponent>
+			<name>contentorder-edit-panel</name>
+			<uiGroup>contentorder</uiGroup>
+			<className>ContentOrderEditPanel</className>
+			<htmlTemplate>html/wordpress/uicomponent/contentorder/contentorder-edit-panel-php.ftl</htmlTemplate>
+		</uiComponent>
+
+		<uiComponent>
+			<name>contentorder-buttons-panel</name>
+			<uiGroup>contentorder</uiGroup>
+			<className>ContentOrderViewPanel</className>
+			<htmlTemplate>html/wordpress/uicomponent/contentorder/contentorder-buttons-panel-php.ftl</htmlTemplate>
+		</uiComponent>
+
+		<uiComponent>
+			<name>contentorder-question-panel</name>
+			<uiGroup>contentorder</uiGroup>
+			<className>ContentOrderViewPanel</className>
+			<htmlTemplate>html/wordpress/uicomponent/contentorder/contentorder-question-panel-php.ftl</htmlTemplate>
+		</uiComponent>
+
+		<uiComponent>
+			<name>contentorder-instructions-panel</name>
+			<uiGroup>contentorder</uiGroup>
+			<className>ContentOrderViewPanel</className>
+			<htmlTemplate>html/wordpress/uicomponent/contentorder/contentorder-instructions-panel-php.ftl</htmlTemplate>
+		</uiComponent>
+
+		<uiComponent>
+			<name>contentorder-files-panel</name>
+			<uiGroup>contentorder</uiGroup>
+			<className>ContentOrderViewPanel</className>
+			<htmlTemplate>html/wordpress/uicomponent/contentorder/contentorder-files-panel-php.ftl</htmlTemplate>
+		</uiComponent>
+
+		<uiComponent>
+			<name>contentorder-file-modal</name>
+			<uiGroup>contentorder</uiGroup>
+			<className>ContentOrderViewPanel</className>
+			<htmlTemplate>html/wordpress/uicomponent/contentorder/contentorder-file-modal-php.ftl</htmlTemplate>
+		</uiComponent>
+
 		<!-- Input fields -->
 		<uiComponent>
 			<name>ui-input-field-name</name>
+			<uiGroup>input</uiGroup>
 			<className>UIInputFieldName</className>
 			<htmlTemplate>html/wordpress/uicomponent/input-fields/ui-input-field-name.ftl</htmlTemplate>
 		</uiComponent>
 		<uiComponent>
 			<name>ui-input-field-email</name>
+			<uiGroup>input</uiGroup>
 			<className>UIInputFieldEmail</className>
 			<htmlTemplate>html/wordpress/uicomponent/input-fields/ui-input-field-email.ftl</htmlTemplate>
 		</uiComponent>
 		<uiComponent>
 			<name>ui-input-field-password</name>
+			<uiGroup>input</uiGroup>
 			<className>UIInputFieldPassword</className>
 			<htmlTemplate>html/wordpress/uicomponent/input-fields/ui-input-field-password.ftl</htmlTemplate>
 		</uiComponent>
 		<uiComponent>
 			<name>ui-input-field-text-lg</name>
+			<uiGroup>input</uiGroup>
 			<className>UIInputFieldTextLg</className>
 			<htmlTemplate>html/wordpress/uicomponent/input-fields/ui-input-field-text-lg.ftl</htmlTemplate>
 		</uiComponent>
 		<uiComponent>
 			<name>ui-input-field-text</name>
+			<uiGroup>input</uiGroup>
 			<className>UIInputFieldText</className>
 			<htmlTemplate>html/wordpress/uicomponent/input-fields/ui-input-field-text.ftl</htmlTemplate>
 		</uiComponent>
 		<uiComponent>
 			<name>ui-input-field-alphanumeric</name>
+			<uiGroup>input</uiGroup>
 			<className>UIInputFieldAlpha</className>
 			<htmlTemplate>html/wordpress/uicomponent/input-fields/ui-input-field-alphanumeric.ftl</htmlTemplate>
 		</uiComponent>
 		<uiComponent>
 			<name>ui-input-field-phone</name>
+			<uiGroup>input</uiGroup>
 			<className>UIInputFieldPhone</className>
 			<htmlTemplate>html/wordpress/uicomponent/input-fields/ui-input-field-phone.ftl</htmlTemplate>
 		</uiComponent>
 		<uiComponent>
 			<name>ui-input-field-number</name>
+			<uiGroup>input</uiGroup>
 			<className>UIInputFieldNumber</className>
 			<htmlTemplate>html/wordpress/uicomponent/input-fields/ui-input-field-number.ftl</htmlTemplate>
 		</uiComponent>
 		<uiComponent>
 			<name>ui-input-field-money</name>
+			<uiGroup>input</uiGroup>
 			<className>UIInputFieldMoney</className>
 			<htmlTemplate>html/wordpress/uicomponent/input-fields/ui-input-field-money.ftl</htmlTemplate>
 		</uiComponent>
 		<uiComponent>
 			<name>ui-input-field-flag</name>
+			<uiGroup>input</uiGroup>
 			<className>UIInputFieldFlag</className>
 			<htmlTemplate>html/wordpress/uicomponent/input-fields/ui-input-field-flag.ftl</htmlTemplate>
 		</uiComponent>
 		<uiComponent>
 			<name>ui-input-field-option</name>
+			<uiGroup>input</uiGroup>
 			<className>UIInputFieldOption</className>
 			<htmlTemplate>html/wordpress/uicomponent/input-fields/ui-input-field-option.ftl</htmlTemplate>
 		</uiComponent>
 		<uiComponent>
 			<name>ui-input-field-date</name>
+			<uiGroup>input</uiGroup>
 			<className>UIInputFieldDate</className>
 			<htmlTemplate>html/wordpress/uicomponent/input-fields/ui-input-field-date.ftl</htmlTemplate>
 		</uiComponent>
 		<uiComponent>
 			<name>ui-input-field-datetime</name>
+			<uiGroup>input</uiGroup>
 			<className>UIInputFieldDatetime</className>
 			<htmlTemplate>html/wordpress/uicomponent/input-fields/ui-input-field-datetime.ftl</htmlTemplate>
 		</uiComponent>
 		<uiComponent>
 			<name>ui-input-field-hidden</name>
+			<uiGroup>input</uiGroup>
 			<className>UIInputFieldHidden</className>
 			<htmlTemplate>html/wordpress/uicomponent/input-fields/ui-input-field-hidden.ftl</htmlTemplate>
 		</uiComponent>
 		<uiComponent>
 			<name>ui-input-field-relationship</name>
+			<uiGroup>input</uiGroup>
 			<className>UIInputFieldRelationship</className>
 			<htmlTemplate>html/wordpress/uicomponent/input-fields/ui-input-field-relationship.ftl</htmlTemplate>
 		</uiComponent>
@@ -526,6 +718,15 @@
 			<description>Dashboard</description>
 			<pageTemplate>html/wordpress/page/dashboard/dashboard-page-php.ftl</pageTemplate>
 			<viewTemplate>views/wordpress/dashboard/dashboard-view-php.ftl</viewTemplate>
+		</page>
+		<!-- Fake artifact -->
+		<page>
+			<name>TutorDisplay</name>
+			<displayName>Tutor Profile</displayName>
+			<description>Tutor Profile</description>
+			<!-- <pageTemplate>html/wordpress/page/tutor/tutordisplay-page-php.ftl</pageTemplate>
+			<viewTemplate>views/wordpress/tutor/tutordisplay-view-php.ftl</viewTemplate> -->
+			<ajaxRequestProcessorTemplate>controller/wordpress/tutor/tutordisplay-ajax-request-processor.ftl</ajaxRequestProcessorTemplate>
 		</page>
 		<!-- These are application wide API not directly tied to any artifact -->
 
@@ -1048,6 +1249,9 @@
 			<postName>sb_party</postName>
 			<description>Party</description>
 			<global>Y</global>
+			<singleViewTemplate>views/wordpress/party/view-entity-view.ftl</singleViewTemplate>
+			<singleViewModelTemplate>views/wordpress/party/view-entity-view-model.ftl</singleViewModelTemplate>
+			<viewPageTemplate>html/wordpress/entity/party/view-entity-page-php.ftl</viewPageTemplate> 
 			<listViewTemplate>views/wordpress/party/list-entity-view.ftl</listViewTemplate>
 			<listViewModelTemplate>views/wordpress/party/list-entity-view-model.ftl</listViewModelTemplate>
 			<listPageTemplate>html/wordpress/entity/party/list-entity-page-php.ftl</listPageTemplate>
@@ -3805,10 +4009,18 @@
 			<postName>sb_contentorder</postName>
 			<description>Content Order</description>
 			<global>Y</global>
-			<!-- <viewPageTemplate>html/wordpress/entity/contentorder/contentorder-single.ftl</viewPageTemplate>
-			<editPageTemplate>html/wordpress/entity/contentorder/contentorder-edit-form.ftl</editPageTemplate>
-			<createPageTemplate>html/wordpress/entity/contentorder/contentorder-create-form.ftl</createPageTemplate>
-			<singleViewTemplate>views/wordpress/contentorder/single-contentorder-view.ftl</singleViewTemplate> -->
+			<createPageTemplate>html/wordpress/entity/contentorder/create-entity-view.ftl</createPageTemplate>
+			<createViewTemplate>views/wordpress/contentorder/create-entity-view.ftl</createViewTemplate>
+			<createViewModelTemplate>views/wordpress/contentorder/create-entity-view-model.ftl</createViewModelTemplate>
+
+			<editPageTemplate>html/wordpress/entity/contentorder/edit-entity-view.ftl</editPageTemplate>
+			<editViewTemplate>views/wordpress/contentorder/edit-entity-view.ftl</editViewTemplate>
+			<editViewModelTemplate>views/wordpress/contentorder/edit-entity-view-model.ftl</editViewModelTemplate>
+
+			<viewPageTemplate>html/wordpress/entity/contentorder/view-entity-view.ftl</viewPageTemplate>
+			<singleViewTemplate>views/wordpress/contentorder/view-entity-view.ftl</singleViewTemplate>
+			<singleViewModelTemplate>views/wordpress/contentorder/view-entity-view-model.ftl</singleViewModelTemplate>
+
 			<apiTemplate>api/wordpress/contentorder/contentorder-service-api.ftl</apiTemplate>
 			<ajaxRequestProcessorTemplate>controller/wordpress/contentorder/ajax-request-processor.ftl</ajaxRequestProcessorTemplate>
 			<field>
@@ -4122,6 +4334,7 @@
 			<postName>sb_corderfile</postName>
 			<description>Content Order File</description>
 			<global>Y</global>
+			<ajaxRequestProcessorTemplate>controller/wordpress/contentorderfile/ajax-request-processor.ftl</ajaxRequestProcessorTemplate>
 			<apiTemplate>api/wordpress/contentorderfile/contentorderfile-service-api.ftl</apiTemplate>
 			<field>
 				<name>entity_code</name>
@@ -4478,8 +4691,8 @@
 				<dataType>text</dataType>
 				<size>large</size>
 				<dataColumn>true</dataColumn>
-				<description>Amount</description>
-				<displayName>Amount</displayName>
+				<description>Debit/Credit</description>
+				<displayName>Debit/Credit</displayName>
 				<relationshipField>N</relationshipField>
 			</field>
 			<field>

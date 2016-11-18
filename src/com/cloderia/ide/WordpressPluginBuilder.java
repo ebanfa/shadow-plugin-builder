@@ -419,9 +419,25 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 			if(entity.getCreateViewTemplate() != null){
 				this.generateArtifact(module, entity, entity.getCreateViewTemplate() , entityViewOutputDir + "Create" + entityName + "Page.php");
 			} 
+
+			if(entity.getCreateViewModelTemplate() != null){
+				this.generateArtifact(module, entity, entity.getCreateViewModelTemplate() , entityViewOutputDir + "Create" + entityName + "PageModel.php");
+			}  
+
+			if(entity.getEditViewTemplate() != null){
+				this.generateArtifact(module, entity, entity.getEditViewTemplate() , entityViewOutputDir + "Edit" + entityName + "Page.php");
+			} 
+
+			if(entity.getEditViewModelTemplate() != null){
+				this.generateArtifact(module, entity, entity.getEditViewModelTemplate() , entityViewOutputDir + "Edit" + entityName + "PageModel.php");
+			} 
 			
 			if(entity.getSingleViewTemplate() != null){
 				this.generateArtifact(module, entity, entity.getSingleViewTemplate() , entityViewOutputDir + "View" + entityName + "Page.php");
+			} 
+
+			if(entity.getSingleViewModelTemplate() != null){
+				this.generateArtifact(module, entity, entity.getSingleViewModelTemplate() , entityViewOutputDir + "View" + entityName + "PageModel.php");
 			} 
 
 			if(entity.getListViewTemplate() != null){
@@ -451,9 +467,9 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 			String listPageTemplate = entity.getListPageTemplate();
 			String entityPageOutputDir = entityOutputDir + entityName.toLowerCase() + "/";
 
-			String createPageName = entityPageOutputDir + entityName.toLowerCase() + "-create-form.php";
-			String editPageName = entityPageOutputDir + entityName.toLowerCase() + "-edit-form.php";
-			String viewPageName = entityPageOutputDir + "single-" +  entityName.toLowerCase() + ".php";
+			String createPageName = entityPageOutputDir + "create-" +  entityName.toLowerCase() + "-page.php";
+			String editPageName = entityPageOutputDir + "edit-" +  entityName.toLowerCase() + "-page.php";
+			String viewPageName = entityPageOutputDir + "single-" +  entityName.toLowerCase() + "-page.php";
 			String listPageName = entityPageOutputDir + entityName.toLowerCase() + "-archive.php";
 			String modalListPageName = entityPageOutputDir + entityName.toLowerCase() + "-modal-archive.php";
 
@@ -544,7 +560,11 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 			String htmlTemplate = uiComponent.getHtmlTemplate();
 			String classTemplate = uiComponent.getClassTemplate();
 			String uiComponentModel = uiComponent.getUiComponentModel();
-			this.generateUIComponentArtifact(module, uiComponent, htmlTemplate , pageOutputDir + name + ".php");
+			String htmlOutputDir = pageOutputDir + uiComponent.getUiGroup() + "/" ;
+
+			this.createDirectoryIfNeeded(htmlOutputDir);
+
+			this.generateUIComponentArtifact(module, uiComponent, htmlTemplate , htmlOutputDir + name + ".php");
 			if(classTemplate != null) 
 				this.generateUIComponentArtifact(module, uiComponent, classTemplate , includeViewOutputDir + className + ".php");
 			if(uiComponentModel != null) 

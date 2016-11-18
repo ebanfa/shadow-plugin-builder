@@ -83,8 +83,12 @@ class EntityRequestUtils {
         }
         // Process non date fields
         else {
-            if (isset($_POST[$field_data['name']])){
-                $entity_data[$field_data['name']] = sanitize_text_field($_POST[$field_data['name']]);
+            if (isset($_POST[$field_data['name']])) {
+                if($field_data['is_relationship_field']) {
+                    $entity_data[$field_data['name']] = EntityStringUtils::decode_id(sanitize_text_field($_POST[$field_data['name']]));
+                } else {
+                    $entity_data[$field_data['name']] = sanitize_text_field($_POST[$field_data['name']]);
+                }
             }
         }
         return $entity_data;

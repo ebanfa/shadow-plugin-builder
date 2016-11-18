@@ -7,7 +7,7 @@ if (!defined('ABSPATH')) {
 
 class ${uiComponent.className} extends UIComponent { 
 
-    public $template = '${uiComponent.name}.php';
+    public $template = '${uiComponent.uiGroup}/${uiComponent.name}.php';
 
     /**
      * Initialize the model for this component

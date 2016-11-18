@@ -32,27 +32,27 @@ class ${uiComponent.className}Model extends UIComponentModel {
 
         if(!$field['is_relationship_field']) { 
 
-            if($field['data_type'] == 'name') include(locate_plugin_template(array('uicomponent/ui-input-field-name.php')));
-            if($field['data_type'] == 'email') include(locate_plugin_template(array('uicomponent/ui-input-field-email.php')));
-            if($field['data_type'] == 'password') include(locate_plugin_template(array('uicomponent/ui-input-field-password.php')));
-            if($field['data_type'] == 'text-lg') include(locate_plugin_template(array('uicomponent/ui-input-field-text-lg.php')));
-            if($field['data_type'] == 'text') include(locate_plugin_template(array('uicomponent/ui-input-field-text.php')));
-            if($field['data_type'] == 'alphanumeric') include(locate_plugin_template(array('uicomponent/ui-input-field-alphanumeric.php')));
-            if($field['data_type'] == 'phone') include(locate_plugin_template(array('uicomponent/ui-input-field-phone.php')));
-            if($field['data_type'] == 'number') include(locate_plugin_template(array('uicomponent/ui-input-field-number.php')));
-            if($field['data_type'] == 'money') include(locate_plugin_template(array('uicomponent/ui-input-field-money.php')));
-            if($field['data_type'] == 'flag') include(locate_plugin_template(array('uicomponent/ui-input-field-flag.php')));
-            if($field['data_type'] == 'option') include(locate_plugin_template(array('uicomponent/ui-input-field-option.php')));
-            if($field['data_type'] == 'date') include(locate_plugin_template(array('uicomponent/ui-input-field-date.php')));
-            if($field['data_type'] == 'datetime') include(locate_plugin_template(array('uicomponent/ui-input-field-datetime.php')));
-            if($field['data_type'] == 'hidden') include(locate_plugin_template(array('uicomponent/ui-input-field-hidden.php')));
+            if($field['data_type'] == 'name') include(locate_plugin_template(array('uicomponent/input/ui-input-field-name.php')));
+            if($field['data_type'] == 'email') include(locate_plugin_template(array('uicomponent/input/ui-input-field-email.php')));
+            if($field['data_type'] == 'password') include(locate_plugin_template(array('uicomponent/input/ui-input-field-password.php')));
+            if($field['data_type'] == 'text-lg') include(locate_plugin_template(array('uicomponent/input/ui-input-field-text-lg.php')));
+            if($field['data_type'] == 'text') include(locate_plugin_template(array('uicomponent/input/ui-input-field-text.php')));
+            if($field['data_type'] == 'alphanumeric') include(locate_plugin_template(array('uicomponent/input/ui-input-field-alphanumeric.php')));
+            if($field['data_type'] == 'phone') include(locate_plugin_template(array('uicomponent/input/ui-input-field-phone.php')));
+            if($field['data_type'] == 'number') include(locate_plugin_template(array('uicomponent/input/ui-input-field-number.php')));
+            if($field['data_type'] == 'money') include(locate_plugin_template(array('uicomponent/input/ui-input-field-money.php')));
+            if($field['data_type'] == 'flag') include(locate_plugin_template(array('uicomponent/input/ui-input-field-flag.php')));
+            if($field['data_type'] == 'option') include(locate_plugin_template(array('uicomponent/input/ui-input-field-option.php')));
+            if($field['data_type'] == 'date') include(locate_plugin_template(array('uicomponent/input/ui-input-field-date.php')));
+            if($field['data_type'] == 'datetime') include(locate_plugin_template(array('uicomponent/input/ui-input-field-datetime.php')));
+            if($field['data_type'] == 'hidden') include(locate_plugin_template(array('uicomponent/input/ui-input-field-hidden.php')));
         }
         else {
             if(isset($_REQUEST['parent_artifact'])  && strtolower($field['entity_name']) === sanitize_text_field($_REQUEST['parent_artifact'])) {
                 $field['value'] = sanitize_text_field($_REQUEST['parent_id']);
-                include(locate_plugin_template(array('uicomponent/ui-input-field-hidden.php')));
+                include(locate_plugin_template(array('uicomponent/input/ui-input-field-hidden.php')));
             }
-            else include(locate_plugin_template(array('uicomponent/ui-input-field-relationship.php')));
+            else include(locate_plugin_template(array('uicomponent/input/ui-input-field-relationship.php')));
 
         }
     }

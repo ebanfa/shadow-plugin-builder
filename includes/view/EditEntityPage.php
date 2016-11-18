@@ -18,8 +18,16 @@ class EditEntityPage extends EntityPortalPage {
     /**
      * 
      */
-    public function get_artifact_url(){
+    public function get_view_artifact_url(){
     	$model = $this->get_model();
+        return parent::get_view_artifact_url() . $model['id'];
+    }
+
+    /**
+     * 
+     */
+    public function get_artifact_url(){
+        $model = $this->get_model();
         return $this->get_edit_artifact_url() . $model['id'];
     }
 }

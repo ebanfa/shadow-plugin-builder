@@ -14,13 +14,13 @@ class AdminAPI {
      * Action function to setup Ajax
      */
     public static function do_ajax_setup() {
-        wp_enqueue_script('${application.name?lower_case}_ajax', plugins_url('/js/init.js', __FILE__) . '/js/blitzdocument-ajax.js', array('jquery'), true);
+        /*wp_enqueue_script('${application.name?lower_case}_ajax', plugins_url('/js/init.js', __FILE__) . '/js/blitzdocument-ajax.js', array('jquery'), true);
         wp_localize_script('${application.name?lower_case}_ajax', '${application.name?lower_case}_ajax_script', 
             array(
                 'ajaxurl' => admin_url('admin-ajax.php'),
                 'factor'=> get_option('cp_price_factor'),
             )
-        );
+        );*/
     }
 
     /**

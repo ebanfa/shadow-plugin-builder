@@ -112,7 +112,6 @@ function cp_locate_template($template_name, $template_path = '', $default_path =
         $default_path = ${application.name}::plugin_path() . '/templates/';
     }
     // Look within passed path within the theme - this is priority
-    //LogUtils::shadow_log('Looking for ' . $template_name . ' in ' . $template_path);
     //$template = locate_template(array(trailingslashit($template_path) . $template_name, $template_name));
     //$template = locate_plugin_template(array(trailingslashit($template_path) . $template_name));
     $template = locate_plugin_template(array($template_name));

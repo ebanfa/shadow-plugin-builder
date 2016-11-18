@@ -10,7 +10,7 @@ class UIComponentRegistry {
     public static $data = array(
 <#list module.uiComponents as uiComponent>
     	'${uiComponent.name}' => array(
-    		'template' => '${uiComponent.name}.php',
+    		'template' => '${uiComponent.uiGroup}/${uiComponent.name}.php',
     		'className' => '${uiComponent.className}',
     	),
 </#list>

@@ -52,7 +52,7 @@
 
 	</form>
     <!-- Put this out side the form to prevent illegal nested forms -->
-    <?php do_action('shadowbanker_render_related_entity_field_modals'); ?>
+	<?php do_action('shadowbanker_do_render_component', 'related-fields-modals'); ?>
 
 </div>
 
@@ -60,7 +60,7 @@
 
     jQuery(document).ready(function($)
     {
-        $('body').on('click', '.data-table-link', function(e){
+        $('body').on('click', '.related-data-table-link', function(e){
             e.preventDefault();
 
             var currentRelatedFieldName = $('#current-related-field').val();

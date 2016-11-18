@@ -88,7 +88,7 @@
                         if($('#additional_seach_options').length) { additional_seach_options = $('#additional_seach_options').val(); }
 
                         
-                        return '<a class="data-table-link" href="' + '<?php echo ArtficatAjaxRequestProcessorUtils::get_base_url(); ?>' + 'artifact=<?php echo strtolower($field['entity_name']); ?>&id=' + row.id + '&page_action=view' +  additional_seach_options +'" data-related-artifact-name="<?php echo strtolower($field['entity_name']); ?>" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
+                        return '<a class="related-data-table-link" href="' + '<?php echo ArtficatAjaxRequestProcessorUtils::get_base_url(); ?>' + 'artifact=<?php echo strtolower($field['entity_name']); ?>&id=' + row.id + '&page_action=view' +  additional_seach_options +'" data-related-artifact-name="<?php echo strtolower($field['entity_name']); ?>" data-related-instance-name="' + row.name + '" data-related-instance-id="' + row.id + '">' + data +  '</a>';
                     },
                     "targets": 1
                 }

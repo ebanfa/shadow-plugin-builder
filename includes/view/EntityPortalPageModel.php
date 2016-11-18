@@ -67,5 +67,12 @@ class EntityPortalPageModel extends PortalPageModel {
         return $this->filter_artifact_fields($artifact_fields); 
     }
 
+    /**
+     * 
+     */
+    public function get_related_form_field_model($artifact_name) {
+        return EntityAPI::get_model($artifact_name);
+    }
+
 }
 ?>

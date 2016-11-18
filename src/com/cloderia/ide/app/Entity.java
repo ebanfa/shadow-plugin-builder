@@ -25,7 +25,11 @@ public class Entity {
 	private String description;
 	private String viewFilterTemplate;
 	private String singleViewTemplate;
+	private String singleViewModelTemplate;
 	private String createViewTemplate;
+	private String createViewModelTemplate;
+	private String editViewTemplate;
+	private String editViewModelTemplate;
 	private String listViewTemplate;
 	private String listViewModelTemplate;
 	private String createPageTemplate;
@@ -78,6 +82,21 @@ public class Entity {
 	}
 
 	/**
+	 * @return the singleViewModelTemplate
+	 */
+	public String getSingleViewModelTemplate() {
+		return singleViewModelTemplate;
+	}
+
+	/**
+	 * @param singleViewModelTemplate the singleViewModelTemplate to set
+	 */
+	@XmlElement
+	public void setSingleViewModelTemplate(String singleViewModelTemplate) {
+		this.singleViewModelTemplate = singleViewModelTemplate;
+	}
+
+	/**
 	 * @return the viewFilterTemplate
 	 */
 	public String getViewFilterTemplate() {
@@ -106,6 +125,52 @@ public class Entity {
 	public void setCreateViewTemplate(String createViewTemplate) {
 		this.createViewTemplate = createViewTemplate;
 	}
+
+	/**
+	 * @return the createViewTemplate
+	 */
+	public String getCreateViewModelTemplate() {
+		return createViewModelTemplate;
+	}
+
+	/**
+	 * @param createViewModelTemplate the createViewModelTemplate to set
+	 */
+	@XmlElement
+	public void setCreateViewModelTemplate(String createViewModelTemplate) {
+		this.createViewModelTemplate = createViewModelTemplate;
+	}
+
+	/**
+	 * @return the editViewTemplate
+	 */
+	public String getEditViewTemplate() {
+		return editViewTemplate;
+	}
+
+	/**
+	 * @param editViewTemplate the editViewTemplate to set
+	 */
+	@XmlElement
+	public void setEditViewTemplate(String editViewTemplate) {
+		this.editViewTemplate = editViewTemplate;
+	}
+
+	/**
+	 * @return the editViewModelTemplate
+	 */
+	public String getEditViewModelTemplate() {
+		return editViewModelTemplate;
+	}
+
+	/**
+	 * @param editViewModelTemplate the editViewModelTemplate to set
+	 */
+	@XmlElement
+	public void setEditViewModelTemplate(String editViewModelTemplate) {
+		this.editViewModelTemplate = editViewModelTemplate;
+	}
+
 
 	/**
 	 * @return the listViewTemplate

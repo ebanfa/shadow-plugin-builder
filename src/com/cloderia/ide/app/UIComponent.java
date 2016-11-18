@@ -15,6 +15,7 @@ import javax.xml.bind.annotation.XmlElement;
 public class UIComponent {
 
 	private String name;
+	private String uiGroup;
 	private String className;
 	private String htmlTemplate;
 	private String classTemplate;
@@ -40,6 +41,21 @@ public class UIComponent {
 	@XmlElement
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	/**
+	 * @return the uiGroup
+	 */
+	public String getUiGroup() {
+		return uiGroup;
+	}
+
+	/**
+	 * @param uiGroup the uiGroup to set
+	 */
+	@XmlElement
+	public void setUiGroup(String uiGroup) {
+		this.uiGroup = uiGroup;
 	}
 
 	/**

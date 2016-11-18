@@ -61,7 +61,7 @@ class ArtifactRequestProcessor {
         else {
             $page_instance = new FrontendPage();
         }
-        self::process_session_data($page_instance);
+        //self::process_session_data($page_instance);
         self::init_page_info($page_instance, $page_action);
         $page_instance->render();
     }
@@ -101,6 +101,7 @@ class ArtifactRequestProcessor {
         else {
             $page_class_nm = $artifact_class_nm . 'Page';
         }
+        LogUtils::shadow_log('>>>>>>>>>>>>' . $page_class_nm);
         $page_instance = new $page_class_nm($artifact, $page_action);
         return $page_instance;
     }
@@ -149,7 +150,6 @@ class ArtifactRequestProcessor {
         array_push($tab_data['pages'], $page_data);
         // Update tabs data with the modified tab
         self::add_tab($tab_data);
-        LogUtils::shadow_log($wp_session);
     }
 
     /**

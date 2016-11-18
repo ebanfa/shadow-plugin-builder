@@ -12,6 +12,15 @@ class TutorAPI {
     /**
      *
      */
+    public static function get_by_id($tutor_id) {
+        $tutor_data = EntityAPI::get_by_id('party', $tutor_id);
+        $tutor_data = self::load_profile_data($tutor_data);
+        return $tutor_data;
+    }
+
+    /**
+     *
+     */
     public static function find_all() {
         // Find all parties with the role tutor
         $rated_tutors = array();
@@ -28,38 +37,8 @@ class TutorAPI {
     /**
      *
      */
-    public static function get_by_id($tutor_id) {
-        $tutor_data = EntityAPI::get_by_id('party', $tutor_id);
-        if(isset($tutor_data['id'])) 
-            $tutor_data = self::get_tutor_rating($tutor_data);
-
-        $tutor_data = self::load_profile_data($tutor_data);
-        return $tutor_data;
-    }
-
-    /**
-     *
-     */
     public static function find_by_count($count) {
         return array_slice(self::find_all(), 0, $count);
-    }
-
-    /**
-     *
-     */
-    public static function do_rating($tutor_data, $reviewing_party_data, $rating, $description) {
-
-        $rating_data = EntityAPIUtils::init_entity_data('partyreview');
-        $rating_data['rating'] = $rating;
-        $rating_data['edit_mode'] = true;
-        $rating_data['review_date'] = date("Y-m-d H:i:s");
-        $rating_data['description'] = $description;
-        $rating_data['reviewed_party'] = $tutor_data['id'];
-        $rating_data['reviewed_by'] = $reviewing_party_data['id'];
-        $rating_data['name'] = 'Rating by ' . $reviewing_party_data['name'];
-
-        $rating_data = EntityAPI::do_create_entity($rating_data);
-        return $rating_data;
     }
 
     /**
@@ -89,6 +68,7 @@ class TutorAPI {
         $education = EntityAPI::find_by_criteria('partyeducation', array('education_party' => $tutor_data['id']));
         $tutor_data['education'] = $education;
 
+        $tutor_data = self::get_tutor_rating($tutor_data);
         return $tutor_data;
     }
 

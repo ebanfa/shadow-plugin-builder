@@ -26,7 +26,7 @@ class ContentOrderAjaxRequestProcessor {
     	$entity_data = ContentOrderAPI::do_create_contentorder($entity_data, $party_data);
         if($entity_data['has_errors']) return $entity_data;
         // Process any files uploaded
-        $entity_data = FileAPI::do_files_upload($entity_data, 'order_attachment');
+        $entity_data = FileAPI::do_files_upload($entity_data, 'contentorder_files');
         // Send out the order notification emails
         MailAPI::do_send_order_created_email($entity_data, array());
         return $entity_data;
@@ -39,7 +39,7 @@ class ContentOrderAjaxRequestProcessor {
         $entity_data = ContentOrderAPI::do_edit_contentorder($entity_data);
         if($entity_data['has_errors']) return $entity_data;
         // Process any files uploaded
-        $entity_data = FileAPI::do_files_upload($entity_data, 'order_attachment');
+        $entity_data = FileAPI::do_files_upload($entity_data, 'contentorder_files');
         // Send out the order notification emails
         MailAPI::do_send_order_edited_email($entity_data, array());
         return $entity_data;

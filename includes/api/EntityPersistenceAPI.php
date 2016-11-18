@@ -124,28 +124,6 @@ class EntityPersistenceAPI {
         // visible
         foreach ($entities as $key => $entity) {
             $result_data = EntityAPIUtils::entity_to_data($entity_data, $entity, false);
-            //LogUtils::shadow_log('Processing persistence category ' . $result_data['name'] . '::' . $result_data['id']);
-            /*if(!$entity_data['is_global_entity'] && !current_user_can('administrator')) {
-                $current_business_unit = BusinessUnitAPI::get_current_user_business_unit();
-
-                if(isset($current_business_unit['id'])) {
-                    // If the entity has a business_unit field
-                    if(isset($result_data['business_unit'])) {
-                        if($result_data['business_unit'] == $current_business_unit['id']) {
-                            array_push($search_results, $result_data);
-                        }
-                    }
-                    // Business unit is not global but has no business_unit field
-                    elseif ($result_data['entity_name'] == 'BusinessUnit') {
-                         if($result_data['business'] == $current_business_unit['business']) {
-                            array_push($search_results, $result_data);
-                        }
-                    }
-                }
-            }
-            else {
-                array_push($search_results, $result_data);
-            }*/
             array_push($search_results, $result_data);
         }
         return $search_results;
@@ -190,8 +168,7 @@ class EntityPersistenceAPI {
                         $query->where(strtolower($entity_data['entity_name']) . '.' . $field_data['name'], '=', intval($criteria_data[$field_data['name']]));
                     }
                     else {
-                        $query->join(
-                            strtolower($field_data['entity_name']), strtolower($field_data['entity_name']) . '.id', '=', $entity_data['entity_artifact_name'] . '.' . $field_data['name'])->where(strtolower($field_data['entity_name']) . '.name', 'LIKE', '%' . $criteria_data[$field_data['name']]. '%');
+                        $query->join(strtolower($field_data['entity_name']) . ' as ' . $field_data['name'] . '_alias', $field_data['name'] . '_alias' . '.id', '=', $entity_data['entity_artifact_name'] . '.' . $field_data['name'])->where($field_data['name'] . '_alias' . '.name', 'LIKE', '%' . $criteria_data[$field_data['name']]. '%');
                     }
                 }
             }
