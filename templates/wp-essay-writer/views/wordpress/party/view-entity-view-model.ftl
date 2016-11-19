@@ -30,7 +30,7 @@ class View${entity.name}PageModel extends ViewEntityPageModel {
     /**
      * 
      */
-    public function can_rate_tutor() {
+    public function can_rate_party() {
         $party_data = UserPartyAPI::get_current_user_party();
         if(!isset($party_data['id'])) return true;
         if(PartyRoleAPI::has_role($party_data['id'], 'student') || UserPartyAPI::is_portal_admin($party_data)) return true;

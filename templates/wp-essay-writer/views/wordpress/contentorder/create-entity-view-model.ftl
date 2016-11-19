@@ -7,6 +7,5 @@ if (!defined('ABSPATH')) {
 
 class Create${entity.name}PageModel extends  CreateEntityPageModel { 
 
-
 }
 ?>

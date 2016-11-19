@@ -90,15 +90,6 @@
         include_once('includes/controller/${entity.name}AjaxRequestProcessor.php');
         </#if>
 </#list>
-	// Pages
-<#list module.pages as page>
-    <#if page.viewTemplate ??>
-        include_once('includes/view/${page.name}Page.php');
-    </#if>
-    <#if page.viewFilterTemplate ??>
-    include_once('includes/view/${page.name}ViewFilter.php');
-    </#if>
-</#list>
 	// UI Components
 <#list module.uiComponents as uiComponent>
     <#if uiComponent.classTemplate ??>
@@ -133,6 +124,18 @@
     </#if>
     <#if entity.listViewModelTemplate ??>
     include_once('includes/view/${entity.name?lower_case}/List${entity.name}PageModel.php');
+    </#if>
+</#list>
+	// Pages
+<#list module.pages as page>
+    <#if page.viewTemplate ??>
+        include_once('includes/view/${page.name}Page.php');
+    </#if>
+    <#if page.viewModelTemplate ??>
+        include_once('includes/view/${page.name}PageModel.php');
+    </#if>
+    <#if page.viewFilterTemplate ??>
+    include_once('includes/view/${page.name}ViewFilter.php');
     </#if>
 </#list>
 

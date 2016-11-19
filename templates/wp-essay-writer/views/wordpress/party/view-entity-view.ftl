@@ -25,8 +25,8 @@ class View${entity.name}Page extends ViewEntityPage {
     /**
      * 
      */
-    public function can_rate_tutor() {
-        return $this->ui_model->can_rate_tutor();
+    public function can_rate_party() {
+        return $this->ui_model->can_rate_party();
     }
 
     /**

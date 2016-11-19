@@ -32,7 +32,7 @@
 				<active>N</active>
 				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
-				<target>/portal/party/list/student</target>
+				<target>/portal/studentlist/list</target>
 			</menu>
 			<menu>
 				<name>tutors</name>
@@ -41,7 +41,7 @@
 				<active>N</active>
 				<cssClass>md-person</cssClass>
 				<targetType>entity</targetType>
-				<target>/portal/party/list/tutor</target>
+				<target>/portal/tutorlist/list</target>
 			</menu>
 		</menuGroup>
 
@@ -473,34 +473,6 @@
 		</uiComponent>
 
 		<uiComponent>
-			<name>profile-education-panel</name>
-			<uiGroup>party</uiGroup>
-			<className>ProfileEducationPanel</className>
-			<htmlTemplate>html/wordpress/uicomponent/party/profile-education-panel-php.ftl</htmlTemplate>
-		</uiComponent>
-
-		<uiComponent>
-			<name>profile-subjects-panel</name>
-			<uiGroup>party</uiGroup>
-			<className>ProfileSubjectsPanel</className>
-			<htmlTemplate>html/wordpress/uicomponent/party/profile-subjects-panel-php.ftl</htmlTemplate>
-		</uiComponent>
-
-		<uiComponent>
-			<name>rate-party-modal</name>
-			<uiGroup>party</uiGroup>
-			<className>RatePartyPanel</className>
-			<htmlTemplate>html/wordpress/uicomponent/party/rate-party-modal-php.ftl</htmlTemplate>
-		</uiComponent>
-
-		<uiComponent>
-			<name>post-question-modal</name>
-			<uiGroup>party</uiGroup>
-			<className>PostQuestionModal</className>
-			<htmlTemplate>html/wordpress/uicomponent/party/post-question-modal-php.ftl</htmlTemplate>
-		</uiComponent>
-
-		<uiComponent>
 			<name>upload-image-modal</name>
 			<uiGroup>party</uiGroup>
 			<className>UploadImageModal</className>
@@ -515,17 +487,89 @@
 		</uiComponent>
 
 		<uiComponent>
-			<name>party-education-modal</name>
+			<name>rate-party-modal</name>
 			<uiGroup>party</uiGroup>
-			<className>PartyEducationModal</className>
-			<htmlTemplate>html/wordpress/uicomponent/party/party-education-modal-php.ftl</htmlTemplate>
+			<className>RatePartyPanel</className>
+			<htmlTemplate>html/wordpress/uicomponent/party/rate-party-modal-php.ftl</htmlTemplate>
+		</uiComponent>
+
+		<!-- Student components -->
+		<uiComponent>
+			<name>student-edit-panel</name>
+			<uiGroup>party</uiGroup>
+			<className>StudentEditPanel</className>
+			<htmlTemplate>html/wordpress/uicomponent/student/student-edit-panel-php.ftl</htmlTemplate>
+		</uiComponent>
+
+		<!-- Tutor components -->
+		<uiComponent>
+			<name>tutor-sidebar-panel</name>
+			<uiGroup>party</uiGroup>
+			<className>TutorSidebarPanel</className>
+			<htmlTemplate>html/wordpress/uicomponent/tutor/tutor-sidebar-panel-php.ftl</htmlTemplate>
 		</uiComponent>
 
 		<uiComponent>
-			<name>party-subjects-modal</name>
+			<name>tutor-main-panel</name>
 			<uiGroup>party</uiGroup>
-			<className>PartySubjectsModal</className>
-			<htmlTemplate>html/wordpress/uicomponent/party/party-subjects-modal-php.ftl</htmlTemplate>
+			<className>TutorMainPanel</className>
+			<htmlTemplate>html/wordpress/uicomponent/tutor/tutor-main-panel-php.ftl</htmlTemplate>
+		</uiComponent>
+
+		<uiComponent>
+			<name>tutor-view-panel</name>
+			<uiGroup>party</uiGroup>
+			<className>TutorViewPanel</className>
+			<htmlTemplate>html/wordpress/uicomponent/tutor/entity-view-panel-php.ftl</htmlTemplate>
+		</uiComponent>
+
+		<uiComponent>
+			<name>tutor-edit-panel</name>
+			<uiGroup>party</uiGroup>
+			<className>TutorEditPanel</className>
+			<htmlTemplate>html/wordpress/uicomponent/tutor/tutor-edit-panel-php.ftl</htmlTemplate>
+		</uiComponent>
+
+		<uiComponent>
+			<name>tutor-buttons-panel</name>
+			<uiGroup>party</uiGroup>
+			<className>TutorBottonsPanel</className>
+			<htmlTemplate>html/wordpress/uicomponent/tutor/tutor-buttons-panel-php.ftl</htmlTemplate>
+		</uiComponent>
+
+		<uiComponent>
+			<name>tutor-education-panel</name>
+			<uiGroup>party</uiGroup>
+			<className>TutorEducationPanel</className>
+			<htmlTemplate>html/wordpress/uicomponent/tutor/tutor-education-panel-php.ftl</htmlTemplate>
+		</uiComponent>
+
+		<uiComponent>
+			<name>tutor-subjects-panel</name>
+			<uiGroup>party</uiGroup>
+			<className>TutorSubjectsPanel</className>
+			<htmlTemplate>html/wordpress/uicomponent/tutor/tutor-subjects-panel-php.ftl</htmlTemplate>
+		</uiComponent>
+
+		<uiComponent>
+			<name>post-question-modal</name>
+			<uiGroup>party</uiGroup>
+			<className>PostQuestionModal</className>
+			<htmlTemplate>html/wordpress/uicomponent/tutor/post-question-modal-php.ftl</htmlTemplate>
+		</uiComponent>
+
+		<uiComponent>
+			<name>tutor-education-modal</name>
+			<uiGroup>party</uiGroup>
+			<className>TutorEducationModal</className>
+			<htmlTemplate>html/wordpress/uicomponent/tutor/tutor-education-modal-php.ftl</htmlTemplate>
+		</uiComponent>
+
+		<uiComponent>
+			<name>tutor-subjects-modal</name>
+			<uiGroup>party</uiGroup>
+			<className>TutorSubjectsModal</className>
+			<htmlTemplate>html/wordpress/uicomponent/tutor/tutor-subjects-modal-php.ftl</htmlTemplate>
 		</uiComponent>
 
 		<!-- Content Order -->
@@ -693,7 +737,6 @@
 			<viewTemplate>views/wordpress/signin/signin-view-php.ftl</viewTemplate>
 			<ajaxRequestProcessorTemplate>controller/wordpress/signup/signin-ajax-request-processor.ftl</ajaxRequestProcessorTemplate>
 		</page>
-
 		<page>
 			<name>Signup</name>
 			<displayName>Signup</displayName>
@@ -702,7 +745,6 @@
 			<viewTemplate>views/wordpress/signin/signup-view-php.ftl</viewTemplate>
 			<ajaxRequestProcessorTemplate>controller/wordpress/signup/signup-ajax-request-processor.ftl</ajaxRequestProcessorTemplate>
 		</page>
-
 		<page>
 			<name>Password</name>
 			<displayName>Signin</displayName>
@@ -711,7 +753,6 @@
 			<viewTemplate>views/wordpress/signin/password-view-php.ftl</viewTemplate>
 			<ajaxRequestProcessorTemplate>controller/wordpress/signup/password-ajax-request-processor.ftl</ajaxRequestProcessorTemplate>
 		</page>
-
 		<page>
 			<name>Dashboard</name>
 			<displayName>Dashboard</displayName>
@@ -719,14 +760,54 @@
 			<pageTemplate>html/wordpress/page/dashboard/dashboard-page-php.ftl</pageTemplate>
 			<viewTemplate>views/wordpress/dashboard/dashboard-view-php.ftl</viewTemplate>
 		</page>
-		<!-- Fake artifact -->
+		<page>
+			<name>StudentList</name>
+			<displayName>Student List</displayName>
+			<description>Student List</description>
+			<viewTemplate>views/wordpress/student/list-entity-view.ftl</viewTemplate>
+			<viewModelTemplate>views/wordpress/student/list-entity-view-model.ftl</viewModelTemplate>
+		</page>
+		<page>
+			<name>StudentDisplay</name>
+			<displayName>Student Display</displayName>
+			<description>Student Display</description>
+			<viewTemplate>views/wordpress/student/view-entity-view.ftl</viewTemplate>
+			<viewModelTemplate>views/wordpress/student/view-entity-view-model.ftl</viewModelTemplate>
+			<ajaxRequestProcessorTemplate>controller/wordpress/student/studentdisplay-ajax-request-processor.ftl</ajaxRequestProcessorTemplate>
+		</page>
+		<page>
+			<name>StudentEditor</name>
+			<displayName>Student Editor</displayName>
+			<description>Student Editor</description>
+			<pageTemplate>html/wordpress/page/student/edit-entity-page-php.ftl</pageTemplate>
+			<viewTemplate>views/wordpress/student/edit-entity-view.ftl</viewTemplate>
+			<viewModelTemplate>views/wordpress/student/edit-entity-view-model.ftl</viewModelTemplate>
+			<ajaxRequestProcessorTemplate>controller/wordpress/student/studenteditor-ajax-request-processor.ftl</ajaxRequestProcessorTemplate>
+		</page>
+		<page>
+			<name>TutorList</name>
+			<displayName>Tutor List</displayName>
+			<description>Tutor List</description>
+			<viewTemplate>views/wordpress/tutor/list-entity-view.ftl</viewTemplate>
+			<viewModelTemplate>views/wordpress/tutor/list-entity-view-model.ftl</viewModelTemplate>
+		</page>
 		<page>
 			<name>TutorDisplay</name>
-			<displayName>Tutor Profile</displayName>
-			<description>Tutor Profile</description>
-			<!-- <pageTemplate>html/wordpress/page/tutor/tutordisplay-page-php.ftl</pageTemplate>
-			<viewTemplate>views/wordpress/tutor/tutordisplay-view-php.ftl</viewTemplate> -->
+			<displayName>Tutor</displayName>
+			<description>Tutor</description>
+			<pageTemplate>html/wordpress/page/tutor/view-entity-page-php.ftl</pageTemplate>
+			<viewTemplate>views/wordpress/tutor/view-entity-view.ftl</viewTemplate>
+			<viewModelTemplate>views/wordpress/tutor/view-entity-view-model.ftl</viewModelTemplate>
 			<ajaxRequestProcessorTemplate>controller/wordpress/tutor/tutordisplay-ajax-request-processor.ftl</ajaxRequestProcessorTemplate>
+		</page>
+		<page>
+			<name>TutorEditor</name>
+			<displayName>Tutor</displayName>
+			<description>Tutor</description>
+			<pageTemplate>html/wordpress/page/tutor/edit-entity-page-php.ftl</pageTemplate>
+			<viewTemplate>views/wordpress/tutor/edit-entity-view.ftl</viewTemplate>
+			<viewModelTemplate>views/wordpress/tutor/edit-entity-view-model.ftl</viewModelTemplate>
+			<ajaxRequestProcessorTemplate>controller/wordpress/tutor/tutoreditor-ajax-request-processor.ftl</ajaxRequestProcessorTemplate>
 		</page>
 		<!-- These are application wide API not directly tied to any artifact -->
 

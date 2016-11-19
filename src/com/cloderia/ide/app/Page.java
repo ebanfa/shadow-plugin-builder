@@ -21,6 +21,7 @@ public class Page {
 	private String apiTemplate;
 	private String pageTemplate;
 	private String viewTemplate;
+	private String viewModelTemplate;
 	private String viewFilterTemplate;
 	private String ajaxRequestProcessorTemplate;
 
@@ -74,6 +75,21 @@ public class Page {
 	@XmlElement
 	public void setViewTemplate(String viewTemplate) {
 		this.viewTemplate = viewTemplate;
+	}
+
+	/**
+	 * @return the viewModelTemplate
+	 */
+	public String getViewModelTemplate() {
+		return viewModelTemplate;
+	}
+
+	/**
+	 * @param viewModelTemplate the viewTemplate to set
+	 */
+	@XmlElement
+	public void setViewModelTemplate(String viewModelTemplate) {
+		this.viewModelTemplate = viewModelTemplate;
 	}
 
 	/**

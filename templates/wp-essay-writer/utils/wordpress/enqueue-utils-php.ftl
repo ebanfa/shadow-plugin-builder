@@ -19,7 +19,8 @@ class EnqueueUtils {
      */
     public static function enqueue_resources() {
         $page_type = get_query_var(ArtifactRequestProcessor::$page_type_query_var_key);
-        if($page_type !== ArtifactRequestProcessor::$page_type_frontend) {
+        /*if($page_type !== ArtifactRequestProcessor::$page_type_frontend) {*/
+        if(is_page('content-page')) {
            EnqueueUtils::enqueue_portal_styles();
            EnqueueUtils::enqueue_portal_scripts();
         }

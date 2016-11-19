@@ -539,6 +539,7 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 			String apiTemplate = page.getApiTemplate();
 			String pageTemplate = page.getPageTemplate();
 			String viewTemplate = page.getViewTemplate();
+			String viewModelTemplate = page.getViewModelTemplate();
 			String viewFilterTemplate = page.getViewFilterTemplate();
 			String artifactName = page.getName().toLowerCase();
 			
@@ -546,6 +547,7 @@ public class WordpressPluginBuilder extends ApplicationBuilder {
 			if(apiTemplate != null) this.generatePageArtifact(module, page, apiTemplate , includeApiOutputDir + pageName + "API.php");
 			if(pageTemplate != null) this.generatePageArtifact(module, page, pageTemplate , pageOutputDir + artifactName + "-page.php");
 			if(viewTemplate != null) this.generatePageArtifact(module, page, viewTemplate , includeViewOutputDir + pageName + "Page.php");
+			if(viewModelTemplate != null) this.generatePageArtifact(module, page, viewModelTemplate , includeViewOutputDir + pageName + "PageModel.php");
 			if(viewFilterTemplate != null) this.generatePageArtifact(module, page, viewFilterTemplate , includeViewOutputDir + pageName + "ViewFilter.php");
 		}
 	}

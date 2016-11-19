@@ -4,10 +4,9 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
-class ListPartyPage extends EntityPortalPage { 
+class List${entity.name}Page extends ListEntityPage { 
 
-    public $template = 'entity/party/party-archive.php';
-    public $additional_search_options = '';
+    public $template = 'entity/${entity.name?lower_case}/${entity.name?lower_case}-archive.php';
     
     /**
      * Initialize the model for this component
@@ -17,10 +16,10 @@ class ListPartyPage extends EntityPortalPage {
     }
 
     /**
-     * Initialize the model for this component
+     * 
      */
     public function get_role(){
-        return get_query_var('role');
+        return $this->ui_model->get_role();
     }
 }
 ?>
