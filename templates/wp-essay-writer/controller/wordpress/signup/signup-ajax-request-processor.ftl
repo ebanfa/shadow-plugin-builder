@@ -29,7 +29,10 @@ class SignupAjaxRequestProcessor {
     	$user_party_data = ContentUserAPI::do_create_content_user($content_user_data, true);
     	if($user_party_data['has_errors']) return $user_party_data;
 
-    	return UserLoginAPI::do_signin_content_user($content_user_data['user_login'], $content_user_data['user_pass']);
+    	$content_user = UserLoginAPI::do_signin_content_user($content_user_data['user_login'], $content_user_data['user_pass']);
+        $content_user['redirect_url'] = ArtifactRequestProcessorUtils::get_list_artifact_url('dashboard');
+        if (isset($_POST['redirect_to'])) $content_user['redirect_url'] = $_POST['redirect_to'];
+        return $content_user;
     }
 
 }

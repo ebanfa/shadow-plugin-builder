@@ -35,6 +35,21 @@
             </div>
         </div>
     </div>
+    <?php if (!is_user_logged_in()) { ?>
+    <div class="row">
+        <div class="col-xs-12 col-md-12">
+            <div class="form-group">
+                <div class="fg-line">
+                    <input type="email" 
+                        class="form-control email" 
+                        id="email" name="email" 
+                        placeholder="Your email address" data-bv-message="The email is not valid" 
+                        data-bv-emailaddress-message="The input is not a valid email address" required>
+                </div>
+            </div>
+        </div>
+    </div>   
+    <?php } ?>                     
     <div class="row">
         <div class="col-xs-12 col-md-6">
             <div class="form-group">
@@ -190,7 +205,7 @@
 
     <div class="btn-demo m-t-10">
         <?php wp_nonce_field('post_nonce', 'post_nonce_field'); ?>
-        <input type="hidden" name="artifact" id="artifact" value="<?php echo $view->get_artifact(); ?>" />   
+        <input type="hidden" name="artifact" id="artifact" value="contentorder" />   
         <input type="hidden" name="submitted" id="submitted" value="true" />  
         <input type="hidden" name="edit_mode" value="create" /> 
 
@@ -203,7 +218,9 @@
         <input type="hidden" name="discount_h" value="" />  
         <input id="total" type="hidden" name="total" value="" />   
         <input id="is_portal" type="hidden" name="is_portal" value="true" />  
-        <input id="email" type="hidden" name="email" value="<?php echo $current_user_party['user_name'];?>" />                       
+        <?php if (is_user_logged_in()) { ?>
+        <input id="email" type="hidden" name="email" value="<?php echo $current_user_party['user_name'];?>" />   
+        <?php } ?>                     
         <input type="hidden" name="lblCustomerSavings" value="" /> 
         <input type="hidden" name="submitted" id="submitted" value="true" />  
         <input id="costperpage" type="hidden" name="costperpage" value="" />
@@ -216,7 +233,7 @@
         <input type="hidden" name="ee52948c809e658a2e2bfd66f90aef6b" value="ZWU1Mjk0OGM4MDllNjU4YTJlMmJmZDY2ZjkwYWVmNmI=" />
         <input type="hidden" name="MTIuOTUYGREXGHNMKJGT23467GGFDSSSbbbbbIOK" value="" />
         <input type="hidden" name="MMNBGFREWQASCXZSOPJHGVNMTIuOTU" class="MMNBGFREWQASCXZSOPJHGVNMTIuOTU" value="" />
-        <button id="<?php echo $view->get_artifact(); ?>-form-btn" type="submit" class="btn btn-primary waves-effect">
+        <button id="contentorder-form-btn" type="submit" class="btn btn-primary waves-effect">
             <?php _e('Submit', 'framework') ?>
         </button>
     </div>

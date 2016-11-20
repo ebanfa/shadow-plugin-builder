@@ -191,6 +191,8 @@
         include_once('includes/controller/StudentEditorAjaxRequestProcessor.php');
         include_once('includes/controller/TutorDisplayAjaxRequestProcessor.php');
         include_once('includes/controller/TutorEditorAjaxRequestProcessor.php');
+        include_once('includes/controller/ProfileDisplayAjaxRequestProcessor.php');
+        include_once('includes/controller/ProfileEditorAjaxRequestProcessor.php');
         include_once('includes/controller/PersonAjaxRequestProcessor.php');
         include_once('includes/controller/ContentOrderAjaxRequestProcessor.php');
         include_once('includes/controller/ContentOrderFileAjaxRequestProcessor.php');
@@ -221,6 +223,7 @@
         include_once('includes/view/SignupPage.php');
         include_once('includes/view/PasswordPage.php');
         include_once('includes/view/DashboardPage.php');
+        include_once('includes/view/HomeworkPage.php');
         include_once('includes/view/StudentListPage.php');
         include_once('includes/view/StudentListPageModel.php');
         include_once('includes/view/StudentDisplayPage.php');
@@ -233,6 +236,10 @@
         include_once('includes/view/TutorDisplayPageModel.php');
         include_once('includes/view/TutorEditorPage.php');
         include_once('includes/view/TutorEditorPageModel.php');
+        include_once('includes/view/ProfileDisplayPage.php');
+        include_once('includes/view/ProfileDisplayPageModel.php');
+        include_once('includes/view/ProfileEditorPage.php');
+        include_once('includes/view/ProfileEditorPageModel.php');
 
 
 ?>

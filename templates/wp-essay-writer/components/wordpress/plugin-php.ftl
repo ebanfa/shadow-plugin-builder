@@ -69,6 +69,8 @@ class ${application.name} {
      * backend related scripts
      */
     public function init_backend_hooks() {
+        AdminAPI::init_hooks();
+        MenuUtils::init_hooks();
         URLRewriteProcessor::init_hooks();
         ArtifactRequestProcessor::init_hooks();
         ArtifactAjaxRequestProcessor::init_hooks();

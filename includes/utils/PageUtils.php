@@ -72,11 +72,11 @@ class PageUtils {
         }
         if($page_action == 'view') {
             $action_links['list_entity_link'] = self::build_link($artifact, self::$link_type_list, self::$link_text_list);
-            //if(!UserPartyAPI::is_current_user_portal_admin() && !in_array($artifact, self::$global_entities)) return $action_links;
+            if(!UserPartyAPI::is_current_user_portal_admin() && !in_array($artifact, self::$global_entities)) return $action_links;
             $action_links['create_entity_link'] = self::build_link($artifact, self::$link_type_create, self::$link_text_create);
         }
         if($page_action == 'list') {
-            //if(!UserPartyAPI::is_current_user_portal_admin() && !in_array($artifact, self::$global_entities)) return $action_links;
+            if(!UserPartyAPI::is_current_user_portal_admin() && !in_array($artifact, self::$global_entities)) return $action_links;
             $action_links['create_entity_link'] = self::build_link($artifact, self::$link_type_create, self::$link_text_create);
         }
         return $action_links;

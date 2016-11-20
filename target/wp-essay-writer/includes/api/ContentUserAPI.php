@@ -15,6 +15,10 @@ class ContentUserAPI {
     public static function do_create_content_user($content_user_data, $send_email_flag) {
         if(!self::validate_user_data($content_user_data)) 
             return EntityAPIUtils::init_error($content_user_data, 'Invalid user sign up data');
+
+        $content_user_data = self::clean_names($content_user_data);
+        LogUtils::shadow_log('>>>>>>>>>>>>>> The updated names');
+        LogUtils::shadow_log($content_user_data);
         // Only insert if the user does not exist
         $user = get_user_by('login', $content_user_data['user_login'] );
         if(!$user) {
@@ -84,7 +88,30 @@ class ContentUserAPI {
         if(!isset($content_user_data['first_name']) || 
             !isset($content_user_data['last_name']) || !isset($content_user_data['user_login']) || 
             !isset($content_user_data['user_pass']) || !isset($content_user_data['role'])) return false;
+        // If the first name and last name are email addresses then we remove everything we remove the @ sign and everything after it
+        
         return true;
+    }
+
+    /**
+     * 
+     */
+    public static function clean_names($content_user_data) {
+        if (strpos($content_user_data['first_name'], '@') !== false) 
+            $content_user_data['first_name'] = self::clean_name ($content_user_data['first_name']);
+        if (strpos($content_user_data['last_name'], '@') !== false) 
+            $content_user_data['last_name'] = self::clean_name ($content_user_data['last_name']);
+        return $content_user_data;
+    }
+
+
+    /**
+     * 
+     */
+    public static function clean_name($name) {
+        $split_username = explode('@', $name);
+        if(!empty($split_username)) $name = ucfirst($split_username[0]);
+        return $name;
     }
     
 

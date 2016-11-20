@@ -94,8 +94,8 @@ class MailAPI {
         $message_tmpl = EntityStringUtils::parse($message_tmpl, $data_context);
         $subject_tmpl = EntityStringUtils::parse($subject_tmpl, $data_context);
         
-        LogUtils::shadow_log($data_context);
-        LogUtils::shadow_log('Sending mail to ' . $address . ' with subject ' . $subject_tmpl);
+        //LogUtils::shadow_log($data_context);
+        //LogUtils::shadow_log('Sending mail to ' . $address . ' with subject ' . $subject_tmpl);
         // Send the email
         wp_mail($address, $subject_tmpl, $message_tmpl, '', $attachment);
     }

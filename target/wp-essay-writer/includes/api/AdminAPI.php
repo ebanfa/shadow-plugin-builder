@@ -11,16 +11,25 @@ if (!defined('ABSPATH')) {
 class AdminAPI {
 
     /**
-     * Action function to setup Ajax
+     * 
      */
-    public static function do_ajax_setup() {
-        /*wp_enqueue_script('wpessaywriter_ajax', plugins_url('/js/init.js', __FILE__) . '/js/blitzdocument-ajax.js', array('jquery'), true);
-        wp_localize_script('wpessaywriter_ajax', 'wpessaywriter_ajax_script', 
-            array(
-                'ajaxurl' => admin_url('admin-ajax.php'),
-                'factor'=> get_option('cp_price_factor'),
-            )
-        );*/
+    public static function init_hooks(){
+        add_filter('wp_mail_from_name', array('AdminAPI', 'filter_from_name'));
+        add_filter('wp_mail_content_type', array('AdminAPI', 'filter_content_type'));
+    }
+
+    /**
+     * 
+     */
+    public static function filter_from_name($old_name){
+        return get_bloginfo('name');
+    }
+
+    /**
+     * 
+     */
+    public static function filter_content_type(){
+        return 'text/html';
     }
 
     /**

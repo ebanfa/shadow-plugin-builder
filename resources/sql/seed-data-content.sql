@@ -3,7 +3,7 @@ INSERT INTO currency (id, entity_code, symbol, name, description) VALUES (1, 'KS
 INSERT INTO currency (id, entity_code, symbol, name, description) VALUES (2, 'USD', '$', 'US Dollar', 'US Dollar');
 
 /* Insert statement for Business */
-INSERT INTO business (id, currency, entity_code, name, user_name, pin, tel_no, account_notify_email, orders_notify_email, description) VALUES (1, 1, 'PAE', 'Essay Chartered', 'admin@essaychartered.com', '0000000', '254 00000000', 'accounts@essaychartered.com', 'info@essaychartered.com', 'Essay Chartered');
+INSERT INTO business (id, currency, entity_code, name, user_name, pin, tel_no, account_notify_email, orders_notify_email, description) VALUES (1, 1, 'PAE', 'Essay Cove', 'admin@essaycove.com', '0000000', '254 00000000', 'accounts@essaycove.com', 'info@essaycove.com', 'Essay Cove');
 
 /* Insert statement for Party Category */
 INSERT INTO partycategory (id, entity_code, name, description) VALUES (1, 'ORGANIZATION', 'Organization', 'Organizational party');
@@ -21,7 +21,7 @@ INSERT INTO roletype (entity_code, name, description) VALUES ('TUTOR', 'Tutor', 
 INSERT INTO roletype (entity_code, name, description) VALUES ('EMPLOYEE', 'Employee', 'Employee');
 
 /* Insert statement for Party */
-INSERT INTO party (id, party_type, entity_code, name, user_name, description) VALUES (1, 2, 'ADMINISTRATOR', 'Administrator', 'admin@essaychartered.com', 'Organizational party');
+INSERT INTO party (id, party_type, entity_code, name, user_name, description) VALUES (1, 2, 'ADMINISTRATOR', 'Administrator', 'admin@essaycove.com', 'Organizational party');
 
 /* Insert statement for Party Role */
 INSERT INTO partyrole (party_role_party, party_role_type, entity_code, name, description) VALUES (1, 1, 'ADMINISTRATOR', 'Administrator', 'Administrator');

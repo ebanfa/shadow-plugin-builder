@@ -192,7 +192,7 @@
 			<active>N</active>
 			<cssClass>zmdi zmdi-accounts-alt</cssClass>
 			<targetType>page</targetType>
-			<target>/portal/accountsummary/list</target>
+			<target>/portal/dashboard/list</target>
 		</menuGroup>
 		<menuGroup>
 			<name>myorders</name>
@@ -249,7 +249,7 @@
 			<targetType>page</targetType>
 			<target>/portal/party/list/tutor</target>
 		</menuGroup>
-		<menuGroup>
+		<!-- <menuGroup>
 			<name>disputes</name>
 			<displayName>Disputes</displayName>
 			<description>Disputes</description>
@@ -259,7 +259,7 @@
 			<cssClass>zmdi zmdi-close-circle</cssClass>
 			<targetType>page</targetType>
 			<target>/portal/dispute/list</target>
-		</menuGroup>
+		</menuGroup> -->
 		<menuGroup>
 			<name>profile</name>
 			<displayName>My Profile</displayName>
@@ -269,7 +269,7 @@
 			<active>N</active>
 			<cssClass>zmdi zmdi-settings</cssClass>
 			<targetType>page</targetType>
-			<target>/portal/profile/list</target>
+			<target>/portal/profiledisplay/list</target>
 		</menuGroup>
 	</menuBar>
 
@@ -499,6 +499,14 @@
 			<uiGroup>party</uiGroup>
 			<className>StudentEditPanel</className>
 			<htmlTemplate>html/wordpress/uicomponent/student/student-edit-panel-php.ftl</htmlTemplate>
+		</uiComponent>
+
+		<!-- Profile components -->
+		<uiComponent>
+			<name>profile-edit-panel</name>
+			<uiGroup>party</uiGroup>
+			<className>ProfileEditPanel</className>
+			<htmlTemplate>html/wordpress/uicomponent/profile/profile-edit-panel-php.ftl</htmlTemplate>
 		</uiComponent>
 
 		<!-- Tutor components -->
@@ -761,6 +769,14 @@
 			<viewTemplate>views/wordpress/dashboard/dashboard-view-php.ftl</viewTemplate>
 		</page>
 		<page>
+			<name>Homework</name>
+			<displayName>Order</displayName>
+			<description>Order</description>
+			<pageTemplate>html/wordpress/page/homework/create-homework-page-php.ftl</pageTemplate>
+			<viewTemplate>views/wordpress/homework/create-homework-view.ftl</viewTemplate>
+			<!-- <ajaxRequestProcessorTemplate>controller/wordpress/homework/ajax-request-processor.ftl</ajaxRequestProcessorTemplate> -->
+		</page>
+		<page>
 			<name>StudentList</name>
 			<displayName>Student List</displayName>
 			<description>Student List</description>
@@ -808,6 +824,23 @@
 			<viewTemplate>views/wordpress/tutor/edit-entity-view.ftl</viewTemplate>
 			<viewModelTemplate>views/wordpress/tutor/edit-entity-view-model.ftl</viewModelTemplate>
 			<ajaxRequestProcessorTemplate>controller/wordpress/tutor/tutoreditor-ajax-request-processor.ftl</ajaxRequestProcessorTemplate>
+		</page>
+		<page>
+			<name>ProfileDisplay</name>
+			<displayName>Profile</displayName>
+			<description>Profile</description>
+			<viewTemplate>views/wordpress/profile/view-entity-view.ftl</viewTemplate>
+			<viewModelTemplate>views/wordpress/profile/view-entity-view-model.ftl</viewModelTemplate>
+			<ajaxRequestProcessorTemplate>controller/wordpress/profile/profiledisplay-ajax-request-processor.ftl</ajaxRequestProcessorTemplate>
+		</page>
+		<page>
+			<name>ProfileEditor</name>
+			<displayName>Profile Editor</displayName>
+			<description>Profile Editor</description>
+			<pageTemplate>html/wordpress/page/profile/edit-entity-page-php.ftl</pageTemplate>
+			<viewTemplate>views/wordpress/profile/edit-entity-view.ftl</viewTemplate>
+			<viewModelTemplate>views/wordpress/profile/edit-entity-view-model.ftl</viewModelTemplate>
+			<ajaxRequestProcessorTemplate>controller/wordpress/profile/profileeditor-ajax-request-processor.ftl</ajaxRequestProcessorTemplate>
 		</page>
 		<!-- These are application wide API not directly tied to any artifact -->
 

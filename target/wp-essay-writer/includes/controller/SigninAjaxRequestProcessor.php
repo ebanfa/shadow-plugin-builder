@@ -20,7 +20,11 @@ class SigninAjaxRequestProcessor {
     	// 2. Build the content user data
     	$content_user_data['user_pass'] = sanitize_text_field($_POST['password']);
     	$content_user_data['user_login'] = sanitize_text_field($_POST['username']);
-    	return UserLoginAPI::do_signin_content_user($content_user_data['user_login'], $content_user_data['user_pass']);
+        
+    	$content_user = UserLoginAPI::do_signin_content_user($content_user_data['user_login'], $content_user_data['user_pass']);
+        $content_user['redirect_url'] = ArtifactRequestProcessorUtils::get_list_artifact_url('dashboard');
+        if (isset($_POST['redirect_to'])) $content_user['redirect_url'] = $_POST['redirect_to'];
+        return $content_user;
     }
 
 }

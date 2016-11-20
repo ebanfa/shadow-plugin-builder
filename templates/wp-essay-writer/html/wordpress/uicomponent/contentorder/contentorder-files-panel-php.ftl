@@ -18,7 +18,10 @@
                 </tr>
             </thead><!-- /table header -->  
             <tbody>
-                <?php if(!empty($view->get_content_files())) { foreach ($view->get_content_files() as $content_file) { ?>
+                <?php
+                    $content_files = $view->get_content_files();
+                    if(!empty($content_files)) { 
+                        foreach ($content_files as $content_file) { ?>
                 <tr>
                     <td>
                         <a href="<?php echo $content_file['file_url']; ?>" class="product-name">

@@ -67,10 +67,10 @@
 
         <ul class="login-navigation">
             <li data-block="#l-register" class="bgm-red">
-                <a href="<?php echo get_site_url();?>/page-full?artifact=signup&page_action=view">Register</a>
+                <a href="<?php echo ArtifactRequestProcessorUtils::get_artifact_url('signup');?>">Register</a>
             </li>
             <li data-block="#l-forget-password" class="bgm-orange">
-                <a href="<?php echo get_site_url(); ?>/page-full?artifact=password&page_action=view">Forgot Password?</a>
+                <a href="<?php echo ArtifactRequestProcessorUtils::get_artifact_url('password');?>">Forgot Password?</a>
             </li>
         </ul>
     </div>

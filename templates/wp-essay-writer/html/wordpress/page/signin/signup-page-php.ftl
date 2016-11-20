@@ -114,10 +114,10 @@
 
         <ul class="login-navigation">
             <li data-block="#l-register" class="bgm-red">
-                <a href="<?php echo get_site_url(); ?>/page-full?artifact=signin&page_action=view">Login</a>
+                <a href="<?php echo ArtifactRequestProcessorUtils::get_artifact_url('signin');?>">Login</a>
             </li>
             <li data-block="#l-forget-password" class="bgm-orange">
-                <a href="<?php echo get_site_url(); ?>/page-full?artifact=password&page_action=view">Forgot Password?</a>
+                <a href="<?php echo ArtifactRequestProcessorUtils::get_artifact_url('password');?>">Forgot Password?</a>
             </li>
         </ul>
     </div>
@@ -196,8 +196,7 @@
                             showCancelButton: false,   
                             closeOnConfirm: true 
                         }, function(){   
-                            //$("#success").html(responseData.data.message);
-                            document.location.href='<?php echo get_option('cp_default_portal_home_url');?>';
+                            document.location.href=responseData.data.message;
                         });
                     }
                     else {

@@ -11,7 +11,9 @@ class PortalMenuMainModel extends UIComponentModel {
      * Process the model
      */
     public function process_model(){
-    	$this->model = MenuAPI::get_menu_groups();
+    	if (is_user_logged_in()) {
+    		$this->model = MenuAPI::get_menu_groups();
+    	}
     }
 }
 ?>

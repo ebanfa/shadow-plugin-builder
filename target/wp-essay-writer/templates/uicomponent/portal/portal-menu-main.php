@@ -7,13 +7,16 @@
         exit; // Exit if accessed directly
     }
     $view = $_REQUEST['page_info']['view'];
-    $page_context = $view->get_context();
-    $menu_groups = $page_context['portal-menu-main-data'];
+
 ?>
 <ul class="main-menu">
     <?php
-        foreach ($menu_groups as $key => $group) {
-            if ($group['type'] == 'menu') { 
+        if (is_user_logged_in()) {
+            $page_context = $view->get_context();
+            $menu_groups = $page_context['portal-menu-main-data'];
+
+            foreach ($menu_groups as $key => $group) {
+                if ($group['type'] == 'menu') { 
     ?>
     <li>
         <a href="javascript:void(0);" class="data-table-link" data-link="<?php if($key == 'signout')  echo wp_logout_url(home_url()); else echo $group['target']; ?>">
@@ -37,5 +40,6 @@
     </li>
     <?php   }
         }
+    }
     ?>
 </ul>

@@ -36,11 +36,8 @@ class UserLoginAPI {
         // Build the return
         $content_user = array('has_errors' => false, 'user_login' => $user_name, 'user_password' => $password);
         // Process redirect
-        $content_user['redirect_url'] = get_option('cp_default_portal_home_url');
-        if(UserPartyAPI::is_current_user_portal_admin())
-            $content_user['redirect_url'] = ArtifactRequestProcessorUtils::get_list_artifact_url('dashboard');
-
-        if (isset($_POST['redirect_to'])) $content_user['redirect_url'] = $_POST['redirect_to'];
+        /*$content_user['redirect_url'] = get_option('cp_default_portal_home_url');
+        if(UserPartyAPI::is_current_user_portal_admin())*/
         return $content_user;
 	}
 

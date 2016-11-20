@@ -128,6 +128,10 @@ class UIComponentRegistry {
     		'template' => 'party/student-edit-panel.php',
     		'className' => 'StudentEditPanel',
     	),
+    	'profile-edit-panel' => array(
+    		'template' => 'party/profile-edit-panel.php',
+    		'className' => 'ProfileEditPanel',
+    	),
     	'tutor-sidebar-panel' => array(
     		'template' => 'party/tutor-sidebar-panel.php',
     		'className' => 'TutorSidebarPanel',

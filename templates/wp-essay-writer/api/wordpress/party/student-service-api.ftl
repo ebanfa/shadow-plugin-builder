@@ -63,6 +63,11 @@ class StudentAPI {
         $student_data['display_name'] = $profile_data['display_name'];
         if($profile_data['profile_status'] == 'A') $student_data['active'] = true;
         else $student_data['active'] = false;
+        // Load the profile image
+        $student_data['image_url'] =  ${application.name}::plugin_url() . '/images/user.png';
+        $tutor_image = EntityAPI::get_by_field('partyimage', 'file_party', $student_data['id']);
+        if(isset($tutor_image['id'])) $student_data['image_url'] = $tutor_image['file_url'];
+
         return $student_data;
     }
 

@@ -4,6 +4,13 @@ class MenuUtils {
 	// Used to uniquely identify this plugin's menu page in the WP manager
 	const admin_menu_slug = '${pluginName}';
 
+	public static function init_hooks(){
+		// Register action to create the admin menu
+		add_action('admin_menu', 'MenuUtils::create_admin_menu');
+		// Register action to create the admin settings page link
+		add_filter('plugin_action_links_${pluginName}/index.php', 'MenuUtils::add_plugin_settings_link', 10, 2 );
+	}
+
 	/**
 	 * Create Content Port plugin admin menu
 	 */

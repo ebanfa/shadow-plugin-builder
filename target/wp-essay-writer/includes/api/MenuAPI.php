@@ -126,7 +126,7 @@ class MenuAPI {
         ),
         'accountsummary' => array(
             'type' => 'menu',
-            'target' => '/portal/accountsummary/list',
+            'target' => '/portal/dashboard/list',
             'is_admin' => false,
             'display_name' => 'Account Summary',
             'css_class' => 'zmdi zmdi-accounts-alt',
@@ -169,18 +169,9 @@ class MenuAPI {
             'items' => array(
             ),
         ),
-        'disputes' => array(
-            'type' => 'menu',
-            'target' => '/portal/dispute/list',
-            'is_admin' => false,
-            'display_name' => 'Disputes',
-            'css_class' => 'zmdi zmdi-close-circle',
-            'items' => array(
-            ),
-        ),
         'profile' => array(
             'type' => 'menu',
-            'target' => '/portal/profile/list',
+            'target' => '/portal/profiledisplay/list',
             'is_admin' => false,
             'display_name' => 'My Profile',
             'css_class' => 'zmdi zmdi-settings',
