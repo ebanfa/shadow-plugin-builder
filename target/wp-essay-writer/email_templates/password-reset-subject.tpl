@@ -1,1 +1,0 @@
-Hello [+email+], details of your requested password change.
