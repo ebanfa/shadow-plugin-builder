@@ -3,8 +3,8 @@
 	<name>WPEssayWriter</name>
 	<packageName>shadowbanker</packageName>
 	<description>WP Essay Writer</description>
-	<templatesDir>/home/adrian/Projects/shadow-plugin-builder/templates/wp-essay-writer/</templatesDir>
-	<generateSourcesDir>/home/adrian/Projects/shadow-plugin-builder/target/</generateSourcesDir>
+	<templatesDir>/home/adrian/Projects/wp-ee/templates/wp-essay-writer/</templatesDir>
+	<generateSourcesDir>/home/adrian/Projects/wp-ee/target/</generateSourcesDir>
 
 	<menuBar>
 		<menuGroup>
