@@ -1,6 +1,10 @@
-## Synopsis
+# WP-EE
 
-WP-EE is both a framework and a code generation tool. As a framework WP-EE implements a JEE style API within WordPress. As a code generator, WP-EE is a command line code generation tool that generates WordPress plugins based on the WP-EE API.
+A JEE type API within WordPress.
+
+## Description
+
+WP-EE is both a framework and a code generation tool. As a framework, WP-EE implements a JEE style API within WordPress. As a code generator, WP-EE is a command line code generation tool that generates WordPress plugins based on the WP-EE API.
 
 ## Code Example
 
@@ -12,7 +16,7 @@ $students = EntityAPI::find_by_criteria('party', array('role' => 'student'));
 
 ## Motivation
 
-Having worked with JEE in past projects, I had the idea using WordPress as an application server.
+Having worked with JEE in past projects, I had the idea of having a JEE type API in PHP with WordPress as the application server.
 
 ## Installation
 
