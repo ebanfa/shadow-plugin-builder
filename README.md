@@ -12,11 +12,14 @@ $students = EntityAPI::find_by_criteria('party', array('role' => 'student'));
 
 ## Motivation
 
-Having worked with JEE in past projects, I was awed by its power and simplicity (EJB 3.0 upwards that is).
+Having worked with JEE in past projects, I had the idea using WordPress as an application server.
 
 ## Installation
 
-Provide code examples and explanations of how to get the project.
+```
+git clone https://github.com/ebanfa/wp-ee.git
+
+```
 
 ## API Reference
 
