@@ -7,6 +7,8 @@ git config --global user.name "Edward Banfa"
 
 git remote set-url origin https://github.com/ebanfa/wp-ee.git
 
+rm -rf target/*
+
 git add .
 
 git status
