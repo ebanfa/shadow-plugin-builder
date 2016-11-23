@@ -16,7 +16,8 @@ $students = EntityAPI::find_by_criteria('party', array('role' => 'student'));
 
 ## Motivation
 
-Having worked with JEE in past projects, I had the idea of having a JEE type API in PHP with WordPress as the application server.
+Having worked with JEE in past projects, I had the idea of having a JEE type API in PHP with WordPress as the application server. But hey am no guru or expert in
+PHP or WordPress (yet :-)), am just a guy with an idea.
 
 ## Installation
 
