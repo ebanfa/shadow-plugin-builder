@@ -5,7 +5,7 @@ git config --global user.email "ebanfa@gmail.com"
 
 git config --global user.name "Edward Banfa"
 
-git remote set-url origin git@github.com:ebanfa/wp-ee.git
+git remote set-url origin https://github.com/ebanfa/wp-ee.git
 
 git add .
 
